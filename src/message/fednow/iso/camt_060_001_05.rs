@@ -130,7 +130,7 @@ pub struct BalanceType13 {
 	#[serde(rename = "CdOrPrtry")]
 	pub cd_or_prtry: BalanceType10Choice,
 	#[serde(rename = "SubTp")]
-	pub sub_tp: BalanceSubType1Choice,
+	pub sub_tp: Option<BalanceSubType1Choice>,
 }
 
 
@@ -140,7 +140,7 @@ pub struct BranchAndFinancialInstitutionIdentification6 {
 	#[serde(rename = "FinInstnId")]
 	pub fin_instn_id: FinancialInstitutionIdentification18,
 	#[serde(rename = "BrnchId")]
-	pub brnch_id: BranchData3,
+	pub brnch_id: Option<BranchData3>,
 }
 
 
@@ -148,13 +148,13 @@ pub struct BranchAndFinancialInstitutionIdentification6 {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct BranchData3 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Option<String>,
 	#[serde(rename = "LEI")]
-	pub lei: String,
+	pub lei: Option<String>,
 	#[serde(rename = "Nm")]
-	pub nm: String,
+	pub nm: Option<String>,
 	#[serde(rename = "PstlAdr")]
-	pub pstl_adr: PostalAddress24,
+	pub pstl_adr: Option<PostalAddress24>,
 }
 
 
@@ -164,13 +164,13 @@ pub struct CashAccount38 {
 	#[serde(rename = "Id")]
 	pub id: AccountIdentification4Choice,
 	#[serde(rename = "Tp")]
-	pub tp: CashAccountType2Choice,
+	pub tp: Option<CashAccountType2Choice>,
 	#[serde(rename = "Ccy")]
-	pub ccy: String,
+	pub ccy: Option<String>,
 	#[serde(rename = "Nm")]
-	pub nm: String,
+	pub nm: Option<String>,
 	#[serde(rename = "Prxy")]
-	pub prxy: ProxyAccountIdentification1,
+	pub prxy: Option<ProxyAccountIdentification1>,
 }
 
 
@@ -198,7 +198,7 @@ pub struct ClearingSystemIdentification2Choice {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct ClearingSystemMemberIdentification2 {
 	#[serde(rename = "ClrSysId")]
-	pub clr_sys_id: ClearingSystemIdentification2Choice,
+	pub clr_sys_id: Option<ClearingSystemIdentification2Choice>,
 	#[serde(rename = "MmbId")]
 	pub mmb_id: String,
 }
@@ -208,29 +208,29 @@ pub struct ClearingSystemMemberIdentification2 {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct Contact4 {
 	#[serde(rename = "NmPrfx")]
-	pub nm_prfx: String,
+	pub nm_prfx: Option<String>,
 	#[serde(rename = "Nm")]
-	pub nm: String,
+	pub nm: Option<String>,
 	#[serde(rename = "PhneNb")]
-	pub phne_nb: String,
+	pub phne_nb: Option<String>,
 	#[serde(rename = "MobNb")]
-	pub mob_nb: String,
+	pub mob_nb: Option<String>,
 	#[serde(rename = "FaxNb")]
-	pub fax_nb: String,
+	pub fax_nb: Option<String>,
 	#[serde(rename = "EmailAdr")]
-	pub email_adr: String,
+	pub email_adr: Option<String>,
 	#[serde(rename = "EmailPurp")]
-	pub email_purp: String,
+	pub email_purp: Option<String>,
 	#[serde(rename = "JobTitl")]
-	pub job_titl: String,
+	pub job_titl: Option<String>,
 	#[serde(rename = "Rspnsblty")]
-	pub rspnsblty: String,
+	pub rspnsblty: Option<String>,
 	#[serde(rename = "Dept")]
-	pub dept: String,
+	pub dept: Option<String>,
 	#[serde(rename = "Othr")]
 	pub othr: Vec<OtherContact1>,
 	#[serde(rename = "PrefrdMtd")]
-	pub prefrd_mtd: String,
+	pub prefrd_mtd: Option<String>,
 }
 
 
@@ -256,7 +256,7 @@ pub struct DateAndPlaceOfBirth1 {
 	#[serde(rename = "BirthDt")]
 	pub birth_dt: String,
 	#[serde(rename = "PrvcOfBirth")]
-	pub prvc_of_birth: String,
+	pub prvc_of_birth: Option<String>,
 	#[serde(rename = "CityOfBirth")]
 	pub city_of_birth: String,
 	#[serde(rename = "CtryOfBirth")]
@@ -270,7 +270,7 @@ pub struct DatePeriodDetails1 {
 	#[serde(rename = "FrDt")]
 	pub fr_dt: String,
 	#[serde(rename = "ToDt")]
-	pub to_dt: String,
+	pub to_dt: Option<String>,
 }
 
 
@@ -386,17 +386,17 @@ pub struct FinancialIdentificationSchemeName1Choice {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct FinancialInstitutionIdentification18 {
 	#[serde(rename = "BICFI")]
-	pub bicfi: String,
+	pub bicfi: Option<String>,
 	#[serde(rename = "ClrSysMmbId")]
-	pub clr_sys_mmb_id: ClearingSystemMemberIdentification2,
+	pub clr_sys_mmb_id: Option<ClearingSystemMemberIdentification2>,
 	#[serde(rename = "LEI")]
-	pub lei: String,
+	pub lei: Option<String>,
 	#[serde(rename = "Nm")]
-	pub nm: String,
+	pub nm: Option<String>,
 	#[serde(rename = "PstlAdr")]
-	pub pstl_adr: PostalAddress24,
+	pub pstl_adr: Option<PostalAddress24>,
 	#[serde(rename = "Othr")]
-	pub othr: GenericFinancialIdentification1,
+	pub othr: Option<GenericFinancialIdentification1>,
 }
 
 
@@ -414,9 +414,9 @@ pub struct GenericAccountIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
 	#[serde(rename = "SchmeNm")]
-	pub schme_nm: AccountSchemeName1Choice,
+	pub schme_nm: Option<AccountSchemeName1Choice>,
 	#[serde(rename = "Issr")]
-	pub issr: String,
+	pub issr: Option<String>,
 }
 
 
@@ -426,9 +426,9 @@ pub struct GenericFinancialIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
 	#[serde(rename = "SchmeNm")]
-	pub schme_nm: FinancialIdentificationSchemeName1Choice,
+	pub schme_nm: Option<FinancialIdentificationSchemeName1Choice>,
 	#[serde(rename = "Issr")]
-	pub issr: String,
+	pub issr: Option<String>,
 }
 
 
@@ -440,7 +440,7 @@ pub struct GenericIdentification30 {
 	#[serde(rename = "Issr")]
 	pub issr: String,
 	#[serde(rename = "SchmeNm")]
-	pub schme_nm: String,
+	pub schme_nm: Option<String>,
 }
 
 
@@ -450,9 +450,9 @@ pub struct GenericOrganisationIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
 	#[serde(rename = "SchmeNm")]
-	pub schme_nm: OrganisationIdentificationSchemeName1Choice,
+	pub schme_nm: Option<OrganisationIdentificationSchemeName1Choice>,
 	#[serde(rename = "Issr")]
-	pub issr: String,
+	pub issr: Option<String>,
 }
 
 
@@ -462,9 +462,9 @@ pub struct GenericPersonIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
 	#[serde(rename = "SchmeNm")]
-	pub schme_nm: PersonIdentificationSchemeName1Choice,
+	pub schme_nm: Option<PersonIdentificationSchemeName1Choice>,
 	#[serde(rename = "Issr")]
-	pub issr: String,
+	pub issr: Option<String>,
 }
 
 
@@ -476,7 +476,7 @@ pub struct GroupHeader77 {
 	#[serde(rename = "CreDtTm")]
 	pub cre_dt_tm: String,
 	#[serde(rename = "MsgSndr")]
-	pub msg_sndr: Party40Choice,
+	pub msg_sndr: Option<Party40Choice>,
 }
 
 
@@ -622,9 +622,9 @@ pub struct NamePrefix2Code {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct OrganisationIdentification29 {
 	#[serde(rename = "AnyBIC")]
-	pub any_bic: String,
+	pub any_bic: Option<String>,
 	#[serde(rename = "LEI")]
-	pub lei: String,
+	pub lei: Option<String>,
 	#[serde(rename = "Othr")]
 	pub othr: Vec<GenericOrganisationIdentification1>,
 }
@@ -646,7 +646,7 @@ pub struct OtherContact1 {
 	#[serde(rename = "ChanlTp")]
 	pub chanl_tp: String,
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Option<String>,
 }
 
 
@@ -674,15 +674,15 @@ pub struct Party40Choice {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct PartyIdentification135 {
 	#[serde(rename = "Nm")]
-	pub nm: String,
+	pub nm: Option<String>,
 	#[serde(rename = "PstlAdr")]
-	pub pstl_adr: PostalAddress24,
+	pub pstl_adr: Option<PostalAddress24>,
 	#[serde(rename = "Id")]
-	pub id: Party38Choice,
+	pub id: Option<Party38Choice>,
 	#[serde(rename = "CtryOfRes")]
-	pub ctry_of_res: String,
+	pub ctry_of_res: Option<String>,
 	#[serde(rename = "CtctDtls")]
-	pub ctct_dtls: Contact4,
+	pub ctct_dtls: Option<Contact4>,
 }
 
 
@@ -690,7 +690,7 @@ pub struct PartyIdentification135 {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct PersonIdentification13 {
 	#[serde(rename = "DtAndPlcOfBirth")]
-	pub dt_and_plc_of_birth: DateAndPlaceOfBirth1,
+	pub dt_and_plc_of_birth: Option<DateAndPlaceOfBirth1>,
 	#[serde(rename = "Othr")]
 	pub othr: Vec<GenericPersonIdentification1>,
 }
@@ -718,35 +718,35 @@ pub struct PhoneNumber {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct PostalAddress24 {
 	#[serde(rename = "AdrTp")]
-	pub adr_tp: AddressType3Choice,
+	pub adr_tp: Option<AddressType3Choice>,
 	#[serde(rename = "Dept")]
-	pub dept: String,
+	pub dept: Option<String>,
 	#[serde(rename = "SubDept")]
-	pub sub_dept: String,
+	pub sub_dept: Option<String>,
 	#[serde(rename = "StrtNm")]
-	pub strt_nm: String,
+	pub strt_nm: Option<String>,
 	#[serde(rename = "BldgNb")]
-	pub bldg_nb: String,
+	pub bldg_nb: Option<String>,
 	#[serde(rename = "BldgNm")]
-	pub bldg_nm: String,
+	pub bldg_nm: Option<String>,
 	#[serde(rename = "Flr")]
-	pub flr: String,
+	pub flr: Option<String>,
 	#[serde(rename = "PstBx")]
-	pub pst_bx: String,
+	pub pst_bx: Option<String>,
 	#[serde(rename = "Room")]
-	pub room: String,
+	pub room: Option<String>,
 	#[serde(rename = "PstCd")]
-	pub pst_cd: String,
+	pub pst_cd: Option<String>,
 	#[serde(rename = "TwnNm")]
-	pub twn_nm: String,
+	pub twn_nm: Option<String>,
 	#[serde(rename = "TwnLctnNm")]
-	pub twn_lctn_nm: String,
+	pub twn_lctn_nm: Option<String>,
 	#[serde(rename = "DstrctNm")]
-	pub dstrct_nm: String,
+	pub dstrct_nm: Option<String>,
 	#[serde(rename = "CtrySubDvsn")]
-	pub ctry_sub_dvsn: String,
+	pub ctry_sub_dvsn: Option<String>,
 	#[serde(rename = "Ctry")]
-	pub ctry: String,
+	pub ctry: Option<String>,
 	#[serde(rename = "AdrLine")]
 	pub adr_line: Vec<String>,
 }
@@ -764,7 +764,7 @@ pub struct PreferredContactMethod1Code {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct ProxyAccountIdentification1 {
 	#[serde(rename = "Tp")]
-	pub tp: ProxyAccountType1Choice,
+	pub tp: Option<ProxyAccountType1Choice>,
 	#[serde(rename = "Id")]
 	pub id: String,
 }
@@ -794,7 +794,7 @@ pub struct ReportingPeriod2 {
 	#[serde(rename = "FrToDt")]
 	pub fr_to_dt: DatePeriodDetails1,
 	#[serde(rename = "FrToTm")]
-	pub fr_to_tm: TimePeriodDetails1,
+	pub fr_to_tm: Option<TimePeriodDetails1>,
 	#[serde(rename = "Tp")]
 	pub tp: String,
 }
@@ -804,21 +804,21 @@ pub struct ReportingPeriod2 {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct ReportingRequest5 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Option<String>,
 	#[serde(rename = "ReqdMsgNmId")]
 	pub reqd_msg_nm_id: String,
 	#[serde(rename = "Acct")]
-	pub acct: CashAccount38,
+	pub acct: Option<CashAccount38>,
 	#[serde(rename = "AcctOwnr")]
 	pub acct_ownr: Party40Choice,
 	#[serde(rename = "AcctSvcr")]
-	pub acct_svcr: BranchAndFinancialInstitutionIdentification6,
+	pub acct_svcr: Option<BranchAndFinancialInstitutionIdentification6>,
 	#[serde(rename = "RptgPrd")]
-	pub rptg_prd: ReportingPeriod2,
+	pub rptg_prd: Option<ReportingPeriod2>,
 	#[serde(rename = "RptgSeq")]
-	pub rptg_seq: SequenceRange1Choice,
+	pub rptg_seq: Option<SequenceRange1Choice>,
 	#[serde(rename = "ReqdTxTp")]
-	pub reqd_tx_tp: TransactionType2,
+	pub reqd_tx_tp: Option<TransactionType2>,
 	#[serde(rename = "ReqdBalTp")]
 	pub reqd_bal_tp: Vec<BalanceType13>,
 }
@@ -854,7 +854,7 @@ pub struct SequenceRange1Choice {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
-	pub plc_and_nm: String,
+	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -872,7 +872,7 @@ pub struct TimePeriodDetails1 {
 	#[serde(rename = "FrTm")]
 	pub fr_tm: String,
 	#[serde(rename = "ToTm")]
-	pub to_tm: String,
+	pub to_tm: Option<String>,
 }
 
 

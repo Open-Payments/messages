@@ -20,9 +20,9 @@ pub struct Event1 {
 	#[serde(rename = "EvtParam")]
 	pub evt_param: Vec<String>,
 	#[serde(rename = "EvtDesc")]
-	pub evt_desc: String,
+	pub evt_desc: Option<String>,
 	#[serde(rename = "EvtTm")]
-	pub evt_tm: String,
+	pub evt_tm: Option<String>,
 }
 
 
@@ -70,7 +70,7 @@ pub struct Max4AlphaNumericText {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
-	pub plc_and_nm: String,
+	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -88,11 +88,11 @@ pub struct SystemEventAcknowledgementV01 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
 	#[serde(rename = "OrgtrRef")]
-	pub orgtr_ref: String,
+	pub orgtr_ref: Option<String>,
 	#[serde(rename = "SttlmSsnIdr")]
-	pub sttlm_ssn_idr: String,
+	pub sttlm_ssn_idr: Option<String>,
 	#[serde(rename = "AckDtls")]
-	pub ack_dtls: Event1,
+	pub ack_dtls: Option<Event1>,
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Vec<SupplementaryData1>,
 }

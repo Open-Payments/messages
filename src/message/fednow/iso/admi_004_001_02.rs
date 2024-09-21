@@ -20,9 +20,9 @@ pub struct Event2 {
 	#[serde(rename = "EvtParam")]
 	pub evt_param: Vec<String>,
 	#[serde(rename = "EvtDesc")]
-	pub evt_desc: String,
+	pub evt_desc: Option<String>,
 	#[serde(rename = "EvtTm")]
-	pub evt_tm: String,
+	pub evt_tm: Option<String>,
 }
 
 

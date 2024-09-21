@@ -16,13 +16,13 @@ pub struct document {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct AdministrationProprietaryMessageV02 {
 	#[serde(rename = "MsgId")]
-	pub msg_id: MessageReference,
+	pub msg_id: Option<MessageReference>,
 	#[serde(rename = "Rltd")]
-	pub rltd: MessageReference,
+	pub rltd: Option<MessageReference>,
 	#[serde(rename = "Prvs")]
-	pub prvs: MessageReference,
+	pub prvs: Option<MessageReference>,
 	#[serde(rename = "Othr")]
-	pub othr: MessageReference,
+	pub othr: Option<MessageReference>,
 	#[serde(rename = "PrtryData")]
 	pub prtry_data: ProprietaryData5,
 }

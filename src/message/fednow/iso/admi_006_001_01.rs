@@ -57,9 +57,9 @@ pub struct GenericIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
 	#[serde(rename = "SchmeNm")]
-	pub schme_nm: String,
+	pub schme_nm: Option<String>,
 	#[serde(rename = "Issr")]
-	pub issr: String,
+	pub issr: Option<String>,
 }
 
 
@@ -71,7 +71,7 @@ pub struct GenericIdentification36 {
 	#[serde(rename = "Issr")]
 	pub issr: String,
 	#[serde(rename = "SchmeNm")]
-	pub schme_nm: String,
+	pub schme_nm: Option<String>,
 }
 
 
@@ -137,13 +137,13 @@ pub struct MessageHeader7 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
 	#[serde(rename = "CreDtTm")]
-	pub cre_dt_tm: String,
+	pub cre_dt_tm: Option<String>,
 	#[serde(rename = "ReqTp")]
-	pub req_tp: RequestType4Choice,
+	pub req_tp: Option<RequestType4Choice>,
 	#[serde(rename = "OrgnlBizQry")]
-	pub orgnl_biz_qry: OriginalBusinessQuery1,
+	pub orgnl_biz_qry: Option<OriginalBusinessQuery1>,
 	#[serde(rename = "QryNm")]
-	pub qry_nm: String,
+	pub qry_nm: Option<String>,
 }
 
 
@@ -153,7 +153,7 @@ pub struct NameAndAddress5 {
 	#[serde(rename = "Nm")]
 	pub nm: String,
 	#[serde(rename = "Adr")]
-	pub adr: PostalAddress1,
+	pub adr: Option<PostalAddress1>,
 }
 
 
@@ -163,9 +163,9 @@ pub struct OriginalBusinessQuery1 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
 	#[serde(rename = "MsgNmId")]
-	pub msg_nm_id: String,
+	pub msg_nm_id: Option<String>,
 	#[serde(rename = "CreDtTm")]
-	pub cre_dt_tm: String,
+	pub cre_dt_tm: Option<String>,
 }
 
 
@@ -187,7 +187,7 @@ pub struct PartyIdentification136 {
 	#[serde(rename = "Id")]
 	pub id: PartyIdentification120Choice,
 	#[serde(rename = "LEI")]
-	pub lei: String,
+	pub lei: Option<String>,
 }
 
 
@@ -195,19 +195,19 @@ pub struct PartyIdentification136 {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct PostalAddress1 {
 	#[serde(rename = "AdrTp")]
-	pub adr_tp: String,
+	pub adr_tp: Option<String>,
 	#[serde(rename = "AdrLine")]
 	pub adr_line: Vec<String>,
 	#[serde(rename = "StrtNm")]
-	pub strt_nm: String,
+	pub strt_nm: Option<String>,
 	#[serde(rename = "BldgNb")]
-	pub bldg_nb: String,
+	pub bldg_nb: Option<String>,
 	#[serde(rename = "PstCd")]
-	pub pst_cd: String,
+	pub pst_cd: Option<String>,
 	#[serde(rename = "TwnNm")]
-	pub twn_nm: String,
+	pub twn_nm: Option<String>,
 	#[serde(rename = "CtrySubDvsn")]
-	pub ctry_sub_dvsn: String,
+	pub ctry_sub_dvsn: Option<String>,
 	#[serde(rename = "Ctry")]
 	pub ctry: String,
 }
@@ -241,15 +241,15 @@ pub struct ResendRequestV01 {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct ResendSearchCriteria2 {
 	#[serde(rename = "BizDt")]
-	pub biz_dt: String,
+	pub biz_dt: Option<String>,
 	#[serde(rename = "SeqNb")]
-	pub seq_nb: String,
+	pub seq_nb: Option<String>,
 	#[serde(rename = "SeqRg")]
-	pub seq_rg: SequenceRange1Choice,
+	pub seq_rg: Option<SequenceRange1Choice>,
 	#[serde(rename = "OrgnlMsgNmId")]
-	pub orgnl_msg_nm_id: String,
+	pub orgnl_msg_nm_id: Option<String>,
 	#[serde(rename = "FileRef")]
-	pub file_ref: String,
+	pub file_ref: Option<String>,
 	#[serde(rename = "Rcpt")]
 	pub rcpt: PartyIdentification136,
 }
@@ -285,7 +285,7 @@ pub struct SequenceRange1Choice {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
-	pub plc_and_nm: String,
+	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }

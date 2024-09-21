@@ -11,7 +11,7 @@ use crate::message::fednow::fednow::FedNowKeyExchange::FedNowCustomerMessageSign
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct FedNowOutgoing {
 	#[serde(rename = "FedNowTechnicalHeader")]
-	pub fed_now_technical_header: FedNowTechnicalHeader,
+	pub fed_now_technical_header: Option<FedNowTechnicalHeader>,
 	#[serde(rename = "FedNowOutgoingMessage")]
 	pub fed_now_outgoing_message: FedNowOutgoingMessage,
 }

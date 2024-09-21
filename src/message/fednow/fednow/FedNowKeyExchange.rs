@@ -93,9 +93,9 @@ pub struct FedNowMessageSignatureKey {
 	#[serde(rename = "Encoding")]
 	pub encoding: String,
 	#[serde(rename = "Algorithm")]
-	pub algorithm: String,
+	pub algorithm: Option<String>,
 	#[serde(rename = "KeyCreationDateTime")]
-	pub key_creation_date_time: String,
+	pub key_creation_date_time: Option<String>,
 }
 
 
@@ -180,7 +180,7 @@ pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 	#[serde(rename = "Status")]
 	pub status: String,
 	#[serde(rename = "ErrorCode")]
-	pub error_code: String,
+	pub error_code: Option<String>,
 }
 
 

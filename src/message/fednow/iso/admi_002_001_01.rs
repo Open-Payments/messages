@@ -58,13 +58,13 @@ pub struct RejectionReason2 {
 	#[serde(rename = "RjctgPtyRsn")]
 	pub rjctg_pty_rsn: String,
 	#[serde(rename = "RjctnDtTm")]
-	pub rjctn_dt_tm: String,
+	pub rjctn_dt_tm: Option<String>,
 	#[serde(rename = "ErrLctn")]
-	pub err_lctn: String,
+	pub err_lctn: Option<String>,
 	#[serde(rename = "RsnDesc")]
-	pub rsn_desc: String,
+	pub rsn_desc: Option<String>,
 	#[serde(rename = "AddtlData")]
-	pub addtl_data: String,
+	pub addtl_data: Option<String>,
 }
 
 

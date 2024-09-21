@@ -9,7 +9,7 @@ use crate::message::fednow::iso::head_001_001_02::BusinessApplicationHeaderV02;
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct FedNowIncoming {
 	#[serde(rename = "FedNowTechnicalHeader")]
-	pub fed_now_technical_header: FedNowTechnicalHeader,
+	pub fed_now_technical_header: Option<FedNowTechnicalHeader>,
 	#[serde(rename = "FedNowIncomingMessage")]
 	pub fed_now_incoming_message: FedNowIncomingMessage,
 }
