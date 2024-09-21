@@ -82,7 +82,7 @@ pub struct FedNowOutgoingMessage {
 pub struct FedNowMessageReject {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "a2:Document")]
+	#[serde(rename = "Document")]
 	pub a2_document: Document,
 }
 
@@ -92,7 +92,7 @@ pub struct FedNowMessageReject {
 pub struct FedNowBroadcast {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "a4:Document")]
+	#[serde(rename = "Document")]
 	pub a4_document: Document,
 }
 
@@ -102,7 +102,7 @@ pub struct FedNowBroadcast {
 pub struct FedNowReceiptAcknowledgement {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "a7:Document")]
+	#[serde(rename = "Document")]
 	pub a7_document: Document,
 }
 
@@ -112,7 +112,7 @@ pub struct FedNowReceiptAcknowledgement {
 pub struct FedNowSystemResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "a11:Document")]
+	#[serde(rename = "Document")]
 	pub a11_document: Document,
 }
 
@@ -122,7 +122,7 @@ pub struct FedNowSystemResponse {
 pub struct FedNowParticipantFile {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "a998:Document")]
+	#[serde(rename = "Document")]
 	pub a998_document: Document,
 }
 
@@ -132,7 +132,7 @@ pub struct FedNowParticipantFile {
 pub struct FedNowPaymentStatus {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "p2:Document")]
+	#[serde(rename = "Document")]
 	pub p2_document: Document,
 }
 
@@ -142,7 +142,7 @@ pub struct FedNowPaymentStatus {
 pub struct FedNowPaymentReturn {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "p4:Document")]
+	#[serde(rename = "Document")]
 	pub p4_document: Document,
 }
 
@@ -152,7 +152,7 @@ pub struct FedNowPaymentReturn {
 pub struct FedNowCustomerCreditTransfer {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "p8:Document")]
+	#[serde(rename = "Document")]
 	pub p8_document: Document,
 }
 
@@ -162,7 +162,7 @@ pub struct FedNowCustomerCreditTransfer {
 pub struct FedNowInstitutionCreditTransfer {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "p9:Document")]
+	#[serde(rename = "Document")]
 	pub p9_document: Document,
 }
 
@@ -172,7 +172,7 @@ pub struct FedNowInstitutionCreditTransfer {
 pub struct FedNowPaymentStatusRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "p28:Document")]
+	#[serde(rename = "Document")]
 	pub p28_document: Document,
 }
 
@@ -182,7 +182,7 @@ pub struct FedNowPaymentStatusRequest {
 pub struct FedNowRequestForPayment {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "pain13:Document")]
+	#[serde(rename = "Document")]
 	pub pain13_document: Document,
 }
 
@@ -192,7 +192,7 @@ pub struct FedNowRequestForPayment {
 pub struct FedNowRequestForPaymentResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "pain14:Document")]
+	#[serde(rename = "Document")]
 	pub pain14_document: Document,
 }
 
@@ -202,7 +202,7 @@ pub struct FedNowRequestForPaymentResponse {
 pub struct FedNowInformationRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c26:Document")]
+	#[serde(rename = "Document")]
 	pub c26_document: Document,
 }
 
@@ -212,7 +212,7 @@ pub struct FedNowInformationRequest {
 pub struct FedNowAdditionalPaymentInformation {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c28:Document")]
+	#[serde(rename = "Document")]
 	pub c28_document: Document,
 }
 
@@ -222,7 +222,7 @@ pub struct FedNowAdditionalPaymentInformation {
 pub struct FedNowRequestForPaymentCancellationRequestResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c29:Document")]
+	#[serde(rename = "Document")]
 	pub c29_document: Document,
 }
 
@@ -232,7 +232,7 @@ pub struct FedNowRequestForPaymentCancellationRequestResponse {
 pub struct FedNowReturnRequestResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c29:Document")]
+	#[serde(rename = "Document")]
 	pub c29_document: Document,
 }
 
@@ -242,7 +242,7 @@ pub struct FedNowReturnRequestResponse {
 pub struct FedNowInformationRequestResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c29:Document")]
+	#[serde(rename = "Document")]
 	pub c29_document: Document,
 }
 
@@ -252,7 +252,7 @@ pub struct FedNowInformationRequestResponse {
 pub struct FedNowAccountActivityDetailsReport {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c52:Document")]
+	#[serde(rename = "Document")]
 	pub c52_document: Document,
 }
 
@@ -262,7 +262,7 @@ pub struct FedNowAccountActivityDetailsReport {
 pub struct FedNowAccountActivityTotalsReport {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c52:Document")]
+	#[serde(rename = "Document")]
 	pub c52_document: Document,
 }
 
@@ -272,7 +272,7 @@ pub struct FedNowAccountActivityTotalsReport {
 pub struct FedNowAccountBalanceReport {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c52:Document")]
+	#[serde(rename = "Document")]
 	pub c52_document: Document,
 }
 
@@ -282,7 +282,7 @@ pub struct FedNowAccountBalanceReport {
 pub struct AccountDebitCreditNotification {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c54:Document")]
+	#[serde(rename = "Document")]
 	pub c54_document: Document,
 }
 
@@ -292,7 +292,7 @@ pub struct AccountDebitCreditNotification {
 pub struct FedNowRequestForPaymentCancellationRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c55:Document")]
+	#[serde(rename = "Document")]
 	pub c55_document: Document,
 }
 
@@ -302,7 +302,7 @@ pub struct FedNowRequestForPaymentCancellationRequest {
 pub struct FedNowReturnRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c56:Document")]
+	#[serde(rename = "Document")]
 	pub c56_document: Document,
 }
 
@@ -310,8 +310,8 @@ pub struct FedNowReturnRequest {
 // FedNowOutgoingMessageSignatureManagement ...
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct FedNowOutgoingMessageSignatureManagement {
-	#[serde(rename = "ke:FedNowPublicKeyResponses")]
+	#[serde(rename = "FedNowPublicKeyResponses")]
 	pub ke_fed_now_public_key_responses: Option<FedNowPublicKeyResponses>,
-	#[serde(rename = "ke:FedNowCustomerMessageSignatureKeyOperationResponse")]
+	#[serde(rename = "FedNowCustomerMessageSignatureKeyOperationResponse")]
 	pub ke_fed_now_customer_message_signature_key_operation_response: Option<FedNowCustomerMessageSignatureKeyOperationResponse>,
 }

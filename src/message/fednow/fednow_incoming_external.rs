@@ -72,7 +72,7 @@ pub struct FedNowIncomingMessage {
 pub struct FedNowMessageReject {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "a2:Document")]
+	#[serde(rename = "Document")]
 	pub a2_document: Document,
 }
 
@@ -82,7 +82,7 @@ pub struct FedNowMessageReject {
 pub struct FedNowParticipantBroadcast {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "a4:Document")]
+	#[serde(rename = "Document")]
 	pub a4_document: Document,
 }
 
@@ -92,7 +92,7 @@ pub struct FedNowParticipantBroadcast {
 pub struct FedNowRetrievalRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "a6:Document")]
+	#[serde(rename = "Document")]
 	pub a6_document: Document,
 }
 
@@ -102,7 +102,7 @@ pub struct FedNowRetrievalRequest {
 pub struct FedNowReceiptAcknowledgement {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "a7:Document")]
+	#[serde(rename = "Document")]
 	pub a7_document: Document,
 }
 
@@ -112,7 +112,7 @@ pub struct FedNowReceiptAcknowledgement {
 pub struct FedNowPaymentStatus {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "p2:Document")]
+	#[serde(rename = "Document")]
 	pub p2_document: Document,
 }
 
@@ -122,7 +122,7 @@ pub struct FedNowPaymentStatus {
 pub struct FedNowPaymentReturn {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "p4:Document")]
+	#[serde(rename = "Document")]
 	pub p4_document: Document,
 }
 
@@ -132,7 +132,7 @@ pub struct FedNowPaymentReturn {
 pub struct FedNowCustomerCreditTransfer {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "p8:Document")]
+	#[serde(rename = "Document")]
 	pub p8_document: Document,
 }
 
@@ -142,7 +142,7 @@ pub struct FedNowCustomerCreditTransfer {
 pub struct FedNowInstitutionCreditTransfer {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "p9:Document")]
+	#[serde(rename = "Document")]
 	pub p9_document: Document,
 }
 
@@ -152,7 +152,7 @@ pub struct FedNowInstitutionCreditTransfer {
 pub struct FedNowPaymentStatusRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "p28:Document")]
+	#[serde(rename = "Document")]
 	pub p28_document: Document,
 }
 
@@ -162,7 +162,7 @@ pub struct FedNowPaymentStatusRequest {
 pub struct FedNowRequestForPayment {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "pain13:Document")]
+	#[serde(rename = "Document")]
 	pub pain13_document: Document,
 }
 
@@ -172,7 +172,7 @@ pub struct FedNowRequestForPayment {
 pub struct FedNowRequestForPaymentResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "pain14:Document")]
+	#[serde(rename = "Document")]
 	pub pain14_document: Document,
 }
 
@@ -182,7 +182,7 @@ pub struct FedNowRequestForPaymentResponse {
 pub struct FedNowInformationRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c26:Document")]
+	#[serde(rename = "Document")]
 	pub c26_document: Document,
 }
 
@@ -192,7 +192,7 @@ pub struct FedNowInformationRequest {
 pub struct FedNowAdditionalPaymentInformation {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c28:Document")]
+	#[serde(rename = "Document")]
 	pub c28_document: Document,
 }
 
@@ -202,7 +202,7 @@ pub struct FedNowAdditionalPaymentInformation {
 pub struct FedNowInformationRequestResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c29:Document")]
+	#[serde(rename = "Document")]
 	pub c29_document: Document,
 }
 
@@ -212,7 +212,7 @@ pub struct FedNowInformationRequestResponse {
 pub struct FedNowRequestForPaymentCancellationRequestResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c29:Document")]
+	#[serde(rename = "Document")]
 	pub c29_document: Document,
 }
 
@@ -222,7 +222,7 @@ pub struct FedNowRequestForPaymentCancellationRequestResponse {
 pub struct FedNowReturnRequestResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c29:Document")]
+	#[serde(rename = "Document")]
 	pub c29_document: Document,
 }
 
@@ -232,7 +232,7 @@ pub struct FedNowReturnRequestResponse {
 pub struct FedNowRequestForPaymentCancellationRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c55:Document")]
+	#[serde(rename = "Document")]
 	pub c55_document: Document,
 }
 
@@ -242,7 +242,7 @@ pub struct FedNowRequestForPaymentCancellationRequest {
 pub struct FedNowReturnRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c56:Document")]
+	#[serde(rename = "Document")]
 	pub c56_document: Document,
 }
 
@@ -252,7 +252,7 @@ pub struct FedNowReturnRequest {
 pub struct FedNowAccountReportingRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
-	#[serde(rename = "c60:Document")]
+	#[serde(rename = "Document")]
 	pub c60_document: Document,
 }
 
@@ -262,11 +262,11 @@ pub struct FedNowAccountReportingRequest {
 pub struct FedNowIncomingMessageSignatureManagement {
 	#[serde(rename = "SenderId")]
 	pub sender_id: String,
-	#[serde(rename = "ke:GetAllFedNowActivePublicKeys")]
+	#[serde(rename = "GetAllFedNowActivePublicKeys")]
 	pub ke_get_all_fed_now_active_public_keys: Option<GetAllFedNowActivePublicKeys>,
-	#[serde(rename = "ke:GetAllCustomerPublicKeys")]
+	#[serde(rename = "GetAllCustomerPublicKeys")]
 	pub ke_get_all_customer_public_keys: Option<GetAllCustomerPublicKeys>,
-	#[serde(rename = "ke:FedNowMessageSignatureKeyExchange")]
+	#[serde(rename = "FedNowMessageSignatureKeyExchange")]
 	pub ke_fed_now_message_signature_key_exchange: Option<FedNowMessageSignatureKeyExchange>,
 }
 
