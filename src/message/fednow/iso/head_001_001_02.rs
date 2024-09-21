@@ -127,7 +127,7 @@ pub struct BusinessApplicationHeaderV02 {
 	#[serde(rename = "Sgntr")]
 	pub sgntr: Option<SignatureEnvelope>,
 	#[serde(rename = "Rltd")]
-	pub rltd: Vec<BusinessApplicationHeader5>,
+	pub rltd: Option<Vec<BusinessApplicationHeader5>>,
 }
 
 
@@ -183,7 +183,7 @@ pub struct Contact4 {
 	#[serde(rename = "Dept")]
 	pub dept: Option<String>,
 	#[serde(rename = "Othr")]
-	pub othr: Vec<OtherContact1>,
+	pub othr: Option<Vec<OtherContact1>>,
 	#[serde(rename = "PrefrdMtd")]
 	pub prefrd_mtd: Option<String>,
 }
@@ -449,7 +449,7 @@ pub struct OrganisationIdentification29 {
 	#[serde(rename = "LEI")]
 	pub lei: Option<String>,
 	#[serde(rename = "Othr")]
-	pub othr: Vec<GenericOrganisationIdentification1>,
+	pub othr: Option<Vec<GenericOrganisationIdentification1>>,
 }
 
 
@@ -515,7 +515,7 @@ pub struct PersonIdentification13 {
 	#[serde(rename = "DtAndPlcOfBirth")]
 	pub dt_and_plc_of_birth: Option<DateAndPlaceOfBirth1>,
 	#[serde(rename = "Othr")]
-	pub othr: Vec<GenericPersonIdentification1>,
+	pub othr: Option<Vec<GenericPersonIdentification1>>,
 }
 
 
@@ -571,7 +571,7 @@ pub struct PostalAddress24 {
 	#[serde(rename = "Ctry")]
 	pub ctry: Option<String>,
 	#[serde(rename = "AdrLine")]
-	pub adr_line: Vec<String>,
+	pub adr_line: Option<Vec<String>>,
 }
 
 

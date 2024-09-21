@@ -3,6 +3,7 @@
 use serde::{Deserialize, Serialize};
 use crate::Document;
 
+
 // document ...
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct document {
@@ -197,7 +198,7 @@ pub struct PostalAddress1 {
 	#[serde(rename = "AdrTp")]
 	pub adr_tp: Option<String>,
 	#[serde(rename = "AdrLine")]
-	pub adr_line: Vec<String>,
+	pub adr_line: Option<Vec<String>>,
 	#[serde(rename = "StrtNm")]
 	pub strt_nm: Option<String>,
 	#[serde(rename = "BldgNb")]
@@ -233,7 +234,7 @@ pub struct ResendRequestV01 {
 	#[serde(rename = "RsndSchCrit")]
 	pub rsnd_sch_crit: Vec<ResendSearchCriteria2>,
 	#[serde(rename = "SplmtryData")]
-	pub splmtry_data: Vec<SupplementaryData1>,
+	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
@@ -273,11 +274,11 @@ pub struct SequenceRange1Choice {
 	#[serde(rename = "ToSeq")]
 	pub to_seq: Option<String>,
 	#[serde(rename = "FrToSeq")]
-	pub fr_to_seq: Vec<SequenceRange1>,
+	pub fr_to_seq: Option<Vec<SequenceRange1>>,
 	#[serde(rename = "EQSeq")]
-	pub eq_seq: Vec<String>,
+	pub eq_seq: Option<Vec<String>>,
 	#[serde(rename = "NEQSeq")]
-	pub neq_seq: Vec<String>,
+	pub neq_seq: Option<Vec<String>>,
 }
 
 

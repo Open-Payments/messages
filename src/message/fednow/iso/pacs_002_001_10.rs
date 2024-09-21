@@ -264,7 +264,7 @@ pub struct Contact4 {
 	#[serde(rename = "Dept")]
 	pub dept: Option<String>,
 	#[serde(rename = "Othr")]
-	pub othr: Vec<OtherContact1>,
+	pub othr: Option<Vec<OtherContact1>>,
 	#[serde(rename = "PrefrdMtd")]
 	pub prefrd_mtd: Option<String>,
 }
@@ -644,11 +644,11 @@ pub struct FIToFIPaymentStatusReportV10 {
 	#[serde(rename = "GrpHdr")]
 	pub grp_hdr: GroupHeader91,
 	#[serde(rename = "OrgnlGrpInfAndSts")]
-	pub orgnl_grp_inf_and_sts: Vec<OriginalGroupHeader17>,
+	pub orgnl_grp_inf_and_sts: Option<Vec<OriginalGroupHeader17>>,
 	#[serde(rename = "TxInfAndSts")]
-	pub tx_inf_and_sts: Vec<PaymentTransaction110>,
+	pub tx_inf_and_sts: Option<Vec<PaymentTransaction110>>,
 	#[serde(rename = "SplmtryData")]
-	pub splmtry_data: Vec<SupplementaryData1>,
+	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
@@ -1046,7 +1046,7 @@ pub struct OrganisationIdentification29 {
 	#[serde(rename = "LEI")]
 	pub lei: Option<String>,
 	#[serde(rename = "Othr")]
-	pub othr: Vec<GenericOrganisationIdentification1>,
+	pub othr: Option<Vec<GenericOrganisationIdentification1>>,
 }
 
 
@@ -1076,9 +1076,9 @@ pub struct OriginalGroupHeader17 {
 	#[serde(rename = "GrpSts")]
 	pub grp_sts: Option<String>,
 	#[serde(rename = "StsRsnInf")]
-	pub sts_rsn_inf: Vec<StatusReasonInformation12>,
+	pub sts_rsn_inf: Option<Vec<StatusReasonInformation12>>,
 	#[serde(rename = "NbOfTxsPerSts")]
-	pub nb_of_txs_per_sts: Vec<NumberOfTransactionsPerStatus5>,
+	pub nb_of_txs_per_sts: Option<Vec<NumberOfTransactionsPerStatus5>>,
 }
 
 
@@ -1216,9 +1216,9 @@ pub struct PaymentTransaction110 {
 	#[serde(rename = "TxSts")]
 	pub tx_sts: Option<String>,
 	#[serde(rename = "StsRsnInf")]
-	pub sts_rsn_inf: Vec<StatusReasonInformation12>,
+	pub sts_rsn_inf: Option<Vec<StatusReasonInformation12>>,
 	#[serde(rename = "ChrgsInf")]
-	pub chrgs_inf: Vec<Charges7>,
+	pub chrgs_inf: Option<Vec<Charges7>>,
 	#[serde(rename = "AccptncDtTm")]
 	pub accptnc_dt_tm: Option<String>,
 	#[serde(rename = "FctvIntrBkSttlmDt")]
@@ -1234,7 +1234,7 @@ pub struct PaymentTransaction110 {
 	#[serde(rename = "OrgnlTxRef")]
 	pub orgnl_tx_ref: Option<OriginalTransactionReference28>,
 	#[serde(rename = "SplmtryData")]
-	pub splmtry_data: Vec<SupplementaryData1>,
+	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
@@ -1246,7 +1246,7 @@ pub struct PaymentTypeInformation27 {
 	#[serde(rename = "ClrChanl")]
 	pub clr_chanl: Option<String>,
 	#[serde(rename = "SvcLvl")]
-	pub svc_lvl: Vec<ServiceLevel8Choice>,
+	pub svc_lvl: Option<Vec<ServiceLevel8Choice>>,
 	#[serde(rename = "LclInstrm")]
 	pub lcl_instrm: Option<LocalInstrument2Choice>,
 	#[serde(rename = "SeqTp")]
@@ -1270,7 +1270,7 @@ pub struct PersonIdentification13 {
 	#[serde(rename = "DtAndPlcOfBirth")]
 	pub dt_and_plc_of_birth: Option<DateAndPlaceOfBirth1>,
 	#[serde(rename = "Othr")]
-	pub othr: Vec<GenericPersonIdentification1>,
+	pub othr: Option<Vec<GenericPersonIdentification1>>,
 }
 
 
@@ -1326,7 +1326,7 @@ pub struct PostalAddress24 {
 	#[serde(rename = "Ctry")]
 	pub ctry: Option<String>,
 	#[serde(rename = "AdrLine")]
-	pub adr_line: Vec<String>,
+	pub adr_line: Option<Vec<String>>,
 }
 
 
@@ -1386,7 +1386,7 @@ pub struct ReferredDocumentInformation7 {
 	#[serde(rename = "RltdDt")]
 	pub rltd_dt: Option<String>,
 	#[serde(rename = "LineDtls")]
-	pub line_dtls: Vec<DocumentLineInformation1>,
+	pub line_dtls: Option<Vec<DocumentLineInformation1>>,
 }
 
 
@@ -1416,13 +1416,13 @@ pub struct RemittanceAmount2 {
 	#[serde(rename = "DuePyblAmt")]
 	pub due_pybl_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
 	#[serde(rename = "DscntApldAmt")]
-	pub dscnt_apld_amt: Vec<DiscountAmountAndType1>,
+	pub dscnt_apld_amt: Option<Vec<DiscountAmountAndType1>>,
 	#[serde(rename = "CdtNoteAmt")]
 	pub cdt_note_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
 	#[serde(rename = "TaxAmt")]
-	pub tax_amt: Vec<TaxAmountAndType1>,
+	pub tax_amt: Option<Vec<TaxAmountAndType1>>,
 	#[serde(rename = "AdjstmntAmtAndRsn")]
-	pub adjstmnt_amt_and_rsn: Vec<DocumentAdjustment1>,
+	pub adjstmnt_amt_and_rsn: Option<Vec<DocumentAdjustment1>>,
 	#[serde(rename = "RmtdAmt")]
 	pub rmtd_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
 }
@@ -1434,13 +1434,13 @@ pub struct RemittanceAmount3 {
 	#[serde(rename = "DuePyblAmt")]
 	pub due_pybl_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
 	#[serde(rename = "DscntApldAmt")]
-	pub dscnt_apld_amt: Vec<DiscountAmountAndType1>,
+	pub dscnt_apld_amt: Option<Vec<DiscountAmountAndType1>>,
 	#[serde(rename = "CdtNoteAmt")]
 	pub cdt_note_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
 	#[serde(rename = "TaxAmt")]
-	pub tax_amt: Vec<TaxAmountAndType1>,
+	pub tax_amt: Option<Vec<TaxAmountAndType1>>,
 	#[serde(rename = "AdjstmntAmtAndRsn")]
-	pub adjstmnt_amt_and_rsn: Vec<DocumentAdjustment1>,
+	pub adjstmnt_amt_and_rsn: Option<Vec<DocumentAdjustment1>>,
 	#[serde(rename = "RmtdAmt")]
 	pub rmtd_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
 }
@@ -1450,9 +1450,9 @@ pub struct RemittanceAmount3 {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct RemittanceInformation16 {
 	#[serde(rename = "Ustrd")]
-	pub ustrd: Vec<String>,
+	pub ustrd: Option<Vec<String>>,
 	#[serde(rename = "Strd")]
-	pub strd: Vec<StructuredRemittanceInformation16>,
+	pub strd: Option<Vec<StructuredRemittanceInformation16>>,
 }
 
 
@@ -1524,7 +1524,7 @@ pub struct StatusReasonInformation12 {
 	#[serde(rename = "Rsn")]
 	pub rsn: Option<StatusReason6Choice>,
 	#[serde(rename = "AddtlInf")]
-	pub addtl_inf: Vec<String>,
+	pub addtl_inf: Option<Vec<String>>,
 }
 
 
@@ -1532,7 +1532,7 @@ pub struct StatusReasonInformation12 {
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct StructuredRemittanceInformation16 {
 	#[serde(rename = "RfrdDocInf")]
-	pub rfrd_doc_inf: Vec<ReferredDocumentInformation7>,
+	pub rfrd_doc_inf: Option<Vec<ReferredDocumentInformation7>>,
 	#[serde(rename = "RfrdDocAmt")]
 	pub rfrd_doc_amt: Option<RemittanceAmount2>,
 	#[serde(rename = "CdtrRefInf")]
@@ -1546,7 +1546,7 @@ pub struct StructuredRemittanceInformation16 {
 	#[serde(rename = "GrnshmtRmt")]
 	pub grnshmt_rmt: Option<Garnishment3>,
 	#[serde(rename = "AddtlRmtInf")]
-	pub addtl_rmt_inf: Vec<String>,
+	pub addtl_rmt_inf: Option<Vec<String>>,
 }
 
 
@@ -1576,7 +1576,7 @@ pub struct TaxAmount2 {
 	#[serde(rename = "TtlAmt")]
 	pub ttl_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
 	#[serde(rename = "Dtls")]
-	pub dtls: Vec<TaxRecordDetails2>,
+	pub dtls: Option<Vec<TaxRecordDetails2>>,
 }
 
 
@@ -1634,7 +1634,7 @@ pub struct TaxInformation7 {
 	#[serde(rename = "SeqNb")]
 	pub seq_nb: Option<f64>,
 	#[serde(rename = "Rcrd")]
-	pub rcrd: Vec<TaxRecord2>,
+	pub rcrd: Option<Vec<TaxRecord2>>,
 }
 
 

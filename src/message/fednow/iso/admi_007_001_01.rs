@@ -174,7 +174,7 @@ pub struct PostalAddress1 {
 	#[serde(rename = "AdrTp")]
 	pub adr_tp: Option<String>,
 	#[serde(rename = "AdrLine")]
-	pub adr_line: Vec<String>,
+	pub adr_line: Option<Vec<String>>,
 	#[serde(rename = "StrtNm")]
 	pub strt_nm: Option<String>,
 	#[serde(rename = "BldgNb")]
@@ -208,7 +208,7 @@ pub struct ReceiptAcknowledgementV01 {
 	#[serde(rename = "Rpt")]
 	pub rpt: Vec<ReceiptAcknowledgementReport2>,
 	#[serde(rename = "SplmtryData")]
-	pub splmtry_data: Vec<SupplementaryData1>,
+	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 

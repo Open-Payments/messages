@@ -18,7 +18,7 @@ pub struct Event1 {
 	#[serde(rename = "EvtCd")]
 	pub evt_cd: String,
 	#[serde(rename = "EvtParam")]
-	pub evt_param: Vec<String>,
+	pub evt_param: Option<Vec<String>>,
 	#[serde(rename = "EvtDesc")]
 	pub evt_desc: Option<String>,
 	#[serde(rename = "EvtTm")]
@@ -94,5 +94,5 @@ pub struct SystemEventAcknowledgementV01 {
 	#[serde(rename = "AckDtls")]
 	pub ack_dtls: Option<Event1>,
 	#[serde(rename = "SplmtryData")]
-	pub splmtry_data: Vec<SupplementaryData1>,
+	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }

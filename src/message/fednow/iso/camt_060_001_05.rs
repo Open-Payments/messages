@@ -30,7 +30,7 @@ pub struct AccountReportingRequestV05 {
 	#[serde(rename = "RptgReq")]
 	pub rptg_req: Vec<ReportingRequest5>,
 	#[serde(rename = "SplmtryData")]
-	pub splmtry_data: Vec<SupplementaryData1>,
+	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
@@ -228,7 +228,7 @@ pub struct Contact4 {
 	#[serde(rename = "Dept")]
 	pub dept: Option<String>,
 	#[serde(rename = "Othr")]
-	pub othr: Vec<OtherContact1>,
+	pub othr: Option<Vec<OtherContact1>>,
 	#[serde(rename = "PrefrdMtd")]
 	pub prefrd_mtd: Option<String>,
 }
@@ -626,7 +626,7 @@ pub struct OrganisationIdentification29 {
 	#[serde(rename = "LEI")]
 	pub lei: Option<String>,
 	#[serde(rename = "Othr")]
-	pub othr: Vec<GenericOrganisationIdentification1>,
+	pub othr: Option<Vec<GenericOrganisationIdentification1>>,
 }
 
 
@@ -692,7 +692,7 @@ pub struct PersonIdentification13 {
 	#[serde(rename = "DtAndPlcOfBirth")]
 	pub dt_and_plc_of_birth: Option<DateAndPlaceOfBirth1>,
 	#[serde(rename = "Othr")]
-	pub othr: Vec<GenericPersonIdentification1>,
+	pub othr: Option<Vec<GenericPersonIdentification1>>,
 }
 
 
@@ -748,7 +748,7 @@ pub struct PostalAddress24 {
 	#[serde(rename = "Ctry")]
 	pub ctry: Option<String>,
 	#[serde(rename = "AdrLine")]
-	pub adr_line: Vec<String>,
+	pub adr_line: Option<Vec<String>>,
 }
 
 
@@ -820,7 +820,7 @@ pub struct ReportingRequest5 {
 	#[serde(rename = "ReqdTxTp")]
 	pub reqd_tx_tp: Option<TransactionType2>,
 	#[serde(rename = "ReqdBalTp")]
-	pub reqd_bal_tp: Vec<BalanceType13>,
+	pub reqd_bal_tp: Option<Vec<BalanceType13>>,
 }
 
 
@@ -842,11 +842,11 @@ pub struct SequenceRange1Choice {
 	#[serde(rename = "ToSeq")]
 	pub to_seq: Option<String>,
 	#[serde(rename = "FrToSeq")]
-	pub fr_to_seq: Vec<SequenceRange1>,
+	pub fr_to_seq: Option<Vec<SequenceRange1>>,
 	#[serde(rename = "EQSeq")]
-	pub eq_seq: Vec<String>,
+	pub eq_seq: Option<Vec<String>>,
 	#[serde(rename = "NEQSeq")]
-	pub neq_seq: Vec<String>,
+	pub neq_seq: Option<Vec<String>>,
 }
 
 
@@ -884,5 +884,5 @@ pub struct TransactionType2 {
 	#[serde(rename = "CdtDbtInd")]
 	pub cdt_dbt_ind: String,
 	#[serde(rename = "FlrLmt")]
-	pub flr_lmt: Vec<Limit2>,
+	pub flr_lmt: Option<Vec<Limit2>>,
 }
