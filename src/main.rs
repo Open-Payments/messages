@@ -3,6 +3,7 @@ use serde_path_to_error::deserialize;
 use std::fs::File;
 use std::io::BufReader;
 use xml::reader::EventReader;
+use serde_json::json;
 
 use messages::message::fednow::fednow_incoming_external::FedNowIncoming;
 
@@ -15,11 +16,12 @@ fn main() {
 
     // Use serde_path_to_error to get the path where deserialization failed
     let mut deserializer = serde_xml_rs::Deserializer::new(event_reader);
-    let result: Result<FedNowIncoming, serde_path_to_error::Error<serde_xml_rs::Error>> =
-        deserialize(&mut deserializer);
+    let result: Result<FedNowIncoming, serde_path_to_error::Error<serde_xml_rs::Error>> = deserialize(&mut deserializer);
 
     match result {
-        Ok(data) => println!("Successfully deserialized: {:?}", data),
+        Ok(data) => {
+            println!("Successfully deserialized: {}", serde_json::to_string_pretty(&data).unwrap());
+        },
         Err(e) => {
             println!("Deserialization error at path: {}", e.path());
             println!("Full error: {}", e);
