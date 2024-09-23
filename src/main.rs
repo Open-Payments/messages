@@ -11,7 +11,7 @@ use std::time::Instant;  // For tracking time elapsed
 use xml::reader::EventReader;  // XML event-based parser
 use serde_json::json;  // JSON serialization utility
 
-use messages::FednowMessage;  // Import the FednowMessage struct
+use message::FednowMessage;  // Import the FednowMessage struct
 
 fn main() {
     // Define the directory containing XML files
