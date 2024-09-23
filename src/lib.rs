@@ -4,14 +4,14 @@ pub mod message;
 use serde::{Deserialize, Serialize};
 use std::cmp::PartialEq;
 
-use crate::message::fednow::fednow_incoming_external::FedNowIncomingMessage;
-use crate::message::fednow::fednow_outgoing_external::FedNowOutgoingMessage;
+use crate::message::fednow::fednow_incoming_external::FedNowIncoming;
+use crate::message::fednow::fednow_outgoing_external::FedNowOutgoing;
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
-pub struct FednowMessage {
-    #[serde(rename = "FedNowIncomingMessage")]
-    pub fed_now_incoming_message: Box<Option<FedNowIncomingMessage>>,
+pub enum FednowMessage {
+    #[serde(rename = "FedNowIncoming")]
+    FedNowIncoming(Box<FedNowIncoming>),
 
-    #[serde(rename = "FedNowOutgoingMessage")]
-    pub fed_now_outgoing_message: Box<Option<FedNowOutgoingMessage>>,
+    #[serde(rename = "FedNowOutgoing")]
+    FedNowOutgoing(Box<FedNowOutgoing>),
 }

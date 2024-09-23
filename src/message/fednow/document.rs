@@ -27,68 +27,68 @@ use crate::message::fednow::iso::pain_014_001_07::*;
 
 
 #[derive(Debug, Serialize, Deserialize, PartialEq)]
-pub struct Document {
+pub enum Document {
 	#[serde(rename = "admi.002.001.01")]
-	pub admi00200101: Box<Option<Admi00200101>>,
+	Admi00200101(Box<Admi00200101>),
 
 	#[serde(rename = "SysEvtNtfctn")]
-	pub sys_evt_ntfctn: Box<Option<SystemEventNotificationV02>>,
+	SystemEventNotificationV02(Box<SystemEventNotificationV02>),
 
 	#[serde(rename = "RsndReq")]
-	pub rsnd_req: Box<Option<ResendRequestV01>>,
+	ResendRequestV01(Box<ResendRequestV01>),
 
 	#[serde(rename = "RctAck")]
-	pub rct_ack: Box<Option<ReceiptAcknowledgementV01>>,
+	ReceiptAcknowledgementV01(Box<ReceiptAcknowledgementV01>),
 
 	#[serde(rename = "FIToFIPmtStsRpt")]
-	pub fi_to_fi_pmt_sts_rpt: Box<Option<FIToFIPaymentStatusReportV10>>,
+	FIToFIPaymentStatusReportV10(Box<FIToFIPaymentStatusReportV10>),
 
 	#[serde(rename = "PmtRtr")]
-	pub pmt_rtr: Box<Option<PaymentReturnV10>>,
+	PaymentReturnV10(Box<PaymentReturnV10>),
 
 	#[serde(rename = "FIToFICstmrCdtTrf")]
-	pub fi_to_fi_cstmr_cdt_trf: Box<Option<FIToFICustomerCreditTransferV08>>,
+	FIToFICustomerCreditTransferV08(Box<FIToFICustomerCreditTransferV08>),
 
 	#[serde(rename = "FICdtTrf")]
-	pub fi_cdt_trf: Box<Option<FinancialInstitutionCreditTransferV08>>,
+	FinancialInstitutionCreditTransferV08(Box<FinancialInstitutionCreditTransferV08>),
 
 	#[serde(rename = "FIToFIPmtStsReq")]
-	pub fi_to_fi_pmt_sts_req: Box<Option<FIToFIPaymentStatusRequestV03>>,
+	FIToFIPaymentStatusRequestV03(Box<FIToFIPaymentStatusRequestV03>),
 
 	#[serde(rename = "CdtrPmtActvtnReq")]
-	pub cdtr_pmt_actvtn_req: Box<Option<CreditorPaymentActivationRequestV07>>,
+	CreditorPaymentActivationRequestV07(Box<CreditorPaymentActivationRequestV07>),
 
 	#[serde(rename = "CdtrPmtActvtnReqStsRpt")]
-	pub cdtr_pmt_actvtn_req_sts_rpt: Box<Option<CreditorPaymentActivationRequestStatusReportV07>>,
+	CreditorPaymentActivationRequestStatusReportV07(Box<CreditorPaymentActivationRequestStatusReportV07>),
 
 	#[serde(rename = "UblToApply")]
-	pub ubl_to_apply: Box<Option<UnableToApplyV07>>,
+	UnableToApplyV07(Box<UnableToApplyV07>),
 
 	#[serde(rename = "AddtlPmtInf")]
-	pub addtl_pmt_inf: Box<Option<AdditionalPaymentInformationV09>>,
+	AdditionalPaymentInformationV09(Box<AdditionalPaymentInformationV09>),
 
 	#[serde(rename = "RsltnOfInvstgtn")]
-	pub rsltn_of_invstgtn: Box<Option<ResolutionOfInvestigationV09>>,
+	ResolutionOfInvestigationV09(Box<ResolutionOfInvestigationV09>),
 
 	#[serde(rename = "CstmrPmtCxlReq")]
-	pub cstmr_pmt_cxl_req: Box<Option<CustomerPaymentCancellationRequestV09>>,
+	CustomerPaymentCancellationRequestV09(Box<CustomerPaymentCancellationRequestV09>),
 
 	#[serde(rename = "FIToFIPmtCxlReq")]
-	pub fi_to_fi_pmt_cxl_req: Box<Option<FIToFIPaymentCancellationRequestV08>>,
+	FIToFIPaymentCancellationRequestV08(Box<FIToFIPaymentCancellationRequestV08>),
 
 	#[serde(rename = "AcctRptgReq")]
-	pub acct_rptg_req: Box<Option<AccountReportingRequestV05>>,
+	AccountReportingRequestV05(Box<AccountReportingRequestV05>),
 
 	#[serde(rename = "SysEvtAck")]
-	pub sys_evt_ack: Box<Option<SystemEventAcknowledgementV01>>,
+	SystemEventAcknowledgementV01(Box<SystemEventAcknowledgementV01>),
 
 	#[serde(rename = "AdmstnPrtryMsg")]
-	pub admstn_prtry_msg: Box<Option<AdministrationProprietaryMessageV02>>,
+	AdministrationProprietaryMessageV02(Box<AdministrationProprietaryMessageV02>),
 
 	#[serde(rename = "BkToCstmrAcctRpt")]
-	pub bk_to_cstmr_acct_rpt: Box<Option<BankToCustomerAccountReportV08>>,
+	BankToCustomerAccountReportV08(Box<BankToCustomerAccountReportV08>),
 
 	#[serde(rename = "BkToCstmrDbtCdtNtfctn")]
-	pub bk_to_cstmr_dbt_cdt_ntfctn: Box<Option<BankToCustomerDebitCreditNotificationV08>>,
+	BankToCustomerDebitCreditNotificationV08(Box<BankToCustomerDebitCreditNotificationV08>),
 }
 

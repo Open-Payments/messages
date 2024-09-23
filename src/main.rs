@@ -3,6 +3,7 @@ use serde_path_to_error::deserialize;
 use std::fs::{self, File};
 use std::io::{BufReader, Write};
 use std::path::Path;
+use std::time::Instant;
 use xml::reader::EventReader;
 use serde_json::json;
 
@@ -11,18 +12,23 @@ use messages::FednowMessage;
 fn main() {
     // Define the directory containing XML files
     let xml_directory = "xml";
+    let start_time = Instant::now();
 
-    // Iterate over all files in the directory
-    for entry in fs::read_dir(xml_directory).expect("Unable to read directory") {
-        let entry = entry.expect("Unable to get directory entry");
-        let path = entry.path();
+    for n in 0..100 {
+        // Iterate over all files in the directory
+        for entry in fs::read_dir(xml_directory).expect("Unable to read directory") {
+            let entry = entry.expect("Unable to get directory entry");
+            let path = entry.path();
 
-        // Check if the file has an .xml extension
-        if path.extension().and_then(|e| e.to_str()) == Some("xml") {
-            // Parse the XML file and convert to JSON
-            parse_and_convert_to_json(&path);
+            // Check if the file has an .xml extension
+            if path.extension().and_then(|e| e.to_str()) == Some("xml") {
+                // Parse the XML file and convert to JSON
+                parse_and_convert_to_json(&path);
+            }
         }
     }
+    let elapsed = start_time.elapsed();
+    println!("Elapsed: {:.2?}", elapsed);
 }
 
 fn parse_and_convert_to_json(xml_path: &Path) {
@@ -37,6 +43,8 @@ fn parse_and_convert_to_json(xml_path: &Path) {
     let mut deserializer = serde_xml_rs::Deserializer::new(event_reader);
     let result: Result<FednowMessage, serde_path_to_error::Error<serde_xml_rs::Error>> = deserialize(&mut deserializer);
 
+    print!("Converting {}", xml_path.display());
+
     match result {
         Ok(data) => {
             // Convert to pretty JSON
@@ -49,9 +57,10 @@ fn parse_and_convert_to_json(xml_path: &Path) {
             let mut json_file = File::create(&json_file_path).expect("Unable to create JSON file");
             json_file.write_all(json_data.as_bytes()).expect("Unable to write JSON data");
 
-            println!("Successfully converted {} to JSON.", xml_path.display());
+            print!("\t[Successfully]\n");
         },
         Err(e) => {
+            print!("\t[Failed]\n");
             println!("Deserialization error in {} at path: {}", xml_path.display(), e.path());
             println!("Full error: {}", e);
         }
