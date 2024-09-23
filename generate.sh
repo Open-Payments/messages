@@ -52,7 +52,22 @@ lib_file=$output_directory"lib.rs"
 
 # Start fresh by cleaning up the previous lib.rs
 echo "// Auto-generated lib.rs" > "$lib_file"
-echo "pub mod message;\n\nuse serde::{Deserialize, Serialize};\nuse std::cmp::PartialEq;\n\n#[derive(Debug, Serialize, Deserialize, PartialEq)]\npub struct Document {}\n" >> "$lib_file"
+echo 'pub mod message;
+
+use serde::{Deserialize, Serialize};
+use std::cmp::PartialEq;
+
+use crate::message::fednow::fednow_incoming_external::FedNowIncoming;
+use crate::message::fednow::fednow_outgoing_external::FedNowOutgoing;
+
+#[derive(Debug, Serialize, Deserialize, PartialEq)]
+pub enum FednowMessage {
+    #[serde(rename = "FedNowIncoming")]
+    FedNowIncoming(Box<FedNowIncoming>),
+
+    #[serde(rename = "FedNowOutgoing")]
+    FedNowOutgoing(Box<FedNowOutgoing>),
+}' >> "$lib_file"
 
 # Function to generate mod.rs in each directory
 generate_mod_rs() {
