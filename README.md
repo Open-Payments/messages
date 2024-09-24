@@ -109,9 +109,13 @@ Make sure to review our [contributing guidelines](CONTRIBUTING.md) before you st
 
 Here’s what’s coming up:
 
-- Support for additional ISO 20022 message types.
+- Add a Sophisticated Error Framework for XML Parsing and Validation
+- Add Support for Format Transformation (ISO20022 -> MT103)
+- Add Examples for Format Conversion
 - Performance optimizations for large message batches.
 - Expanded documentation and examples.
+
+You can view the complete roadmap [here](ROADMAP.md).
 
 ---
 
