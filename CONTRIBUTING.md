@@ -2,6 +2,8 @@
 
 Thank you for considering contributing to the Open Payments library! We welcome contributions of all kinds, including bug reports, bug fixes, feature additions, and documentation improvements. This guide will help you understand the process of contributing to the project.
 
+To see our upcoming features and planned improvements, check out the [Roadmap](ROADMAP.md).
+
 ## How to Contribute
 
 ### 1. Fork the Repository
