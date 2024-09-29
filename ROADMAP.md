@@ -29,7 +29,7 @@ This document outlines the development roadmap for the Open Payments message par
 ### 5. Publish a Crate
 - **Goal**: Publish the Open Payments library as a crate on crates.io for easier installation and wider usage.
 - **Details**: Package the library following Rust’s crate guidelines, write comprehensive documentation, and ensure the library is production-ready. Publishing the crate will make it accessible to a wider community and facilitate easy installation and updates.
-- **Status**: ⚙️ Work in progress
+- **Status**: ✅ Completed
 
 ### 6. Add a Sophisticated Error Framework for XML Parsing and Validation
 - **Goal**: Introduce a robust error-handling framework that provides in-depth error information during XML parsing and validation.
