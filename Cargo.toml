@@ -1,5 +1,5 @@
 [package]
-name = "message"
+name = "payment-message"
 version = "0.1.0"
 edition = "2021"
 exclude = ["/xsd", "/xml", ".DS_Store", "/target", ".vscode", "generate.sh"]
