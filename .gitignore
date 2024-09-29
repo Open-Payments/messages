@@ -26,3 +26,4 @@ Cargo.lock
 /xsd
 /xml
 .DS_Store
+.vscode

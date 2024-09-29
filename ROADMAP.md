@@ -26,17 +26,22 @@ This document outlines the development roadmap for the Open Payments message par
 - **Details**: Create example scripts to show how developers can use the library to parse FedNow XMLs into structured data and convert them into JSON format.
 - **Status**: ✅ Completed
 
-### 5. Add a Sophisticated Error Framework for XML Parsing and Validation
+### 5. Publish a Crate
+- **Goal**: Publish the Open Payments library as a crate on crates.io for easier installation and wider usage.
+- **Details**: Package the library following Rust’s crate guidelines, write comprehensive documentation, and ensure the library is production-ready. Publishing the crate will make it accessible to a wider community and facilitate easy installation and updates.
+- **Status**: ✅ Completed
+
+### 6. Add a Sophisticated Error Framework for XML Parsing and Validation
 - **Goal**: Introduce a robust error-handling framework that provides in-depth error information during XML parsing and validation.
 - **Details**: Implement error reporting mechanisms to catch and report specific issues in the XML structure, schema validation errors, or content mismatches.
-- **Status**: ⚙️ Work in progress
+- **Status**: ⏳ Planned
 
-### 6. Add Support for Format Transformation (ISO20022 -> MT103)
+### 7. Add Support for Format Transformation (ISO20022 -> MT103)
 - **Goal**: Enable transformation of one message format to another (e.g., ISO 20022 to MT103) within the library.
 - **Details**: Create a system that allows users to transform between different financial message formats, using configuration options to control the mapping.
 - **Status**: ⏳ Planned
 
-### 7. Add Examples for Format Conversion
+### 8. Add Examples for Format Conversion
 - **Goal**: Provide example scripts showing how to convert between different message formats using simple configuration files.
 - **Details**: Demonstrate how to configure and run format conversions (e.g., ISO20022 to MT103) using example XML or JSON files.
 - **Status**: ⏳ Planned
