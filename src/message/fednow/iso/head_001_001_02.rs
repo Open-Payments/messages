@@ -24,14 +24,6 @@
 use serde::{Deserialize, Serialize};
 
 
-// app_hdr ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct app_hdr {
-	#[serde(rename = "AppHdr")]
-	pub app_hdr: BusinessApplicationHeaderV02,
-}
-
-
 // AddressType2Code ...
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct AddressType2Code {

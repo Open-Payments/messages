@@ -23,9 +23,8 @@
 
 use serde::{Deserialize, Serialize};
 use crate::message::fednow::document::*;
-use crate::message::fednow::fednow::FedNowKeyExchange::*;
+use crate::message::fednow::fednow::key_exchange::*;
 use crate::message::fednow::iso::head_001_001_02::BusinessApplicationHeaderV02;
-use crate::message::fednow::fednow::FedNowKeyExchange::FedNowCustomerMessageSignatureKeyOperationResponse;
 
 
 // FedNowOutgoing ...

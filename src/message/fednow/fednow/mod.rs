@@ -1,3 +1,3 @@
 // Auto-generated mod.rs for fednow
-pub mod FedNowKeyExchange;
-pub mod sup_FedNowParticipantFile_admi_998_001_02;
+pub mod key_exchange;
+pub mod participant_file;

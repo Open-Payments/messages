@@ -60,22 +60,6 @@ pub struct RoutingNumberFRS1 {
 }
 
 
-// fed_now_key_id is The key finger print used as the key id.
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct fed_now_key_id {
-	#[serde(rename = "FedNowKeyID")]
-	pub fed_now_key_id: String,
-}
-
-
-// fed_now_status_description is A description for the status update intended for the key owner.
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct fed_now_status_description {
-	#[serde(rename = "FedNowStatusDescription")]
-	pub fed_now_status_description: String,
-}
-
-
 // FedNowMessageSignatureKeyStatus ...
 #[derive(Debug, Deserialize, Serialize, PartialEq)]
 pub struct FedNowMessageSignatureKeyStatus {
@@ -83,22 +67,6 @@ pub struct FedNowMessageSignatureKeyStatus {
 	pub key_status: String,
 	#[serde(rename = "StatusDateTime")]
 	pub status_date_time: String,
-}
-
-
-// status_date_time ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct status_date_time {
-	#[serde(rename = "StatusDateTime")]
-	pub status_date_time: String,
-}
-
-
-// key_status ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct key_status {
-	#[serde(rename = "KeyStatus")]
-	pub key_status: String,
 }
 
 
@@ -117,49 +85,6 @@ pub struct FedNowMessageSignatureKey {
 	pub algorithm: Option<String>,
 	#[serde(rename = "KeyCreationDateTime")]
 	pub key_creation_date_time: Option<String>,
-}
-
-
-// key_creation_date_time is The creation datetime for the key. This value is overwritten on submission based on the
-//                             System timezone for FedNow
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct key_creation_date_time {
-	#[serde(rename = "KeyCreationDateTime")]
-	pub key_creation_date_time: String,
-}
-
-
-// XsDateTime ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct XsDateTime {
-	#[serde(rename = "xs:dateTime")]
-	pub xs_date_time: String,
-}
-
-
-// key_expiration_date_time is The Expiration datetime. This is the date and time the customer intends for their keys to be
-//                         automatically expired.
-//                         This value should be no more than 365 days from the submission time and will be used as a point
-//                         in time to the nearest system date.
-//                         If the expiration time is 3:00 AM Wednesday, Coordinated Universal Time (UTC)
-//                         this translates to 10:00 PM Tuesday, Eastern Time (ET)
-// 
-//                         For this time, we will take expire this at midnight on the given date.
-//                         In the example above, the key will not be valid at 12:01 AM Wednesday, Eastern Time (ET).
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct key_expiration_date_time {
-	#[serde(rename = "KeyExpirationDateTime")]
-	pub key_expiration_date_time: String,
-}
-
-
-// target_rtn is Identifier of the RTN to associate this key
-//                         with. If providing the ETI, the scope of this key is all RTNs managed by that connection party.
-//                         If providing a single RTN, FedNow will check and only accept the key for operations against that RTN only
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct target_rtn {
-	#[serde(rename = "TargetRTN")]
-	pub target_rtn: String,
 }
 
 
@@ -202,14 +127,6 @@ pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 	pub status: String,
 	#[serde(rename = "ErrorCode")]
 	pub error_code: Option<String>,
-}
-
-
-// error_code ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct error_code {
-	#[serde(rename = "ErrorCode")]
-	pub error_code: String,
 }
 
 

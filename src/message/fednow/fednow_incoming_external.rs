@@ -23,7 +23,7 @@
 
 use serde::{Deserialize, Serialize};
 use crate::message::fednow::document::*;
-use crate::message::fednow::fednow::FedNowKeyExchange::*;
+use crate::message::fednow::fednow::key_exchange::*;
 use crate::message::fednow::iso::head_001_001_02::BusinessApplicationHeaderV02;
 
 
@@ -290,12 +290,4 @@ pub struct FedNowIncomingMessageSignatureManagement {
 	pub ke_get_all_customer_public_keys: Option<GetAllCustomerPublicKeys>,
 	#[serde(rename = "FedNowMessageSignatureKeyExchange")]
 	pub ke_fed_now_message_signature_key_exchange: Option<FedNowMessageSignatureKeyExchange>,
-}
-
-
-// sender_id is Identifier of the Connection Party sending this message
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
-pub struct sender_id {
-	#[serde(rename = "SenderId")]
-	pub sender_id: String,
 }
