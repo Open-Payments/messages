@@ -22,10 +22,11 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use serde_valid::Validate;
 
 
 // AdministrationProprietaryMessageV02 ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AdministrationProprietaryMessageV02 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: Option<MessageReference>,
@@ -41,15 +42,17 @@ pub struct AdministrationProprietaryMessageV02 {
 
 
 // Max35Text ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct Max35Text {
+	#[validate(min_length = 1)]
+	#[validate(max_length = 35)]
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
 }
 
 
 // MessageReference ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
 	pub ref_attr: String,
@@ -57,7 +60,7 @@ pub struct MessageReference {
 
 
 // ProprietaryData5 ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ProprietaryData5 {
 	#[serde(rename = "Tp")]
 	pub tp: String,
@@ -67,6 +70,6 @@ pub struct ProprietaryData5 {
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct SupplementaryDataEnvelope1 {
 }

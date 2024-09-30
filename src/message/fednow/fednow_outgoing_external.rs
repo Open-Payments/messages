@@ -22,13 +22,14 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use serde_valid::Validate;
 use crate::message::fednow::document::*;
 use crate::message::fednow::fednow::key_exchange::*;
 use crate::message::fednow::iso::head_001_001_02::BusinessApplicationHeaderV02;
 
 
 // FedNowOutgoing ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowOutgoing {
 	#[serde(rename = "FedNowTechnicalHeader")]
 	pub fed_now_technical_header: Option<FedNowTechnicalHeader>,
@@ -38,13 +39,13 @@ pub struct FedNowOutgoing {
 
 
 // FedNowTechnicalHeader ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowTechnicalHeader {
 }
 
 
 // FedNowOutgoingMessage ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowOutgoingMessage {
 	#[serde(rename = "FedNowMessageReject")]
 	pub fed_now_message_reject: Option<FedNowMessageReject>,
@@ -98,7 +99,7 @@ pub struct FedNowOutgoingMessage {
 
 
 // FedNowMessageReject ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowMessageReject {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -108,7 +109,7 @@ pub struct FedNowMessageReject {
 
 
 // FedNowBroadcast ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowBroadcast {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -118,7 +119,7 @@ pub struct FedNowBroadcast {
 
 
 // FedNowReceiptAcknowledgement ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowReceiptAcknowledgement {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -128,7 +129,7 @@ pub struct FedNowReceiptAcknowledgement {
 
 
 // FedNowSystemResponse ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowSystemResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -138,7 +139,7 @@ pub struct FedNowSystemResponse {
 
 
 // FedNowParticipantFile ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowParticipantFile {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -148,7 +149,7 @@ pub struct FedNowParticipantFile {
 
 
 // FedNowPaymentStatus ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowPaymentStatus {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -158,7 +159,7 @@ pub struct FedNowPaymentStatus {
 
 
 // FedNowPaymentReturn ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowPaymentReturn {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -168,7 +169,7 @@ pub struct FedNowPaymentReturn {
 
 
 // FedNowCustomerCreditTransfer ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowCustomerCreditTransfer {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -178,7 +179,7 @@ pub struct FedNowCustomerCreditTransfer {
 
 
 // FedNowInstitutionCreditTransfer ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowInstitutionCreditTransfer {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -188,7 +189,7 @@ pub struct FedNowInstitutionCreditTransfer {
 
 
 // FedNowPaymentStatusRequest ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowPaymentStatusRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -198,7 +199,7 @@ pub struct FedNowPaymentStatusRequest {
 
 
 // FedNowRequestForPayment ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowRequestForPayment {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -208,7 +209,7 @@ pub struct FedNowRequestForPayment {
 
 
 // FedNowRequestForPaymentResponse ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowRequestForPaymentResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -218,7 +219,7 @@ pub struct FedNowRequestForPaymentResponse {
 
 
 // FedNowInformationRequest ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowInformationRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -228,7 +229,7 @@ pub struct FedNowInformationRequest {
 
 
 // FedNowAdditionalPaymentInformation ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowAdditionalPaymentInformation {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -238,7 +239,7 @@ pub struct FedNowAdditionalPaymentInformation {
 
 
 // FedNowRequestForPaymentCancellationRequestResponse ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowRequestForPaymentCancellationRequestResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -248,7 +249,7 @@ pub struct FedNowRequestForPaymentCancellationRequestResponse {
 
 
 // FedNowReturnRequestResponse ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowReturnRequestResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -258,7 +259,7 @@ pub struct FedNowReturnRequestResponse {
 
 
 // FedNowInformationRequestResponse ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowInformationRequestResponse {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -268,7 +269,7 @@ pub struct FedNowInformationRequestResponse {
 
 
 // FedNowAccountActivityDetailsReport ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowAccountActivityDetailsReport {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -278,7 +279,7 @@ pub struct FedNowAccountActivityDetailsReport {
 
 
 // FedNowAccountActivityTotalsReport ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowAccountActivityTotalsReport {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -288,7 +289,7 @@ pub struct FedNowAccountActivityTotalsReport {
 
 
 // FedNowAccountBalanceReport ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowAccountBalanceReport {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -298,7 +299,7 @@ pub struct FedNowAccountBalanceReport {
 
 
 // AccountDebitCreditNotification ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AccountDebitCreditNotification {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -308,7 +309,7 @@ pub struct AccountDebitCreditNotification {
 
 
 // FedNowRequestForPaymentCancellationRequest ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowRequestForPaymentCancellationRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -318,7 +319,7 @@ pub struct FedNowRequestForPaymentCancellationRequest {
 
 
 // FedNowReturnRequest ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowReturnRequest {
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -328,7 +329,7 @@ pub struct FedNowReturnRequest {
 
 
 // FedNowOutgoingMessageSignatureManagement ...
-#[derive(Debug, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowOutgoingMessageSignatureManagement {
 	#[serde(rename = "FedNowPublicKeyResponses")]
 	pub ke_fed_now_public_key_responses: Option<FedNowPublicKeyResponses>,
