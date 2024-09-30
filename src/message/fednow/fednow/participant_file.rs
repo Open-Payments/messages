@@ -81,6 +81,7 @@ pub struct RoutingNumberFRS1 {
 // ServicesFedNow1 is This indicates a FedNow participant is enabled to receive request for payment messages.
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ServicesFedNow1 {
+	#[validate(enumerate = ["CTSR", "CTRO", "RFPR"])]
 	#[serde(rename = "Services_FedNow_1")]
 	pub services_fed_now_1: String,
 }

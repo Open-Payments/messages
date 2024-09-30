@@ -102,6 +102,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AddressType2Code {
+	#[validate(enumerate = ["ADDR", "PBOX", "HOME", "BIZZ", "MLTO", "DLVY"])]
 	#[serde(rename = "AddressType2Code")]
 	pub address_type2_code: String,
 }
@@ -202,6 +203,7 @@ pub struct BranchData3 {
 // CancellationIndividualStatus1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct CancellationIndividualStatus1Code {
+	#[validate(enumerate = ["RJCR", "ACCR", "PDCR"])]
 	#[serde(rename = "CancellationIndividualStatus1Code")]
 	pub cancellation_individual_status1_code: String,
 }
@@ -294,6 +296,7 @@ pub struct CategoryPurpose1Choice {
 // ChargeBearerType1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ChargeBearerType1Code {
+	#[validate(enumerate = ["DEBT", "CRED", "SHAR", "SLEV"])]
 	#[serde(rename = "ChargeBearerType1Code")]
 	pub charge_bearer_type1_code: String,
 }
@@ -392,6 +395,7 @@ pub struct ClaimNonReceiptRejectReason1Choice {
 // ClearingChannel2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ClearingChannel2Code {
+	#[validate(enumerate = ["RTGS", "RTNS", "MPNS", "BOOK"])]
 	#[serde(rename = "ClearingChannel2Code")]
 	pub clearing_channel2_code: String,
 }
@@ -557,6 +561,7 @@ pub struct CountryCode {
 // CreditDebitCode ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct CreditDebitCode {
+	#[validate(enumerate = ["CRDT", "DBIT"])]
 	#[serde(rename = "CreditDebitCode")]
 	pub credit_debit_code: String,
 }
@@ -715,6 +720,7 @@ pub struct DocumentLineType1Choice {
 // DocumentType3Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct DocumentType3Code {
+	#[validate(enumerate = ["RADM", "RPIN", "FXDR", "DISP", "PUOR", "SCOR"])]
 	#[serde(rename = "DocumentType3Code")]
 	pub document_type3_code: String,
 }
@@ -723,6 +729,7 @@ pub struct DocumentType3Code {
 // DocumentType6Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct DocumentType6Code {
+	#[validate(enumerate = ["MSIN", "CNFA", "DNFA", "CINV", "CREN", "DEBN", "HIRI", "SBIN", "CMCN", "SOAC", "DISP", "BOLD", "VCHR", "AROI", "TSUT", "PUOR"])]
 	#[serde(rename = "DocumentType6Code")]
 	pub document_type6_code: String,
 }
@@ -1029,6 +1036,7 @@ pub struct Frequency36Choice {
 // Frequency6Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct Frequency6Code {
+	#[validate(enumerate = ["YEAR", "MNTH", "QURT", "MIAN", "WEEK", "DAIL", "ADHO", "INDA", "FRTN"])]
 	#[serde(rename = "Frequency6Code")]
 	pub frequency6_code: String,
 }
@@ -1169,6 +1177,7 @@ pub struct GenericPersonIdentification1 {
 // GroupCancellationStatus1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct GroupCancellationStatus1Code {
+	#[validate(enumerate = ["PACR", "RJCR", "ACCR", "PDCR"])]
 	#[serde(rename = "GroupCancellationStatus1Code")]
 	pub group_cancellation_status1_code: String,
 }
@@ -1412,6 +1421,7 @@ pub struct ModificationStatusReason2 {
 // NamePrefix2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct NamePrefix2Code {
+	#[validate(enumerate = ["DOCT", "MADM", "MISS", "MIST", "MIKS"])]
 	#[serde(rename = "NamePrefix2Code")]
 	pub name_prefix2_code: String,
 }
@@ -1634,6 +1644,7 @@ pub struct PartyIdentification135 {
 // PaymentMethod4Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PaymentMethod4Code {
+	#[validate(enumerate = ["CHK", "TRF", "DD", "TRA"])]
 	#[serde(rename = "PaymentMethod4Code")]
 	pub payment_method4_code: String,
 }
@@ -1839,6 +1850,7 @@ pub struct PostalAddress24 {
 // PreferredContactMethod1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PreferredContactMethod1Code {
+	#[validate(enumerate = ["LETT", "MAIL", "PHON", "FAXX", "CELL"])]
 	#[serde(rename = "PreferredContactMethod1Code")]
 	pub preferred_contact_method1_code: String,
 }
@@ -1847,6 +1859,7 @@ pub struct PreferredContactMethod1Code {
 // Priority2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct Priority2Code {
+	#[validate(enumerate = ["HIGH", "NORM"])]
 	#[serde(rename = "Priority2Code")]
 	pub priority2_code: String,
 }
@@ -2013,6 +2026,7 @@ pub struct ResolutionOfInvestigationV09 {
 // SequenceType3Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct SequenceType3Code {
+	#[validate(enumerate = ["FRST", "RCUR", "FNAL", "OOFF", "RPRE"])]
 	#[serde(rename = "SequenceType3Code")]
 	pub sequence_type3_code: String,
 }
@@ -2055,6 +2069,7 @@ pub struct SettlementInstruction7 {
 // SettlementMethod1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct SettlementMethod1Code {
+	#[validate(enumerate = ["INDA", "INGA", "COVE", "CLRG"])]
 	#[serde(rename = "SettlementMethod1Code")]
 	pub settlement_method1_code: String,
 }
@@ -2277,6 +2292,7 @@ pub struct TaxRecordDetails2 {
 // TaxRecordPeriod1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct TaxRecordPeriod1Code {
+	#[validate(enumerate = ["MM01", "MM02", "MM03", "MM04", "MM05", "MM06", "MM07", "MM08", "MM09", "MM10", "MM11", "MM12", "QTR1", "QTR2", "QTR3", "QTR4", "HLF1", "HLF2"])]
 	#[serde(rename = "TaxRecordPeriod1Code")]
 	pub tax_record_period1_code: String,
 }
@@ -2285,6 +2301,7 @@ pub struct TaxRecordPeriod1Code {
 // TransactionIndividualStatus1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct TransactionIndividualStatus1Code {
+	#[validate(enumerate = ["ACTC", "RJCT", "PDNG", "ACCP", "ACSP", "ACSC", "ACCR", "ACWC"])]
 	#[serde(rename = "TransactionIndividualStatus1Code")]
 	pub transaction_individual_status1_code: String,
 }

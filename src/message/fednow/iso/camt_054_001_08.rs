@@ -184,6 +184,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AddressType2Code {
+	#[validate(enumerate = ["ADDR", "PBOX", "HOME", "BIZZ", "MLTO", "DLVY"])]
 	#[serde(rename = "AddressType2Code")]
 	pub address_type2_code: String,
 }
@@ -269,6 +270,7 @@ pub struct AnyBICDec2014Identifier {
 // AttendanceContext1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AttendanceContext1Code {
+	#[validate(enumerate = ["ATTD", "SATT", "UATT"])]
 	#[serde(rename = "AttendanceContext1Code")]
 	pub attendance_context1_code: String,
 }
@@ -277,6 +279,7 @@ pub struct AttendanceContext1Code {
 // AuthenticationEntity1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AuthenticationEntity1Code {
+	#[validate(enumerate = ["ICCD", "AGNT", "MERC"])]
 	#[serde(rename = "AuthenticationEntity1Code")]
 	pub authentication_entity1_code: String,
 }
@@ -285,6 +288,7 @@ pub struct AuthenticationEntity1Code {
 // AuthenticationMethod1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AuthenticationMethod1Code {
+	#[validate(enumerate = ["UKNW", "BYPS", "NPIN", "FPIN", "CPSG", "PPSG", "MANU", "MERC", "SCRT", "SNCT", "SCNL"])]
 	#[serde(rename = "AuthenticationMethod1Code")]
 	pub authentication_method1_code: String,
 }
@@ -392,6 +396,7 @@ pub struct BranchData3 {
 // CSCManagement1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct CSCManagement1Code {
+	#[validate(enumerate = ["PRST", "BYPS", "UNRD", "NCSC"])]
 	#[serde(rename = "CSCManagement1Code")]
 	pub csc_management1_code: String,
 }
@@ -416,6 +421,7 @@ pub struct CardAggregated2 {
 // CardDataReading1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct CardDataReading1Code {
+	#[validate(enumerate = ["TAGC", "PHYS", "BRCD", "MGST", "CICC", "DFLE", "CTLS", "ECTL"])]
 	#[serde(rename = "CardDataReading1Code")]
 	pub card_data_reading1_code: String,
 }
@@ -468,6 +474,7 @@ pub struct CardIndividualTransaction2 {
 // CardPaymentServiceType2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct CardPaymentServiceType2Code {
+	#[validate(enumerate = ["AGGR", "DCCV", "GRTT", "INSP", "LOYT", "NRES", "PUCO", "RECP", "SOAF", "UNAF", "VCAU"])]
 	#[serde(rename = "CardPaymentServiceType2Code")]
 	pub card_payment_service_type2_code: String,
 }
@@ -530,6 +537,7 @@ pub struct CardholderAuthentication2 {
 // CardholderVerificationCapability1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct CardholderVerificationCapability1Code {
+	#[validate(enumerate = ["MNSG", "NPIN", "FCPN", "FEPN", "FDSG", "FBIO", "MNVR", "FBIG", "APKI", "PKIS", "CHDT", "SCEC"])]
 	#[serde(rename = "CardholderVerificationCapability1Code")]
 	pub cardholder_verification_capability1_code: String,
 }
@@ -618,6 +626,7 @@ pub struct CashDeposit1 {
 // ChargeBearerType1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ChargeBearerType1Code {
+	#[validate(enumerate = ["DEBT", "CRED", "SHAR", "SLEV"])]
 	#[serde(rename = "ChargeBearerType1Code")]
 	pub charge_bearer_type1_code: String,
 }
@@ -726,6 +735,7 @@ pub struct Contact4 {
 // CopyDuplicate1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct CopyDuplicate1Code {
+	#[validate(enumerate = ["CODU", "COPY", "DUPL"])]
 	#[serde(rename = "CopyDuplicate1Code")]
 	pub copy_duplicate1_code: String,
 }
@@ -753,6 +763,7 @@ pub struct CountryCode {
 // CreditDebitCode ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct CreditDebitCode {
+	#[validate(enumerate = ["CRDT", "DBIT"])]
 	#[serde(rename = "CreditDebitCode")]
 	pub credit_debit_code: String,
 }
@@ -961,6 +972,7 @@ pub struct DocumentLineType1Choice {
 // DocumentType3Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct DocumentType3Code {
+	#[validate(enumerate = ["RADM", "RPIN", "FXDR", "DISP", "PUOR", "SCOR"])]
 	#[serde(rename = "DocumentType3Code")]
 	pub document_type3_code: String,
 }
@@ -969,6 +981,7 @@ pub struct DocumentType3Code {
 // DocumentType6Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct DocumentType6Code {
+	#[validate(enumerate = ["MSIN", "CNFA", "DNFA", "CINV", "CREN", "DEBN", "HIRI", "SBIN", "CMCN", "SOAC", "DISP", "BOLD", "VCHR", "AROI", "TSUT", "PUOR"])]
 	#[serde(rename = "DocumentType6Code")]
 	pub document_type6_code: String,
 }
@@ -1643,6 +1656,7 @@ pub struct InterestType1Choice {
 // InterestType1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct InterestType1Code {
+	#[validate(enumerate = ["INDY", "OVRN"])]
 	#[serde(rename = "InterestType1Code")]
 	pub interest_type1_code: String,
 }
@@ -1873,6 +1887,7 @@ pub struct NameAndAddress16 {
 // NamePrefix2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct NamePrefix2Code {
+	#[validate(enumerate = ["DOCT", "MADM", "MISS", "MIST", "MIKS"])]
 	#[serde(rename = "NamePrefix2Code")]
 	pub name_prefix2_code: String,
 }
@@ -1919,6 +1934,7 @@ pub struct NumberAndSumOfTransactions4 {
 // OnLineCapability1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct OnLineCapability1Code {
+	#[validate(enumerate = ["OFLN", "ONLN", "SMON"])]
 	#[serde(rename = "OnLineCapability1Code")]
 	pub on_line_capability1_code: String,
 }
@@ -1993,6 +2009,7 @@ pub struct OtherIdentification1 {
 // POIComponentType1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct POIComponentType1Code {
+	#[validate(enumerate = ["SOFT", "EMVK", "EMVO", "MRIT", "CHIT", "SECM", "PEDV"])]
 	#[serde(rename = "POIComponentType1Code")]
 	pub poi_component_type1_code: String,
 }
@@ -2047,6 +2064,7 @@ pub struct PartyIdentification135 {
 // PartyType3Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PartyType3Code {
+	#[validate(enumerate = ["OPOI", "MERC", "ACCP", "ITAG", "ACQR", "CISS", "DLIS"])]
 	#[serde(rename = "PartyType3Code")]
 	pub party_type3_code: String,
 }
@@ -2055,6 +2073,7 @@ pub struct PartyType3Code {
 // PartyType4Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PartyType4Code {
+	#[validate(enumerate = ["MERC", "ACCP", "ITAG", "ACQR", "CISS", "TAXH"])]
 	#[serde(rename = "PartyType4Code")]
 	pub party_type4_code: String,
 }
@@ -2264,6 +2283,7 @@ pub struct PostalAddress24 {
 // PreferredContactMethod1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PreferredContactMethod1Code {
+	#[validate(enumerate = ["LETT", "MAIL", "PHON", "FAXX", "CELL"])]
 	#[serde(rename = "PreferredContactMethod1Code")]
 	pub preferred_contact_method1_code: String,
 }
@@ -2292,6 +2312,7 @@ pub struct PriceRateOrAmount3Choice {
 // PriceValueType1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PriceValueType1Code {
+	#[validate(enumerate = ["DISC", "PREM", "PARV"])]
 	#[serde(rename = "PriceValueType1Code")]
 	pub price_value_type1_code: String,
 }
@@ -2542,6 +2563,7 @@ pub struct RemittanceLocationData1 {
 // RemittanceLocationMethod2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct RemittanceLocationMethod2Code {
+	#[validate(enumerate = ["FAXI", "EDIC", "URID", "EMAL", "POST", "SMSM"])]
 	#[serde(rename = "RemittanceLocationMethod2Code")]
 	pub remittance_location_method2_code: String,
 }
@@ -2884,6 +2906,7 @@ pub struct TaxRecordDetails2 {
 // TaxRecordPeriod1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct TaxRecordPeriod1Code {
+	#[validate(enumerate = ["MM01", "MM02", "MM03", "MM04", "MM05", "MM06", "MM07", "MM08", "MM09", "MM10", "MM11", "MM12", "QTR1", "QTR2", "QTR3", "QTR4", "HLF1", "HLF2"])]
 	#[serde(rename = "TaxRecordPeriod1Code")]
 	pub tax_record_period1_code: String,
 }
@@ -2980,6 +3003,7 @@ pub struct TransactionAgents5 {
 // TransactionChannel1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct TransactionChannel1Code {
+	#[validate(enumerate = ["MAIL", "TLPH", "ECOM", "TVPY"])]
 	#[serde(rename = "TransactionChannel1Code")]
 	pub transaction_channel1_code: String,
 }
@@ -3010,6 +3034,7 @@ pub struct TransactionDates3 {
 // TransactionEnvironment1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct TransactionEnvironment1Code {
+	#[validate(enumerate = ["MERC", "PRIV", "PUBL"])]
 	#[serde(rename = "TransactionEnvironment1Code")]
 	pub transaction_environment1_code: String,
 }
@@ -3137,6 +3162,7 @@ pub struct UUIDv4Identifier {
 // UnitOfMeasure1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct UnitOfMeasure1Code {
+	#[validate(enumerate = ["PIEC", "TONS", "FOOT", "GBGA", "USGA", "GRAM", "INCH", "KILO", "PUND", "METR", "CMET", "MMET", "LITR", "CELI", "MILI", "GBOU", "USOU", "GBQA", "USQA", "GBPI", "USPI", "MILE", "KMET", "YARD", "SQKI", "HECT", "ARES", "SMET", "SCMT", "SMIL", "SQMI", "SQYA", "SQFO", "SQIN", "ACRE"])]
 	#[serde(rename = "UnitOfMeasure1Code")]
 	pub unit_of_measure1_code: String,
 }
@@ -3145,6 +3171,7 @@ pub struct UnitOfMeasure1Code {
 // UserInterface2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct UserInterface2Code {
+	#[validate(enumerate = ["MDSP", "CDSP"])]
 	#[serde(rename = "UserInterface2Code")]
 	pub user_interface2_code: String,
 }

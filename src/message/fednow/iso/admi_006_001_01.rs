@@ -28,6 +28,7 @@ use serde_valid::Validate;
 // AddressType2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AddressType2Code {
+	#[validate(enumerate = ["ADDR", "PBOX", "HOME", "BIZZ", "MLTO", "DLVY"])]
 	#[serde(rename = "AddressType2Code")]
 	pub address_type2_code: String,
 }

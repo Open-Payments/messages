@@ -28,6 +28,7 @@ use serde_valid::Validate;
 // AddressType2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AddressType2Code {
+	#[validate(enumerate = ["ADDR", "PBOX", "HOME", "BIZZ", "MLTO", "DLVY"])]
 	#[serde(rename = "AddressType2Code")]
 	pub address_type2_code: String,
 }
@@ -208,6 +209,7 @@ pub struct Contact4 {
 // CopyDuplicate1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct CopyDuplicate1Code {
+	#[validate(enumerate = ["CODU", "COPY", "DUPL"])]
 	#[serde(rename = "CopyDuplicate1Code")]
 	pub copy_duplicate1_code: String,
 }
@@ -479,6 +481,7 @@ pub struct Max70Text {
 // NamePrefix2Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct NamePrefix2Code {
+	#[validate(enumerate = ["DOCT", "MADM", "MISS", "MIST", "MIKS"])]
 	#[serde(rename = "NamePrefix2Code")]
 	pub name_prefix2_code: String,
 }
@@ -622,6 +625,7 @@ pub struct PostalAddress24 {
 // PreferredContactMethod1Code ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PreferredContactMethod1Code {
+	#[validate(enumerate = ["LETT", "MAIL", "PHON", "FAXX", "CELL"])]
 	#[serde(rename = "PreferredContactMethod1Code")]
 	pub preferred_contact_method1_code: String,
 }
