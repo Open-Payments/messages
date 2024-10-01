@@ -18,14 +18,6 @@ jobs:
       with:
         toolchain: stable
 
-    - name: Run tests
-      run: cargo test
-
-    - name: Publish to crates.io
-      run: cargo publish
-      env:
-        CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
-
     - name: Extract crate version from Cargo.toml
       id: version
       run: |
