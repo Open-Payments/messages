@@ -1,4 +1,4 @@
-name: Publish Crate
+name: Publish Crate and Tag Version
 
 on:
   push:
@@ -24,9 +24,15 @@ jobs:
         VERSION=$(grep '^version =' Cargo.toml | head -n 1 | cut -d '"' -f 2)
         echo "VERSION=$VERSION" >> $GITHUB_ENV
 
-    - name: Tag the repository with the crate version
+    - name: Configure Git for GitHub Actions
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
+
+    - name: Tag the repository with the crate version
+      env:
+        GITHUB_PAT: ${{ secrets.GH_PAT }}  # Use your PAT token here
+      run: |
         git tag -a "v${{ env.VERSION }}" -m "Version ${{ env.VERSION }} release"
+        git remote set-url origin https://$GITHUB_PAT@github.com/Open-Payments/messages.git
         git push origin "v${{ env.VERSION }}"
