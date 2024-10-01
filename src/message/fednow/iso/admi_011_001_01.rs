@@ -92,6 +92,7 @@ pub struct Max4AlphaNumericText {
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
+	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -112,8 +113,10 @@ pub struct SystemEventAcknowledgementV01 {
 	pub orgtr_ref: Option<String>,
 	#[serde(rename = "SttlmSsnIdr")]
 	pub sttlm_ssn_idr: Option<String>,
+	#[validate]
 	#[serde(rename = "AckDtls")]
 	pub ack_dtls: Option<Event1>,
+	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }

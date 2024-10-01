@@ -30,6 +30,7 @@ use serde_valid::Validate;
 pub struct FedNowParticipantFile1 {
 	#[serde(rename = "BizDay")]
 	pub biz_day: String,
+	#[validate]
 	#[serde(rename = "PtcptPrfl")]
 	pub ptcpt_prfl: Vec<FedNowParticipantProfile1>,
 }
@@ -90,6 +91,7 @@ pub struct ServicesFedNow1 {
 // Admi998SuplDataV01 is This is the FedNow participant file and contains the FedNow Service funds-transfer business day and the FedNow participants with their FedNow Service profile.
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct Admi998SuplDataV01 {
+	#[validate]
 	#[serde(rename = "PtcptFile")]
 	pub ptcpt_file: FedNowParticipantFile1,
 }

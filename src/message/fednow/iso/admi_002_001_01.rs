@@ -90,8 +90,10 @@ pub struct RejectionReason2 {
 // Admi00200101 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct Admi00200101 {
+	#[validate]
 	#[serde(rename = "RltdRef")]
 	pub rltd_ref: MessageReference,
+	#[validate]
 	#[serde(rename = "Rsn")]
 	pub rsn: RejectionReason2,
 }

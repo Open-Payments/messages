@@ -30,6 +30,7 @@ use serde_valid::Validate;
 pub struct AccountIdentification4Choice {
 	#[serde(rename = "IBAN")]
 	pub iban: Option<String>,
+	#[validate]
 	#[serde(rename = "Othr")]
 	pub othr: Option<GenericAccountIdentification1>,
 }
@@ -38,10 +39,13 @@ pub struct AccountIdentification4Choice {
 // AccountReportingRequestV05 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AccountReportingRequestV05 {
+	#[validate]
 	#[serde(rename = "GrpHdr")]
 	pub grp_hdr: GroupHeader77,
+	#[validate]
 	#[serde(rename = "RptgReq")]
 	pub rptg_req: Vec<ReportingRequest5>,
+	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
@@ -98,6 +102,7 @@ pub struct AddressType2Code {
 pub struct AddressType3Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
+	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
@@ -144,8 +149,10 @@ pub struct BalanceType10Choice {
 // BalanceType13 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct BalanceType13 {
+	#[validate]
 	#[serde(rename = "CdOrPrtry")]
 	pub cd_or_prtry: BalanceType10Choice,
+	#[validate]
 	#[serde(rename = "SubTp")]
 	pub sub_tp: Option<BalanceSubType1Choice>,
 }
@@ -154,8 +161,10 @@ pub struct BalanceType13 {
 // BranchAndFinancialInstitutionIdentification6 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct BranchAndFinancialInstitutionIdentification6 {
+	#[validate]
 	#[serde(rename = "FinInstnId")]
 	pub fin_instn_id: FinancialInstitutionIdentification18,
+	#[validate]
 	#[serde(rename = "BrnchId")]
 	pub brnch_id: Option<BranchData3>,
 }
@@ -170,6 +179,7 @@ pub struct BranchData3 {
 	pub lei: Option<String>,
 	#[serde(rename = "Nm")]
 	pub nm: Option<String>,
+	#[validate]
 	#[serde(rename = "PstlAdr")]
 	pub pstl_adr: Option<PostalAddress24>,
 }
@@ -178,14 +188,17 @@ pub struct BranchData3 {
 // CashAccount38 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct CashAccount38 {
+	#[validate]
 	#[serde(rename = "Id")]
 	pub id: AccountIdentification4Choice,
+	#[validate]
 	#[serde(rename = "Tp")]
 	pub tp: Option<CashAccountType2Choice>,
 	#[serde(rename = "Ccy")]
 	pub ccy: Option<String>,
 	#[serde(rename = "Nm")]
 	pub nm: Option<String>,
+	#[validate]
 	#[serde(rename = "Prxy")]
 	pub prxy: Option<ProxyAccountIdentification1>,
 }
@@ -214,6 +227,7 @@ pub struct ClearingSystemIdentification2Choice {
 // ClearingSystemMemberIdentification2 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ClearingSystemMemberIdentification2 {
+	#[validate]
 	#[serde(rename = "ClrSysId")]
 	pub clr_sys_id: Option<ClearingSystemIdentification2Choice>,
 	#[serde(rename = "MmbId")]
@@ -244,6 +258,7 @@ pub struct Contact4 {
 	pub rspnsblty: Option<String>,
 	#[serde(rename = "Dept")]
 	pub dept: Option<String>,
+	#[validate]
 	#[serde(rename = "Othr")]
 	pub othr: Option<Vec<OtherContact1>>,
 	#[serde(rename = "PrefrdMtd")]
@@ -427,14 +442,17 @@ pub struct FinancialIdentificationSchemeName1Choice {
 pub struct FinancialInstitutionIdentification18 {
 	#[serde(rename = "BICFI")]
 	pub bicfi: Option<String>,
+	#[validate]
 	#[serde(rename = "ClrSysMmbId")]
 	pub clr_sys_mmb_id: Option<ClearingSystemMemberIdentification2>,
 	#[serde(rename = "LEI")]
 	pub lei: Option<String>,
 	#[serde(rename = "Nm")]
 	pub nm: Option<String>,
+	#[validate]
 	#[serde(rename = "PstlAdr")]
 	pub pstl_adr: Option<PostalAddress24>,
+	#[validate]
 	#[serde(rename = "Othr")]
 	pub othr: Option<GenericFinancialIdentification1>,
 }
@@ -454,6 +472,7 @@ pub struct FloorLimitType1Code {
 pub struct GenericAccountIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
+	#[validate]
 	#[serde(rename = "SchmeNm")]
 	pub schme_nm: Option<AccountSchemeName1Choice>,
 	#[serde(rename = "Issr")]
@@ -466,6 +485,7 @@ pub struct GenericAccountIdentification1 {
 pub struct GenericFinancialIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
+	#[validate]
 	#[serde(rename = "SchmeNm")]
 	pub schme_nm: Option<FinancialIdentificationSchemeName1Choice>,
 	#[serde(rename = "Issr")]
@@ -490,6 +510,7 @@ pub struct GenericIdentification30 {
 pub struct GenericOrganisationIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
+	#[validate]
 	#[serde(rename = "SchmeNm")]
 	pub schme_nm: Option<OrganisationIdentificationSchemeName1Choice>,
 	#[serde(rename = "Issr")]
@@ -502,6 +523,7 @@ pub struct GenericOrganisationIdentification1 {
 pub struct GenericPersonIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
+	#[validate]
 	#[serde(rename = "SchmeNm")]
 	pub schme_nm: Option<PersonIdentificationSchemeName1Choice>,
 	#[serde(rename = "Issr")]
@@ -516,6 +538,7 @@ pub struct GroupHeader77 {
 	pub msg_id: String,
 	#[serde(rename = "CreDtTm")]
 	pub cre_dt_tm: String,
+	#[validate]
 	#[serde(rename = "MsgSndr")]
 	pub msg_sndr: Option<Party40Choice>,
 }
@@ -566,6 +589,7 @@ pub struct LEIIdentifier {
 // Limit2 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct Limit2 {
+	#[validate]
 	#[serde(rename = "Amt")]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
 	#[serde(rename = "CdtDbtInd")]
@@ -688,6 +712,7 @@ pub struct OrganisationIdentification29 {
 	pub any_bic: Option<String>,
 	#[serde(rename = "LEI")]
 	pub lei: Option<String>,
+	#[validate]
 	#[serde(rename = "Othr")]
 	pub othr: Option<Vec<GenericOrganisationIdentification1>>,
 }
@@ -716,8 +741,10 @@ pub struct OtherContact1 {
 // Party38Choice ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct Party38Choice {
+	#[validate]
 	#[serde(rename = "OrgId")]
 	pub org_id: Option<OrganisationIdentification29>,
+	#[validate]
 	#[serde(rename = "PrvtId")]
 	pub prvt_id: Option<PersonIdentification13>,
 }
@@ -726,8 +753,10 @@ pub struct Party38Choice {
 // Party40Choice ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct Party40Choice {
+	#[validate]
 	#[serde(rename = "Pty")]
 	pub pty: Option<PartyIdentification135>,
+	#[validate]
 	#[serde(rename = "Agt")]
 	pub agt: Option<BranchAndFinancialInstitutionIdentification6>,
 }
@@ -738,12 +767,15 @@ pub struct Party40Choice {
 pub struct PartyIdentification135 {
 	#[serde(rename = "Nm")]
 	pub nm: Option<String>,
+	#[validate]
 	#[serde(rename = "PstlAdr")]
 	pub pstl_adr: Option<PostalAddress24>,
+	#[validate]
 	#[serde(rename = "Id")]
 	pub id: Option<Party38Choice>,
 	#[serde(rename = "CtryOfRes")]
 	pub ctry_of_res: Option<String>,
+	#[validate]
 	#[serde(rename = "CtctDtls")]
 	pub ctct_dtls: Option<Contact4>,
 }
@@ -752,8 +784,10 @@ pub struct PartyIdentification135 {
 // PersonIdentification13 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PersonIdentification13 {
+	#[validate]
 	#[serde(rename = "DtAndPlcOfBirth")]
 	pub dt_and_plc_of_birth: Option<DateAndPlaceOfBirth1>,
+	#[validate]
 	#[serde(rename = "Othr")]
 	pub othr: Option<Vec<GenericPersonIdentification1>>,
 }
@@ -781,6 +815,7 @@ pub struct PhoneNumber {
 // PostalAddress24 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PostalAddress24 {
+	#[validate]
 	#[serde(rename = "AdrTp")]
 	pub adr_tp: Option<AddressType3Choice>,
 	#[serde(rename = "Dept")]
@@ -828,6 +863,7 @@ pub struct PreferredContactMethod1Code {
 // ProxyAccountIdentification1 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ProxyAccountIdentification1 {
+	#[validate]
 	#[serde(rename = "Tp")]
 	pub tp: Option<ProxyAccountType1Choice>,
 	#[serde(rename = "Id")]
@@ -857,8 +893,10 @@ pub struct QueryType3Code {
 // ReportingPeriod2 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ReportingPeriod2 {
+	#[validate]
 	#[serde(rename = "FrToDt")]
 	pub fr_to_dt: DatePeriodDetails1,
+	#[validate]
 	#[serde(rename = "FrToTm")]
 	pub fr_to_tm: Option<TimePeriodDetails1>,
 	#[serde(rename = "Tp")]
@@ -873,18 +911,25 @@ pub struct ReportingRequest5 {
 	pub id: Option<String>,
 	#[serde(rename = "ReqdMsgNmId")]
 	pub reqd_msg_nm_id: String,
+	#[validate]
 	#[serde(rename = "Acct")]
 	pub acct: Option<CashAccount38>,
+	#[validate]
 	#[serde(rename = "AcctOwnr")]
 	pub acct_ownr: Party40Choice,
+	#[validate]
 	#[serde(rename = "AcctSvcr")]
 	pub acct_svcr: Option<BranchAndFinancialInstitutionIdentification6>,
+	#[validate]
 	#[serde(rename = "RptgPrd")]
 	pub rptg_prd: Option<ReportingPeriod2>,
+	#[validate]
 	#[serde(rename = "RptgSeq")]
 	pub rptg_seq: Option<SequenceRange1Choice>,
+	#[validate]
 	#[serde(rename = "ReqdTxTp")]
 	pub reqd_tx_tp: Option<TransactionType2>,
+	#[validate]
 	#[serde(rename = "ReqdBalTp")]
 	pub reqd_bal_tp: Option<Vec<BalanceType13>>,
 }
@@ -907,6 +952,7 @@ pub struct SequenceRange1Choice {
 	pub fr_seq: Option<String>,
 	#[serde(rename = "ToSeq")]
 	pub to_seq: Option<String>,
+	#[validate]
 	#[serde(rename = "FrToSeq")]
 	pub fr_to_seq: Option<Vec<SequenceRange1>>,
 	#[serde(rename = "EQSeq")]
@@ -921,6 +967,7 @@ pub struct SequenceRange1Choice {
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
+	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -945,10 +992,12 @@ pub struct TimePeriodDetails1 {
 // TransactionType2 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct TransactionType2 {
+	#[validate]
 	#[serde(rename = "Sts")]
 	pub sts: EntryStatus1Choice,
 	#[serde(rename = "CdtDbtInd")]
 	pub cdt_dbt_ind: String,
+	#[validate]
 	#[serde(rename = "FlrLmt")]
 	pub flr_lmt: Option<Vec<Limit2>>,
 }

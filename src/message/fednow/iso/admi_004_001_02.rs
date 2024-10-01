@@ -81,6 +81,7 @@ pub struct Max4AlphaNumericText {
 // SystemEventNotificationV02 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct SystemEventNotificationV02 {
+	#[validate]
 	#[serde(rename = "EvtInf")]
 	pub evt_inf: Event2,
 }

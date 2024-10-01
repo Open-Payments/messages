@@ -161,6 +161,7 @@ pub struct MessageReference1 {
 	pub ref_attr: String,
 	#[serde(rename = "MsgNm")]
 	pub msg_nm: Option<String>,
+	#[validate]
 	#[serde(rename = "RefIssr")]
 	pub ref_issr: Option<PartyIdentification136>,
 }
@@ -171,6 +172,7 @@ pub struct MessageReference1 {
 pub struct NameAndAddress5 {
 	#[serde(rename = "Nm")]
 	pub nm: String,
+	#[validate]
 	#[serde(rename = "Adr")]
 	pub adr: Option<PostalAddress1>,
 }
@@ -181,8 +183,10 @@ pub struct NameAndAddress5 {
 pub struct PartyIdentification120Choice {
 	#[serde(rename = "AnyBIC")]
 	pub any_bic: Option<String>,
+	#[validate]
 	#[serde(rename = "PrtryId")]
 	pub prtry_id: Option<GenericIdentification36>,
+	#[validate]
 	#[serde(rename = "NmAndAdr")]
 	pub nm_and_adr: Option<NameAndAddress5>,
 }
@@ -191,6 +195,7 @@ pub struct PartyIdentification120Choice {
 // PartyIdentification136 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PartyIdentification136 {
+	#[validate]
 	#[serde(rename = "Id")]
 	pub id: PartyIdentification120Choice,
 	#[serde(rename = "LEI")]
@@ -223,8 +228,10 @@ pub struct PostalAddress1 {
 // ReceiptAcknowledgementReport2 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ReceiptAcknowledgementReport2 {
+	#[validate]
 	#[serde(rename = "RltdRef")]
 	pub rltd_ref: MessageReference1,
+	#[validate]
 	#[serde(rename = "ReqHdlg")]
 	pub req_hdlg: RequestHandling2,
 }
@@ -233,10 +240,13 @@ pub struct ReceiptAcknowledgementReport2 {
 // ReceiptAcknowledgementV01 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ReceiptAcknowledgementV01 {
+	#[validate]
 	#[serde(rename = "MsgId")]
 	pub msg_id: MessageHeader10,
+	#[validate]
 	#[serde(rename = "Rpt")]
 	pub rpt: Vec<ReceiptAcknowledgementReport2>,
+	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
@@ -259,6 +269,7 @@ pub struct RequestHandling2 {
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
+	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }

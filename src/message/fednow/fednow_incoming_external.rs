@@ -31,8 +31,10 @@ use crate::message::fednow::iso::head_001_001_02::BusinessApplicationHeaderV02;
 // FedNowIncoming ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowIncoming {
+	#[validate]
 	#[serde(rename = "FedNowTechnicalHeader")]
 	pub fed_now_technical_header: Option<FedNowTechnicalHeader>,
+	#[validate]
 	#[serde(rename = "FedNowIncomingMessage")]
 	pub fed_now_incoming_message: FedNowIncomingMessage,
 }
@@ -47,44 +49,64 @@ pub struct FedNowTechnicalHeader {
 // FedNowIncomingMessage ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowIncomingMessage {
+	#[validate]
 	#[serde(rename = "FedNowMessageReject")]
 	pub fed_now_message_reject: Option<FedNowMessageReject>,
+	#[validate]
 	#[serde(rename = "FedNowParticipantBroadcast")]
 	pub fed_now_participant_broadcast: Option<FedNowParticipantBroadcast>,
+	#[validate]
 	#[serde(rename = "FedNowRetrievalRequest")]
 	pub fed_now_retrieval_request: Option<FedNowRetrievalRequest>,
+	#[validate]
 	#[serde(rename = "FedNowReceiptAcknowledgement")]
 	pub fed_now_receipt_acknowledgement: Option<FedNowReceiptAcknowledgement>,
+	#[validate]
 	#[serde(rename = "FedNowPaymentStatus")]
 	pub fed_now_payment_status: Option<FedNowPaymentStatus>,
+	#[validate]
 	#[serde(rename = "FedNowPaymentReturn")]
 	pub fed_now_payment_return: Option<FedNowPaymentReturn>,
+	#[validate]
 	#[serde(rename = "FedNowCustomerCreditTransfer")]
 	pub fed_now_customer_credit_transfer: Option<FedNowCustomerCreditTransfer>,
+	#[validate]
 	#[serde(rename = "FedNowInstitutionCreditTransfer")]
 	pub fed_now_institution_credit_transfer: Option<FedNowInstitutionCreditTransfer>,
+	#[validate]
 	#[serde(rename = "FedNowPaymentStatusRequest")]
 	pub fed_now_payment_status_request: Option<FedNowPaymentStatusRequest>,
+	#[validate]
 	#[serde(rename = "FedNowRequestForPayment")]
 	pub fed_now_request_for_payment: Option<FedNowRequestForPayment>,
+	#[validate]
 	#[serde(rename = "FedNowRequestForPaymentResponse")]
 	pub fed_now_request_for_payment_response: Option<FedNowRequestForPaymentResponse>,
+	#[validate]
 	#[serde(rename = "FedNowInformationRequest")]
 	pub fed_now_information_request: Option<FedNowInformationRequest>,
+	#[validate]
 	#[serde(rename = "FedNowAdditionalPaymentInformation")]
 	pub fed_now_additional_payment_information: Option<FedNowAdditionalPaymentInformation>,
+	#[validate]
 	#[serde(rename = "FedNowInformationRequestResponse")]
 	pub fed_now_information_request_response: Option<FedNowInformationRequestResponse>,
+	#[validate]
 	#[serde(rename = "FedNowRequestForPaymentCancellationRequestResponse")]
 	pub fed_now_request_for_payment_cancellation_request_response: Option<FedNowRequestForPaymentCancellationRequestResponse>,
+	#[validate]
 	#[serde(rename = "FedNowReturnRequestResponse")]
 	pub fed_now_return_request_response: Option<FedNowReturnRequestResponse>,
+	#[validate]
 	#[serde(rename = "FedNowRequestForPaymentCancellationRequest")]
 	pub fed_now_request_for_payment_cancellation_request: Option<FedNowRequestForPaymentCancellationRequest>,
+	#[validate]
 	#[serde(rename = "FedNowReturnRequest")]
 	pub fed_now_return_request: Option<FedNowReturnRequest>,
+	#[validate]
 	#[serde(rename = "FedNowAccountReportingRequest")]
 	pub fed_now_account_reporting_request: Option<FedNowAccountReportingRequest>,
+	#[validate]
 	#[serde(rename = "FedNowIncomingMessageSignatureManagement")]
 	pub fed_now_incoming_message_signature_management: Option<FedNowIncomingMessageSignatureManagement>,
 }
@@ -93,8 +115,10 @@ pub struct FedNowIncomingMessage {
 // FedNowMessageReject ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowMessageReject {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub a2_document: Document,
 }
@@ -103,8 +127,10 @@ pub struct FedNowMessageReject {
 // FedNowParticipantBroadcast ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowParticipantBroadcast {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub a4_document: Document,
 }
@@ -113,8 +139,10 @@ pub struct FedNowParticipantBroadcast {
 // FedNowRetrievalRequest ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowRetrievalRequest {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub a6_document: Document,
 }
@@ -123,8 +151,10 @@ pub struct FedNowRetrievalRequest {
 // FedNowReceiptAcknowledgement ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowReceiptAcknowledgement {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub a7_document: Document,
 }
@@ -133,8 +163,10 @@ pub struct FedNowReceiptAcknowledgement {
 // FedNowPaymentStatus ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowPaymentStatus {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub p2_document: Document,
 }
@@ -143,8 +175,10 @@ pub struct FedNowPaymentStatus {
 // FedNowPaymentReturn ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowPaymentReturn {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub p4_document: Document,
 }
@@ -153,8 +187,10 @@ pub struct FedNowPaymentReturn {
 // FedNowCustomerCreditTransfer ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowCustomerCreditTransfer {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub p8_document: Document,
 }
@@ -163,8 +199,10 @@ pub struct FedNowCustomerCreditTransfer {
 // FedNowInstitutionCreditTransfer ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowInstitutionCreditTransfer {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub p9_document: Document,
 }
@@ -173,8 +211,10 @@ pub struct FedNowInstitutionCreditTransfer {
 // FedNowPaymentStatusRequest ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowPaymentStatusRequest {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub p28_document: Document,
 }
@@ -183,8 +223,10 @@ pub struct FedNowPaymentStatusRequest {
 // FedNowRequestForPayment ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowRequestForPayment {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub pain13_document: Document,
 }
@@ -193,8 +235,10 @@ pub struct FedNowRequestForPayment {
 // FedNowRequestForPaymentResponse ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowRequestForPaymentResponse {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub pain14_document: Document,
 }
@@ -203,8 +247,10 @@ pub struct FedNowRequestForPaymentResponse {
 // FedNowInformationRequest ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowInformationRequest {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub c26_document: Document,
 }
@@ -213,8 +259,10 @@ pub struct FedNowInformationRequest {
 // FedNowAdditionalPaymentInformation ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowAdditionalPaymentInformation {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub c28_document: Document,
 }
@@ -223,8 +271,10 @@ pub struct FedNowAdditionalPaymentInformation {
 // FedNowInformationRequestResponse ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowInformationRequestResponse {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub c29_document: Document,
 }
@@ -233,8 +283,10 @@ pub struct FedNowInformationRequestResponse {
 // FedNowRequestForPaymentCancellationRequestResponse ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowRequestForPaymentCancellationRequestResponse {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub c29_document: Document,
 }
@@ -243,8 +295,10 @@ pub struct FedNowRequestForPaymentCancellationRequestResponse {
 // FedNowReturnRequestResponse ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowReturnRequestResponse {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub c29_document: Document,
 }
@@ -253,8 +307,10 @@ pub struct FedNowReturnRequestResponse {
 // FedNowRequestForPaymentCancellationRequest ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowRequestForPaymentCancellationRequest {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub c55_document: Document,
 }
@@ -263,8 +319,10 @@ pub struct FedNowRequestForPaymentCancellationRequest {
 // FedNowReturnRequest ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowReturnRequest {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub c56_document: Document,
 }
@@ -273,8 +331,10 @@ pub struct FedNowReturnRequest {
 // FedNowAccountReportingRequest ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowAccountReportingRequest {
+	#[validate]
 	#[serde(rename = "AppHdr")]
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	#[validate]
 	#[serde(rename = "Document")]
 	pub c60_document: Document,
 }
@@ -285,10 +345,13 @@ pub struct FedNowAccountReportingRequest {
 pub struct FedNowIncomingMessageSignatureManagement {
 	#[serde(rename = "SenderId")]
 	pub sender_id: String,
+	#[validate]
 	#[serde(rename = "GetAllFedNowActivePublicKeys")]
 	pub ke_get_all_fed_now_active_public_keys: Option<GetAllFedNowActivePublicKeys>,
+	#[validate]
 	#[serde(rename = "GetAllCustomerPublicKeys")]
 	pub ke_get_all_customer_public_keys: Option<GetAllCustomerPublicKeys>,
+	#[validate]
 	#[serde(rename = "FedNowMessageSignatureKeyExchange")]
 	pub ke_fed_now_message_signature_key_exchange: Option<FedNowMessageSignatureKeyExchange>,
 }

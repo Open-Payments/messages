@@ -97,6 +97,7 @@ pub struct FedNowMessageSignatureKey {
 // KeyAddition ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct KeyAddition {
+	#[validate]
 	#[serde(rename = "Key")]
 	pub key: Option<FedNowMessageSignatureKey>,
 }
@@ -117,6 +118,7 @@ pub struct KeyRevocation {
 // FedNowMessageSignatureKeyExchange ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowMessageSignatureKeyExchange {
+	#[validate]
 	#[serde(rename = "KeyAddition")]
 	pub key_addition: Option<KeyAddition>,
 	#[serde(rename = "KeyRevocation")]
@@ -151,8 +153,10 @@ pub struct GetAllCustomerPublicKeys {
 // FedNowPublicKeyResponse ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowPublicKeyResponse {
+	#[validate]
 	#[serde(rename = "FedNowMessageSignatureKeyStatus")]
 	pub fed_now_message_signature_key_status: FedNowMessageSignatureKeyStatus,
+	#[validate]
 	#[serde(rename = "FedNowMessageSignatureKey")]
 	pub fed_now_message_signature_key: FedNowMessageSignatureKey,
 }
@@ -161,6 +165,7 @@ pub struct FedNowPublicKeyResponse {
 // FedNowPublicKeyResponses ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct FedNowPublicKeyResponses {
+	#[validate]
 	#[serde(rename = "PublicKeys")]
 	pub public_keys: Vec<FedNowPublicKeyResponse>,
 }

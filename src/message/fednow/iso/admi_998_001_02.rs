@@ -28,14 +28,19 @@ use serde_valid::Validate;
 // AdministrationProprietaryMessageV02 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct AdministrationProprietaryMessageV02 {
+	#[validate]
 	#[serde(rename = "MsgId")]
 	pub msg_id: Option<MessageReference>,
+	#[validate]
 	#[serde(rename = "Rltd")]
 	pub rltd: Option<MessageReference>,
+	#[validate]
 	#[serde(rename = "Prvs")]
 	pub prvs: Option<MessageReference>,
+	#[validate]
 	#[serde(rename = "Othr")]
 	pub othr: Option<MessageReference>,
+	#[validate]
 	#[serde(rename = "PrtryData")]
 	pub prtry_data: ProprietaryData5,
 }
@@ -64,6 +69,7 @@ pub struct MessageReference {
 pub struct ProprietaryData5 {
 	#[serde(rename = "Tp")]
 	pub tp: String,
+	#[validate]
 	#[serde(rename = "Data")]
 	pub data: SupplementaryDataEnvelope1,
 }

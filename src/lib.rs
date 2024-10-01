@@ -24,16 +24,19 @@
 pub mod message;
 
 use serde::{Deserialize, Serialize};
+use serde_valid::Validate;
 use std::cmp::PartialEq;
 
 use crate::message::fednow::fednow_incoming_external::FedNowIncoming;
 use crate::message::fednow::fednow_outgoing_external::FedNowOutgoing;
 
-#[derive(Debug, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Validate, Serialize, Deserialize, PartialEq)]
 pub enum FednowMessage {
+    #[validate]
     #[serde(rename = "FedNowIncoming")]
     FedNowIncoming(Box<FedNowIncoming>),
 
+	#[validate]
     #[serde(rename = "FedNowOutgoing")]
     FedNowOutgoing(Box<FedNowOutgoing>),
 }

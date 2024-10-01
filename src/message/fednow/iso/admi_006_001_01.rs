@@ -168,8 +168,10 @@ pub struct MessageHeader7 {
 	pub msg_id: String,
 	#[serde(rename = "CreDtTm")]
 	pub cre_dt_tm: Option<String>,
+	#[validate]
 	#[serde(rename = "ReqTp")]
 	pub req_tp: Option<RequestType4Choice>,
+	#[validate]
 	#[serde(rename = "OrgnlBizQry")]
 	pub orgnl_biz_qry: Option<OriginalBusinessQuery1>,
 	#[serde(rename = "QryNm")]
@@ -182,6 +184,7 @@ pub struct MessageHeader7 {
 pub struct NameAndAddress5 {
 	#[serde(rename = "Nm")]
 	pub nm: String,
+	#[validate]
 	#[serde(rename = "Adr")]
 	pub adr: Option<PostalAddress1>,
 }
@@ -204,8 +207,10 @@ pub struct OriginalBusinessQuery1 {
 pub struct PartyIdentification120Choice {
 	#[serde(rename = "AnyBIC")]
 	pub any_bic: Option<String>,
+	#[validate]
 	#[serde(rename = "PrtryId")]
 	pub prtry_id: Option<GenericIdentification36>,
+	#[validate]
 	#[serde(rename = "NmAndAdr")]
 	pub nm_and_adr: Option<NameAndAddress5>,
 }
@@ -214,6 +219,7 @@ pub struct PartyIdentification120Choice {
 // PartyIdentification136 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct PartyIdentification136 {
+	#[validate]
 	#[serde(rename = "Id")]
 	pub id: PartyIdentification120Choice,
 	#[serde(rename = "LEI")]
@@ -250,6 +256,7 @@ pub struct RequestType4Choice {
 	pub pmt_ctrl: Option<String>,
 	#[serde(rename = "Enqry")]
 	pub enqry: Option<String>,
+	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification1>,
 }
@@ -258,10 +265,13 @@ pub struct RequestType4Choice {
 // ResendRequestV01 ...
 #[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
 pub struct ResendRequestV01 {
+	#[validate]
 	#[serde(rename = "MsgHdr")]
 	pub msg_hdr: MessageHeader7,
+	#[validate]
 	#[serde(rename = "RsndSchCrit")]
 	pub rsnd_sch_crit: Vec<ResendSearchCriteria2>,
+	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
@@ -274,12 +284,14 @@ pub struct ResendSearchCriteria2 {
 	pub biz_dt: Option<String>,
 	#[serde(rename = "SeqNb")]
 	pub seq_nb: Option<String>,
+	#[validate]
 	#[serde(rename = "SeqRg")]
 	pub seq_rg: Option<SequenceRange1Choice>,
 	#[serde(rename = "OrgnlMsgNmId")]
 	pub orgnl_msg_nm_id: Option<String>,
 	#[serde(rename = "FileRef")]
 	pub file_ref: Option<String>,
+	#[validate]
 	#[serde(rename = "Rcpt")]
 	pub rcpt: PartyIdentification136,
 }
@@ -302,6 +314,7 @@ pub struct SequenceRange1Choice {
 	pub fr_seq: Option<String>,
 	#[serde(rename = "ToSeq")]
 	pub to_seq: Option<String>,
+	#[validate]
 	#[serde(rename = "FrToSeq")]
 	pub fr_to_seq: Option<Vec<SequenceRange1>>,
 	#[serde(rename = "EQSeq")]
@@ -316,6 +329,7 @@ pub struct SequenceRange1Choice {
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
+	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
