@@ -1,6 +1,6 @@
 [package]
 name = "payment-message"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
 exclude = ["/xsd", "/xml", ".DS_Store", "/target", ".vscode", "generate.sh"]
 authors = ["Harishankar Narayanan <nharishankar@gmail.com>"]
