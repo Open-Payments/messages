@@ -18,6 +18,14 @@ jobs:
       with:
         toolchain: stable
 
+    - name: Run tests
+      run: cargo test
+
+    - name: Publish to crates.io
+      run: cargo publish
+      env:
+        CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
+
     - name: Extract crate version from Cargo.toml
       id: version
       run: |
@@ -29,7 +37,7 @@ jobs:
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
 
-    - name: Tag the repository with the crate version
+    - name: Tag the repository with the crate version and push
       env:
         GITHUB_PAT: ${{ secrets.GH_PAT }}  # Use your PAT token here
       run: |
