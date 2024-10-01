@@ -2,14 +2,14 @@
 // This application reads XML files from a specified directory,
 // parses them using Serde, and converts them to JSON format.
 
-use serde_xml_rs::from_reader;  // For parsing XML into Rust structs
+use serde_xml_rs;  // For parsing XML into Rust structs
 use serde_path_to_error::deserialize;  // For error reporting with detailed path info
 use std::fs::{self, File};  // File system utilities for reading files
 use std::io::{BufReader, Write};  // For reading and writing files
 use std::path::Path;  // Path utility for handling file paths
 use std::time::Instant;  // For tracking time elapsed
 use xml::reader::EventReader;  // XML event-based parser
-use serde_json::json;  // JSON serialization utility
+use serde_json;  // JSON serialization utility
 
 use payment_message::FednowMessage;  // Import the FednowMessage struct
 
@@ -21,7 +21,7 @@ fn main() {
     let start_time = Instant::now();
 
     // Run the conversion 100 times for benchmarking purposes
-    for n in 0..100 {
+    for _ in 0..100 {
         // Iterate over all files in the XML directory
         for entry in fs::read_dir(xml_directory).expect("Unable to read directory") {
             let entry = entry.expect("Unable to get directory entry");
