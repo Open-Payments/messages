@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 use serde_valid::Validate;
+use utoipa::ToSchema;
 use std::cmp::PartialEq;
 
 use crate::message::fednow::iso::admi_002_001_01::*;
@@ -27,7 +28,7 @@ use crate::message::fednow::iso::pain_013_001_07::*;
 use crate::message::fednow::iso::pain_014_001_07::*;
 
 
-#[derive(Debug, Validate, Serialize, Deserialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Serialize, Deserialize, PartialEq)]
 pub enum Document {
 	#[validate]
 	#[serde(rename = "admi.002.001.01")]
