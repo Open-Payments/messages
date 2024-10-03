@@ -23,10 +23,11 @@
 
 use serde::{Deserialize, Serialize};
 use serde_valid::Validate;
+use utoipa::ToSchema;
 
 
 // ISODateTime ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -34,7 +35,7 @@ pub struct ISODateTime {
 
 
 // Max20000Text ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Max20000Text {
 	#[validate(min_length = 1)]
 	#[validate(max_length = 20000)]
@@ -44,7 +45,7 @@ pub struct Max20000Text {
 
 
 // Max350Text ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Max350Text {
 	#[validate(min_length = 1)]
 	#[validate(max_length = 350)]
@@ -54,7 +55,7 @@ pub struct Max350Text {
 
 
 // Max35Text ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Max35Text {
 	#[validate(min_length = 1)]
 	#[validate(max_length = 35)]
@@ -64,7 +65,7 @@ pub struct Max35Text {
 
 
 // MessageReference ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
 	pub ref_attr: String,
@@ -72,7 +73,7 @@ pub struct MessageReference {
 
 
 // RejectionReason2 ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct RejectionReason2 {
 	#[serde(rename = "RjctgPtyRsn")]
 	pub rjctg_pty_rsn: String,
@@ -88,7 +89,7 @@ pub struct RejectionReason2 {
 
 
 // Admi00200101 ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Admi00200101 {
 	#[validate]
 	#[serde(rename = "RltdRef")]

@@ -23,10 +23,11 @@
 
 use serde::{Deserialize, Serialize};
 use serde_valid::Validate;
+use utoipa::ToSchema;
 
 
 // Event2 ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Event2 {
 	#[serde(rename = "EvtCd")]
 	pub evt_cd: String,
@@ -40,7 +41,7 @@ pub struct Event2 {
 
 
 // ISODateTime ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -48,7 +49,7 @@ pub struct ISODateTime {
 
 
 // Max1000Text ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Max1000Text {
 	#[validate(min_length = 1)]
 	#[validate(max_length = 1000)]
@@ -58,7 +59,7 @@ pub struct Max1000Text {
 
 
 // Max35Text ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Max35Text {
 	#[validate(min_length = 1)]
 	#[validate(max_length = 35)]
@@ -68,7 +69,7 @@ pub struct Max35Text {
 
 
 // Max4AlphaNumericText ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Max4AlphaNumericText {
 	#[validate(min_length = 1)]
 	#[validate(max_length = 4)]
@@ -79,7 +80,7 @@ pub struct Max4AlphaNumericText {
 
 
 // SystemEventNotificationV02 ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct SystemEventNotificationV02 {
 	#[validate]
 	#[serde(rename = "EvtInf")]
