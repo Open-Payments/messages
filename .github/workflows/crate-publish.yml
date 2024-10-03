@@ -21,26 +21,33 @@ jobs:
     - name: Run tests
       run: cargo test
 
+    - name: Extract and increment version from Cargo.toml
+      id: version
+      run: |
+        VERSION=$(grep '^version =' Cargo.toml | head -n 1 | cut -d '"' -f 2)
+        IFS='.' read -r major minor patch <<<"$VERSION"
+        patch=$((patch + 1))
+        NEW_VERSION="$major.$minor.$patch"
+        echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+        sed -i "s/^version = \"$VERSION\"/version = \"$NEW_VERSION\"/" Cargo.toml
+
+    - name: Commit and push updated Cargo.toml with new version
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@github.com"
+        git add Cargo.toml
+        git commit -m "Bump version to ${{ env.NEW_VERSION }}"
+        git push origin main
+
+    - name: Tag the repository with the crate version and push
+      env:
+        GITHUB_PAT: ${{ secrets.GH_PAT }}
+      run: |
+        git tag -a "v${{ env.NEW_VERSION }}" -m "Version ${{ env.NEW_VERSION }} release"
+        git remote set-url origin https://$GITHUB_PAT@github.com/Open-Payments/messages.git
+        git push origin "v${{ env.NEW_VERSION }}"
+
     - name: Publish to crates.io
       run: cargo publish
       env:
         CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
-
-    - name: Extract crate version from Cargo.toml
-      id: version
-      run: |
-        VERSION=$(grep '^version =' Cargo.toml | head -n 1 | cut -d '"' -f 2)
-        echo "VERSION=$VERSION" >> $GITHUB_ENV
-
-    - name: Configure Git for GitHub Actions
-      run: |
-        git config user.name "GitHub Actions"
-        git config user.email "actions@github.com"
-
-    - name: Tag the repository with the crate version and push
-      env:
-        GITHUB_PAT: ${{ secrets.GH_PAT }}  # Use your PAT token here
-      run: |
-        git tag -a "v${{ env.VERSION }}" -m "Version ${{ env.VERSION }} release"
-        git remote set-url origin https://$GITHUB_PAT@github.com/Open-Payments/messages.git
-        git push origin "v${{ env.VERSION }}"
