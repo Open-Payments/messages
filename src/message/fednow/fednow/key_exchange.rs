@@ -23,10 +23,11 @@
 
 use serde::{Deserialize, Serialize};
 use serde_valid::Validate;
+use utoipa::ToSchema;
 
 
 // Max300AlphaNumericString ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Max300AlphaNumericString {
 	#[validate(pattern = "[A-Za-z0-9\\-_]{1,300}")]
 	#[serde(rename = "Max300AlphaNumericString")]
@@ -35,7 +36,7 @@ pub struct Max300AlphaNumericString {
 
 
 // Max50AlphaNumericString ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Max50AlphaNumericString {
 	#[validate(pattern = "[A-Za-z0-9\\-_]{1,50}")]
 	#[serde(rename = "Max50AlphaNumericString")]
@@ -44,7 +45,7 @@ pub struct Max50AlphaNumericString {
 
 
 // Max300Text ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Max300Text {
 	#[validate(min_length = 1)]
 	#[validate(max_length = 300)]
@@ -58,7 +59,7 @@ pub struct Max300Text {
 //                 
 
 //                 Note: This may be a master account routing number or a subaccount routing number.
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct RoutingNumberFRS1 {
 	#[validate(pattern = "[0-9]{9,9}")]
 	#[serde(rename = "RoutingNumber_FRS_1")]
@@ -67,7 +68,7 @@ pub struct RoutingNumberFRS1 {
 
 
 // FedNowMessageSignatureKeyStatus ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct FedNowMessageSignatureKeyStatus {
 	#[serde(rename = "KeyStatus")]
 	pub key_status: String,
@@ -77,7 +78,7 @@ pub struct FedNowMessageSignatureKeyStatus {
 
 
 // FedNowMessageSignatureKey ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct FedNowMessageSignatureKey {
 	#[serde(rename = "FedNowKeyID")]
 	pub fed_now_key_id: String,
@@ -95,7 +96,7 @@ pub struct FedNowMessageSignatureKey {
 
 
 // KeyAddition ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct KeyAddition {
 	#[validate]
 	#[serde(rename = "Key")]
@@ -104,7 +105,7 @@ pub struct KeyAddition {
 
 
 // KeyRevocation ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct KeyRevocation {
 	#[serde(rename = "KeyRevocation")]
 	pub key_revocation: Option<String>,
@@ -116,7 +117,7 @@ pub struct KeyRevocation {
 
 
 // FedNowMessageSignatureKeyExchange ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct FedNowMessageSignatureKeyExchange {
 	#[validate]
 	#[serde(rename = "KeyAddition")]
@@ -127,7 +128,7 @@ pub struct FedNowMessageSignatureKeyExchange {
 
 
 // FedNowCustomerMessageSignatureKeyOperationResponse ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 	#[serde(rename = "FedNowKeyID")]
 	pub fed_now_key_id: String,
@@ -139,19 +140,19 @@ pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 
 
 // GetAllFedNowActivePublicKeys ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct GetAllFedNowActivePublicKeys {
 }
 
 
 // GetAllCustomerPublicKeys ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct GetAllCustomerPublicKeys {
 }
 
 
 // FedNowPublicKeyResponse ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct FedNowPublicKeyResponse {
 	#[validate]
 	#[serde(rename = "FedNowMessageSignatureKeyStatus")]
@@ -163,7 +164,7 @@ pub struct FedNowPublicKeyResponse {
 
 
 // FedNowPublicKeyResponses ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct FedNowPublicKeyResponses {
 	#[validate]
 	#[serde(rename = "PublicKeys")]

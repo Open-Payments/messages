@@ -23,10 +23,11 @@
 
 use serde::{Deserialize, Serialize};
 use serde_valid::Validate;
+use utoipa::ToSchema;
 
 
 // AdministrationProprietaryMessageV02 ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct AdministrationProprietaryMessageV02 {
 	#[validate]
 	#[serde(rename = "MsgId")]
@@ -47,7 +48,7 @@ pub struct AdministrationProprietaryMessageV02 {
 
 
 // Max35Text ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct Max35Text {
 	#[validate(min_length = 1)]
 	#[validate(max_length = 35)]
@@ -57,7 +58,7 @@ pub struct Max35Text {
 
 
 // MessageReference ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
 	pub ref_attr: String,
@@ -65,7 +66,7 @@ pub struct MessageReference {
 
 
 // ProprietaryData5 ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct ProprietaryData5 {
 	#[serde(rename = "Tp")]
 	pub tp: String,
@@ -76,6 +77,6 @@ pub struct ProprietaryData5 {
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, Validate, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
 pub struct SupplementaryDataEnvelope1 {
 }
