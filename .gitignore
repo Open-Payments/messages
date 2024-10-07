@@ -27,3 +27,6 @@ Cargo.lock
 /xml
 .DS_Store
 .vscode
+
+/fednow/samples/*
+/iso20022/samples/*
