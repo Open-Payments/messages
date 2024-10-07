@@ -1,9 +1,10 @@
-// FedNow Message Parsing Library
+// Open Payment Message Parsing Library
 // https://github.com/Open-Payments/messages
 //
-// This library is designed to parse FedNow message formats based on ISO 20022 standards.
-// It handles various message types, including administrative notifications, payment status reports, 
-// customer credit transfers, and more, using Serde for efficient serialization and deserialization.
+// This library is designed to parse message formats based on the ISO 20022 standards,
+// including but not limited to FedNow messages. It supports various financial message types,
+// such as customer credit transfers, payment status reports, administrative notifications, 
+// and other ISO 20022 messages, using Serde for efficient serialization and deserialization.
 //
 // Copyright (c) 2024 Open Payments by Harishankar Narayanan
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,14 +24,13 @@
 
 use serde::{Deserialize, Serialize};
 use serde_valid::Validate;
-use utoipa::ToSchema;
 use crate::message::fednow::document::*;
 use crate::message::fednow::fednow::key_exchange::*;
 use crate::message::fednow::iso::head_001_001_02::BusinessApplicationHeaderV02;
 
 
 // FedNowIncoming ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowIncoming {
 	#[validate]
 	#[serde(rename = "FedNowTechnicalHeader")]
@@ -42,13 +42,13 @@ pub struct FedNowIncoming {
 
 
 // FedNowTechnicalHeader ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowTechnicalHeader {
 }
 
 
 // FedNowIncomingMessage ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowIncomingMessage {
 	#[validate]
 	#[serde(rename = "FedNowMessageReject")]
@@ -114,7 +114,7 @@ pub struct FedNowIncomingMessage {
 
 
 // FedNowMessageReject ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowMessageReject {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -126,7 +126,7 @@ pub struct FedNowMessageReject {
 
 
 // FedNowParticipantBroadcast ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowParticipantBroadcast {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -138,7 +138,7 @@ pub struct FedNowParticipantBroadcast {
 
 
 // FedNowRetrievalRequest ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowRetrievalRequest {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -150,7 +150,7 @@ pub struct FedNowRetrievalRequest {
 
 
 // FedNowReceiptAcknowledgement ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowReceiptAcknowledgement {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -162,7 +162,7 @@ pub struct FedNowReceiptAcknowledgement {
 
 
 // FedNowPaymentStatus ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowPaymentStatus {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -174,7 +174,7 @@ pub struct FedNowPaymentStatus {
 
 
 // FedNowPaymentReturn ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowPaymentReturn {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -186,7 +186,7 @@ pub struct FedNowPaymentReturn {
 
 
 // FedNowCustomerCreditTransfer ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowCustomerCreditTransfer {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -198,7 +198,7 @@ pub struct FedNowCustomerCreditTransfer {
 
 
 // FedNowInstitutionCreditTransfer ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowInstitutionCreditTransfer {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -210,7 +210,7 @@ pub struct FedNowInstitutionCreditTransfer {
 
 
 // FedNowPaymentStatusRequest ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowPaymentStatusRequest {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -222,7 +222,7 @@ pub struct FedNowPaymentStatusRequest {
 
 
 // FedNowRequestForPayment ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowRequestForPayment {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -234,7 +234,7 @@ pub struct FedNowRequestForPayment {
 
 
 // FedNowRequestForPaymentResponse ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowRequestForPaymentResponse {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -246,7 +246,7 @@ pub struct FedNowRequestForPaymentResponse {
 
 
 // FedNowInformationRequest ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowInformationRequest {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -258,7 +258,7 @@ pub struct FedNowInformationRequest {
 
 
 // FedNowAdditionalPaymentInformation ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowAdditionalPaymentInformation {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -270,7 +270,7 @@ pub struct FedNowAdditionalPaymentInformation {
 
 
 // FedNowInformationRequestResponse ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowInformationRequestResponse {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -282,7 +282,7 @@ pub struct FedNowInformationRequestResponse {
 
 
 // FedNowRequestForPaymentCancellationRequestResponse ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowRequestForPaymentCancellationRequestResponse {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -294,7 +294,7 @@ pub struct FedNowRequestForPaymentCancellationRequestResponse {
 
 
 // FedNowReturnRequestResponse ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowReturnRequestResponse {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -306,7 +306,7 @@ pub struct FedNowReturnRequestResponse {
 
 
 // FedNowRequestForPaymentCancellationRequest ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowRequestForPaymentCancellationRequest {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -318,7 +318,7 @@ pub struct FedNowRequestForPaymentCancellationRequest {
 
 
 // FedNowReturnRequest ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowReturnRequest {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -330,7 +330,7 @@ pub struct FedNowReturnRequest {
 
 
 // FedNowAccountReportingRequest ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowAccountReportingRequest {
 	#[validate]
 	#[serde(rename = "AppHdr")]
@@ -342,7 +342,7 @@ pub struct FedNowAccountReportingRequest {
 
 
 // FedNowIncomingMessageSignatureManagement ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct FedNowIncomingMessageSignatureManagement {
 	#[serde(rename = "SenderId")]
 	pub sender_id: String,
