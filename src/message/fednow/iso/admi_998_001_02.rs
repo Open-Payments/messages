@@ -1,9 +1,10 @@
-// FedNow Message Parsing Library
+// Open Payment Message Parsing Library
 // https://github.com/Open-Payments/messages
 //
-// This library is designed to parse FedNow message formats based on ISO 20022 standards.
-// It handles various message types, including administrative notifications, payment status reports, 
-// customer credit transfers, and more, using Serde for efficient serialization and deserialization.
+// This library is designed to parse message formats based on the ISO 20022 standards,
+// including but not limited to FedNow messages. It supports various financial message types,
+// such as customer credit transfers, payment status reports, administrative notifications, 
+// and other ISO 20022 messages, using Serde for efficient serialization and deserialization.
 //
 // Copyright (c) 2024 Open Payments by Harishankar Narayanan
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,11 +24,10 @@
 
 use serde::{Deserialize, Serialize};
 use serde_valid::Validate;
-use utoipa::ToSchema;
 
 
 // AdministrationProprietaryMessageV02 ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct AdministrationProprietaryMessageV02 {
 	#[validate]
 	#[serde(rename = "MsgId")]
@@ -48,7 +48,7 @@ pub struct AdministrationProprietaryMessageV02 {
 
 
 // Max35Text ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct Max35Text {
 	#[validate(min_length = 1)]
 	#[validate(max_length = 35)]
@@ -58,7 +58,7 @@ pub struct Max35Text {
 
 
 // MessageReference ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
 	pub ref_attr: String,
@@ -66,7 +66,7 @@ pub struct MessageReference {
 
 
 // ProprietaryData5 ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct ProprietaryData5 {
 	#[serde(rename = "Tp")]
 	pub tp: String,
@@ -77,6 +77,6 @@ pub struct ProprietaryData5 {
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, Validate, ToSchema, Deserialize, Serialize, PartialEq)]
+#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }

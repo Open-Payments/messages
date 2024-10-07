@@ -1,4 +1,4 @@
-// Main entry point for the FedNow message parsing application.
+// Main entry point for the ISO20022 message parsing application.
 // This application reads XML files from a specified directory,
 // parses them using Serde, and converts them to JSON format.
 
@@ -7,37 +7,35 @@ use serde_path_to_error::deserialize;  // For error reporting with detailed path
 use std::fs::{self, File};  // File system utilities for reading files
 use std::io::{BufReader, Write};  // For reading and writing files
 use std::path::Path;  // Path utility for handling file paths
-use std::time::Instant;  // For tracking time elapsed
 use xml::reader::EventReader;  // XML event-based parser
 use serde_json;  // JSON serialization utility
 
-use payment_message::FednowMessage;  // Import the FednowMessage struct
+use payment_message::message::iso20022::document::Document;  // Import the ISO20022Message struct
+
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
+#[serde(rename = "Document")]
+pub struct ISO20022Message {
+    #[serde(rename = "$value")]
+    document: Document,
+}
 
 fn main() {
     // Define the directory containing XML files
-    let xml_directory = "xml";
-    
-    // Start measuring the execution time
-    let start_time = Instant::now();
+    let xml_directory = "xml/iso20022";
 
-    // Run the conversion 100 times for benchmarking purposes
-    for _ in 0..100 {
-        // Iterate over all files in the XML directory
-        for entry in fs::read_dir(xml_directory).expect("Unable to read directory") {
-            let entry = entry.expect("Unable to get directory entry");
-            let path = entry.path();
+    // Iterate over all files in the XML directory
+    for entry in fs::read_dir(xml_directory).expect("Unable to read directory") {
+        let entry = entry.expect("Unable to get directory entry");
+        let path = entry.path();
 
-            // Check if the file has an .xml extension
-            if path.extension().and_then(|e| e.to_str()) == Some("xml") {
-                // If it's an XML file, parse and convert it to JSON
-                parse_and_convert_to_json(&path);
-            }
+        // Check if the file has an .xml extension
+        if path.extension().and_then(|e| e.to_str()) == Some("xml") {
+            // If it's an XML file, parse and convert it to JSON
+            parse_and_convert_to_json(&path);
         }
     }
-
-    // Calculate and print the elapsed time for the whole operation
-    let elapsed = start_time.elapsed();
-    println!("Elapsed: {:.2?}", elapsed);
 }
 
 // Function to parse an XML file and convert its content to a JSON file
@@ -52,8 +50,8 @@ fn parse_and_convert_to_json(xml_path: &Path) {
     // Use serde_path_to_error to capture detailed error paths during deserialization
     let mut deserializer = serde_xml_rs::Deserializer::new(event_reader);
     
-    // Deserialize the XML into a FednowMessage struct
-    let result: Result<FednowMessage, serde_path_to_error::Error<serde_xml_rs::Error>> = deserialize(&mut deserializer);
+    // Deserialize the XML into a ISO20022Message struct
+    let result: Result<ISO20022Message, serde_path_to_error::Error<serde_xml_rs::Error>> = deserialize(&mut deserializer);
 
     // Log the conversion status
     print!("Converting {}", xml_path.display());
