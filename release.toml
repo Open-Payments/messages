@@ -1,29 +1,6 @@
-# release.toml
-
-# Use the same version for all crates in the workspace
-shared-version = true
-
-# Specify which branches are allowed to perform a release
 allow-branch = ["main"]
-
-# Enable tagging and configure tag message and prefix
-tag = true
-tag-prefix = "v"
-tag-message = "Version {{version}} release"
-
-# Push commits and tags to the remote repository
-push = true
-push-remote = "origin"
-
-# Customize the commit message for the release commit
-pre-release-commit-message = "chore(release): prepare for {{version}} release"
-
-# Consolidate commits to avoid post-release version bumps
-consolidate-commits = true
-
-# Disable signing commits and tags
-sign-commit = false
-sign-tag = false
-
-# Publish crates to crates.io
-publish = true
+sign-commit = true
+sign-tag = true
+shared-version = true
+pre-release-commit-message = "chore: release {{version}}"
+tag-prefix = "" # tag only once instead of per every crate
