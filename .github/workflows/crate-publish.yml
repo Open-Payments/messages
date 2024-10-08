@@ -28,8 +28,9 @@ jobs:
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
 
+      # Run tests with limited parallelism to avoid OOM
       - name: Run tests
-        run: cargo test --workspace
+        run: cargo test --workspace --jobs 1 -- --test-threads=1
 
       - name: Release and publish crates
         env:
