@@ -1,6 +1,12 @@
-allow-branch = ["main"]
-sign-commit = true
-sign-tag = true
 shared-version = true
-pre-release-commit-message = "chore: release {{version}}"
-tag-prefix = "" # tag only once instead of per every crate
+allow-branch = ["main"]
+tag = true
+tag-prefix = "v"
+tag-message = "Version {{version}} release"
+push = true
+push-remote = "origin"
+pre-release-commit-message = "chore(release): prepare for {{version}} release"
+consolidate-commits = true
+sign-commit = false  # Disable GPG signing for commits
+sign-tag = false     # Disable GPG signing for tags
+publish = true
