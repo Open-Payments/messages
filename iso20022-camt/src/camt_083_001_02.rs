@@ -23,22 +23,20 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // AccountIdentification4Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountIdentification4Choice {
 	#[serde(rename = "IBAN")]
 	pub iban: Option<String>,
-	#[validate]
 	#[serde(rename = "Othr")]
 	pub othr: Option<GenericAccountIdentification1>,
 }
 
 
 // AccountSchemeName1Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountSchemeName1Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
@@ -48,20 +46,18 @@ pub struct AccountSchemeName1Choice {
 
 
 // AcknowledgedAcceptedStatus24Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AcknowledgedAcceptedStatus24Choice {
 	#[serde(rename = "NoSpcfdRsn")]
 	pub no_spcfd_rsn: Option<String>,
-	#[validate]
 	#[serde(rename = "Rsn")]
 	pub rsn: Option<Vec<AcknowledgementReason12>>,
 }
 
 
 // AcknowledgementReason12 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AcknowledgementReason12 {
-	#[validate]
 	#[serde(rename = "Cd")]
 	pub cd: AcknowledgementReason15Choice,
 	#[serde(rename = "AddtlRsnInf")]
@@ -70,27 +66,25 @@ pub struct AcknowledgementReason12 {
 
 
 // AcknowledgementReason15Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AcknowledgementReason15Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
 
 // AcknowledgementReason3Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AcknowledgementReason3Code {
-	#[validate(enumerate = ["ADEA", "SMPG", "OTHR"])]
 	#[serde(rename = "AcknowledgementReason3Code")]
 	pub acknowledgement_reason3_code: String,
 }
 
 
 // ActiveCurrencyAndAmountSimpleType ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "ActiveCurrencyAndAmount_SimpleType")]
 	pub active_currency_and_amount_simple_type: f64,
@@ -98,7 +92,7 @@ pub struct ActiveCurrencyAndAmountSimpleType {
 
 
 // ActiveCurrencyAndAmount ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmount {
 	#[serde(rename = "Ccy")]
 	pub ccy: String,
@@ -108,58 +102,52 @@ pub struct ActiveCurrencyAndAmount {
 
 
 // ActiveCurrencyCode ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[validate(pattern = "[A-Z]{3,3}")]
 	#[serde(rename = "ActiveCurrencyCode")]
 	pub active_currency_code: String,
 }
 
 
 // ActiveOrHistoricCurrencyCode ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveOrHistoricCurrencyCode {
-	#[validate(pattern = "[A-Z]{3,3}")]
 	#[serde(rename = "ActiveOrHistoricCurrencyCode")]
 	pub active_or_historic_currency_code: String,
 }
 
 
 // AddressType2Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AddressType2Code {
-	#[validate(enumerate = ["ADDR", "PBOX", "HOME", "BIZZ", "MLTO", "DLVY"])]
 	#[serde(rename = "AddressType2Code")]
 	pub address_type2_code: String,
 }
 
 
 // AddressType3Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AddressType3Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
 
 // Amount2Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Amount2Choice {
 	#[serde(rename = "AmtWthtCcy")]
 	pub amt_wtht_ccy: Option<f64>,
-	#[validate]
 	#[serde(rename = "AmtWthCcy")]
 	pub amt_wth_ccy: Option<ActiveCurrencyAndAmount>,
 }
 
 
 // AmountAndDirection5 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AmountAndDirection5 {
-	#[validate]
 	#[serde(rename = "Amt")]
 	pub amt: ActiveCurrencyAndAmount,
 	#[serde(rename = "CdtDbt")]
@@ -168,55 +156,47 @@ pub struct AmountAndDirection5 {
 
 
 // AmountAndQuantityBreakdown1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AmountAndQuantityBreakdown1 {
-	#[validate]
 	#[serde(rename = "LotNb")]
 	pub lot_nb: Option<GenericIdentification37>,
-	#[validate]
 	#[serde(rename = "LotAmt")]
 	pub lot_amt: Option<AmountAndDirection5>,
-	#[validate]
 	#[serde(rename = "LotQty")]
 	pub lot_qty: Option<FinancialInstrumentQuantity1Choice>,
-	#[validate]
 	#[serde(rename = "CshSubBalTp")]
 	pub csh_sub_bal_tp: Option<GenericIdentification30>,
 }
 
 
 // AnyBICDec2014Identifier ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AnyBICDec2014Identifier {
-	#[validate(pattern = "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}")]
 	#[serde(rename = "AnyBICDec2014Identifier")]
 	pub any_bic_dec2014_identifier: String,
 }
 
 
 // BICFIDec2014Identifier ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BICFIDec2014Identifier {
-	#[validate(pattern = "[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}")]
 	#[serde(rename = "BICFIDec2014Identifier")]
 	pub bicfi_dec2014_identifier: String,
 }
 
 
 // BranchAndFinancialInstitutionIdentification8 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BranchAndFinancialInstitutionIdentification8 {
-	#[validate]
 	#[serde(rename = "FinInstnId")]
 	pub fin_instn_id: FinancialInstitutionIdentification23,
-	#[validate]
 	#[serde(rename = "BrnchId")]
 	pub brnch_id: Option<BranchData5>,
 }
 
 
 // BranchData5 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BranchData5 {
 	#[serde(rename = "Id")]
 	pub id: Option<String>,
@@ -224,16 +204,14 @@ pub struct BranchData5 {
 	pub lei: Option<String>,
 	#[serde(rename = "Nm")]
 	pub nm: Option<String>,
-	#[validate]
 	#[serde(rename = "PstlAdr")]
 	pub pstl_adr: Option<PostalAddress27>,
 }
 
 
 // CancellationReason10 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CancellationReason10 {
-	#[validate]
 	#[serde(rename = "Cd")]
 	pub cd: CancellationReason21Choice,
 	#[serde(rename = "AddtlRsnInf")]
@@ -242,57 +220,51 @@ pub struct CancellationReason10 {
 
 
 // CancellationReason21Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CancellationReason21Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
 
 // CancellationStatus15Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CancellationStatus15Choice {
 	#[serde(rename = "NoSpcfdRsn")]
 	pub no_spcfd_rsn: Option<String>,
-	#[validate]
 	#[serde(rename = "Rsn")]
 	pub rsn: Option<Vec<CancellationReason10>>,
 }
 
 
 // CancelledStatusReason5Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CancelledStatusReason5Code {
-	#[validate(enumerate = ["CANI", "OTHR"])]
 	#[serde(rename = "CancelledStatusReason5Code")]
 	pub cancelled_status_reason5_code: String,
 }
 
 
 // CashAccount40 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CashAccount40 {
-	#[validate]
 	#[serde(rename = "Id")]
 	pub id: Option<AccountIdentification4Choice>,
-	#[validate]
 	#[serde(rename = "Tp")]
 	pub tp: Option<CashAccountType2Choice>,
 	#[serde(rename = "Ccy")]
 	pub ccy: Option<String>,
 	#[serde(rename = "Nm")]
 	pub nm: Option<String>,
-	#[validate]
 	#[serde(rename = "Prxy")]
 	pub prxy: Option<ProxyAccountIdentification1>,
 }
 
 
 // CashAccountType2Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CashAccountType2Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
@@ -302,30 +274,27 @@ pub struct CashAccountType2Choice {
 
 
 // CashBalanceType3Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CashBalanceType3Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
 
 // CashSubBalanceTypeAndQuantityBreakdown3 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CashSubBalanceTypeAndQuantityBreakdown3 {
-	#[validate]
 	#[serde(rename = "Tp")]
 	pub tp: CashBalanceType3Choice,
-	#[validate]
 	#[serde(rename = "QtyBrkdwn")]
 	pub qty_brkdwn: Option<Vec<AmountAndQuantityBreakdown1>>,
 }
 
 
 // ClearingSystemIdentification2Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ClearingSystemIdentification2Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
@@ -335,9 +304,8 @@ pub struct ClearingSystemIdentification2Choice {
 
 
 // ClearingSystemMemberIdentification2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ClearingSystemMemberIdentification2 {
-	#[validate]
 	#[serde(rename = "ClrSysId")]
 	pub clr_sys_id: Option<ClearingSystemIdentification2Choice>,
 	#[serde(rename = "MmbId")]
@@ -346,34 +314,31 @@ pub struct ClearingSystemMemberIdentification2 {
 
 
 // CopyDuplicate1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CopyDuplicate1Code {
-	#[validate(enumerate = ["CODU", "COPY", "DUPL"])]
 	#[serde(rename = "CopyDuplicate1Code")]
 	pub copy_duplicate1_code: String,
 }
 
 
 // CountryCode ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
-	#[validate(pattern = "[A-Z]{2,2}")]
 	#[serde(rename = "CountryCode")]
 	pub country_code: String,
 }
 
 
 // CreditDebitCode ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CreditDebitCode {
-	#[validate(enumerate = ["CRDT", "DBIT"])]
 	#[serde(rename = "CreditDebitCode")]
 	pub credit_debit_code: String,
 }
 
 
 // DateAndDateTime2Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DateAndDateTime2Choice {
 	#[serde(rename = "Dt")]
 	pub dt: Option<String>,
@@ -383,7 +348,7 @@ pub struct DateAndDateTime2Choice {
 
 
 // DateTimePeriod1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DateTimePeriod1 {
 	#[serde(rename = "FrDtTm")]
 	pub fr_dt_tm: String,
@@ -393,7 +358,7 @@ pub struct DateTimePeriod1 {
 
 
 // DecimalNumber ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DecimalNumber {
 	#[serde(rename = "DecimalNumber")]
 	pub decimal_number: f64,
@@ -401,9 +366,8 @@ pub struct DecimalNumber {
 
 
 // DeniedReason11 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DeniedReason11 {
-	#[validate]
 	#[serde(rename = "Cd")]
 	pub cd: DeniedReason16Choice,
 	#[serde(rename = "AddtlRsnInf")]
@@ -412,57 +376,51 @@ pub struct DeniedReason11 {
 
 
 // DeniedReason16Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DeniedReason16Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
 
 // DeniedReason4Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DeniedReason4Code {
-	#[validate(enumerate = ["ADEA", "DCAN", "DPRG", "DREP", "DSET", "LATE", "OTHR", "CDRG", "CDCY", "CDRE"])]
 	#[serde(rename = "DeniedReason4Code")]
 	pub denied_reason4_code: String,
 }
 
 
 // DeniedStatus16Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DeniedStatus16Choice {
 	#[serde(rename = "NoSpcfdRsn")]
 	pub no_spcfd_rsn: Option<String>,
-	#[validate]
 	#[serde(rename = "Rsn")]
 	pub rsn: Option<Vec<DeniedReason11>>,
 }
 
 
 // DocumentIdentification51 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DocumentIdentification51 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[validate]
 	#[serde(rename = "CreDtTm")]
 	pub cre_dt_tm: Option<DateAndDateTime2Choice>,
 	#[serde(rename = "CpyDplct")]
 	pub cpy_dplct: Option<String>,
-	#[validate]
 	#[serde(rename = "MsgOrgtr")]
 	pub msg_orgtr: Option<PartyIdentification136>,
-	#[validate]
 	#[serde(rename = "MsgRcpt")]
 	pub msg_rcpt: Option<PartyIdentification136>,
 }
 
 
 // ErrorHandling3Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ErrorHandling3Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
@@ -472,9 +430,8 @@ pub struct ErrorHandling3Choice {
 
 
 // ErrorHandling5 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ErrorHandling5 {
-	#[validate]
 	#[serde(rename = "Err")]
 	pub err: ErrorHandling3Choice,
 	#[serde(rename = "Desc")]
@@ -483,122 +440,103 @@ pub struct ErrorHandling5 {
 
 
 // EventFrequency7Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EventFrequency7Code {
-	#[validate(enumerate = ["YEAR", "ADHO", "MNTH", "DAIL", "INDA", "WEEK", "SEMI", "QUTR", "TOMN", "TOWK", "TWMN", "OVNG", "ONDE"])]
 	#[serde(rename = "EventFrequency7Code")]
 	pub event_frequency7_code: String,
 }
 
 
 // Exact3NumericText ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Exact3NumericText {
-	#[validate(pattern = "[0-9]{3}")]
 	#[serde(rename = "Exact3NumericText")]
 	pub exact3_numeric_text: String,
 }
 
 
 // Exact4AlphaNumericText ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Exact4AlphaNumericText {
-	#[validate(pattern = "[a-zA-Z0-9]{4}")]
 	#[serde(rename = "Exact4AlphaNumericText")]
 	pub exact4_alpha_numeric_text: String,
 }
 
 
 // Exact4NumericText ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Exact4NumericText {
-	#[validate(pattern = "[0-9]{4}")]
 	#[serde(rename = "Exact4NumericText")]
 	pub exact4_numeric_text: String,
 }
 
 
 // Exact5NumericText ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Exact5NumericText {
-	#[validate(pattern = "[0-9]{5}")]
 	#[serde(rename = "Exact5NumericText")]
 	pub exact5_numeric_text: String,
 }
 
 
 // ExternalAccountIdentification1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalAccountIdentification1Code {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 4)]
 	#[serde(rename = "ExternalAccountIdentification1Code")]
 	pub external_account_identification1_code: String,
 }
 
 
 // ExternalBalanceType1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalBalanceType1Code {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 4)]
 	#[serde(rename = "ExternalBalanceType1Code")]
 	pub external_balance_type1_code: String,
 }
 
 
 // ExternalCashAccountType1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalCashAccountType1Code {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 4)]
 	#[serde(rename = "ExternalCashAccountType1Code")]
 	pub external_cash_account_type1_code: String,
 }
 
 
 // ExternalClearingSystemIdentification1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalClearingSystemIdentification1Code {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 5)]
 	#[serde(rename = "ExternalClearingSystemIdentification1Code")]
 	pub external_clearing_system_identification1_code: String,
 }
 
 
 // ExternalFinancialInstitutionIdentification1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalFinancialInstitutionIdentification1Code {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 4)]
 	#[serde(rename = "ExternalFinancialInstitutionIdentification1Code")]
 	pub external_financial_institution_identification1_code: String,
 }
 
 
 // ExternalProxyAccountType1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalProxyAccountType1Code {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 4)]
 	#[serde(rename = "ExternalProxyAccountType1Code")]
 	pub external_proxy_account_type1_code: String,
 }
 
 
 // ExternalSystemErrorHandling1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalSystemErrorHandling1Code {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 4)]
 	#[serde(rename = "ExternalSystemErrorHandling1Code")]
 	pub external_system_error_handling1_code: String,
 }
 
 
 // FinancialIdentificationSchemeName1Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FinancialIdentificationSchemeName1Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
@@ -608,28 +546,25 @@ pub struct FinancialIdentificationSchemeName1Choice {
 
 
 // FinancialInstitutionIdentification23 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FinancialInstitutionIdentification23 {
 	#[serde(rename = "BICFI")]
 	pub bicfi: Option<String>,
-	#[validate]
 	#[serde(rename = "ClrSysMmbId")]
 	pub clr_sys_mmb_id: Option<ClearingSystemMemberIdentification2>,
 	#[serde(rename = "LEI")]
 	pub lei: Option<String>,
 	#[serde(rename = "Nm")]
 	pub nm: Option<String>,
-	#[validate]
 	#[serde(rename = "PstlAdr")]
 	pub pstl_adr: Option<PostalAddress27>,
-	#[validate]
 	#[serde(rename = "Othr")]
 	pub othr: Option<GenericFinancialIdentification1>,
 }
 
 
 // FinancialInstrumentQuantity1Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FinancialInstrumentQuantity1Choice {
 	#[serde(rename = "Unit")]
 	pub unit: Option<f64>,
@@ -641,22 +576,20 @@ pub struct FinancialInstrumentQuantity1Choice {
 
 
 // Frequency22Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Frequency22Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
 
 // GenericAccountIdentification1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericAccountIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[validate]
 	#[serde(rename = "SchmeNm")]
 	pub schme_nm: Option<AccountSchemeName1Choice>,
 	#[serde(rename = "Issr")]
@@ -665,11 +598,10 @@ pub struct GenericAccountIdentification1 {
 
 
 // GenericFinancialIdentification1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericFinancialIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[validate]
 	#[serde(rename = "SchmeNm")]
 	pub schme_nm: Option<FinancialIdentificationSchemeName1Choice>,
 	#[serde(rename = "Issr")]
@@ -678,7 +610,7 @@ pub struct GenericFinancialIdentification1 {
 
 
 // GenericIdentification30 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification30 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -690,7 +622,7 @@ pub struct GenericIdentification30 {
 
 
 // GenericIdentification36 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification36 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -702,7 +634,7 @@ pub struct GenericIdentification36 {
 
 
 // GenericIdentification37 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification37 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -712,16 +644,15 @@ pub struct GenericIdentification37 {
 
 
 // IBAN2007Identifier ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IBAN2007Identifier {
-	#[validate(pattern = "[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}")]
 	#[serde(rename = "IBAN2007Identifier")]
 	pub iban2007_identifier: String,
 }
 
 
 // ISODate ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
 	#[serde(rename = "ISODate")]
 	pub iso_date: String,
@@ -729,7 +660,7 @@ pub struct ISODate {
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -737,7 +668,7 @@ pub struct ISODateTime {
 
 
 // ImpliedCurrencyAndAmount ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ImpliedCurrencyAndAmount {
 	#[serde(rename = "ImpliedCurrencyAndAmount")]
 	pub implied_currency_and_amount: f64,
@@ -745,24 +676,18 @@ pub struct ImpliedCurrencyAndAmount {
 
 
 // IntraBalance5 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IntraBalance5 {
-	#[validate]
 	#[serde(rename = "SttlmAmt")]
 	pub sttlm_amt: Amount2Choice,
-	#[validate]
 	#[serde(rename = "SttlmDt")]
 	pub sttlm_dt: DateAndDateTime2Choice,
-	#[validate]
 	#[serde(rename = "BalFr")]
 	pub bal_fr: CashSubBalanceTypeAndQuantityBreakdown3,
-	#[validate]
 	#[serde(rename = "BalTo")]
 	pub bal_to: CashSubBalanceTypeAndQuantityBreakdown3,
-	#[validate]
 	#[serde(rename = "CshSubBalId")]
 	pub csh_sub_bal_id: Option<GenericIdentification37>,
-	#[validate]
 	#[serde(rename = "Prty")]
 	pub prty: Option<PriorityNumeric4Choice>,
 	#[serde(rename = "InstrPrcgAddtlDtls")]
@@ -771,109 +696,86 @@ pub struct IntraBalance5 {
 
 
 // IntraBalanceCancellation7 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IntraBalanceCancellation7 {
-	#[validate]
 	#[serde(rename = "CshAcct")]
 	pub csh_acct: Option<CashAccount40>,
-	#[validate]
 	#[serde(rename = "CshAcctOwnr")]
 	pub csh_acct_ownr: Option<SystemPartyIdentification8>,
-	#[validate]
 	#[serde(rename = "CshAcctSvcr")]
 	pub csh_acct_svcr: Option<BranchAndFinancialInstitutionIdentification8>,
-	#[validate]
 	#[serde(rename = "PrcgSts")]
 	pub prcg_sts: Option<ProcessingStatus69Choice>,
-	#[validate]
 	#[serde(rename = "Cxl")]
 	pub cxl: Vec<IntraBalanceCancellation8>,
 }
 
 
 // IntraBalanceCancellation8 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IntraBalanceCancellation8 {
-	#[validate]
 	#[serde(rename = "CshAcct")]
 	pub csh_acct: Option<CashAccount40>,
-	#[validate]
 	#[serde(rename = "CshAcctOwnr")]
 	pub csh_acct_ownr: Option<SystemPartyIdentification8>,
-	#[validate]
 	#[serde(rename = "CshAcctSvcr")]
 	pub csh_acct_svcr: Option<BranchAndFinancialInstitutionIdentification8>,
-	#[validate]
 	#[serde(rename = "PrcgSts")]
 	pub prcg_sts: Option<ProcessingStatus69Choice>,
 	#[serde(rename = "ReqRef")]
 	pub req_ref: String,
 	#[serde(rename = "StsDt")]
 	pub sts_dt: Option<String>,
-	#[validate]
 	#[serde(rename = "TxId")]
 	pub tx_id: Option<References14>,
-	#[validate]
 	#[serde(rename = "UndrlygIntraBal")]
 	pub undrlyg_intra_bal: Option<IntraBalance5>,
 }
 
 
 // IntraBalanceMovementCancellationReportV02 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IntraBalanceMovementCancellationReportV02 {
-	#[validate]
 	#[serde(rename = "Id")]
 	pub id: Option<DocumentIdentification51>,
-	#[validate]
 	#[serde(rename = "Pgntn")]
 	pub pgntn: Pagination1,
-	#[validate]
 	#[serde(rename = "RptGnlDtls")]
 	pub rpt_gnl_dtls: IntraBalanceReport5,
-	#[validate]
 	#[serde(rename = "RptOrErr")]
 	pub rpt_or_err: Option<IntraBalanceOrOperationalError10Choice>,
-	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
 // IntraBalanceOrOperationalError10Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IntraBalanceOrOperationalError10Choice {
-	#[validate]
 	#[serde(rename = "Cxls")]
 	pub cxls: Option<Vec<IntraBalanceCancellation7>>,
-	#[validate]
 	#[serde(rename = "OprlErr")]
 	pub oprl_err: Option<Vec<ErrorHandling5>>,
 }
 
 
 // IntraBalanceReport5 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IntraBalanceReport5 {
-	#[validate]
 	#[serde(rename = "RptNb")]
 	pub rpt_nb: Option<Number3Choice>,
 	#[serde(rename = "QryRef")]
 	pub qry_ref: Option<String>,
 	#[serde(rename = "RptId")]
 	pub rpt_id: Option<String>,
-	#[validate]
 	#[serde(rename = "RptDtTm")]
 	pub rpt_dt_tm: Option<DateAndDateTime2Choice>,
-	#[validate]
 	#[serde(rename = "RptPrd")]
 	pub rpt_prd: Option<Period7Choice>,
 	#[serde(rename = "QryTp")]
 	pub qry_tp: Option<String>,
-	#[validate]
 	#[serde(rename = "Frqcy")]
 	pub frqcy: Option<Frequency22Choice>,
-	#[validate]
 	#[serde(rename = "UpdTp")]
 	pub upd_tp: UpdateType15Choice,
 	#[serde(rename = "ActvtyInd")]
@@ -882,134 +784,113 @@ pub struct IntraBalanceReport5 {
 
 
 // LEIIdentifier ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
-	#[validate(pattern = "[A-Z0-9]{18,18}[0-9]{2,2}")]
 	#[serde(rename = "LEIIdentifier")]
 	pub lei_identifier: String,
 }
 
 
 // Max140Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 140)]
 	#[serde(rename = "Max140Text")]
 	pub max140_text: String,
 }
 
 
 // Max16Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max16Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 16)]
 	#[serde(rename = "Max16Text")]
 	pub max16_text: String,
 }
 
 
 // Max2048Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max2048Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 2048)]
 	#[serde(rename = "Max2048Text")]
 	pub max2048_text: String,
 }
 
 
 // Max210Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max210Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 210)]
 	#[serde(rename = "Max210Text")]
 	pub max210_text: String,
 }
 
 
 // Max34Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max34Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 34)]
 	#[serde(rename = "Max34Text")]
 	pub max34_text: String,
 }
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 350)]
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
 }
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 35)]
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
 }
 
 
 // Max5NumericText ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max5NumericText {
-	#[validate(pattern = "[0-9]{1,5}")]
 	#[serde(rename = "Max5NumericText")]
 	pub max5_numeric_text: String,
 }
 
 
 // Max70Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max70Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 70)]
 	#[serde(rename = "Max70Text")]
 	pub max70_text: String,
 }
 
 
 // MovementResponseType1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MovementResponseType1Code {
-	#[validate(enumerate = ["FULL", "STTS"])]
 	#[serde(rename = "MovementResponseType1Code")]
 	pub movement_response_type1_code: String,
 }
 
 
 // NameAndAddress5 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NameAndAddress5 {
 	#[serde(rename = "Nm")]
 	pub nm: String,
-	#[validate]
 	#[serde(rename = "Adr")]
 	pub adr: Option<PostalAddress1>,
 }
 
 
 // NoReasonCode ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NoReasonCode {
-	#[validate(enumerate = ["NORE"])]
 	#[serde(rename = "NoReasonCode")]
 	pub no_reason_code: String,
 }
 
 
 // Number3Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Number3Choice {
 	#[serde(rename = "Shrt")]
 	pub shrt: Option<String>,
@@ -1019,7 +900,7 @@ pub struct Number3Choice {
 
 
 // Pagination1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Pagination1 {
 	#[serde(rename = "PgNb")]
 	pub pg_nb: String,
@@ -1029,23 +910,20 @@ pub struct Pagination1 {
 
 
 // PartyIdentification120Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PartyIdentification120Choice {
 	#[serde(rename = "AnyBIC")]
 	pub any_bic: Option<String>,
-	#[validate]
 	#[serde(rename = "PrtryId")]
 	pub prtry_id: Option<GenericIdentification36>,
-	#[validate]
 	#[serde(rename = "NmAndAdr")]
 	pub nm_and_adr: Option<NameAndAddress5>,
 }
 
 
 // PartyIdentification136 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PartyIdentification136 {
-	#[validate]
 	#[serde(rename = "Id")]
 	pub id: PartyIdentification120Choice,
 	#[serde(rename = "LEI")]
@@ -1054,9 +932,8 @@ pub struct PartyIdentification136 {
 
 
 // PendingReason17 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PendingReason17 {
-	#[validate]
 	#[serde(rename = "Cd")]
 	pub cd: PendingReason30Choice,
 	#[serde(rename = "AddtlRsnInf")]
@@ -1065,38 +942,35 @@ pub struct PendingReason17 {
 
 
 // PendingReason30Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PendingReason30Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
 
 // PendingReason9Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PendingReason9Code {
-	#[validate(enumerate = ["ADEA", "CONF", "OTHR", "CDRG", "CDCY", "CDRE", "CDAC", "INBC"])]
 	#[serde(rename = "PendingReason9Code")]
 	pub pending_reason9_code: String,
 }
 
 
 // PendingStatus39Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PendingStatus39Choice {
 	#[serde(rename = "NoSpcfdRsn")]
 	pub no_spcfd_rsn: Option<String>,
-	#[validate]
 	#[serde(rename = "Rsn")]
 	pub rsn: Option<Vec<PendingReason17>>,
 }
 
 
 // Period2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Period2 {
 	#[serde(rename = "FrDt")]
 	pub fr_dt: String,
@@ -1106,19 +980,17 @@ pub struct Period2 {
 
 
 // Period7Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Period7Choice {
-	#[validate]
 	#[serde(rename = "FrDtTmToDtTm")]
 	pub fr_dt_tm_to_dt_tm: Option<DateTimePeriod1>,
-	#[validate]
 	#[serde(rename = "FrDtToDt")]
 	pub fr_dt_to_dt: Option<Period2>,
 }
 
 
 // PostalAddress1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PostalAddress1 {
 	#[serde(rename = "AdrTp")]
 	pub adr_tp: Option<String>,
@@ -1140,9 +1012,8 @@ pub struct PostalAddress1 {
 
 
 // PostalAddress27 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PostalAddress27 {
-	#[validate]
 	#[serde(rename = "AdrTp")]
 	pub adr_tp: Option<AddressType3Choice>,
 	#[serde(rename = "CareOf")]
@@ -1183,47 +1054,38 @@ pub struct PostalAddress27 {
 
 
 // PriorityNumeric4Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PriorityNumeric4Choice {
 	#[serde(rename = "Nmrc")]
 	pub nmrc: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
 
 // ProcessingStatus69Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProcessingStatus69Choice {
-	#[validate]
 	#[serde(rename = "PdgCxl")]
 	pub pdg_cxl: Option<PendingStatus39Choice>,
-	#[validate]
 	#[serde(rename = "Rjctd")]
 	pub rjctd: Option<RejectionOrRepairStatus39Choice>,
-	#[validate]
 	#[serde(rename = "Rpr")]
 	pub rpr: Option<RejectionOrRepairStatus39Choice>,
-	#[validate]
 	#[serde(rename = "AckdAccptd")]
 	pub ackd_accptd: Option<AcknowledgedAcceptedStatus24Choice>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<ProprietaryStatusAndReason6>,
-	#[validate]
 	#[serde(rename = "Dnd")]
 	pub dnd: Option<DeniedStatus16Choice>,
-	#[validate]
 	#[serde(rename = "Canc")]
 	pub canc: Option<CancellationStatus15Choice>,
 }
 
 
 // ProprietaryReason4 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProprietaryReason4 {
-	#[validate]
 	#[serde(rename = "Rsn")]
 	pub rsn: Option<GenericIdentification30>,
 	#[serde(rename = "AddtlRsnInf")]
@@ -1232,21 +1094,18 @@ pub struct ProprietaryReason4 {
 
 
 // ProprietaryStatusAndReason6 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProprietaryStatusAndReason6 {
-	#[validate]
 	#[serde(rename = "PrtrySts")]
 	pub prtry_sts: GenericIdentification30,
-	#[validate]
 	#[serde(rename = "PrtryRsn")]
 	pub prtry_rsn: Option<Vec<ProprietaryReason4>>,
 }
 
 
 // ProxyAccountIdentification1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProxyAccountIdentification1 {
-	#[validate]
 	#[serde(rename = "Tp")]
 	pub tp: Option<ProxyAccountType1Choice>,
 	#[serde(rename = "Id")]
@@ -1255,7 +1114,7 @@ pub struct ProxyAccountIdentification1 {
 
 
 // ProxyAccountType1Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProxyAccountType1Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
@@ -1265,7 +1124,7 @@ pub struct ProxyAccountType1Choice {
 
 
 // References14 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct References14 {
 	#[serde(rename = "AcctOwnrTxId")]
 	pub acct_ownr_tx_id: Option<String>,
@@ -1281,20 +1140,18 @@ pub struct References14 {
 
 
 // RejectionAndRepairReason33Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RejectionAndRepairReason33Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
 
 // RejectionOrRepairReason33 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RejectionOrRepairReason33 {
-	#[validate]
 	#[serde(rename = "Cd")]
 	pub cd: RejectionAndRepairReason33Choice,
 	#[serde(rename = "AddtlRsnInf")]
@@ -1303,76 +1160,69 @@ pub struct RejectionOrRepairReason33 {
 
 
 // RejectionOrRepairStatus39Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RejectionOrRepairStatus39Choice {
 	#[serde(rename = "NoSpcfdRsn")]
 	pub no_spcfd_rsn: Option<String>,
-	#[validate]
 	#[serde(rename = "Rsn")]
 	pub rsn: Option<Vec<RejectionOrRepairReason33>>,
 }
 
 
 // RejectionReason34Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RejectionReason34Code {
-	#[validate(enumerate = ["ADEA", "LATE", "CASH", "NRGM", "NRGN", "OTHR", "REFE"])]
 	#[serde(rename = "RejectionReason34Code")]
 	pub rejection_reason34_code: String,
 }
 
 
 // StatementUpdateType1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StatementUpdateType1Code {
-	#[validate(enumerate = ["COMP", "DELT"])]
 	#[serde(rename = "StatementUpdateType1Code")]
 	pub statement_update_type1_code: String,
 }
 
 
 // SupplementaryData1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
-	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }
 
 
 // SystemPartyIdentification8 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SystemPartyIdentification8 {
-	#[validate]
 	#[serde(rename = "Id")]
 	pub id: PartyIdentification136,
-	#[validate]
 	#[serde(rename = "RspnsblPtyId")]
 	pub rspnsbl_pty_id: Option<PartyIdentification136>,
 }
 
 
 // UpdateType15Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct UpdateType15Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
 
 // YesNoIndicator ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct YesNoIndicator {
 	#[serde(rename = "YesNoIndicator")]
 	pub yes_no_indicator: bool,

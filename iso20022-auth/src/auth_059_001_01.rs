@@ -23,11 +23,10 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // ActiveCurrencyAndAmountSimpleType ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "ActiveCurrencyAndAmount_SimpleType")]
 	pub active_currency_and_amount_simple_type: f64,
@@ -35,7 +34,7 @@ pub struct ActiveCurrencyAndAmountSimpleType {
 
 
 // ActiveCurrencyAndAmount ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmount {
 	#[serde(rename = "Ccy")]
 	pub ccy: String,
@@ -45,18 +44,16 @@ pub struct ActiveCurrencyAndAmount {
 
 
 // ActiveCurrencyCode ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[validate(pattern = "[A-Z]{3,3}")]
 	#[serde(rename = "ActiveCurrencyCode")]
 	pub active_currency_code: String,
 }
 
 
 // AmountAndDirection102 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AmountAndDirection102 {
-	#[validate]
 	#[serde(rename = "Amt")]
 	pub amt: ActiveCurrencyAndAmount,
 	#[serde(rename = "Sgn")]
@@ -65,7 +62,7 @@ pub struct AmountAndDirection102 {
 
 
 // BaseOneRate ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BaseOneRate {
 	#[serde(rename = "BaseOneRate")]
 	pub base_one_rate: f64,
@@ -73,48 +70,36 @@ pub struct BaseOneRate {
 
 
 // CCPIncomeStatementAndCapitalAdequacyReportV01 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CCPIncomeStatementAndCapitalAdequacyReportV01 {
-	#[validate]
 	#[serde(rename = "IncmStmt")]
 	pub incm_stmt: IncomeStatement1,
-	#[validate]
 	#[serde(rename = "CptlRqrmnts")]
 	pub cptl_rqrmnts: CapitalRequirement1,
-	#[validate]
 	#[serde(rename = "TtlCptl")]
 	pub ttl_cptl: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "LqdFinRsrcs")]
 	pub lqd_fin_rsrcs: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "HpthtclCptlMeasr")]
 	pub hpthtcl_cptl_measr: Vec<HypotheticalCapitalMeasure1>,
-	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
 // CapitalRequirement1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CapitalRequirement1 {
-	#[validate]
 	#[serde(rename = "WndgDwnOrRstrgRsk")]
 	pub wndg_dwn_or_rstrg_rsk: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "OprlAndLglRsk")]
 	pub oprl_and_lgl_rsk: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "CdtRsk")]
 	pub cdt_rsk: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "CntrPtyRsk")]
 	pub cntr_pty_rsk: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "MktRsk")]
 	pub mkt_rsk: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "BizRsk")]
 	pub biz_rsk: ActiveCurrencyAndAmount,
 	#[serde(rename = "NtfctnBffr")]
@@ -123,9 +108,8 @@ pub struct CapitalRequirement1 {
 
 
 // HypotheticalCapitalMeasure1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct HypotheticalCapitalMeasure1 {
-	#[validate]
 	#[serde(rename = "Amt")]
 	pub amt: ActiveCurrencyAndAmount,
 	#[serde(rename = "DfltWtrfllId")]
@@ -134,60 +118,47 @@ pub struct HypotheticalCapitalMeasure1 {
 
 
 // IncomeStatement1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IncomeStatement1 {
-	#[validate]
 	#[serde(rename = "ClrFees")]
 	pub clr_fees: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "OthrOprgRvn")]
 	pub othr_oprg_rvn: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "OprgExpnss")]
 	pub oprg_expnss: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "OprgPrftOrLoss")]
 	pub oprg_prft_or_loss: AmountAndDirection102,
-	#[validate]
 	#[serde(rename = "NetIntrstIncm")]
 	pub net_intrst_incm: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "OthrNonOprgRvn")]
 	pub othr_non_oprg_rvn: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "NonOprgExpnss")]
 	pub non_oprg_expnss: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "PreTaxPrftOrLoss")]
 	pub pre_tax_prft_or_loss: AmountAndDirection102,
-	#[validate]
 	#[serde(rename = "PstTaxPrftOrLoss")]
 	pub pst_tax_prft_or_loss: AmountAndDirection102,
 }
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 350)]
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
 }
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 35)]
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
 }
 
 
 // PlusOrMinusIndicator ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PlusOrMinusIndicator {
 	#[serde(rename = "PlusOrMinusIndicator")]
 	pub plus_or_minus_indicator: bool,
@@ -195,17 +166,16 @@ pub struct PlusOrMinusIndicator {
 
 
 // SupplementaryData1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
-	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }

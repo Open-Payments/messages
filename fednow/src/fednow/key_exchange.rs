@@ -23,32 +23,27 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // Max300AlphaNumericString ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max300AlphaNumericString {
-	#[validate(pattern = "[A-Za-z0-9\\-_]{1,300}")]
 	#[serde(rename = "Max300AlphaNumericString")]
 	pub max300_alpha_numeric_string: String,
 }
 
 
 // Max50AlphaNumericString ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max50AlphaNumericString {
-	#[validate(pattern = "[A-Za-z0-9\\-_]{1,50}")]
 	#[serde(rename = "Max50AlphaNumericString")]
 	pub max50_alpha_numeric_string: String,
 }
 
 
 // Max300Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max300Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 300)]
 	#[serde(rename = "Max300Text")]
 	pub max300_text: String,
 }
@@ -59,16 +54,15 @@ pub struct Max300Text {
 //                 
 
 //                 Note: This may be a master account routing number or a subaccount routing number.
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RoutingNumberFRS1 {
-	#[validate(pattern = "[0-9]{9,9}")]
 	#[serde(rename = "RoutingNumber_FRS_1")]
 	pub routing_number_frs_1: String,
 }
 
 
 // FedNowMessageSignatureKeyStatus ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowMessageSignatureKeyStatus {
 	#[serde(rename = "KeyStatus")]
 	pub key_status: String,
@@ -78,7 +72,7 @@ pub struct FedNowMessageSignatureKeyStatus {
 
 
 // FedNowMessageSignatureKey ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowMessageSignatureKey {
 	#[serde(rename = "FedNowKeyID")]
 	pub fed_now_key_id: String,
@@ -96,16 +90,15 @@ pub struct FedNowMessageSignatureKey {
 
 
 // KeyAddition ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct KeyAddition {
-	#[validate]
 	#[serde(rename = "Key")]
 	pub key: Option<FedNowMessageSignatureKey>,
 }
 
 
 // KeyRevocation ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct KeyRevocation {
 	#[serde(rename = "KeyRevocation")]
 	pub key_revocation: Option<String>,
@@ -117,9 +110,8 @@ pub struct KeyRevocation {
 
 
 // FedNowMessageSignatureKeyExchange ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowMessageSignatureKeyExchange {
-	#[validate]
 	#[serde(rename = "KeyAddition")]
 	pub key_addition: Option<KeyAddition>,
 	#[serde(rename = "KeyRevocation")]
@@ -128,7 +120,7 @@ pub struct FedNowMessageSignatureKeyExchange {
 
 
 // FedNowCustomerMessageSignatureKeyOperationResponse ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 	#[serde(rename = "FedNowKeyID")]
 	pub fed_now_key_id: String,
@@ -140,33 +132,30 @@ pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 
 
 // GetAllFedNowActivePublicKeys ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GetAllFedNowActivePublicKeys {
 }
 
 
 // GetAllCustomerPublicKeys ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GetAllCustomerPublicKeys {
 }
 
 
 // FedNowPublicKeyResponse ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowPublicKeyResponse {
-	#[validate]
 	#[serde(rename = "FedNowMessageSignatureKeyStatus")]
 	pub fed_now_message_signature_key_status: FedNowMessageSignatureKeyStatus,
-	#[validate]
 	#[serde(rename = "FedNowMessageSignatureKey")]
 	pub fed_now_message_signature_key: FedNowMessageSignatureKey,
 }
 
 
 // FedNowPublicKeyResponses ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowPublicKeyResponses {
-	#[validate]
 	#[serde(rename = "PublicKeys")]
 	pub public_keys: Vec<FedNowPublicKeyResponse>,
 }

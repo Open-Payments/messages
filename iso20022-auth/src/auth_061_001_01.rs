@@ -23,11 +23,10 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // ActiveCurrencyAnd24AmountSimpleType ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAnd24AmountSimpleType {
 	#[serde(rename = "ActiveCurrencyAnd24Amount_SimpleType")]
 	pub active_currency_and24_amount_simple_type: f64,
@@ -35,7 +34,7 @@ pub struct ActiveCurrencyAnd24AmountSimpleType {
 
 
 // ActiveCurrencyAnd24Amount ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAnd24Amount {
 	#[serde(rename = "Ccy")]
 	pub ccy: String,
@@ -45,7 +44,7 @@ pub struct ActiveCurrencyAnd24Amount {
 
 
 // ActiveCurrencyAndAmountSimpleType ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "ActiveCurrencyAndAmount_SimpleType")]
 	pub active_currency_and_amount_simple_type: f64,
@@ -53,7 +52,7 @@ pub struct ActiveCurrencyAndAmountSimpleType {
 
 
 // ActiveCurrencyAndAmount ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmount {
 	#[serde(rename = "Ccy")]
 	pub ccy: String,
@@ -63,32 +62,28 @@ pub struct ActiveCurrencyAndAmount {
 
 
 // ActiveCurrencyCode ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[validate(pattern = "[A-Z]{3,3}")]
 	#[serde(rename = "ActiveCurrencyCode")]
 	pub active_currency_code: String,
 }
 
 
 // CCPInvestmentsReportV01 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CCPInvestmentsReportV01 {
-	#[validate]
 	#[serde(rename = "Invstmt")]
 	pub invstmt: Vec<Investment1Choice>,
-	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
 // Deposit1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Deposit1 {
 	#[serde(rename = "MtrtyDt")]
 	pub mtrty_dt: String,
-	#[validate]
 	#[serde(rename = "Val")]
 	pub val: ActiveCurrencyAndAmount,
 	#[serde(rename = "CtrPtyId")]
@@ -97,7 +92,7 @@ pub struct Deposit1 {
 
 
 // FinancialInstrument59 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FinancialInstrument59 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -109,9 +104,8 @@ pub struct FinancialInstrument59 {
 
 
 // GeneralCollateral3 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GeneralCollateral3 {
-	#[validate]
 	#[serde(rename = "FinInstrmId")]
 	pub fin_instrm_id: Option<Vec<FinancialInstrument59>>,
 	#[serde(rename = "ElgblFinInstrmId")]
@@ -120,16 +114,15 @@ pub struct GeneralCollateral3 {
 
 
 // ISINOct2015Identifier ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISINOct2015Identifier {
-	#[validate(pattern = "[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}")]
 	#[serde(rename = "ISINOct2015Identifier")]
 	pub isin_oct2015_identifier: String,
 }
 
 
 // ISODate ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
 	#[serde(rename = "ISODate")]
 	pub iso_date: String,
@@ -137,89 +130,74 @@ pub struct ISODate {
 
 
 // Investment1Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Investment1Choice {
-	#[validate]
 	#[serde(rename = "UscrdCshDpst")]
 	pub uscrd_csh_dpst: Option<Deposit1>,
-	#[validate]
 	#[serde(rename = "CntrlBkDpst")]
 	pub cntrl_bk_dpst: Option<Deposit1>,
-	#[validate]
 	#[serde(rename = "RpAgrmt")]
 	pub rp_agrmt: Option<RepurchaseAgreement2>,
-	#[validate]
 	#[serde(rename = "OthrInvstmts")]
 	pub othr_invstmts: Option<OtherInvestment1>,
-	#[validate]
 	#[serde(rename = "OutrghtInvstmt")]
 	pub outrght_invstmt: Option<SecurityIdentificationAndAmount1>,
 }
 
 
 // LEIIdentifier ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
-	#[validate(pattern = "[A-Z0-9]{18,18}[0-9]{2,2}")]
 	#[serde(rename = "LEIIdentifier")]
 	pub lei_identifier: String,
 }
 
 
 // Max140Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 140)]
 	#[serde(rename = "Max140Text")]
 	pub max140_text: String,
 }
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 350)]
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
 }
 
 
 // OtherInvestment1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OtherInvestment1 {
 	#[serde(rename = "Desc")]
 	pub desc: String,
-	#[validate]
 	#[serde(rename = "Amt")]
 	pub amt: ActiveCurrencyAndAmount,
 }
 
 
 // ProductType7Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProductType7Code {
-	#[validate(enumerate = ["SVGN", "EQUI", "OTHR"])]
 	#[serde(rename = "ProductType7Code")]
 	pub product_type7_code: String,
 }
 
 
 // RepurchaseAgreement2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RepurchaseAgreement2 {
 	#[serde(rename = "MtrtyDt")]
 	pub mtrty_dt: String,
-	#[validate]
 	#[serde(rename = "ScndLegPric")]
 	pub scnd_leg_pric: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "CollMktVal")]
 	pub coll_mkt_val: ActiveCurrencyAndAmount,
 	#[serde(rename = "CtrPty")]
 	pub ctr_pty: String,
-	#[validate]
 	#[serde(rename = "RpAgrmtTp")]
 	pub rp_agrmt_tp: RepurchaseAgreementType3Choice,
 	#[serde(rename = "TrptyAgtId")]
@@ -228,19 +206,17 @@ pub struct RepurchaseAgreement2 {
 
 
 // RepurchaseAgreementType3Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RepurchaseAgreementType3Choice {
-	#[validate]
 	#[serde(rename = "SpcfcColl")]
 	pub spcfc_coll: Option<SpecificCollateral2>,
-	#[validate]
 	#[serde(rename = "GnlColl")]
 	pub gnl_coll: Option<GeneralCollateral3>,
 }
 
 
 // SNA2008SectorIdentifier ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SNA2008SectorIdentifier {
 	#[serde(rename = "SNA2008SectorIdentifier")]
 	pub sna2008_sector_identifier: String,
@@ -248,11 +224,10 @@ pub struct SNA2008SectorIdentifier {
 
 
 // SecurityIdentificationAndAmount1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecurityIdentificationAndAmount1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[validate]
 	#[serde(rename = "MktVal")]
 	pub mkt_val: ActiveCurrencyAnd24Amount,
 	#[serde(rename = "FinInstrmTp")]
@@ -261,26 +236,24 @@ pub struct SecurityIdentificationAndAmount1 {
 
 
 // SpecificCollateral2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SpecificCollateral2 {
-	#[validate]
 	#[serde(rename = "FinInstrmId")]
 	pub fin_instrm_id: FinancialInstrument59,
 }
 
 
 // SupplementaryData1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
-	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }
