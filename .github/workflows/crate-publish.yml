@@ -16,7 +16,9 @@ jobs:
       - name: Set up Rust
         uses: actions-rs/toolchain@v1
         with:
+          profile: minimal
           toolchain: stable
+          components: rustfmt, clippy
 
       - name: Install cargo-release
         run: cargo install cargo-release
@@ -33,4 +35,4 @@ jobs:
         env:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CRATES_IO_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: cargo release minor --workspace --execute
+        run: cargo release minor --execute

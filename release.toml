@@ -1,23 +1,29 @@
-[workspace]
-independent = false
+# release.toml
 
-[release]
+# Use the same version for all crates in the workspace
+shared-version = true
+
+# Specify which branches are allowed to perform a release
+allow-branch = ["main"]
+
+# Enable tagging and configure tag message and prefix
 tag = true
+tag-prefix = "v"
+tag-message = "Version {{version}} release"
+
+# Push commits and tags to the remote repository
 push = true
 push-remote = "origin"
-conventional = true
-workspace = true
-# Defines the default registry (crates.io)
-registry = "crates-io"
 
-[registries]
-crates-io = { index = "https://github.com/rust-lang/crates.io-index" }
+# Customize the commit message for the release commit
+pre-release-commit-message = "chore(release): prepare for {{version}} release"
 
-[git]
-commit-hook = false
+# Consolidate commits to avoid post-release version bumps
+consolidate-commits = true
 
-[package]
-dev-version = false
+# Disable signing commits and tags
+sign-commit = false
+sign-tag = false
 
-[profile]
-level = "info"
+# Publish crates to crates.io
+publish = true
