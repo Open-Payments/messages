@@ -1,0 +1,23 @@
+[workspace]
+independent = false
+
+[release]
+tag = true
+push = true
+push-remote = "origin"
+conventional = true
+workspace = true
+# Defines the default registry (crates.io)
+registry = "crates-io"
+
+[registries]
+crates-io = { index = "https://github.com/rust-lang/crates.io-index" }
+
+[git]
+commit-hook = false
+
+[package]
+dev-version = false
+
+[profile]
+level = "info"
