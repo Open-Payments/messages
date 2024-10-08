@@ -23,15 +23,13 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // ApplicationSpecifics1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ApplicationSpecifics1 {
 	#[serde(rename = "SysUsr")]
 	pub sys_usr: Option<String>,
-	#[validate]
 	#[serde(rename = "Sgntr")]
 	pub sgntr: Option<SignatureEnvelope>,
 	#[serde(rename = "TtlNbOfDocs")]
@@ -40,19 +38,17 @@ pub struct ApplicationSpecifics1 {
 
 
 // BusinessFileHeaderV01 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BusinessFileHeaderV01 {
-	#[validate]
 	#[serde(rename = "PyldDesc")]
 	pub pyld_desc: PayloadDescription2,
-	#[validate]
 	#[serde(rename = "Pyld")]
 	pub pyld: Option<Vec<LaxPayload>>,
 }
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -60,13 +56,13 @@ pub struct ISODateTime {
 
 
 // LaxPayload ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LaxPayload {
 }
 
 
 // ManifestData2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ManifestData2 {
 	#[serde(rename = "DocTp")]
 	pub doc_tp: String,
@@ -76,37 +72,31 @@ pub struct ManifestData2 {
 
 
 // Max140Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 140)]
 	#[serde(rename = "Max140Text")]
 	pub max140_text: String,
 }
 
 
 // Max256Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max256Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 256)]
 	#[serde(rename = "Max256Text")]
 	pub max256_text: String,
 }
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 35)]
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
 }
 
 
 // Number ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Number {
 	#[serde(rename = "Number")]
 	pub number: f64,
@@ -114,7 +104,7 @@ pub struct Number {
 
 
 // PayloadData2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PayloadData2 {
 	#[serde(rename = "PyldIdr")]
 	pub pyld_idr: String,
@@ -126,30 +116,27 @@ pub struct PayloadData2 {
 
 
 // PayloadDescription2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PayloadDescription2 {
-	#[validate]
 	#[serde(rename = "PyldData")]
 	pub pyld_data: PayloadData2,
-	#[validate]
 	#[serde(rename = "ApplSpcfcs")]
 	pub appl_spcfcs: Option<ApplicationSpecifics1>,
 	#[serde(rename = "PyldTp")]
 	pub pyld_tp: String,
-	#[validate]
 	#[serde(rename = "MnfstData")]
 	pub mnfst_data: Option<Vec<ManifestData2>>,
 }
 
 
 // SignatureEnvelope ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SignatureEnvelope {
 }
 
 
 // TrueFalseIndicator ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TrueFalseIndicator {
 	#[serde(rename = "TrueFalseIndicator")]
 	pub true_false_indicator: bool,

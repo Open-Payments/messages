@@ -23,36 +23,32 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // BusinessInformationCriteria1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BusinessInformationCriteria1 {
 	#[serde(rename = "NewQryNm")]
 	pub new_qry_nm: Option<String>,
-	#[validate]
 	#[serde(rename = "SchCrit")]
 	pub sch_crit: Option<Vec<GeneralBusinessInformationSearchCriteria1>>,
-	#[validate]
 	#[serde(rename = "RtrCrit")]
 	pub rtr_crit: Option<GeneralBusinessInformationReturnCriteria1>,
 }
 
 
 // BusinessInformationQueryDefinition3 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BusinessInformationQueryDefinition3 {
 	#[serde(rename = "QryTp")]
 	pub qry_tp: Option<String>,
-	#[validate]
 	#[serde(rename = "GnlBizInfCrit")]
 	pub gnl_biz_inf_crit: Option<GeneralBusinessInformationCriteriaDefinition1Choice>,
 }
 
 
 // CharacterSearch1Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CharacterSearch1Choice {
 	#[serde(rename = "EQ")]
 	pub eq: Option<String>,
@@ -66,18 +62,17 @@ pub struct CharacterSearch1Choice {
 
 
 // GeneralBusinessInformationCriteriaDefinition1Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GeneralBusinessInformationCriteriaDefinition1Choice {
 	#[serde(rename = "QryNm")]
 	pub qry_nm: Option<String>,
-	#[validate]
 	#[serde(rename = "NewCrit")]
 	pub new_crit: Option<BusinessInformationCriteria1>,
 }
 
 
 // GeneralBusinessInformationReturnCriteria1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GeneralBusinessInformationReturnCriteria1 {
 	#[serde(rename = "QlfrInd")]
 	pub qlfr_ind: Option<bool>,
@@ -89,36 +84,31 @@ pub struct GeneralBusinessInformationReturnCriteria1 {
 
 
 // GeneralBusinessInformationSearchCriteria1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GeneralBusinessInformationSearchCriteria1 {
 	#[serde(rename = "Ref")]
 	pub ref_attr: Option<Vec<String>>,
-	#[validate]
 	#[serde(rename = "Sbjt")]
 	pub sbjt: Option<Vec<CharacterSearch1Choice>>,
-	#[validate]
 	#[serde(rename = "Qlfr")]
 	pub qlfr: Option<Vec<InformationQualifierType1>>,
 }
 
 
 // GetGeneralBusinessInformationV04 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GetGeneralBusinessInformationV04 {
-	#[validate]
 	#[serde(rename = "MsgHdr")]
 	pub msg_hdr: MessageHeader1,
-	#[validate]
 	#[serde(rename = "GnlBizInfQryDef")]
 	pub gnl_biz_inf_qry_def: Option<BusinessInformationQueryDefinition3>,
-	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -126,7 +116,7 @@ pub struct ISODateTime {
 
 
 // InformationQualifierType1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InformationQualifierType1 {
 	#[serde(rename = "IsFrmtd")]
 	pub is_frmtd: Option<bool>,
@@ -136,27 +126,23 @@ pub struct InformationQualifierType1 {
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 350)]
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
 }
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 35)]
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
 }
 
 
 // MessageHeader1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageHeader1 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
@@ -166,25 +152,23 @@ pub struct MessageHeader1 {
 
 
 // Priority1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Priority1Code {
-	#[validate(enumerate = ["HIGH", "NORM", "LOWW"])]
 	#[serde(rename = "Priority1Code")]
 	pub priority1_code: String,
 }
 
 
 // QueryType2Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct QueryType2Code {
-	#[validate(enumerate = ["ALLL", "CHNG", "MODF", "DELD"])]
 	#[serde(rename = "QueryType2Code")]
 	pub query_type2_code: String,
 }
 
 
 // RequestedIndicator ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RequestedIndicator {
 	#[serde(rename = "RequestedIndicator")]
 	pub requested_indicator: bool,
@@ -192,24 +176,23 @@ pub struct RequestedIndicator {
 
 
 // SupplementaryData1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
-	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }
 
 
 // YesNoIndicator ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct YesNoIndicator {
 	#[serde(rename = "YesNoIndicator")]
 	pub yes_no_indicator: bool,

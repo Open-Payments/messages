@@ -23,11 +23,10 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // Event2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Event2 {
 	#[serde(rename = "EvtCd")]
 	pub evt_cd: String,
@@ -41,7 +40,7 @@ pub struct Event2 {
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -49,40 +48,32 @@ pub struct ISODateTime {
 
 
 // Max1000Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max1000Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 1000)]
 	#[serde(rename = "Max1000Text")]
 	pub max1000_text: String,
 }
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 35)]
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
 }
 
 
 // Max4AlphaNumericText ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max4AlphaNumericText {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 4)]
-	#[validate(pattern = "[a-zA-Z0-9]{1,4}")]
 	#[serde(rename = "Max4AlphaNumericText")]
 	pub max4_alpha_numeric_text: String,
 }
 
 
 // SystemEventNotificationV02 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SystemEventNotificationV02 {
-	#[validate]
 	#[serde(rename = "EvtInf")]
 	pub evt_inf: Event2,
 }

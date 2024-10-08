@@ -23,20 +23,18 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // CountryCode ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
-	#[validate(pattern = "[A-Z]{2,2}")]
 	#[serde(rename = "CountryCode")]
 	pub country_code: String,
 }
 
 
 // CountryCodeAndName3 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCodeAndName3 {
 	#[serde(rename = "Cd")]
 	pub cd: String,
@@ -46,19 +44,17 @@ pub struct CountryCodeAndName3 {
 
 
 // FinancialInstrumentReportingMarketIdentificationCodeReportV02 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FinancialInstrumentReportingMarketIdentificationCodeReportV02 {
-	#[validate]
 	#[serde(rename = "MktId")]
 	pub mkt_id: Vec<MarketIdentification95>,
-	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
 // ISODate ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
 	#[serde(rename = "ISODate")]
 	pub iso_date: String,
@@ -66,7 +62,7 @@ pub struct ISODate {
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -74,34 +70,31 @@ pub struct ISODateTime {
 
 
 // MICEntityType1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MICEntityType1Code {
-	#[validate(enumerate = ["APPA", "CTPS", "MLTF", "OTFS", "RMKT", "SINT"])]
 	#[serde(rename = "MICEntityType1Code")]
 	pub mic_entity_type1_code: String,
 }
 
 
 // MICIdentifier ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MICIdentifier {
-	#[validate(pattern = "[A-Z0-9]{4,4}")]
 	#[serde(rename = "MICIdentifier")]
 	pub mic_identifier: String,
 }
 
 
 // MarketIdentification1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MarketIdentification1Code {
-	#[validate(enumerate = ["SGMT", "OPRT"])]
 	#[serde(rename = "MarketIdentification1Code")]
 	pub market_identification1_code: String,
 }
 
 
 // MarketIdentification95 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MarketIdentification95 {
 	#[serde(rename = "Oprg")]
 	pub oprg: String,
@@ -117,7 +110,6 @@ pub struct MarketIdentification95 {
 	pub acrnm: Option<String>,
 	#[serde(rename = "City")]
 	pub city: Option<String>,
-	#[validate]
 	#[serde(rename = "Ctry")]
 	pub ctry: CountryCodeAndName3,
 	#[serde(rename = "AuthrtyNm")]
@@ -130,7 +122,6 @@ pub struct MarketIdentification95 {
 	pub mod_attr: Option<String>,
 	#[serde(rename = "CreDt")]
 	pub cre_dt: Option<String>,
-	#[validate]
 	#[serde(rename = "VldtyPrd")]
 	pub vldty_prd: Period4Choice,
 	#[serde(rename = "StsDt")]
@@ -141,66 +132,55 @@ pub struct MarketIdentification95 {
 
 
 // Max210Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max210Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 210)]
 	#[serde(rename = "Max210Text")]
 	pub max210_text: String,
 }
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 350)]
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
 }
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 35)]
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
 }
 
 
 // Max450Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max450Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 450)]
 	#[serde(rename = "Max450Text")]
 	pub max450_text: String,
 }
 
 
 // Max70Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max70Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 70)]
 	#[serde(rename = "Max70Text")]
 	pub max70_text: String,
 }
 
 
 // Modification1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Modification1Code {
-	#[validate(enumerate = ["NOCH", "MODI", "DELE", "ADDD"])]
 	#[serde(rename = "Modification1Code")]
 	pub modification1_code: String,
 }
 
 
 // Period2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Period2 {
 	#[serde(rename = "FrDt")]
 	pub fr_dt: String,
@@ -210,7 +190,7 @@ pub struct Period2 {
 
 
 // Period4Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Period4Choice {
 	#[serde(rename = "Dt")]
 	pub dt: Option<String>,
@@ -218,24 +198,22 @@ pub struct Period4Choice {
 	pub fr_dt: Option<String>,
 	#[serde(rename = "ToDt")]
 	pub to_dt: Option<String>,
-	#[validate]
 	#[serde(rename = "FrDtToDt")]
 	pub fr_dt_to_dt: Option<Period2>,
 }
 
 
 // SupplementaryData1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
-	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }

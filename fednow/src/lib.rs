@@ -29,17 +29,14 @@ pub mod fednow_outgoing_external;
 pub mod document;
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 use crate::fednow_incoming_external::FedNowIncoming;
 use crate::fednow_outgoing_external::FedNowOutgoing;
 
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FednowMessage {
-    #[validate]
     #[serde(rename = "FedNowIncoming")]
     FedNowIncoming(Box<FedNowIncoming>),
 
-	#[validate]
     #[serde(rename = "FedNowOutgoing")]
     FedNowOutgoing(Box<FedNowOutgoing>),
 }

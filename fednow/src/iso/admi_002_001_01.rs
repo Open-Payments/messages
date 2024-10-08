@@ -23,11 +23,10 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -35,37 +34,31 @@ pub struct ISODateTime {
 
 
 // Max20000Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max20000Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 20000)]
 	#[serde(rename = "Max20000Text")]
 	pub max20000_text: String,
 }
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 350)]
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
 }
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 35)]
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
 }
 
 
 // MessageReference ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
 	pub ref_attr: String,
@@ -73,7 +66,7 @@ pub struct MessageReference {
 
 
 // RejectionReason2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RejectionReason2 {
 	#[serde(rename = "RjctgPtyRsn")]
 	pub rjctg_pty_rsn: String,
@@ -89,12 +82,10 @@ pub struct RejectionReason2 {
 
 
 // Admi00200101 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Admi00200101 {
-	#[validate]
 	#[serde(rename = "RltdRef")]
 	pub rltd_ref: MessageReference,
-	#[validate]
 	#[serde(rename = "Rsn")]
 	pub rsn: RejectionReason2,
 }

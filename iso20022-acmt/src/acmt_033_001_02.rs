@@ -23,11 +23,10 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // AccountSwitchDetails1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountSwitchDetails1 {
 	#[serde(rename = "UnqRefNb")]
 	pub unq_ref_nb: String,
@@ -43,38 +42,33 @@ pub struct AccountSwitchDetails1 {
 	pub swtch_sts: Option<String>,
 	#[serde(rename = "BalTrfWndw")]
 	pub bal_trf_wndw: Option<String>,
-	#[validate]
 	#[serde(rename = "Rspn")]
 	pub rspn: Option<Vec<ResponseDetails1>>,
 }
 
 
 // AccountSwitchNotifyAccountSwitchCompleteV02 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountSwitchNotifyAccountSwitchCompleteV02 {
-	#[validate]
 	#[serde(rename = "MsgId")]
 	pub msg_id: MessageIdentification1,
-	#[validate]
 	#[serde(rename = "AcctSwtchDtls")]
 	pub acct_swtch_dtls: AccountSwitchDetails1,
-	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
 // BalanceTransferWindow1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BalanceTransferWindow1Code {
-	#[validate(enumerate = ["DAYH", "EARL"])]
 	#[serde(rename = "BalanceTransferWindow1Code")]
 	pub balance_transfer_window1_code: String,
 }
 
 
 // ISODate ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
 	#[serde(rename = "ISODate")]
 	pub iso_date: String,
@@ -82,7 +76,7 @@ pub struct ISODate {
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -90,27 +84,23 @@ pub struct ISODateTime {
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 350)]
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
 }
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 35)]
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
 }
 
 
 // MessageIdentification1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -120,7 +110,7 @@ pub struct MessageIdentification1 {
 
 
 // ResponseDetails1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ResponseDetails1 {
 	#[serde(rename = "RspnCd")]
 	pub rspn_cd: String,
@@ -130,35 +120,32 @@ pub struct ResponseDetails1 {
 
 
 // SupplementaryData1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
-	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }
 
 
 // SwitchStatus1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SwitchStatus1Code {
-	#[validate(enumerate = ["ACPT", "BTRQ", "BTRS", "COMP", "REDT", "REDE", "REJT", "REQU", "TMTN"])]
 	#[serde(rename = "SwitchStatus1Code")]
 	pub switch_status1_code: String,
 }
 
 
 // SwitchType1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SwitchType1Code {
-	#[validate(enumerate = ["FULL", "PART"])]
 	#[serde(rename = "SwitchType1Code")]
 	pub switch_type1_code: String,
 }

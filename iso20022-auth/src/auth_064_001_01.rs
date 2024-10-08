@@ -23,11 +23,10 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // ActiveCurrencyAndAmountSimpleType ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "ActiveCurrencyAndAmount_SimpleType")]
 	pub active_currency_and_amount_simple_type: f64,
@@ -35,7 +34,7 @@ pub struct ActiveCurrencyAndAmountSimpleType {
 
 
 // ActiveCurrencyAndAmount ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmount {
 	#[serde(rename = "Ccy")]
 	pub ccy: String,
@@ -45,97 +44,82 @@ pub struct ActiveCurrencyAndAmount {
 
 
 // ActiveCurrencyCode ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[validate(pattern = "[A-Z]{3,3}")]
 	#[serde(rename = "ActiveCurrencyCode")]
 	pub active_currency_code: String,
 }
 
 
 // AvailableFinancialResourcesAmount1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AvailableFinancialResourcesAmount1 {
-	#[validate]
 	#[serde(rename = "TtlInitlMrgn")]
 	pub ttl_initl_mrgn: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "TtlPrfnddDfltFnd")]
 	pub ttl_prfndd_dflt_fnd: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "CCPSkinInTheGame")]
 	pub ccp_skin_in_the_game: Vec<ReportingAssetBreakdown1>,
-	#[validate]
 	#[serde(rename = "OthrDfltFndCntrbtn")]
 	pub othr_dflt_fnd_cntrbtn: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "UfnddMmbCmmtmnt")]
 	pub ufndd_mmb_cmmtmnt: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "UfnddThrdPtyCmmtmnt")]
 	pub ufndd_thrd_pty_cmmtmnt: ActiveCurrencyAndAmount,
 }
 
 
 // CCPAvailableFinancialResourcesReportV01 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CCPAvailableFinancialResourcesReportV01 {
-	#[validate]
 	#[serde(rename = "AvlblFinRsrcsAmt")]
 	pub avlbl_fin_rsrcs_amt: AvailableFinancialResourcesAmount1,
-	#[validate]
 	#[serde(rename = "OthrPrfnddRsrcs")]
 	pub othr_prfndd_rsrcs: Option<ReportingAssetBreakdown1>,
-	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 350)]
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
 }
 
 
 // ProductType6Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProductType6Code {
-	#[validate(enumerate = ["BOND", "CASH", "OTHR", "EQUI"])]
 	#[serde(rename = "ProductType6Code")]
 	pub product_type6_code: String,
 }
 
 
 // ReportingAssetBreakdown1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ReportingAssetBreakdown1 {
 	#[serde(rename = "RptgAsstTp")]
 	pub rptg_asst_tp: String,
 	#[serde(rename = "Id")]
 	pub id: Option<String>,
-	#[validate]
 	#[serde(rename = "Amt")]
 	pub amt: ActiveCurrencyAndAmount,
 }
 
 
 // SupplementaryData1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
-	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }

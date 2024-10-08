@@ -23,11 +23,10 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use serde_valid::Validate;
 
 
 // ActiveCurrencyAndAmountSimpleType ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "ActiveCurrencyAndAmount_SimpleType")]
 	pub active_currency_and_amount_simple_type: f64,
@@ -35,7 +34,7 @@ pub struct ActiveCurrencyAndAmountSimpleType {
 
 
 // ActiveCurrencyAndAmount ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmount {
 	#[serde(rename = "Ccy")]
 	pub ccy: String,
@@ -45,30 +44,26 @@ pub struct ActiveCurrencyAndAmount {
 
 
 // ActiveCurrencyCode ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[validate(pattern = "[A-Z]{3,3}")]
 	#[serde(rename = "ActiveCurrencyCode")]
 	pub active_currency_code: String,
 }
 
 
 // Amount3 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Amount3 {
-	#[validate]
 	#[serde(rename = "OrgnlAmt")]
 	pub orgnl_amt: Option<ActiveCurrencyAndAmount>,
-	#[validate]
 	#[serde(rename = "RptgAmt")]
 	pub rptg_amt: ActiveCurrencyAndAmount,
 }
 
 
 // AmountAndDirection102 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AmountAndDirection102 {
-	#[validate]
 	#[serde(rename = "Amt")]
 	pub amt: ActiveCurrencyAndAmount,
 	#[serde(rename = "Sgn")]
@@ -77,57 +72,47 @@ pub struct AmountAndDirection102 {
 
 
 // CCPMemberRequirementsReportV01 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CCPMemberRequirementsReportV01 {
-	#[validate]
 	#[serde(rename = "IntraDayRqrmntAmt")]
 	pub intra_day_rqrmnt_amt: Vec<IntraDayRequirement1>,
-	#[validate]
 	#[serde(rename = "IntraDayMrgnCall")]
 	pub intra_day_mrgn_call: Option<Vec<IntraDayMarginCall1>>,
-	#[validate]
 	#[serde(rename = "EndOfDayRqrmnt")]
 	pub end_of_day_rqrmnt: Vec<EndOfDayRequirement2>,
-	#[validate]
 	#[serde(rename = "DfltFndRqrmnt")]
 	pub dflt_fnd_rqrmnt: Vec<DefaultFundRequirement1>,
-	#[validate]
 	#[serde(rename = "SplmtryData")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
 
 // DefaultFundRequirement1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DefaultFundRequirement1 {
-	#[validate]
 	#[serde(rename = "ClrMmbId")]
 	pub clr_mmb_id: GenericIdentification165,
 	#[serde(rename = "SvcId")]
 	pub svc_id: Option<String>,
-	#[validate]
 	#[serde(rename = "Amt")]
 	pub amt: ActiveCurrencyAndAmount,
 }
 
 
 // EndOfDayRequirement2 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EndOfDayRequirement2 {
-	#[validate]
 	#[serde(rename = "InitlMrgnRqrmnts")]
 	pub initl_mrgn_rqrmnts: InitialMarginRequirement1,
-	#[validate]
 	#[serde(rename = "VartnMrgnRqrmnts")]
 	pub vartn_mrgn_rqrmnts: AmountAndDirection102,
-	#[validate]
 	#[serde(rename = "MrgnAcctId")]
 	pub mrgn_acct_id: GenericIdentification165,
 }
 
 
 // GenericIdentification165 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification165 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -141,7 +126,7 @@ pub struct GenericIdentification165 {
 
 
 // GenericIdentification36 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification36 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -153,7 +138,7 @@ pub struct GenericIdentification36 {
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -161,12 +146,10 @@ pub struct ISODateTime {
 
 
 // InitialMarginExposure1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InitialMarginExposure1 {
-	#[validate]
 	#[serde(rename = "Amt")]
 	pub amt: Amount3,
-	#[validate]
 	#[serde(rename = "Tp")]
 	pub tp: MarginType2Choice,
 	#[serde(rename = "CoreInd")]
@@ -175,24 +158,20 @@ pub struct InitialMarginExposure1 {
 
 
 // InitialMarginRequirement1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InitialMarginRequirement1 {
-	#[validate]
 	#[serde(rename = "InitlMrgnXpsr")]
 	pub initl_mrgn_xpsr: Vec<InitialMarginExposure1>,
-	#[validate]
 	#[serde(rename = "Cdt")]
 	pub cdt: ActiveCurrencyAndAmount,
 }
 
 
 // IntraDayMarginCall1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IntraDayMarginCall1 {
-	#[validate]
 	#[serde(rename = "MrgnAcctId")]
 	pub mrgn_acct_id: GenericIdentification165,
-	#[validate]
 	#[serde(rename = "IntraDayCall")]
 	pub intra_day_call: ActiveCurrencyAndAmount,
 	#[serde(rename = "TmStmp")]
@@ -201,88 +180,73 @@ pub struct IntraDayMarginCall1 {
 
 
 // IntraDayRequirement1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IntraDayRequirement1 {
-	#[validate]
 	#[serde(rename = "IntraDayMrgnCall")]
 	pub intra_day_mrgn_call: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "PeakInitlMrgnLblty")]
 	pub peak_initl_mrgn_lblty: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "PeakVartnMrgnLblty")]
 	pub peak_vartn_mrgn_lblty: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "AggtPeakLblty")]
 	pub aggt_peak_lblty: ActiveCurrencyAndAmount,
-	#[validate]
 	#[serde(rename = "MrgnAcctId")]
 	pub mrgn_acct_id: GenericIdentification165,
 }
 
 
 // MarginType2Choice ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MarginType2Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
-	#[validate]
 	#[serde(rename = "Prtry")]
 	pub prtry: Option<GenericIdentification36>,
 }
 
 
 // MarginType2Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MarginType2Code {
-	#[validate(enumerate = ["ADFM", "COMA", "CEMA", "SEMA", "SCMA", "UFMA", "MARM", "SORM", "WWRM", "BARM", "LIRM", "CRAM", "CVMA", "SPMA", "JTDR", "DRAO", "OTHR"])]
 	#[serde(rename = "MarginType2Code")]
 	pub margin_type2_code: String,
 }
 
 
 // Max140Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 140)]
 	#[serde(rename = "Max140Text")]
 	pub max140_text: String,
 }
 
 
 // Max256Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max256Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 256)]
 	#[serde(rename = "Max256Text")]
 	pub max256_text: String,
 }
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 350)]
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
 }
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[validate(min_length = 1)]
-	#[validate(max_length = 35)]
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
 }
 
 
 // PlusOrMinusIndicator ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PlusOrMinusIndicator {
 	#[serde(rename = "PlusOrMinusIndicator")]
 	pub plus_or_minus_indicator: bool,
@@ -290,33 +254,31 @@ pub struct PlusOrMinusIndicator {
 
 
 // SchemeIdentificationType1Code ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SchemeIdentificationType1Code {
-	#[validate(enumerate = ["MARG", "COLL", "POSI", "CLIM"])]
 	#[serde(rename = "SchemeIdentificationType1Code")]
 	pub scheme_identification_type1_code: String,
 }
 
 
 // SupplementaryData1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
-	#[validate]
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }
 
 
 // TrueFalseIndicator ...
-#[derive(Debug, PartialEq, Clone, Validate, Serialize, Deserialize)]
+#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TrueFalseIndicator {
 	#[serde(rename = "TrueFalseIndicator")]
 	pub true_false_indicator: bool,
