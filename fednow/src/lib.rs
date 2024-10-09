@@ -39,4 +39,7 @@ pub enum FednowMessage {
 
     #[serde(rename = "FedNowOutgoing")]
     FedNowOutgoing(Box<FedNowOutgoing>),
+
+	#[default]
+	UNKNOWN
 }

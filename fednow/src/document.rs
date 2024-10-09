@@ -113,4 +113,7 @@ pub enum Document {
 
 	#[serde(rename = "BkToCstmrDbtCdtNtfctn")]
 	BankToCustomerDebitCreditNotificationV08(Box<BankToCustomerDebitCreditNotificationV08>),
+
+	#[default]
+	UNKNOWN
 }

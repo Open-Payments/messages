@@ -4,17 +4,16 @@
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![GitHub issues](https://img.shields.io/github/issues/Open-Payments/messages)](https://github.com/Open-Payments/messages/issues)
 
-Open Payments is a robust message parsing library designed to handle various message types from the **FedNow** and **ISO 20022** standards. This library makes it easier to integrate payment messaging formats into your financial applications using efficient parsing, serialization, and deserialization capabilities.
+The Open Payments library provides tools for parsing, validating, and transforming financial messages, with support for ISO 20022 and FedNow message formats. The library is designed to help developers integrate financial message handling into their Rust applications, using serde for (de)serialization.
 
 ---
 
 ## Features
 
-- **Comprehensive Message Support**: Supports a wide range of ISO 20022 message types such as `admi`, `camt`, `pacs`, and `pain`.
-- **FedNow Ready**: Fully compatible with FedNow messaging specifications.
-- **Serde-powered**: Built with Serde for fast and efficient (de)serialization to/from XML and JSON formats.
-- **Easy Integration**: Simple APIs to parse, convert, and handle payment messages within your Rust applications.
-- **Extensible**: Designed to be open-source and easy to contribute to, making it suitable for custom implementations.
+- **ISO 20022 Support**: Comprehensive support for key ISO 20022 payment message types.
+- **FedNow Message**: Full support for FedNow message formats.
+- **(De)serialization**: Using serde for easy conversion between XML and JSON.
+- **Extensibility**: Easily extendable to support additional message types or custom formats.
 
 ---
 
@@ -33,59 +32,88 @@ Add the following to your `Cargo.toml` to start using the library in your Rust p
 
 ```toml
 [dependencies]
-open-payments = "0.1.0"
+# This dependency includes support for the entire ISO 20022 message formats.
+# The "payments" feature enables various ISO 20022 message categories, such as pacs, pain, camt, etc.
+# If you only need specific message types, you can enable just those features (e.g., "pacs", "pain").
+open-payments-iso20022 = { version = "0.2.1", features = ["payments"] }
+
+# This dependency provides support for the FedNow message formats.
+# You get full support for parsing and serializing FedNow messages out of the box.
+open-payments-fednow = "0.2.1"
 ```
+
+### Features
+
+The ISO20022 message library `open-payments-iso20022` provides several features to allow you to include only the message types relevant to your use case. Here’s a breakdown of the available features:
+
+```toml
+[features]
+default = ["head"]  # Default feature, includes the basic header message.
+iso20022 = ["payments"]  # Enables all payment-related ISO 20022 messages.
+payments = ["acmt", "admi", "auth", "camt", "head", "pacs", "pain", "reda", "remt"]  # Includes all payments-related ISO 20022 message types.
+
+# Individual ISO 20022 message modules:
+acmt = ["open-payments-iso20022-acmt"]  # Account Management messages
+admi = ["open-payments-iso20022-admi"]  # Administrative messages
+auth = ["open-payments-iso20022-auth"]  # Authorization messages
+camt = ["open-payments-iso20022-camt"]  # Cash Management messages
+head = ["open-payments-iso20022-head"]  # Basic Header messages (default)
+pacs = ["open-payments-iso20022-pacs"]  # Payment Clearing and Settlement messages
+pain = ["open-payments-iso20022-pain"]  # Payment Initiation messages
+reda = ["open-payments-iso20022-reda"]  # Reference Data messages
+remt = ["open-payments-iso20022-remt"]  # Remittance Advice messages
+```
+
+By configuring the features, you can optimize the library for your specific message requirements, minimizing unnecessary dependencies.
 
 ### Usage
 
-Here's an example of how to parse a FedNow message and convert it to JSON:
-
+**Example: Creating an ISO 20022 Message Object**
 ```rust
-use open_payments::FednowMessage;
-use serde_json::json;
-use std::fs::File;
-use std::io::BufReader;
+use open_payments_iso20022::document::Document;
+use open_payments_iso20022_admi::admi_002_001_01::Admi00200101;
 
 fn main() {
-    let file = File::open("path_to_fednow_message.xml").expect("Unable to open file");
-    let reader = BufReader::new(file);
+    let doc = Document::Admi00200101(Box::new(Admi00200101::default()));
 
-    let message: FednowMessage = serde_xml_rs::from_reader(reader).expect("Unable to parse XML");
+    println!("{:?}", doc)
+}
+```
 
-    // Convert to JSON
-    let json_message = json!(message);
-    println!("{}", serde_json::to_string_pretty(&json_message).unwrap());
+**Example: Creating a FedNow Message Object**
+
+Similarly, here’s an example of how to create a FedNow message object:
+
+```rust
+use open_payments_fednow::document::Document;
+use open_payments_fednow::iso::pacs_008_001_08::FIToFICustomerCreditTransferV08;
+
+fn main() {
+    let doc = Document::FIToFICustomerCreditTransferV08(Box::new(FIToFICustomerCreditTransferV08::default()));
+
+    println!("{:?}", doc)
 }
 ```
 
 ### Supported Messages
 
-The library supports various message formats defined by ISO 20022, including:
+The library supports a variety of financial message formats from both ISO 20022 and FedNow, covering key areas of the payment lifecycle.
 
-- **admi.002.001.01**: Administrative notifications - Provides status information regarding system events.
-- **admi.004.001.02**: System event notification - Notifies about system events such as maintenance, downtime, or system changes.
-- **admi.006.001.01**: Resend request - Requests the resend of previously sent messages.
-- **admi.007.001.01**: Receipt acknowledgement - Confirms the receipt of a message.
-- **admi.011.001.01**: System event acknowledgement - Acknowledges a system event notification.
-- **admi.998.001.02**: Administration proprietary message - Custom or proprietary administration messages for specific use cases.
+#### ISO 20022 Messages
+- **pacs**: Payment Clearing and Settlement
+- **pain**: Payment Initiation
+- **admi**: Administrative messages
+- **auth**: Authorization messages
+- **camt**: Cash Management
+- **reda**: Reference Data
+- **remt**: Remittance Advice
+- **acmt**: Account Management
+- **head**: Header messages
 
-- **camt.026.001.07**: Payment investigation - Used to initiate an investigation into a payment.
-- **camt.028.001.09**: Resolution of investigation - Provides the outcome of a previously initiated payment investigation.
-- **camt.029.001.09**: Unable to apply - Used to notify that a payment cannot be applied as expected.
-- **camt.052.001.08**: Bank-to-customer account report - Reports on an account's transactions and balances.
-- **camt.054.001.08**: Bank-to-customer debit credit notification - Notifies about debits and credits to an account.
-- **camt.055.001.09**: Customer payment cancellation request - Requests the cancellation of a payment transaction.
-- **camt.056.001.08**: FIToFI payment cancellation request - Requests the cancellation of a payment sent between financial institutions.
-- **camt.060.001.05**: Account reporting request - Requests detailed information regarding transactions on an account.
-
-- **pacs.002.001.10**: FIToFI payment status report - Provides the status of a payment sent between financial institutions.
-- **pacs.004.001.10**: Payment return - Returns a payment that was unable to be applied.
-- **pacs.008.001.08**: FIToFI customer credit transfer - Facilitates the transfer of funds between financial institutions for customer-initiated credit transfers.
-- **pacs.009.001.08**: Financial institution credit transfer - Transfers funds between financial institutions.
-- **pacs.028.001.03**: FIToFI payment status request - Requests the status of a payment sent between financial institutions.
-
-- **pain.013.001.07**: Creditor payment activation request - Initiates a payment request from the creditor’s side.
-- **pain.014.001.07**: Creditor payment activation request status report - Provides a status report for a payment activation request.
+#### FedNow Messages
+- **Customer Credit Transfer**
+- **Payment Status Report**
+- **Payment Return**
 
 ---
 
