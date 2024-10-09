@@ -26,7 +26,7 @@ use serde::{Deserialize, Serialize};
 
 
 // ActiveCurrencyAnd24AmountSimpleType ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAnd24AmountSimpleType {
 	#[serde(rename = "ActiveCurrencyAnd24Amount_SimpleType")]
 	pub active_currency_and24_amount_simple_type: f64,
@@ -34,7 +34,7 @@ pub struct ActiveCurrencyAnd24AmountSimpleType {
 
 
 // ActiveCurrencyAnd24Amount ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAnd24Amount {
 	#[serde(rename = "Ccy")]
 	pub ccy: String,
@@ -44,7 +44,7 @@ pub struct ActiveCurrencyAnd24Amount {
 
 
 // ActiveCurrencyAndAmountSimpleType ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "ActiveCurrencyAndAmount_SimpleType")]
 	pub active_currency_and_amount_simple_type: f64,
@@ -52,7 +52,7 @@ pub struct ActiveCurrencyAndAmountSimpleType {
 
 
 // ActiveCurrencyAndAmount ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmount {
 	#[serde(rename = "Ccy")]
 	pub ccy: String,
@@ -62,7 +62,7 @@ pub struct ActiveCurrencyAndAmount {
 
 
 // ActiveCurrencyCode ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "ActiveCurrencyCode")]
 	pub active_currency_code: String,
@@ -70,7 +70,7 @@ pub struct ActiveCurrencyCode {
 
 
 // AmountAndDirection102 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AmountAndDirection102 {
 	#[serde(rename = "Amt")]
 	pub amt: ActiveCurrencyAndAmount,
@@ -80,7 +80,7 @@ pub struct AmountAndDirection102 {
 
 
 // CCPAccountPositionReportV01 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CCPAccountPositionReportV01 {
 	#[serde(rename = "Prtfl")]
 	pub prtfl: Vec<PositionAccount2>,
@@ -90,7 +90,7 @@ pub struct CCPAccountPositionReportV01 {
 
 
 // EndOfDayRequirement1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EndOfDayRequirement1 {
 	#[serde(rename = "InitlMrgnRqrmnt")]
 	pub initl_mrgn_rqrmnt: Option<ActiveCurrencyAndAmount>,
@@ -100,7 +100,7 @@ pub struct EndOfDayRequirement1 {
 
 
 // Fraction5DecimalNumber ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Fraction5DecimalNumber {
 	#[serde(rename = "Fraction5DecimalNumber")]
 	pub fraction5_decimal_number: f64,
@@ -108,7 +108,7 @@ pub struct Fraction5DecimalNumber {
 
 
 // GenericIdentification165 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification165 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -122,7 +122,7 @@ pub struct GenericIdentification165 {
 
 
 // Max140Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
 	#[serde(rename = "Max140Text")]
 	pub max140_text: String,
@@ -130,7 +130,7 @@ pub struct Max140Text {
 
 
 // Max256Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max256Text {
 	#[serde(rename = "Max256Text")]
 	pub max256_text: String,
@@ -138,7 +138,7 @@ pub struct Max256Text {
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
@@ -146,7 +146,7 @@ pub struct Max350Text {
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
@@ -154,7 +154,7 @@ pub struct Max35Text {
 
 
 // NonNegativeFraction5DecimalNumber ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NonNegativeFraction5DecimalNumber {
 	#[serde(rename = "NonNegativeFraction5DecimalNumber")]
 	pub non_negative_fraction5_decimal_number: f64,
@@ -162,7 +162,7 @@ pub struct NonNegativeFraction5DecimalNumber {
 
 
 // PlusOrMinusIndicator ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PlusOrMinusIndicator {
 	#[serde(rename = "PlusOrMinusIndicator")]
 	pub plus_or_minus_indicator: bool,
@@ -170,7 +170,7 @@ pub struct PlusOrMinusIndicator {
 
 
 // Position1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Position1 {
 	#[serde(rename = "PdctId")]
 	pub pdct_id: String,
@@ -194,7 +194,7 @@ pub struct Position1 {
 
 
 // PositionAccount2 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PositionAccount2 {
 	#[serde(rename = "Id")]
 	pub id: GenericIdentification165,
@@ -204,7 +204,7 @@ pub struct PositionAccount2 {
 
 
 // SchemeIdentificationType1Code ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SchemeIdentificationType1Code {
 	#[serde(rename = "SchemeIdentificationType1Code")]
 	pub scheme_identification_type1_code: String,
@@ -212,7 +212,7 @@ pub struct SchemeIdentificationType1Code {
 
 
 // SupplementaryData1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
@@ -222,6 +222,6 @@ pub struct SupplementaryData1 {
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }

@@ -327,7 +327,7 @@ use serde::{Deserialize, Serialize};
 #[cfg(feature = "remt")] use open_payments_iso20022_remt::remt_002_001_03::*;
 
 
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Document {
 	#[serde(rename = "admi.002.001.01")]
 	#[cfg(feature = "admi")]
@@ -1500,4 +1500,7 @@ pub enum Document {
 	#[serde(rename = "OrdrBookRpt")]
 	#[cfg(feature = "auth")]
 	OrderBookReportV01(Box<OrderBookReportV01>),
+
+	#[default]
+	UNKNOWN,
 }

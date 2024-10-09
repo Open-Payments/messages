@@ -32,7 +32,7 @@ use serde::{Deserialize, Serialize};
 use crate::fednow_incoming_external::FedNowIncoming;
 use crate::fednow_outgoing_external::FedNowOutgoing;
 
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FednowMessage {
     #[serde(rename = "FedNowIncoming")]
     FedNowIncoming(Box<FedNowIncoming>),

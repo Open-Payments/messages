@@ -26,7 +26,7 @@ use serde::{Deserialize, Serialize};
 
 
 // ApplicationSpecifics1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ApplicationSpecifics1 {
 	#[serde(rename = "SysUsr")]
 	pub sys_usr: Option<String>,
@@ -38,7 +38,7 @@ pub struct ApplicationSpecifics1 {
 
 
 // BusinessFileHeaderV01 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BusinessFileHeaderV01 {
 	#[serde(rename = "PyldDesc")]
 	pub pyld_desc: PayloadDescription2,
@@ -48,7 +48,7 @@ pub struct BusinessFileHeaderV01 {
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -56,13 +56,13 @@ pub struct ISODateTime {
 
 
 // LaxPayload ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LaxPayload {
 }
 
 
 // ManifestData2 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ManifestData2 {
 	#[serde(rename = "DocTp")]
 	pub doc_tp: String,
@@ -72,7 +72,7 @@ pub struct ManifestData2 {
 
 
 // Max140Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
 	#[serde(rename = "Max140Text")]
 	pub max140_text: String,
@@ -80,7 +80,7 @@ pub struct Max140Text {
 
 
 // Max256Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max256Text {
 	#[serde(rename = "Max256Text")]
 	pub max256_text: String,
@@ -88,7 +88,7 @@ pub struct Max256Text {
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
@@ -96,7 +96,7 @@ pub struct Max35Text {
 
 
 // Number ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Number {
 	#[serde(rename = "Number")]
 	pub number: f64,
@@ -104,7 +104,7 @@ pub struct Number {
 
 
 // PayloadData2 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PayloadData2 {
 	#[serde(rename = "PyldIdr")]
 	pub pyld_idr: String,
@@ -116,7 +116,7 @@ pub struct PayloadData2 {
 
 
 // PayloadDescription2 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PayloadDescription2 {
 	#[serde(rename = "PyldData")]
 	pub pyld_data: PayloadData2,
@@ -130,13 +130,13 @@ pub struct PayloadDescription2 {
 
 
 // SignatureEnvelope ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SignatureEnvelope {
 }
 
 
 // TrueFalseIndicator ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TrueFalseIndicator {
 	#[serde(rename = "TrueFalseIndicator")]
 	pub true_false_indicator: bool,
