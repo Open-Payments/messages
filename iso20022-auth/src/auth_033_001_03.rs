@@ -536,7 +536,7 @@ pub struct RateBasis1Code {
 // RestrictedMonthExact2Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RestrictedMonthExact2Number {
-	// #[serde(rename = "RestrictedMonthExact2Number")]
+	#[serde(rename = "RestrictedMonthExact2Number")]
 	pub restricted_month_exact2_number: f64,
 }
 
