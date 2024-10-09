@@ -26,7 +26,7 @@ use serde::{Deserialize, Serialize};
 
 
 // AdministrationProprietaryMessageV02 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AdministrationProprietaryMessageV02 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: Option<MessageReference>,
@@ -42,7 +42,7 @@ pub struct AdministrationProprietaryMessageV02 {
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
@@ -50,7 +50,7 @@ pub struct Max35Text {
 
 
 // MessageReference ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
 	pub ref_attr: String,
@@ -58,7 +58,7 @@ pub struct MessageReference {
 
 
 // ProprietaryData5 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProprietaryData5 {
 	#[serde(rename = "Tp")]
 	pub tp: String,
@@ -68,6 +68,6 @@ pub struct ProprietaryData5 {
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }

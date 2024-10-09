@@ -26,7 +26,7 @@ use serde::{Deserialize, Serialize};
 
 
 // ActiveCurrencyAndAmountSimpleType ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "ActiveCurrencyAndAmount_SimpleType")]
 	pub active_currency_and_amount_simple_type: f64,
@@ -34,7 +34,7 @@ pub struct ActiveCurrencyAndAmountSimpleType {
 
 
 // ActiveCurrencyAndAmount ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmount {
 	#[serde(rename = "Ccy")]
 	pub ccy: String,
@@ -44,7 +44,7 @@ pub struct ActiveCurrencyAndAmount {
 
 
 // ActiveCurrencyCode ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "ActiveCurrencyCode")]
 	pub active_currency_code: String,
@@ -52,7 +52,7 @@ pub struct ActiveCurrencyCode {
 
 
 // CounterpartyIdentification3Choice ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CounterpartyIdentification3Choice {
 	#[serde(rename = "LEI")]
 	pub lei: Option<String>,
@@ -64,7 +64,7 @@ pub struct CounterpartyIdentification3Choice {
 
 
 // CountryCode ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
 	#[serde(rename = "CountryCode")]
 	pub country_code: String,
@@ -72,7 +72,7 @@ pub struct CountryCode {
 
 
 // DateAndDateTimeChoice ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DateAndDateTimeChoice {
 	#[serde(rename = "Dt")]
 	pub dt: Option<String>,
@@ -82,7 +82,7 @@ pub struct DateAndDateTimeChoice {
 
 
 // DateTimePeriod1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DateTimePeriod1 {
 	#[serde(rename = "FrDtTm")]
 	pub fr_dt_tm: String,
@@ -92,7 +92,7 @@ pub struct DateTimePeriod1 {
 
 
 // ISODate ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
 	#[serde(rename = "ISODate")]
 	pub iso_date: String,
@@ -100,7 +100,7 @@ pub struct ISODate {
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -108,7 +108,7 @@ pub struct ISODateTime {
 
 
 // LEIIdentifier ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
 	#[serde(rename = "LEIIdentifier")]
 	pub lei_identifier: String,
@@ -116,7 +116,7 @@ pub struct LEIIdentifier {
 
 
 // Max105Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max105Text {
 	#[serde(rename = "Max105Text")]
 	pub max105_text: String,
@@ -124,7 +124,7 @@ pub struct Max105Text {
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
@@ -132,7 +132,7 @@ pub struct Max350Text {
 
 
 // Max70Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max70Text {
 	#[serde(rename = "Max70Text")]
 	pub max70_text: String,
@@ -140,7 +140,7 @@ pub struct Max70Text {
 
 
 // MoneyMarketOvernightIndexSwapsStatisticalReportV02 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MoneyMarketOvernightIndexSwapsStatisticalReportV02 {
 	#[serde(rename = "RptHdr")]
 	pub rpt_hdr: MoneyMarketReportHeader1,
@@ -152,7 +152,7 @@ pub struct MoneyMarketOvernightIndexSwapsStatisticalReportV02 {
 
 
 // MoneyMarketReportHeader1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MoneyMarketReportHeader1 {
 	#[serde(rename = "RptgAgt")]
 	pub rptg_agt: String,
@@ -162,7 +162,7 @@ pub struct MoneyMarketReportHeader1 {
 
 
 // NameAndLocation1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NameAndLocation1 {
 	#[serde(rename = "Nm")]
 	pub nm: String,
@@ -172,7 +172,7 @@ pub struct NameAndLocation1 {
 
 
 // NovationStatus1Code ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NovationStatus1Code {
 	#[serde(rename = "NovationStatus1Code")]
 	pub novation_status1_code: String,
@@ -180,7 +180,7 @@ pub struct NovationStatus1Code {
 
 
 // OvernightIndexSwap4Choice ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OvernightIndexSwap4Choice {
 	#[serde(rename = "DataSetActn")]
 	pub data_set_actn: Option<String>,
@@ -190,7 +190,7 @@ pub struct OvernightIndexSwap4Choice {
 
 
 // OvernightIndexSwapTransaction4 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OvernightIndexSwapTransaction4 {
 	#[serde(rename = "RptdTxSts")]
 	pub rptd_tx_sts: String,
@@ -226,7 +226,7 @@ pub struct OvernightIndexSwapTransaction4 {
 
 
 // OvernightIndexSwapType1Code ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OvernightIndexSwapType1Code {
 	#[serde(rename = "OvernightIndexSwapType1Code")]
 	pub overnight_index_swap_type1_code: String,
@@ -234,7 +234,7 @@ pub struct OvernightIndexSwapType1Code {
 
 
 // PercentageRate ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PercentageRate {
 	#[serde(rename = "PercentageRate")]
 	pub percentage_rate: f64,
@@ -242,7 +242,7 @@ pub struct PercentageRate {
 
 
 // ReportPeriodActivity3Code ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ReportPeriodActivity3Code {
 	#[serde(rename = "ReportPeriodActivity3Code")]
 	pub report_period_activity3_code: String,
@@ -250,7 +250,7 @@ pub struct ReportPeriodActivity3Code {
 
 
 // SNA2008SectorIdentifier ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SNA2008SectorIdentifier {
 	#[serde(rename = "SNA2008SectorIdentifier")]
 	pub sna2008_sector_identifier: String,
@@ -258,7 +258,7 @@ pub struct SNA2008SectorIdentifier {
 
 
 // SectorAndLocation1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SectorAndLocation1 {
 	#[serde(rename = "Sctr")]
 	pub sctr: String,
@@ -268,7 +268,7 @@ pub struct SectorAndLocation1 {
 
 
 // SupplementaryData1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm")]
 	pub plc_and_nm: Option<String>,
@@ -278,13 +278,13 @@ pub struct SupplementaryData1 {
 
 
 // SupplementaryDataEnvelope1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
 }
 
 
 // TransactionOperationType1Code ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TransactionOperationType1Code {
 	#[serde(rename = "TransactionOperationType1Code")]
 	pub transaction_operation_type1_code: String,

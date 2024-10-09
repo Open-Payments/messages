@@ -26,7 +26,7 @@ use serde::{Deserialize, Serialize};
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -34,7 +34,7 @@ pub struct ISODateTime {
 
 
 // Max20000Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max20000Text {
 	#[serde(rename = "Max20000Text")]
 	pub max20000_text: String,
@@ -42,7 +42,7 @@ pub struct Max20000Text {
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
@@ -50,7 +50,7 @@ pub struct Max350Text {
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
@@ -58,7 +58,7 @@ pub struct Max35Text {
 
 
 // MessageReference ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
 	pub ref_attr: String,
@@ -66,7 +66,7 @@ pub struct MessageReference {
 
 
 // RejectionReason2 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RejectionReason2 {
 	#[serde(rename = "RjctgPtyRsn")]
 	pub rjctg_pty_rsn: String,
@@ -82,7 +82,7 @@ pub struct RejectionReason2 {
 
 
 // Admi00200101 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Admi00200101 {
 	#[serde(rename = "RltdRef")]
 	pub rltd_ref: MessageReference,

@@ -49,7 +49,7 @@ use crate::iso::pain_013_001_07::*;
 use crate::iso::pain_014_001_07::*;
 
 
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Document {
 	#[serde(rename = "admi.002.001.01")]
 	Admi00200101(Box<Admi00200101>),
@@ -113,4 +113,7 @@ pub enum Document {
 
 	#[serde(rename = "BkToCstmrDbtCdtNtfctn")]
 	BankToCustomerDebitCreditNotificationV08(Box<BankToCustomerDebitCreditNotificationV08>),
+
+	#[default]
+	UNKNOWN
 }

@@ -26,7 +26,7 @@ use serde::{Deserialize, Serialize};
 
 
 // Account23 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Account23 {
 	#[serde(rename = "AcctId")]
 	pub acct_id: String,
@@ -36,7 +36,7 @@ pub struct Account23 {
 
 
 // AccountManagementMessageReference5 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountManagementMessageReference5 {
 	#[serde(rename = "LkdRef")]
 	pub lkd_ref: Option<LinkedMessage5Choice>,
@@ -52,7 +52,7 @@ pub struct AccountManagementMessageReference5 {
 
 
 // AccountManagementType3Code ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountManagementType3Code {
 	#[serde(rename = "AccountManagementType3Code")]
 	pub account_management_type3_code: String,
@@ -60,7 +60,7 @@ pub struct AccountManagementType3Code {
 
 
 // AdditionalReference13 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AdditionalReference13 {
 	#[serde(rename = "Ref")]
 	pub ref_attr: String,
@@ -72,7 +72,7 @@ pub struct AdditionalReference13 {
 
 
 // AddressType2Code ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AddressType2Code {
 	#[serde(rename = "AddressType2Code")]
 	pub address_type2_code: String,
@@ -80,7 +80,7 @@ pub struct AddressType2Code {
 
 
 // AnyBICDec2014Identifier ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AnyBICDec2014Identifier {
 	#[serde(rename = "AnyBICDec2014Identifier")]
 	pub any_bic_dec2014_identifier: String,
@@ -88,7 +88,7 @@ pub struct AnyBICDec2014Identifier {
 
 
 // CountryCode ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
 	#[serde(rename = "CountryCode")]
 	pub country_code: String,
@@ -96,7 +96,7 @@ pub struct CountryCode {
 
 
 // Exact4AlphaNumericText ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Exact4AlphaNumericText {
 	#[serde(rename = "Exact4AlphaNumericText")]
 	pub exact4_alpha_numeric_text: String,
@@ -104,7 +104,7 @@ pub struct Exact4AlphaNumericText {
 
 
 // GenderCode ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenderCode {
 	#[serde(rename = "GenderCode")]
 	pub gender_code: String,
@@ -112,7 +112,7 @@ pub struct GenderCode {
 
 
 // GenericIdentification1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -124,7 +124,7 @@ pub struct GenericIdentification1 {
 
 
 // GenericIdentification47 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification47 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -136,7 +136,7 @@ pub struct GenericIdentification47 {
 
 
 // GenericIdentification81 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification81 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -146,7 +146,7 @@ pub struct GenericIdentification81 {
 
 
 // ISODate ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
 	#[serde(rename = "ISODate")]
 	pub iso_date: String,
@@ -154,7 +154,7 @@ pub struct ISODate {
 
 
 // ISODateTime ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
 	#[serde(rename = "ISODateTime")]
 	pub iso_date_time: String,
@@ -162,7 +162,7 @@ pub struct ISODateTime {
 
 
 // IndividualPerson30 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IndividualPerson30 {
 	#[serde(rename = "GvnNm")]
 	pub gvn_nm: Option<String>,
@@ -178,7 +178,7 @@ pub struct IndividualPerson30 {
 
 
 // IndividualPersonIdentification2Choice ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IndividualPersonIdentification2Choice {
 	#[serde(rename = "IdNb")]
 	pub id_nb: Option<GenericIdentification81>,
@@ -188,7 +188,7 @@ pub struct IndividualPersonIdentification2Choice {
 
 
 // InvestmentAccount77 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InvestmentAccount77 {
 	#[serde(rename = "AcctId")]
 	pub acct_id: String,
@@ -204,7 +204,7 @@ pub struct InvestmentAccount77 {
 
 
 // LEIIdentifier ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
 	#[serde(rename = "LEIIdentifier")]
 	pub lei_identifier: String,
@@ -212,7 +212,7 @@ pub struct LEIIdentifier {
 
 
 // LinkedMessage5Choice ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LinkedMessage5Choice {
 	#[serde(rename = "PrvsRef")]
 	pub prvs_ref: Option<AdditionalReference13>,
@@ -222,7 +222,7 @@ pub struct LinkedMessage5Choice {
 
 
 // Max16Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max16Text {
 	#[serde(rename = "Max16Text")]
 	pub max16_text: String,
@@ -230,7 +230,7 @@ pub struct Max16Text {
 
 
 // Max350Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
 	#[serde(rename = "Max350Text")]
 	pub max350_text: String,
@@ -238,7 +238,7 @@ pub struct Max350Text {
 
 
 // Max35Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
 	#[serde(rename = "Max35Text")]
 	pub max35_text: String,
@@ -246,7 +246,7 @@ pub struct Max35Text {
 
 
 // Max4AlphaNumericText ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max4AlphaNumericText {
 	#[serde(rename = "Max4AlphaNumericText")]
 	pub max4_alpha_numeric_text: String,
@@ -254,7 +254,7 @@ pub struct Max4AlphaNumericText {
 
 
 // Max70Text ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max70Text {
 	#[serde(rename = "Max70Text")]
 	pub max70_text: String,
@@ -262,7 +262,7 @@ pub struct Max70Text {
 
 
 // MessageIdentification1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -272,7 +272,7 @@ pub struct MessageIdentification1 {
 
 
 // NameAndAddress5 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NameAndAddress5 {
 	#[serde(rename = "Nm")]
 	pub nm: String,
@@ -282,7 +282,7 @@ pub struct NameAndAddress5 {
 
 
 // OtherIdentification3Choice ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OtherIdentification3Choice {
 	#[serde(rename = "Cd")]
 	pub cd: Option<String>,
@@ -292,7 +292,7 @@ pub struct OtherIdentification3Choice {
 
 
 // OwnerIdentification3Choice ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OwnerIdentification3Choice {
 	#[serde(rename = "IndvOwnrId")]
 	pub indv_ownr_id: Option<IndividualPersonIdentification2Choice>,
@@ -302,7 +302,7 @@ pub struct OwnerIdentification3Choice {
 
 
 // PartyIdentification125Choice ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PartyIdentification125Choice {
 	#[serde(rename = "AnyBIC")]
 	pub any_bic: Option<String>,
@@ -314,7 +314,7 @@ pub struct PartyIdentification125Choice {
 
 
 // PartyIdentification139 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PartyIdentification139 {
 	#[serde(rename = "Pty")]
 	pub pty: PartyIdentification125Choice,
@@ -324,7 +324,7 @@ pub struct PartyIdentification139 {
 
 
 // PartyIdentificationType7Code ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PartyIdentificationType7Code {
 	#[serde(rename = "PartyIdentificationType7Code")]
 	pub party_identification_type7_code: String,
@@ -332,7 +332,7 @@ pub struct PartyIdentificationType7Code {
 
 
 // PostalAddress1 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PostalAddress1 {
 	#[serde(rename = "AdrTp")]
 	pub adr_tp: Option<String>,
@@ -354,7 +354,7 @@ pub struct PostalAddress1 {
 
 
 // RequestForAccountManagementStatusReportV06 ...
-#[derive(Debug, PartialEq, Clone, Serialize, Deserialize)]
+#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RequestForAccountManagementStatusReportV06 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: MessageIdentification1,
