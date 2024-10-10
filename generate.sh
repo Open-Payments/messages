@@ -61,6 +61,8 @@ for f in `find $output_directory -iname "*.rs" -type f -print | sort -n`; do
     if [ $module_name != "lib" ]; then
         echo "pub mod $module_name;" >> "$lib_file"
         sed -i "" '/\/\/ document \.\.\./,/^}$/d' "$f"
+        sed -i "" '/\/\/ app_hdr \.\.\./,/^}$/d' "$f"
+        sed -i "" '/\/\/ xchg \.\.\./,/^}$/d' "$f"
         perl -0777 -i -pe "s{\n\n\n}{}gs" "$f"
     fi
 done
