@@ -56,9 +56,9 @@ pub struct ActiveOrHistoricCurrencyCode {
 pub struct AssetClassAndSubClassIdentification2 {
 	#[serde(rename = "AsstClss")]
 	pub asst_clss: String,
-	#[serde(rename = "DerivSubClss")]
+	#[serde(rename = "DerivSubClss", skip_serializing_if = "Option::is_none")]
 	pub deriv_sub_clss: Option<NonEquitySubClass1>,
-	#[serde(rename = "FinInstrmClssfctn")]
+	#[serde(rename = "FinInstrmClssfctn", skip_serializing_if = "Option::is_none")]
 	pub fin_instrm_clssfctn: Option<String>,
 }
 
@@ -86,7 +86,7 @@ pub struct FinancialInstrumentReportingNonEquityTradingActivityResultV03 {
 	pub rpt_hdr: SecuritiesMarketReportHeader1,
 	#[serde(rename = "NonEqtyTrnsprncyData")]
 	pub non_eqty_trnsprncy_data: Vec<TransparencyDataReport20>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -120,9 +120,9 @@ pub struct ISODateTime {
 pub struct InstrumentAndSubClassIdentification2 {
 	#[serde(rename = "ISIN")]
 	pub isin: String,
-	#[serde(rename = "DerivSubClss")]
+	#[serde(rename = "DerivSubClss", skip_serializing_if = "Option::is_none")]
 	pub deriv_sub_clss: Option<NonEquitySubClass1>,
-	#[serde(rename = "FinInstrmClssfctn")]
+	#[serde(rename = "FinInstrmClssfctn", skip_serializing_if = "Option::is_none")]
 	pub fin_instrm_clssfctn: Option<String>,
 }
 
@@ -130,9 +130,9 @@ pub struct InstrumentAndSubClassIdentification2 {
 // InstrumentOrSubClassIdentification2Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InstrumentOrSubClassIdentification2Choice {
-	#[serde(rename = "ISINAndSubClss")]
+	#[serde(rename = "ISINAndSubClss", skip_serializing_if = "Option::is_none")]
 	pub isin_and_sub_clss: Option<InstrumentAndSubClassIdentification2>,
-	#[serde(rename = "AsstClssAndSubClss")]
+	#[serde(rename = "AsstClssAndSubClss", skip_serializing_if = "Option::is_none")]
 	pub asst_clss_and_sub_clss: Option<AssetClassAndSubClassIdentification2>,
 }
 
@@ -196,7 +196,7 @@ pub struct NonEquityInstrumentReportingClassification1Code {
 // NonEquitySubClass1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NonEquitySubClass1 {
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
 	#[serde(rename = "SgmttnCrit")]
 	pub sgmttn_crit: Vec<NonEquitySubClassSegmentationCriterion1>,
@@ -242,13 +242,13 @@ pub struct Period2 {
 // Period4Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Period4Choice {
-	#[serde(rename = "Dt")]
+	#[serde(rename = "Dt", skip_serializing_if = "Option::is_none")]
 	pub dt: Option<String>,
-	#[serde(rename = "FrDt")]
+	#[serde(rename = "FrDt", skip_serializing_if = "Option::is_none")]
 	pub fr_dt: Option<String>,
-	#[serde(rename = "ToDt")]
+	#[serde(rename = "ToDt", skip_serializing_if = "Option::is_none")]
 	pub to_dt: Option<String>,
-	#[serde(rename = "FrDtToDt")]
+	#[serde(rename = "FrDtToDt", skip_serializing_if = "Option::is_none")]
 	pub fr_dt_to_dt: Option<Period2>,
 }
 
@@ -260,7 +260,7 @@ pub struct SecuritiesMarketReportHeader1 {
 	pub rptg_ntty: TradingVenueIdentification1Choice,
 	#[serde(rename = "RptgPrd")]
 	pub rptg_prd: Period4Choice,
-	#[serde(rename = "SubmissnDtTm")]
+	#[serde(rename = "SubmissnDtTm", skip_serializing_if = "Option::is_none")]
 	pub submissn_dt_tm: Option<String>,
 }
 
@@ -278,7 +278,7 @@ pub struct StatisticsTransparency2 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
@@ -294,9 +294,9 @@ pub struct SupplementaryDataEnvelope1 {
 // TonsOrCurrency2Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TonsOrCurrency2Choice {
-	#[serde(rename = "Nb")]
+	#[serde(rename = "Nb", skip_serializing_if = "Option::is_none")]
 	pub nb: Option<f64>,
-	#[serde(rename = "Amt")]
+	#[serde(rename = "Amt", skip_serializing_if = "Option::is_none")]
 	pub amt: Option<ActiveOrHistoricCurrencyAndAmount>,
 }
 
@@ -312,11 +312,11 @@ pub struct TradingVenue2Code {
 // TradingVenueIdentification1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradingVenueIdentification1Choice {
-	#[serde(rename = "MktIdCd")]
+	#[serde(rename = "MktIdCd", skip_serializing_if = "Option::is_none")]
 	pub mkt_id_cd: Option<String>,
-	#[serde(rename = "NtlCmptntAuthrty")]
+	#[serde(rename = "NtlCmptntAuthrty", skip_serializing_if = "Option::is_none")]
 	pub ntl_cmptnt_authrty: Option<String>,
-	#[serde(rename = "Othr")]
+	#[serde(rename = "Othr", skip_serializing_if = "Option::is_none")]
 	pub othr: Option<TradingVenueIdentification2>,
 }
 
@@ -334,27 +334,27 @@ pub struct TradingVenueIdentification2 {
 // TransparencyDataReport20 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TransparencyDataReport20 {
-	#[serde(rename = "TechRcrdId")]
+	#[serde(rename = "TechRcrdId", skip_serializing_if = "Option::is_none")]
 	pub tech_rcrd_id: Option<String>,
 	#[serde(rename = "Id")]
 	pub id: InstrumentOrSubClassIdentification2Choice,
-	#[serde(rename = "FullNm")]
+	#[serde(rename = "FullNm", skip_serializing_if = "Option::is_none")]
 	pub full_nm: Option<String>,
-	#[serde(rename = "TradgVn")]
+	#[serde(rename = "TradgVn", skip_serializing_if = "Option::is_none")]
 	pub tradg_vn: Option<String>,
-	#[serde(rename = "RptgPrd")]
+	#[serde(rename = "RptgPrd", skip_serializing_if = "Option::is_none")]
 	pub rptg_prd: Option<Period4Choice>,
-	#[serde(rename = "Lqdty")]
+	#[serde(rename = "Lqdty", skip_serializing_if = "Option::is_none")]
 	pub lqdty: Option<bool>,
-	#[serde(rename = "PreTradLrgInScaleThrshld")]
+	#[serde(rename = "PreTradLrgInScaleThrshld", skip_serializing_if = "Option::is_none")]
 	pub pre_trad_lrg_in_scale_thrshld: Option<TonsOrCurrency2Choice>,
-	#[serde(rename = "PstTradLrgInScaleThrshld")]
+	#[serde(rename = "PstTradLrgInScaleThrshld", skip_serializing_if = "Option::is_none")]
 	pub pst_trad_lrg_in_scale_thrshld: Option<TonsOrCurrency2Choice>,
-	#[serde(rename = "PreTradInstrmSzSpcfcThrshld")]
+	#[serde(rename = "PreTradInstrmSzSpcfcThrshld", skip_serializing_if = "Option::is_none")]
 	pub pre_trad_instrm_sz_spcfc_thrshld: Option<TonsOrCurrency2Choice>,
-	#[serde(rename = "PstTradInstrmSzSpcfcThrshld")]
+	#[serde(rename = "PstTradInstrmSzSpcfcThrshld", skip_serializing_if = "Option::is_none")]
 	pub pst_trad_instrm_sz_spcfc_thrshld: Option<TonsOrCurrency2Choice>,
-	#[serde(rename = "Sttstcs")]
+	#[serde(rename = "Sttstcs", skip_serializing_if = "Option::is_none")]
 	pub sttstcs: Option<StatisticsTransparency2>,
 }
 

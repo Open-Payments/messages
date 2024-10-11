@@ -28,9 +28,9 @@ use serde::{Deserialize, Serialize};
 // AccountIdentification4Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountIdentification4Choice {
-	#[serde(rename = "IBAN")]
+	#[serde(rename = "IBAN", skip_serializing_if = "Option::is_none")]
 	pub iban: Option<String>,
-	#[serde(rename = "Othr")]
+	#[serde(rename = "Othr", skip_serializing_if = "Option::is_none")]
 	pub othr: Option<GenericAccountIdentification1>,
 }
 
@@ -38,9 +38,9 @@ pub struct AccountIdentification4Choice {
 // AccountSchemeName1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountSchemeName1Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }
 
@@ -72,9 +72,9 @@ pub struct AddressType2Code {
 // AddressType3Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AddressType3Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification30>,
 }
 
@@ -92,7 +92,7 @@ pub struct BICFIDec2014Identifier {
 pub struct BranchAndFinancialInstitutionIdentification8 {
 	#[serde(rename = "FinInstnId")]
 	pub fin_instn_id: FinancialInstitutionIdentification23,
-	#[serde(rename = "BrnchId")]
+	#[serde(rename = "BrnchId", skip_serializing_if = "Option::is_none")]
 	pub brnch_id: Option<BranchData5>,
 }
 
@@ -100,13 +100,13 @@ pub struct BranchAndFinancialInstitutionIdentification8 {
 // BranchData5 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BranchData5 {
-	#[serde(rename = "Id")]
+	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
 	pub id: Option<String>,
-	#[serde(rename = "LEI")]
+	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
 	pub lei: Option<String>,
-	#[serde(rename = "Nm")]
+	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
 	pub nm: Option<String>,
-	#[serde(rename = "PstlAdr")]
+	#[serde(rename = "PstlAdr", skip_serializing_if = "Option::is_none")]
 	pub pstl_adr: Option<PostalAddress27>,
 }
 
@@ -114,15 +114,15 @@ pub struct BranchData5 {
 // CashAccount40 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CashAccount40 {
-	#[serde(rename = "Id")]
+	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
 	pub id: Option<AccountIdentification4Choice>,
-	#[serde(rename = "Tp")]
+	#[serde(rename = "Tp", skip_serializing_if = "Option::is_none")]
 	pub tp: Option<CashAccountType2Choice>,
-	#[serde(rename = "Ccy")]
+	#[serde(rename = "Ccy", skip_serializing_if = "Option::is_none")]
 	pub ccy: Option<String>,
-	#[serde(rename = "Nm")]
+	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
 	pub nm: Option<String>,
-	#[serde(rename = "Prxy")]
+	#[serde(rename = "Prxy", skip_serializing_if = "Option::is_none")]
 	pub prxy: Option<ProxyAccountIdentification1>,
 }
 
@@ -130,9 +130,9 @@ pub struct CashAccount40 {
 // CashAccountType2Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CashAccountType2Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }
 
@@ -140,9 +140,9 @@ pub struct CashAccountType2Choice {
 // ClearingSystemIdentification2Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ClearingSystemIdentification2Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }
 
@@ -150,7 +150,7 @@ pub struct ClearingSystemIdentification2Choice {
 // ClearingSystemMemberIdentification2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ClearingSystemMemberIdentification2 {
-	#[serde(rename = "ClrSysId")]
+	#[serde(rename = "ClrSysId", skip_serializing_if = "Option::is_none")]
 	pub clr_sys_id: Option<ClearingSystemIdentification2Choice>,
 	#[serde(rename = "MmbId")]
 	pub mmb_id: String,
@@ -178,11 +178,11 @@ pub struct DatePeriod2 {
 // DatePeriod2Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DatePeriod2Choice {
-	#[serde(rename = "FrDt")]
+	#[serde(rename = "FrDt", skip_serializing_if = "Option::is_none")]
 	pub fr_dt: Option<String>,
-	#[serde(rename = "ToDt")]
+	#[serde(rename = "ToDt", skip_serializing_if = "Option::is_none")]
 	pub to_dt: Option<String>,
-	#[serde(rename = "FrToDt")]
+	#[serde(rename = "FrToDt", skip_serializing_if = "Option::is_none")]
 	pub fr_to_dt: Option<DatePeriod2>,
 }
 
@@ -238,9 +238,9 @@ pub struct ExternalProxyAccountType1Code {
 // FinancialIdentificationSchemeName1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FinancialIdentificationSchemeName1Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }
 
@@ -248,17 +248,17 @@ pub struct FinancialIdentificationSchemeName1Choice {
 // FinancialInstitutionIdentification23 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FinancialInstitutionIdentification23 {
-	#[serde(rename = "BICFI")]
+	#[serde(rename = "BICFI", skip_serializing_if = "Option::is_none")]
 	pub bicfi: Option<String>,
-	#[serde(rename = "ClrSysMmbId")]
+	#[serde(rename = "ClrSysMmbId", skip_serializing_if = "Option::is_none")]
 	pub clr_sys_mmb_id: Option<ClearingSystemMemberIdentification2>,
-	#[serde(rename = "LEI")]
+	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
 	pub lei: Option<String>,
-	#[serde(rename = "Nm")]
+	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
 	pub nm: Option<String>,
-	#[serde(rename = "PstlAdr")]
+	#[serde(rename = "PstlAdr", skip_serializing_if = "Option::is_none")]
 	pub pstl_adr: Option<PostalAddress27>,
-	#[serde(rename = "Othr")]
+	#[serde(rename = "Othr", skip_serializing_if = "Option::is_none")]
 	pub othr: Option<GenericFinancialIdentification1>,
 }
 
@@ -268,9 +268,9 @@ pub struct FinancialInstitutionIdentification23 {
 pub struct GenericAccountIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<AccountSchemeName1Choice>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
 }
 
@@ -280,9 +280,9 @@ pub struct GenericAccountIdentification1 {
 pub struct GenericFinancialIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<FinancialIdentificationSchemeName1Choice>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
 }
 
@@ -292,9 +292,9 @@ pub struct GenericFinancialIdentification1 {
 pub struct GenericIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
 }
 
@@ -306,7 +306,7 @@ pub struct GenericIdentification30 {
 	pub id: String,
 	#[serde(rename = "Issr")]
 	pub issr: String,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -316,9 +316,9 @@ pub struct GenericIdentification30 {
 pub struct GetStandingOrderV05 {
 	#[serde(rename = "MsgHdr")]
 	pub msg_hdr: MessageHeader4,
-	#[serde(rename = "StgOrdrQryDef")]
+	#[serde(rename = "StgOrdrQryDef", skip_serializing_if = "Option::is_none")]
 	pub stg_ordr_qry_def: Option<StandingOrderQuery5>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -416,9 +416,9 @@ pub struct Max70Text {
 pub struct MessageHeader4 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "CreDtTm")]
+	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
-	#[serde(rename = "ReqTp")]
+	#[serde(rename = "ReqTp", skip_serializing_if = "Option::is_none")]
 	pub req_tp: Option<RequestType3Choice>,
 }
 
@@ -434,41 +434,41 @@ pub struct Number {
 // PostalAddress27 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PostalAddress27 {
-	#[serde(rename = "AdrTp")]
+	#[serde(rename = "AdrTp", skip_serializing_if = "Option::is_none")]
 	pub adr_tp: Option<AddressType3Choice>,
-	#[serde(rename = "CareOf")]
+	#[serde(rename = "CareOf", skip_serializing_if = "Option::is_none")]
 	pub care_of: Option<String>,
-	#[serde(rename = "Dept")]
+	#[serde(rename = "Dept", skip_serializing_if = "Option::is_none")]
 	pub dept: Option<String>,
-	#[serde(rename = "SubDept")]
+	#[serde(rename = "SubDept", skip_serializing_if = "Option::is_none")]
 	pub sub_dept: Option<String>,
-	#[serde(rename = "StrtNm")]
+	#[serde(rename = "StrtNm", skip_serializing_if = "Option::is_none")]
 	pub strt_nm: Option<String>,
-	#[serde(rename = "BldgNb")]
+	#[serde(rename = "BldgNb", skip_serializing_if = "Option::is_none")]
 	pub bldg_nb: Option<String>,
-	#[serde(rename = "BldgNm")]
+	#[serde(rename = "BldgNm", skip_serializing_if = "Option::is_none")]
 	pub bldg_nm: Option<String>,
-	#[serde(rename = "Flr")]
+	#[serde(rename = "Flr", skip_serializing_if = "Option::is_none")]
 	pub flr: Option<String>,
-	#[serde(rename = "UnitNb")]
+	#[serde(rename = "UnitNb", skip_serializing_if = "Option::is_none")]
 	pub unit_nb: Option<String>,
-	#[serde(rename = "PstBx")]
+	#[serde(rename = "PstBx", skip_serializing_if = "Option::is_none")]
 	pub pst_bx: Option<String>,
-	#[serde(rename = "Room")]
+	#[serde(rename = "Room", skip_serializing_if = "Option::is_none")]
 	pub room: Option<String>,
-	#[serde(rename = "PstCd")]
+	#[serde(rename = "PstCd", skip_serializing_if = "Option::is_none")]
 	pub pst_cd: Option<String>,
-	#[serde(rename = "TwnNm")]
+	#[serde(rename = "TwnNm", skip_serializing_if = "Option::is_none")]
 	pub twn_nm: Option<String>,
-	#[serde(rename = "TwnLctnNm")]
+	#[serde(rename = "TwnLctnNm", skip_serializing_if = "Option::is_none")]
 	pub twn_lctn_nm: Option<String>,
-	#[serde(rename = "DstrctNm")]
+	#[serde(rename = "DstrctNm", skip_serializing_if = "Option::is_none")]
 	pub dstrct_nm: Option<String>,
-	#[serde(rename = "CtrySubDvsn")]
+	#[serde(rename = "CtrySubDvsn", skip_serializing_if = "Option::is_none")]
 	pub ctry_sub_dvsn: Option<String>,
-	#[serde(rename = "Ctry")]
+	#[serde(rename = "Ctry", skip_serializing_if = "Option::is_none")]
 	pub ctry: Option<String>,
-	#[serde(rename = "AdrLine")]
+	#[serde(rename = "AdrLine", skip_serializing_if = "Option::is_none")]
 	pub adr_line: Option<Vec<String>>,
 }
 
@@ -476,7 +476,7 @@ pub struct PostalAddress27 {
 // ProxyAccountIdentification1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProxyAccountIdentification1 {
-	#[serde(rename = "Tp")]
+	#[serde(rename = "Tp", skip_serializing_if = "Option::is_none")]
 	pub tp: Option<ProxyAccountType1Choice>,
 	#[serde(rename = "Id")]
 	pub id: String,
@@ -486,9 +486,9 @@ pub struct ProxyAccountIdentification1 {
 // ProxyAccountType1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProxyAccountType1Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }
 
@@ -504,9 +504,9 @@ pub struct QueryType2Code {
 // RequestType3Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RequestType3Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification1>,
 }
 
@@ -522,11 +522,11 @@ pub struct RequestedIndicator {
 // StandingOrderCriteria5 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StandingOrderCriteria5 {
-	#[serde(rename = "NewQryNm")]
+	#[serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none")]
 	pub new_qry_nm: Option<String>,
-	#[serde(rename = "SchCrit")]
+	#[serde(rename = "SchCrit", skip_serializing_if = "Option::is_none")]
 	pub sch_crit: Option<Vec<StandingOrderSearchCriteria5>>,
-	#[serde(rename = "RtrCrit")]
+	#[serde(rename = "RtrCrit", skip_serializing_if = "Option::is_none")]
 	pub rtr_crit: Option<StandingOrderReturnCriteria1>,
 }
 
@@ -534,9 +534,9 @@ pub struct StandingOrderCriteria5 {
 // StandingOrderCriteria5Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StandingOrderCriteria5Choice {
-	#[serde(rename = "QryNm")]
+	#[serde(rename = "QryNm", skip_serializing_if = "Option::is_none")]
 	pub qry_nm: Option<String>,
-	#[serde(rename = "NewCrit")]
+	#[serde(rename = "NewCrit", skip_serializing_if = "Option::is_none")]
 	pub new_crit: Option<StandingOrderCriteria5>,
 }
 
@@ -544,9 +544,9 @@ pub struct StandingOrderCriteria5Choice {
 // StandingOrderQuery5 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StandingOrderQuery5 {
-	#[serde(rename = "QryTp")]
+	#[serde(rename = "QryTp", skip_serializing_if = "Option::is_none")]
 	pub qry_tp: Option<String>,
-	#[serde(rename = "StgOrdrCrit")]
+	#[serde(rename = "StgOrdrCrit", skip_serializing_if = "Option::is_none")]
 	pub stg_ordr_crit: Option<StandingOrderCriteria5Choice>,
 }
 
@@ -562,39 +562,39 @@ pub struct StandingOrderQueryType1Code {
 // StandingOrderReturnCriteria1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StandingOrderReturnCriteria1 {
-	#[serde(rename = "StgOrdrIdInd")]
+	#[serde(rename = "StgOrdrIdInd", skip_serializing_if = "Option::is_none")]
 	pub stg_ordr_id_ind: Option<bool>,
-	#[serde(rename = "TpInd")]
+	#[serde(rename = "TpInd", skip_serializing_if = "Option::is_none")]
 	pub tp_ind: Option<bool>,
-	#[serde(rename = "SysMmbInd")]
+	#[serde(rename = "SysMmbInd", skip_serializing_if = "Option::is_none")]
 	pub sys_mmb_ind: Option<bool>,
-	#[serde(rename = "RspnsblPtyInd")]
+	#[serde(rename = "RspnsblPtyInd", skip_serializing_if = "Option::is_none")]
 	pub rspnsbl_pty_ind: Option<bool>,
-	#[serde(rename = "CcyInd")]
+	#[serde(rename = "CcyInd", skip_serializing_if = "Option::is_none")]
 	pub ccy_ind: Option<bool>,
-	#[serde(rename = "DbtrAcctInd")]
+	#[serde(rename = "DbtrAcctInd", skip_serializing_if = "Option::is_none")]
 	pub dbtr_acct_ind: Option<bool>,
-	#[serde(rename = "CdtrAcctInd")]
+	#[serde(rename = "CdtrAcctInd", skip_serializing_if = "Option::is_none")]
 	pub cdtr_acct_ind: Option<bool>,
-	#[serde(rename = "AssoctdPoolAcct")]
+	#[serde(rename = "AssoctdPoolAcct", skip_serializing_if = "Option::is_none")]
 	pub assoctd_pool_acct: Option<bool>,
-	#[serde(rename = "FrqcyInd")]
+	#[serde(rename = "FrqcyInd", skip_serializing_if = "Option::is_none")]
 	pub frqcy_ind: Option<bool>,
-	#[serde(rename = "ExctnTpInd")]
+	#[serde(rename = "ExctnTpInd", skip_serializing_if = "Option::is_none")]
 	pub exctn_tp_ind: Option<bool>,
-	#[serde(rename = "VldtyFrInd")]
+	#[serde(rename = "VldtyFrInd", skip_serializing_if = "Option::is_none")]
 	pub vldty_fr_ind: Option<bool>,
-	#[serde(rename = "VldToInd")]
+	#[serde(rename = "VldToInd", skip_serializing_if = "Option::is_none")]
 	pub vld_to_ind: Option<bool>,
-	#[serde(rename = "LkSetIdInd")]
+	#[serde(rename = "LkSetIdInd", skip_serializing_if = "Option::is_none")]
 	pub lk_set_id_ind: Option<bool>,
-	#[serde(rename = "LkSetOrdrIdInd")]
+	#[serde(rename = "LkSetOrdrIdInd", skip_serializing_if = "Option::is_none")]
 	pub lk_set_ordr_id_ind: Option<bool>,
-	#[serde(rename = "LkSetOrdrSeqInd")]
+	#[serde(rename = "LkSetOrdrSeqInd", skip_serializing_if = "Option::is_none")]
 	pub lk_set_ordr_seq_ind: Option<bool>,
-	#[serde(rename = "TtlAmtInd")]
+	#[serde(rename = "TtlAmtInd", skip_serializing_if = "Option::is_none")]
 	pub ttl_amt_ind: Option<bool>,
-	#[serde(rename = "ZeroSweepInd")]
+	#[serde(rename = "ZeroSweepInd", skip_serializing_if = "Option::is_none")]
 	pub zero_sweep_ind: Option<bool>,
 }
 
@@ -602,31 +602,31 @@ pub struct StandingOrderReturnCriteria1 {
 // StandingOrderSearchCriteria5 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StandingOrderSearchCriteria5 {
-	#[serde(rename = "KeyAttrbtsInd")]
+	#[serde(rename = "KeyAttrbtsInd", skip_serializing_if = "Option::is_none")]
 	pub key_attrbts_ind: Option<bool>,
-	#[serde(rename = "StgOrdrId")]
+	#[serde(rename = "StgOrdrId", skip_serializing_if = "Option::is_none")]
 	pub stg_ordr_id: Option<String>,
-	#[serde(rename = "Tp")]
+	#[serde(rename = "Tp", skip_serializing_if = "Option::is_none")]
 	pub tp: Option<StandingOrderType1Choice>,
-	#[serde(rename = "Acct")]
+	#[serde(rename = "Acct", skip_serializing_if = "Option::is_none")]
 	pub acct: Option<CashAccount40>,
-	#[serde(rename = "Ccy")]
+	#[serde(rename = "Ccy", skip_serializing_if = "Option::is_none")]
 	pub ccy: Option<String>,
-	#[serde(rename = "VldtyPrd")]
+	#[serde(rename = "VldtyPrd", skip_serializing_if = "Option::is_none")]
 	pub vldty_prd: Option<DatePeriod2Choice>,
-	#[serde(rename = "SysMmb")]
+	#[serde(rename = "SysMmb", skip_serializing_if = "Option::is_none")]
 	pub sys_mmb: Option<BranchAndFinancialInstitutionIdentification8>,
-	#[serde(rename = "RspnsblPty")]
+	#[serde(rename = "RspnsblPty", skip_serializing_if = "Option::is_none")]
 	pub rspnsbl_pty: Option<BranchAndFinancialInstitutionIdentification8>,
-	#[serde(rename = "AssoctdPoolAcct")]
+	#[serde(rename = "AssoctdPoolAcct", skip_serializing_if = "Option::is_none")]
 	pub assoctd_pool_acct: Option<AccountIdentification4Choice>,
-	#[serde(rename = "LkSetId")]
+	#[serde(rename = "LkSetId", skip_serializing_if = "Option::is_none")]
 	pub lk_set_id: Option<String>,
-	#[serde(rename = "LkSetOrdrId")]
+	#[serde(rename = "LkSetOrdrId", skip_serializing_if = "Option::is_none")]
 	pub lk_set_ordr_id: Option<String>,
-	#[serde(rename = "LkSetOrdrSeq")]
+	#[serde(rename = "LkSetOrdrSeq", skip_serializing_if = "Option::is_none")]
 	pub lk_set_ordr_seq: Option<f64>,
-	#[serde(rename = "ZeroSweepInd")]
+	#[serde(rename = "ZeroSweepInd", skip_serializing_if = "Option::is_none")]
 	pub zero_sweep_ind: Option<bool>,
 }
 
@@ -634,9 +634,9 @@ pub struct StandingOrderSearchCriteria5 {
 // StandingOrderType1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StandingOrderType1Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification1>,
 }
 
@@ -652,7 +652,7 @@ pub struct StandingOrderType1Code {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

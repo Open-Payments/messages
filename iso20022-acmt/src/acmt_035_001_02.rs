@@ -32,17 +32,17 @@ pub struct AccountSwitchDetails1 {
 	pub unq_ref_nb: String,
 	#[serde(rename = "RtgUnqRefNb")]
 	pub rtg_unq_ref_nb: String,
-	#[serde(rename = "SwtchRcvdDtTm")]
+	#[serde(rename = "SwtchRcvdDtTm", skip_serializing_if = "Option::is_none")]
 	pub swtch_rcvd_dt_tm: Option<String>,
-	#[serde(rename = "SwtchDt")]
+	#[serde(rename = "SwtchDt", skip_serializing_if = "Option::is_none")]
 	pub swtch_dt: Option<String>,
 	#[serde(rename = "SwtchTp")]
 	pub swtch_tp: String,
-	#[serde(rename = "SwtchSts")]
+	#[serde(rename = "SwtchSts", skip_serializing_if = "Option::is_none")]
 	pub swtch_sts: Option<String>,
-	#[serde(rename = "BalTrfWndw")]
+	#[serde(rename = "BalTrfWndw", skip_serializing_if = "Option::is_none")]
 	pub bal_trf_wndw: Option<String>,
-	#[serde(rename = "Rspn")]
+	#[serde(rename = "Rspn", skip_serializing_if = "Option::is_none")]
 	pub rspn: Option<Vec<ResponseDetails1>>,
 }
 
@@ -54,7 +54,7 @@ pub struct AccountSwitchPaymentResponseV02 {
 	pub msg_id: MessageIdentification1,
 	#[serde(rename = "AcctSwtchDtls")]
 	pub acct_swtch_dtls: AccountSwitchDetails1,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -114,7 +114,7 @@ pub struct MessageIdentification1 {
 pub struct ResponseDetails1 {
 	#[serde(rename = "RspnCd")]
 	pub rspn_cd: String,
-	#[serde(rename = "AddtlDtls")]
+	#[serde(rename = "AddtlDtls", skip_serializing_if = "Option::is_none")]
 	pub addtl_dtls: Option<String>,
 }
 
@@ -122,7 +122,7 @@ pub struct ResponseDetails1 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

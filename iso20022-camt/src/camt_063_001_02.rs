@@ -28,9 +28,9 @@ use serde::{Deserialize, Serialize};
 // AcknowledgementDetails1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AcknowledgementDetails1Choice {
-	#[serde(rename = "PayInSchdlRef")]
+	#[serde(rename = "PayInSchdlRef", skip_serializing_if = "Option::is_none")]
 	pub pay_in_schdl_ref: Option<String>,
-	#[serde(rename = "PayInCallRef")]
+	#[serde(rename = "PayInCallRef", skip_serializing_if = "Option::is_none")]
 	pub pay_in_call_ref: Option<String>,
 }
 
@@ -64,11 +64,11 @@ pub struct Max35Text {
 pub struct PayInEventAcknowledgementV02 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "SttlmSsnIdr")]
+	#[serde(rename = "SttlmSsnIdr", skip_serializing_if = "Option::is_none")]
 	pub sttlm_ssn_idr: Option<String>,
 	#[serde(rename = "AckDtls")]
 	pub ack_dtls: AcknowledgementDetails1Choice,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -76,7 +76,7 @@ pub struct PayInEventAcknowledgementV02 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

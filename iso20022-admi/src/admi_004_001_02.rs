@@ -30,11 +30,11 @@ use serde::{Deserialize, Serialize};
 pub struct Event2 {
 	#[serde(rename = "EvtCd")]
 	pub evt_cd: String,
-	#[serde(rename = "EvtParam")]
+	#[serde(rename = "EvtParam", skip_serializing_if = "Option::is_none")]
 	pub evt_param: Option<Vec<String>>,
-	#[serde(rename = "EvtDesc")]
+	#[serde(rename = "EvtDesc", skip_serializing_if = "Option::is_none")]
 	pub evt_desc: Option<String>,
-	#[serde(rename = "EvtTm")]
+	#[serde(rename = "EvtTm", skip_serializing_if = "Option::is_none")]
 	pub evt_tm: Option<String>,
 }
 

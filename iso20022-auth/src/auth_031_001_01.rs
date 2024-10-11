@@ -38,7 +38,7 @@ pub struct ExternalValidationRuleIdentification1Code {
 pub struct FinancialInstrumentReportingStatusAdviceV01 {
 	#[serde(rename = "StsAdvc")]
 	pub sts_advc: Vec<MessageReportHeader4>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -48,11 +48,11 @@ pub struct FinancialInstrumentReportingStatusAdviceV01 {
 pub struct GenericValidationRuleIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<ValidationRuleSchemeName1Choice>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
 }
 
@@ -100,13 +100,13 @@ pub struct Max35Text {
 // MessageReportHeader4 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageReportHeader4 {
-	#[serde(rename = "MsgRptIdr")]
+	#[serde(rename = "MsgRptIdr", skip_serializing_if = "Option::is_none")]
 	pub msg_rpt_idr: Option<String>,
-	#[serde(rename = "MsgSts")]
+	#[serde(rename = "MsgSts", skip_serializing_if = "Option::is_none")]
 	pub msg_sts: Option<StatusAdviceReport3>,
-	#[serde(rename = "RcrdSts")]
+	#[serde(rename = "RcrdSts", skip_serializing_if = "Option::is_none")]
 	pub rcrd_sts: Option<Vec<StatusReportRecord3>>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -152,11 +152,11 @@ pub struct ReportingRecordStatus1Code {
 pub struct StatusAdviceReport3 {
 	#[serde(rename = "Sts")]
 	pub sts: String,
-	#[serde(rename = "VldtnRule")]
+	#[serde(rename = "VldtnRule", skip_serializing_if = "Option::is_none")]
 	pub vldtn_rule: Option<Vec<GenericValidationRuleIdentification1>>,
-	#[serde(rename = "MsgDt")]
+	#[serde(rename = "MsgDt", skip_serializing_if = "Option::is_none")]
 	pub msg_dt: Option<String>,
-	#[serde(rename = "Sttstcs")]
+	#[serde(rename = "Sttstcs", skip_serializing_if = "Option::is_none")]
 	pub sttstcs: Option<OriginalReportStatistics3>,
 }
 
@@ -168,9 +168,9 @@ pub struct StatusReportRecord3 {
 	pub orgnl_rcrd_id: String,
 	#[serde(rename = "Sts")]
 	pub sts: String,
-	#[serde(rename = "VldtnRule")]
+	#[serde(rename = "VldtnRule", skip_serializing_if = "Option::is_none")]
 	pub vldtn_rule: Option<Vec<GenericValidationRuleIdentification1>>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -178,7 +178,7 @@ pub struct StatusReportRecord3 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
@@ -194,8 +194,8 @@ pub struct SupplementaryDataEnvelope1 {
 // ValidationRuleSchemeName1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ValidationRuleSchemeName1Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }

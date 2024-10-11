@@ -36,9 +36,9 @@ pub struct ActiveOrHistoricCurrencyCode {
 // CurrencyCriteriaDefinition1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CurrencyCriteriaDefinition1Choice {
-	#[serde(rename = "QryNm")]
+	#[serde(rename = "QryNm", skip_serializing_if = "Option::is_none")]
 	pub qry_nm: Option<String>,
-	#[serde(rename = "NewCrit")]
+	#[serde(rename = "NewCrit", skip_serializing_if = "Option::is_none")]
 	pub new_crit: Option<CurrencyExchangeCriteria2>,
 }
 
@@ -46,7 +46,7 @@ pub struct CurrencyCriteriaDefinition1Choice {
 // CurrencyExchangeCriteria2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CurrencyExchangeCriteria2 {
-	#[serde(rename = "NewQryNm")]
+	#[serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none")]
 	pub new_qry_nm: Option<String>,
 	#[serde(rename = "SchCrit")]
 	pub sch_crit: Vec<CurrencyExchangeSearchCriteria1>,
@@ -66,9 +66,9 @@ pub struct CurrencyExchangeSearchCriteria1 {
 // CurrencyQueryDefinition3 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CurrencyQueryDefinition3 {
-	#[serde(rename = "QryTp")]
+	#[serde(rename = "QryTp", skip_serializing_if = "Option::is_none")]
 	pub qry_tp: Option<String>,
-	#[serde(rename = "CcyCrit")]
+	#[serde(rename = "CcyCrit", skip_serializing_if = "Option::is_none")]
 	pub ccy_crit: Option<CurrencyCriteriaDefinition1Choice>,
 }
 
@@ -78,9 +78,9 @@ pub struct CurrencyQueryDefinition3 {
 pub struct GetCurrencyExchangeRateV04 {
 	#[serde(rename = "MsgHdr")]
 	pub msg_hdr: MessageHeader1,
-	#[serde(rename = "CcyQryDef")]
+	#[serde(rename = "CcyQryDef", skip_serializing_if = "Option::is_none")]
 	pub ccy_qry_def: Option<CurrencyQueryDefinition3>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -114,7 +114,7 @@ pub struct Max35Text {
 pub struct MessageHeader1 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "CreDtTm")]
+	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
 }
 
@@ -130,7 +130,7 @@ pub struct QueryType2Code {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

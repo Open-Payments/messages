@@ -28,9 +28,9 @@ use serde::{Deserialize, Serialize};
 // ApplicationSpecifics1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ApplicationSpecifics1 {
-	#[serde(rename = "SysUsr")]
+	#[serde(rename = "SysUsr", skip_serializing_if = "Option::is_none")]
 	pub sys_usr: Option<String>,
-	#[serde(rename = "Sgntr")]
+	#[serde(rename = "Sgntr", skip_serializing_if = "Option::is_none")]
 	pub sgntr: Option<SignatureEnvelope>,
 	#[serde(rename = "TtlNbOfDocs")]
 	pub ttl_nb_of_docs: f64,
@@ -42,7 +42,7 @@ pub struct ApplicationSpecifics1 {
 pub struct BusinessFileHeaderV01 {
 	#[serde(rename = "PyldDesc")]
 	pub pyld_desc: PayloadDescription2,
-	#[serde(rename = "Pyld")]
+	#[serde(rename = "Pyld", skip_serializing_if = "Option::is_none")]
 	pub pyld: Option<Vec<LaxPayload>>,
 }
 
@@ -110,7 +110,7 @@ pub struct PayloadData2 {
 	pub pyld_idr: String,
 	#[serde(rename = "CreDtAndTm")]
 	pub cre_dt_and_tm: String,
-	#[serde(rename = "PssblDplctFlg")]
+	#[serde(rename = "PssblDplctFlg", skip_serializing_if = "Option::is_none")]
 	pub pssbl_dplct_flg: Option<bool>,
 }
 
@@ -120,11 +120,11 @@ pub struct PayloadData2 {
 pub struct PayloadDescription2 {
 	#[serde(rename = "PyldData")]
 	pub pyld_data: PayloadData2,
-	#[serde(rename = "ApplSpcfcs")]
+	#[serde(rename = "ApplSpcfcs", skip_serializing_if = "Option::is_none")]
 	pub appl_spcfcs: Option<ApplicationSpecifics1>,
 	#[serde(rename = "PyldTp")]
 	pub pyld_tp: String,
-	#[serde(rename = "MnfstData")]
+	#[serde(rename = "MnfstData", skip_serializing_if = "Option::is_none")]
 	pub mnfst_data: Option<Vec<ManifestData2>>,
 }
 

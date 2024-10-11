@@ -31,7 +31,7 @@ use crate::iso::head_001_001_02::BusinessApplicationHeaderV02;
 // FedNowOutgoing ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowOutgoing {
-	#[serde(rename = "FedNowTechnicalHeader")]
+	#[serde(rename = "FedNowTechnicalHeader", skip_serializing_if = "Option::is_none")]
 	pub fed_now_technical_header: Option<FedNowTechnicalHeader>,
 	#[serde(rename = "FedNowOutgoingMessage")]
 	pub fed_now_outgoing_message: FedNowOutgoingMessage,
@@ -47,53 +47,53 @@ pub struct FedNowTechnicalHeader {
 // FedNowOutgoingMessage ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowOutgoingMessage {
-	#[serde(rename = "FedNowMessageReject")]
+	#[serde(rename = "FedNowMessageReject", skip_serializing_if = "Option::is_none")]
 	pub fed_now_message_reject: Option<FedNowMessageReject>,
-	#[serde(rename = "FedNowBroadcast")]
+	#[serde(rename = "FedNowBroadcast", skip_serializing_if = "Option::is_none")]
 	pub fed_now_broadcast: Option<FedNowBroadcast>,
-	#[serde(rename = "FedNowReceiptAcknowledgement")]
+	#[serde(rename = "FedNowReceiptAcknowledgement", skip_serializing_if = "Option::is_none")]
 	pub fed_now_receipt_acknowledgement: Option<FedNowReceiptAcknowledgement>,
-	#[serde(rename = "FedNowSystemResponse")]
+	#[serde(rename = "FedNowSystemResponse", skip_serializing_if = "Option::is_none")]
 	pub fed_now_system_response: Option<FedNowSystemResponse>,
-	#[serde(rename = "FedNowParticipantFile")]
+	#[serde(rename = "FedNowParticipantFile", skip_serializing_if = "Option::is_none")]
 	pub fed_now_participant_file: Option<FedNowParticipantFile>,
-	#[serde(rename = "FedNowPaymentStatus")]
+	#[serde(rename = "FedNowPaymentStatus", skip_serializing_if = "Option::is_none")]
 	pub fed_now_payment_status: Option<FedNowPaymentStatus>,
-	#[serde(rename = "FedNowPaymentReturn")]
+	#[serde(rename = "FedNowPaymentReturn", skip_serializing_if = "Option::is_none")]
 	pub fed_now_payment_return: Option<FedNowPaymentReturn>,
-	#[serde(rename = "FedNowCustomerCreditTransfer")]
+	#[serde(rename = "FedNowCustomerCreditTransfer", skip_serializing_if = "Option::is_none")]
 	pub fed_now_customer_credit_transfer: Option<FedNowCustomerCreditTransfer>,
-	#[serde(rename = "FedNowInstitutionCreditTransfer")]
+	#[serde(rename = "FedNowInstitutionCreditTransfer", skip_serializing_if = "Option::is_none")]
 	pub fed_now_institution_credit_transfer: Option<FedNowInstitutionCreditTransfer>,
-	#[serde(rename = "FedNowPaymentStatusRequest")]
+	#[serde(rename = "FedNowPaymentStatusRequest", skip_serializing_if = "Option::is_none")]
 	pub fed_now_payment_status_request: Option<FedNowPaymentStatusRequest>,
-	#[serde(rename = "FedNowRequestForPayment")]
+	#[serde(rename = "FedNowRequestForPayment", skip_serializing_if = "Option::is_none")]
 	pub fed_now_request_for_payment: Option<FedNowRequestForPayment>,
-	#[serde(rename = "FedNowRequestForPaymentResponse")]
+	#[serde(rename = "FedNowRequestForPaymentResponse", skip_serializing_if = "Option::is_none")]
 	pub fed_now_request_for_payment_response: Option<FedNowRequestForPaymentResponse>,
-	#[serde(rename = "FedNowInformationRequest")]
+	#[serde(rename = "FedNowInformationRequest", skip_serializing_if = "Option::is_none")]
 	pub fed_now_information_request: Option<FedNowInformationRequest>,
-	#[serde(rename = "FedNowAdditionalPaymentInformation")]
+	#[serde(rename = "FedNowAdditionalPaymentInformation", skip_serializing_if = "Option::is_none")]
 	pub fed_now_additional_payment_information: Option<FedNowAdditionalPaymentInformation>,
-	#[serde(rename = "FedNowReturnRequestResponse")]
+	#[serde(rename = "FedNowReturnRequestResponse", skip_serializing_if = "Option::is_none")]
 	pub fed_now_return_request_response: Option<FedNowReturnRequestResponse>,
-	#[serde(rename = "FedNowInformationRequestResponse")]
+	#[serde(rename = "FedNowInformationRequestResponse", skip_serializing_if = "Option::is_none")]
 	pub fed_now_information_request_response: Option<FedNowInformationRequestResponse>,
-	#[serde(rename = "FedNowAccountActivityDetailsReport")]
+	#[serde(rename = "FedNowAccountActivityDetailsReport", skip_serializing_if = "Option::is_none")]
 	pub fed_now_account_activity_details_report: Option<FedNowAccountActivityDetailsReport>,
-	#[serde(rename = "FedNowAccountActivityTotalsReport")]
+	#[serde(rename = "FedNowAccountActivityTotalsReport", skip_serializing_if = "Option::is_none")]
 	pub fed_now_account_activity_totals_report: Option<FedNowAccountActivityTotalsReport>,
-	#[serde(rename = "FedNowAccountBalanceReport")]
+	#[serde(rename = "FedNowAccountBalanceReport", skip_serializing_if = "Option::is_none")]
 	pub fed_now_account_balance_report: Option<FedNowAccountBalanceReport>,
-	#[serde(rename = "AccountDebitCreditNotification")]
+	#[serde(rename = "AccountDebitCreditNotification", skip_serializing_if = "Option::is_none")]
 	pub account_debit_credit_notification: Option<AccountDebitCreditNotification>,
-	#[serde(rename = "FedNowRequestForPaymentCancellationRequest")]
+	#[serde(rename = "FedNowRequestForPaymentCancellationRequest", skip_serializing_if = "Option::is_none")]
 	pub fed_now_request_for_payment_cancellation_request: Option<FedNowRequestForPaymentCancellationRequest>,
-	#[serde(rename = "FedNowRequestForPaymentCancellationRequestResponse")]
+	#[serde(rename = "FedNowRequestForPaymentCancellationRequestResponse", skip_serializing_if = "Option::is_none")]
 	pub fed_now_request_for_payment_cancellation_request_response: Option<FedNowRequestForPaymentCancellationRequestResponse>,
-	#[serde(rename = "FedNowReturnRequest")]
+	#[serde(rename = "FedNowReturnRequest", skip_serializing_if = "Option::is_none")]
 	pub fed_now_return_request: Option<FedNowReturnRequest>,
-	#[serde(rename = "FedNowOutgoingMessageSignatureManagement")]
+	#[serde(rename = "FedNowOutgoingMessageSignatureManagement", skip_serializing_if = "Option::is_none")]
 	pub fed_now_outgoing_message_signature_management: Option<FedNowOutgoingMessageSignatureManagement>,
 }
 
@@ -331,8 +331,8 @@ pub struct FedNowReturnRequest {
 // FedNowOutgoingMessageSignatureManagement ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowOutgoingMessageSignatureManagement {
-	#[serde(rename = "FedNowPublicKeyResponses")]
+	#[serde(rename = "FedNowPublicKeyResponses", skip_serializing_if = "Option::is_none")]
 	pub ke_fed_now_public_key_responses: Option<FedNowPublicKeyResponses>,
-	#[serde(rename = "FedNowCustomerMessageSignatureKeyOperationResponse")]
+	#[serde(rename = "FedNowCustomerMessageSignatureKeyOperationResponse", skip_serializing_if = "Option::is_none")]
 	pub ke_fed_now_customer_message_signature_key_operation_response: Option<FedNowCustomerMessageSignatureKeyOperationResponse>,
 }

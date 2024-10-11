@@ -84,7 +84,7 @@ pub struct AmountAndDirection102 {
 pub struct CCPAccountPositionReportV01 {
 	#[serde(rename = "Prtfl")]
 	pub prtfl: Vec<PositionAccount2>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -92,9 +92,9 @@ pub struct CCPAccountPositionReportV01 {
 // EndOfDayRequirement1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EndOfDayRequirement1 {
-	#[serde(rename = "InitlMrgnRqrmnt")]
+	#[serde(rename = "InitlMrgnRqrmnt", skip_serializing_if = "Option::is_none")]
 	pub initl_mrgn_rqrmnt: Option<ActiveCurrencyAndAmount>,
-	#[serde(rename = "VartnMrgnRqrmnt")]
+	#[serde(rename = "VartnMrgnRqrmnt", skip_serializing_if = "Option::is_none")]
 	pub vartn_mrgn_rqrmnt: Option<AmountAndDirection102>,
 }
 
@@ -112,11 +112,11 @@ pub struct Fraction5DecimalNumber {
 pub struct GenericIdentification165 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -174,19 +174,19 @@ pub struct PlusOrMinusIndicator {
 pub struct Position1 {
 	#[serde(rename = "PdctId")]
 	pub pdct_id: String,
-	#[serde(rename = "RskRqrmnt")]
+	#[serde(rename = "RskRqrmnt", skip_serializing_if = "Option::is_none")]
 	pub rsk_rqrmnt: Option<EndOfDayRequirement1>,
 	#[serde(rename = "GrssNtnl")]
 	pub grss_ntnl: ActiveCurrencyAnd24Amount,
 	#[serde(rename = "NetNtnl")]
 	pub net_ntnl: AmountAndDirection102,
-	#[serde(rename = "GrssDltaEqvtVal")]
+	#[serde(rename = "GrssDltaEqvtVal", skip_serializing_if = "Option::is_none")]
 	pub grss_dlta_eqvt_val: Option<ActiveCurrencyAndAmount>,
-	#[serde(rename = "NetDltaEqvtVal")]
+	#[serde(rename = "NetDltaEqvtVal", skip_serializing_if = "Option::is_none")]
 	pub net_dlta_eqvt_val: Option<AmountAndDirection102>,
-	#[serde(rename = "GrssDltaEqvtQty")]
+	#[serde(rename = "GrssDltaEqvtQty", skip_serializing_if = "Option::is_none")]
 	pub grss_dlta_eqvt_qty: Option<f64>,
-	#[serde(rename = "NetDltaEqvtQty")]
+	#[serde(rename = "NetDltaEqvtQty", skip_serializing_if = "Option::is_none")]
 	pub net_dlta_eqvt_qty: Option<f64>,
 	#[serde(rename = "GrssMktVal")]
 	pub grss_mkt_val: ActiveCurrencyAndAmount,
@@ -214,7 +214,7 @@ pub struct SchemeIdentificationType1Code {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

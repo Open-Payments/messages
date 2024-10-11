@@ -54,7 +54,7 @@ pub struct ActiveCurrencyCode {
 // Amount3 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Amount3 {
-	#[serde(rename = "OrgnlAmt")]
+	#[serde(rename = "OrgnlAmt", skip_serializing_if = "Option::is_none")]
 	pub orgnl_amt: Option<ActiveCurrencyAndAmount>,
 	#[serde(rename = "RptgAmt")]
 	pub rptg_amt: ActiveCurrencyAndAmount,
@@ -76,13 +76,13 @@ pub struct AmountAndDirection102 {
 pub struct CCPMemberRequirementsReportV01 {
 	#[serde(rename = "IntraDayRqrmntAmt")]
 	pub intra_day_rqrmnt_amt: Vec<IntraDayRequirement1>,
-	#[serde(rename = "IntraDayMrgnCall")]
+	#[serde(rename = "IntraDayMrgnCall", skip_serializing_if = "Option::is_none")]
 	pub intra_day_mrgn_call: Option<Vec<IntraDayMarginCall1>>,
 	#[serde(rename = "EndOfDayRqrmnt")]
 	pub end_of_day_rqrmnt: Vec<EndOfDayRequirement2>,
 	#[serde(rename = "DfltFndRqrmnt")]
 	pub dflt_fnd_rqrmnt: Vec<DefaultFundRequirement1>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -92,7 +92,7 @@ pub struct CCPMemberRequirementsReportV01 {
 pub struct DefaultFundRequirement1 {
 	#[serde(rename = "ClrMmbId")]
 	pub clr_mmb_id: GenericIdentification165,
-	#[serde(rename = "SvcId")]
+	#[serde(rename = "SvcId", skip_serializing_if = "Option::is_none")]
 	pub svc_id: Option<String>,
 	#[serde(rename = "Amt")]
 	pub amt: ActiveCurrencyAndAmount,
@@ -116,11 +116,11 @@ pub struct EndOfDayRequirement2 {
 pub struct GenericIdentification165 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -132,7 +132,7 @@ pub struct GenericIdentification36 {
 	pub id: String,
 	#[serde(rename = "Issr")]
 	pub issr: String,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -198,9 +198,9 @@ pub struct IntraDayRequirement1 {
 // MarginType2Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MarginType2Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification36>,
 }
 
@@ -264,7 +264,7 @@ pub struct SchemeIdentificationType1Code {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

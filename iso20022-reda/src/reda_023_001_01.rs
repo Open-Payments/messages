@@ -48,7 +48,7 @@ pub struct GenericIdentification30 {
 	pub id: String,
 	#[serde(rename = "Issr")]
 	pub issr: String,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -108,7 +108,7 @@ pub struct Max70Text {
 pub struct MessageHeader1 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "CreDtTm")]
+	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
 }
 
@@ -118,9 +118,9 @@ pub struct MessageHeader1 {
 pub struct SecuritiesAccount19 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Tp")]
+	#[serde(rename = "Tp", skip_serializing_if = "Option::is_none")]
 	pub tp: Option<GenericIdentification30>,
-	#[serde(rename = "Nm")]
+	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
 	pub nm: Option<String>,
 }
 
@@ -138,11 +138,11 @@ pub struct SecuritiesAccountModification2 {
 // SecuritiesAccountModification2Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecuritiesAccountModification2Choice {
-	#[serde(rename = "SysSctiesAcct")]
+	#[serde(rename = "SysSctiesAcct", skip_serializing_if = "Option::is_none")]
 	pub sys_scties_acct: Option<SystemSecuritiesAccount5>,
-	#[serde(rename = "SysRstrctn")]
+	#[serde(rename = "SysRstrctn", skip_serializing_if = "Option::is_none")]
 	pub sys_rstrctn: Option<SystemRestriction1>,
-	#[serde(rename = "MktSpcfcAttr")]
+	#[serde(rename = "MktSpcfcAttr", skip_serializing_if = "Option::is_none")]
 	pub mkt_spcfc_attr: Option<MarketSpecificAttribute1>,
 }
 
@@ -150,13 +150,13 @@ pub struct SecuritiesAccountModification2Choice {
 // SecuritiesAccountModificationRequestV01 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecuritiesAccountModificationRequestV01 {
-	#[serde(rename = "MsgHdr")]
+	#[serde(rename = "MsgHdr", skip_serializing_if = "Option::is_none")]
 	pub msg_hdr: Option<MessageHeader1>,
 	#[serde(rename = "AcctId")]
 	pub acct_id: SecuritiesAccount19,
 	#[serde(rename = "Mod")]
 	pub mod_attr: Vec<SecuritiesAccountModification2>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -164,7 +164,7 @@ pub struct SecuritiesAccountModificationRequestV01 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
@@ -182,7 +182,7 @@ pub struct SupplementaryDataEnvelope1 {
 pub struct SystemRestriction1 {
 	#[serde(rename = "VldFr")]
 	pub vld_fr: String,
-	#[serde(rename = "VldTo")]
+	#[serde(rename = "VldTo", skip_serializing_if = "Option::is_none")]
 	pub vld_to: Option<String>,
 	#[serde(rename = "Tp")]
 	pub tp: String,
@@ -192,15 +192,15 @@ pub struct SystemRestriction1 {
 // SystemSecuritiesAccount5 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SystemSecuritiesAccount5 {
-	#[serde(rename = "ClsgDt")]
+	#[serde(rename = "ClsgDt", skip_serializing_if = "Option::is_none")]
 	pub clsg_dt: Option<String>,
-	#[serde(rename = "HldInd")]
+	#[serde(rename = "HldInd", skip_serializing_if = "Option::is_none")]
 	pub hld_ind: Option<bool>,
-	#[serde(rename = "NegPos")]
+	#[serde(rename = "NegPos", skip_serializing_if = "Option::is_none")]
 	pub neg_pos: Option<bool>,
-	#[serde(rename = "EndInvstrFlg")]
+	#[serde(rename = "EndInvstrFlg", skip_serializing_if = "Option::is_none")]
 	pub end_invstr_flg: Option<String>,
-	#[serde(rename = "PricgSchme")]
+	#[serde(rename = "PricgSchme", skip_serializing_if = "Option::is_none")]
 	pub pricg_schme: Option<String>,
 }
 

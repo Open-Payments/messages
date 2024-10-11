@@ -36,19 +36,19 @@ pub struct AddressType2Code {
 // ContactDetails2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ContactDetails2 {
-	#[serde(rename = "NmPrfx")]
+	#[serde(rename = "NmPrfx", skip_serializing_if = "Option::is_none")]
 	pub nm_prfx: Option<String>,
-	#[serde(rename = "Nm")]
+	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
 	pub nm: Option<String>,
-	#[serde(rename = "PhneNb")]
+	#[serde(rename = "PhneNb", skip_serializing_if = "Option::is_none")]
 	pub phne_nb: Option<String>,
-	#[serde(rename = "MobNb")]
+	#[serde(rename = "MobNb", skip_serializing_if = "Option::is_none")]
 	pub mob_nb: Option<String>,
-	#[serde(rename = "FaxNb")]
+	#[serde(rename = "FaxNb", skip_serializing_if = "Option::is_none")]
 	pub fax_nb: Option<String>,
-	#[serde(rename = "EmailAdr")]
+	#[serde(rename = "EmailAdr", skip_serializing_if = "Option::is_none")]
 	pub email_adr: Option<String>,
-	#[serde(rename = "Othr")]
+	#[serde(rename = "Othr", skip_serializing_if = "Option::is_none")]
 	pub othr: Option<String>,
 }
 
@@ -74,11 +74,11 @@ pub struct ExternalValidationRuleIdentification1Code {
 pub struct GenericValidationRuleIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<ValidationRuleSchemeName1Choice>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
 }
 
@@ -96,9 +96,9 @@ pub struct ISODateTime {
 pub struct InvoiceTaxReportStatusAdviceV01 {
 	#[serde(rename = "StsRptHdr")]
 	pub sts_rpt_hdr: InvoiceTaxStatusReportHeader1,
-	#[serde(rename = "TxSts")]
+	#[serde(rename = "TxSts", skip_serializing_if = "Option::is_none")]
 	pub tx_sts: Option<Vec<InvoiceTaxReportTransactionStatus1>>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -110,9 +110,9 @@ pub struct InvoiceTaxReportTransactionStatus1 {
 	pub tax_rpt_id: String,
 	#[serde(rename = "Sts")]
 	pub sts: String,
-	#[serde(rename = "VldtnRule")]
+	#[serde(rename = "VldtnRule", skip_serializing_if = "Option::is_none")]
 	pub vldtn_rule: Option<Vec<GenericValidationRuleIdentification1>>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -120,7 +120,7 @@ pub struct InvoiceTaxReportTransactionStatus1 {
 // InvoiceTaxStatusReportHeader1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InvoiceTaxStatusReportHeader1 {
-	#[serde(rename = "TaxAuthrty")]
+	#[serde(rename = "TaxAuthrty", skip_serializing_if = "Option::is_none")]
 	pub tax_authrty: Option<TaxOrganisationIdentification1>,
 	#[serde(rename = "MsgId")]
 	pub msg_id: MessageIdentification1,
@@ -128,7 +128,7 @@ pub struct InvoiceTaxStatusReportHeader1 {
 	pub orgnl_msg_id: MessageIdentification1,
 	#[serde(rename = "RptSts")]
 	pub rpt_sts: String,
-	#[serde(rename = "VldtnRule")]
+	#[serde(rename = "VldtnRule", skip_serializing_if = "Option::is_none")]
 	pub vldtn_rule: Option<Vec<GenericValidationRuleIdentification1>>,
 }
 
@@ -210,25 +210,25 @@ pub struct PhoneNumber {
 // PostalAddress6 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PostalAddress6 {
-	#[serde(rename = "AdrTp")]
+	#[serde(rename = "AdrTp", skip_serializing_if = "Option::is_none")]
 	pub adr_tp: Option<String>,
-	#[serde(rename = "Dept")]
+	#[serde(rename = "Dept", skip_serializing_if = "Option::is_none")]
 	pub dept: Option<String>,
-	#[serde(rename = "SubDept")]
+	#[serde(rename = "SubDept", skip_serializing_if = "Option::is_none")]
 	pub sub_dept: Option<String>,
-	#[serde(rename = "StrtNm")]
+	#[serde(rename = "StrtNm", skip_serializing_if = "Option::is_none")]
 	pub strt_nm: Option<String>,
-	#[serde(rename = "BldgNb")]
+	#[serde(rename = "BldgNb", skip_serializing_if = "Option::is_none")]
 	pub bldg_nb: Option<String>,
-	#[serde(rename = "PstCd")]
+	#[serde(rename = "PstCd", skip_serializing_if = "Option::is_none")]
 	pub pst_cd: Option<String>,
-	#[serde(rename = "TwnNm")]
+	#[serde(rename = "TwnNm", skip_serializing_if = "Option::is_none")]
 	pub twn_nm: Option<String>,
-	#[serde(rename = "CtrySubDvsn")]
+	#[serde(rename = "CtrySubDvsn", skip_serializing_if = "Option::is_none")]
 	pub ctry_sub_dvsn: Option<String>,
-	#[serde(rename = "Ctry")]
+	#[serde(rename = "Ctry", skip_serializing_if = "Option::is_none")]
 	pub ctry: Option<String>,
-	#[serde(rename = "AdrLine")]
+	#[serde(rename = "AdrLine", skip_serializing_if = "Option::is_none")]
 	pub adr_line: Option<Vec<String>>,
 }
 
@@ -236,7 +236,7 @@ pub struct PostalAddress6 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
@@ -254,9 +254,9 @@ pub struct SupplementaryDataEnvelope1 {
 pub struct TaxOrganisationIdentification1 {
 	#[serde(rename = "Nm")]
 	pub nm: String,
-	#[serde(rename = "PstlAdr")]
+	#[serde(rename = "PstlAdr", skip_serializing_if = "Option::is_none")]
 	pub pstl_adr: Option<PostalAddress6>,
-	#[serde(rename = "CtctDtls")]
+	#[serde(rename = "CtctDtls", skip_serializing_if = "Option::is_none")]
 	pub ctct_dtls: Option<ContactDetails2>,
 }
 
@@ -280,8 +280,8 @@ pub struct TaxReportingStatus2Code {
 // ValidationRuleSchemeName1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ValidationRuleSchemeName1Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }

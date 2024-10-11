@@ -66,7 +66,7 @@ pub struct CurrencyCodeAndName1 {
 pub struct FinancialInstrumentReportingCurrencyCodeReportV01 {
 	#[serde(rename = "CcyData")]
 	pub ccy_data: Vec<SecuritiesCurrencyIdentification2>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -124,13 +124,13 @@ pub struct Period2 {
 // Period4Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Period4Choice {
-	#[serde(rename = "Dt")]
+	#[serde(rename = "Dt", skip_serializing_if = "Option::is_none")]
 	pub dt: Option<String>,
-	#[serde(rename = "FrDt")]
+	#[serde(rename = "FrDt", skip_serializing_if = "Option::is_none")]
 	pub fr_dt: Option<String>,
-	#[serde(rename = "ToDt")]
+	#[serde(rename = "ToDt", skip_serializing_if = "Option::is_none")]
 	pub to_dt: Option<String>,
-	#[serde(rename = "FrDtToDt")]
+	#[serde(rename = "FrDtToDt", skip_serializing_if = "Option::is_none")]
 	pub fr_dt_to_dt: Option<Period2>,
 }
 
@@ -140,17 +140,17 @@ pub struct Period4Choice {
 pub struct SecuritiesCurrencyIdentification2 {
 	#[serde(rename = "Ccy")]
 	pub ccy: CurrencyCodeAndName1,
-	#[serde(rename = "FrctnlDgt")]
+	#[serde(rename = "FrctnlDgt", skip_serializing_if = "Option::is_none")]
 	pub frctnl_dgt: Option<f64>,
 	#[serde(rename = "CtryDtls")]
 	pub ctry_dtls: CountryCodeAndName3,
 	#[serde(rename = "PreEuro")]
 	pub pre_euro: bool,
-	#[serde(rename = "Mod")]
+	#[serde(rename = "Mod", skip_serializing_if = "Option::is_none")]
 	pub mod_attr: Option<String>,
 	#[serde(rename = "VldtyPrd")]
 	pub vldty_prd: Period4Choice,
-	#[serde(rename = "LastUpdtd")]
+	#[serde(rename = "LastUpdtd", skip_serializing_if = "Option::is_none")]
 	pub last_updtd: Option<String>,
 }
 
@@ -158,7 +158,7 @@ pub struct SecuritiesCurrencyIdentification2 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

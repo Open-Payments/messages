@@ -38,15 +38,15 @@ pub struct DatePeriod2 {
 // DatePeriodSearch1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DatePeriodSearch1Choice {
-	#[serde(rename = "FrDt")]
+	#[serde(rename = "FrDt", skip_serializing_if = "Option::is_none")]
 	pub fr_dt: Option<String>,
-	#[serde(rename = "ToDt")]
+	#[serde(rename = "ToDt", skip_serializing_if = "Option::is_none")]
 	pub to_dt: Option<String>,
-	#[serde(rename = "FrToDt")]
+	#[serde(rename = "FrToDt", skip_serializing_if = "Option::is_none")]
 	pub fr_to_dt: Option<DatePeriod2>,
-	#[serde(rename = "EQDt")]
+	#[serde(rename = "EQDt", skip_serializing_if = "Option::is_none")]
 	pub eq_dt: Option<String>,
-	#[serde(rename = "NEQDt")]
+	#[serde(rename = "NEQDt", skip_serializing_if = "Option::is_none")]
 	pub neq_dt: Option<String>,
 }
 
@@ -66,7 +66,7 @@ pub struct GenericIdentification30 {
 	pub id: String,
 	#[serde(rename = "Issr")]
 	pub issr: String,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -116,7 +116,7 @@ pub struct Max70Text {
 pub struct MessageHeader1 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "CreDtTm")]
+	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
 }
 
@@ -126,9 +126,9 @@ pub struct MessageHeader1 {
 pub struct SecuritiesAccount19 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Tp")]
+	#[serde(rename = "Tp", skip_serializing_if = "Option::is_none")]
 	pub tp: Option<GenericIdentification30>,
-	#[serde(rename = "Nm")]
+	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
 	pub nm: Option<String>,
 }
 
@@ -136,11 +136,11 @@ pub struct SecuritiesAccount19 {
 // SecuritiesAccountAuditTrailQueryV01 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecuritiesAccountAuditTrailQueryV01 {
-	#[serde(rename = "MsgHdr")]
+	#[serde(rename = "MsgHdr", skip_serializing_if = "Option::is_none")]
 	pub msg_hdr: Option<MessageHeader1>,
 	#[serde(rename = "SchCrit")]
 	pub sch_crit: SecuritiesAccountAuditTrailSearchCriteria3,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -148,9 +148,9 @@ pub struct SecuritiesAccountAuditTrailQueryV01 {
 // SecuritiesAccountAuditTrailSearchCriteria3 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecuritiesAccountAuditTrailSearchCriteria3 {
-	#[serde(rename = "SctiesAcctId")]
+	#[serde(rename = "SctiesAcctId", skip_serializing_if = "Option::is_none")]
 	pub scties_acct_id: Option<SecuritiesAccount19>,
-	#[serde(rename = "DtPrd")]
+	#[serde(rename = "DtPrd", skip_serializing_if = "Option::is_none")]
 	pub dt_prd: Option<DatePeriodSearch1Choice>,
 }
 
@@ -158,7 +158,7 @@ pub struct SecuritiesAccountAuditTrailSearchCriteria3 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

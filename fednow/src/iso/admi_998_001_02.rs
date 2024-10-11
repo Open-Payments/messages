@@ -25,16 +25,19 @@
 use serde::{Deserialize, Serialize};
 
 
+
+
+
 // AdministrationProprietaryMessageV02 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AdministrationProprietaryMessageV02 {
-	#[serde(rename = "MsgId")]
+	#[serde(rename = "MsgId", skip_serializing_if = "Option::is_none")]
 	pub msg_id: Option<MessageReference>,
-	#[serde(rename = "Rltd")]
+	#[serde(rename = "Rltd", skip_serializing_if = "Option::is_none")]
 	pub rltd: Option<MessageReference>,
-	#[serde(rename = "Prvs")]
+	#[serde(rename = "Prvs", skip_serializing_if = "Option::is_none")]
 	pub prvs: Option<MessageReference>,
-	#[serde(rename = "Othr")]
+	#[serde(rename = "Othr", skip_serializing_if = "Option::is_none")]
 	pub othr: Option<MessageReference>,
 	#[serde(rename = "PrtryData")]
 	pub prtry_data: ProprietaryData5,

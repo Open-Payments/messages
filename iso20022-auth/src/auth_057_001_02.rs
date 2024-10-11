@@ -48,7 +48,7 @@ pub struct BaseOneRate {
 pub struct CCPPortfolioStressTestingDefinitionReportV02 {
 	#[serde(rename = "ScnroDef")]
 	pub scnro_def: Vec<ScenarioDefinition2>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -58,11 +58,11 @@ pub struct CCPPortfolioStressTestingDefinitionReportV02 {
 pub struct GenericIdentification165 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -72,11 +72,11 @@ pub struct GenericIdentification165 {
 pub struct GenericIdentification168 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -150,7 +150,7 @@ pub struct ScenarioDefinition2 {
 	pub strtgy_strss_tp: String,
 	#[serde(rename = "StrssItm")]
 	pub strss_itm: Vec<StressItem1>,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
 }
 
@@ -200,11 +200,11 @@ pub struct StressItem1 {
 // StressItem1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StressItem1Choice {
-	#[serde(rename = "Pdct")]
+	#[serde(rename = "Pdct", skip_serializing_if = "Option::is_none")]
 	pub pdct: Option<StressedProduct1>,
-	#[serde(rename = "Strtgy")]
+	#[serde(rename = "Strtgy", skip_serializing_if = "Option::is_none")]
 	pub strtgy: Option<Strategy1>,
-	#[serde(rename = "RskFctr")]
+	#[serde(rename = "RskFctr", skip_serializing_if = "Option::is_none")]
 	pub rsk_fctr: Option<RiskFactor1>,
 }
 
@@ -212,9 +212,9 @@ pub struct StressItem1Choice {
 // StressSize1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StressSize1Choice {
-	#[serde(rename = "Rltv")]
+	#[serde(rename = "Rltv", skip_serializing_if = "Option::is_none")]
 	pub rltv: Option<f64>,
-	#[serde(rename = "Abs")]
+	#[serde(rename = "Abs", skip_serializing_if = "Option::is_none")]
 	pub abs: Option<Absolute1>,
 }
 
@@ -234,7 +234,7 @@ pub struct StressedProduct1 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

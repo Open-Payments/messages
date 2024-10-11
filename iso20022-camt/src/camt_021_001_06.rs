@@ -28,9 +28,9 @@ use serde::{Deserialize, Serialize};
 // ErrorHandling3Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ErrorHandling3Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }
 
@@ -40,7 +40,7 @@ pub struct ErrorHandling3Choice {
 pub struct ErrorHandling5 {
 	#[serde(rename = "Err")]
 	pub err: ErrorHandling3Choice,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
 }
 
@@ -72,11 +72,11 @@ pub struct ExternalSystemErrorHandling1Code {
 // GeneralBusinessInformation1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GeneralBusinessInformation1 {
-	#[serde(rename = "Qlfr")]
+	#[serde(rename = "Qlfr", skip_serializing_if = "Option::is_none")]
 	pub qlfr: Option<InformationQualifierType1>,
-	#[serde(rename = "Sbjt")]
+	#[serde(rename = "Sbjt", skip_serializing_if = "Option::is_none")]
 	pub sbjt: Option<String>,
-	#[serde(rename = "SbjtDtls")]
+	#[serde(rename = "SbjtDtls", skip_serializing_if = "Option::is_none")]
 	pub sbjt_dtls: Option<String>,
 }
 
@@ -84,9 +84,9 @@ pub struct GeneralBusinessInformation1 {
 // GeneralBusinessOrError7Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GeneralBusinessOrError7Choice {
-	#[serde(rename = "OprlErr")]
+	#[serde(rename = "OprlErr", skip_serializing_if = "Option::is_none")]
 	pub oprl_err: Option<Vec<ErrorHandling5>>,
-	#[serde(rename = "BizRpt")]
+	#[serde(rename = "BizRpt", skip_serializing_if = "Option::is_none")]
 	pub biz_rpt: Option<Vec<GeneralBusinessReport6>>,
 }
 
@@ -94,9 +94,9 @@ pub struct GeneralBusinessOrError7Choice {
 // GeneralBusinessOrError8Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GeneralBusinessOrError8Choice {
-	#[serde(rename = "BizErr")]
+	#[serde(rename = "BizErr", skip_serializing_if = "Option::is_none")]
 	pub biz_err: Option<Vec<ErrorHandling5>>,
-	#[serde(rename = "GnlBiz")]
+	#[serde(rename = "GnlBiz", skip_serializing_if = "Option::is_none")]
 	pub gnl_biz: Option<GeneralBusinessInformation1>,
 }
 
@@ -116,9 +116,9 @@ pub struct GeneralBusinessReport6 {
 pub struct GenericIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
 }
 
@@ -134,9 +134,9 @@ pub struct ISODateTime {
 // InformationQualifierType1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InformationQualifierType1 {
-	#[serde(rename = "IsFrmtd")]
+	#[serde(rename = "IsFrmtd", skip_serializing_if = "Option::is_none")]
 	pub is_frmtd: Option<bool>,
-	#[serde(rename = "Prty")]
+	#[serde(rename = "Prty", skip_serializing_if = "Option::is_none")]
 	pub prty: Option<String>,
 }
 
@@ -170,13 +170,13 @@ pub struct Max35Text {
 pub struct MessageHeader7 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "CreDtTm")]
+	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
-	#[serde(rename = "ReqTp")]
+	#[serde(rename = "ReqTp", skip_serializing_if = "Option::is_none")]
 	pub req_tp: Option<RequestType4Choice>,
-	#[serde(rename = "OrgnlBizQry")]
+	#[serde(rename = "OrgnlBizQry", skip_serializing_if = "Option::is_none")]
 	pub orgnl_biz_qry: Option<OriginalBusinessQuery1>,
-	#[serde(rename = "QryNm")]
+	#[serde(rename = "QryNm", skip_serializing_if = "Option::is_none")]
 	pub qry_nm: Option<String>,
 }
 
@@ -186,9 +186,9 @@ pub struct MessageHeader7 {
 pub struct OriginalBusinessQuery1 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "MsgNmId")]
+	#[serde(rename = "MsgNmId", skip_serializing_if = "Option::is_none")]
 	pub msg_nm_id: Option<String>,
-	#[serde(rename = "CreDtTm")]
+	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
 }
 
@@ -204,11 +204,11 @@ pub struct Priority1Code {
 // RequestType4Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RequestType4Choice {
-	#[serde(rename = "PmtCtrl")]
+	#[serde(rename = "PmtCtrl", skip_serializing_if = "Option::is_none")]
 	pub pmt_ctrl: Option<String>,
-	#[serde(rename = "Enqry")]
+	#[serde(rename = "Enqry", skip_serializing_if = "Option::is_none")]
 	pub enqry: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification1>,
 }
 
@@ -220,7 +220,7 @@ pub struct ReturnGeneralBusinessInformationV06 {
 	pub msg_hdr: MessageHeader7,
 	#[serde(rename = "RptOrErr")]
 	pub rpt_or_err: GeneralBusinessOrError7Choice,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -228,7 +228,7 @@ pub struct ReturnGeneralBusinessInformationV06 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

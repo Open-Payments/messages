@@ -30,11 +30,11 @@ use serde::{Deserialize, Serialize};
 pub struct Event1 {
 	#[serde(rename = "EvtCd")]
 	pub evt_cd: String,
-	#[serde(rename = "EvtParam")]
+	#[serde(rename = "EvtParam", skip_serializing_if = "Option::is_none")]
 	pub evt_param: Option<Vec<String>>,
-	#[serde(rename = "EvtDesc")]
+	#[serde(rename = "EvtDesc", skip_serializing_if = "Option::is_none")]
 	pub evt_desc: Option<String>,
-	#[serde(rename = "EvtTm")]
+	#[serde(rename = "EvtTm", skip_serializing_if = "Option::is_none")]
 	pub evt_tm: Option<String>,
 }
 
@@ -82,7 +82,7 @@ pub struct Max4AlphaNumericText {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
@@ -100,12 +100,12 @@ pub struct SupplementaryDataEnvelope1 {
 pub struct SystemEventAcknowledgementV01 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "OrgtrRef")]
+	#[serde(rename = "OrgtrRef", skip_serializing_if = "Option::is_none")]
 	pub orgtr_ref: Option<String>,
-	#[serde(rename = "SttlmSsnIdr")]
+	#[serde(rename = "SttlmSsnIdr", skip_serializing_if = "Option::is_none")]
 	pub sttlm_ssn_idr: Option<String>,
-	#[serde(rename = "AckDtls")]
+	#[serde(rename = "AckDtls", skip_serializing_if = "Option::is_none")]
 	pub ack_dtls: Option<Event1>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
