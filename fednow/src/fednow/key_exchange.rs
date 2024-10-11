@@ -71,6 +71,7 @@ pub struct FedNowMessageSignatureKeyStatus {
 }
 
 
+
 // FedNowMessageSignatureKey ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowMessageSignatureKey {
@@ -84,8 +85,8 @@ pub struct FedNowMessageSignatureKey {
 	pub encoding: String,
 	#[serde(rename = "Algorithm", skip_serializing_if = "Option::is_none")]
 	pub algorithm: Option<String>,
-	pub key_creation_date_time: Option<String>,
 	#[serde(rename = "KeyCreationDateTime", skip_serializing_if = "Option::is_none")]
+	pub key_creation_date_time: Option<KeyCreationDateTime>,
 }
 
 
