@@ -25,7 +25,6 @@
 use serde::{Deserialize, Serialize};
 
 
-
 // Max300AlphaNumericString ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max300AlphaNumericString {
@@ -50,8 +49,10 @@ pub struct Max300Text {
 }
 
 
-// RoutingNumberFRS1 is This is a routing number used by the Service participant in connection with the message.
-//                 
+// RoutingNumberFRS1 is This is a routing number used by the Service participant in connection with the message.
+
+//                 
+
 //                 Note: This may be a master account routing number or a subaccount routing number.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RoutingNumberFRS1 {
@@ -86,7 +87,7 @@ pub struct FedNowMessageSignatureKey {
 	#[serde(rename = "Algorithm", skip_serializing_if = "Option::is_none")]
 	pub algorithm: Option<String>,
 	#[serde(rename = "KeyCreationDateTime", skip_serializing_if = "Option::is_none")]
-	pub key_creation_date_time: Option<KeyCreationDateTime>,
+	pub key_creation_date_time: Option<String>,
 }
 
 

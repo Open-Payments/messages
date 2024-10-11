@@ -25,9 +25,6 @@
 use serde::{Deserialize, Serialize};
 
 
-
-
-
 // FedNowParticipantFile1 is This is the participant profile of the FedNow participant and contains the participant's identification, name and the FedNow services the participant has enrolled for.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowParticipantFile1 {
@@ -66,8 +63,10 @@ pub struct Max140Text {
 }
 
 
-// RoutingNumberFRS1 is This is a routing number used by the Service participant in connection with the message.
-//                 
+// RoutingNumberFRS1 is This is a routing number used by the Service participant in connection with the message.
+
+//                 
+
 //                 Note: This may be a master account routing number or a subaccount routing number.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RoutingNumberFRS1 {
