@@ -23,15 +23,13 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-use crate::document::*;
-use crate::fednow::key_exchange::*;
-use crate::iso::head_001_001_02::BusinessApplicationHeaderV02;
+
 
 
 // FedNowIncoming ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowIncoming {
-	#[serde(rename = "FedNowTechnicalHeader")]
+	#[serde(rename = "FedNowTechnicalHeader", skip_serializing_if = "Option::is_none")]
 	pub fed_now_technical_header: Option<FedNowTechnicalHeader>,
 	#[serde(rename = "FedNowIncomingMessage")]
 	pub fed_now_incoming_message: FedNowIncomingMessage,
@@ -47,45 +45,45 @@ pub struct FedNowTechnicalHeader {
 // FedNowIncomingMessage ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowIncomingMessage {
-	#[serde(rename = "FedNowMessageReject")]
+	#[serde(rename = "FedNowMessageReject", skip_serializing_if = "Option::is_none")]
 	pub fed_now_message_reject: Option<FedNowMessageReject>,
-	#[serde(rename = "FedNowParticipantBroadcast")]
+	#[serde(rename = "FedNowParticipantBroadcast", skip_serializing_if = "Option::is_none")]
 	pub fed_now_participant_broadcast: Option<FedNowParticipantBroadcast>,
-	#[serde(rename = "FedNowRetrievalRequest")]
+	#[serde(rename = "FedNowRetrievalRequest", skip_serializing_if = "Option::is_none")]
 	pub fed_now_retrieval_request: Option<FedNowRetrievalRequest>,
-	#[serde(rename = "FedNowReceiptAcknowledgement")]
+	#[serde(rename = "FedNowReceiptAcknowledgement", skip_serializing_if = "Option::is_none")]
 	pub fed_now_receipt_acknowledgement: Option<FedNowReceiptAcknowledgement>,
-	#[serde(rename = "FedNowPaymentStatus")]
+	#[serde(rename = "FedNowPaymentStatus", skip_serializing_if = "Option::is_none")]
 	pub fed_now_payment_status: Option<FedNowPaymentStatus>,
-	#[serde(rename = "FedNowPaymentReturn")]
+	#[serde(rename = "FedNowPaymentReturn", skip_serializing_if = "Option::is_none")]
 	pub fed_now_payment_return: Option<FedNowPaymentReturn>,
-	#[serde(rename = "FedNowCustomerCreditTransfer")]
+	#[serde(rename = "FedNowCustomerCreditTransfer", skip_serializing_if = "Option::is_none")]
 	pub fed_now_customer_credit_transfer: Option<FedNowCustomerCreditTransfer>,
-	#[serde(rename = "FedNowInstitutionCreditTransfer")]
+	#[serde(rename = "FedNowInstitutionCreditTransfer", skip_serializing_if = "Option::is_none")]
 	pub fed_now_institution_credit_transfer: Option<FedNowInstitutionCreditTransfer>,
-	#[serde(rename = "FedNowPaymentStatusRequest")]
+	#[serde(rename = "FedNowPaymentStatusRequest", skip_serializing_if = "Option::is_none")]
 	pub fed_now_payment_status_request: Option<FedNowPaymentStatusRequest>,
-	#[serde(rename = "FedNowRequestForPayment")]
+	#[serde(rename = "FedNowRequestForPayment", skip_serializing_if = "Option::is_none")]
 	pub fed_now_request_for_payment: Option<FedNowRequestForPayment>,
-	#[serde(rename = "FedNowRequestForPaymentResponse")]
+	#[serde(rename = "FedNowRequestForPaymentResponse", skip_serializing_if = "Option::is_none")]
 	pub fed_now_request_for_payment_response: Option<FedNowRequestForPaymentResponse>,
-	#[serde(rename = "FedNowInformationRequest")]
+	#[serde(rename = "FedNowInformationRequest", skip_serializing_if = "Option::is_none")]
 	pub fed_now_information_request: Option<FedNowInformationRequest>,
-	#[serde(rename = "FedNowAdditionalPaymentInformation")]
+	#[serde(rename = "FedNowAdditionalPaymentInformation", skip_serializing_if = "Option::is_none")]
 	pub fed_now_additional_payment_information: Option<FedNowAdditionalPaymentInformation>,
-	#[serde(rename = "FedNowInformationRequestResponse")]
+	#[serde(rename = "FedNowInformationRequestResponse", skip_serializing_if = "Option::is_none")]
 	pub fed_now_information_request_response: Option<FedNowInformationRequestResponse>,
-	#[serde(rename = "FedNowRequestForPaymentCancellationRequestResponse")]
+	#[serde(rename = "FedNowRequestForPaymentCancellationRequestResponse", skip_serializing_if = "Option::is_none")]
 	pub fed_now_request_for_payment_cancellation_request_response: Option<FedNowRequestForPaymentCancellationRequestResponse>,
-	#[serde(rename = "FedNowReturnRequestResponse")]
+	#[serde(rename = "FedNowReturnRequestResponse", skip_serializing_if = "Option::is_none")]
 	pub fed_now_return_request_response: Option<FedNowReturnRequestResponse>,
-	#[serde(rename = "FedNowRequestForPaymentCancellationRequest")]
+	#[serde(rename = "FedNowRequestForPaymentCancellationRequest", skip_serializing_if = "Option::is_none")]
 	pub fed_now_request_for_payment_cancellation_request: Option<FedNowRequestForPaymentCancellationRequest>,
-	#[serde(rename = "FedNowReturnRequest")]
+	#[serde(rename = "FedNowReturnRequest", skip_serializing_if = "Option::is_none")]
 	pub fed_now_return_request: Option<FedNowReturnRequest>,
-	#[serde(rename = "FedNowAccountReportingRequest")]
+	#[serde(rename = "FedNowAccountReportingRequest", skip_serializing_if = "Option::is_none")]
 	pub fed_now_account_reporting_request: Option<FedNowAccountReportingRequest>,
-	#[serde(rename = "FedNowIncomingMessageSignatureManagement")]
+	#[serde(rename = "FedNowIncomingMessageSignatureManagement", skip_serializing_if = "Option::is_none")]
 	pub fed_now_incoming_message_signature_management: Option<FedNowIncomingMessageSignatureManagement>,
 }
 
@@ -285,10 +283,10 @@ pub struct FedNowAccountReportingRequest {
 pub struct FedNowIncomingMessageSignatureManagement {
 	#[serde(rename = "SenderId")]
 	pub sender_id: String,
-	#[serde(rename = "GetAllFedNowActivePublicKeys")]
+	#[serde(rename = "GetAllFedNowActivePublicKeys", skip_serializing_if = "Option::is_none")]
 	pub ke_get_all_fed_now_active_public_keys: Option<GetAllFedNowActivePublicKeys>,
-	#[serde(rename = "GetAllCustomerPublicKeys")]
+	#[serde(rename = "GetAllCustomerPublicKeys", skip_serializing_if = "Option::is_none")]
 	pub ke_get_all_customer_public_keys: Option<GetAllCustomerPublicKeys>,
-	#[serde(rename = "FedNowMessageSignatureKeyExchange")]
+	#[serde(rename = "FedNowMessageSignatureKeyExchange", skip_serializing_if = "Option::is_none")]
 	pub ke_fed_now_message_signature_key_exchange: Option<FedNowMessageSignatureKeyExchange>,
 }

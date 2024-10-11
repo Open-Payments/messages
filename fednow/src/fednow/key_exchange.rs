@@ -25,6 +25,7 @@
 use serde::{Deserialize, Serialize};
 
 
+
 // Max300AlphaNumericString ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max300AlphaNumericString {
@@ -49,16 +50,15 @@ pub struct Max300Text {
 }
 
 
-// RoutingNumberFRS1 is This is a routing number used by the Service participant in connection with the message.
-
-//                 
-
+// RoutingNumberFRS1 is This is a routing number used by the Service participant in connection with the message.
+//                 
 //                 Note: This may be a master account routing number or a subaccount routing number.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RoutingNumberFRS1 {
 	#[serde(rename = "RoutingNumber_FRS_1")]
 	pub routing_number_frs_1: String,
 }
+
 
 
 // FedNowMessageSignatureKeyStatus ...
@@ -82,17 +82,17 @@ pub struct FedNowMessageSignatureKey {
 	pub encoded_public_key: String,
 	#[serde(rename = "Encoding")]
 	pub encoding: String,
-	#[serde(rename = "Algorithm")]
+	#[serde(rename = "Algorithm", skip_serializing_if = "Option::is_none")]
 	pub algorithm: Option<String>,
-	#[serde(rename = "KeyCreationDateTime")]
 	pub key_creation_date_time: Option<String>,
+	#[serde(rename = "KeyCreationDateTime", skip_serializing_if = "Option::is_none")]
 }
 
 
 // KeyAddition ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct KeyAddition {
-	#[serde(rename = "Key")]
+	#[serde(rename = "Key", skip_serializing_if = "Option::is_none")]
 	pub key: Option<FedNowMessageSignatureKey>,
 }
 
@@ -100,11 +100,11 @@ pub struct KeyAddition {
 // KeyRevocation ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct KeyRevocation {
-	#[serde(rename = "KeyRevocation")]
+	#[serde(rename = "KeyRevocation", skip_serializing_if = "Option::is_none")]
 	pub key_revocation: Option<String>,
-	#[serde(rename = "FedNowStatusDescription")]
+	#[serde(rename = "FedNowStatusDescription", skip_serializing_if = "Option::is_none")]
 	pub fed_now_status_description: Option<String>,
-	#[serde(rename = "FedNowKeyID")]
+	#[serde(rename = "FedNowKeyID", skip_serializing_if = "Option::is_none")]
 	pub fed_now_key_id: Option<String>,
 }
 
@@ -112,9 +112,9 @@ pub struct KeyRevocation {
 // FedNowMessageSignatureKeyExchange ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowMessageSignatureKeyExchange {
-	#[serde(rename = "KeyAddition")]
+	#[serde(rename = "KeyAddition", skip_serializing_if = "Option::is_none")]
 	pub key_addition: Option<KeyAddition>,
-	#[serde(rename = "KeyRevocation")]
+	#[serde(rename = "KeyRevocation", skip_serializing_if = "Option::is_none")]
 	pub key_revocation: Option<String>,
 }
 
@@ -126,9 +126,10 @@ pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 	pub fed_now_key_id: String,
 	#[serde(rename = "Status")]
 	pub status: String,
-	#[serde(rename = "ErrorCode")]
+	#[serde(rename = "ErrorCode", skip_serializing_if = "Option::is_none")]
 	pub error_code: Option<String>,
 }
+
 
 
 // GetAllFedNowActivePublicKeys ...
