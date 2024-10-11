@@ -66,7 +66,7 @@ pub struct AmountAndDirection102 {
 pub struct CCPPortfolioStressTestingResultReportV01 {
 	#[serde(rename = "ScnroStrssTstRslt")]
 	pub scnro_strss_tst_rslt: Vec<ScenarioStressTestResult1>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -76,11 +76,11 @@ pub struct CCPPortfolioStressTestingResultReportV01 {
 pub struct GenericIdentification165 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -90,11 +90,11 @@ pub struct GenericIdentification165 {
 pub struct GenericIdentification168 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -146,7 +146,7 @@ pub struct PortfolioStressTestResult1 {
 	pub prtfl_id: GenericIdentification165,
 	#[serde(rename = "StrssLoss")]
 	pub strss_loss: AmountAndDirection102,
-	#[serde(rename = "RawStrssLoss")]
+	#[serde(rename = "RawStrssLoss", skip_serializing_if = "Option::is_none")]
 	pub raw_strss_loss: Option<AmountAndDirection102>,
 	#[serde(rename = "Cover1Flg")]
 	pub cover1_flg: bool,
@@ -176,7 +176,7 @@ pub struct SchemeIdentificationType1Code {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

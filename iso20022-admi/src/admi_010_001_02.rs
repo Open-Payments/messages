@@ -72,7 +72,7 @@ pub struct ReportParameter1 {
 pub struct RequestDetails4 {
 	#[serde(rename = "Key")]
 	pub key: String,
-	#[serde(rename = "RptData")]
+	#[serde(rename = "RptData", skip_serializing_if = "Option::is_none")]
 	pub rpt_data: Option<Vec<ReportParameter1>>,
 }
 
@@ -94,11 +94,11 @@ pub struct RequestDetails5 {
 pub struct StaticDataReportV02 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "SttlmSsnIdr")]
+	#[serde(rename = "SttlmSsnIdr", skip_serializing_if = "Option::is_none")]
 	pub sttlm_ssn_idr: Option<String>,
 	#[serde(rename = "RptDtls")]
 	pub rpt_dtls: RequestDetails5,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -106,7 +106,7 @@ pub struct StaticDataReportV02 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

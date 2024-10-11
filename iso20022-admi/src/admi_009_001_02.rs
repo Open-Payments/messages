@@ -54,7 +54,7 @@ pub struct Max35Text {
 pub struct RequestDetails3 {
 	#[serde(rename = "Tp")]
 	pub tp: String,
-	#[serde(rename = "Key")]
+	#[serde(rename = "Key", skip_serializing_if = "Option::is_none")]
 	pub key: Option<String>,
 }
 
@@ -64,11 +64,11 @@ pub struct RequestDetails3 {
 pub struct StaticDataRequestV02 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "SttlmSsnIdr")]
+	#[serde(rename = "SttlmSsnIdr", skip_serializing_if = "Option::is_none")]
 	pub sttlm_ssn_idr: Option<String>,
 	#[serde(rename = "DataReqDtls")]
 	pub data_req_dtls: RequestDetails3,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -76,7 +76,7 @@ pub struct StaticDataRequestV02 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

@@ -66,7 +66,7 @@ pub struct AmountAndDirection102 {
 pub struct CCPLiquidityStressTestingResultReportV01 {
 	#[serde(rename = "LqdtyStrssTstRslt")]
 	pub lqdty_strss_tst_rslt: Vec<LiquidityStressTestResult1>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -92,11 +92,11 @@ pub struct LEIIdentifier {
 // LiquidResourceInformation1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LiquidResourceInformation1 {
-	#[serde(rename = "CntrPtyId")]
+	#[serde(rename = "CntrPtyId", skip_serializing_if = "Option::is_none")]
 	pub cntr_pty_id: Option<String>,
 	#[serde(rename = "LqdRsrcVal")]
 	pub lqd_rsrc_val: AmountAndDirection102,
-	#[serde(rename = "MktVal")]
+	#[serde(rename = "MktVal", skip_serializing_if = "Option::is_none")]
 	pub mkt_val: Option<AmountAndDirection102>,
 	#[serde(rename = "Scrd")]
 	pub scrd: bool,
@@ -114,23 +114,23 @@ pub struct LiquidResourceInformation1 {
 pub struct LiquidResources1 {
 	#[serde(rename = "CshDue")]
 	pub csh_due: Vec<LiquidResourceInformation1>,
-	#[serde(rename = "FcltiesCmmtdLinesOfCdt")]
+	#[serde(rename = "FcltiesCmmtdLinesOfCdt", skip_serializing_if = "Option::is_none")]
 	pub fclties_cmmtd_lines_of_cdt: Option<Vec<LiquidResourceInformation1>>,
-	#[serde(rename = "FcltiesCmmtdRpAgrmts")]
+	#[serde(rename = "FcltiesCmmtdRpAgrmts", skip_serializing_if = "Option::is_none")]
 	pub fclties_cmmtd_rp_agrmts: Option<Vec<LiquidResourceInformation1>>,
-	#[serde(rename = "FcltiesCmmtdFxSwps")]
+	#[serde(rename = "FcltiesCmmtdFxSwps", skip_serializing_if = "Option::is_none")]
 	pub fclties_cmmtd_fx_swps: Option<Vec<LiquidResourceInformation1>>,
-	#[serde(rename = "FcltiesOthrCmmtd")]
+	#[serde(rename = "FcltiesOthrCmmtd", skip_serializing_if = "Option::is_none")]
 	pub fclties_othr_cmmtd: Option<Vec<LiquidResourceInformation1>>,
-	#[serde(rename = "FcltiesUcmmtd")]
+	#[serde(rename = "FcltiesUcmmtd", skip_serializing_if = "Option::is_none")]
 	pub fclties_ucmmtd: Option<Vec<LiquidResourceInformation1>>,
-	#[serde(rename = "FinInstrmsCCP")]
+	#[serde(rename = "FinInstrmsCCP", skip_serializing_if = "Option::is_none")]
 	pub fin_instrms_ccp: Option<Vec<LiquidResourceInformation1>>,
-	#[serde(rename = "FinInstrmsTrsrInvstmts")]
+	#[serde(rename = "FinInstrmsTrsrInvstmts", skip_serializing_if = "Option::is_none")]
 	pub fin_instrms_trsr_invstmts: Option<Vec<LiquidResourceInformation1>>,
-	#[serde(rename = "FinInstrmsDfltrsSttlmColl")]
+	#[serde(rename = "FinInstrmsDfltrsSttlmColl", skip_serializing_if = "Option::is_none")]
 	pub fin_instrms_dfltrs_sttlm_coll: Option<Vec<LiquidResourceInformation1>>,
-	#[serde(rename = "FinInstrmsDfltrsNonCshColl")]
+	#[serde(rename = "FinInstrmsDfltrsNonCshColl", skip_serializing_if = "Option::is_none")]
 	pub fin_instrms_dfltrs_non_csh_coll: Option<Vec<LiquidResourceInformation1>>,
 }
 
@@ -216,7 +216,7 @@ pub struct StressLiquidResourceRequirement1 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

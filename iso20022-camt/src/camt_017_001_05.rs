@@ -50,9 +50,9 @@ pub struct CurrencyExchange20 {
 	pub qtd_ccy: String,
 	#[serde(rename = "QtnDt")]
 	pub qtn_dt: String,
-	#[serde(rename = "LwLmt")]
+	#[serde(rename = "LwLmt", skip_serializing_if = "Option::is_none")]
 	pub lw_lmt: Option<ExchangeRateOrPercentage1Choice>,
-	#[serde(rename = "HghLmt")]
+	#[serde(rename = "HghLmt", skip_serializing_if = "Option::is_none")]
 	pub hgh_lmt: Option<ExchangeRateOrPercentage1Choice>,
 }
 
@@ -80,9 +80,9 @@ pub struct CurrencySourceTarget1 {
 // ErrorHandling1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ErrorHandling1Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }
 
@@ -100,7 +100,7 @@ pub struct ErrorHandling1Code {
 pub struct ErrorHandling3 {
 	#[serde(rename = "Err")]
 	pub err: ErrorHandling1Choice,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
 }
 
@@ -108,9 +108,9 @@ pub struct ErrorHandling3 {
 // ExchangeRateOrPercentage1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExchangeRateOrPercentage1Choice {
-	#[serde(rename = "Rate")]
+	#[serde(rename = "Rate", skip_serializing_if = "Option::is_none")]
 	pub rate: Option<f64>,
-	#[serde(rename = "Pctg")]
+	#[serde(rename = "Pctg", skip_serializing_if = "Option::is_none")]
 	pub pctg: Option<f64>,
 }
 
@@ -118,9 +118,9 @@ pub struct ExchangeRateOrPercentage1Choice {
 // ExchangeRateReportOrError3Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExchangeRateReportOrError3Choice {
-	#[serde(rename = "CcyXchgRpt")]
+	#[serde(rename = "CcyXchgRpt", skip_serializing_if = "Option::is_none")]
 	pub ccy_xchg_rpt: Option<Vec<CurrencyExchangeReport4>>,
-	#[serde(rename = "OprlErr")]
+	#[serde(rename = "OprlErr", skip_serializing_if = "Option::is_none")]
 	pub oprl_err: Option<Vec<ErrorHandling3>>,
 }
 
@@ -128,9 +128,9 @@ pub struct ExchangeRateReportOrError3Choice {
 // ExchangeRateReportOrError4Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExchangeRateReportOrError4Choice {
-	#[serde(rename = "BizErr")]
+	#[serde(rename = "BizErr", skip_serializing_if = "Option::is_none")]
 	pub biz_err: Option<Vec<ErrorHandling3>>,
-	#[serde(rename = "CcyXchg")]
+	#[serde(rename = "CcyXchg", skip_serializing_if = "Option::is_none")]
 	pub ccy_xchg: Option<CurrencyExchange20>,
 }
 
@@ -156,9 +156,9 @@ pub struct ExternalPaymentControlRequestType1Code {
 pub struct GenericIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
 }
 
@@ -208,13 +208,13 @@ pub struct Max4AlphaNumericText {
 pub struct MessageHeader7 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "CreDtTm")]
+	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
-	#[serde(rename = "ReqTp")]
+	#[serde(rename = "ReqTp", skip_serializing_if = "Option::is_none")]
 	pub req_tp: Option<RequestType4Choice>,
-	#[serde(rename = "OrgnlBizQry")]
+	#[serde(rename = "OrgnlBizQry", skip_serializing_if = "Option::is_none")]
 	pub orgnl_biz_qry: Option<OriginalBusinessQuery1>,
-	#[serde(rename = "QryNm")]
+	#[serde(rename = "QryNm", skip_serializing_if = "Option::is_none")]
 	pub qry_nm: Option<String>,
 }
 
@@ -224,9 +224,9 @@ pub struct MessageHeader7 {
 pub struct OriginalBusinessQuery1 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "MsgNmId")]
+	#[serde(rename = "MsgNmId", skip_serializing_if = "Option::is_none")]
 	pub msg_nm_id: Option<String>,
-	#[serde(rename = "CreDtTm")]
+	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
 }
 
@@ -242,11 +242,11 @@ pub struct PercentageRate {
 // RequestType4Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RequestType4Choice {
-	#[serde(rename = "PmtCtrl")]
+	#[serde(rename = "PmtCtrl", skip_serializing_if = "Option::is_none")]
 	pub pmt_ctrl: Option<String>,
-	#[serde(rename = "Enqry")]
+	#[serde(rename = "Enqry", skip_serializing_if = "Option::is_none")]
 	pub enqry: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification1>,
 }
 
@@ -258,7 +258,7 @@ pub struct ReturnCurrencyExchangeRateV05 {
 	pub msg_hdr: MessageHeader7,
 	#[serde(rename = "RptOrErr")]
 	pub rpt_or_err: ExchangeRateReportOrError3Choice,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -266,7 +266,7 @@ pub struct ReturnCurrencyExchangeRateV05 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

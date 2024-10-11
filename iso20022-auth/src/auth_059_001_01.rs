@@ -82,7 +82,7 @@ pub struct CCPIncomeStatementAndCapitalAdequacyReportV01 {
 	pub lqd_fin_rsrcs: ActiveCurrencyAndAmount,
 	#[serde(rename = "HpthtclCptlMeasr")]
 	pub hpthtcl_cptl_measr: Vec<HypotheticalCapitalMeasure1>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -102,7 +102,7 @@ pub struct CapitalRequirement1 {
 	pub mkt_rsk: ActiveCurrencyAndAmount,
 	#[serde(rename = "BizRsk")]
 	pub biz_rsk: ActiveCurrencyAndAmount,
-	#[serde(rename = "NtfctnBffr")]
+	#[serde(rename = "NtfctnBffr", skip_serializing_if = "Option::is_none")]
 	pub ntfctn_bffr: Option<f64>,
 }
 
@@ -168,7 +168,7 @@ pub struct PlusOrMinusIndicator {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

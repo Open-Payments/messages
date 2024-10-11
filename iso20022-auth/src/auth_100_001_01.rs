@@ -42,7 +42,7 @@ pub struct Contact9 {
 	pub phne_nb: String,
 	#[serde(rename = "EmailAdr")]
 	pub email_adr: String,
-	#[serde(rename = "Fctn")]
+	#[serde(rename = "Fctn", skip_serializing_if = "Option::is_none")]
 	pub fctn: Option<String>,
 }
 
@@ -100,9 +100,9 @@ pub struct ISODateTime {
 // IdentificationSource3Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IdentificationSource3Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }
 
@@ -200,7 +200,7 @@ pub struct Max35Text {
 pub struct OtherIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Sfx")]
+	#[serde(rename = "Sfx", skip_serializing_if = "Option::is_none")]
 	pub sfx: Option<String>,
 	#[serde(rename = "Tp")]
 	pub tp: IdentificationSource3Choice,
@@ -236,15 +236,15 @@ pub struct ReportPeriodActivity1Code {
 pub struct SecuritiesSettlementSystemIdentification2 {
 	#[serde(rename = "SysId")]
 	pub sys_id: String,
-	#[serde(rename = "SysNm")]
+	#[serde(rename = "SysNm", skip_serializing_if = "Option::is_none")]
 	pub sys_nm: Option<String>,
-	#[serde(rename = "CtryOfJursdctn")]
+	#[serde(rename = "CtryOfJursdctn", skip_serializing_if = "Option::is_none")]
 	pub ctry_of_jursdctn: Option<String>,
-	#[serde(rename = "CSDLglNm")]
+	#[serde(rename = "CSDLglNm", skip_serializing_if = "Option::is_none")]
 	pub csd_lgl_nm: Option<String>,
-	#[serde(rename = "LEI")]
+	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
 	pub lei: Option<String>,
-	#[serde(rename = "RspnsblPty")]
+	#[serde(rename = "RspnsblPty", skip_serializing_if = "Option::is_none")]
 	pub rspnsbl_pty: Option<Vec<Contact9>>,
 }
 
@@ -252,11 +252,11 @@ pub struct SecuritiesSettlementSystemIdentification2 {
 // SecurityIdentification19 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecurityIdentification19 {
-	#[serde(rename = "ISIN")]
+	#[serde(rename = "ISIN", skip_serializing_if = "Option::is_none")]
 	pub isin: Option<String>,
-	#[serde(rename = "OthrId")]
+	#[serde(rename = "OthrId", skip_serializing_if = "Option::is_none")]
 	pub othr_id: Option<Vec<OtherIdentification1>>,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
 }
 
@@ -264,9 +264,9 @@ pub struct SecurityIdentification19 {
 // SettlementDailyFailureReason1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SettlementDailyFailureReason1Choice {
-	#[serde(rename = "DataSetActn")]
+	#[serde(rename = "DataSetActn", skip_serializing_if = "Option::is_none")]
 	pub data_set_actn: Option<String>,
-	#[serde(rename = "Data")]
+	#[serde(rename = "Data", skip_serializing_if = "Option::is_none")]
 	pub data: Option<SettlementDailyFailureReason3>,
 }
 
@@ -314,9 +314,9 @@ pub struct SettlementFailsCurrency2 {
 // SettlementFailsDailyCSD1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SettlementFailsDailyCSD1Choice {
-	#[serde(rename = "DataSetActn")]
+	#[serde(rename = "DataSetActn", skip_serializing_if = "Option::is_none")]
 	pub data_set_actn: Option<String>,
-	#[serde(rename = "Data")]
+	#[serde(rename = "Data", skip_serializing_if = "Option::is_none")]
 	pub data: Option<SettlementFailsDailyCSD3>,
 }
 
@@ -344,9 +344,9 @@ pub struct SettlementFailsDailyData3 {
 // SettlementFailsDailyInstructionType1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SettlementFailsDailyInstructionType1Choice {
-	#[serde(rename = "DataSetActn")]
+	#[serde(rename = "DataSetActn", skip_serializing_if = "Option::is_none")]
 	pub data_set_actn: Option<String>,
-	#[serde(rename = "Data")]
+	#[serde(rename = "Data", skip_serializing_if = "Option::is_none")]
 	pub data: Option<SettlementFailsDailyInstructionType3>,
 }
 
@@ -392,9 +392,9 @@ pub struct SettlementFailsDailyInstrument3 {
 // SettlementFailsDailyTransactionType1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SettlementFailsDailyTransactionType1Choice {
-	#[serde(rename = "DataSetActn")]
+	#[serde(rename = "DataSetActn", skip_serializing_if = "Option::is_none")]
 	pub data_set_actn: Option<String>,
-	#[serde(rename = "Data")]
+	#[serde(rename = "Data", skip_serializing_if = "Option::is_none")]
 	pub data: Option<SettlementFailsDailyTransactionType3>,
 }
 
@@ -420,17 +420,17 @@ pub struct SettlementFailsDailyTransactionType3 {
 pub struct SettlementFailsData3 {
 	#[serde(rename = "Ttl")]
 	pub ttl: SettlementTotalData1,
-	#[serde(rename = "PtcptInFail")]
+	#[serde(rename = "PtcptInFail", skip_serializing_if = "Option::is_none")]
 	pub ptcpt_in_fail: Option<SettlementFailsParticipantRange1>,
-	#[serde(rename = "FlsPerCcy")]
+	#[serde(rename = "FlsPerCcy", skip_serializing_if = "Option::is_none")]
 	pub fls_per_ccy: Option<Vec<SettlementFailsCurrency2>>,
-	#[serde(rename = "FlsPerFinInstrmTp")]
+	#[serde(rename = "FlsPerFinInstrmTp", skip_serializing_if = "Option::is_none")]
 	pub fls_per_fin_instrm_tp: Option<SettlementFailsInstrument2>,
-	#[serde(rename = "SctiesInFail")]
+	#[serde(rename = "SctiesInFail", skip_serializing_if = "Option::is_none")]
 	pub scties_in_fail: Option<SettlementFailsSecuritiesRange1>,
-	#[serde(rename = "FlsPerTxTp")]
+	#[serde(rename = "FlsPerTxTp", skip_serializing_if = "Option::is_none")]
 	pub fls_per_tx_tp: Option<SettlementFailsTransactionType2>,
-	#[serde(rename = "TtlSttlmPnlties")]
+	#[serde(rename = "TtlSttlmPnlties", skip_serializing_if = "Option::is_none")]
 	pub ttl_sttlm_pnlties: Option<SettlementDataVolume2>,
 	#[serde(rename = "FailrRsn")]
 	pub failr_rsn: SettlementFailureReason3,
@@ -470,7 +470,7 @@ pub struct SettlementFailsMonthlyReportV01 {
 	pub mnthly_aggt: SettlementFailsData3,
 	#[serde(rename = "DalyData")]
 	pub daly_data: Vec<SettlementFailsDailyData3>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -562,7 +562,7 @@ pub struct SettlementFailureReason2 {
 // SettlementFailureReason3 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SettlementFailureReason3 {
-	#[serde(rename = "AvrgDrtn")]
+	#[serde(rename = "AvrgDrtn", skip_serializing_if = "Option::is_none")]
 	pub avrg_drtn: Option<f64>,
 	#[serde(rename = "Desc")]
 	pub desc: Vec<SettlementFailureReason2>,
@@ -586,9 +586,9 @@ pub struct SettlementTotalData1 {
 // SettlementTotalData1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SettlementTotalData1Choice {
-	#[serde(rename = "DataSetActn")]
+	#[serde(rename = "DataSetActn", skip_serializing_if = "Option::is_none")]
 	pub data_set_actn: Option<String>,
-	#[serde(rename = "Data")]
+	#[serde(rename = "Data", skip_serializing_if = "Option::is_none")]
 	pub data: Option<SettlementTotalData1>,
 }
 
@@ -596,7 +596,7 @@ pub struct SettlementTotalData1Choice {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

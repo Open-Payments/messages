@@ -64,7 +64,7 @@ pub struct BaseOneRate {
 pub struct CCPBackTestingResultReportV01 {
 	#[serde(rename = "MnthlyRslt")]
 	pub mnthly_rslt: Vec<MonthlyResult1>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -74,11 +74,11 @@ pub struct CCPBackTestingResultReportV01 {
 pub struct GenericIdentification165 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -128,7 +128,7 @@ pub struct MonthlyResult1 {
 	pub lrgst_xcptn: ActiveCurrencyAndAmount,
 	#[serde(rename = "AvrgXcptn")]
 	pub avrg_xcptn: ActiveCurrencyAndAmount,
-	#[serde(rename = "LrgstXcptnId")]
+	#[serde(rename = "LrgstXcptnId", skip_serializing_if = "Option::is_none")]
 	pub lrgst_xcptn_id: Option<GenericIdentification165>,
 }
 
@@ -160,7 +160,7 @@ pub struct SchemeIdentificationType1Code {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

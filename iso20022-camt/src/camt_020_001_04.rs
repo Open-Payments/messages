@@ -28,11 +28,11 @@ use serde::{Deserialize, Serialize};
 // BusinessInformationCriteria1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BusinessInformationCriteria1 {
-	#[serde(rename = "NewQryNm")]
+	#[serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none")]
 	pub new_qry_nm: Option<String>,
-	#[serde(rename = "SchCrit")]
+	#[serde(rename = "SchCrit", skip_serializing_if = "Option::is_none")]
 	pub sch_crit: Option<Vec<GeneralBusinessInformationSearchCriteria1>>,
-	#[serde(rename = "RtrCrit")]
+	#[serde(rename = "RtrCrit", skip_serializing_if = "Option::is_none")]
 	pub rtr_crit: Option<GeneralBusinessInformationReturnCriteria1>,
 }
 
@@ -40,9 +40,9 @@ pub struct BusinessInformationCriteria1 {
 // BusinessInformationQueryDefinition3 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BusinessInformationQueryDefinition3 {
-	#[serde(rename = "QryTp")]
+	#[serde(rename = "QryTp", skip_serializing_if = "Option::is_none")]
 	pub qry_tp: Option<String>,
-	#[serde(rename = "GnlBizInfCrit")]
+	#[serde(rename = "GnlBizInfCrit", skip_serializing_if = "Option::is_none")]
 	pub gnl_biz_inf_crit: Option<GeneralBusinessInformationCriteriaDefinition1Choice>,
 }
 
@@ -50,13 +50,13 @@ pub struct BusinessInformationQueryDefinition3 {
 // CharacterSearch1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CharacterSearch1Choice {
-	#[serde(rename = "EQ")]
+	#[serde(rename = "EQ", skip_serializing_if = "Option::is_none")]
 	pub eq: Option<String>,
-	#[serde(rename = "NEQ")]
+	#[serde(rename = "NEQ", skip_serializing_if = "Option::is_none")]
 	pub neq: Option<String>,
-	#[serde(rename = "CT")]
+	#[serde(rename = "CT", skip_serializing_if = "Option::is_none")]
 	pub ct: Option<String>,
-	#[serde(rename = "NCT")]
+	#[serde(rename = "NCT", skip_serializing_if = "Option::is_none")]
 	pub nct: Option<String>,
 }
 
@@ -64,9 +64,9 @@ pub struct CharacterSearch1Choice {
 // GeneralBusinessInformationCriteriaDefinition1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GeneralBusinessInformationCriteriaDefinition1Choice {
-	#[serde(rename = "QryNm")]
+	#[serde(rename = "QryNm", skip_serializing_if = "Option::is_none")]
 	pub qry_nm: Option<String>,
-	#[serde(rename = "NewCrit")]
+	#[serde(rename = "NewCrit", skip_serializing_if = "Option::is_none")]
 	pub new_crit: Option<BusinessInformationCriteria1>,
 }
 
@@ -74,11 +74,11 @@ pub struct GeneralBusinessInformationCriteriaDefinition1Choice {
 // GeneralBusinessInformationReturnCriteria1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GeneralBusinessInformationReturnCriteria1 {
-	#[serde(rename = "QlfrInd")]
+	#[serde(rename = "QlfrInd", skip_serializing_if = "Option::is_none")]
 	pub qlfr_ind: Option<bool>,
-	#[serde(rename = "SbjtInd")]
+	#[serde(rename = "SbjtInd", skip_serializing_if = "Option::is_none")]
 	pub sbjt_ind: Option<bool>,
-	#[serde(rename = "SbjtDtlsInd")]
+	#[serde(rename = "SbjtDtlsInd", skip_serializing_if = "Option::is_none")]
 	pub sbjt_dtls_ind: Option<bool>,
 }
 
@@ -86,11 +86,11 @@ pub struct GeneralBusinessInformationReturnCriteria1 {
 // GeneralBusinessInformationSearchCriteria1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GeneralBusinessInformationSearchCriteria1 {
-	#[serde(rename = "Ref")]
+	#[serde(rename = "Ref", skip_serializing_if = "Option::is_none")]
 	pub ref_attr: Option<Vec<String>>,
-	#[serde(rename = "Sbjt")]
+	#[serde(rename = "Sbjt", skip_serializing_if = "Option::is_none")]
 	pub sbjt: Option<Vec<CharacterSearch1Choice>>,
-	#[serde(rename = "Qlfr")]
+	#[serde(rename = "Qlfr", skip_serializing_if = "Option::is_none")]
 	pub qlfr: Option<Vec<InformationQualifierType1>>,
 }
 
@@ -100,9 +100,9 @@ pub struct GeneralBusinessInformationSearchCriteria1 {
 pub struct GetGeneralBusinessInformationV04 {
 	#[serde(rename = "MsgHdr")]
 	pub msg_hdr: MessageHeader1,
-	#[serde(rename = "GnlBizInfQryDef")]
+	#[serde(rename = "GnlBizInfQryDef", skip_serializing_if = "Option::is_none")]
 	pub gnl_biz_inf_qry_def: Option<BusinessInformationQueryDefinition3>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -118,9 +118,9 @@ pub struct ISODateTime {
 // InformationQualifierType1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InformationQualifierType1 {
-	#[serde(rename = "IsFrmtd")]
+	#[serde(rename = "IsFrmtd", skip_serializing_if = "Option::is_none")]
 	pub is_frmtd: Option<bool>,
-	#[serde(rename = "Prty")]
+	#[serde(rename = "Prty", skip_serializing_if = "Option::is_none")]
 	pub prty: Option<String>,
 }
 
@@ -146,7 +146,7 @@ pub struct Max35Text {
 pub struct MessageHeader1 {
 	#[serde(rename = "MsgId")]
 	pub msg_id: String,
-	#[serde(rename = "CreDtTm")]
+	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
 }
 
@@ -178,7 +178,7 @@ pub struct RequestedIndicator {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

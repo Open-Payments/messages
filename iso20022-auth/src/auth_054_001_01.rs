@@ -30,7 +30,7 @@ use serde::{Deserialize, Serialize};
 pub struct CCPClearingMemberReportV01 {
 	#[serde(rename = "ClrMmb")]
 	pub clr_mmb: Vec<ClearingMember1>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -60,15 +60,15 @@ pub struct ClearingMember1 {
 	pub id: PartyIdentification118Choice,
 	#[serde(rename = "CdtQlty")]
 	pub cdt_qlty: String,
-	#[serde(rename = "UltmtPrntId")]
+	#[serde(rename = "UltmtPrntId", skip_serializing_if = "Option::is_none")]
 	pub ultmt_prnt_id: Option<PartyIdentification118Choice>,
 	#[serde(rename = "FutrsComssnMrchntInd")]
 	pub futrs_comssn_mrchnt_ind: bool,
 	#[serde(rename = "MmbshVldFr")]
 	pub mmbsh_vld_fr: String,
-	#[serde(rename = "MmbshVldTo")]
+	#[serde(rename = "MmbshVldTo", skip_serializing_if = "Option::is_none")]
 	pub mmbsh_vld_to: Option<String>,
-	#[serde(rename = "SpnsrgClrMmbId")]
+	#[serde(rename = "SpnsrgClrMmbId", skip_serializing_if = "Option::is_none")]
 	pub spnsrg_clr_mmb_id: Option<PartyIdentification118Choice>,
 	#[serde(rename = "ClrAcctOwnr")]
 	pub clr_acct_ownr: Vec<ClearingAccount1>,
@@ -82,9 +82,9 @@ pub struct CollateralAccount5 {
 	pub id: PartyIdentification118Choice,
 	#[serde(rename = "RltdMrgnAcct")]
 	pub rltd_mrgn_acct: Vec<MarginAccount1>,
-	#[serde(rename = "TitlTrfCollArrgmnt")]
+	#[serde(rename = "TitlTrfCollArrgmnt", skip_serializing_if = "Option::is_none")]
 	pub titl_trf_coll_arrgmnt: Option<bool>,
-	#[serde(rename = "CollSgrtnByVal")]
+	#[serde(rename = "CollSgrtnByVal", skip_serializing_if = "Option::is_none")]
 	pub coll_sgrtn_by_val: Option<bool>,
 }
 
@@ -102,11 +102,11 @@ pub struct CreditQuality1Code {
 pub struct GenericIdentification168 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -172,9 +172,9 @@ pub struct Max35Text {
 // PartyIdentification118Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PartyIdentification118Choice {
-	#[serde(rename = "LEI")]
+	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
 	pub lei: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification168>,
 }
 
@@ -190,7 +190,7 @@ pub struct PositionAccount1 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

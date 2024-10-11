@@ -74,9 +74,9 @@ pub struct AvailableFinancialResourcesAmount1 {
 pub struct CCPAvailableFinancialResourcesReportV01 {
 	#[serde(rename = "AvlblFinRsrcsAmt")]
 	pub avlbl_fin_rsrcs_amt: AvailableFinancialResourcesAmount1,
-	#[serde(rename = "OthrPrfnddRsrcs")]
+	#[serde(rename = "OthrPrfnddRsrcs", skip_serializing_if = "Option::is_none")]
 	pub othr_prfndd_rsrcs: Option<ReportingAssetBreakdown1>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -102,7 +102,7 @@ pub struct ProductType6Code {
 pub struct ReportingAssetBreakdown1 {
 	#[serde(rename = "RptgAsstTp")]
 	pub rptg_asst_tp: String,
-	#[serde(rename = "Id")]
+	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
 	pub id: Option<String>,
 	#[serde(rename = "Amt")]
 	pub amt: ActiveCurrencyAndAmount,
@@ -112,7 +112,7 @@ pub struct ReportingAssetBreakdown1 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

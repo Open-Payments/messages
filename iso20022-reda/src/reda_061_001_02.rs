@@ -52,9 +52,9 @@ pub struct AnyBICDec2014Identifier {
 // ClearingSystemIdentification2Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ClearingSystemIdentification2Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }
 
@@ -208,9 +208,9 @@ pub struct Max70Text {
 pub struct NameAndAddress8 {
 	#[serde(rename = "Nm")]
 	pub nm: String,
-	#[serde(rename = "Adr")]
+	#[serde(rename = "Adr", skip_serializing_if = "Option::is_none")]
 	pub adr: Option<PostalAddress1>,
-	#[serde(rename = "AltrntvIdr")]
+	#[serde(rename = "AltrntvIdr", skip_serializing_if = "Option::is_none")]
 	pub altrntv_idr: Option<Vec<String>>,
 }
 
@@ -232,7 +232,7 @@ pub struct NettingCutOffReferenceDataReportV02 {
 	pub rpt_data: NettingCutOffReportData2,
 	#[serde(rename = "PtcptNetgCutOffData")]
 	pub ptcpt_netg_cut_off_data: Vec<CutOffData2>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -248,13 +248,13 @@ pub struct NettingCutOffReportData2 {
 	pub rpt_tp: String,
 	#[serde(rename = "ActvtnDt")]
 	pub actvtn_dt: String,
-	#[serde(rename = "NetSvcPtcptId")]
+	#[serde(rename = "NetSvcPtcptId", skip_serializing_if = "Option::is_none")]
 	pub net_svc_ptcpt_id: Option<PartyIdentification242Choice>,
-	#[serde(rename = "RptSvcr")]
+	#[serde(rename = "RptSvcr", skip_serializing_if = "Option::is_none")]
 	pub rpt_svcr: Option<PartyIdentification242Choice>,
-	#[serde(rename = "NetSvcTp")]
+	#[serde(rename = "NetSvcTp", skip_serializing_if = "Option::is_none")]
 	pub net_svc_tp: Option<String>,
-	#[serde(rename = "MsgPgntn")]
+	#[serde(rename = "MsgPgntn", skip_serializing_if = "Option::is_none")]
 	pub msg_pgntn: Option<Pagination1>,
 }
 
@@ -262,9 +262,9 @@ pub struct NettingCutOffReportData2 {
 // NettingIdentification2Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NettingIdentification2Choice {
-	#[serde(rename = "TradPty")]
+	#[serde(rename = "TradPty", skip_serializing_if = "Option::is_none")]
 	pub trad_pty: Option<PartyIdentification242Choice>,
-	#[serde(rename = "NetgGrpId")]
+	#[serde(rename = "NetgGrpId", skip_serializing_if = "Option::is_none")]
 	pub netg_grp_id: Option<String>,
 }
 
@@ -282,11 +282,11 @@ pub struct Pagination1 {
 // PartyIdentification242Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PartyIdentification242Choice {
-	#[serde(rename = "NmAndAdr")]
+	#[serde(rename = "NmAndAdr", skip_serializing_if = "Option::is_none")]
 	pub nm_and_adr: Option<NameAndAddress8>,
-	#[serde(rename = "AnyBIC")]
+	#[serde(rename = "AnyBIC", skip_serializing_if = "Option::is_none")]
 	pub any_bic: Option<PartyIdentification265>,
-	#[serde(rename = "PtyId")]
+	#[serde(rename = "PtyId", skip_serializing_if = "Option::is_none")]
 	pub pty_id: Option<PartyIdentification266>,
 }
 
@@ -296,7 +296,7 @@ pub struct PartyIdentification242Choice {
 pub struct PartyIdentification265 {
 	#[serde(rename = "AnyBIC")]
 	pub any_bic: String,
-	#[serde(rename = "AltrntvIdr")]
+	#[serde(rename = "AltrntvIdr", skip_serializing_if = "Option::is_none")]
 	pub altrntv_idr: Option<Vec<String>>,
 }
 
@@ -304,17 +304,17 @@ pub struct PartyIdentification265 {
 // PartyIdentification266 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PartyIdentification266 {
-	#[serde(rename = "PtyNm")]
+	#[serde(rename = "PtyNm", skip_serializing_if = "Option::is_none")]
 	pub pty_nm: Option<String>,
-	#[serde(rename = "AnyBIC")]
+	#[serde(rename = "AnyBIC", skip_serializing_if = "Option::is_none")]
 	pub any_bic: Option<PartyIdentification265>,
-	#[serde(rename = "AcctNb")]
+	#[serde(rename = "AcctNb", skip_serializing_if = "Option::is_none")]
 	pub acct_nb: Option<String>,
-	#[serde(rename = "Adr")]
+	#[serde(rename = "Adr", skip_serializing_if = "Option::is_none")]
 	pub adr: Option<String>,
-	#[serde(rename = "ClrSysId")]
+	#[serde(rename = "ClrSysId", skip_serializing_if = "Option::is_none")]
 	pub clr_sys_id: Option<ClearingSystemIdentification2Choice>,
-	#[serde(rename = "LglNttyIdr")]
+	#[serde(rename = "LglNttyIdr", skip_serializing_if = "Option::is_none")]
 	pub lgl_ntty_idr: Option<String>,
 }
 
@@ -322,19 +322,19 @@ pub struct PartyIdentification266 {
 // PostalAddress1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PostalAddress1 {
-	#[serde(rename = "AdrTp")]
+	#[serde(rename = "AdrTp", skip_serializing_if = "Option::is_none")]
 	pub adr_tp: Option<String>,
-	#[serde(rename = "AdrLine")]
+	#[serde(rename = "AdrLine", skip_serializing_if = "Option::is_none")]
 	pub adr_line: Option<Vec<String>>,
-	#[serde(rename = "StrtNm")]
+	#[serde(rename = "StrtNm", skip_serializing_if = "Option::is_none")]
 	pub strt_nm: Option<String>,
-	#[serde(rename = "BldgNb")]
+	#[serde(rename = "BldgNb", skip_serializing_if = "Option::is_none")]
 	pub bldg_nb: Option<String>,
-	#[serde(rename = "PstCd")]
+	#[serde(rename = "PstCd", skip_serializing_if = "Option::is_none")]
 	pub pst_cd: Option<String>,
-	#[serde(rename = "TwnNm")]
+	#[serde(rename = "TwnNm", skip_serializing_if = "Option::is_none")]
 	pub twn_nm: Option<String>,
-	#[serde(rename = "CtrySubDvsn")]
+	#[serde(rename = "CtrySubDvsn", skip_serializing_if = "Option::is_none")]
 	pub ctry_sub_dvsn: Option<String>,
 	#[serde(rename = "Ctry")]
 	pub ctry: String,
@@ -344,7 +344,7 @@ pub struct PostalAddress1 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

@@ -48,11 +48,11 @@ pub struct ExternalValidationRuleIdentification1Code {
 pub struct GenericValidationRuleIdentification1 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<ValidationRuleSchemeName1Choice>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
 }
 
@@ -102,9 +102,9 @@ pub struct Max35Text {
 pub struct MoneyMarketStatisticalReportStatusAdviceV01 {
 	#[serde(rename = "StsRptHdr")]
 	pub sts_rpt_hdr: MoneyMarketStatusReportHeader1,
-	#[serde(rename = "TxSts")]
+	#[serde(rename = "TxSts", skip_serializing_if = "Option::is_none")]
 	pub tx_sts: Option<Vec<MoneyMarketTransactionStatus2>>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -118,7 +118,7 @@ pub struct MoneyMarketStatusReportHeader1 {
 	pub rptg_prd: DateTimePeriod1,
 	#[serde(rename = "RptSts")]
 	pub rpt_sts: String,
-	#[serde(rename = "VldtnRule")]
+	#[serde(rename = "VldtnRule", skip_serializing_if = "Option::is_none")]
 	pub vldtn_rule: Option<Vec<GenericValidationRuleIdentification1>>,
 }
 
@@ -126,17 +126,17 @@ pub struct MoneyMarketStatusReportHeader1 {
 // MoneyMarketTransactionStatus2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MoneyMarketTransactionStatus2 {
-	#[serde(rename = "UnqTxIdr")]
+	#[serde(rename = "UnqTxIdr", skip_serializing_if = "Option::is_none")]
 	pub unq_tx_idr: Option<String>,
 	#[serde(rename = "PrtryTxId")]
 	pub prtry_tx_id: String,
-	#[serde(rename = "BrnchId")]
+	#[serde(rename = "BrnchId", skip_serializing_if = "Option::is_none")]
 	pub brnch_id: Option<String>,
 	#[serde(rename = "Sts")]
 	pub sts: String,
-	#[serde(rename = "VldtnRule")]
+	#[serde(rename = "VldtnRule", skip_serializing_if = "Option::is_none")]
 	pub vldtn_rule: Option<Vec<GenericValidationRuleIdentification1>>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -160,7 +160,7 @@ pub struct StatisticalReportingStatus2Code {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
@@ -176,8 +176,8 @@ pub struct SupplementaryDataEnvelope1 {
 // ValidationRuleSchemeName1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ValidationRuleSchemeName1Choice {
-	#[serde(rename = "Cd")]
+	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
 	pub cd: Option<String>,
-	#[serde(rename = "Prtry")]
+	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<String>,
 }

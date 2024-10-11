@@ -70,11 +70,11 @@ pub struct BaseOneRate {
 // CounterpartyIdentification3Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CounterpartyIdentification3Choice {
-	#[serde(rename = "LEI")]
+	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
 	pub lei: Option<String>,
-	#[serde(rename = "SctrAndLctn")]
+	#[serde(rename = "SctrAndLctn", skip_serializing_if = "Option::is_none")]
 	pub sctr_and_lctn: Option<SectorAndLocation1>,
-	#[serde(rename = "NmAndLctn")]
+	#[serde(rename = "NmAndLctn", skip_serializing_if = "Option::is_none")]
 	pub nm_and_lctn: Option<NameAndLocation1>,
 }
 
@@ -90,9 +90,9 @@ pub struct CountryCode {
 // DateAndDateTimeChoice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DateAndDateTimeChoice {
-	#[serde(rename = "Dt")]
+	#[serde(rename = "Dt", skip_serializing_if = "Option::is_none")]
 	pub dt: Option<String>,
-	#[serde(rename = "DtTm")]
+	#[serde(rename = "DtTm", skip_serializing_if = "Option::is_none")]
 	pub dt_tm: Option<String>,
 }
 
@@ -130,9 +130,9 @@ pub struct ForeignExchange1 {
 // ForeignExchangeSwap3Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ForeignExchangeSwap3Choice {
-	#[serde(rename = "DataSetActn")]
+	#[serde(rename = "DataSetActn", skip_serializing_if = "Option::is_none")]
 	pub data_set_actn: Option<String>,
-	#[serde(rename = "Tx")]
+	#[serde(rename = "Tx", skip_serializing_if = "Option::is_none")]
 	pub tx: Option<Vec<ForeignExchangeSwapTransaction3>>,
 }
 
@@ -142,17 +142,17 @@ pub struct ForeignExchangeSwap3Choice {
 pub struct ForeignExchangeSwapTransaction3 {
 	#[serde(rename = "RptdTxSts")]
 	pub rptd_tx_sts: String,
-	#[serde(rename = "NvtnSts")]
+	#[serde(rename = "NvtnSts", skip_serializing_if = "Option::is_none")]
 	pub nvtn_sts: Option<String>,
-	#[serde(rename = "BrnchId")]
+	#[serde(rename = "BrnchId", skip_serializing_if = "Option::is_none")]
 	pub brnch_id: Option<String>,
-	#[serde(rename = "UnqTxIdr")]
+	#[serde(rename = "UnqTxIdr", skip_serializing_if = "Option::is_none")]
 	pub unq_tx_idr: Option<String>,
 	#[serde(rename = "PrtryTxId")]
 	pub prtry_tx_id: String,
-	#[serde(rename = "RltdPrtryTxId")]
+	#[serde(rename = "RltdPrtryTxId", skip_serializing_if = "Option::is_none")]
 	pub rltd_prtry_tx_id: Option<String>,
-	#[serde(rename = "CtrPtyPrtryTxId")]
+	#[serde(rename = "CtrPtyPrtryTxId", skip_serializing_if = "Option::is_none")]
 	pub ctr_pty_prtry_tx_id: Option<String>,
 	#[serde(rename = "CtrPtyId")]
 	pub ctr_pty_id: CounterpartyIdentification3Choice,
@@ -168,7 +168,7 @@ pub struct ForeignExchangeSwapTransaction3 {
 	pub tx_nmnl_amt: ActiveCurrencyAndAmount,
 	#[serde(rename = "FX")]
 	pub fx: ForeignExchange1,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -228,7 +228,7 @@ pub struct MoneyMarketForeignExchangeSwapsStatisticalReportV02 {
 	pub rpt_hdr: MoneyMarketReportHeader1,
 	#[serde(rename = "FXSwpsRpt")]
 	pub fx_swps_rpt: ForeignExchangeSwap3Choice,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -298,7 +298,7 @@ pub struct SecuritiesTransactionType15Code {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

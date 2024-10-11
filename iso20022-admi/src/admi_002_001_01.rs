@@ -70,13 +70,13 @@ pub struct MessageReference {
 pub struct RejectionReason2 {
 	#[serde(rename = "RjctgPtyRsn")]
 	pub rjctg_pty_rsn: String,
-	#[serde(rename = "RjctnDtTm")]
+	#[serde(rename = "RjctnDtTm", skip_serializing_if = "Option::is_none")]
 	pub rjctn_dt_tm: Option<String>,
-	#[serde(rename = "ErrLctn")]
+	#[serde(rename = "ErrLctn", skip_serializing_if = "Option::is_none")]
 	pub err_lctn: Option<String>,
-	#[serde(rename = "RsnDesc")]
+	#[serde(rename = "RsnDesc", skip_serializing_if = "Option::is_none")]
 	pub rsn_desc: Option<String>,
-	#[serde(rename = "AddtlData")]
+	#[serde(rename = "AddtlData", skip_serializing_if = "Option::is_none")]
 	pub addtl_data: Option<String>,
 }
 

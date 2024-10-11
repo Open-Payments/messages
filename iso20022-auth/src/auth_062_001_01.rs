@@ -38,7 +38,7 @@ pub struct ActiveCurrencyCode {
 pub struct CCPLiquidityStressTestingDefinitionReportV01 {
 	#[serde(rename = "LqdtyStrssScnroDef")]
 	pub lqdty_strss_scnro_def: Vec<LiquidityStressScenarioDefinition1>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -48,11 +48,11 @@ pub struct CCPLiquidityStressTestingDefinitionReportV01 {
 pub struct GenericIdentification168 {
 	#[serde(rename = "Id")]
 	pub id: String,
-	#[serde(rename = "Desc")]
+	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
 	pub desc: Option<String>,
-	#[serde(rename = "Issr")]
+	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
 	pub issr: Option<String>,
-	#[serde(rename = "SchmeNm")]
+	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<String>,
 }
 
@@ -64,7 +64,7 @@ pub struct LiquidityStressScenarioDefinition1 {
 	pub id: GenericIdentification168,
 	#[serde(rename = "Desc")]
 	pub desc: String,
-	#[serde(rename = "Tp")]
+	#[serde(rename = "Tp", skip_serializing_if = "Option::is_none")]
 	pub tp: Option<String>,
 	#[serde(rename = "StrssCcy")]
 	pub strss_ccy: String,
@@ -114,7 +114,7 @@ pub struct Max35Text {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,

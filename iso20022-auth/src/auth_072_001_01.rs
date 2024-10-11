@@ -124,11 +124,11 @@ pub struct InternalisationDataVolume1 {
 // IssuerCSDIdentification1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IssuerCSDIdentification1 {
-	#[serde(rename = "LEI")]
+	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
 	pub lei: Option<String>,
 	#[serde(rename = "FrstTwoCharsInstrmId")]
 	pub frst_two_chars_instrm_id: String,
-	#[serde(rename = "Ctry")]
+	#[serde(rename = "Ctry", skip_serializing_if = "Option::is_none")]
 	pub ctry: Option<String>,
 }
 
@@ -276,7 +276,7 @@ pub struct SettlementInternaliserIdentification1 {
 	pub rspnsbl_prsn: ContactDetails4,
 	#[serde(rename = "Ctry")]
 	pub ctry: String,
-	#[serde(rename = "BrnchId")]
+	#[serde(rename = "BrnchId", skip_serializing_if = "Option::is_none")]
 	pub brnch_id: Option<String>,
 }
 
@@ -304,7 +304,7 @@ pub struct SettlementInternaliserReportV01 {
 	pub sttlm_intlr: SettlementInternaliser1,
 	#[serde(rename = "IssrCSD")]
 	pub issr_csd: Vec<IssuerCSDReport1>,
-	#[serde(rename = "SplmtryData")]
+	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
@@ -328,7 +328,7 @@ pub struct SettlementInternaliserTransactionType1 {
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
-	#[serde(rename = "PlcAndNm")]
+	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
 	pub plc_and_nm: Option<String>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
