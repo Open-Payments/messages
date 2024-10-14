@@ -29,7 +29,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ApplicationSpecifics1 {
 	#[serde(rename = "SysUsr", skip_serializing_if = "Option::is_none")]
-	pub sys_usr: Option<String>,
+	pub sys_usr: Option<Max140Text>,
 	#[serde(rename = "Sgntr", skip_serializing_if = "Option::is_none")]
 	pub sgntr: Option<SignatureEnvelope>,
 	#[serde(rename = "TtlNbOfDocs")]
@@ -50,7 +50,7 @@ pub struct BusinessFileHeaderV01 {
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -65,7 +65,7 @@ pub struct LaxPayload {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ManifestData2 {
 	#[serde(rename = "DocTp")]
-	pub doc_tp: String,
+	pub doc_tp: Max35Text,
 	#[serde(rename = "NbOfDocs")]
 	pub nb_of_docs: f64,
 }
@@ -74,7 +74,7 @@ pub struct ManifestData2 {
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[serde(rename = "Max140Text")]
+	#[serde(rename = "$value")]
 	pub max140_text: String,
 }
 
@@ -82,7 +82,7 @@ pub struct Max140Text {
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max256Text {
-	#[serde(rename = "Max256Text")]
+	#[serde(rename = "$value")]
 	pub max256_text: String,
 }
 
@@ -90,7 +90,7 @@ pub struct Max256Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -98,7 +98,7 @@ pub struct Max35Text {
 // Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Number {
-	#[serde(rename = "Number")]
+	#[serde(rename = "$value")]
 	pub number: f64,
 }
 
@@ -107,7 +107,7 @@ pub struct Number {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PayloadData2 {
 	#[serde(rename = "PyldIdr")]
-	pub pyld_idr: String,
+	pub pyld_idr: Max35Text,
 	#[serde(rename = "CreDtAndTm")]
 	pub cre_dt_and_tm: String,
 	#[serde(rename = "PssblDplctFlg", skip_serializing_if = "Option::is_none")]
@@ -123,7 +123,7 @@ pub struct PayloadDescription2 {
 	#[serde(rename = "ApplSpcfcs", skip_serializing_if = "Option::is_none")]
 	pub appl_spcfcs: Option<ApplicationSpecifics1>,
 	#[serde(rename = "PyldTp")]
-	pub pyld_tp: String,
+	pub pyld_tp: Max256Text,
 	#[serde(rename = "MnfstData", skip_serializing_if = "Option::is_none")]
 	pub mnfst_data: Option<Vec<ManifestData2>>,
 }
@@ -138,6 +138,6 @@ pub struct SignatureEnvelope {
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TrueFalseIndicator {
-	#[serde(rename = "TrueFalseIndicator")]
+	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
 }

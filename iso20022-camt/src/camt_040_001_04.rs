@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // ActiveCurrencyAnd13DecimalAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAnd13DecimalAmountSimpleType {
-	#[serde(rename = "ActiveCurrencyAnd13DecimalAmount_SimpleType")]
+	#[serde(rename = "$value")]
 	pub active_currency_and13_decimal_amount_simple_type: f64,
 }
 
@@ -46,7 +46,7 @@ pub struct ActiveCurrencyAnd13DecimalAmount {
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[serde(rename = "ActiveCurrencyCode")]
+	#[serde(rename = "$value")]
 	pub active_currency_code: String,
 }
 
@@ -54,7 +54,7 @@ pub struct ActiveCurrencyCode {
 // ActiveOrHistoricCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveOrHistoricCurrencyAndAmountSimpleType {
-	#[serde(rename = "ActiveOrHistoricCurrencyAndAmount_SimpleType")]
+	#[serde(rename = "$value")]
 	pub active_or_historic_currency_and_amount_simple_type: f64,
 }
 
@@ -72,7 +72,7 @@ pub struct ActiveOrHistoricCurrencyAndAmount {
 // ActiveOrHistoricCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveOrHistoricCurrencyCode {
-	#[serde(rename = "ActiveOrHistoricCurrencyCode")]
+	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
 }
 
@@ -81,19 +81,32 @@ pub struct ActiveOrHistoricCurrencyCode {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AdditionalReference3 {
 	#[serde(rename = "Ref")]
-	pub ref_attr: String,
+	pub ref_attr: Max35Text,
 	#[serde(rename = "RefIssr", skip_serializing_if = "Option::is_none")]
 	pub ref_issr: Option<PartyIdentification2Choice>,
 	#[serde(rename = "MsgNm", skip_serializing_if = "Option::is_none")]
-	pub msg_nm: Option<String>,
+	pub msg_nm: Option<Max35Text>,
 }
 
 
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AddressType2Code {
-	#[serde(rename = "AddressType2Code")]
-	pub address_type2_code: String,
+pub enum AddressType2Code {
+	#[serde(rename = "ADDR")]
+	CodeADDR,
+	#[serde(rename = "PBOX")]
+	CodePBOX,
+	#[serde(rename = "HOME")]
+	CodeHOME,
+	#[serde(rename = "BIZZ")]
+	CodeBIZZ,
+	#[serde(rename = "MLTO")]
+	CodeMLTO,
+	#[serde(rename = "DLVY")]
+	CodeDLVY,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -101,18 +114,18 @@ pub struct AddressType2Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AlternateSecurityIdentification1 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "DmstIdSrc", skip_serializing_if = "Option::is_none")]
-	pub dmst_id_src: Option<String>,
+	pub dmst_id_src: Option<CountryCode>,
 	#[serde(rename = "PrtryIdSrc", skip_serializing_if = "Option::is_none")]
-	pub prtry_id_src: Option<String>,
+	pub prtry_id_src: Option<Max35Text>,
 }
 
 
 // AnyBICIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AnyBICIdentifier {
-	#[serde(rename = "AnyBICIdentifier")]
+	#[serde(rename = "$value")]
 	pub any_bic_identifier: String,
 }
 
@@ -120,7 +133,7 @@ pub struct AnyBICIdentifier {
 // BaseOneRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BaseOneRate {
-	#[serde(rename = "BaseOneRate")]
+	#[serde(rename = "$value")]
 	pub base_one_rate: f64,
 }
 
@@ -128,7 +141,7 @@ pub struct BaseOneRate {
 // BelgianIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BelgianIdentifier {
-	#[serde(rename = "BelgianIdentifier")]
+	#[serde(rename = "$value")]
 	pub belgian_identifier: String,
 }
 
@@ -136,7 +149,7 @@ pub struct BelgianIdentifier {
 // BloombergIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BloombergIdentifier {
-	#[serde(rename = "BloombergIdentifier")]
+	#[serde(rename = "$value")]
 	pub bloomberg_identifier: String,
 }
 
@@ -144,7 +157,7 @@ pub struct BloombergIdentifier {
 // CUSIPIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CUSIPIdentifier {
-	#[serde(rename = "CUSIPIdentifier")]
+	#[serde(rename = "$value")]
 	pub cusip_identifier: String,
 }
 
@@ -194,7 +207,7 @@ pub struct CashOutForecast6 {
 // ConsolidatedTapeAssociationIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ConsolidatedTapeAssociationIdentifier {
-	#[serde(rename = "ConsolidatedTapeAssociationIdentifier")]
+	#[serde(rename = "$value")]
 	pub consolidated_tape_association_identifier: String,
 }
 
@@ -202,7 +215,7 @@ pub struct ConsolidatedTapeAssociationIdentifier {
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
-	#[serde(rename = "CountryCode")]
+	#[serde(rename = "$value")]
 	pub country_code: String,
 }
 
@@ -211,19 +224,24 @@ pub struct CountryCode {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CurrencyDesignation1 {
 	#[serde(rename = "CcyDsgnt", skip_serializing_if = "Option::is_none")]
-	pub ccy_dsgnt: Option<String>,
+	pub ccy_dsgnt: Option<CurrencyDesignation1Code>,
 	#[serde(rename = "Lctn", skip_serializing_if = "Option::is_none")]
-	pub lctn: Option<String>,
+	pub lctn: Option<CountryCode>,
 	#[serde(rename = "AddtlInf", skip_serializing_if = "Option::is_none")]
-	pub addtl_inf: Option<String>,
+	pub addtl_inf: Option<Max350Text>,
 }
 
 
 // CurrencyDesignation1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct CurrencyDesignation1Code {
-	#[serde(rename = "CurrencyDesignation1Code")]
-	pub currency_designation1_code: String,
+pub enum CurrencyDesignation1Code {
+	#[serde(rename = "ONSH")]
+	CodeONSH,
+	#[serde(rename = "OFFS")]
+	CodeOFFS,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -240,23 +258,28 @@ pub struct DateAndDateTimeChoice {
 // DecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DecimalNumber {
-	#[serde(rename = "DecimalNumber")]
+	#[serde(rename = "$value")]
 	pub decimal_number: f64,
 }
 
 
 // DistributionPolicy1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct DistributionPolicy1Code {
-	#[serde(rename = "DistributionPolicy1Code")]
-	pub distribution_policy1_code: String,
+pub enum DistributionPolicy1Code {
+	#[serde(rename = "DIST")]
+	CodeDIST,
+	#[serde(rename = "ACCU")]
+	CodeACCU,
+
+	#[default]
+	UNKOWN
 }
 
 
 // DutchIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DutchIdentifier {
-	#[serde(rename = "DutchIdentifier")]
+	#[serde(rename = "$value")]
 	pub dutch_identifier: String,
 }
 
@@ -265,7 +288,7 @@ pub struct DutchIdentifier {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EstimatedFundCashForecast6 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "TradDtTm")]
 	pub trad_dt_tm: DateAndDateTimeChoice,
 	#[serde(rename = "PrvsTradDtTm", skip_serializing_if = "Option::is_none")]
@@ -283,7 +306,7 @@ pub struct EstimatedFundCashForecast6 {
 	#[serde(rename = "EstmtdTtlNAVChngRate", skip_serializing_if = "Option::is_none")]
 	pub estmtd_ttl_nav_chng_rate: Option<f64>,
 	#[serde(rename = "InvstmtCcy", skip_serializing_if = "Option::is_none")]
-	pub invstmt_ccy: Option<Vec<String>>,
+	pub invstmt_ccy: Option<Vec<ActiveOrHistoricCurrencyCode>>,
 	#[serde(rename = "CcySts", skip_serializing_if = "Option::is_none")]
 	pub ccy_sts: Option<CurrencyDesignation1>,
 	#[serde(rename = "XcptnlNetCshFlowInd")]
@@ -306,7 +329,7 @@ pub struct EstimatedFundCashForecast6 {
 // EuroclearClearstreamIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EuroclearClearstreamIdentifier {
-	#[serde(rename = "EuroclearClearstreamIdentifier")]
+	#[serde(rename = "$value")]
 	pub euroclear_clearstream_identifier: String,
 }
 
@@ -314,7 +337,7 @@ pub struct EuroclearClearstreamIdentifier {
 // Exact4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Exact4AlphaNumericText {
-	#[serde(rename = "Exact4AlphaNumericText")]
+	#[serde(rename = "$value")]
 	pub exact4_alpha_numeric_text: String,
 }
 
@@ -323,9 +346,9 @@ pub struct Exact4AlphaNumericText {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Extension1 {
 	#[serde(rename = "PlcAndNm")]
-	pub plc_and_nm: String,
+	pub plc_and_nm: Max350Text,
 	#[serde(rename = "Txt")]
-	pub txt: String,
+	pub txt: Max350Text,
 }
 
 
@@ -335,17 +358,17 @@ pub struct FinancialInstrument9 {
 	#[serde(rename = "Id")]
 	pub id: SecurityIdentification3Choice,
 	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
-	pub nm: Option<String>,
+	pub nm: Option<Max350Text>,
 	#[serde(rename = "SplmtryId", skip_serializing_if = "Option::is_none")]
-	pub splmtry_id: Option<String>,
+	pub splmtry_id: Option<Max35Text>,
 	#[serde(rename = "ReqdNAVCcy", skip_serializing_if = "Option::is_none")]
-	pub reqd_nav_ccy: Option<String>,
+	pub reqd_nav_ccy: Option<ActiveOrHistoricCurrencyCode>,
 	#[serde(rename = "ClssTp", skip_serializing_if = "Option::is_none")]
-	pub clss_tp: Option<String>,
+	pub clss_tp: Option<Max35Text>,
 	#[serde(rename = "SctiesForm", skip_serializing_if = "Option::is_none")]
-	pub scties_form: Option<String>,
+	pub scties_form: Option<FormOfSecurity1Code>,
 	#[serde(rename = "DstrbtnPlcy", skip_serializing_if = "Option::is_none")]
-	pub dstrbtn_plcy: Option<String>,
+	pub dstrbtn_plcy: Option<DistributionPolicy1Code>,
 	#[serde(rename = "DualFndInd")]
 	pub dual_fnd_ind: bool,
 }
@@ -361,9 +384,14 @@ pub struct FinancialInstrumentQuantity1 {
 
 // FlowDirectionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FlowDirectionType1Code {
-	#[serde(rename = "FlowDirectionType1Code")]
-	pub flow_direction_type1_code: String,
+pub enum FlowDirectionType1Code {
+	#[serde(rename = "INCG")]
+	CodeINCG,
+	#[serde(rename = "OUTG")]
+	CodeOUTG,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -371,9 +399,9 @@ pub struct FlowDirectionType1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ForeignExchangeTerms19 {
 	#[serde(rename = "UnitCcy")]
-	pub unit_ccy: String,
+	pub unit_ccy: ActiveCurrencyCode,
 	#[serde(rename = "QtdCcy")]
-	pub qtd_ccy: String,
+	pub qtd_ccy: ActiveCurrencyCode,
 	#[serde(rename = "XchgRate")]
 	pub xchg_rate: f64,
 }
@@ -381,9 +409,14 @@ pub struct ForeignExchangeTerms19 {
 
 // FormOfSecurity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FormOfSecurity1Code {
-	#[serde(rename = "FormOfSecurity1Code")]
-	pub form_of_security1_code: String,
+pub enum FormOfSecurity1Code {
+	#[serde(rename = "BEAR")]
+	CodeBEAR,
+	#[serde(rename = "REGD")]
+	CodeREGD,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -391,13 +424,13 @@ pub struct FormOfSecurity1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Fund1 {
 	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
-	pub nm: Option<String>,
+	pub nm: Option<Max350Text>,
 	#[serde(rename = "LglNttyIdr", skip_serializing_if = "Option::is_none")]
-	pub lgl_ntty_idr: Option<String>,
+	pub lgl_ntty_idr: Option<LEIIdentifier>,
 	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
 	pub id: Option<OtherIdentification4>,
 	#[serde(rename = "Ccy", skip_serializing_if = "Option::is_none")]
-	pub ccy: Option<String>,
+	pub ccy: Option<ActiveOrHistoricCurrencyCode>,
 	#[serde(rename = "TradDtTm", skip_serializing_if = "Option::is_none")]
 	pub trad_dt_tm: Option<DateAndDateTimeChoice>,
 	#[serde(rename = "PrvsTradDtTm", skip_serializing_if = "Option::is_none")]
@@ -463,11 +496,11 @@ pub struct FundEstimatedCashForecastReportV04 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification1 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<String>,
+	pub schme_nm: Option<Max35Text>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
-	pub issr: Option<String>,
+	pub issr: Option<Max35Text>,
 }
 
 
@@ -475,18 +508,18 @@ pub struct GenericIdentification1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification47 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Exact4AlphaNumericText,
 	#[serde(rename = "Issr")]
-	pub issr: String,
+	pub issr: Max4AlphaNumericText,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<String>,
+	pub schme_nm: Option<Max4AlphaNumericText>,
 }
 
 
 // ISINIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISINIdentifier {
-	#[serde(rename = "ISINIdentifier")]
+	#[serde(rename = "$value")]
 	pub isin_identifier: String,
 }
 
@@ -494,7 +527,7 @@ pub struct ISINIdentifier {
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
-	#[serde(rename = "ISODate")]
+	#[serde(rename = "$value")]
 	pub iso_date: String,
 }
 
@@ -502,7 +535,7 @@ pub struct ISODate {
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -511,16 +544,16 @@ pub struct ISODateTime {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IdentificationSource5Choice {
 	#[serde(rename = "DmstIdSrc", skip_serializing_if = "Option::is_none")]
-	pub dmst_id_src: Option<String>,
+	pub dmst_id_src: Option<CountryCode>,
 	#[serde(rename = "PrtryIdSrc", skip_serializing_if = "Option::is_none")]
-	pub prtry_id_src: Option<String>,
+	pub prtry_id_src: Option<Max35Text>,
 }
 
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
-	#[serde(rename = "LEIIdentifier")]
+	#[serde(rename = "$value")]
 	pub lei_identifier: String,
 }
 
@@ -528,7 +561,7 @@ pub struct LEIIdentifier {
 // Max16Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max16Text {
-	#[serde(rename = "Max16Text")]
+	#[serde(rename = "$value")]
 	pub max16_text: String,
 }
 
@@ -536,7 +569,7 @@ pub struct Max16Text {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -544,7 +577,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -552,7 +585,7 @@ pub struct Max35Text {
 // Max4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max4AlphaNumericText {
-	#[serde(rename = "Max4AlphaNumericText")]
+	#[serde(rename = "$value")]
 	pub max4_alpha_numeric_text: String,
 }
 
@@ -560,7 +593,7 @@ pub struct Max4AlphaNumericText {
 // Max5NumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max5NumericText {
-	#[serde(rename = "Max5NumericText")]
+	#[serde(rename = "$value")]
 	pub max5_numeric_text: String,
 }
 
@@ -568,7 +601,7 @@ pub struct Max5NumericText {
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max70Text {
-	#[serde(rename = "Max70Text")]
+	#[serde(rename = "$value")]
 	pub max70_text: String,
 }
 
@@ -577,7 +610,7 @@ pub struct Max70Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageIdentification1 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "CreDtTm")]
 	pub cre_dt_tm: String,
 }
@@ -587,7 +620,7 @@ pub struct MessageIdentification1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NameAndAddress5 {
 	#[serde(rename = "Nm")]
-	pub nm: String,
+	pub nm: Max350Text,
 	#[serde(rename = "Adr", skip_serializing_if = "Option::is_none")]
 	pub adr: Option<PostalAddress1>,
 }
@@ -601,7 +634,7 @@ pub struct NetCashForecast3 {
 	#[serde(rename = "NetUnitsNb", skip_serializing_if = "Option::is_none")]
 	pub net_units_nb: Option<FinancialInstrumentQuantity1>,
 	#[serde(rename = "FlowDrctn")]
-	pub flow_drctn: String,
+	pub flow_drctn: FlowDirectionType1Code,
 }
 
 
@@ -615,7 +648,7 @@ pub struct NetCashForecast4 {
 	#[serde(rename = "NetUnitsNb", skip_serializing_if = "Option::is_none")]
 	pub net_units_nb: Option<FinancialInstrumentQuantity1>,
 	#[serde(rename = "FlowDrctn")]
-	pub flow_drctn: String,
+	pub flow_drctn: FlowDirectionType1Code,
 	#[serde(rename = "AddtlBal", skip_serializing_if = "Option::is_none")]
 	pub addtl_bal: Option<FundBalance1>,
 }
@@ -631,7 +664,7 @@ pub struct NetCashForecast5 {
 	#[serde(rename = "NetUnitsNb", skip_serializing_if = "Option::is_none")]
 	pub net_units_nb: Option<FinancialInstrumentQuantity1>,
 	#[serde(rename = "FlowDrctn")]
-	pub flow_drctn: String,
+	pub flow_drctn: FlowDirectionType1Code,
 }
 
 
@@ -639,7 +672,7 @@ pub struct NetCashForecast5 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OtherIdentification4 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "Tp")]
 	pub tp: IdentificationSource5Choice,
 }
@@ -649,7 +682,7 @@ pub struct OtherIdentification4 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Pagination {
 	#[serde(rename = "PgNb")]
-	pub pg_nb: String,
+	pub pg_nb: Max5NumericText,
 	#[serde(rename = "LastPgInd")]
 	pub last_pg_ind: bool,
 }
@@ -659,7 +692,7 @@ pub struct Pagination {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PartyIdentification2Choice {
 	#[serde(rename = "BICOrBEI", skip_serializing_if = "Option::is_none")]
-	pub bic_or_bei: Option<String>,
+	pub bic_or_bei: Option<AnyBICIdentifier>,
 	#[serde(rename = "PrtryId", skip_serializing_if = "Option::is_none")]
 	pub prtry_id: Option<GenericIdentification1>,
 	#[serde(rename = "NmAndAdr", skip_serializing_if = "Option::is_none")]
@@ -670,7 +703,7 @@ pub struct PartyIdentification2Choice {
 // PercentageRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PercentageRate {
-	#[serde(rename = "PercentageRate")]
+	#[serde(rename = "$value")]
 	pub percentage_rate: f64,
 }
 
@@ -679,21 +712,21 @@ pub struct PercentageRate {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PostalAddress1 {
 	#[serde(rename = "AdrTp", skip_serializing_if = "Option::is_none")]
-	pub adr_tp: Option<String>,
+	pub adr_tp: Option<AddressType2Code>,
 	#[serde(rename = "AdrLine", skip_serializing_if = "Option::is_none")]
-	pub adr_line: Option<Vec<String>>,
+	pub adr_line: Option<Vec<Max70Text>>,
 	#[serde(rename = "StrtNm", skip_serializing_if = "Option::is_none")]
-	pub strt_nm: Option<String>,
+	pub strt_nm: Option<Max70Text>,
 	#[serde(rename = "BldgNb", skip_serializing_if = "Option::is_none")]
-	pub bldg_nb: Option<String>,
+	pub bldg_nb: Option<Max16Text>,
 	#[serde(rename = "PstCd", skip_serializing_if = "Option::is_none")]
-	pub pst_cd: Option<String>,
+	pub pst_cd: Option<Max16Text>,
 	#[serde(rename = "TwnNm", skip_serializing_if = "Option::is_none")]
-	pub twn_nm: Option<String>,
+	pub twn_nm: Option<Max35Text>,
 	#[serde(rename = "CtrySubDvsn", skip_serializing_if = "Option::is_none")]
-	pub ctry_sub_dvsn: Option<String>,
+	pub ctry_sub_dvsn: Option<Max35Text>,
 	#[serde(rename = "Ctry")]
-	pub ctry: String,
+	pub ctry: CountryCode,
 }
 
 
@@ -708,7 +741,7 @@ pub struct PriceValue1 {
 // QUICKIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct QUICKIdentifier {
-	#[serde(rename = "QUICKIdentifier")]
+	#[serde(rename = "$value")]
 	pub quick_identifier: String,
 }
 
@@ -716,7 +749,7 @@ pub struct QUICKIdentifier {
 // RICIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RICIdentifier {
-	#[serde(rename = "RICIdentifier")]
+	#[serde(rename = "$value")]
 	pub ric_identifier: String,
 }
 
@@ -724,7 +757,7 @@ pub struct RICIdentifier {
 // SEDOLIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SEDOLIdentifier {
-	#[serde(rename = "SEDOLIdentifier")]
+	#[serde(rename = "$value")]
 	pub sedol_identifier: String,
 }
 
@@ -733,19 +766,19 @@ pub struct SEDOLIdentifier {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecurityIdentification3Choice {
 	#[serde(rename = "ISIN", skip_serializing_if = "Option::is_none")]
-	pub isin: Option<String>,
+	pub isin: Option<ISINIdentifier>,
 	#[serde(rename = "SEDOL", skip_serializing_if = "Option::is_none")]
 	pub sedol: Option<String>,
 	#[serde(rename = "CUSIP", skip_serializing_if = "Option::is_none")]
 	pub cusip: Option<String>,
 	#[serde(rename = "RIC", skip_serializing_if = "Option::is_none")]
-	pub ric: Option<String>,
+	pub ric: Option<RICIdentifier>,
 	#[serde(rename = "TckrSymb", skip_serializing_if = "Option::is_none")]
-	pub tckr_symb: Option<String>,
+	pub tckr_symb: Option<TickerIdentifier>,
 	#[serde(rename = "Blmbrg", skip_serializing_if = "Option::is_none")]
-	pub blmbrg: Option<String>,
+	pub blmbrg: Option<BloombergIdentifier>,
 	#[serde(rename = "CTA", skip_serializing_if = "Option::is_none")]
-	pub cta: Option<String>,
+	pub cta: Option<ConsolidatedTapeAssociationIdentifier>,
 	#[serde(rename = "QUICK", skip_serializing_if = "Option::is_none")]
 	pub quick: Option<String>,
 	#[serde(rename = "Wrtppr", skip_serializing_if = "Option::is_none")]
@@ -759,7 +792,7 @@ pub struct SecurityIdentification3Choice {
 	#[serde(rename = "Belgn", skip_serializing_if = "Option::is_none")]
 	pub belgn: Option<String>,
 	#[serde(rename = "Cmon", skip_serializing_if = "Option::is_none")]
-	pub cmon: Option<String>,
+	pub cmon: Option<EuroclearClearstreamIdentifier>,
 	#[serde(rename = "OthrPrtryId", skip_serializing_if = "Option::is_none")]
 	pub othr_prtry_id: Option<AlternateSecurityIdentification1>,
 }
@@ -768,7 +801,7 @@ pub struct SecurityIdentification3Choice {
 // SicovamIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SicovamIdentifier {
-	#[serde(rename = "SicovamIdentifier")]
+	#[serde(rename = "$value")]
 	pub sicovam_identifier: String,
 }
 
@@ -776,16 +809,41 @@ pub struct SicovamIdentifier {
 // TickerIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TickerIdentifier {
-	#[serde(rename = "TickerIdentifier")]
+	#[serde(rename = "$value")]
 	pub ticker_identifier: String,
 }
 
 
 // TypeOfPrice10Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct TypeOfPrice10Code {
-	#[serde(rename = "TypeOfPrice10Code")]
-	pub type_of_price10_code: String,
+pub enum TypeOfPrice10Code {
+	#[serde(rename = "BIDE")]
+	CodeBIDE,
+	#[serde(rename = "OFFR")]
+	CodeOFFR,
+	#[serde(rename = "NAVL")]
+	CodeNAVL,
+	#[serde(rename = "CREA")]
+	CodeCREA,
+	#[serde(rename = "CANC")]
+	CodeCANC,
+	#[serde(rename = "INTE")]
+	CodeINTE,
+	#[serde(rename = "SWNG")]
+	CodeSWNG,
+	#[serde(rename = "MIDD")]
+	CodeMIDD,
+	#[serde(rename = "RINV")]
+	CodeRINV,
+	#[serde(rename = "SWIC")]
+	CodeSWIC,
+	#[serde(rename = "DDVR")]
+	CodeDDVR,
+	#[serde(rename = "ACTU")]
+	CodeACTU,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -803,7 +861,7 @@ pub struct UnitPrice19 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct UnitPriceType2Choice {
 	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<String>,
+	pub cd: Option<TypeOfPrice10Code>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification47>,
 }
@@ -812,7 +870,7 @@ pub struct UnitPriceType2Choice {
 // ValorenIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ValorenIdentifier {
-	#[serde(rename = "ValorenIdentifier")]
+	#[serde(rename = "$value")]
 	pub valoren_identifier: String,
 }
 
@@ -820,7 +878,7 @@ pub struct ValorenIdentifier {
 // WertpapierIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct WertpapierIdentifier {
-	#[serde(rename = "WertpapierIdentifier")]
+	#[serde(rename = "$value")]
 	pub wertpapier_identifier: String,
 }
 
@@ -828,6 +886,6 @@ pub struct WertpapierIdentifier {
 // YesNoIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct YesNoIndicator {
-	#[serde(rename = "YesNoIndicator")]
+	#[serde(rename = "$value")]
 	pub yes_no_indicator: bool,
 }

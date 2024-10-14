@@ -29,16 +29,16 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgreementType2Choice {
 	#[serde(rename = "Tp", skip_serializing_if = "Option::is_none")]
-	pub tp: Option<String>,
+	pub tp: Option<ExternalAgreementType1Code>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<String>,
+	pub prtry: Option<Max50Text>,
 }
 
 
 // AnyBICDec2014Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AnyBICDec2014Identifier {
-	#[serde(rename = "AnyBICDec2014Identifier")]
+	#[serde(rename = "$value")]
 	pub any_bic_dec2014_identifier: String,
 }
 
@@ -47,11 +47,11 @@ pub struct AnyBICDec2014Identifier {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DetailedReportStatistics5 {
 	#[serde(rename = "TtlNbOfRpts")]
-	pub ttl_nb_of_rpts: String,
+	pub ttl_nb_of_rpts: Max15NumericText,
 	#[serde(rename = "TtlNbOfRptsAccptd")]
-	pub ttl_nb_of_rpts_accptd: String,
+	pub ttl_nb_of_rpts_accptd: Max15NumericText,
 	#[serde(rename = "TtlNbOfRptsRjctd")]
-	pub ttl_nb_of_rpts_rjctd: String,
+	pub ttl_nb_of_rpts_rjctd: Max15NumericText,
 	#[serde(rename = "NbOfRptsRjctdPerErr", skip_serializing_if = "Option::is_none")]
 	pub nb_of_rpts_rjctd_per_err: Option<Vec<NumberOfTransactionsPerValidationRule5>>,
 }
@@ -61,11 +61,11 @@ pub struct DetailedReportStatistics5 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DetailedTransactionStatistics13 {
 	#[serde(rename = "TtlNbOfTxs")]
-	pub ttl_nb_of_txs: String,
+	pub ttl_nb_of_txs: Max15NumericText,
 	#[serde(rename = "TtlNbOfTxsAccptd")]
-	pub ttl_nb_of_txs_accptd: String,
+	pub ttl_nb_of_txs_accptd: Max15NumericText,
 	#[serde(rename = "TtlNbOfTxsRjctd")]
-	pub ttl_nb_of_txs_rjctd: String,
+	pub ttl_nb_of_txs_rjctd: Max15NumericText,
 	#[serde(rename = "TxsRjctnsRsn", skip_serializing_if = "Option::is_none")]
 	pub txs_rjctns_rsn: Option<Vec<RejectionReason53>>,
 }
@@ -75,7 +75,7 @@ pub struct DetailedTransactionStatistics13 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DetailedTransactionStatistics2Choice {
 	#[serde(rename = "DataSetActn", skip_serializing_if = "Option::is_none")]
-	pub data_set_actn: Option<String>,
+	pub data_set_actn: Option<ReportPeriodActivity1Code>,
 	#[serde(rename = "DtldSttstcs", skip_serializing_if = "Option::is_none")]
 	pub dtld_sttstcs: Option<DetailedTransactionStatistics13>,
 }
@@ -84,7 +84,7 @@ pub struct DetailedTransactionStatistics2Choice {
 // ExternalAgreementType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalAgreementType1Code {
-	#[serde(rename = "ExternalAgreementType1Code")]
+	#[serde(rename = "$value")]
 	pub external_agreement_type1_code: String,
 }
 
@@ -92,7 +92,7 @@ pub struct ExternalAgreementType1Code {
 // ExternalValidationRuleIdentification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalValidationRuleIdentification1Code {
-	#[serde(rename = "ExternalValidationRuleIdentification1Code")]
+	#[serde(rename = "$value")]
 	pub external_validation_rule_identification1_code: String,
 }
 
@@ -101,11 +101,11 @@ pub struct ExternalValidationRuleIdentification1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification175 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max72Text,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<String>,
+	pub schme_nm: Option<Max35Text>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
-	pub issr: Option<String>,
+	pub issr: Option<Max35Text>,
 }
 
 
@@ -113,20 +113,20 @@ pub struct GenericIdentification175 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericValidationRuleIdentification1 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
-	pub desc: Option<String>,
+	pub desc: Option<Max350Text>,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
 	pub schme_nm: Option<ValidationRuleSchemeName1Choice>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
-	pub issr: Option<String>,
+	pub issr: Option<Max35Text>,
 }
 
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
-	#[serde(rename = "LEIIdentifier")]
+	#[serde(rename = "$value")]
 	pub lei_identifier: String,
 }
 
@@ -137,16 +137,16 @@ pub struct MasterAgreement7 {
 	#[serde(rename = "Tp")]
 	pub tp: AgreementType2Choice,
 	#[serde(rename = "Vrsn", skip_serializing_if = "Option::is_none")]
-	pub vrsn: Option<String>,
+	pub vrsn: Option<Max50Text>,
 	#[serde(rename = "OthrMstrAgrmtDtls", skip_serializing_if = "Option::is_none")]
-	pub othr_mstr_agrmt_dtls: Option<String>,
+	pub othr_mstr_agrmt_dtls: Option<Max350Text>,
 }
 
 
 // Max105Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max105Text {
-	#[serde(rename = "Max105Text")]
+	#[serde(rename = "$value")]
 	pub max105_text: String,
 }
 
@@ -154,7 +154,7 @@ pub struct Max105Text {
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[serde(rename = "Max140Text")]
+	#[serde(rename = "$value")]
 	pub max140_text: String,
 }
 
@@ -162,7 +162,7 @@ pub struct Max140Text {
 // Max15NumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max15NumericText {
-	#[serde(rename = "Max15NumericText")]
+	#[serde(rename = "$value")]
 	pub max15_numeric_text: String,
 }
 
@@ -170,7 +170,7 @@ pub struct Max15NumericText {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -178,7 +178,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -186,7 +186,7 @@ pub struct Max35Text {
 // Max500Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max500Text {
-	#[serde(rename = "Max500Text")]
+	#[serde(rename = "$value")]
 	pub max500_text: String,
 }
 
@@ -194,7 +194,7 @@ pub struct Max500Text {
 // Max50Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max50Text {
-	#[serde(rename = "Max50Text")]
+	#[serde(rename = "$value")]
 	pub max50_text: String,
 }
 
@@ -202,7 +202,7 @@ pub struct Max50Text {
 // Max52Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max52Text {
-	#[serde(rename = "Max52Text")]
+	#[serde(rename = "$value")]
 	pub max52_text: String,
 }
 
@@ -210,7 +210,7 @@ pub struct Max52Text {
 // Max72Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max72Text {
-	#[serde(rename = "Max72Text")]
+	#[serde(rename = "$value")]
 	pub max72_text: String,
 }
 
@@ -221,9 +221,9 @@ pub struct NaturalPersonIdentification2 {
 	#[serde(rename = "Id")]
 	pub id: GenericIdentification175,
 	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
-	pub nm: Option<String>,
+	pub nm: Option<Max105Text>,
 	#[serde(rename = "Dmcl", skip_serializing_if = "Option::is_none")]
-	pub dmcl: Option<String>,
+	pub dmcl: Option<Max500Text>,
 }
 
 
@@ -231,7 +231,7 @@ pub struct NaturalPersonIdentification2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NumberOfTransactionsPerValidationRule5 {
 	#[serde(rename = "DtldNb")]
-	pub dtld_nb: String,
+	pub dtld_nb: Max15NumericText,
 	#[serde(rename = "RptSts")]
 	pub rpt_sts: Vec<RejectionReason45>,
 }
@@ -241,11 +241,11 @@ pub struct NumberOfTransactionsPerValidationRule5 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OrganisationIdentification15Choice {
 	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
-	pub lei: Option<String>,
+	pub lei: Option<LEIIdentifier>,
 	#[serde(rename = "Othr", skip_serializing_if = "Option::is_none")]
 	pub othr: Option<OrganisationIdentification38>,
 	#[serde(rename = "AnyBIC", skip_serializing_if = "Option::is_none")]
-	pub any_bic: Option<String>,
+	pub any_bic: Option<AnyBICDec2014Identifier>,
 }
 
 
@@ -255,9 +255,9 @@ pub struct OrganisationIdentification38 {
 	#[serde(rename = "Id")]
 	pub id: GenericIdentification175,
 	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
-	pub nm: Option<String>,
+	pub nm: Option<Max105Text>,
 	#[serde(rename = "Dmcl", skip_serializing_if = "Option::is_none")]
-	pub dmcl: Option<String>,
+	pub dmcl: Option<Max500Text>,
 }
 
 
@@ -275,9 +275,9 @@ pub struct PartyIdentification236Choice {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RejectionReason45 {
 	#[serde(rename = "MsgRptId")]
-	pub msg_rpt_id: String,
+	pub msg_rpt_id: Max140Text,
 	#[serde(rename = "Sts")]
-	pub sts: String,
+	pub sts: ReportingMessageStatus1Code,
 	#[serde(rename = "DtldVldtnRule", skip_serializing_if = "Option::is_none")]
 	pub dtld_vldtn_rule: Option<GenericValidationRuleIdentification1>,
 }
@@ -289,7 +289,7 @@ pub struct RejectionReason53 {
 	#[serde(rename = "TxId")]
 	pub tx_id: TransactionIdentification3Choice,
 	#[serde(rename = "Sts")]
-	pub sts: String,
+	pub sts: ReportingMessageStatus1Code,
 	#[serde(rename = "DtldVldtnRule", skip_serializing_if = "Option::is_none")]
 	pub dtld_vldtn_rule: Option<Vec<GenericValidationRuleIdentification1>>,
 }
@@ -297,17 +297,39 @@ pub struct RejectionReason53 {
 
 // ReportPeriodActivity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ReportPeriodActivity1Code {
-	#[serde(rename = "ReportPeriodActivity1Code")]
-	pub report_period_activity1_code: String,
+pub enum ReportPeriodActivity1Code {
+	#[serde(rename = "NOTX")]
+	CodeNOTX,
+
+	#[default]
+	UNKOWN
 }
 
 
 // ReportingMessageStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ReportingMessageStatus1Code {
-	#[serde(rename = "ReportingMessageStatus1Code")]
-	pub reporting_message_status1_code: String,
+pub enum ReportingMessageStatus1Code {
+	#[serde(rename = "ACPT")]
+	CodeACPT,
+	#[serde(rename = "ACTC")]
+	CodeACTC,
+	#[serde(rename = "PART")]
+	CodePART,
+	#[serde(rename = "RCVD")]
+	CodeRCVD,
+	#[serde(rename = "RJCT")]
+	CodeRJCT,
+	#[serde(rename = "RMDR")]
+	CodeRMDR,
+	#[serde(rename = "WARN")]
+	CodeWARN,
+	#[serde(rename = "INCF")]
+	CodeINCF,
+	#[serde(rename = "CRPT")]
+	CodeCRPT,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -325,7 +347,7 @@ pub struct SecuritiesFinancingReportingTransactionStatusAdviceV02 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -353,7 +375,7 @@ pub struct TradeData29 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradeData35Choice {
 	#[serde(rename = "DataSetActn", skip_serializing_if = "Option::is_none")]
-	pub data_set_actn: Option<String>,
+	pub data_set_actn: Option<ReportPeriodActivity1Code>,
 	#[serde(rename = "Rpt", skip_serializing_if = "Option::is_none")]
 	pub rpt: Option<Vec<TradeData29>>,
 }
@@ -363,7 +385,7 @@ pub struct TradeData35Choice {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradeTransactionIdentification16 {
 	#[serde(rename = "TechRcrdId", skip_serializing_if = "Option::is_none")]
-	pub tech_rcrd_id: Option<String>,
+	pub tech_rcrd_id: Option<Max140Text>,
 	#[serde(rename = "RptgCtrPty")]
 	pub rptg_ctr_pty: OrganisationIdentification15Choice,
 	#[serde(rename = "OthrCtrPty")]
@@ -371,7 +393,7 @@ pub struct TradeTransactionIdentification16 {
 	#[serde(rename = "NttyRspnsblForRpt", skip_serializing_if = "Option::is_none")]
 	pub ntty_rspnsbl_for_rpt: Option<OrganisationIdentification15Choice>,
 	#[serde(rename = "CollPrtflId", skip_serializing_if = "Option::is_none")]
-	pub coll_prtfl_id: Option<String>,
+	pub coll_prtfl_id: Option<Max52Text>,
 }
 
 
@@ -379,7 +401,7 @@ pub struct TradeTransactionIdentification16 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradeTransactionIdentification17 {
 	#[serde(rename = "TechRcrdId", skip_serializing_if = "Option::is_none")]
-	pub tech_rcrd_id: Option<String>,
+	pub tech_rcrd_id: Option<Max140Text>,
 	#[serde(rename = "RptgCtrPty")]
 	pub rptg_ctr_pty: OrganisationIdentification15Choice,
 	#[serde(rename = "RptSubmitgNtty")]
@@ -393,7 +415,7 @@ pub struct TradeTransactionIdentification17 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradeTransactionIdentification20 {
 	#[serde(rename = "TechRcrdId", skip_serializing_if = "Option::is_none")]
-	pub tech_rcrd_id: Option<String>,
+	pub tech_rcrd_id: Option<Max140Text>,
 	#[serde(rename = "RptgCtrPty")]
 	pub rptg_ctr_pty: OrganisationIdentification15Choice,
 	#[serde(rename = "OthrCtrPty")]
@@ -401,7 +423,7 @@ pub struct TradeTransactionIdentification20 {
 	#[serde(rename = "NttyRspnsblForRpt", skip_serializing_if = "Option::is_none")]
 	pub ntty_rspnsbl_for_rpt: Option<OrganisationIdentification15Choice>,
 	#[serde(rename = "UnqTradIdr", skip_serializing_if = "Option::is_none")]
-	pub unq_trad_idr: Option<String>,
+	pub unq_trad_idr: Option<Max52Text>,
 	#[serde(rename = "MstrAgrmt", skip_serializing_if = "Option::is_none")]
 	pub mstr_agrmt: Option<MasterAgreement7>,
 	#[serde(rename = "AgtLndr", skip_serializing_if = "Option::is_none")]
@@ -427,7 +449,7 @@ pub struct TransactionIdentification3Choice {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ValidationRuleSchemeName1Choice {
 	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<String>,
+	pub cd: Option<ExternalValidationRuleIdentification1Code>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<String>,
+	pub prtry: Option<Max35Text>,
 }

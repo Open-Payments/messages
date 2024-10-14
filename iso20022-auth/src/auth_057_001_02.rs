@@ -29,7 +29,7 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Absolute1 {
 	#[serde(rename = "Unit")]
-	pub unit: String,
+	pub unit: Max35Text,
 	#[serde(rename = "Qty")]
 	pub qty: f64,
 }
@@ -38,7 +38,7 @@ pub struct Absolute1 {
 // BaseOneRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BaseOneRate {
-	#[serde(rename = "BaseOneRate")]
+	#[serde(rename = "$value")]
 	pub base_one_rate: f64,
 }
 
@@ -57,13 +57,13 @@ pub struct CCPPortfolioStressTestingDefinitionReportV02 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification165 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max256Text,
 	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
-	pub desc: Option<String>,
+	pub desc: Option<Max140Text>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
-	pub issr: Option<String>,
+	pub issr: Option<Max35Text>,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<String>,
+	pub schme_nm: Option<SchemeIdentificationType1Code>,
 }
 
 
@@ -71,20 +71,20 @@ pub struct GenericIdentification165 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification168 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max256Text,
 	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
-	pub desc: Option<String>,
+	pub desc: Option<Max140Text>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
-	pub issr: Option<String>,
+	pub issr: Option<Max35Text>,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<String>,
+	pub schme_nm: Option<Max35Text>,
 }
 
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[serde(rename = "Max140Text")]
+	#[serde(rename = "$value")]
 	pub max140_text: String,
 }
 
@@ -92,7 +92,7 @@ pub struct Max140Text {
 // Max2000Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max2000Text {
-	#[serde(rename = "Max2000Text")]
+	#[serde(rename = "$value")]
 	pub max2000_text: String,
 }
 
@@ -100,7 +100,7 @@ pub struct Max2000Text {
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max256Text {
-	#[serde(rename = "Max256Text")]
+	#[serde(rename = "$value")]
 	pub max256_text: String,
 }
 
@@ -108,7 +108,7 @@ pub struct Max256Text {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -116,7 +116,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -124,7 +124,7 @@ pub struct Max35Text {
 // Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Number {
-	#[serde(rename = "Number")]
+	#[serde(rename = "$value")]
 	pub number: f64,
 }
 
@@ -133,7 +133,7 @@ pub struct Number {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RiskFactor1 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "StrssSz")]
 	pub strss_sz: StressSize1Choice,
 }
@@ -145,29 +145,43 @@ pub struct ScenarioDefinition2 {
 	#[serde(rename = "Id")]
 	pub id: GenericIdentification165,
 	#[serde(rename = "ScnroTp")]
-	pub scnro_tp: String,
+	pub scnro_tp: ScenarioType1Code,
 	#[serde(rename = "StrtgyStrssTp")]
-	pub strtgy_strss_tp: String,
+	pub strtgy_strss_tp: StrategyStressType1Code,
 	#[serde(rename = "StrssItm")]
 	pub strss_itm: Vec<StressItem1>,
 	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
-	pub desc: Option<String>,
+	pub desc: Option<Max2000Text>,
 }
 
 
 // ScenarioType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ScenarioType1Code {
-	#[serde(rename = "ScenarioType1Code")]
-	pub scenario_type1_code: String,
+pub enum ScenarioType1Code {
+	#[serde(rename = "HIST")]
+	CodeHIST,
+	#[serde(rename = "HYPT")]
+	CodeHYPT,
+
+	#[default]
+	UNKOWN
 }
 
 
 // SchemeIdentificationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct SchemeIdentificationType1Code {
-	#[serde(rename = "SchemeIdentificationType1Code")]
-	pub scheme_identification_type1_code: String,
+pub enum SchemeIdentificationType1Code {
+	#[serde(rename = "MARG")]
+	CodeMARG,
+	#[serde(rename = "COLL")]
+	CodeCOLL,
+	#[serde(rename = "POSI")]
+	CodePOSI,
+	#[serde(rename = "CLIM")]
+	CodeCLIM,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -175,7 +189,7 @@ pub struct SchemeIdentificationType1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Strategy1 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "StrssSz")]
 	pub strss_sz: StressSize1Choice,
 }
@@ -183,9 +197,16 @@ pub struct Strategy1 {
 
 // StrategyStressType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct StrategyStressType1Code {
-	#[serde(rename = "StrategyStressType1Code")]
-	pub strategy_stress_type1_code: String,
+pub enum StrategyStressType1Code {
+	#[serde(rename = "FLEX")]
+	CodeFLEX,
+	#[serde(rename = "PRLL")]
+	CodePRLL,
+	#[serde(rename = "SPRD")]
+	CodeSPRD,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -235,7 +256,7 @@ pub struct StressedProduct1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }

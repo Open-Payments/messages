@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // ActiveOrHistoricCurrencyAnd20DecimalAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveOrHistoricCurrencyAnd20DecimalAmountSimpleType {
-	#[serde(rename = "ActiveOrHistoricCurrencyAnd20DecimalAmount_SimpleType")]
+	#[serde(rename = "$value")]
 	pub active_or_historic_currency_and20_decimal_amount_simple_type: f64,
 }
 
@@ -46,7 +46,7 @@ pub struct ActiveOrHistoricCurrencyAnd20DecimalAmount {
 // ActiveOrHistoricCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveOrHistoricCurrencyAndAmountSimpleType {
-	#[serde(rename = "ActiveOrHistoricCurrencyAndAmount_SimpleType")]
+	#[serde(rename = "$value")]
 	pub active_or_historic_currency_and_amount_simple_type: f64,
 }
 
@@ -64,7 +64,7 @@ pub struct ActiveOrHistoricCurrencyAndAmount {
 // ActiveOrHistoricCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveOrHistoricCurrencyCode {
-	#[serde(rename = "ActiveOrHistoricCurrencyCode")]
+	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
 }
 
@@ -73,9 +73,9 @@ pub struct ActiveOrHistoricCurrencyCode {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgreementType2Choice {
 	#[serde(rename = "Tp", skip_serializing_if = "Option::is_none")]
-	pub tp: Option<String>,
+	pub tp: Option<ExternalAgreementType1Code>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<String>,
+	pub prtry: Option<Max50Text>,
 }
 
 
@@ -83,9 +83,9 @@ pub struct AgreementType2Choice {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgriculturalCommodityDairy1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType1Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType20Code,
 }
 
 
@@ -93,9 +93,9 @@ pub struct AgriculturalCommodityDairy1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgriculturalCommodityForestry1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType1Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType21Code,
 }
 
 
@@ -103,11 +103,11 @@ pub struct AgriculturalCommodityForestry1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgriculturalCommodityGrain2 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType1Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType5Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType30Code,
 }
 
 
@@ -115,9 +115,9 @@ pub struct AgriculturalCommodityGrain2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgriculturalCommodityLiveStock1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType1Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType22Code,
 }
 
 
@@ -125,11 +125,11 @@ pub struct AgriculturalCommodityLiveStock1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgriculturalCommodityOilSeed1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType1Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType1Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType1Code,
 }
 
 
@@ -137,11 +137,11 @@ pub struct AgriculturalCommodityOilSeed1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgriculturalCommodityOliveOil2 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType1Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType3Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType29Code,
 }
 
 
@@ -149,9 +149,9 @@ pub struct AgriculturalCommodityOliveOil2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgriculturalCommodityOther1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType1Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType49Code,
 }
 
 
@@ -159,9 +159,9 @@ pub struct AgriculturalCommodityOther1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgriculturalCommodityPotato1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType1Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType45Code,
 }
 
 
@@ -169,9 +169,9 @@ pub struct AgriculturalCommodityPotato1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgriculturalCommoditySeafood1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType1Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType23Code,
 }
 
 
@@ -179,11 +179,11 @@ pub struct AgriculturalCommoditySeafood1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AgriculturalCommoditySoft1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType1Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType2Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType2Code,
 }
 
 
@@ -220,7 +220,7 @@ pub struct AmountHaircutMargin1 {
 // AnyBICDec2014Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AnyBICDec2014Identifier {
-	#[serde(rename = "AnyBICDec2014Identifier")]
+	#[serde(rename = "$value")]
 	pub any_bic_dec2014_identifier: String,
 }
 
@@ -371,7 +371,7 @@ pub struct AssetClassCommodityIndustrialProduct1Choice {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AssetClassCommodityInflation1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType12Code,
 }
 
 
@@ -389,7 +389,7 @@ pub struct AssetClassCommodityMetal1Choice {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AssetClassCommodityMultiCommodityExotic1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType13Code,
 }
 
 
@@ -397,7 +397,7 @@ pub struct AssetClassCommodityMultiCommodityExotic1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AssetClassCommodityOfficialEconomicStatistics1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType14Code,
 }
 
 
@@ -405,7 +405,7 @@ pub struct AssetClassCommodityOfficialEconomicStatistics1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AssetClassCommodityOther1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType15Code,
 }
 
 
@@ -447,544 +447,877 @@ pub struct AssetClassCommodityPolypropylene3Choice {
 
 // AssetClassDetailedSubProductType10Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType10Code {
-	#[serde(rename = "AssetClassDetailedSubProductType10Code")]
-	pub asset_class_detailed_sub_product_type10_code: String,
+pub enum AssetClassDetailedSubProductType10Code {
+	#[serde(rename = "ALUM")]
+	CodeALUM,
+	#[serde(rename = "ALUA")]
+	CodeALUA,
+	#[serde(rename = "CBLT")]
+	CodeCBLT,
+	#[serde(rename = "COPR")]
+	CodeCOPR,
+	#[serde(rename = "IRON")]
+	CodeIRON,
+	#[serde(rename = "MOLY")]
+	CodeMOLY,
+	#[serde(rename = "NASC")]
+	CodeNASC,
+	#[serde(rename = "NICK")]
+	CodeNICK,
+	#[serde(rename = "STEL")]
+	CodeSTEL,
+	#[serde(rename = "TINN")]
+	CodeTINN,
+	#[serde(rename = "ZINC")]
+	CodeZINC,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+	#[serde(rename = "LEAD")]
+	CodeLEAD,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType11Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType11Code {
-	#[serde(rename = "AssetClassDetailedSubProductType11Code")]
-	pub asset_class_detailed_sub_product_type11_code: String,
+pub enum AssetClassDetailedSubProductType11Code {
+	#[serde(rename = "GOLD")]
+	CodeGOLD,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+	#[serde(rename = "PLDM")]
+	CodePLDM,
+	#[serde(rename = "PTNM")]
+	CodePTNM,
+	#[serde(rename = "SLVR")]
+	CodeSLVR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType1Code {
-	#[serde(rename = "AssetClassDetailedSubProductType1Code")]
-	pub asset_class_detailed_sub_product_type1_code: String,
+pub enum AssetClassDetailedSubProductType1Code {
+	#[serde(rename = "FWHT")]
+	CodeFWHT,
+	#[serde(rename = "SOYB")]
+	CodeSOYB,
+	#[serde(rename = "RPSD")]
+	CodeRPSD,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+	#[serde(rename = "CORN")]
+	CodeCORN,
+	#[serde(rename = "RICE")]
+	CodeRICE,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType29Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType29Code {
-	#[serde(rename = "AssetClassDetailedSubProductType29Code")]
-	pub asset_class_detailed_sub_product_type29_code: String,
+pub enum AssetClassDetailedSubProductType29Code {
+	#[serde(rename = "LAMP")]
+	CodeLAMP,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType2Code {
-	#[serde(rename = "AssetClassDetailedSubProductType2Code")]
-	pub asset_class_detailed_sub_product_type2_code: String,
+pub enum AssetClassDetailedSubProductType2Code {
+	#[serde(rename = "ROBU")]
+	CodeROBU,
+	#[serde(rename = "CCOA")]
+	CodeCCOA,
+	#[serde(rename = "BRWN")]
+	CodeBRWN,
+	#[serde(rename = "WHSG")]
+	CodeWHSG,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType30Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType30Code {
-	#[serde(rename = "AssetClassDetailedSubProductType30Code")]
-	pub asset_class_detailed_sub_product_type30_code: String,
+pub enum AssetClassDetailedSubProductType30Code {
+	#[serde(rename = "MWHT")]
+	CodeMWHT,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType31Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType31Code {
-	#[serde(rename = "AssetClassDetailedSubProductType31Code")]
-	pub asset_class_detailed_sub_product_type31_code: String,
+pub enum AssetClassDetailedSubProductType31Code {
+	#[serde(rename = "GASP")]
+	CodeGASP,
+	#[serde(rename = "LNGG")]
+	CodeLNGG,
+	#[serde(rename = "NCGG")]
+	CodeNCGG,
+	#[serde(rename = "TTFG")]
+	CodeTTFG,
+	#[serde(rename = "NBPG")]
+	CodeNBPG,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType32Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType32Code {
-	#[serde(rename = "AssetClassDetailedSubProductType32Code")]
-	pub asset_class_detailed_sub_product_type32_code: String,
+pub enum AssetClassDetailedSubProductType32Code {
+	#[serde(rename = "BAKK")]
+	CodeBAKK,
+	#[serde(rename = "BDSL")]
+	CodeBDSL,
+	#[serde(rename = "BRNT")]
+	CodeBRNT,
+	#[serde(rename = "BRNX")]
+	CodeBRNX,
+	#[serde(rename = "CNDA")]
+	CodeCNDA,
+	#[serde(rename = "COND")]
+	CodeCOND,
+	#[serde(rename = "DSEL")]
+	CodeDSEL,
+	#[serde(rename = "DUBA")]
+	CodeDUBA,
+	#[serde(rename = "ESPO")]
+	CodeESPO,
+	#[serde(rename = "ETHA")]
+	CodeETHA,
+	#[serde(rename = "FUEL")]
+	CodeFUEL,
+	#[serde(rename = "FOIL")]
+	CodeFOIL,
+	#[serde(rename = "GOIL")]
+	CodeGOIL,
+	#[serde(rename = "GSLN")]
+	CodeGSLN,
+	#[serde(rename = "HEAT")]
+	CodeHEAT,
+	#[serde(rename = "JTFL")]
+	CodeJTFL,
+	#[serde(rename = "KERO")]
+	CodeKERO,
+	#[serde(rename = "LLSO")]
+	CodeLLSO,
+	#[serde(rename = "MARS")]
+	CodeMARS,
+	#[serde(rename = "NAPH")]
+	CodeNAPH,
+	#[serde(rename = "NGLO")]
+	CodeNGLO,
+	#[serde(rename = "TAPI")]
+	CodeTAPI,
+	#[serde(rename = "WTIO")]
+	CodeWTIO,
+	#[serde(rename = "URAL")]
+	CodeURAL,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType33Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType33Code {
-	#[serde(rename = "AssetClassDetailedSubProductType33Code")]
-	pub asset_class_detailed_sub_product_type33_code: String,
+pub enum AssetClassDetailedSubProductType33Code {
+	#[serde(rename = "DBCR")]
+	CodeDBCR,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType34Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType34Code {
-	#[serde(rename = "AssetClassDetailedSubProductType34Code")]
-	pub asset_class_detailed_sub_product_type34_code: String,
+pub enum AssetClassDetailedSubProductType34Code {
+	#[serde(rename = "TNKR")]
+	CodeTNKR,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType5Code {
-	#[serde(rename = "AssetClassDetailedSubProductType5Code")]
-	pub asset_class_detailed_sub_product_type5_code: String,
+pub enum AssetClassDetailedSubProductType5Code {
+	#[serde(rename = "BSLD")]
+	CodeBSLD,
+	#[serde(rename = "FITR")]
+	CodeFITR,
+	#[serde(rename = "PKLD")]
+	CodePKLD,
+	#[serde(rename = "OFFP")]
+	CodeOFFP,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType8Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType8Code {
-	#[serde(rename = "AssetClassDetailedSubProductType8Code")]
-	pub asset_class_detailed_sub_product_type8_code: String,
+pub enum AssetClassDetailedSubProductType8Code {
+	#[serde(rename = "CERE")]
+	CodeCERE,
+	#[serde(rename = "ERUE")]
+	CodeERUE,
+	#[serde(rename = "EUAE")]
+	CodeEUAE,
+	#[serde(rename = "EUAA")]
+	CodeEUAA,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType11Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType11Code {
-	#[serde(rename = "AssetClassProductType11Code")]
-	pub asset_class_product_type11_code: String,
+pub enum AssetClassProductType11Code {
+	#[serde(rename = "OTHC")]
+	CodeOTHC,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType12Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType12Code {
-	#[serde(rename = "AssetClassProductType12Code")]
-	pub asset_class_product_type12_code: String,
+pub enum AssetClassProductType12Code {
+	#[serde(rename = "INFL")]
+	CodeINFL,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType13Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType13Code {
-	#[serde(rename = "AssetClassProductType13Code")]
-	pub asset_class_product_type13_code: String,
+pub enum AssetClassProductType13Code {
+	#[serde(rename = "MCEX")]
+	CodeMCEX,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType14Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType14Code {
-	#[serde(rename = "AssetClassProductType14Code")]
-	pub asset_class_product_type14_code: String,
+pub enum AssetClassProductType14Code {
+	#[serde(rename = "OEST")]
+	CodeOEST,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType15Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType15Code {
-	#[serde(rename = "AssetClassProductType15Code")]
-	pub asset_class_product_type15_code: String,
+pub enum AssetClassProductType15Code {
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType1Code {
-	#[serde(rename = "AssetClassProductType1Code")]
-	pub asset_class_product_type1_code: String,
+pub enum AssetClassProductType1Code {
+	#[serde(rename = "AGRI")]
+	CodeAGRI,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType2Code {
-	#[serde(rename = "AssetClassProductType2Code")]
-	pub asset_class_product_type2_code: String,
+pub enum AssetClassProductType2Code {
+	#[serde(rename = "NRGY")]
+	CodeNRGY,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType3Code {
-	#[serde(rename = "AssetClassProductType3Code")]
-	pub asset_class_product_type3_code: String,
+pub enum AssetClassProductType3Code {
+	#[serde(rename = "ENVR")]
+	CodeENVR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType4Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType4Code {
-	#[serde(rename = "AssetClassProductType4Code")]
-	pub asset_class_product_type4_code: String,
+pub enum AssetClassProductType4Code {
+	#[serde(rename = "FRGT")]
+	CodeFRGT,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType5Code {
-	#[serde(rename = "AssetClassProductType5Code")]
-	pub asset_class_product_type5_code: String,
+pub enum AssetClassProductType5Code {
+	#[serde(rename = "FRTL")]
+	CodeFRTL,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType6Code {
-	#[serde(rename = "AssetClassProductType6Code")]
-	pub asset_class_product_type6_code: String,
+pub enum AssetClassProductType6Code {
+	#[serde(rename = "INDP")]
+	CodeINDP,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType7Code {
-	#[serde(rename = "AssetClassProductType7Code")]
-	pub asset_class_product_type7_code: String,
+pub enum AssetClassProductType7Code {
+	#[serde(rename = "METL")]
+	CodeMETL,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType8Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType8Code {
-	#[serde(rename = "AssetClassProductType8Code")]
-	pub asset_class_product_type8_code: String,
+pub enum AssetClassProductType8Code {
+	#[serde(rename = "PAPR")]
+	CodePAPR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassProductType9Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassProductType9Code {
-	#[serde(rename = "AssetClassProductType9Code")]
-	pub asset_class_product_type9_code: String,
+pub enum AssetClassProductType9Code {
+	#[serde(rename = "POLY")]
+	CodePOLY,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType10Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType10Code {
-	#[serde(rename = "AssetClassSubProductType10Code")]
-	pub asset_class_sub_product_type10_code: String,
+pub enum AssetClassSubProductType10Code {
+	#[serde(rename = "EMIS")]
+	CodeEMIS,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType15Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType15Code {
-	#[serde(rename = "AssetClassSubProductType15Code")]
-	pub asset_class_sub_product_type15_code: String,
+pub enum AssetClassSubProductType15Code {
+	#[serde(rename = "NPRM")]
+	CodeNPRM,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType16Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType16Code {
-	#[serde(rename = "AssetClassSubProductType16Code")]
-	pub asset_class_sub_product_type16_code: String,
+pub enum AssetClassSubProductType16Code {
+	#[serde(rename = "PRME")]
+	CodePRME,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType18Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType18Code {
-	#[serde(rename = "AssetClassSubProductType18Code")]
-	pub asset_class_sub_product_type18_code: String,
+pub enum AssetClassSubProductType18Code {
+	#[serde(rename = "PLST")]
+	CodePLST,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType1Code {
-	#[serde(rename = "AssetClassSubProductType1Code")]
-	pub asset_class_sub_product_type1_code: String,
+pub enum AssetClassSubProductType1Code {
+	#[serde(rename = "GROS")]
+	CodeGROS,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType20Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType20Code {
-	#[serde(rename = "AssetClassSubProductType20Code")]
-	pub asset_class_sub_product_type20_code: String,
+pub enum AssetClassSubProductType20Code {
+	#[serde(rename = "DIRY")]
+	CodeDIRY,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType21Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType21Code {
-	#[serde(rename = "AssetClassSubProductType21Code")]
-	pub asset_class_sub_product_type21_code: String,
+pub enum AssetClassSubProductType21Code {
+	#[serde(rename = "FRST")]
+	CodeFRST,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType22Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType22Code {
-	#[serde(rename = "AssetClassSubProductType22Code")]
-	pub asset_class_sub_product_type22_code: String,
+pub enum AssetClassSubProductType22Code {
+	#[serde(rename = "LSTK")]
+	CodeLSTK,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType23Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType23Code {
-	#[serde(rename = "AssetClassSubProductType23Code")]
-	pub asset_class_sub_product_type23_code: String,
+pub enum AssetClassSubProductType23Code {
+	#[serde(rename = "SEAF")]
+	CodeSEAF,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType24Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType24Code {
-	#[serde(rename = "AssetClassSubProductType24Code")]
-	pub asset_class_sub_product_type24_code: String,
+pub enum AssetClassSubProductType24Code {
+	#[serde(rename = "COAL")]
+	CodeCOAL,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType25Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType25Code {
-	#[serde(rename = "AssetClassSubProductType25Code")]
-	pub asset_class_sub_product_type25_code: String,
+pub enum AssetClassSubProductType25Code {
+	#[serde(rename = "DIST")]
+	CodeDIST,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType26Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType26Code {
-	#[serde(rename = "AssetClassSubProductType26Code")]
-	pub asset_class_sub_product_type26_code: String,
+pub enum AssetClassSubProductType26Code {
+	#[serde(rename = "INRG")]
+	CodeINRG,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType27Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType27Code {
-	#[serde(rename = "AssetClassSubProductType27Code")]
-	pub asset_class_sub_product_type27_code: String,
+pub enum AssetClassSubProductType27Code {
+	#[serde(rename = "LGHT")]
+	CodeLGHT,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType28Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType28Code {
-	#[serde(rename = "AssetClassSubProductType28Code")]
-	pub asset_class_sub_product_type28_code: String,
+pub enum AssetClassSubProductType28Code {
+	#[serde(rename = "RNNG")]
+	CodeRNNG,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType29Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType29Code {
-	#[serde(rename = "AssetClassSubProductType29Code")]
-	pub asset_class_sub_product_type29_code: String,
+pub enum AssetClassSubProductType29Code {
+	#[serde(rename = "CRBR")]
+	CodeCRBR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType2Code {
-	#[serde(rename = "AssetClassSubProductType2Code")]
-	pub asset_class_sub_product_type2_code: String,
+pub enum AssetClassSubProductType2Code {
+	#[serde(rename = "SOFT")]
+	CodeSOFT,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType30Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType30Code {
-	#[serde(rename = "AssetClassSubProductType30Code")]
-	pub asset_class_sub_product_type30_code: String,
+pub enum AssetClassSubProductType30Code {
+	#[serde(rename = "WTHR")]
+	CodeWTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType31Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType31Code {
-	#[serde(rename = "AssetClassSubProductType31Code")]
-	pub asset_class_sub_product_type31_code: String,
+pub enum AssetClassSubProductType31Code {
+	#[serde(rename = "DRYF")]
+	CodeDRYF,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType32Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType32Code {
-	#[serde(rename = "AssetClassSubProductType32Code")]
-	pub asset_class_sub_product_type32_code: String,
+pub enum AssetClassSubProductType32Code {
+	#[serde(rename = "WETF")]
+	CodeWETF,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType33Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType33Code {
-	#[serde(rename = "AssetClassSubProductType33Code")]
-	pub asset_class_sub_product_type33_code: String,
+pub enum AssetClassSubProductType33Code {
+	#[serde(rename = "CSTR")]
+	CodeCSTR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType34Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType34Code {
-	#[serde(rename = "AssetClassSubProductType34Code")]
-	pub asset_class_sub_product_type34_code: String,
+pub enum AssetClassSubProductType34Code {
+	#[serde(rename = "MFTG")]
+	CodeMFTG,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType35Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType35Code {
-	#[serde(rename = "AssetClassSubProductType35Code")]
-	pub asset_class_sub_product_type35_code: String,
+pub enum AssetClassSubProductType35Code {
+	#[serde(rename = "CBRD")]
+	CodeCBRD,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType36Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType36Code {
-	#[serde(rename = "AssetClassSubProductType36Code")]
-	pub asset_class_sub_product_type36_code: String,
+pub enum AssetClassSubProductType36Code {
+	#[serde(rename = "NSPT")]
+	CodeNSPT,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType37Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType37Code {
-	#[serde(rename = "AssetClassSubProductType37Code")]
-	pub asset_class_sub_product_type37_code: String,
+pub enum AssetClassSubProductType37Code {
+	#[serde(rename = "PULP")]
+	CodePULP,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType38Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType38Code {
-	#[serde(rename = "AssetClassSubProductType38Code")]
-	pub asset_class_sub_product_type38_code: String,
+pub enum AssetClassSubProductType38Code {
+	#[serde(rename = "RCVP")]
+	CodeRCVP,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType39Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType39Code {
-	#[serde(rename = "AssetClassSubProductType39Code")]
-	pub asset_class_sub_product_type39_code: String,
+pub enum AssetClassSubProductType39Code {
+	#[serde(rename = "AMMO")]
+	CodeAMMO,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType3Code {
-	#[serde(rename = "AssetClassSubProductType3Code")]
-	pub asset_class_sub_product_type3_code: String,
+pub enum AssetClassSubProductType3Code {
+	#[serde(rename = "OOLI")]
+	CodeOOLI,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType40Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType40Code {
-	#[serde(rename = "AssetClassSubProductType40Code")]
-	pub asset_class_sub_product_type40_code: String,
+pub enum AssetClassSubProductType40Code {
+	#[serde(rename = "DAPH")]
+	CodeDAPH,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType41Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType41Code {
-	#[serde(rename = "AssetClassSubProductType41Code")]
-	pub asset_class_sub_product_type41_code: String,
+pub enum AssetClassSubProductType41Code {
+	#[serde(rename = "PTSH")]
+	CodePTSH,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType42Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType42Code {
-	#[serde(rename = "AssetClassSubProductType42Code")]
-	pub asset_class_sub_product_type42_code: String,
+pub enum AssetClassSubProductType42Code {
+	#[serde(rename = "SLPH")]
+	CodeSLPH,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType43Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType43Code {
-	#[serde(rename = "AssetClassSubProductType43Code")]
-	pub asset_class_sub_product_type43_code: String,
+pub enum AssetClassSubProductType43Code {
+	#[serde(rename = "UREA")]
+	CodeUREA,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType44Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType44Code {
-	#[serde(rename = "AssetClassSubProductType44Code")]
-	pub asset_class_sub_product_type44_code: String,
+pub enum AssetClassSubProductType44Code {
+	#[serde(rename = "UAAN")]
+	CodeUAAN,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType45Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType45Code {
-	#[serde(rename = "AssetClassSubProductType45Code")]
-	pub asset_class_sub_product_type45_code: String,
+pub enum AssetClassSubProductType45Code {
+	#[serde(rename = "POTA")]
+	CodePOTA,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType46Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType46Code {
-	#[serde(rename = "AssetClassSubProductType46Code")]
-	pub asset_class_sub_product_type46_code: String,
+pub enum AssetClassSubProductType46Code {
+	#[serde(rename = "CSHP")]
+	CodeCSHP,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType47Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType47Code {
-	#[serde(rename = "AssetClassSubProductType47Code")]
-	pub asset_class_sub_product_type47_code: String,
+pub enum AssetClassSubProductType47Code {
+	#[serde(rename = "DLVR")]
+	CodeDLVR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType48Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType48Code {
-	#[serde(rename = "AssetClassSubProductType48Code")]
-	pub asset_class_sub_product_type48_code: String,
+pub enum AssetClassSubProductType48Code {
+	#[serde(rename = "NDLV")]
+	CodeNDLV,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType49Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType49Code {
-	#[serde(rename = "AssetClassSubProductType49Code")]
-	pub asset_class_sub_product_type49_code: String,
+pub enum AssetClassSubProductType49Code {
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType5Code {
-	#[serde(rename = "AssetClassSubProductType5Code")]
-	pub asset_class_sub_product_type5_code: String,
+pub enum AssetClassSubProductType5Code {
+	#[serde(rename = "GRIN")]
+	CodeGRIN,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType6Code {
-	#[serde(rename = "AssetClassSubProductType6Code")]
-	pub asset_class_sub_product_type6_code: String,
+pub enum AssetClassSubProductType6Code {
+	#[serde(rename = "ELEC")]
+	CodeELEC,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType7Code {
-	#[serde(rename = "AssetClassSubProductType7Code")]
-	pub asset_class_sub_product_type7_code: String,
+pub enum AssetClassSubProductType7Code {
+	#[serde(rename = "NGAS")]
+	CodeNGAS,
+
+	#[default]
+	UNKOWN
 }
 
 
 // AssetClassSubProductType8Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassSubProductType8Code {
-	#[serde(rename = "AssetClassSubProductType8Code")]
-	pub asset_class_sub_product_type8_code: String,
+pub enum AssetClassSubProductType8Code {
+	#[serde(rename = "OILP")]
+	CodeOILP,
+
+	#[default]
+	UNKOWN
 }
 
 
 // BaseOneRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BaseOneRate {
-	#[serde(rename = "BaseOneRate")]
+	#[serde(rename = "$value")]
 	pub base_one_rate: f64,
 }
 
@@ -993,17 +1326,76 @@ pub struct BaseOneRate {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BenchmarkCurveName10Choice {
 	#[serde(rename = "Indx", skip_serializing_if = "Option::is_none")]
-	pub indx: Option<String>,
+	pub indx: Option<BenchmarkCurveName3Code>,
 	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
-	pub nm: Option<String>,
+	pub nm: Option<Max350Text>,
 }
 
 
 // BenchmarkCurveName3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct BenchmarkCurveName3Code {
-	#[serde(rename = "BenchmarkCurveName3Code")]
-	pub benchmark_curve_name3_code: String,
+pub enum BenchmarkCurveName3Code {
+	#[serde(rename = "ESTR")]
+	CodeESTR,
+	#[serde(rename = "BBSW")]
+	CodeBBSW,
+	#[serde(rename = "BUBO")]
+	CodeBUBO,
+	#[serde(rename = "CDOR")]
+	CodeCDOR,
+	#[serde(rename = "CIBO")]
+	CodeCIBO,
+	#[serde(rename = "EONA")]
+	CodeEONA,
+	#[serde(rename = "EONS")]
+	CodeEONS,
+	#[serde(rename = "EURI")]
+	CodeEURI,
+	#[serde(rename = "EUUS")]
+	CodeEUUS,
+	#[serde(rename = "EUCH")]
+	CodeEUCH,
+	#[serde(rename = "FUSW")]
+	CodeFUSW,
+	#[serde(rename = "GCFR")]
+	CodeGCFR,
+	#[serde(rename = "ISDA")]
+	CodeISDA,
+	#[serde(rename = "JIBA")]
+	CodeJIBA,
+	#[serde(rename = "LIBI")]
+	CodeLIBI,
+	#[serde(rename = "LIBO")]
+	CodeLIBO,
+	#[serde(rename = "MOSP")]
+	CodeMOSP,
+	#[serde(rename = "MAAA")]
+	CodeMAAA,
+	#[serde(rename = "NIBO")]
+	CodeNIBO,
+	#[serde(rename = "PFAN")]
+	CodePFAN,
+	#[serde(rename = "PRBO")]
+	CodePRBO,
+	#[serde(rename = "STBO")]
+	CodeSTBO,
+	#[serde(rename = "SWAP")]
+	CodeSWAP,
+	#[serde(rename = "TLBO")]
+	CodeTLBO,
+	#[serde(rename = "TIBO")]
+	CodeTIBO,
+	#[serde(rename = "TREA")]
+	CodeTREA,
+	#[serde(rename = "WIBO")]
+	CodeWIBO,
+	#[serde(rename = "SOFR")]
+	CodeSOFR,
+	#[serde(rename = "SONA")]
+	CodeSONA,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -1013,7 +1405,7 @@ pub struct Branch5Choice {
 	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
 	pub id: Option<OrganisationIdentification15Choice>,
 	#[serde(rename = "Ctry", skip_serializing_if = "Option::is_none")]
-	pub ctry: Option<String>,
+	pub ctry: Option<CountryCode>,
 }
 
 
@@ -1023,14 +1415,14 @@ pub struct Branch6Choice {
 	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
 	pub id: Option<PartyIdentification236Choice>,
 	#[serde(rename = "Ctry", skip_serializing_if = "Option::is_none")]
-	pub ctry: Option<String>,
+	pub ctry: Option<CountryCode>,
 }
 
 
 // CFIOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CFIOct2015Identifier {
-	#[serde(rename = "CFIOct2015Identifier")]
+	#[serde(rename = "$value")]
 	pub cfi_oct2015_identifier: String,
 }
 
@@ -1041,7 +1433,7 @@ pub struct Cleared16Choice {
 	#[serde(rename = "Clrd", skip_serializing_if = "Option::is_none")]
 	pub clrd: Option<ClearingPartyAndTime14>,
 	#[serde(rename = "NonClrd", skip_serializing_if = "Option::is_none")]
-	pub non_clrd: Option<String>,
+	pub non_clrd: Option<NoReasonCode>,
 }
 
 
@@ -1053,9 +1445,9 @@ pub struct ClearingPartyAndTime14 {
 	#[serde(rename = "ClrDtTm", skip_serializing_if = "Option::is_none")]
 	pub clr_dt_tm: Option<String>,
 	#[serde(rename = "RptTrckgNb", skip_serializing_if = "Option::is_none")]
-	pub rpt_trckg_nb: Option<String>,
+	pub rpt_trckg_nb: Option<Max52Text>,
 	#[serde(rename = "PrtflCd", skip_serializing_if = "Option::is_none")]
-	pub prtfl_cd: Option<String>,
+	pub prtfl_cd: Option<Max52Text>,
 }
 
 
@@ -1075,9 +1467,16 @@ pub struct Collateral52 {
 
 // CollateralDeliveryMethod1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct CollateralDeliveryMethod1Code {
-	#[serde(rename = "CollateralDeliveryMethod1Code")]
-	pub collateral_delivery_method1_code: String,
+pub enum CollateralDeliveryMethod1Code {
+	#[serde(rename = "SICA")]
+	CodeSICA,
+	#[serde(rename = "SIUR")]
+	CodeSIUR,
+	#[serde(rename = "TTCA")]
+	CodeTTCA,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -1087,23 +1486,37 @@ pub struct CollateralFlag13Choice {
 	#[serde(rename = "Collsd", skip_serializing_if = "Option::is_none")]
 	pub collsd: Option<CollaterisedData12>,
 	#[serde(rename = "Uncollsd", skip_serializing_if = "Option::is_none")]
-	pub uncollsd: Option<String>,
+	pub uncollsd: Option<NoReasonCode>,
 }
 
 
 // CollateralQualityType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct CollateralQualityType1Code {
-	#[serde(rename = "CollateralQualityType1Code")]
-	pub collateral_quality_type1_code: String,
+pub enum CollateralQualityType1Code {
+	#[serde(rename = "INVG")]
+	CodeINVG,
+	#[serde(rename = "NIVG")]
+	CodeNIVG,
+	#[serde(rename = "NOTR")]
+	CodeNOTR,
+	#[serde(rename = "NOAP")]
+	CodeNOAP,
+
+	#[default]
+	UNKOWN
 }
 
 
 // CollateralRole1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct CollateralRole1Code {
-	#[serde(rename = "CollateralRole1Code")]
-	pub collateral_role1_code: String,
+pub enum CollateralRole1Code {
+	#[serde(rename = "GIVE")]
+	CodeGIVE,
+	#[serde(rename = "TAKE")]
+	CodeTAKE,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -1151,9 +1564,9 @@ pub struct Commodity43 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ContractModification3 {
 	#[serde(rename = "ActnTp")]
-	pub actn_tp: String,
+	pub actn_tp: TransactionOperationType6Code,
 	#[serde(rename = "Lvl", skip_serializing_if = "Option::is_none")]
-	pub lvl: Option<String>,
+	pub lvl: Option<ModificationLevel1Code>,
 }
 
 
@@ -1203,7 +1616,7 @@ pub struct CounterpartyIdentification11 {
 	#[serde(rename = "Brnch", skip_serializing_if = "Option::is_none")]
 	pub brnch: Option<Branch5Choice>,
 	#[serde(rename = "Sd", skip_serializing_if = "Option::is_none")]
-	pub sd: Option<String>,
+	pub sd: Option<CollateralRole1Code>,
 }
 
 
@@ -1215,7 +1628,7 @@ pub struct CounterpartyIdentification12 {
 	#[serde(rename = "Brnch", skip_serializing_if = "Option::is_none")]
 	pub brnch: Option<Branch6Choice>,
 	#[serde(rename = "CtryCd", skip_serializing_if = "Option::is_none")]
-	pub ctry_cd: Option<String>,
+	pub ctry_cd: Option<CountryCode>,
 }
 
 
@@ -1232,7 +1645,7 @@ pub struct CounterpartyTradeNature7Choice {
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
-	#[serde(rename = "CountryCode")]
+	#[serde(rename = "$value")]
 	pub country_code: String,
 }
 
@@ -1240,7 +1653,7 @@ pub struct CountryCode {
 // DecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DecimalNumber {
-	#[serde(rename = "DecimalNumber")]
+	#[serde(rename = "$value")]
 	pub decimal_number: f64,
 }
 
@@ -1249,9 +1662,9 @@ pub struct DecimalNumber {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnergyCommodityCoal1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType2Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType24Code,
 }
 
 
@@ -1259,9 +1672,9 @@ pub struct EnergyCommodityCoal1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnergyCommodityDistillates1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType2Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType25Code,
 }
 
 
@@ -1269,11 +1682,11 @@ pub struct EnergyCommodityDistillates1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnergyCommodityElectricity1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType2Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType6Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType5Code,
 }
 
 
@@ -1281,9 +1694,9 @@ pub struct EnergyCommodityElectricity1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnergyCommodityInterEnergy1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType2Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType26Code,
 }
 
 
@@ -1291,9 +1704,9 @@ pub struct EnergyCommodityInterEnergy1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnergyCommodityLightEnd1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType2Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType27Code,
 }
 
 
@@ -1301,11 +1714,11 @@ pub struct EnergyCommodityLightEnd1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnergyCommodityNaturalGas2 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType2Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType7Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType31Code,
 }
 
 
@@ -1313,11 +1726,11 @@ pub struct EnergyCommodityNaturalGas2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnergyCommodityOil2 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType2Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType8Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType32Code,
 }
 
 
@@ -1325,9 +1738,9 @@ pub struct EnergyCommodityOil2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnergyCommodityOther1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType2Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType49Code,
 }
 
 
@@ -1335,9 +1748,9 @@ pub struct EnergyCommodityOther1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnergyCommodityRenewableEnergy1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType2Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType28Code,
 }
 
 
@@ -1345,9 +1758,9 @@ pub struct EnergyCommodityRenewableEnergy1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnvironmentCommodityOther1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType3Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType49Code,
 }
 
 
@@ -1355,9 +1768,9 @@ pub struct EnvironmentCommodityOther1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnvironmentalCommodityCarbonRelated1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType3Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType29Code,
 }
 
 
@@ -1365,11 +1778,11 @@ pub struct EnvironmentalCommodityCarbonRelated1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnvironmentalCommodityEmission2 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType3Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType10Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType8Code,
 }
 
 
@@ -1377,16 +1790,16 @@ pub struct EnvironmentalCommodityEmission2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct EnvironmentalCommodityWeather1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType3Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType30Code,
 }
 
 
 // ExternalAgreementType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalAgreementType1Code {
-	#[serde(rename = "ExternalAgreementType1Code")]
+	#[serde(rename = "$value")]
 	pub external_agreement_type1_code: String,
 }
 
@@ -1394,7 +1807,7 @@ pub struct ExternalAgreementType1Code {
 // ExternalSecuritiesLendingType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ExternalSecuritiesLendingType1Code {
-	#[serde(rename = "ExternalSecuritiesLendingType1Code")]
+	#[serde(rename = "$value")]
 	pub external_securities_lending_type1_code: String,
 }
 
@@ -1403,9 +1816,9 @@ pub struct ExternalSecuritiesLendingType1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FertilizerCommodityAmmonia1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType5Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType39Code,
 }
 
 
@@ -1413,9 +1826,9 @@ pub struct FertilizerCommodityAmmonia1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FertilizerCommodityDiammoniumPhosphate1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType5Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType40Code,
 }
 
 
@@ -1423,9 +1836,9 @@ pub struct FertilizerCommodityDiammoniumPhosphate1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FertilizerCommodityOther1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType5Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType49Code,
 }
 
 
@@ -1433,9 +1846,9 @@ pub struct FertilizerCommodityOther1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FertilizerCommodityPotash1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType5Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType41Code,
 }
 
 
@@ -1443,9 +1856,9 @@ pub struct FertilizerCommodityPotash1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FertilizerCommoditySulphur1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType5Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType42Code,
 }
 
 
@@ -1453,9 +1866,9 @@ pub struct FertilizerCommoditySulphur1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FertilizerCommodityUrea1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType5Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType43Code,
 }
 
 
@@ -1463,9 +1876,9 @@ pub struct FertilizerCommodityUrea1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FertilizerCommodityUreaAndAmmoniumNitrate1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType5Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType44Code,
 }
 
 
@@ -1473,9 +1886,9 @@ pub struct FertilizerCommodityUreaAndAmmoniumNitrate1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FinancialPartyClassification1 {
 	#[serde(rename = "Clssfctn")]
-	pub clssfctn: Vec<String>,
+	pub clssfctn: Vec<FinancialPartySectorType2Code>,
 	#[serde(rename = "InvstmtFndClssfctn", skip_serializing_if = "Option::is_none")]
-	pub invstmt_fnd_clssfctn: Option<String>,
+	pub invstmt_fnd_clssfctn: Option<FundType2Code>,
 }
 
 
@@ -1483,17 +1896,36 @@ pub struct FinancialPartyClassification1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FinancialPartyClassification2 {
 	#[serde(rename = "Clssfctn")]
-	pub clssfctn: Vec<String>,
+	pub clssfctn: Vec<NACEDomainIdentifier>,
 	#[serde(rename = "InvstmtFndClssfctn", skip_serializing_if = "Option::is_none")]
-	pub invstmt_fnd_clssfctn: Option<String>,
+	pub invstmt_fnd_clssfctn: Option<FundType2Code>,
 }
 
 
 // FinancialPartySectorType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FinancialPartySectorType2Code {
-	#[serde(rename = "FinancialPartySectorType2Code")]
-	pub financial_party_sector_type2_code: String,
+pub enum FinancialPartySectorType2Code {
+	#[serde(rename = "AIFD")]
+	CodeAIFD,
+	#[serde(rename = "CSDS")]
+	CodeCSDS,
+	#[serde(rename = "CCPS")]
+	CodeCCPS,
+	#[serde(rename = "CDTI")]
+	CodeCDTI,
+	#[serde(rename = "INUN")]
+	CodeINUN,
+	#[serde(rename = "ORPI")]
+	CodeORPI,
+	#[serde(rename = "INVF")]
+	CodeINVF,
+	#[serde(rename = "REIN")]
+	CodeREIN,
+	#[serde(rename = "UCIT")]
+	CodeUCIT,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -1503,7 +1935,7 @@ pub struct FixedOpenTermContract2 {
 	#[serde(rename = "MtrtyDt", skip_serializing_if = "Option::is_none")]
 	pub mtrty_dt: Option<String>,
 	#[serde(rename = "TermntnOptn", skip_serializing_if = "Option::is_none")]
-	pub termntn_optn: Option<String>,
+	pub termntn_optn: Option<RepoTerminationOption2Code>,
 }
 
 
@@ -1541,9 +1973,9 @@ pub struct FloatingInterestRate22 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FreightCommodityContainerShip1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType4Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType46Code,
 }
 
 
@@ -1551,11 +1983,11 @@ pub struct FreightCommodityContainerShip1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FreightCommodityDry2 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType4Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType31Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType33Code,
 }
 
 
@@ -1563,9 +1995,9 @@ pub struct FreightCommodityDry2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FreightCommodityOther1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType4Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType49Code,
 }
 
 
@@ -1573,19 +2005,28 @@ pub struct FreightCommodityOther1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FreightCommodityWet2 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType4Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType32Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType34Code,
 }
 
 
 // FundType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FundType2Code {
-	#[serde(rename = "FundType2Code")]
-	pub fund_type2_code: String,
+pub enum FundType2Code {
+	#[serde(rename = "ETFT")]
+	CodeETFT,
+	#[serde(rename = "MMFT")]
+	CodeMMFT,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+	#[serde(rename = "REIT")]
+	CodeREIT,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -1593,18 +2034,18 @@ pub struct FundType2Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification175 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max72Text,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<String>,
+	pub schme_nm: Option<Max35Text>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
-	pub issr: Option<String>,
+	pub issr: Option<Max35Text>,
 }
 
 
 // ISINOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISINOct2015Identifier {
-	#[serde(rename = "ISINOct2015Identifier")]
+	#[serde(rename = "$value")]
 	pub isin_oct2015_identifier: String,
 }
 
@@ -1612,7 +2053,7 @@ pub struct ISINOct2015Identifier {
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
-	#[serde(rename = "ISODate")]
+	#[serde(rename = "$value")]
 	pub iso_date: String,
 }
 
@@ -1620,7 +2061,7 @@ pub struct ISODate {
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -1629,9 +2070,9 @@ pub struct ISODateTime {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IndustrialProductCommodityConstruction1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType6Code,
 	#[serde(rename = "SubPdct", skip_serializing_if = "Option::is_none")]
-	pub sub_pdct: Option<String>,
+	pub sub_pdct: Option<AssetClassSubProductType33Code>,
 }
 
 
@@ -1639,17 +2080,46 @@ pub struct IndustrialProductCommodityConstruction1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IndustrialProductCommodityManufacturing1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType6Code,
 	#[serde(rename = "SubPdct", skip_serializing_if = "Option::is_none")]
-	pub sub_pdct: Option<String>,
+	pub sub_pdct: Option<AssetClassSubProductType34Code>,
 }
 
 
 // InterestComputationMethod1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct InterestComputationMethod1Code {
-	#[serde(rename = "InterestComputationMethod1Code")]
-	pub interest_computation_method1_code: String,
+pub enum InterestComputationMethod1Code {
+	#[serde(rename = "A001")]
+	CodeA001,
+	#[serde(rename = "A002")]
+	CodeA002,
+	#[serde(rename = "A003")]
+	CodeA003,
+	#[serde(rename = "A004")]
+	CodeA004,
+	#[serde(rename = "A005")]
+	CodeA005,
+	#[serde(rename = "A006")]
+	CodeA006,
+	#[serde(rename = "A007")]
+	CodeA007,
+	#[serde(rename = "A008")]
+	CodeA008,
+	#[serde(rename = "A009")]
+	CodeA009,
+	#[serde(rename = "A010")]
+	CodeA010,
+	#[serde(rename = "A011")]
+	CodeA011,
+	#[serde(rename = "A012")]
+	CodeA012,
+	#[serde(rename = "A013")]
+	CodeA013,
+	#[serde(rename = "A014")]
+	CodeA014,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -1657,9 +2127,9 @@ pub struct InterestComputationMethod1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InterestComputationMethodFormat6Choice {
 	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<String>,
+	pub cd: Option<InterestComputationMethod1Code>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<String>,
+	pub prtry: Option<Max35Text>,
 }
 
 
@@ -1687,7 +2157,7 @@ pub struct InterestRate6 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InterestRateContractTerm2 {
 	#[serde(rename = "Unit")]
-	pub unit: String,
+	pub unit: RateBasis1Code,
 	#[serde(rename = "Val")]
 	pub val: f64,
 }
@@ -1696,7 +2166,7 @@ pub struct InterestRateContractTerm2 {
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
-	#[serde(rename = "LEIIdentifier")]
+	#[serde(rename = "$value")]
 	pub lei_identifier: String,
 }
 
@@ -1705,7 +2175,7 @@ pub struct LEIIdentifier {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LoanData139 {
 	#[serde(rename = "UnqTradIdr", skip_serializing_if = "Option::is_none")]
-	pub unq_trad_idr: Option<String>,
+	pub unq_trad_idr: Option<Max52Text>,
 	#[serde(rename = "EvtDt", skip_serializing_if = "Option::is_none")]
 	pub evt_dt: Option<String>,
 	#[serde(rename = "ExctnDtTm", skip_serializing_if = "Option::is_none")]
@@ -1713,7 +2183,7 @@ pub struct LoanData139 {
 	#[serde(rename = "ClrSts", skip_serializing_if = "Option::is_none")]
 	pub clr_sts: Option<Cleared16Choice>,
 	#[serde(rename = "TradgVn", skip_serializing_if = "Option::is_none")]
-	pub tradg_vn: Option<String>,
+	pub tradg_vn: Option<MICIdentifier>,
 	#[serde(rename = "MstrAgrmt", skip_serializing_if = "Option::is_none")]
 	pub mstr_agrmt: Option<MasterAgreement7>,
 	#[serde(rename = "ValDt", skip_serializing_if = "Option::is_none")]
@@ -1723,11 +2193,11 @@ pub struct LoanData139 {
 	#[serde(rename = "EarlstCallBckDt", skip_serializing_if = "Option::is_none")]
 	pub earlst_call_bck_dt: Option<String>,
 	#[serde(rename = "GnlColl", skip_serializing_if = "Option::is_none")]
-	pub gnl_coll: Option<String>,
+	pub gnl_coll: Option<SpecialCollateral1Code>,
 	#[serde(rename = "DlvryByVal", skip_serializing_if = "Option::is_none")]
 	pub dlvry_by_val: Option<bool>,
 	#[serde(rename = "CollDlvryMtd", skip_serializing_if = "Option::is_none")]
-	pub coll_dlvry_mtd: Option<String>,
+	pub coll_dlvry_mtd: Option<CollateralDeliveryMethod1Code>,
 	#[serde(rename = "Term", skip_serializing_if = "Option::is_none")]
 	pub term: Option<Vec<ContractTerm7Choice>>,
 	#[serde(rename = "IntrstRate", skip_serializing_if = "Option::is_none")]
@@ -1743,7 +2213,7 @@ pub struct LoanData139 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LoanData140 {
 	#[serde(rename = "UnqTradIdr", skip_serializing_if = "Option::is_none")]
-	pub unq_trad_idr: Option<String>,
+	pub unq_trad_idr: Option<Max52Text>,
 	#[serde(rename = "EvtDt")]
 	pub evt_dt: String,
 	#[serde(rename = "ExctnDtTm", skip_serializing_if = "Option::is_none")]
@@ -1751,7 +2221,7 @@ pub struct LoanData140 {
 	#[serde(rename = "ClrSts", skip_serializing_if = "Option::is_none")]
 	pub clr_sts: Option<Cleared16Choice>,
 	#[serde(rename = "TradgVn", skip_serializing_if = "Option::is_none")]
-	pub tradg_vn: Option<String>,
+	pub tradg_vn: Option<MICIdentifier>,
 	#[serde(rename = "MstrAgrmt", skip_serializing_if = "Option::is_none")]
 	pub mstr_agrmt: Option<MasterAgreement7>,
 	#[serde(rename = "ValDt", skip_serializing_if = "Option::is_none")]
@@ -1759,7 +2229,7 @@ pub struct LoanData140 {
 	#[serde(rename = "MtrtyDt", skip_serializing_if = "Option::is_none")]
 	pub mtrty_dt: Option<String>,
 	#[serde(rename = "GnlColl", skip_serializing_if = "Option::is_none")]
-	pub gnl_coll: Option<String>,
+	pub gnl_coll: Option<SpecialCollateral1Code>,
 	#[serde(rename = "PrncplAmt", skip_serializing_if = "Option::is_none")]
 	pub prncpl_amt: Option<PrincipalAmount3>,
 	#[serde(rename = "UnitPric", skip_serializing_if = "Option::is_none")]
@@ -1773,7 +2243,7 @@ pub struct LoanData140 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LoanData141 {
 	#[serde(rename = "UnqTradIdr", skip_serializing_if = "Option::is_none")]
-	pub unq_trad_idr: Option<String>,
+	pub unq_trad_idr: Option<Max52Text>,
 	#[serde(rename = "EvtDt")]
 	pub evt_dt: String,
 	#[serde(rename = "ExctnDtTm", skip_serializing_if = "Option::is_none")]
@@ -1781,17 +2251,17 @@ pub struct LoanData141 {
 	#[serde(rename = "ClrSts", skip_serializing_if = "Option::is_none")]
 	pub clr_sts: Option<Cleared16Choice>,
 	#[serde(rename = "TradgVn", skip_serializing_if = "Option::is_none")]
-	pub tradg_vn: Option<String>,
+	pub tradg_vn: Option<MICIdentifier>,
 	#[serde(rename = "MstrAgrmt", skip_serializing_if = "Option::is_none")]
 	pub mstr_agrmt: Option<MasterAgreement7>,
 	#[serde(rename = "ValDt", skip_serializing_if = "Option::is_none")]
 	pub val_dt: Option<String>,
 	#[serde(rename = "GnlColl", skip_serializing_if = "Option::is_none")]
-	pub gnl_coll: Option<String>,
+	pub gnl_coll: Option<SpecialCollateral1Code>,
 	#[serde(rename = "DlvryByVal", skip_serializing_if = "Option::is_none")]
 	pub dlvry_by_val: Option<bool>,
 	#[serde(rename = "CollDlvryMtd", skip_serializing_if = "Option::is_none")]
-	pub coll_dlvry_mtd: Option<String>,
+	pub coll_dlvry_mtd: Option<CollateralDeliveryMethod1Code>,
 	#[serde(rename = "Term", skip_serializing_if = "Option::is_none")]
 	pub term: Option<Vec<ContractTerm7Choice>>,
 	#[serde(rename = "AsstTp", skip_serializing_if = "Option::is_none")]
@@ -1811,15 +2281,15 @@ pub struct LoanData141 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LoanData142 {
 	#[serde(rename = "UnqTradIdr", skip_serializing_if = "Option::is_none")]
-	pub unq_trad_idr: Option<String>,
+	pub unq_trad_idr: Option<Max52Text>,
 	#[serde(rename = "EvtDt")]
 	pub evt_dt: String,
 	#[serde(rename = "ExctnDtTm", skip_serializing_if = "Option::is_none")]
 	pub exctn_dt_tm: Option<String>,
 	#[serde(rename = "TradgVn", skip_serializing_if = "Option::is_none")]
-	pub tradg_vn: Option<String>,
+	pub tradg_vn: Option<MICIdentifier>,
 	#[serde(rename = "CollDlvryMtd", skip_serializing_if = "Option::is_none")]
-	pub coll_dlvry_mtd: Option<String>,
+	pub coll_dlvry_mtd: Option<CollateralDeliveryMethod1Code>,
 	#[serde(rename = "OutsdngMrgnLnAmt", skip_serializing_if = "Option::is_none")]
 	pub outsdng_mrgn_ln_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
 	#[serde(rename = "ShrtMktValAmt", skip_serializing_if = "Option::is_none")]
@@ -1834,7 +2304,7 @@ pub struct LoanData142 {
 // LongFraction19DecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LongFraction19DecimalNumber {
-	#[serde(rename = "LongFraction19DecimalNumber")]
+	#[serde(rename = "$value")]
 	pub long_fraction19_decimal_number: f64,
 }
 
@@ -1842,7 +2312,7 @@ pub struct LongFraction19DecimalNumber {
 // MICIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MICIdentifier {
-	#[serde(rename = "MICIdentifier")]
+	#[serde(rename = "$value")]
 	pub mic_identifier: String,
 }
 
@@ -1853,16 +2323,16 @@ pub struct MasterAgreement7 {
 	#[serde(rename = "Tp")]
 	pub tp: AgreementType2Choice,
 	#[serde(rename = "Vrsn", skip_serializing_if = "Option::is_none")]
-	pub vrsn: Option<String>,
+	pub vrsn: Option<Max50Text>,
 	#[serde(rename = "OthrMstrAgrmtDtls", skip_serializing_if = "Option::is_none")]
-	pub othr_mstr_agrmt_dtls: Option<String>,
+	pub othr_mstr_agrmt_dtls: Option<Max350Text>,
 }
 
 
 // Max105Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max105Text {
-	#[serde(rename = "Max105Text")]
+	#[serde(rename = "$value")]
 	pub max105_text: String,
 }
 
@@ -1870,7 +2340,7 @@ pub struct Max105Text {
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[serde(rename = "Max140Text")]
+	#[serde(rename = "$value")]
 	pub max140_text: String,
 }
 
@@ -1878,7 +2348,7 @@ pub struct Max140Text {
 // Max20PositiveNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max20PositiveNumber {
-	#[serde(rename = "Max20PositiveNumber")]
+	#[serde(rename = "$value")]
 	pub max20_positive_number: f64,
 }
 
@@ -1886,7 +2356,7 @@ pub struct Max20PositiveNumber {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -1894,7 +2364,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -1902,7 +2372,7 @@ pub struct Max35Text {
 // Max3Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max3Number {
-	#[serde(rename = "Max3Number")]
+	#[serde(rename = "$value")]
 	pub max3_number: f64,
 }
 
@@ -1910,7 +2380,7 @@ pub struct Max3Number {
 // Max500Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max500Text {
-	#[serde(rename = "Max500Text")]
+	#[serde(rename = "$value")]
 	pub max500_text: String,
 }
 
@@ -1918,7 +2388,7 @@ pub struct Max500Text {
 // Max50Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max50Text {
-	#[serde(rename = "Max50Text")]
+	#[serde(rename = "$value")]
 	pub max50_text: String,
 }
 
@@ -1926,7 +2396,7 @@ pub struct Max50Text {
 // Max52Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max52Text {
-	#[serde(rename = "Max52Text")]
+	#[serde(rename = "$value")]
 	pub max52_text: String,
 }
 
@@ -1934,7 +2404,7 @@ pub struct Max52Text {
 // Max72Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max72Text {
-	#[serde(rename = "Max72Text")]
+	#[serde(rename = "$value")]
 	pub max72_text: String,
 }
 
@@ -1943,11 +2413,11 @@ pub struct Max72Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MetalCommodityNonPrecious1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType7Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType15Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType10Code,
 }
 
 
@@ -1955,26 +2425,31 @@ pub struct MetalCommodityNonPrecious1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MetalCommodityPrecious1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType7Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType16Code,
 	#[serde(rename = "AddtlSubPdct")]
-	pub addtl_sub_pdct: String,
+	pub addtl_sub_pdct: AssetClassDetailedSubProductType11Code,
 }
 
 
 // ModificationLevel1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ModificationLevel1Code {
-	#[serde(rename = "ModificationLevel1Code")]
-	pub modification_level1_code: String,
+pub enum ModificationLevel1Code {
+	#[serde(rename = "PSTN")]
+	CodePSTN,
+	#[serde(rename = "TCTN")]
+	CodeTCTN,
+
+	#[default]
+	UNKOWN
 }
 
 
 // NACEDomainIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NACEDomainIdentifier {
-	#[serde(rename = "NACEDomainIdentifier")]
+	#[serde(rename = "$value")]
 	pub nace_domain_identifier: String,
 }
 
@@ -1985,25 +2460,31 @@ pub struct NaturalPersonIdentification2 {
 	#[serde(rename = "Id")]
 	pub id: GenericIdentification175,
 	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
-	pub nm: Option<String>,
+	pub nm: Option<Max105Text>,
 	#[serde(rename = "Dmcl", skip_serializing_if = "Option::is_none")]
-	pub dmcl: Option<String>,
+	pub dmcl: Option<Max500Text>,
 }
 
 
 // NoReasonCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct NoReasonCode {
-	#[serde(rename = "NoReasonCode")]
-	pub no_reason_code: String,
+pub enum NoReasonCode {
+	#[serde(rename = "NORE")]
+	CodeNORE,
+
+	#[default]
+	UNKOWN
 }
 
 
 // NotAvailable1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct NotAvailable1Code {
-	#[serde(rename = "NotAvailable1Code")]
-	pub not_available1_code: String,
+pub enum NotAvailable1Code {
+	#[serde(rename = "NTAV")]
+	CodeNTAV,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -2011,11 +2492,11 @@ pub struct NotAvailable1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OrganisationIdentification15Choice {
 	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
-	pub lei: Option<String>,
+	pub lei: Option<LEIIdentifier>,
 	#[serde(rename = "Othr", skip_serializing_if = "Option::is_none")]
 	pub othr: Option<OrganisationIdentification38>,
 	#[serde(rename = "AnyBIC", skip_serializing_if = "Option::is_none")]
-	pub any_bic: Option<String>,
+	pub any_bic: Option<AnyBICDec2014Identifier>,
 }
 
 
@@ -2025,9 +2506,9 @@ pub struct OrganisationIdentification38 {
 	#[serde(rename = "Id")]
 	pub id: GenericIdentification175,
 	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
-	pub nm: Option<String>,
+	pub nm: Option<Max105Text>,
 	#[serde(rename = "Dmcl", skip_serializing_if = "Option::is_none")]
-	pub dmcl: Option<String>,
+	pub dmcl: Option<Max500Text>,
 }
 
 
@@ -2035,9 +2516,9 @@ pub struct OrganisationIdentification38 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OtherC10CommodityDeliverable2 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType11Code,
 	#[serde(rename = "SubPdct", skip_serializing_if = "Option::is_none")]
-	pub sub_pdct: Option<String>,
+	pub sub_pdct: Option<AssetClassSubProductType47Code>,
 }
 
 
@@ -2045,9 +2526,9 @@ pub struct OtherC10CommodityDeliverable2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct OtherC10CommodityNonDeliverable2 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType11Code,
 	#[serde(rename = "SubPdct", skip_serializing_if = "Option::is_none")]
-	pub sub_pdct: Option<String>,
+	pub sub_pdct: Option<AssetClassSubProductType48Code>,
 }
 
 
@@ -2055,9 +2536,9 @@ pub struct OtherC10CommodityNonDeliverable2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PaperCommodityContainerBoard1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType8Code,
 	#[serde(rename = "SubPdct", skip_serializing_if = "Option::is_none")]
-	pub sub_pdct: Option<String>,
+	pub sub_pdct: Option<AssetClassSubProductType35Code>,
 }
 
 
@@ -2065,9 +2546,9 @@ pub struct PaperCommodityContainerBoard1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PaperCommodityNewsprint1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType8Code,
 	#[serde(rename = "SubPdct", skip_serializing_if = "Option::is_none")]
-	pub sub_pdct: Option<String>,
+	pub sub_pdct: Option<AssetClassSubProductType36Code>,
 }
 
 
@@ -2075,9 +2556,9 @@ pub struct PaperCommodityNewsprint1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PaperCommodityPulp1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType8Code,
 	#[serde(rename = "SubPdct", skip_serializing_if = "Option::is_none")]
-	pub sub_pdct: Option<String>,
+	pub sub_pdct: Option<AssetClassSubProductType37Code>,
 }
 
 
@@ -2085,9 +2566,9 @@ pub struct PaperCommodityPulp1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PaperCommodityRecoveredPaper1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType8Code,
 	#[serde(rename = "SubPdct", skip_serializing_if = "Option::is_none")]
-	pub sub_pdct: Option<String>,
+	pub sub_pdct: Option<AssetClassSubProductType38Code>,
 }
 
 
@@ -2095,9 +2576,9 @@ pub struct PaperCommodityRecoveredPaper1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PaperCommodityRecoveredPaper2 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType8Code,
 	#[serde(rename = "SubPdct", skip_serializing_if = "Option::is_none")]
-	pub sub_pdct: Option<String>,
+	pub sub_pdct: Option<AssetClassSubProductType49Code>,
 }
 
 
@@ -2114,7 +2595,7 @@ pub struct PartyIdentification236Choice {
 // PercentageRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PercentageRate {
-	#[serde(rename = "PercentageRate")]
+	#[serde(rename = "$value")]
 	pub percentage_rate: f64,
 }
 
@@ -2122,7 +2603,7 @@ pub struct PercentageRate {
 // PlusOrMinusIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PlusOrMinusIndicator {
-	#[serde(rename = "PlusOrMinusIndicator")]
+	#[serde(rename = "$value")]
 	pub plus_or_minus_indicator: bool,
 }
 
@@ -2131,9 +2612,9 @@ pub struct PlusOrMinusIndicator {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PolypropyleneCommodityOther1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType9Code,
 	#[serde(rename = "SubPdct")]
-	pub sub_pdct: String,
+	pub sub_pdct: AssetClassSubProductType49Code,
 }
 
 
@@ -2141,17 +2622,22 @@ pub struct PolypropyleneCommodityOther1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PolypropyleneCommodityPlastic1 {
 	#[serde(rename = "BasePdct")]
-	pub base_pdct: String,
+	pub base_pdct: AssetClassProductType9Code,
 	#[serde(rename = "SubPdct", skip_serializing_if = "Option::is_none")]
-	pub sub_pdct: Option<String>,
+	pub sub_pdct: Option<AssetClassSubProductType18Code>,
 }
 
 
 // PriceStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct PriceStatus1Code {
-	#[serde(rename = "PriceStatus1Code")]
-	pub price_status1_code: String,
+pub enum PriceStatus1Code {
+	#[serde(rename = "PNDG")]
+	CodePNDG,
+	#[serde(rename = "NOAP")]
+	CodeNOAP,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -2171,7 +2657,7 @@ pub struct Quantity17 {
 	#[serde(rename = "Val")]
 	pub val: f64,
 	#[serde(rename = "UnitOfMeasr")]
-	pub unit_of_measr: String,
+	pub unit_of_measr: UnitOfMeasure11Code,
 }
 
 
@@ -2197,9 +2683,18 @@ pub struct RateAdjustment1 {
 
 // RateBasis1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct RateBasis1Code {
-	#[serde(rename = "RateBasis1Code")]
-	pub rate_basis1_code: String,
+pub enum RateBasis1Code {
+	#[serde(rename = "DAYS")]
+	CodeDAYS,
+	#[serde(rename = "MNTH")]
+	CodeMNTH,
+	#[serde(rename = "WEEK")]
+	CodeWEEK,
+	#[serde(rename = "YEAR")]
+	CodeYEAR,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -2207,7 +2702,7 @@ pub struct RateBasis1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ReconciliationFlag2 {
 	#[serde(rename = "RptTp", skip_serializing_if = "Option::is_none")]
-	pub rpt_tp: Option<String>,
+	pub rpt_tp: Option<TradeRepositoryReportingType1Code>,
 	#[serde(rename = "BothCtrPtiesRptg", skip_serializing_if = "Option::is_none")]
 	pub both_ctr_pties_rptg: Option<bool>,
 	#[serde(rename = "PairdSts", skip_serializing_if = "Option::is_none")]
@@ -2223,17 +2718,29 @@ pub struct ReconciliationFlag2 {
 
 // RepoTerminationOption2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct RepoTerminationOption2Code {
-	#[serde(rename = "RepoTerminationOption2Code")]
-	pub repo_termination_option2_code: String,
+pub enum RepoTerminationOption2Code {
+	#[serde(rename = "EGRN")]
+	CodeEGRN,
+	#[serde(rename = "EGAE")]
+	CodeEGAE,
+	#[serde(rename = "ETSB")]
+	CodeETSB,
+	#[serde(rename = "NOAP")]
+	CodeNOAP,
+
+	#[default]
+	UNKOWN
 }
 
 
 // ReportPeriodActivity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ReportPeriodActivity1Code {
-	#[serde(rename = "ReportPeriodActivity1Code")]
-	pub report_period_activity1_code: String,
+pub enum ReportPeriodActivity1Code {
+	#[serde(rename = "NOTX")]
+	CodeNOTX,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -2251,9 +2758,9 @@ pub struct SecuritiesFinancingReportingTransactionStateReportV02 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecuritiesLendingType3Choice {
 	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<String>,
+	pub cd: Option<ExternalSecuritiesLendingType1Code>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<String>,
+	pub prtry: Option<Max35Text>,
 }
 
 
@@ -2285,7 +2792,7 @@ pub struct SecuritiesTransactionPrice19Choice {
 	#[serde(rename = "Dcml", skip_serializing_if = "Option::is_none")]
 	pub dcml: Option<f64>,
 	#[serde(rename = "PdgPric", skip_serializing_if = "Option::is_none")]
-	pub pdg_pric: Option<String>,
+	pub pdg_pric: Option<PriceStatus1Code>,
 	#[serde(rename = "Othr", skip_serializing_if = "Option::is_none")]
 	pub othr: Option<SecuritiesTransactionPrice5>,
 }
@@ -2297,7 +2804,7 @@ pub struct SecuritiesTransactionPrice5 {
 	#[serde(rename = "Val", skip_serializing_if = "Option::is_none")]
 	pub val: Option<f64>,
 	#[serde(rename = "Tp", skip_serializing_if = "Option::is_none")]
-	pub tp: Option<String>,
+	pub tp: Option<Max35Text>,
 }
 
 
@@ -2305,9 +2812,9 @@ pub struct SecuritiesTransactionPrice5 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Security51 {
 	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
-	pub id: Option<String>,
+	pub id: Option<ISINOct2015Identifier>,
 	#[serde(rename = "ClssfctnTp", skip_serializing_if = "Option::is_none")]
-	pub clssfctn_tp: Option<String>,
+	pub clssfctn_tp: Option<CFIOct2015Identifier>,
 	#[serde(rename = "QtyOrNmnlVal", skip_serializing_if = "Option::is_none")]
 	pub qty_or_nmnl_val: Option<QuantityNominalValue2Choice>,
 	#[serde(rename = "UnitPric", skip_serializing_if = "Option::is_none")]
@@ -2315,7 +2822,7 @@ pub struct Security51 {
 	#[serde(rename = "MktVal", skip_serializing_if = "Option::is_none")]
 	pub mkt_val: Option<AmountAndDirection53>,
 	#[serde(rename = "Qlty", skip_serializing_if = "Option::is_none")]
-	pub qlty: Option<String>,
+	pub qlty: Option<CollateralQualityType1Code>,
 	#[serde(rename = "Mtrty", skip_serializing_if = "Option::is_none")]
 	pub mtrty: Option<String>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
@@ -2333,9 +2840,9 @@ pub struct Security51 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Security52 {
 	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
-	pub id: Option<String>,
+	pub id: Option<ISINOct2015Identifier>,
 	#[serde(rename = "ClssfctnTp", skip_serializing_if = "Option::is_none")]
-	pub clssfctn_tp: Option<String>,
+	pub clssfctn_tp: Option<CFIOct2015Identifier>,
 	#[serde(rename = "QtyOrNmnlVal", skip_serializing_if = "Option::is_none")]
 	pub qty_or_nmnl_val: Option<QuantityNominalValue2Choice>,
 	#[serde(rename = "UnitPric", skip_serializing_if = "Option::is_none")]
@@ -2343,7 +2850,7 @@ pub struct Security52 {
 	#[serde(rename = "MktVal", skip_serializing_if = "Option::is_none")]
 	pub mkt_val: Option<AmountAndDirection53>,
 	#[serde(rename = "Qlty", skip_serializing_if = "Option::is_none")]
-	pub qlty: Option<String>,
+	pub qlty: Option<CollateralQualityType1Code>,
 	#[serde(rename = "Mtrty", skip_serializing_if = "Option::is_none")]
 	pub mtrty: Option<String>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
@@ -2363,9 +2870,9 @@ pub struct Security52 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Security55 {
 	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
-	pub id: Option<String>,
+	pub id: Option<ISINOct2015Identifier>,
 	#[serde(rename = "ClssfctnTp", skip_serializing_if = "Option::is_none")]
-	pub clssfctn_tp: Option<String>,
+	pub clssfctn_tp: Option<CFIOct2015Identifier>,
 	#[serde(rename = "QtyOrNmnlVal", skip_serializing_if = "Option::is_none")]
 	pub qty_or_nmnl_val: Option<QuantityNominalValue2Choice>,
 	#[serde(rename = "UnitPric", skip_serializing_if = "Option::is_none")]
@@ -2373,7 +2880,7 @@ pub struct Security55 {
 	#[serde(rename = "MktVal", skip_serializing_if = "Option::is_none")]
 	pub mkt_val: Option<AmountAndDirection53>,
 	#[serde(rename = "Qlty", skip_serializing_if = "Option::is_none")]
-	pub qlty: Option<String>,
+	pub qlty: Option<CollateralQualityType1Code>,
 	#[serde(rename = "Mtrty", skip_serializing_if = "Option::is_none")]
 	pub mtrty: Option<String>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
@@ -2403,9 +2910,9 @@ pub struct SecurityCommodity9 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecurityIdentification26Choice {
 	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
-	pub id: Option<String>,
+	pub id: Option<ISINOct2015Identifier>,
 	#[serde(rename = "NotAvlbl", skip_serializing_if = "Option::is_none")]
-	pub not_avlbl: Option<String>,
+	pub not_avlbl: Option<NotAvailable1Code>,
 }
 
 
@@ -2415,7 +2922,7 @@ pub struct SecurityIssuer4 {
 	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
 	pub id: Option<OrganisationIdentification15Choice>,
 	#[serde(rename = "JursdctnCtry")]
-	pub jursdctn_ctry: String,
+	pub jursdctn_ctry: CountryCode,
 }
 
 
@@ -2431,9 +2938,14 @@ pub struct SettlementParties34Choice {
 
 // SpecialCollateral1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct SpecialCollateral1Code {
-	#[serde(rename = "SpecialCollateral1Code")]
-	pub special_collateral1_code: String,
+pub enum SpecialCollateral1Code {
+	#[serde(rename = "GENE")]
+	CodeGENE,
+	#[serde(rename = "SPEC")]
+	CodeSPEC,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -2441,7 +2953,7 @@ pub struct SpecialCollateral1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -2455,9 +2967,14 @@ pub struct SupplementaryDataEnvelope1 {
 
 // TradeRepositoryReportingType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct TradeRepositoryReportingType1Code {
-	#[serde(rename = "TradeRepositoryReportingType1Code")]
-	pub trade_repository_reporting_type1_code: String,
+pub enum TradeRepositoryReportingType1Code {
+	#[serde(rename = "SWOS")]
+	CodeSWOS,
+	#[serde(rename = "TWOS")]
+	CodeTWOS,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -2465,7 +2982,7 @@ pub struct TradeRepositoryReportingType1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradeStateReport16 {
 	#[serde(rename = "TechRcrdId", skip_serializing_if = "Option::is_none")]
-	pub tech_rcrd_id: Option<String>,
+	pub tech_rcrd_id: Option<Max140Text>,
 	#[serde(rename = "CtrPtySpcfcData")]
 	pub ctr_pty_spcfc_data: CounterpartyData88,
 	#[serde(rename = "LnData", skip_serializing_if = "Option::is_none")]
@@ -2485,7 +3002,7 @@ pub struct TradeStateReport16 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradeStateReport5Choice {
 	#[serde(rename = "DataSetActn", skip_serializing_if = "Option::is_none")]
-	pub data_set_actn: Option<String>,
+	pub data_set_actn: Option<ReportPeriodActivity1Code>,
 	#[serde(rename = "Stat", skip_serializing_if = "Option::is_none")]
 	pub stat: Option<Vec<TradeStateReport16>>,
 }
@@ -2539,23 +3056,187 @@ pub struct TransactionLoanData31Choice {
 
 // TransactionOperationType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct TransactionOperationType6Code {
-	#[serde(rename = "TransactionOperationType6Code")]
-	pub transaction_operation_type6_code: String,
+pub enum TransactionOperationType6Code {
+	#[serde(rename = "REUU")]
+	CodeREUU,
+	#[serde(rename = "COLU")]
+	CodeCOLU,
+	#[serde(rename = "CORR")]
+	CodeCORR,
+	#[serde(rename = "ETRM")]
+	CodeETRM,
+	#[serde(rename = "VALU")]
+	CodeVALU,
+	#[serde(rename = "POSC")]
+	CodePOSC,
+	#[serde(rename = "NEWT")]
+	CodeNEWT,
+	#[serde(rename = "MODI")]
+	CodeMODI,
+	#[serde(rename = "MARU")]
+	CodeMARU,
+	#[serde(rename = "EROR")]
+	CodeEROR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TrueFalseIndicator {
-	#[serde(rename = "TrueFalseIndicator")]
+	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
 }
 
 
 // UnitOfMeasure11Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct UnitOfMeasure11Code {
-	#[serde(rename = "UnitOfMeasure11Code")]
-	pub unit_of_measure11_code: String,
+pub enum UnitOfMeasure11Code {
+	#[serde(rename = "ALOW")]
+	CodeALOW,
+	#[serde(rename = "ACCY")]
+	CodeACCY,
+	#[serde(rename = "BARL")]
+	CodeBARL,
+	#[serde(rename = "BCUF")]
+	CodeBCUF,
+	#[serde(rename = "BDFT")]
+	CodeBDFT,
+	#[serde(rename = "BUSL")]
+	CodeBUSL,
+	#[serde(rename = "CEER")]
+	CodeCEER,
+	#[serde(rename = "CLRT")]
+	CodeCLRT,
+	#[serde(rename = "KILO")]
+	CodeKILO,
+	#[serde(rename = "PIEC")]
+	CodePIEC,
+	#[serde(rename = "TONS")]
+	CodeTONS,
+	#[serde(rename = "METR")]
+	CodeMETR,
+	#[serde(rename = "INCH")]
+	CodeINCH,
+	#[serde(rename = "YARD")]
+	CodeYARD,
+	#[serde(rename = "GBGA")]
+	CodeGBGA,
+	#[serde(rename = "GRAM")]
+	CodeGRAM,
+	#[serde(rename = "CMET")]
+	CodeCMET,
+	#[serde(rename = "SMET")]
+	CodeSMET,
+	#[serde(rename = "FOOT")]
+	CodeFOOT,
+	#[serde(rename = "MILE")]
+	CodeMILE,
+	#[serde(rename = "SQIN")]
+	CodeSQIN,
+	#[serde(rename = "SQFO")]
+	CodeSQFO,
+	#[serde(rename = "SQMI")]
+	CodeSQMI,
+	#[serde(rename = "GBOU")]
+	CodeGBOU,
+	#[serde(rename = "USOU")]
+	CodeUSOU,
+	#[serde(rename = "GBPI")]
+	CodeGBPI,
+	#[serde(rename = "USPI")]
+	CodeUSPI,
+	#[serde(rename = "GBQA")]
+	CodeGBQA,
+	#[serde(rename = "USGA")]
+	CodeUSGA,
+	#[serde(rename = "MMET")]
+	CodeMMET,
+	#[serde(rename = "KMET")]
+	CodeKMET,
+	#[serde(rename = "SQYA")]
+	CodeSQYA,
+	#[serde(rename = "ACRE")]
+	CodeACRE,
+	#[serde(rename = "ARES")]
+	CodeARES,
+	#[serde(rename = "SMIL")]
+	CodeSMIL,
+	#[serde(rename = "SCMT")]
+	CodeSCMT,
+	#[serde(rename = "HECT")]
+	CodeHECT,
+	#[serde(rename = "SQKI")]
+	CodeSQKI,
+	#[serde(rename = "MILI")]
+	CodeMILI,
+	#[serde(rename = "CELI")]
+	CodeCELI,
+	#[serde(rename = "LITR")]
+	CodeLITR,
+	#[serde(rename = "PUND")]
+	CodePUND,
+	#[serde(rename = "CBME")]
+	CodeCBME,
+	#[serde(rename = "DAYS")]
+	CodeDAYS,
+	#[serde(rename = "DMET")]
+	CodeDMET,
+	#[serde(rename = "ENVC")]
+	CodeENVC,
+	#[serde(rename = "ENVO")]
+	CodeENVO,
+	#[serde(rename = "HUWG")]
+	CodeHUWG,
+	#[serde(rename = "KWDC")]
+	CodeKWDC,
+	#[serde(rename = "KWHO")]
+	CodeKWHO,
+	#[serde(rename = "KWHC")]
+	CodeKWHC,
+	#[serde(rename = "KMOC")]
+	CodeKMOC,
+	#[serde(rename = "KWMC")]
+	CodeKWMC,
+	#[serde(rename = "KWYC")]
+	CodeKWYC,
+	#[serde(rename = "MWDC")]
+	CodeMWDC,
+	#[serde(rename = "MWHO")]
+	CodeMWHO,
+	#[serde(rename = "MWHC")]
+	CodeMWHC,
+	#[serde(rename = "MWMC")]
+	CodeMWMC,
+	#[serde(rename = "MMOC")]
+	CodeMMOC,
+	#[serde(rename = "MWYC")]
+	CodeMWYC,
+	#[serde(rename = "TONE")]
+	CodeTONE,
+	#[serde(rename = "MIBA")]
+	CodeMIBA,
+	#[serde(rename = "MBTU")]
+	CodeMBTU,
+	#[serde(rename = "OZTR")]
+	CodeOZTR,
+	#[serde(rename = "UCWT")]
+	CodeUCWT,
+	#[serde(rename = "IPNT")]
+	CodeIPNT,
+	#[serde(rename = "PWRD")]
+	CodePWRD,
+	#[serde(rename = "DGEU")]
+	CodeDGEU,
+	#[serde(rename = "TOCD")]
+	CodeTOCD,
+	#[serde(rename = "GGEU")]
+	CodeGGEU,
+	#[serde(rename = "USQA")]
+	CodeUSQA,
+
+	#[default]
+	UNKOWN
 }

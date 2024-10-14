@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
-	#[serde(rename = "CountryCode")]
+	#[serde(rename = "$value")]
 	pub country_code: String,
 }
 
@@ -37,9 +37,9 @@ pub struct CountryCode {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCodeAndName3 {
 	#[serde(rename = "Cd")]
-	pub cd: String,
+	pub cd: CountryCode,
 	#[serde(rename = "Nm")]
-	pub nm: String,
+	pub nm: Max70Text,
 }
 
 
@@ -56,7 +56,7 @@ pub struct FinancialInstrumentReportingCountryCodeReportV01 {
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
-	#[serde(rename = "ISODate")]
+	#[serde(rename = "$value")]
 	pub iso_date: String,
 }
 
@@ -64,7 +64,7 @@ pub struct ISODate {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -72,16 +72,25 @@ pub struct Max350Text {
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max70Text {
-	#[serde(rename = "Max70Text")]
+	#[serde(rename = "$value")]
 	pub max70_text: String,
 }
 
 
 // Modification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct Modification1Code {
-	#[serde(rename = "Modification1Code")]
-	pub modification1_code: String,
+pub enum Modification1Code {
+	#[serde(rename = "NOCH")]
+	CodeNOCH,
+	#[serde(rename = "MODI")]
+	CodeMODI,
+	#[serde(rename = "DELE")]
+	CodeDELE,
+	#[serde(rename = "ADDD")]
+	CodeADDD,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -117,7 +126,7 @@ pub struct SecuritiesCountryIdentification2 {
 	#[serde(rename = "EEACtry")]
 	pub eea_ctry: bool,
 	#[serde(rename = "Mod", skip_serializing_if = "Option::is_none")]
-	pub mod_attr: Option<String>,
+	pub mod_attr: Option<Modification1Code>,
 	#[serde(rename = "VldtyPrd")]
 	pub vldty_prd: Period4Choice,
 	#[serde(rename = "LastUpdtd", skip_serializing_if = "Option::is_none")]
@@ -129,7 +138,7 @@ pub struct SecuritiesCountryIdentification2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -144,6 +153,6 @@ pub struct SupplementaryDataEnvelope1 {
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TrueFalseIndicator {
-	#[serde(rename = "TrueFalseIndicator")]
+	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
 }

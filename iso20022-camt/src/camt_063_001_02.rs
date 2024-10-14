@@ -29,16 +29,16 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AcknowledgementDetails1Choice {
 	#[serde(rename = "PayInSchdlRef", skip_serializing_if = "Option::is_none")]
-	pub pay_in_schdl_ref: Option<String>,
+	pub pay_in_schdl_ref: Option<Max35Text>,
 	#[serde(rename = "PayInCallRef", skip_serializing_if = "Option::is_none")]
-	pub pay_in_call_ref: Option<String>,
+	pub pay_in_call_ref: Option<Max35Text>,
 }
 
 
 // Exact4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Exact4AlphaNumericText {
-	#[serde(rename = "Exact4AlphaNumericText")]
+	#[serde(rename = "$value")]
 	pub exact4_alpha_numeric_text: String,
 }
 
@@ -46,7 +46,7 @@ pub struct Exact4AlphaNumericText {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -54,7 +54,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -63,9 +63,9 @@ pub struct Max35Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PayInEventAcknowledgementV02 {
 	#[serde(rename = "MsgId")]
-	pub msg_id: String,
+	pub msg_id: Max35Text,
 	#[serde(rename = "SttlmSsnIdr", skip_serializing_if = "Option::is_none")]
-	pub sttlm_ssn_idr: Option<String>,
+	pub sttlm_ssn_idr: Option<Exact4AlphaNumericText>,
 	#[serde(rename = "AckDtls")]
 	pub ack_dtls: AcknowledgementDetails1Choice,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
@@ -77,7 +77,7 @@ pub struct PayInEventAcknowledgementV02 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }

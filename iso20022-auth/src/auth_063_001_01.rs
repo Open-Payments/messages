@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // ActiveCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmountSimpleType {
-	#[serde(rename = "ActiveCurrencyAndAmount_SimpleType")]
+	#[serde(rename = "$value")]
 	pub active_currency_and_amount_simple_type: f64,
 }
 
@@ -46,7 +46,7 @@ pub struct ActiveCurrencyAndAmount {
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[serde(rename = "ActiveCurrencyCode")]
+	#[serde(rename = "$value")]
 	pub active_currency_code: String,
 }
 
@@ -75,16 +75,16 @@ pub struct CCPLiquidityStressTestingResultReportV01 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CoverTwoDefaulters1 {
 	#[serde(rename = "Cover1Id")]
-	pub cover1_id: String,
+	pub cover1_id: LEIIdentifier,
 	#[serde(rename = "Cover2Id")]
-	pub cover2_id: String,
+	pub cover2_id: LEIIdentifier,
 }
 
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
-	#[serde(rename = "LEIIdentifier")]
+	#[serde(rename = "$value")]
 	pub lei_identifier: String,
 }
 
@@ -93,7 +93,7 @@ pub struct LEIIdentifier {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LiquidResourceInformation1 {
 	#[serde(rename = "CntrPtyId", skip_serializing_if = "Option::is_none")]
-	pub cntr_pty_id: Option<String>,
+	pub cntr_pty_id: Option<Max35Text>,
 	#[serde(rename = "LqdRsrcVal")]
 	pub lqd_rsrc_val: AmountAndDirection102,
 	#[serde(rename = "MktVal", skip_serializing_if = "Option::is_none")]
@@ -141,7 +141,7 @@ pub struct LiquidityRequiredAndAvailable1 {
 	#[serde(rename = "LqdRsrcs")]
 	pub lqd_rsrcs: LiquidResources1,
 	#[serde(rename = "LqdtyHrzn")]
-	pub lqdty_hrzn: String,
+	pub lqdty_hrzn: SettlementDate6Code,
 	#[serde(rename = "StrssLqdRsrcRqrmnt")]
 	pub strss_lqd_rsrc_rqrmnt: StressLiquidResourceRequirement1,
 }
@@ -151,7 +151,7 @@ pub struct LiquidityRequiredAndAvailable1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LiquidityStressTestResult1 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max256Text,
 	#[serde(rename = "ScnroDfltrs")]
 	pub scnro_dfltrs: CoverTwoDefaulters1,
 	#[serde(rename = "LqdtyReqrdAndAvlbl")]
@@ -162,7 +162,7 @@ pub struct LiquidityStressTestResult1 {
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max256Text {
-	#[serde(rename = "Max256Text")]
+	#[serde(rename = "$value")]
 	pub max256_text: String,
 }
 
@@ -170,7 +170,7 @@ pub struct Max256Text {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -178,7 +178,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -186,16 +186,29 @@ pub struct Max35Text {
 // PlusOrMinusIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PlusOrMinusIndicator {
-	#[serde(rename = "PlusOrMinusIndicator")]
+	#[serde(rename = "$value")]
 	pub plus_or_minus_indicator: bool,
 }
 
 
 // SettlementDate6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct SettlementDate6Code {
-	#[serde(rename = "SettlementDate6Code")]
-	pub settlement_date6_code: String,
+pub enum SettlementDate6Code {
+	#[serde(rename = "TFIV")]
+	CodeTFIV,
+	#[serde(rename = "TFOR")]
+	CodeTFOR,
+	#[serde(rename = "TONE")]
+	CodeTONE,
+	#[serde(rename = "TTRE")]
+	CodeTTRE,
+	#[serde(rename = "TTWO")]
+	CodeTTWO,
+	#[serde(rename = "SAMD")]
+	CodeSAMD,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -217,7 +230,7 @@ pub struct StressLiquidResourceRequirement1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -232,6 +245,6 @@ pub struct SupplementaryDataEnvelope1 {
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TrueFalseIndicator {
-	#[serde(rename = "TrueFalseIndicator")]
+	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
 }

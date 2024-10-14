@@ -32,11 +32,11 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Event2 {
 	#[serde(rename = "EvtCd")]
-	pub evt_cd: String,
+	pub evt_cd: Max4AlphaNumericText,
 	#[serde(rename = "EvtParam", skip_serializing_if = "Option::is_none")]
-	pub evt_param: Option<Vec<String>>,
+	pub evt_param: Option<Vec<Max35Text>>,
 	#[serde(rename = "EvtDesc", skip_serializing_if = "Option::is_none")]
-	pub evt_desc: Option<String>,
+	pub evt_desc: Option<Max1000Text>,
 	#[serde(rename = "EvtTm", skip_serializing_if = "Option::is_none")]
 	pub evt_tm: Option<String>,
 }
@@ -45,7 +45,7 @@ pub struct Event2 {
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -53,7 +53,7 @@ pub struct ISODateTime {
 // Max1000Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max1000Text {
-	#[serde(rename = "Max1000Text")]
+	#[serde(rename = "$value")]
 	pub max1000_text: String,
 }
 
@@ -61,7 +61,7 @@ pub struct Max1000Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -69,7 +69,7 @@ pub struct Max35Text {
 // Max4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max4AlphaNumericText {
-	#[serde(rename = "Max4AlphaNumericText")]
+	#[serde(rename = "$value")]
 	pub max4_alpha_numeric_text: String,
 }
 

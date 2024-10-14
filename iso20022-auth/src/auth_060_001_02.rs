@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // ActiveCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmountSimpleType {
-	#[serde(rename = "ActiveCurrencyAndAmount_SimpleType")]
+	#[serde(rename = "$value")]
 	pub active_currency_and_amount_simple_type: f64,
 }
 
@@ -46,7 +46,7 @@ pub struct ActiveCurrencyAndAmount {
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[serde(rename = "ActiveCurrencyCode")]
+	#[serde(rename = "$value")]
 	pub active_currency_code: String,
 }
 
@@ -97,7 +97,7 @@ pub struct ConcentrationAccount1 {
 	#[serde(rename = "PeakDbt")]
 	pub peak_dbt: ActiveCurrencyAndAmount,
 	#[serde(rename = "LatePmtConf")]
-	pub late_pmt_conf: String,
+	pub late_pmt_conf: Max10NumericText,
 }
 
 
@@ -105,7 +105,7 @@ pub struct ConcentrationAccount1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ConcentrationAgent1 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: LEIIdentifier,
 	#[serde(rename = "Acct")]
 	pub acct: Vec<ConcentrationAccount1>,
 }
@@ -124,7 +124,7 @@ pub struct Flows1 {
 // ImpliedCurrencyAndAmount ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ImpliedCurrencyAndAmount {
-	#[serde(rename = "ImpliedCurrencyAndAmount")]
+	#[serde(rename = "$value")]
 	pub implied_currency_and_amount: f64,
 }
 
@@ -132,7 +132,7 @@ pub struct ImpliedCurrencyAndAmount {
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
-	#[serde(rename = "LEIIdentifier")]
+	#[serde(rename = "$value")]
 	pub lei_identifier: String,
 }
 
@@ -140,7 +140,7 @@ pub struct LEIIdentifier {
 // Max10NumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max10NumericText {
-	#[serde(rename = "Max10NumericText")]
+	#[serde(rename = "$value")]
 	pub max10_numeric_text: String,
 }
 
@@ -148,7 +148,7 @@ pub struct Max10NumericText {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -157,7 +157,7 @@ pub struct Max350Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PaymentAccount4 {
 	#[serde(rename = "Ccy")]
-	pub ccy: String,
+	pub ccy: ActiveCurrencyCode,
 	#[serde(rename = "NetPmt")]
 	pub net_pmt: AmountAndDirection86,
 	#[serde(rename = "GrssCdts")]
@@ -165,14 +165,14 @@ pub struct PaymentAccount4 {
 	#[serde(rename = "GrssDbts")]
 	pub grss_dbts: f64,
 	#[serde(rename = "LatePmtConf")]
-	pub late_pmt_conf: String,
+	pub late_pmt_conf: Max10NumericText,
 }
 
 
 // PlusOrMinusIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PlusOrMinusIndicator {
-	#[serde(rename = "PlusOrMinusIndicator")]
+	#[serde(rename = "$value")]
 	pub plus_or_minus_indicator: bool,
 }
 
@@ -181,7 +181,7 @@ pub struct PlusOrMinusIndicator {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SettlementAgent2 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: LEIIdentifier,
 	#[serde(rename = "Acct")]
 	pub acct: Vec<PaymentAccount4>,
 }
@@ -191,7 +191,7 @@ pub struct SettlementAgent2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }

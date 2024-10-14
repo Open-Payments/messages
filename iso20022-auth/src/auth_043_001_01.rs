@@ -27,16 +27,69 @@ use serde::{Deserialize, Serialize};
 
 // BenchmarkCurveName2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct BenchmarkCurveName2Code {
-	#[serde(rename = "BenchmarkCurveName2Code")]
-	pub benchmark_curve_name2_code: String,
+pub enum BenchmarkCurveName2Code {
+	#[serde(rename = "WIBO")]
+	CodeWIBO,
+	#[serde(rename = "TREA")]
+	CodeTREA,
+	#[serde(rename = "TIBO")]
+	CodeTIBO,
+	#[serde(rename = "TLBO")]
+	CodeTLBO,
+	#[serde(rename = "SWAP")]
+	CodeSWAP,
+	#[serde(rename = "STBO")]
+	CodeSTBO,
+	#[serde(rename = "PRBO")]
+	CodePRBO,
+	#[serde(rename = "PFAN")]
+	CodePFAN,
+	#[serde(rename = "NIBO")]
+	CodeNIBO,
+	#[serde(rename = "MAAA")]
+	CodeMAAA,
+	#[serde(rename = "MOSP")]
+	CodeMOSP,
+	#[serde(rename = "LIBO")]
+	CodeLIBO,
+	#[serde(rename = "LIBI")]
+	CodeLIBI,
+	#[serde(rename = "JIBA")]
+	CodeJIBA,
+	#[serde(rename = "ISDA")]
+	CodeISDA,
+	#[serde(rename = "GCFR")]
+	CodeGCFR,
+	#[serde(rename = "FUSW")]
+	CodeFUSW,
+	#[serde(rename = "EUCH")]
+	CodeEUCH,
+	#[serde(rename = "EUUS")]
+	CodeEUUS,
+	#[serde(rename = "EURI")]
+	CodeEURI,
+	#[serde(rename = "EONS")]
+	CodeEONS,
+	#[serde(rename = "EONA")]
+	CodeEONA,
+	#[serde(rename = "CIBO")]
+	CodeCIBO,
+	#[serde(rename = "CDOR")]
+	CodeCDOR,
+	#[serde(rename = "BUBO")]
+	CodeBUBO,
+	#[serde(rename = "BBSW")]
+	CodeBBSW,
+
+	#[default]
+	UNKOWN
 }
 
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
-	#[serde(rename = "CountryCode")]
+	#[serde(rename = "$value")]
 	pub country_code: String,
 }
 
@@ -45,9 +98,9 @@ pub struct CountryCode {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FinancialInstrument46Choice {
 	#[serde(rename = "ISIN", skip_serializing_if = "Option::is_none")]
-	pub isin: Option<String>,
+	pub isin: Option<ISINOct2015Identifier>,
 	#[serde(rename = "Indx", skip_serializing_if = "Option::is_none")]
-	pub indx: Option<String>,
+	pub indx: Option<BenchmarkCurveName2Code>,
 }
 
 
@@ -66,7 +119,7 @@ pub struct FinancialInstrumentReportingReferenceDataIndexReportV01 {
 // ISINOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISINOct2015Identifier {
-	#[serde(rename = "ISINOct2015Identifier")]
+	#[serde(rename = "$value")]
 	pub isin_oct2015_identifier: String,
 }
 
@@ -74,7 +127,7 @@ pub struct ISINOct2015Identifier {
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
-	#[serde(rename = "ISODate")]
+	#[serde(rename = "$value")]
 	pub iso_date: String,
 }
 
@@ -82,7 +135,7 @@ pub struct ISODate {
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -90,7 +143,7 @@ pub struct ISODateTime {
 // MICIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MICIdentifier {
-	#[serde(rename = "MICIdentifier")]
+	#[serde(rename = "$value")]
 	pub mic_identifier: String,
 }
 
@@ -98,7 +151,7 @@ pub struct MICIdentifier {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -106,7 +159,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -114,7 +167,7 @@ pub struct Max35Text {
 // Max50Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max50Text {
-	#[serde(rename = "Max50Text")]
+	#[serde(rename = "$value")]
 	pub max50_text: String,
 }
 
@@ -147,9 +200,9 @@ pub struct Period4Choice {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecuritiesIndexReport1 {
 	#[serde(rename = "TechRcrdId", skip_serializing_if = "Option::is_none")]
-	pub tech_rcrd_id: Option<String>,
+	pub tech_rcrd_id: Option<Max35Text>,
 	#[serde(rename = "RqstngNtty", skip_serializing_if = "Option::is_none")]
-	pub rqstng_ntty: Option<String>,
+	pub rqstng_ntty: Option<CountryCode>,
 	#[serde(rename = "Indx")]
 	pub indx: FinancialInstrument46Choice,
 	#[serde(rename = "VldtyPrd", skip_serializing_if = "Option::is_none")]
@@ -173,7 +226,7 @@ pub struct SecuritiesMarketReportHeader1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -187,9 +240,14 @@ pub struct SupplementaryDataEnvelope1 {
 
 // TradingVenue2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct TradingVenue2Code {
-	#[serde(rename = "TradingVenue2Code")]
-	pub trading_venue2_code: String,
+pub enum TradingVenue2Code {
+	#[serde(rename = "APPA")]
+	CodeAPPA,
+	#[serde(rename = "CTPS")]
+	CodeCTPS,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -197,9 +255,9 @@ pub struct TradingVenue2Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradingVenueIdentification1Choice {
 	#[serde(rename = "MktIdCd", skip_serializing_if = "Option::is_none")]
-	pub mkt_id_cd: Option<String>,
+	pub mkt_id_cd: Option<MICIdentifier>,
 	#[serde(rename = "NtlCmptntAuthrty", skip_serializing_if = "Option::is_none")]
-	pub ntl_cmptnt_authrty: Option<String>,
+	pub ntl_cmptnt_authrty: Option<CountryCode>,
 	#[serde(rename = "Othr", skip_serializing_if = "Option::is_none")]
 	pub othr: Option<TradingVenueIdentification2>,
 }
@@ -209,7 +267,7 @@ pub struct TradingVenueIdentification1Choice {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradingVenueIdentification2 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max50Text,
 	#[serde(rename = "Tp")]
-	pub tp: String,
+	pub tp: TradingVenue2Code,
 }

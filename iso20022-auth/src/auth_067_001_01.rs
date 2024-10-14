@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // ActiveCurrencyAnd24AmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAnd24AmountSimpleType {
-	#[serde(rename = "ActiveCurrencyAnd24Amount_SimpleType")]
+	#[serde(rename = "$value")]
 	pub active_currency_and24_amount_simple_type: f64,
 }
 
@@ -46,7 +46,7 @@ pub struct ActiveCurrencyAnd24Amount {
 // ActiveCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyAndAmountSimpleType {
-	#[serde(rename = "ActiveCurrencyAndAmount_SimpleType")]
+	#[serde(rename = "$value")]
 	pub active_currency_and_amount_simple_type: f64,
 }
 
@@ -64,16 +64,159 @@ pub struct ActiveCurrencyAndAmount {
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[serde(rename = "ActiveCurrencyCode")]
+	#[serde(rename = "$value")]
 	pub active_currency_code: String,
 }
 
 
 // AssetClassDetailedSubProductType16Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AssetClassDetailedSubProductType16Code {
-	#[serde(rename = "AssetClassDetailedSubProductType16Code")]
-	pub asset_class_detailed_sub_product_type16_code: String,
+pub enum AssetClassDetailedSubProductType16Code {
+	#[serde(rename = "FXCR")]
+	CodeFXCR,
+	#[serde(rename = "FXEM")]
+	CodeFXEM,
+	#[serde(rename = "FXMJ")]
+	CodeFXMJ,
+	#[serde(rename = "FUEL")]
+	CodeFUEL,
+	#[serde(rename = "FOIL")]
+	CodeFOIL,
+	#[serde(rename = "GOIL")]
+	CodeGOIL,
+	#[serde(rename = "GSLN")]
+	CodeGSLN,
+	#[serde(rename = "GASP")]
+	CodeGASP,
+	#[serde(rename = "HEAT")]
+	CodeHEAT,
+	#[serde(rename = "IRON")]
+	CodeIRON,
+	#[serde(rename = "JTFL")]
+	CodeJTFL,
+	#[serde(rename = "KERO")]
+	CodeKERO,
+	#[serde(rename = "LAMP")]
+	CodeLAMP,
+	#[serde(rename = "LEAD")]
+	CodeLEAD,
+	#[serde(rename = "LLSO")]
+	CodeLLSO,
+	#[serde(rename = "LNGG")]
+	CodeLNGG,
+	#[serde(rename = "CORN")]
+	CodeCORN,
+	#[serde(rename = "MARS")]
+	CodeMARS,
+	#[serde(rename = "MWHT")]
+	CodeMWHT,
+	#[serde(rename = "MOLY")]
+	CodeMOLY,
+	#[serde(rename = "NAPH")]
+	CodeNAPH,
+	#[serde(rename = "NBPG")]
+	CodeNBPG,
+	#[serde(rename = "NASC")]
+	CodeNASC,
+	#[serde(rename = "NCGG")]
+	CodeNCGG,
+	#[serde(rename = "NGLO")]
+	CodeNGLO,
+	#[serde(rename = "NICK")]
+	CodeNICK,
+	#[serde(rename = "OFFP")]
+	CodeOFFP,
+	#[serde(rename = "ALUM")]
+	CodeALUM,
+	#[serde(rename = "ALUA")]
+	CodeALUA,
+	#[serde(rename = "BAKK")]
+	CodeBAKK,
+	#[serde(rename = "BSLD")]
+	CodeBSLD,
+	#[serde(rename = "BDSL")]
+	CodeBDSL,
+	#[serde(rename = "BRNT")]
+	CodeBRNT,
+	#[serde(rename = "BRNX")]
+	CodeBRNX,
+	#[serde(rename = "CNDA")]
+	CodeCNDA,
+	#[serde(rename = "CERE")]
+	CodeCERE,
+	#[serde(rename = "CBLT")]
+	CodeCBLT,
+	#[serde(rename = "CCOA")]
+	CodeCCOA,
+	#[serde(rename = "COND")]
+	CodeCOND,
+	#[serde(rename = "CSHP")]
+	CodeCSHP,
+	#[serde(rename = "COPR")]
+	CodeCOPR,
+	#[serde(rename = "DSEL")]
+	CodeDSEL,
+	#[serde(rename = "DBCR")]
+	CodeDBCR,
+	#[serde(rename = "DUBA")]
+	CodeDUBA,
+	#[serde(rename = "ERUE")]
+	CodeERUE,
+	#[serde(rename = "ESPO")]
+	CodeESPO,
+	#[serde(rename = "ETHA")]
+	CodeETHA,
+	#[serde(rename = "EUAE")]
+	CodeEUAE,
+	#[serde(rename = "EUAA")]
+	CodeEUAA,
+	#[serde(rename = "FWHT")]
+	CodeFWHT,
+	#[serde(rename = "FITR")]
+	CodeFITR,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+	#[serde(rename = "PLDM")]
+	CodePLDM,
+	#[serde(rename = "PKLD")]
+	CodePKLD,
+	#[serde(rename = "PTNM")]
+	CodePTNM,
+	#[serde(rename = "POTA")]
+	CodePOTA,
+	#[serde(rename = "RPSD")]
+	CodeRPSD,
+	#[serde(rename = "BRWN")]
+	CodeBRWN,
+	#[serde(rename = "RICE")]
+	CodeRICE,
+	#[serde(rename = "ROBU")]
+	CodeROBU,
+	#[serde(rename = "SLVR")]
+	CodeSLVR,
+	#[serde(rename = "SOYB")]
+	CodeSOYB,
+	#[serde(rename = "STEL")]
+	CodeSTEL,
+	#[serde(rename = "TNKR")]
+	CodeTNKR,
+	#[serde(rename = "TAPI")]
+	CodeTAPI,
+	#[serde(rename = "TINN")]
+	CodeTINN,
+	#[serde(rename = "TTFG")]
+	CodeTTFG,
+	#[serde(rename = "URAL")]
+	CodeURAL,
+	#[serde(rename = "WHSG")]
+	CodeWHSG,
+	#[serde(rename = "WTIO")]
+	CodeWTIO,
+	#[serde(rename = "ZINC")]
+	CodeZINC,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -81,7 +224,7 @@ pub struct AssetClassDetailedSubProductType16Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AssetClassDetailedSubProductType1Choice {
 	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<String>,
+	pub cd: Option<AssetClassDetailedSubProductType16Code>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification36>,
 }
@@ -95,7 +238,7 @@ pub struct AssetHolding1 {
 	#[serde(rename = "AsstTp")]
 	pub asst_tp: AssetHolding1Choice,
 	#[serde(rename = "CollRqrmnt")]
-	pub coll_rqrmnt: String,
+	pub coll_rqrmnt: CollateralAccountType3Code,
 }
 
 
@@ -139,9 +282,14 @@ pub struct CollateralAccount4 {
 
 // CollateralAccountType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct CollateralAccountType3Code {
-	#[serde(rename = "CollateralAccountType3Code")]
-	pub collateral_account_type3_code: String,
+pub enum CollateralAccountType3Code {
+	#[serde(rename = "MGIN")]
+	CodeMGIN,
+	#[serde(rename = "DFLT")]
+	CodeDFLT,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -159,13 +307,13 @@ pub struct Commodity2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification165 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max256Text,
 	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
-	pub desc: Option<String>,
+	pub desc: Option<Max140Text>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
-	pub issr: Option<String>,
+	pub issr: Option<Max35Text>,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<String>,
+	pub schme_nm: Option<SchemeIdentificationType1Code>,
 }
 
 
@@ -173,13 +321,13 @@ pub struct GenericIdentification165 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification168 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max256Text,
 	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
-	pub desc: Option<String>,
+	pub desc: Option<Max140Text>,
 	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
-	pub issr: Option<String>,
+	pub issr: Option<Max35Text>,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<String>,
+	pub schme_nm: Option<Max35Text>,
 }
 
 
@@ -187,11 +335,11 @@ pub struct GenericIdentification168 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification36 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "Issr")]
-	pub issr: String,
+	pub issr: Max35Text,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<String>,
+	pub schme_nm: Option<Max35Text>,
 }
 
 
@@ -208,7 +356,7 @@ pub struct Guarantee1 {
 // ISINOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISINOct2015Identifier {
-	#[serde(rename = "ISINOct2015Identifier")]
+	#[serde(rename = "$value")]
 	pub isin_oct2015_identifier: String,
 }
 
@@ -216,7 +364,7 @@ pub struct ISINOct2015Identifier {
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
-	#[serde(rename = "LEIIdentifier")]
+	#[serde(rename = "$value")]
 	pub lei_identifier: String,
 }
 
@@ -224,7 +372,7 @@ pub struct LEIIdentifier {
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[serde(rename = "Max140Text")]
+	#[serde(rename = "$value")]
 	pub max140_text: String,
 }
 
@@ -232,7 +380,7 @@ pub struct Max140Text {
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max256Text {
-	#[serde(rename = "Max256Text")]
+	#[serde(rename = "$value")]
 	pub max256_text: String,
 }
 
@@ -240,7 +388,7 @@ pub struct Max256Text {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -248,7 +396,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -257,7 +405,7 @@ pub struct Max35Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PartyIdentification118Choice {
 	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
-	pub lei: Option<String>,
+	pub lei: Option<LEIIdentifier>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification168>,
 }
@@ -265,17 +413,33 @@ pub struct PartyIdentification118Choice {
 
 // ProductType7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ProductType7Code {
-	#[serde(rename = "ProductType7Code")]
-	pub product_type7_code: String,
+pub enum ProductType7Code {
+	#[serde(rename = "SVGN")]
+	CodeSVGN,
+	#[serde(rename = "EQUI")]
+	CodeEQUI,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+
+	#[default]
+	UNKOWN
 }
 
 
 // SchemeIdentificationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct SchemeIdentificationType1Code {
-	#[serde(rename = "SchemeIdentificationType1Code")]
-	pub scheme_identification_type1_code: String,
+pub enum SchemeIdentificationType1Code {
+	#[serde(rename = "MARG")]
+	CodeMARG,
+	#[serde(rename = "COLL")]
+	CodeCOLL,
+	#[serde(rename = "POSI")]
+	CodePOSI,
+	#[serde(rename = "CLIM")]
+	CodeCLIM,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -283,11 +447,11 @@ pub struct SchemeIdentificationType1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecurityIdentificationAndAmount1 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: ISINOct2015Identifier,
 	#[serde(rename = "MktVal")]
 	pub mkt_val: ActiveCurrencyAnd24Amount,
 	#[serde(rename = "FinInstrmTp")]
-	pub fin_instrm_tp: String,
+	pub fin_instrm_tp: ProductType7Code,
 }
 
 
@@ -295,7 +459,7 @@ pub struct SecurityIdentificationAndAmount1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
