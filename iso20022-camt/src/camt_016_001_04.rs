@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // ActiveOrHistoricCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveOrHistoricCurrencyCode {
-	#[serde(rename = "ActiveOrHistoricCurrencyCode")]
+	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
 }
 
@@ -37,7 +37,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CurrencyCriteriaDefinition1Choice {
 	#[serde(rename = "QryNm", skip_serializing_if = "Option::is_none")]
-	pub qry_nm: Option<String>,
+	pub qry_nm: Option<Max35Text>,
 	#[serde(rename = "NewCrit", skip_serializing_if = "Option::is_none")]
 	pub new_crit: Option<CurrencyExchangeCriteria2>,
 }
@@ -47,7 +47,7 @@ pub struct CurrencyCriteriaDefinition1Choice {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CurrencyExchangeCriteria2 {
 	#[serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none")]
-	pub new_qry_nm: Option<String>,
+	pub new_qry_nm: Option<Max35Text>,
 	#[serde(rename = "SchCrit")]
 	pub sch_crit: Vec<CurrencyExchangeSearchCriteria1>,
 }
@@ -57,9 +57,9 @@ pub struct CurrencyExchangeCriteria2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CurrencyExchangeSearchCriteria1 {
 	#[serde(rename = "SrcCcy")]
-	pub src_ccy: String,
+	pub src_ccy: ActiveOrHistoricCurrencyCode,
 	#[serde(rename = "TrgtCcy")]
-	pub trgt_ccy: String,
+	pub trgt_ccy: ActiveOrHistoricCurrencyCode,
 }
 
 
@@ -67,7 +67,7 @@ pub struct CurrencyExchangeSearchCriteria1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CurrencyQueryDefinition3 {
 	#[serde(rename = "QryTp", skip_serializing_if = "Option::is_none")]
-	pub qry_tp: Option<String>,
+	pub qry_tp: Option<QueryType2Code>,
 	#[serde(rename = "CcyCrit", skip_serializing_if = "Option::is_none")]
 	pub ccy_crit: Option<CurrencyCriteriaDefinition1Choice>,
 }
@@ -88,7 +88,7 @@ pub struct GetCurrencyExchangeRateV04 {
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -96,7 +96,7 @@ pub struct ISODateTime {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -104,7 +104,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -113,7 +113,7 @@ pub struct Max35Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageHeader1 {
 	#[serde(rename = "MsgId")]
-	pub msg_id: String,
+	pub msg_id: Max35Text,
 	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
 }
@@ -121,9 +121,18 @@ pub struct MessageHeader1 {
 
 // QueryType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct QueryType2Code {
-	#[serde(rename = "QueryType2Code")]
-	pub query_type2_code: String,
+pub enum QueryType2Code {
+	#[serde(rename = "ALLL")]
+	CodeALLL,
+	#[serde(rename = "CHNG")]
+	CodeCHNG,
+	#[serde(rename = "MODF")]
+	CodeMODF,
+	#[serde(rename = "DELD")]
+	CodeDELD,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -131,7 +140,7 @@ pub struct QueryType2Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }

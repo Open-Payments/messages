@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // Exact4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Exact4AlphaNumericText {
-	#[serde(rename = "Exact4AlphaNumericText")]
+	#[serde(rename = "$value")]
 	pub exact4_alpha_numeric_text: String,
 }
 
@@ -36,7 +36,7 @@ pub struct Exact4AlphaNumericText {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -44,7 +44,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -53,9 +53,9 @@ pub struct Max35Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RequestDetails3 {
 	#[serde(rename = "Tp")]
-	pub tp: String,
+	pub tp: Max35Text,
 	#[serde(rename = "Key", skip_serializing_if = "Option::is_none")]
-	pub key: Option<String>,
+	pub key: Option<Max35Text>,
 }
 
 
@@ -63,9 +63,9 @@ pub struct RequestDetails3 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StaticDataRequestV02 {
 	#[serde(rename = "MsgId")]
-	pub msg_id: String,
+	pub msg_id: Max35Text,
 	#[serde(rename = "SttlmSsnIdr", skip_serializing_if = "Option::is_none")]
-	pub sttlm_ssn_idr: Option<String>,
+	pub sttlm_ssn_idr: Option<Exact4AlphaNumericText>,
 	#[serde(rename = "DataReqDtls")]
 	pub data_req_dtls: RequestDetails3,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
@@ -77,7 +77,7 @@ pub struct StaticDataRequestV02 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }

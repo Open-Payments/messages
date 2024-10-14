@@ -47,7 +47,7 @@ pub struct AdministrationProprietaryMessageV02 {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -56,7 +56,7 @@ pub struct Max35Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
-	pub ref_attr: String,
+	pub ref_attr: Max35Text,
 }
 
 
@@ -64,7 +64,7 @@ pub struct MessageReference {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ProprietaryData5 {
 	#[serde(rename = "Tp")]
-	pub tp: String,
+	pub tp: Max35Text,
 	#[serde(rename = "Data")]
 	pub data: SupplementaryDataEnvelope1,
 }

@@ -29,19 +29,19 @@ use serde::{Deserialize, Serialize};
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountSwitchDetails1 {
 	#[serde(rename = "UnqRefNb")]
-	pub unq_ref_nb: String,
+	pub unq_ref_nb: Max35Text,
 	#[serde(rename = "RtgUnqRefNb")]
-	pub rtg_unq_ref_nb: String,
+	pub rtg_unq_ref_nb: Max35Text,
 	#[serde(rename = "SwtchRcvdDtTm", skip_serializing_if = "Option::is_none")]
 	pub swtch_rcvd_dt_tm: Option<String>,
 	#[serde(rename = "SwtchDt", skip_serializing_if = "Option::is_none")]
 	pub swtch_dt: Option<String>,
 	#[serde(rename = "SwtchTp")]
-	pub swtch_tp: String,
+	pub swtch_tp: SwitchType1Code,
 	#[serde(rename = "SwtchSts", skip_serializing_if = "Option::is_none")]
-	pub swtch_sts: Option<String>,
+	pub swtch_sts: Option<SwitchStatus1Code>,
 	#[serde(rename = "BalTrfWndw", skip_serializing_if = "Option::is_none")]
-	pub bal_trf_wndw: Option<String>,
+	pub bal_trf_wndw: Option<BalanceTransferWindow1Code>,
 	#[serde(rename = "Rspn", skip_serializing_if = "Option::is_none")]
 	pub rspn: Option<Vec<ResponseDetails1>>,
 }
@@ -61,16 +61,21 @@ pub struct AccountSwitchTerminationSwitchV01 {
 
 // BalanceTransferWindow1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct BalanceTransferWindow1Code {
-	#[serde(rename = "BalanceTransferWindow1Code")]
-	pub balance_transfer_window1_code: String,
+pub enum BalanceTransferWindow1Code {
+	#[serde(rename = "DAYH")]
+	CodeDAYH,
+	#[serde(rename = "EARL")]
+	CodeEARL,
+
+	#[default]
+	UNKOWN
 }
 
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
-	#[serde(rename = "ISODate")]
+	#[serde(rename = "$value")]
 	pub iso_date: String,
 }
 
@@ -78,7 +83,7 @@ pub struct ISODate {
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -86,7 +91,7 @@ pub struct ISODateTime {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -94,7 +99,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -103,7 +108,7 @@ pub struct Max35Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageIdentification1 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "CreDtTm")]
 	pub cre_dt_tm: String,
 }
@@ -113,9 +118,9 @@ pub struct MessageIdentification1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ResponseDetails1 {
 	#[serde(rename = "RspnCd")]
-	pub rspn_cd: String,
+	pub rspn_cd: Max35Text,
 	#[serde(rename = "AddtlDtls", skip_serializing_if = "Option::is_none")]
-	pub addtl_dtls: Option<String>,
+	pub addtl_dtls: Option<Max350Text>,
 }
 
 
@@ -123,7 +128,7 @@ pub struct ResponseDetails1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -137,15 +142,39 @@ pub struct SupplementaryDataEnvelope1 {
 
 // SwitchStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct SwitchStatus1Code {
-	#[serde(rename = "SwitchStatus1Code")]
-	pub switch_status1_code: String,
+pub enum SwitchStatus1Code {
+	#[serde(rename = "ACPT")]
+	CodeACPT,
+	#[serde(rename = "BTRQ")]
+	CodeBTRQ,
+	#[serde(rename = "BTRS")]
+	CodeBTRS,
+	#[serde(rename = "COMP")]
+	CodeCOMP,
+	#[serde(rename = "REDT")]
+	CodeREDT,
+	#[serde(rename = "REDE")]
+	CodeREDE,
+	#[serde(rename = "REJT")]
+	CodeREJT,
+	#[serde(rename = "REQU")]
+	CodeREQU,
+	#[serde(rename = "TMTN")]
+	CodeTMTN,
+
+	#[default]
+	UNKOWN
 }
 
 
 // SwitchType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct SwitchType1Code {
-	#[serde(rename = "SwitchType1Code")]
-	pub switch_type1_code: String,
+pub enum SwitchType1Code {
+	#[serde(rename = "FULL")]
+	CodeFULL,
+	#[serde(rename = "PART")]
+	CodePART,
+
+	#[default]
+	UNKOWN
 }

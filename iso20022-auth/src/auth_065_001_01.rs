@@ -35,14 +35,14 @@ pub struct BackTestingMethodology1 {
 	#[serde(rename = "VartnMrgnCleanInd")]
 	pub vartn_mrgn_clean_ind: bool,
 	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
-	pub desc: Option<String>,
+	pub desc: Option<Max2000Text>,
 }
 
 
 // BaseOneRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BaseOneRate {
-	#[serde(rename = "BaseOneRate")]
+	#[serde(rename = "$value")]
 	pub base_one_rate: f64,
 }
 
@@ -61,18 +61,18 @@ pub struct CCPBackTestingDefinitionReportV01 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GenericIdentification36 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max35Text,
 	#[serde(rename = "Issr")]
-	pub issr: String,
+	pub issr: Max35Text,
 	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<String>,
+	pub schme_nm: Option<Max35Text>,
 }
 
 
 // Max2000Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max2000Text {
-	#[serde(rename = "Max2000Text")]
+	#[serde(rename = "$value")]
 	pub max2000_text: String,
 }
 
@@ -80,7 +80,7 @@ pub struct Max2000Text {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -88,7 +88,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -97,7 +97,7 @@ pub struct Max35Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ModelType1Choice {
 	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<String>,
+	pub cd: Option<ModelType1Code>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification36>,
 }
@@ -105,9 +105,22 @@ pub struct ModelType1Choice {
 
 // ModelType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ModelType1Code {
-	#[serde(rename = "ModelType1Code")]
-	pub model_type1_code: String,
+pub enum ModelType1Code {
+	#[serde(rename = "EXPS")]
+	CodeEXPS,
+	#[serde(rename = "OTHR")]
+	CodeOTHR,
+	#[serde(rename = "ORIA")]
+	CodeORIA,
+	#[serde(rename = "SPAN")]
+	CodeSPAN,
+	#[serde(rename = "VARI")]
+	CodeVARI,
+	#[serde(rename = "SAMO")]
+	CodeSAMO,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -115,7 +128,7 @@ pub struct ModelType1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -130,6 +143,6 @@ pub struct SupplementaryDataEnvelope1 {
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TrueFalseIndicator {
-	#[serde(rename = "TrueFalseIndicator")]
+	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
 }

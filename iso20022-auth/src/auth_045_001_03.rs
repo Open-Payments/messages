@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // ActiveOrHistoricCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveOrHistoricCurrencyAndAmountSimpleType {
-	#[serde(rename = "ActiveOrHistoricCurrencyAndAmount_SimpleType")]
+	#[serde(rename = "$value")]
 	pub active_or_historic_currency_and_amount_simple_type: f64,
 }
 
@@ -46,7 +46,7 @@ pub struct ActiveOrHistoricCurrencyAndAmount {
 // ActiveOrHistoricCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveOrHistoricCurrencyCode {
-	#[serde(rename = "ActiveOrHistoricCurrencyCode")]
+	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
 }
 
@@ -55,18 +55,18 @@ pub struct ActiveOrHistoricCurrencyCode {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AssetClassAndSubClassIdentification2 {
 	#[serde(rename = "AsstClss")]
-	pub asst_clss: String,
+	pub asst_clss: NonEquityAssetClass1Code,
 	#[serde(rename = "DerivSubClss", skip_serializing_if = "Option::is_none")]
 	pub deriv_sub_clss: Option<NonEquitySubClass1>,
 	#[serde(rename = "FinInstrmClssfctn", skip_serializing_if = "Option::is_none")]
-	pub fin_instrm_clssfctn: Option<String>,
+	pub fin_instrm_clssfctn: Option<NonEquityInstrumentReportingClassification1Code>,
 }
 
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
-	#[serde(rename = "CountryCode")]
+	#[serde(rename = "$value")]
 	pub country_code: String,
 }
 
@@ -74,7 +74,7 @@ pub struct CountryCode {
 // DecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DecimalNumber {
-	#[serde(rename = "DecimalNumber")]
+	#[serde(rename = "$value")]
 	pub decimal_number: f64,
 }
 
@@ -94,7 +94,7 @@ pub struct FinancialInstrumentReportingNonEquityTradingActivityResultV03 {
 // ISINOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISINOct2015Identifier {
-	#[serde(rename = "ISINOct2015Identifier")]
+	#[serde(rename = "$value")]
 	pub isin_oct2015_identifier: String,
 }
 
@@ -102,7 +102,7 @@ pub struct ISINOct2015Identifier {
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
-	#[serde(rename = "ISODate")]
+	#[serde(rename = "$value")]
 	pub iso_date: String,
 }
 
@@ -110,7 +110,7 @@ pub struct ISODate {
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -119,11 +119,11 @@ pub struct ISODateTime {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct InstrumentAndSubClassIdentification2 {
 	#[serde(rename = "ISIN")]
-	pub isin: String,
+	pub isin: ISINOct2015Identifier,
 	#[serde(rename = "DerivSubClss", skip_serializing_if = "Option::is_none")]
 	pub deriv_sub_clss: Option<NonEquitySubClass1>,
 	#[serde(rename = "FinInstrmClssfctn", skip_serializing_if = "Option::is_none")]
-	pub fin_instrm_clssfctn: Option<String>,
+	pub fin_instrm_clssfctn: Option<NonEquityInstrumentReportingClassification1Code>,
 }
 
 
@@ -140,7 +140,7 @@ pub struct InstrumentOrSubClassIdentification2Choice {
 // MICIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MICIdentifier {
-	#[serde(rename = "MICIdentifier")]
+	#[serde(rename = "$value")]
 	pub mic_identifier: String,
 }
 
@@ -148,7 +148,7 @@ pub struct MICIdentifier {
 // Max1000Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max1000Text {
-	#[serde(rename = "Max1000Text")]
+	#[serde(rename = "$value")]
 	pub max1000_text: String,
 }
 
@@ -156,7 +156,7 @@ pub struct Max1000Text {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -164,7 +164,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -172,24 +172,68 @@ pub struct Max35Text {
 // Max50Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max50Text {
-	#[serde(rename = "Max50Text")]
+	#[serde(rename = "$value")]
 	pub max50_text: String,
 }
 
 
 // NonEquityAssetClass1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct NonEquityAssetClass1Code {
-	#[serde(rename = "NonEquityAssetClass1Code")]
-	pub non_equity_asset_class1_code: String,
+pub enum NonEquityAssetClass1Code {
+	#[serde(rename = "SDRV")]
+	CodeSDRV,
+	#[serde(rename = "IRDV")]
+	CodeIRDV,
+	#[serde(rename = "FEXD")]
+	CodeFEXD,
+	#[serde(rename = "EQDV")]
+	CodeEQDV,
+	#[serde(rename = "EADV")]
+	CodeEADV,
+	#[serde(rename = "EMAL")]
+	CodeEMAL,
+	#[serde(rename = "CRDV")]
+	CodeCRDV,
+	#[serde(rename = "CFDS")]
+	CodeCFDS,
+	#[serde(rename = "COMD")]
+	CodeCOMD,
+	#[serde(rename = "C10D")]
+	CodeC10D,
+	#[serde(rename = "BOND")]
+	CodeBOND,
+	#[serde(rename = "ETCS")]
+	CodeETCS,
+	#[serde(rename = "ETNS")]
+	CodeETNS,
+	#[serde(rename = "SFPS")]
+	CodeSFPS,
+
+	#[default]
+	UNKOWN
 }
 
 
 // NonEquityInstrumentReportingClassification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct NonEquityInstrumentReportingClassification1Code {
-	#[serde(rename = "NonEquityInstrumentReportingClassification1Code")]
-	pub non_equity_instrument_reporting_classification1_code: String,
+pub enum NonEquityInstrumentReportingClassification1Code {
+	#[serde(rename = "SFPS")]
+	CodeSFPS,
+	#[serde(rename = "SDRV")]
+	CodeSDRV,
+	#[serde(rename = "DERV")]
+	CodeDERV,
+	#[serde(rename = "EMAL")]
+	CodeEMAL,
+	#[serde(rename = "BOND")]
+	CodeBOND,
+	#[serde(rename = "ETCS")]
+	CodeETCS,
+	#[serde(rename = "ETNS")]
+	CodeETNS,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -197,7 +241,7 @@ pub struct NonEquityInstrumentReportingClassification1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NonEquitySubClass1 {
 	#[serde(rename = "Desc", skip_serializing_if = "Option::is_none")]
-	pub desc: Option<String>,
+	pub desc: Option<Max1000Text>,
 	#[serde(rename = "SgmttnCrit")]
 	pub sgmttn_crit: Vec<NonEquitySubClassSegmentationCriterion1>,
 }
@@ -205,9 +249,82 @@ pub struct NonEquitySubClass1 {
 
 // NonEquitySubClassSegmentationCriteria1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct NonEquitySubClassSegmentationCriteria1Code {
-	#[serde(rename = "NonEquitySubClassSegmentationCriteria1Code")]
-	pub non_equity_sub_class_segmentation_criteria1_code: String,
+pub enum NonEquitySubClassSegmentationCriteria1Code {
+	#[serde(rename = "ASCL")]
+	CodeASCL,
+	#[serde(rename = "BSPD")]
+	CodeBSPD,
+	#[serde(rename = "CNC1")]
+	CodeCNC1,
+	#[serde(rename = "CNC2")]
+	CodeCNC2,
+	#[serde(rename = "NCCO")]
+	CodeNCCO,
+	#[serde(rename = "CTYP")]
+	CodeCTYP,
+	#[serde(rename = "NCCR")]
+	CodeNCCR,
+	#[serde(rename = "DCSL")]
+	CodeDCSL,
+	#[serde(rename = "DTYP")]
+	CodeDTYP,
+	#[serde(rename = "EQUT")]
+	CodeEQUT,
+	#[serde(rename = "FNC1")]
+	CodeFNC1,
+	#[serde(rename = "FNC2")]
+	CodeFNC2,
+	#[serde(rename = "FSPD")]
+	CodeFSPD,
+	#[serde(rename = "IIND")]
+	CodeIIND,
+	#[serde(rename = "IRTC")]
+	CodeIRTC,
+	#[serde(rename = "INC1")]
+	CodeINC1,
+	#[serde(rename = "INC2")]
+	CodeINC2,
+	#[serde(rename = "ISIN")]
+	CodeISIN,
+	#[serde(rename = "TTMO")]
+	CodeTTMO,
+	#[serde(rename = "PRMT")]
+	CodePRMT,
+	#[serde(rename = "SSRF")]
+	CodeSSRF,
+	#[serde(rename = "ISPT")]
+	CodeISPT,
+	#[serde(rename = "SRTC")]
+	CodeSRTC,
+	#[serde(rename = "SACL")]
+	CodeSACL,
+	#[serde(rename = "SBPD")]
+	CodeSBPD,
+	#[serde(rename = "TTMS")]
+	CodeTTMS,
+	#[serde(rename = "NCSW")]
+	CodeNCSW,
+	#[serde(rename = "TTMB")]
+	CodeTTMB,
+	#[serde(rename = "IOUB")]
+	CodeIOUB,
+	#[serde(rename = "TOUB")]
+	CodeTOUB,
+	#[serde(rename = "UISC")]
+	CodeUISC,
+	#[serde(rename = "UIDX")]
+	CodeUIDX,
+	#[serde(rename = "UINS")]
+	CodeUINS,
+	#[serde(rename = "UIRT")]
+	CodeUIRT,
+	#[serde(rename = "REOU")]
+	CodeREOU,
+	#[serde(rename = "UTYP")]
+	CodeUTYP,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -215,16 +332,16 @@ pub struct NonEquitySubClassSegmentationCriteria1Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct NonEquitySubClassSegmentationCriterion1 {
 	#[serde(rename = "CritNm")]
-	pub crit_nm: String,
+	pub crit_nm: NonEquitySubClassSegmentationCriteria1Code,
 	#[serde(rename = "CritVal")]
-	pub crit_val: String,
+	pub crit_val: Max1000Text,
 }
 
 
 // Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Number {
-	#[serde(rename = "Number")]
+	#[serde(rename = "$value")]
 	pub number: f64,
 }
 
@@ -279,7 +396,7 @@ pub struct StatisticsTransparency2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -303,9 +420,14 @@ pub struct TonsOrCurrency2Choice {
 
 // TradingVenue2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct TradingVenue2Code {
-	#[serde(rename = "TradingVenue2Code")]
-	pub trading_venue2_code: String,
+pub enum TradingVenue2Code {
+	#[serde(rename = "APPA")]
+	CodeAPPA,
+	#[serde(rename = "CTPS")]
+	CodeCTPS,
+
+	#[default]
+	UNKOWN
 }
 
 
@@ -313,9 +435,9 @@ pub struct TradingVenue2Code {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradingVenueIdentification1Choice {
 	#[serde(rename = "MktIdCd", skip_serializing_if = "Option::is_none")]
-	pub mkt_id_cd: Option<String>,
+	pub mkt_id_cd: Option<MICIdentifier>,
 	#[serde(rename = "NtlCmptntAuthrty", skip_serializing_if = "Option::is_none")]
-	pub ntl_cmptnt_authrty: Option<String>,
+	pub ntl_cmptnt_authrty: Option<CountryCode>,
 	#[serde(rename = "Othr", skip_serializing_if = "Option::is_none")]
 	pub othr: Option<TradingVenueIdentification2>,
 }
@@ -325,9 +447,9 @@ pub struct TradingVenueIdentification1Choice {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TradingVenueIdentification2 {
 	#[serde(rename = "Id")]
-	pub id: String,
+	pub id: Max50Text,
 	#[serde(rename = "Tp")]
-	pub tp: String,
+	pub tp: TradingVenue2Code,
 }
 
 
@@ -335,13 +457,13 @@ pub struct TradingVenueIdentification2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TransparencyDataReport20 {
 	#[serde(rename = "TechRcrdId", skip_serializing_if = "Option::is_none")]
-	pub tech_rcrd_id: Option<String>,
+	pub tech_rcrd_id: Option<Max35Text>,
 	#[serde(rename = "Id")]
 	pub id: InstrumentOrSubClassIdentification2Choice,
 	#[serde(rename = "FullNm", skip_serializing_if = "Option::is_none")]
-	pub full_nm: Option<String>,
+	pub full_nm: Option<Max350Text>,
 	#[serde(rename = "TradgVn", skip_serializing_if = "Option::is_none")]
-	pub tradg_vn: Option<String>,
+	pub tradg_vn: Option<MICIdentifier>,
 	#[serde(rename = "RptgPrd", skip_serializing_if = "Option::is_none")]
 	pub rptg_prd: Option<Period4Choice>,
 	#[serde(rename = "Lqdty", skip_serializing_if = "Option::is_none")]
@@ -362,6 +484,6 @@ pub struct TransparencyDataReport20 {
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TrueFalseIndicator {
-	#[serde(rename = "TrueFalseIndicator")]
+	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
 }

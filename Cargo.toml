@@ -1,4 +1,5 @@
 [workspace]
+resolver = "2"
 members = [
     "iso20022",
     "fednow",

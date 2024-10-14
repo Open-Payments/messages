@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // Exact4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Exact4AlphaNumericText {
-	#[serde(rename = "Exact4AlphaNumericText")]
+	#[serde(rename = "$value")]
 	pub exact4_alpha_numeric_text: String,
 }
 
@@ -36,7 +36,7 @@ pub struct Exact4AlphaNumericText {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -44,7 +44,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -52,7 +52,7 @@ pub struct Max35Text {
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max70Text {
-	#[serde(rename = "Max70Text")]
+	#[serde(rename = "$value")]
 	pub max70_text: String,
 }
 
@@ -61,9 +61,9 @@ pub struct Max70Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ReportParameter1 {
 	#[serde(rename = "Nm")]
-	pub nm: String,
+	pub nm: Max70Text,
 	#[serde(rename = "Val")]
-	pub val: String,
+	pub val: Max350Text,
 }
 
 
@@ -71,7 +71,7 @@ pub struct ReportParameter1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RequestDetails4 {
 	#[serde(rename = "Key")]
-	pub key: String,
+	pub key: Max35Text,
 	#[serde(rename = "RptData", skip_serializing_if = "Option::is_none")]
 	pub rpt_data: Option<Vec<ReportParameter1>>,
 }
@@ -81,9 +81,9 @@ pub struct RequestDetails4 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RequestDetails5 {
 	#[serde(rename = "Tp")]
-	pub tp: String,
+	pub tp: Max35Text,
 	#[serde(rename = "ReqRef")]
-	pub req_ref: String,
+	pub req_ref: Max35Text,
 	#[serde(rename = "RptKey")]
 	pub rpt_key: Vec<RequestDetails4>,
 }
@@ -93,9 +93,9 @@ pub struct RequestDetails5 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StaticDataReportV02 {
 	#[serde(rename = "MsgId")]
-	pub msg_id: String,
+	pub msg_id: Max35Text,
 	#[serde(rename = "SttlmSsnIdr", skip_serializing_if = "Option::is_none")]
-	pub sttlm_ssn_idr: Option<String>,
+	pub sttlm_ssn_idr: Option<Exact4AlphaNumericText>,
 	#[serde(rename = "RptDtls")]
 	pub rpt_dtls: RequestDetails5,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
@@ -107,7 +107,7 @@ pub struct StaticDataReportV02 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }

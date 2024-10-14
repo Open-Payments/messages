@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -36,7 +36,7 @@ pub struct ISODateTime {
 // Max20000Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max20000Text {
-	#[serde(rename = "Max20000Text")]
+	#[serde(rename = "$value")]
 	pub max20000_text: String,
 }
 
@@ -44,7 +44,7 @@ pub struct Max20000Text {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -52,7 +52,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -61,7 +61,7 @@ pub struct Max35Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
-	pub ref_attr: String,
+	pub ref_attr: Max35Text,
 }
 
 
@@ -69,15 +69,15 @@ pub struct MessageReference {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct RejectionReason2 {
 	#[serde(rename = "RjctgPtyRsn")]
-	pub rjctg_pty_rsn: String,
+	pub rjctg_pty_rsn: Max35Text,
 	#[serde(rename = "RjctnDtTm", skip_serializing_if = "Option::is_none")]
 	pub rjctn_dt_tm: Option<String>,
 	#[serde(rename = "ErrLctn", skip_serializing_if = "Option::is_none")]
-	pub err_lctn: Option<String>,
+	pub err_lctn: Option<Max350Text>,
 	#[serde(rename = "RsnDesc", skip_serializing_if = "Option::is_none")]
-	pub rsn_desc: Option<String>,
+	pub rsn_desc: Option<Max350Text>,
 	#[serde(rename = "AddtlData", skip_serializing_if = "Option::is_none")]
-	pub addtl_data: Option<String>,
+	pub addtl_data: Option<Max20000Text>,
 }
 
 

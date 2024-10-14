@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[serde(rename = "ActiveCurrencyCode")]
+	#[serde(rename = "$value")]
 	pub active_currency_code: String,
 }
 
@@ -37,20 +37,20 @@ pub struct ActiveCurrencyCode {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ContactDetails4 {
 	#[serde(rename = "Nm")]
-	pub nm: String,
+	pub nm: Max140Text,
 	#[serde(rename = "PhneNb")]
-	pub phne_nb: String,
+	pub phne_nb: PhoneNumber,
 	#[serde(rename = "EmailAdr")]
-	pub email_adr: String,
+	pub email_adr: Max2048Text,
 	#[serde(rename = "Fctn")]
-	pub fctn: String,
+	pub fctn: Max140Text,
 }
 
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
-	#[serde(rename = "CountryCode")]
+	#[serde(rename = "$value")]
 	pub country_code: String,
 }
 
@@ -58,7 +58,7 @@ pub struct CountryCode {
 // Exact2UpperCaseAlphaText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Exact2UpperCaseAlphaText {
-	#[serde(rename = "Exact2UpperCaseAlphaText")]
+	#[serde(rename = "$value")]
 	pub exact2_upper_case_alpha_text: String,
 }
 
@@ -66,7 +66,7 @@ pub struct Exact2UpperCaseAlphaText {
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
-	#[serde(rename = "ISODate")]
+	#[serde(rename = "$value")]
 	pub iso_date: String,
 }
 
@@ -74,7 +74,7 @@ pub struct ISODate {
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -125,11 +125,11 @@ pub struct InternalisationDataVolume1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct IssuerCSDIdentification1 {
 	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
-	pub lei: Option<String>,
+	pub lei: Option<LEIIdentifier>,
 	#[serde(rename = "FrstTwoCharsInstrmId")]
-	pub frst_two_chars_instrm_id: String,
+	pub frst_two_chars_instrm_id: Exact2UpperCaseAlphaText,
 	#[serde(rename = "Ctry", skip_serializing_if = "Option::is_none")]
-	pub ctry: Option<String>,
+	pub ctry: Option<CountryCode>,
 }
 
 
@@ -154,7 +154,7 @@ pub struct IssuerCSDReport1 {
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
-	#[serde(rename = "LEIIdentifier")]
+	#[serde(rename = "$value")]
 	pub lei_identifier: String,
 }
 
@@ -162,7 +162,7 @@ pub struct LEIIdentifier {
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[serde(rename = "Max140Text")]
+	#[serde(rename = "$value")]
 	pub max140_text: String,
 }
 
@@ -170,7 +170,7 @@ pub struct Max140Text {
 // Max2048Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max2048Text {
-	#[serde(rename = "Max2048Text")]
+	#[serde(rename = "$value")]
 	pub max2048_text: String,
 }
 
@@ -178,7 +178,7 @@ pub struct Max2048Text {
 // Max20PositiveDecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max20PositiveDecimalNumber {
-	#[serde(rename = "Max20PositiveDecimalNumber")]
+	#[serde(rename = "$value")]
 	pub max20_positive_decimal_number: f64,
 }
 
@@ -186,7 +186,7 @@ pub struct Max20PositiveDecimalNumber {
 // Max20PositiveNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max20PositiveNumber {
-	#[serde(rename = "Max20PositiveNumber")]
+	#[serde(rename = "$value")]
 	pub max20_positive_number: f64,
 }
 
@@ -194,7 +194,7 @@ pub struct Max20PositiveNumber {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -202,7 +202,7 @@ pub struct Max350Text {
 // PercentageRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PercentageRate {
-	#[serde(rename = "PercentageRate")]
+	#[serde(rename = "$value")]
 	pub percentage_rate: f64,
 }
 
@@ -210,7 +210,7 @@ pub struct PercentageRate {
 // PhoneNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PhoneNumber {
-	#[serde(rename = "PhoneNumber")]
+	#[serde(rename = "$value")]
 	pub phone_number: String,
 }
 
@@ -271,13 +271,13 @@ pub struct SettlementInternaliserFinancialInstrument1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SettlementInternaliserIdentification1 {
 	#[serde(rename = "LEI")]
-	pub lei: String,
+	pub lei: LEIIdentifier,
 	#[serde(rename = "RspnsblPrsn")]
 	pub rspnsbl_prsn: ContactDetails4,
 	#[serde(rename = "Ctry")]
-	pub ctry: String,
+	pub ctry: CountryCode,
 	#[serde(rename = "BrnchId", skip_serializing_if = "Option::is_none")]
-	pub brnch_id: Option<String>,
+	pub brnch_id: Option<Exact2UpperCaseAlphaText>,
 }
 
 
@@ -289,9 +289,9 @@ pub struct SettlementInternaliserReportHeader1 {
 	#[serde(rename = "RptgDt")]
 	pub rptg_dt: String,
 	#[serde(rename = "Ccy")]
-	pub ccy: String,
+	pub ccy: ActiveCurrencyCode,
 	#[serde(rename = "RptSts")]
-	pub rpt_sts: String,
+	pub rpt_sts: TransactionOperationType4Code,
 }
 
 
@@ -329,7 +329,7 @@ pub struct SettlementInternaliserTransactionType1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -343,7 +343,14 @@ pub struct SupplementaryDataEnvelope1 {
 
 // TransactionOperationType4Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct TransactionOperationType4Code {
-	#[serde(rename = "TransactionOperationType4Code")]
-	pub transaction_operation_type4_code: String,
+pub enum TransactionOperationType4Code {
+	#[serde(rename = "NEWT")]
+	CodeNEWT,
+	#[serde(rename = "AMND")]
+	CodeAMND,
+	#[serde(rename = "CANC")]
+	CodeCANC,
+
+	#[default]
+	UNKOWN
 }

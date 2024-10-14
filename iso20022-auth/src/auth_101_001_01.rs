@@ -28,7 +28,7 @@ use serde::{Deserialize, Serialize};
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ActiveCurrencyCode {
-	#[serde(rename = "ActiveCurrencyCode")]
+	#[serde(rename = "$value")]
 	pub active_currency_code: String,
 }
 
@@ -37,20 +37,20 @@ pub struct ActiveCurrencyCode {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Contact9 {
 	#[serde(rename = "Nm")]
-	pub nm: String,
+	pub nm: Max140Text,
 	#[serde(rename = "PhneNb")]
-	pub phne_nb: String,
+	pub phne_nb: PhoneNumber,
 	#[serde(rename = "EmailAdr")]
-	pub email_adr: String,
+	pub email_adr: Max256Text,
 	#[serde(rename = "Fctn", skip_serializing_if = "Option::is_none")]
-	pub fctn: Option<String>,
+	pub fctn: Option<Max140Text>,
 }
 
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct CountryCode {
-	#[serde(rename = "CountryCode")]
+	#[serde(rename = "$value")]
 	pub country_code: String,
 }
 
@@ -68,7 +68,7 @@ pub struct DatePeriod2 {
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODate {
-	#[serde(rename = "ISODate")]
+	#[serde(rename = "$value")]
 	pub iso_date: String,
 }
 
@@ -76,7 +76,7 @@ pub struct ISODate {
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ISODateTime {
-	#[serde(rename = "ISODateTime")]
+	#[serde(rename = "$value")]
 	pub iso_date_time: String,
 }
 
@@ -84,7 +84,7 @@ pub struct ISODateTime {
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LEIIdentifier {
-	#[serde(rename = "LEIIdentifier")]
+	#[serde(rename = "$value")]
 	pub lei_identifier: String,
 }
 
@@ -92,7 +92,7 @@ pub struct LEIIdentifier {
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max140Text {
-	#[serde(rename = "Max140Text")]
+	#[serde(rename = "$value")]
 	pub max140_text: String,
 }
 
@@ -100,7 +100,7 @@ pub struct Max140Text {
 // Max2048Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max2048Text {
-	#[serde(rename = "Max2048Text")]
+	#[serde(rename = "$value")]
 	pub max2048_text: String,
 }
 
@@ -108,7 +108,7 @@ pub struct Max2048Text {
 // Max20PositiveDecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max20PositiveDecimalNumber {
-	#[serde(rename = "Max20PositiveDecimalNumber")]
+	#[serde(rename = "$value")]
 	pub max20_positive_decimal_number: f64,
 }
 
@@ -116,7 +116,7 @@ pub struct Max20PositiveDecimalNumber {
 // Max20PositiveNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max20PositiveNumber {
-	#[serde(rename = "Max20PositiveNumber")]
+	#[serde(rename = "$value")]
 	pub max20_positive_number: f64,
 }
 
@@ -124,7 +124,7 @@ pub struct Max20PositiveNumber {
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max256Text {
-	#[serde(rename = "Max256Text")]
+	#[serde(rename = "$value")]
 	pub max256_text: String,
 }
 
@@ -132,7 +132,7 @@ pub struct Max256Text {
 // Max2Fraction1NonNegativeNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max2Fraction1NonNegativeNumber {
-	#[serde(rename = "Max2Fraction1NonNegativeNumber")]
+	#[serde(rename = "$value")]
 	pub max2_fraction1_non_negative_number: f64,
 }
 
@@ -140,7 +140,7 @@ pub struct Max2Fraction1NonNegativeNumber {
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max350Text {
-	#[serde(rename = "Max350Text")]
+	#[serde(rename = "$value")]
 	pub max350_text: String,
 }
 
@@ -148,7 +148,7 @@ pub struct Max350Text {
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Max35Text {
-	#[serde(rename = "Max35Text")]
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
@@ -156,7 +156,7 @@ pub struct Max35Text {
 // PercentageRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PercentageRate {
-	#[serde(rename = "PercentageRate")]
+	#[serde(rename = "$value")]
 	pub percentage_rate: f64,
 }
 
@@ -164,7 +164,7 @@ pub struct PercentageRate {
 // PhoneNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct PhoneNumber {
-	#[serde(rename = "PhoneNumber")]
+	#[serde(rename = "$value")]
 	pub phone_number: String,
 }
 
@@ -173,15 +173,15 @@ pub struct PhoneNumber {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SecuritiesSettlementSystemIdentification2 {
 	#[serde(rename = "SysId")]
-	pub sys_id: String,
+	pub sys_id: Max35Text,
 	#[serde(rename = "SysNm", skip_serializing_if = "Option::is_none")]
-	pub sys_nm: Option<String>,
+	pub sys_nm: Option<Max140Text>,
 	#[serde(rename = "CtryOfJursdctn", skip_serializing_if = "Option::is_none")]
-	pub ctry_of_jursdctn: Option<String>,
+	pub ctry_of_jursdctn: Option<CountryCode>,
 	#[serde(rename = "CSDLglNm", skip_serializing_if = "Option::is_none")]
-	pub csd_lgl_nm: Option<String>,
+	pub csd_lgl_nm: Option<Max140Text>,
 	#[serde(rename = "LEI", skip_serializing_if = "Option::is_none")]
-	pub lei: Option<String>,
+	pub lei: Option<LEIIdentifier>,
 	#[serde(rename = "RspnsblPty", skip_serializing_if = "Option::is_none")]
 	pub rspnsbl_pty: Option<Vec<Contact9>>,
 }
@@ -269,9 +269,9 @@ pub struct SettlementFailsReportHeader2 {
 	#[serde(rename = "RptgPrd")]
 	pub rptg_prd: DatePeriod2,
 	#[serde(rename = "Ccy")]
-	pub ccy: String,
+	pub ccy: ActiveCurrencyCode,
 	#[serde(rename = "RptSts")]
-	pub rpt_sts: String,
+	pub rpt_sts: TransactionOperationType4Code,
 	#[serde(rename = "SctiesSttlmSys")]
 	pub scties_sttlm_sys: SecuritiesSettlementSystemIdentification2,
 }
@@ -281,9 +281,9 @@ pub struct SettlementFailsReportHeader2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SettlementFailureReason2 {
 	#[serde(rename = "MainRsns")]
-	pub main_rsns: String,
+	pub main_rsns: Max2048Text,
 	#[serde(rename = "EffcncyImprvmt")]
-	pub effcncy_imprvmt: String,
+	pub effcncy_imprvmt: Max2048Text,
 }
 
 
@@ -291,7 +291,7 @@ pub struct SettlementFailureReason2 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SettlementFailureReason3 {
 	#[serde(rename = "AvrgDrtn", skip_serializing_if = "Option::is_none")]
-	pub avrg_drtn: Option<f64>,
+	pub avrg_drtn: Option<Max2Fraction1NonNegativeNumber>,
 	#[serde(rename = "Desc")]
 	pub desc: Vec<SettlementFailureReason2>,
 }
@@ -315,7 +315,7 @@ pub struct SettlementTotalData1 {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryData1 {
 	#[serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none")]
-	pub plc_and_nm: Option<String>,
+	pub plc_and_nm: Option<Max350Text>,
 	#[serde(rename = "Envlp")]
 	pub envlp: SupplementaryDataEnvelope1,
 }
@@ -329,15 +329,22 @@ pub struct SupplementaryDataEnvelope1 {
 
 // TransactionOperationType4Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct TransactionOperationType4Code {
-	#[serde(rename = "TransactionOperationType4Code")]
-	pub transaction_operation_type4_code: String,
+pub enum TransactionOperationType4Code {
+	#[serde(rename = "NEWT")]
+	CodeNEWT,
+	#[serde(rename = "AMND")]
+	CodeAMND,
+	#[serde(rename = "CANC")]
+	CodeCANC,
+
+	#[default]
+	UNKOWN
 }
 
 
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct TrueFalseIndicator {
-	#[serde(rename = "TrueFalseIndicator")]
+	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
 }
