@@ -1,11 +1,11 @@
 shared-version = true
 allow-branch = ["main"]
 tag = true
-tag-prefix = "v"
+tag-prefix = ""
 tag-message = "Version {{version}} release"
 push = true
 push-remote = "origin"
-pre-release-commit-message = "chore(release): prepare for {{version}} release"
+pre-release-commit-message = "preparing for {{version}} release"
 consolidate-commits = true
 sign-commit = false  # Disable GPG signing for commits
 sign-tag = false     # Disable GPG signing for tags
