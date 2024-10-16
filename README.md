@@ -1,10 +1,14 @@
-# Open Payments - Message Parsing Library
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Open-Payments/.github/refs/heads/main/profile/logo-white.png" />
+</p>
+
+# Messages Library
 
 [![Apache License 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![GitHub issues](https://img.shields.io/github/issues/Open-Payments/messages)](https://github.com/Open-Payments/messages/issues)
 
-The Open Payments library provides tools for parsing, validating, and transforming financial messages, with support for ISO 20022 and FedNow message formats. The library is designed to help developers integrate financial message handling into their Rust applications, using serde for (de)serialization.
+The library provides tools for parsing, validating, and transforming financial messages, with support for ISO 20022 and FedNow message formats. The library is designed to help developers integrate financial message handling into their Rust applications, using serde for (de)serialization.
 
 ---
 
