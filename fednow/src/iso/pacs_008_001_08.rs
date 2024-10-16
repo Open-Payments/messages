@@ -1146,6 +1146,7 @@ pub struct Max350Text {
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 #[serde(transparent)]
 pub struct Max35Text {
+	#[serde(rename = "$value")]
 	pub max35_text: String,
 }
 
