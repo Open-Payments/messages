@@ -87,7 +87,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -141,7 +140,6 @@ pub enum Authorisation1Code {
 	CodeFSUM,
 	#[serde(rename = "ILEV")]
 	CodeILEV,
-
 }
 
 
@@ -283,7 +281,6 @@ pub enum CopyDuplicate1Code {
 	CodeCOPY,
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
-
 }
 
 
@@ -303,7 +300,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -531,7 +527,6 @@ pub enum ExchangeRateType1Code {
 	CodeSALE,
 	#[serde(rename = "AGRD")]
 	CodeAGRD,
-
 }
 
 
@@ -957,7 +952,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1165,7 +1159,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 
@@ -1177,7 +1170,6 @@ pub enum Priority2Code {
 	CodeHIGH,
 	#[serde(rename = "NORM")]
 	CodeNORM,
-
 }
 
 
@@ -1463,7 +1455,6 @@ pub enum TaxRecordPeriod1Code {
 	CodeHLF1,
 	#[serde(rename = "HLF2")]
 	CodeHLF2,
-
 }
 
 

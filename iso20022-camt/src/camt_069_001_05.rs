@@ -77,7 +77,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -517,7 +516,6 @@ pub enum QueryType2Code {
 	CodeMODF,
 	#[serde(rename = "DELD")]
 	CodeDELD,
-
 }
 
 
@@ -585,7 +583,6 @@ pub enum StandingOrderQueryType1Code {
 	CodeSLSL,
 	#[serde(rename = "SWLS")]
 	CodeSWLS,
-
 }
 
 
@@ -679,7 +676,6 @@ pub enum StandingOrderType1Code {
 	CodeUSTO,
 	#[serde(rename = "PSTO")]
 	CodePSTO,
-
 }
 
 

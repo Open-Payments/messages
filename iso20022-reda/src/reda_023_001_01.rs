@@ -35,7 +35,6 @@ pub enum DataModification1Code {
 	CodeUPDT,
 	#[serde(rename = "DELT")]
 	CodeDELT,
-
 }
 
 

@@ -49,7 +49,6 @@ pub enum AssetClassSubProductType19Code {
 	CodeDLVR,
 	#[serde(rename = "NDLV")]
 	CodeNDLV,
-
 }
 
 
@@ -109,7 +108,6 @@ pub enum BenchmarkCurveName2Code {
 	CodeBUBO,
 	#[serde(rename = "BBSW")]
 	CodeBBSW,
-
 }
 
 
@@ -151,7 +149,6 @@ pub enum BondType1Code {
 	CodeCVDB,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -345,7 +342,6 @@ pub enum EmissionAllowanceProductType1Code {
 	CodeCERE,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -385,7 +381,6 @@ pub enum EquityReturnParameter1Code {
 	CodePRVO,
 	#[serde(rename = "PRBP")]
 	CodePRBP,
-
 }
 
 
@@ -435,7 +430,6 @@ pub enum FinancialInstrumentContractType1Code {
 	CodeFFAS,
 	#[serde(rename = "FWOS")]
 	CodeFWOS,
-
 }
 
 
@@ -615,7 +609,6 @@ pub enum NonEquityInstrumentReportingClassification1Code {
 	CodeETCS,
 	#[serde(rename = "ETNS")]
 	CodeETNS,
-
 }
 
 
@@ -663,7 +656,6 @@ pub enum RateBasis1Code {
 	CodeWEEK,
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
-
 }
 
 
@@ -727,7 +719,6 @@ pub enum SwapType1Code {
 	CodeIFSC,
 	#[serde(rename = "OSMC")]
 	CodeOSMC,
-
 }
 
 
@@ -739,7 +730,6 @@ pub enum TradingVenue2Code {
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
-
 }
 
 
@@ -823,7 +813,6 @@ pub enum UnderlyingContractForDifferenceType3Code {
 	CodeOPEQ,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -833,7 +822,6 @@ pub enum UnderlyingEquityType3Code {
 	#[default]
 	#[serde(rename = "BSKT")]
 	CodeBSKT,
-
 }
 
 
@@ -849,7 +837,6 @@ pub enum UnderlyingEquityType4Code {
 	CodeOTHR,
 	#[serde(rename = "VOLI")]
 	CodeVOLI,
-
 }
 
 
@@ -865,7 +852,6 @@ pub enum UnderlyingEquityType5Code {
 	CodeSHRS,
 	#[serde(rename = "DVSE")]
 	CodeDVSE,
-
 }
 
 
@@ -889,7 +875,6 @@ pub enum UnderlyingEquityType6Code {
 	CodeSTIX,
 	#[serde(rename = "VOLI")]
 	CodeVOLI,
-
 }
 
 
@@ -905,5 +890,4 @@ pub enum UnderlyingInterestRateType3Code {
 	CodeINTR,
 	#[serde(rename = "IFUT")]
 	CodeIFUT,
-
 }

@@ -71,7 +71,6 @@ pub enum Modification1Code {
 	CodeDELE,
 	#[serde(rename = "ADDD")]
 	CodeADDD,
-
 }
 
 

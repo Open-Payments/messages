@@ -163,7 +163,6 @@ pub enum Status6Code {
 	CodeCOMP,
 	#[serde(rename = "QUED")]
 	CodeQUED,
-
 }
 
 

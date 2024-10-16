@@ -245,7 +245,6 @@ pub enum QueryType2Code {
 	CodeMODF,
 	#[serde(rename = "DELD")]
 	CodeDELD,
-
 }
 
 
@@ -343,7 +342,6 @@ pub enum SystemEventType2Code {
 	CodeNPCT,
 	#[serde(rename = "ESTF")]
 	CodeESTF,
-
 }
 
 

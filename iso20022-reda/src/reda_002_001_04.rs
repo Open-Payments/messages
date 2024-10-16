@@ -123,7 +123,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -183,7 +182,6 @@ pub enum CalculationBasis2Code {
 	CodeMNTH,
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
-
 }
 
 
@@ -227,7 +225,6 @@ pub enum ChargeType9Code {
 	CodeEQUL,
 	#[serde(rename = "PENA")]
 	CodePENA,
-
 }
 
 
@@ -313,7 +310,6 @@ pub enum DistributionPolicy1Code {
 	CodeDIST,
 	#[serde(rename = "ACCU")]
 	CodeACCU,
-
 }
 
 
@@ -335,7 +331,6 @@ pub enum EUCapitalGain2Code {
 	CodeEUSO,
 	#[serde(rename = "UKWN")]
 	CodeUKWN,
-
 }
 
 
@@ -349,7 +344,6 @@ pub enum EUDividendStatus1Code {
 	CodeDIVO,
 	#[serde(rename = "UKWN")]
 	CodeUKWN,
-
 }
 
 
@@ -391,7 +385,6 @@ pub enum EventFrequency1Code {
 	CodeOVNG,
 	#[serde(rename = "ONDE")]
 	CodeONDE,
-
 }
 
 
@@ -451,7 +444,6 @@ pub enum FormOfSecurity1Code {
 	CodeBEAR,
 	#[serde(rename = "REGD")]
 	CodeREGD,
-
 }
 
 
@@ -641,7 +633,6 @@ pub enum PriceMethod1Code {
 	CodeFORW,
 	#[serde(rename = "HIST")]
 	CodeHIST,
-
 }
 
 
@@ -911,7 +902,6 @@ pub enum TaxType12Code {
 	CodeZWIS,
 	#[serde(rename = "MIET")]
 	CodeMIET,
-
 }
 
 
@@ -925,7 +915,6 @@ pub enum TaxableIncomePerShareCalculated2Code {
 	CodeTSIN,
 	#[serde(rename = "UKWN")]
 	CodeUKWN,
-
 }
 
 
@@ -969,7 +958,6 @@ pub enum TypeOfPrice6Code {
 	CodeACTU,
 	#[serde(rename = "NAUP")]
 	CodeNAUP,
-
 }
 
 
@@ -1007,7 +995,6 @@ pub enum TypeOfPrice9Code {
 	CodeGUAR,
 	#[serde(rename = "ENAV")]
 	CodeENAV,
-
 }
 
 
@@ -1091,7 +1078,6 @@ pub enum ValuationTiming1Code {
 	CodeUSUA,
 	#[serde(rename = "PATC")]
 	CodePATC,
-
 }
 
 

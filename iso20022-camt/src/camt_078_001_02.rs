@@ -107,7 +107,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -245,7 +244,6 @@ pub enum CopyDuplicate1Code {
 	CodeCOPY,
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
-
 }
 
 
@@ -265,7 +263,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -731,7 +728,6 @@ pub enum MovementResponseType1Code {
 	CodeFULL,
 	#[serde(rename = "STTS")]
 	CodeSTTS,
-
 }
 
 
@@ -887,7 +883,6 @@ pub enum SecuritiesSettlementStatus1Code {
 	CodePEND,
 	#[serde(rename = "PENF")]
 	CodePENF,
-
 }
 
 
@@ -939,7 +934,6 @@ pub enum TransactionProcessingStatus3Code {
 	CodeREJT,
 	#[serde(rename = "REPR")]
 	CodeREPR,
-
 }
 
 

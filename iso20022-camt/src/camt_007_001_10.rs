@@ -41,7 +41,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -255,7 +254,6 @@ pub enum Instruction1Code {
 	CodeTTIL,
 	#[serde(rename = "TFRO")]
 	CodeTFRO,
-
 }
 
 
@@ -417,7 +415,6 @@ pub enum PaymentInstrument1Code {
 	CodeRTI,
 	#[serde(rename = "CAN")]
 	CodeCAN,
-
 }
 
 
@@ -487,7 +484,6 @@ pub enum PaymentType3Code {
 	CodeOND,
 	#[serde(rename = "MGL")]
 	CodeMGL,
-
 }
 
 
@@ -565,7 +561,6 @@ pub enum Priority5Code {
 	CodeNORM,
 	#[serde(rename = "URGT")]
 	CodeURGT,
-
 }
 
 

@@ -137,7 +137,6 @@ pub enum SchemeIdentificationType1Code {
 	CodePOSI,
 	#[serde(rename = "CLIM")]
 	CodeCLIM,
-
 }
 
 

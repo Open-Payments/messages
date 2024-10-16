@@ -90,7 +90,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -242,7 +241,6 @@ pub enum ClearingChannel2Code {
 	CodeMPNS,
 	#[serde(rename = "BOOK")]
 	CodeBOOK,
-
 }
 
 
@@ -322,7 +320,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -492,7 +489,6 @@ pub enum DocumentType3Code {
 	CodePUOR,
 	#[serde(rename = "SCOR")]
 	CodeSCOR,
-
 }
 
 
@@ -532,7 +528,6 @@ pub enum DocumentType6Code {
 	CodeTSUT,
 	#[serde(rename = "PUOR")]
 	CodePUOR,
-
 }
 
 
@@ -798,7 +793,6 @@ pub enum Frequency6Code {
 	CodeINDA,
 	#[serde(rename = "FRTN")]
 	CodeFRTN,
-
 }
 
 
@@ -1126,7 +1120,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1314,7 +1307,6 @@ pub enum PaymentMethod4Code {
 	CodeDD,
 	#[serde(rename = "TRA")]
 	CodeTRA,
-
 }
 
 
@@ -1464,7 +1456,6 @@ pub enum PreferredContactMethod1Code {
 	CodeFAXX,
 	#[serde(rename = "CELL")]
 	CodeCELL,
-
 }
 
 
@@ -1476,7 +1467,6 @@ pub enum Priority2Code {
 	CodeHIGH,
 	#[serde(rename = "NORM")]
 	CodeNORM,
-
 }
 
 
@@ -1604,7 +1594,6 @@ pub enum SequenceType3Code {
 	CodeOOFF,
 	#[serde(rename = "RPRE")]
 	CodeRPRE,
-
 }
 
 
@@ -1654,7 +1643,6 @@ pub enum SettlementMethod1Code {
 	CodeCOVE,
 	#[serde(rename = "CLRG")]
 	CodeCLRG,
-
 }
 
 
@@ -1902,7 +1890,6 @@ pub enum TaxRecordPeriod1Code {
 	CodeHLF1,
 	#[serde(rename = "HLF2")]
 	CodeHLF2,
-
 }
 
 

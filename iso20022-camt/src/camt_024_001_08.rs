@@ -95,7 +95,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -353,7 +352,6 @@ pub enum Frequency2Code {
 	CodeINDA,
 	#[serde(rename = "OVNG")]
 	CodeOVNG,
-
 }
 
 

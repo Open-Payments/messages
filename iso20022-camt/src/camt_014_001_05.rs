@@ -161,7 +161,6 @@ pub enum ErrorHandling1Code {
 	CodeX030,
 	#[serde(rename = "X050")]
 	CodeX050,
-
 }
 
 
@@ -457,7 +456,6 @@ pub enum MemberStatus1Code {
 	CodeDLTD,
 	#[serde(rename = "JOIN")]
 	CodeJOIN,
-
 }
 
 

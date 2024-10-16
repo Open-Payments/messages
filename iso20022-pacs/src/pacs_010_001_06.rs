@@ -95,7 +95,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -197,7 +196,6 @@ pub enum ClearingChannel2Code {
 	CodeMPNS,
 	#[serde(rename = "BOOK")]
 	CodeBOOK,
-
 }
 
 
@@ -719,7 +717,6 @@ pub enum Priority2Code {
 	CodeHIGH,
 	#[serde(rename = "NORM")]
 	CodeNORM,
-
 }
 
 
@@ -733,7 +730,6 @@ pub enum Priority3Code {
 	CodeHIGH,
 	#[serde(rename = "NORM")]
 	CodeNORM,
-
 }
 
 

@@ -73,7 +73,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -111,7 +110,6 @@ pub enum BalanceCounterparty1Code {
 	CodeBILA,
 	#[serde(rename = "MULT")]
 	CodeMULT,
-
 }
 
 

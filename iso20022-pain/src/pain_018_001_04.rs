@@ -113,7 +113,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -167,7 +166,6 @@ pub enum Authorisation1Code {
 	CodeFSUM,
 	#[serde(rename = "ILEV")]
 	CodeILEV,
-
 }
 
 
@@ -549,7 +547,6 @@ pub enum Frequency10Code {
 	CodeMIAN,
 	#[serde(rename = "QURT")]
 	CodeQURT,
-
 }
 
 
@@ -597,7 +594,6 @@ pub enum Frequency6Code {
 	CodeINDA,
 	#[serde(rename = "FRTN")]
 	CodeFRTN,
-
 }
 
 
@@ -837,7 +833,6 @@ pub enum MandateClassification1Code {
 	CodeUSGB,
 	#[serde(rename = "VARI")]
 	CodeVARI,
-
 }
 
 
@@ -1033,7 +1028,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1211,7 +1205,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 
@@ -1257,7 +1250,6 @@ pub enum SequenceType2Code {
 	CodeRCUR,
 	#[serde(rename = "OOFF")]
 	CodeOOFF,
-
 }
 
 

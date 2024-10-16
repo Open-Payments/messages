@@ -43,7 +43,6 @@ pub enum AccountLevel1Code {
 	CodeINTM,
 	#[serde(rename = "SMRY")]
 	CodeSMRY,
-
 }
 
 
@@ -57,7 +56,6 @@ pub enum AccountLevel2Code {
 	CodeSMRY,
 	#[serde(rename = "DETL")]
 	CodeDETL,
-
 }
 
 
@@ -125,7 +123,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -197,7 +194,6 @@ pub enum BalanceAdjustmentType1Code {
 	CodeFLOT,
 	#[serde(rename = "CLLD")]
 	CodeCLLD,
-
 }
 
 
@@ -315,7 +311,6 @@ pub enum BillingChargeMethod1Code {
 	CodeZPRC,
 	#[serde(rename = "BBSE")]
 	CodeBBSE,
-
 }
 
 
@@ -351,7 +346,6 @@ pub enum BillingCurrencyType1Code {
 	CodeSTLM,
 	#[serde(rename = "PRCG")]
 	CodePRCG,
-
 }
 
 
@@ -367,7 +361,6 @@ pub enum BillingCurrencyType2Code {
 	CodePRCG,
 	#[serde(rename = "HOST")]
 	CodeHOST,
-
 }
 
 
@@ -707,7 +700,6 @@ pub enum BillingStatementStatus1Code {
 	CodeRPLC,
 	#[serde(rename = "TEST")]
 	CodeTEST,
-
 }
 
 
@@ -745,7 +737,6 @@ pub enum BillingSubServiceQualifier1Code {
 	CodeSEQN,
 	#[serde(rename = "MACT")]
 	CodeMACT,
-
 }
 
 
@@ -765,7 +756,6 @@ pub enum BillingTaxCalculationMethod1Code {
 	CodeMTDD,
 	#[serde(rename = "UDFD")]
 	CodeUDFD,
-
 }
 
 
@@ -919,7 +909,6 @@ pub enum CompensationMethod1Code {
 	CodeINVD,
 	#[serde(rename = "DDBT")]
 	CodeDDBT,
-
 }
 
 
@@ -1377,7 +1366,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1553,7 +1541,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 
@@ -1615,7 +1602,6 @@ pub enum ServiceAdjustmentType1Code {
 	CodeCOMP,
 	#[serde(rename = "NCMP")]
 	CodeNCMP,
-
 }
 
 
@@ -1635,7 +1621,6 @@ pub enum ServicePaymentMethod1Code {
 	CodeWVED,
 	#[serde(rename = "FREE")]
 	CodeFREE,
-
 }
 
 
@@ -1661,7 +1646,6 @@ pub enum ServiceTaxDesignation1Code {
 	CodeZERO,
 	#[serde(rename = "TAXE")]
 	CodeTAXE,
-
 }
 
 

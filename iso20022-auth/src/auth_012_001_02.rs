@@ -59,7 +59,6 @@ pub enum BrokeredDeal1Code {
 	CodeBILA,
 	#[serde(rename = "BROK")]
 	CodeBROK,
-
 }
 
 
@@ -91,7 +90,6 @@ pub enum CollateralPool1Code {
 	CodeNOPL,
 	#[serde(rename = "POOL")]
 	CodePOOL,
-
 }
 
 
@@ -201,7 +199,6 @@ pub enum InterestRateType1Code {
 	CodeFIXE,
 	#[serde(rename = "VARI")]
 	CodeVARI,
-
 }
 
 
@@ -267,7 +264,6 @@ pub enum MoneyMarketTransactionType1Code {
 	CodeBORR,
 	#[serde(rename = "LEND")]
 	CodeLEND,
-
 }
 
 
@@ -289,7 +285,6 @@ pub enum NovationStatus1Code {
 	CodeNONO,
 	#[serde(rename = "NOVA")]
 	CodeNOVA,
-
 }
 
 
@@ -317,7 +312,6 @@ pub enum ReportPeriodActivity3Code {
 	CodeNOTX,
 	#[serde(rename = "NORA")]
 	CodeNORA,
-
 }
 
 
@@ -419,7 +413,6 @@ pub enum SpecialCollateral2Code {
 	CodeSPEC,
 	#[serde(rename = "MRRP")]
 	CodeMRRP,
-
 }
 
 
@@ -451,5 +444,4 @@ pub enum TransactionOperationType1Code {
 	CodeCORR,
 	#[serde(rename = "NEWT")]
 	CodeNEWT,
-
 }

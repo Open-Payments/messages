@@ -153,7 +153,6 @@ pub enum CollateralQualityType1Code {
 	CodeNOTR,
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
-
 }
 
 
@@ -165,7 +164,6 @@ pub enum CollateralRole1Code {
 	CodeGIVE,
 	#[serde(rename = "TAKE")]
 	CodeTAKE,
-
 }
 
 
@@ -193,7 +191,6 @@ pub enum CollateralType6Code {
 	CodeSECU,
 	#[serde(rename = "STCF")]
 	CodeSTCF,
-
 }
 
 
@@ -299,7 +296,6 @@ pub enum ExposureType10Code {
 	CodeSLEB,
 	#[serde(rename = "REPO")]
 	CodeREPO,
-
 }
 
 
@@ -511,7 +507,6 @@ pub enum NoReasonCode {
 	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
-
 }
 
 
@@ -733,7 +728,6 @@ pub enum PriceStatus1Code {
 	CodePNDG,
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
-
 }
 
 
@@ -769,7 +763,6 @@ pub enum RateBasis1Code {
 	CodeWEEK,
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
-
 }
 
 
@@ -837,7 +830,6 @@ pub enum ReinvestmentType1Code {
 	CodeREPM,
 	#[serde(rename = "SDPU")]
 	CodeSDPU,
-
 }
 
 
@@ -847,7 +839,6 @@ pub enum ReportPeriodActivity1Code {
 	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
-
 }
 
 
@@ -969,7 +960,6 @@ pub enum SpecialCollateral1Code {
 	CodeGENE,
 	#[serde(rename = "SPEC")]
 	CodeSPEC,
-
 }
 
 
@@ -981,7 +971,6 @@ pub enum SpecialPurpose2Code {
 	CodeBLNK,
 	#[serde(rename = "NTAV")]
 	CodeNTAV,
-
 }
 
 
@@ -1029,7 +1018,6 @@ pub enum TradeMarket2Code {
 	CodeDMST,
 	#[serde(rename = "FRGN")]
 	CodeFRGN,
-
 }
 
 
@@ -1041,7 +1029,6 @@ pub enum TradeRepositoryReportingType1Code {
 	CodeSWOS,
 	#[serde(rename = "TWOS")]
 	CodeTWOS,
-
 }
 
 

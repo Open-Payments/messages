@@ -291,7 +291,6 @@ pub enum PaymentType3Code {
 	CodeOND,
 	#[serde(rename = "MGL")]
 	CodeMGL,
-
 }
 
 

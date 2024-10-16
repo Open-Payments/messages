@@ -161,7 +161,6 @@ pub enum Priority1Code {
 	CodeNORM,
 	#[serde(rename = "LOWW")]
 	CodeLOWW,
-
 }
 
 
@@ -177,7 +176,6 @@ pub enum QueryType2Code {
 	CodeMODF,
 	#[serde(rename = "DELD")]
 	CodeDELD,
-
 }
 
 

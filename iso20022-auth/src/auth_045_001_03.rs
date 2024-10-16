@@ -209,7 +209,6 @@ pub enum NonEquityAssetClass1Code {
 	CodeETNS,
 	#[serde(rename = "SFPS")]
 	CodeSFPS,
-
 }
 
 
@@ -231,7 +230,6 @@ pub enum NonEquityInstrumentReportingClassification1Code {
 	CodeETCS,
 	#[serde(rename = "ETNS")]
 	CodeETNS,
-
 }
 
 
@@ -321,7 +319,6 @@ pub enum NonEquitySubClassSegmentationCriteria1Code {
 	CodeREOU,
 	#[serde(rename = "UTYP")]
 	CodeUTYP,
-
 }
 
 
@@ -423,7 +420,6 @@ pub enum TradingVenue2Code {
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
-
 }
 
 

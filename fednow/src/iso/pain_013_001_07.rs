@@ -116,7 +116,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -238,7 +237,6 @@ pub enum ChargeBearerType1Code {
 	CodeSHAR,
 	#[serde(rename = "SLEV")]
 	CodeSLEV,
-
 }
 
 
@@ -300,7 +298,6 @@ pub enum ChequeDelivery1Code {
 	CodeRGCD,
 	#[serde(rename = "RGFA")]
 	CodeRGFA,
-
 }
 
 
@@ -328,7 +325,6 @@ pub enum ChequeType2Code {
 	CodeDRFT,
 	#[serde(rename = "ELDR")]
 	CodeELDR,
-
 }
 
 
@@ -398,7 +394,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -674,7 +669,6 @@ pub enum DocumentType3Code {
 	CodePUOR,
 	#[serde(rename = "SCOR")]
 	CodeSCOR,
-
 }
 
 
@@ -714,7 +708,6 @@ pub enum DocumentType6Code {
 	CodeTSUT,
 	#[serde(rename = "PUOR")]
 	CodePUOR,
-
 }
 
 
@@ -1066,7 +1059,6 @@ pub enum Instruction3Code {
 	CodePHOB,
 	#[serde(rename = "TELB")]
 	CodeTELB,
-
 }
 
 
@@ -1226,7 +1218,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1372,7 +1363,6 @@ pub enum PaymentMethod7Code {
 	CodeCHK,
 	#[serde(rename = "TRF")]
 	CodeTRF,
-
 }
 
 
@@ -1478,7 +1468,6 @@ pub enum PreferredContactMethod1Code {
 	CodeFAXX,
 	#[serde(rename = "CELL")]
 	CodeCELL,
-
 }
 
 
@@ -1490,7 +1479,6 @@ pub enum Priority2Code {
 	CodeHIGH,
 	#[serde(rename = "NORM")]
 	CodeNORM,
-
 }
 
 
@@ -1590,7 +1578,6 @@ pub enum RegulatoryReportingType1Code {
 	CodeDEBT,
 	#[serde(rename = "BOTH")]
 	CodeBOTH,
-
 }
 
 
@@ -1678,7 +1665,6 @@ pub enum RemittanceLocationMethod2Code {
 	CodePOST,
 	#[serde(rename = "SMSM")]
 	CodeSMSM,
-
 }
 
 
@@ -1964,7 +1950,6 @@ pub enum TaxRecordPeriod1Code {
 	CodeHLF1,
 	#[serde(rename = "HLF2")]
 	CodeHLF2,
-
 }
 
 

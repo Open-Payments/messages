@@ -41,7 +41,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -329,7 +328,6 @@ pub enum RequestType1Code {
 	CodeRT04,
 	#[serde(rename = "RT05")]
 	CodeRT05,
-
 }
 
 
@@ -359,7 +357,6 @@ pub enum RequestType2Code {
 	CodeRT14,
 	#[serde(rename = "RT15")]
 	CodeRT15,
-
 }
 
 
@@ -521,7 +518,6 @@ pub enum SystemSecuritiesAccountType1Code {
 	CodeCSDO,
 	#[serde(rename = "ISSA")]
 	CodeISSA,
-
 }
 
 

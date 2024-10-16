@@ -41,7 +41,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -59,7 +58,6 @@ pub enum AnyMIC1Code {
 	#[default]
 	#[serde(rename = "ANYM")]
 	CodeANYM,
-
 }
 
 
@@ -181,7 +179,6 @@ pub enum DerivativeEventType3Code {
 	CodeTRAD,
 	#[serde(rename = "UPDT")]
 	CodeUPDT,
-
 }
 
 
@@ -219,7 +216,6 @@ pub enum FinancialInstrumentContractType2Code {
 	CodeSWPT,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -245,7 +241,6 @@ pub enum FinancialPartySectorType2Code {
 	CodeREIN,
 	#[serde(rename = "UCIT")]
 	CodeUCIT,
-
 }
 
 
@@ -261,7 +256,6 @@ pub enum Frequency14Code {
 	CodeMNTH,
 	#[serde(rename = "ADHO")]
 	CodeADHO,
-
 }
 
 
@@ -437,7 +431,6 @@ pub enum ModificationLevel1Code {
 	CodePSTN,
 	#[serde(rename = "TCTN")]
 	CodeTCTN,
-
 }
 
 
@@ -519,7 +512,6 @@ pub enum NonFinancialPartySector1Code {
 	CodeAHAE,
 	#[serde(rename = "AEOB")]
 	CodeAEOB,
-
 }
 
 
@@ -529,7 +521,6 @@ pub enum NotAvailable1Code {
 	#[default]
 	#[serde(rename = "NTAV")]
 	CodeNTAV,
-
 }
 
 
@@ -539,7 +530,6 @@ pub enum NotReported1Code {
 	#[default]
 	#[serde(rename = "NORP")]
 	CodeNORP,
-
 }
 
 
@@ -551,7 +541,6 @@ pub enum Operation3Code {
 	CodeANDD,
 	#[serde(rename = "ORRR")]
 	CodeORRR,
-
 }
 
 
@@ -615,7 +604,6 @@ pub enum PartyNatureType1Code {
 	CodeFIIN,
 	#[serde(rename = "CCPS")]
 	CodeCCPS,
-
 }
 
 
@@ -667,7 +655,6 @@ pub enum ProductType4Code {
 	CodeCOMM,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -925,7 +912,6 @@ pub enum TransactionOperationType8Code {
 	CodeVALU,
 	#[serde(rename = "MARU")]
 	CodeMARU,
-
 }
 
 
@@ -975,5 +961,4 @@ pub enum WeekDay3Code {
 	CodeWDAY,
 	#[serde(rename = "WEND")]
 	CodeWEND,
-
 }

@@ -87,7 +87,6 @@ pub enum AcknowledgementReason5Code {
 	CodeRQWV,
 	#[serde(rename = "LATE")]
 	CodeLATE,
-
 }
 
 
@@ -151,7 +150,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -293,7 +291,6 @@ pub enum CancelledStatusReason13Code {
 	CodeOTHR,
 	#[serde(rename = "CTHP")]
 	CodeCTHP,
-
 }
 
 
@@ -373,7 +370,6 @@ pub enum CopyDuplicate1Code {
 	CodeCOPY,
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
-
 }
 
 
@@ -393,7 +389,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -665,7 +660,6 @@ pub enum FailingReason3Code {
 	CodePRSY,
 	#[serde(rename = "INBC")]
 	CodeINBC,
-
 }
 
 
@@ -1071,7 +1065,6 @@ pub enum MovementResponseType1Code {
 	CodeFULL,
 	#[serde(rename = "STTS")]
 	CodeSTTS,
-
 }
 
 
@@ -1091,7 +1084,6 @@ pub enum NoReasonCode {
 	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
-
 }
 
 
@@ -1255,7 +1247,6 @@ pub enum PendingReason10Code {
 	CodePRSY,
 	#[serde(rename = "INBC")]
 	CodeINBC,
-
 }
 
 
@@ -1375,7 +1366,6 @@ pub enum ProcessingPosition3Code {
 	CodeBEFO,
 	#[serde(rename = "INFO")]
 	CodeINFO,
-
 }
 
 
@@ -1535,7 +1525,6 @@ pub enum RejectionReason33Code {
 	CodeMINO,
 	#[serde(rename = "MUNO")]
 	CodeMUNO,
-
 }
 
 

@@ -337,7 +337,6 @@ pub enum TransactionOperationType4Code {
 	CodeAMND,
 	#[serde(rename = "CANC")]
 	CodeCANC,
-
 }
 
 

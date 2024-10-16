@@ -41,7 +41,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -125,7 +124,6 @@ pub enum ErrorHandling1Code {
 	CodeX030,
 	#[serde(rename = "X050")]
 	CodeX050,
-
 }
 
 
@@ -261,7 +259,6 @@ pub enum LockStatus1Code {
 	CodeLOCK,
 	#[serde(rename = "ULCK")]
 	CodeULCK,
-
 }
 
 
@@ -387,7 +384,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -591,7 +587,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 
@@ -609,7 +604,6 @@ pub enum RequestType1Code {
 	CodeRT04,
 	#[serde(rename = "RT05")]
 	CodeRT05,
-
 }
 
 
@@ -639,7 +633,6 @@ pub enum RequestType2Code {
 	CodeRT14,
 	#[serde(rename = "RT15")]
 	CodeRT15,
-
 }
 
 
@@ -653,7 +646,6 @@ pub enum ResidenceType1Code {
 	CodeFRGN,
 	#[serde(rename = "MXED")]
 	CodeMXED,
-
 }
 
 

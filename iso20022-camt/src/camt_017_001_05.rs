@@ -97,7 +97,6 @@ pub enum ErrorHandling1Code {
 	CodeX030,
 	#[serde(rename = "X050")]
 	CodeX050,
-
 }
 
 

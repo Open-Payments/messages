@@ -125,7 +125,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -185,7 +184,6 @@ pub enum BalanceStatus1Code {
 	CodePDNG,
 	#[serde(rename = "STLD")]
 	CodeSTLD,
-
 }
 
 
@@ -407,7 +405,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -639,7 +636,6 @@ pub enum Frequency2Code {
 	CodeINDA,
 	#[serde(rename = "OVNG")]
 	CodeOVNG,
-
 }
 
 
@@ -883,7 +879,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1051,7 +1046,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 
@@ -1087,7 +1081,6 @@ pub enum ProcessingType1Code {
 	CodeCOLD,
 	#[serde(rename = "CSDB")]
 	CodeCSDB,
-
 }
 
 
@@ -1213,7 +1206,6 @@ pub enum StandingOrderType1Code {
 	CodeUSTO,
 	#[serde(rename = "PSTO")]
 	CodePSTO,
-
 }
 
 
@@ -1367,7 +1359,6 @@ pub enum SystemBalanceType2Code {
 	CodeADWR,
 	#[serde(rename = "AIDR")]
 	CodeAIDR,
-
 }
 
 

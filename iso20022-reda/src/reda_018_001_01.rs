@@ -41,7 +41,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -327,7 +326,6 @@ pub enum SystemSecuritiesAccountType1Code {
 	CodeCSDO,
 	#[serde(rename = "ISSA")]
 	CodeISSA,
-
 }
 
 

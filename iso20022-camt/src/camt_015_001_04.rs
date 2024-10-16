@@ -247,7 +247,6 @@ pub enum PaymentRole1Code {
 	CodeBKMG,
 	#[serde(rename = "STMG")]
 	CodeSTMG,
-
 }
 
 

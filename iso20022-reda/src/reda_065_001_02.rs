@@ -103,7 +103,6 @@ pub enum ErrorHandling1Code {
 	CodeX030,
 	#[serde(rename = "X050")]
 	CodeX050,
-
 }
 
 
@@ -307,5 +306,4 @@ pub enum SystemStatus3Code {
 	CodeCLSD,
 	#[serde(rename = "RMPS")]
 	CodeRMPS,
-
 }

@@ -87,7 +87,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -179,7 +178,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -473,7 +471,6 @@ pub enum LimitStatus1Code {
 	CodeDELD,
 	#[serde(rename = "REQD")]
 	CodeREQD,
-
 }
 
 
@@ -521,7 +518,6 @@ pub enum LimitType3Code {
 	CodeACOL,
 	#[serde(rename = "EXGT")]
 	CodeEXGT,
-
 }
 
 

@@ -125,7 +125,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -321,7 +320,6 @@ pub enum ChargeType12Code {
 	CodeSPCN,
 	#[serde(rename = "TRAN")]
 	CodeTRAN,
-
 }
 
 
@@ -365,7 +363,6 @@ pub enum CommissionType6Code {
 	CodeBEND,
 	#[serde(rename = "CDPL")]
 	CodeCDPL,
-
 }
 
 
@@ -405,7 +402,6 @@ pub enum CurrencyDesignation1Code {
 	CodeONSH,
 	#[serde(rename = "OFFS")]
 	CodeOFFS,
-
 }
 
 
@@ -445,7 +441,6 @@ pub enum DistributionPolicy1Code {
 	CodeDIST,
 	#[serde(rename = "ACCU")]
 	CodeACCU,
-
 }
 
 
@@ -521,7 +516,6 @@ pub enum FlowDirectionType1Code {
 	CodeINCG,
 	#[serde(rename = "OUTG")]
 	CodeOUTG,
-
 }
 
 
@@ -545,7 +539,6 @@ pub enum FormOfSecurity1Code {
 	CodeBEAR,
 	#[serde(rename = "REGD")]
 	CodeREGD,
-
 }
 
 
@@ -803,7 +796,6 @@ pub enum InvestmentFundTransactionInType1Code {
 	CodeCROI,
 	#[serde(rename = "RDIV")]
 	CodeRDIV,
-
 }
 
 
@@ -829,7 +821,6 @@ pub enum InvestmentFundTransactionOutType1Code {
 	CodeINSP,
 	#[serde(rename = "CROO")]
 	CodeCROO,
-
 }
 
 
@@ -953,7 +944,6 @@ pub enum OrderQuantityType2Code {
 	CodeUNIT,
 	#[serde(rename = "CASH")]
 	CodeCASH,
-
 }
 
 
@@ -1149,7 +1139,6 @@ pub enum TypeOfPrice10Code {
 	CodeDDVR,
 	#[serde(rename = "ACTU")]
 	CodeACTU,
-
 }
 
 

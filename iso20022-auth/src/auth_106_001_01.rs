@@ -183,7 +183,6 @@ pub enum DerivativeEventType3Code {
 	CodeTRAD,
 	#[serde(rename = "UPDT")]
 	CodeUPDT,
-
 }
 
 
@@ -321,7 +320,6 @@ pub enum Frequency19Code {
 	CodeHOUL,
 	#[serde(rename = "ODMD")]
 	CodeODMD,
-
 }
 
 
@@ -555,7 +553,6 @@ pub enum NotApplicable1Code {
 	#[default]
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
-
 }
 
 
@@ -723,7 +720,6 @@ pub enum ReportPeriodActivity1Code {
 	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
-
 }
 
 
@@ -831,7 +827,6 @@ pub enum TransactionOperationType10Code {
 	CodeMARU,
 	#[serde(rename = "PRTO")]
 	CodePRTO,
-
 }
 
 

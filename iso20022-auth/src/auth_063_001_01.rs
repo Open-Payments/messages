@@ -207,7 +207,6 @@ pub enum SettlementDate6Code {
 	CodeTTWO,
 	#[serde(rename = "SAMD")]
 	CodeSAMD,
-
 }
 
 

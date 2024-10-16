@@ -331,7 +331,6 @@ pub enum NoReasonCode {
 	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
-
 }
 
 
@@ -451,7 +450,6 @@ pub enum OrderEventType1Code {
 	CodeRFQS,
 	#[serde(rename = "RFQR")]
 	CodeRFQR,
-
 }
 
 
@@ -569,7 +567,6 @@ pub enum OrderRestrictionType1Code {
 	CodeVFAR,
 	#[serde(rename = "VFCR")]
 	CodeVFCR,
-
 }
 
 
@@ -583,7 +580,6 @@ pub enum OrderStatus10Code {
 	CodeINAC,
 	#[serde(rename = "SUSP")]
 	CodeSUSP,
-
 }
 
 
@@ -599,7 +595,6 @@ pub enum OrderStatus11Code {
 	CodeINDI,
 	#[serde(rename = "ROUT")]
 	CodeROUT,
-
 }
 
 
@@ -611,7 +606,6 @@ pub enum OrderType3Code {
 	CodeLMTO,
 	#[serde(rename = "STOP")]
 	CodeSTOP,
-
 }
 
 
@@ -633,7 +627,6 @@ pub enum PartyExceptionType1Code {
 	CodeAGGR,
 	#[serde(rename = "PNAL")]
 	CodePNAL,
-
 }
 
 
@@ -645,7 +638,6 @@ pub enum PassiveOrAgressiveType1Code {
 	CodeAGRE,
 	#[serde(rename = "PASV")]
 	CodePASV,
-
 }
 
 
@@ -729,7 +721,6 @@ pub enum PriceStatus1Code {
 	CodePNDG,
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
-
 }
 
 
@@ -743,7 +734,6 @@ pub enum RegulatoryTradingCapacity1Code {
 	CodeDEAL,
 	#[serde(rename = "AOTC")]
 	CodeAOTC,
-
 }
 
 
@@ -823,7 +813,6 @@ pub enum Side6Code {
 	CodeBUYI,
 	#[serde(rename = "SELL")]
 	CodeSELL,
-
 }
 
 
@@ -851,7 +840,6 @@ pub enum TradingVenue2Code {
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
-
 }
 
 
@@ -935,7 +923,6 @@ pub enum ValidityPeriodType1Code {
 	CodeGTTV,
 	#[serde(rename = "IOCV")]
 	CodeIOCV,
-
 }
 
 

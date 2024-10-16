@@ -85,7 +85,6 @@ pub enum ServicesFedNow1 {
 	CodeCTRO,
 	#[serde(rename = "RFPR")]
 	CodeRFPR,
-
 }
 
 

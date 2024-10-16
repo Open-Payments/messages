@@ -95,7 +95,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -259,7 +258,6 @@ pub enum CopyDuplicate1Code {
 	CodeCOPY,
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
-
 }
 
 
@@ -279,7 +277,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -783,7 +780,6 @@ pub enum ProcessingPosition3Code {
 	CodeBEFO,
 	#[serde(rename = "INFO")]
 	CodeINFO,
-
 }
 
 

@@ -113,7 +113,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -231,7 +230,6 @@ pub enum ChargeBearerType1Code {
 	CodeSHAR,
 	#[serde(rename = "SLEV")]
 	CodeSLEV,
-
 }
 
 
@@ -269,7 +267,6 @@ pub enum ClearingChannel2Code {
 	CodeMPNS,
 	#[serde(rename = "BOOK")]
 	CodeBOOK,
-
 }
 
 
@@ -351,7 +348,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -917,7 +913,6 @@ pub enum Frequency6Code {
 	CodeINDA,
 	#[serde(rename = "FRTN")]
 	CodeFRTN,
-
 }
 
 
@@ -1129,7 +1124,6 @@ pub enum Instruction4Code {
 	CodePHOA,
 	#[serde(rename = "TELA")]
 	CodeTELA,
-
 }
 
 
@@ -1191,7 +1185,6 @@ pub enum MandateClassification1Code {
 	CodeUSGB,
 	#[serde(rename = "VARI")]
 	CodeVARI,
-
 }
 
 
@@ -1347,7 +1340,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1543,7 +1535,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 
@@ -1555,7 +1546,6 @@ pub enum Priority2Code {
 	CodeHIGH,
 	#[serde(rename = "NORM")]
 	CodeNORM,
-
 }
 
 
@@ -1569,7 +1559,6 @@ pub enum Priority3Code {
 	CodeHIGH,
 	#[serde(rename = "NORM")]
 	CodeNORM,
-
 }
 
 
@@ -1649,7 +1638,6 @@ pub enum RegulatoryReportingType1Code {
 	CodeDEBT,
 	#[serde(rename = "BOTH")]
 	CodeBOTH,
-
 }
 
 
@@ -1711,7 +1699,6 @@ pub enum RemittanceLocationMethod2Code {
 	CodePOST,
 	#[serde(rename = "SMSM")]
 	CodeSMSM,
-
 }
 
 
@@ -1771,7 +1758,6 @@ pub enum SettlementMethod1Code {
 	CodeCOVE,
 	#[serde(rename = "CLRG")]
 	CodeCLRG,
-
 }
 
 
@@ -2009,7 +1995,6 @@ pub enum TaxRecordPeriod1Code {
 	CodeHLF1,
 	#[serde(rename = "HLF2")]
 	CodeHLF2,
-
 }
 
 

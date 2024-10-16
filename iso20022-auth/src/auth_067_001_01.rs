@@ -215,7 +215,6 @@ pub enum AssetClassDetailedSubProductType16Code {
 	CodeWTIO,
 	#[serde(rename = "ZINC")]
 	CodeZINC,
-
 }
 
 
@@ -287,7 +286,6 @@ pub enum CollateralAccountType3Code {
 	CodeMGIN,
 	#[serde(rename = "DFLT")]
 	CodeDFLT,
-
 }
 
 
@@ -419,7 +417,6 @@ pub enum ProductType7Code {
 	CodeEQUI,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -435,7 +432,6 @@ pub enum SchemeIdentificationType1Code {
 	CodePOSI,
 	#[serde(rename = "CLIM")]
 	CodeCLIM,
-
 }
 
 

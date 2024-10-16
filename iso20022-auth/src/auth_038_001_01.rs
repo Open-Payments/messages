@@ -41,7 +41,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -215,7 +214,6 @@ pub enum NamePrefix1Code {
 	CodeMISS,
 	#[serde(rename = "MADM")]
 	CodeMADM,
-
 }
 
 
@@ -301,7 +299,6 @@ pub enum TaxReportingStatus1Code {
 	CodeACTC,
 	#[serde(rename = "PART")]
 	CodePART,
-
 }
 
 
@@ -315,7 +312,6 @@ pub enum TaxReportingStatus2Code {
 	CodeRJCT,
 	#[serde(rename = "WARN")]
 	CodeWARN,
-
 }
 
 

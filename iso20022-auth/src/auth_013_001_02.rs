@@ -59,7 +59,6 @@ pub enum BrokeredDeal1Code {
 	CodeBILA,
 	#[serde(rename = "BROK")]
 	CodeBROK,
-
 }
 
 
@@ -121,7 +120,6 @@ pub enum FinancialInstrumentProductType1Code {
 	CodeCACM,
 	#[serde(rename = "DPST")]
 	CodeDPST,
-
 }
 
 
@@ -167,7 +165,6 @@ pub enum InterestRateType1Code {
 	CodeFIXE,
 	#[serde(rename = "VARI")]
 	CodeVARI,
-
 }
 
 
@@ -221,7 +218,6 @@ pub enum MoneyMarketTransactionType1Code {
 	CodeBORR,
 	#[serde(rename = "LEND")]
 	CodeLEND,
-
 }
 
 
@@ -255,7 +251,6 @@ pub enum NovationStatus1Code {
 	CodeNONO,
 	#[serde(rename = "NOVA")]
 	CodeNOVA,
-
 }
 
 
@@ -295,7 +290,6 @@ pub enum OptionType1Code {
 	CodeCALL,
 	#[serde(rename = "PUTO")]
 	CodePUTO,
-
 }
 
 
@@ -315,7 +309,6 @@ pub enum ReportPeriodActivity3Code {
 	CodeNOTX,
 	#[serde(rename = "NORA")]
 	CodeNORA,
-
 }
 
 
@@ -365,7 +358,6 @@ pub enum TransactionOperationType1Code {
 	CodeCORR,
 	#[serde(rename = "NEWT")]
 	CodeNEWT,
-
 }
 
 

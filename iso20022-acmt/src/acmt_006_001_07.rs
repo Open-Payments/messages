@@ -43,7 +43,6 @@ pub enum AcceptedStatusReason1Code {
 	CodePLAC,
 	#[serde(rename = "SECT")]
 	CodeSECT,
-
 }
 
 
@@ -69,7 +68,6 @@ pub enum AccountManagementStatus1Code {
 	CodeEXEC,
 	#[serde(rename = "STNP")]
 	CodeSTNP,
-
 }
 
 
@@ -163,7 +161,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -207,7 +204,6 @@ pub enum BlockedReason2Code {
 	CodeSANC,
 	#[serde(rename = "TRAN")]
 	CodeTRAN,
-
 }
 
 
@@ -263,7 +259,6 @@ pub enum ClosedStatusReason1Code {
 	CodeASIN,
 	#[serde(rename = "CLIN")]
 	CodeCLIN,
-
 }
 
 
@@ -305,7 +300,6 @@ pub enum ClosurePendingStatusReason1Code {
 	CodeCLOS,
 	#[serde(rename = "PEND")]
 	CodePEND,
-
 }
 
 
@@ -353,7 +347,6 @@ pub enum DisabledReason2Code {
 	CodeTRAN,
 	#[serde(rename = "REJT")]
 	CodeREJT,
-
 }
 
 
@@ -413,7 +406,6 @@ pub enum EnabledStatusReason1Code {
 	#[default]
 	#[serde(rename = "MODI")]
 	CodeMODI,
-
 }
 
 
@@ -553,7 +545,6 @@ pub enum InvestmentFundTransactionType1Code {
 	CodeSSPL,
 	#[serde(rename = "SUAA")]
 	CodeSUAA,
-
 }
 
 
@@ -635,7 +626,6 @@ pub enum NoReasonCode {
 	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
-
 }
 
 
@@ -699,7 +689,6 @@ pub enum PendingOpeningStatusReason1Code {
 	CodeREST,
 	#[serde(rename = "RIGH")]
 	CodeRIGH,
-
 }
 
 
@@ -749,7 +738,6 @@ pub enum PendingStatusReason1Code {
 	CodeATHP,
 	#[serde(rename = "MODI")]
 	CodeMODI,
-
 }
 
 
@@ -813,7 +801,6 @@ pub enum ProformaStatusReason1Code {
 	CodeMODI,
 	#[serde(rename = "RIGH")]
 	CodeRIGH,
-
 }
 
 
@@ -845,7 +832,6 @@ pub enum RejectedStatusReason6Code {
 	CodeSAFE,
 	#[serde(rename = "NSLA")]
 	CodeNSLA,
-
 }
 
 

@@ -73,7 +73,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -157,7 +156,6 @@ pub enum CopyDuplicate1Code {
 	CodeCOPY,
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
-
 }
 
 
@@ -503,7 +501,6 @@ pub enum ModificationProcessingStatus1Code {
 	CodeMODP,
 	#[serde(rename = "REPR")]
 	CodeREPR,
-
 }
 
 
@@ -525,7 +522,6 @@ pub enum MovementResponseType1Code {
 	CodeFULL,
 	#[serde(rename = "STTS")]
 	CodeSTTS,
-
 }
 
 

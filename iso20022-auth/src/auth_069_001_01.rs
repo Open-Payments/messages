@@ -167,7 +167,6 @@ pub enum ExoticOptionStyle1Code {
 	CodeNOTO,
 	#[serde(rename = "VANI")]
 	CodeVANI,
-
 }
 
 
@@ -249,7 +248,6 @@ pub enum Frequency11Code {
 	CodeWEEK,
 	#[serde(rename = "CRED")]
 	CodeCRED,
-
 }
 
 
@@ -343,7 +341,6 @@ pub enum InterestComputationMethod2Code {
 	CodeA014,
 	#[serde(rename = "NARR")]
 	CodeNARR,
-
 }
 
 
@@ -483,7 +480,6 @@ pub enum OptionEventType1Code {
 	CodeOTHR,
 	#[serde(rename = "TRIG")]
 	CodeTRIG,
-
 }
 
 
@@ -499,7 +495,6 @@ pub enum OptionStyle5Code {
 	CodeBERM,
 	#[serde(rename = "EURO")]
 	CodeEURO,
-
 }
 
 
@@ -511,7 +506,6 @@ pub enum OptionType1Code {
 	CodeCALL,
 	#[serde(rename = "PUTO")]
 	CodePUTO,
-
 }
 
 
@@ -525,7 +519,6 @@ pub enum PhysicalTransferType4Code {
 	CodeOPTL,
 	#[serde(rename = "CASH")]
 	CodeCASH,
-
 }
 
 
@@ -577,7 +570,6 @@ pub enum RateBasis1Code {
 	CodeWEEK,
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
-
 }
 
 
@@ -623,7 +615,6 @@ pub enum SchemeIdentificationType1Code {
 	CodePOSI,
 	#[serde(rename = "CLIM")]
 	CodeCLIM,
-
 }
 
 
@@ -645,7 +636,6 @@ pub enum Standardisation1Code {
 	CodeNSTA,
 	#[serde(rename = "STAN")]
 	CodeSTAN,
-
 }
 
 
@@ -837,5 +827,4 @@ pub enum UnitOfMeasure8Code {
 	CodeFUTU,
 	#[serde(rename = "USTN")]
 	CodeUSTN,
-
 }

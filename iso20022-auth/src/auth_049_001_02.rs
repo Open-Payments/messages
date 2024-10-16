@@ -85,7 +85,6 @@ pub enum MICEntityType1Code {
 	CodeRMKT,
 	#[serde(rename = "SINT")]
 	CodeSINT,
-
 }
 
 
@@ -105,7 +104,6 @@ pub enum MarketIdentification1Code {
 	CodeSGMT,
 	#[serde(rename = "OPRT")]
 	CodeOPRT,
-
 }
 
 
@@ -199,7 +197,6 @@ pub enum Modification1Code {
 	CodeDELE,
 	#[serde(rename = "ADDD")]
 	CodeADDD,
-
 }
 
 

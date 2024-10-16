@@ -41,7 +41,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -497,7 +496,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -645,7 +643,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 
@@ -659,7 +656,6 @@ pub enum QueryType3Code {
 	CodeCHNG,
 	#[serde(rename = "MODF")]
 	CodeMODF,
-
 }
 
 
@@ -753,7 +749,6 @@ pub enum TaxExemptReason1Code {
 	CodeEIFP,
 	#[serde(rename = "EIOP")]
 	CodeEIOP,
-
 }
 
 

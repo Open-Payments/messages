@@ -185,7 +185,6 @@ pub enum BenchmarkCurveName2Code {
 	CodeBUBO,
 	#[serde(rename = "BBSW")]
 	CodeBBSW,
-
 }
 
 
@@ -215,7 +214,6 @@ pub enum CancelledStatusReason15Code {
 	CodeCANI,
 	#[serde(rename = "CSUB")]
 	CodeCSUB,
-
 }
 
 
@@ -481,7 +479,6 @@ pub enum InternalPartyRole1Code {
 	#[default]
 	#[serde(rename = "INTC")]
 	CodeINTC,
-
 }
 
 
@@ -597,7 +594,6 @@ pub enum NoReasonCode {
 	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
-
 }
 
 
@@ -623,7 +619,6 @@ pub enum OptionStyle7Code {
 	CodeEURO,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -637,7 +632,6 @@ pub enum OptionType2Code {
 	CodePUTO,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -749,7 +743,6 @@ pub enum PhysicalTransferType4Code {
 	CodeOPTL,
 	#[serde(rename = "CASH")]
 	CodeCASH,
-
 }
 
 
@@ -769,7 +762,6 @@ pub enum PriceStatus1Code {
 	CodePNDG,
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
-
 }
 
 
@@ -785,7 +777,6 @@ pub enum RateBasis1Code {
 	CodeWEEK,
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
-
 }
 
 
@@ -819,7 +810,6 @@ pub enum RegulatoryTradingCapacity1Code {
 	CodeDEAL,
 	#[serde(rename = "AOTC")]
 	CodeAOTC,
-
 }
 
 
@@ -851,7 +841,6 @@ pub enum ReportingWaiverType1Code {
 	CodeRFPT,
 	#[serde(rename = "SIZE")]
 	CodeSIZE,
-
 }
 
 
@@ -885,7 +874,6 @@ pub enum ReportingWaiverType3Code {
 	CodeTPAC,
 	#[serde(rename = "XFPH")]
 	CodeXFPH,
-
 }
 
 
@@ -1117,7 +1105,6 @@ pub enum Side5Code {
 	CodeSSEX,
 	#[serde(rename = "UNDI")]
 	CodeUNDI,
-
 }
 
 
@@ -1173,5 +1160,4 @@ pub enum VariationType1Code {
 	CodeDECR,
 	#[serde(rename = "INCR")]
 	CodeINCR,
-
 }

@@ -61,7 +61,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -359,7 +358,6 @@ pub enum LimitType3Code {
 	CodeACOL,
 	#[serde(rename = "EXGT")]
 	CodeEXGT,
-
 }
 
 

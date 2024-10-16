@@ -57,7 +57,6 @@ pub enum ClearingAccountType3Code {
 	CodeHOUS,
 	#[serde(rename = "GOSA")]
 	CodeGOSA,
-
 }
 
 
@@ -121,7 +120,6 @@ pub enum CreditQuality1Code {
 	CodeSURI,
 	#[serde(rename = "UMGR")]
 	CodeUMGR,
-
 }
 
 

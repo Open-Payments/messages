@@ -95,7 +95,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -189,7 +188,6 @@ pub enum BenchmarkCurveName2Code {
 	CodeBUBO,
 	#[serde(rename = "BBSW")]
 	CodeBBSW,
-
 }
 
 
@@ -311,7 +309,6 @@ pub enum CommunicationMethod4Code {
 	CodeSWMT,
 	#[serde(rename = "SWMX")]
 	CodeSWMX,
-
 }
 
 
@@ -419,7 +416,6 @@ pub enum CreditDebit3Code {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -469,7 +465,6 @@ pub enum DepositType1Code {
 	CodeFITE,
 	#[serde(rename = "CALL")]
 	CodeCALL,
-
 }
 
 
@@ -565,7 +560,6 @@ pub enum ExchangeRateType1Code {
 	CodeSALE,
 	#[serde(rename = "AGRD")]
 	CodeAGRD,
-
 }
 
 
@@ -1023,7 +1017,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1129,7 +1122,6 @@ pub enum PaymentScheduleType2Code {
 	CodeESTM,
 	#[serde(rename = "BOTH")]
 	CodeBOTH,
-
 }
 
 
@@ -1227,7 +1219,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 
@@ -1243,7 +1234,6 @@ pub enum RateBasis1Code {
 	CodeWEEK,
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
-
 }
 
 
@@ -1475,7 +1465,6 @@ pub enum TaxExemptReason1Code {
 	CodeEIFP,
 	#[serde(rename = "EIOP")]
 	CodeEIOP,
-
 }
 
 

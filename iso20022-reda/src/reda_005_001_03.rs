@@ -53,7 +53,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -81,7 +80,6 @@ pub enum DistributionPolicy1Code {
 	CodeDIST,
 	#[serde(rename = "ACCU")]
 	CodeACCU,
-
 }
 
 
@@ -123,7 +121,6 @@ pub enum FormOfSecurity1Code {
 	CodeBEAR,
 	#[serde(rename = "REGD")]
 	CodeREGD,
-
 }
 
 
@@ -287,7 +284,6 @@ pub enum NoCriteria1Code {
 	#[default]
 	#[serde(rename = "NOCR")]
 	CodeNOCR,
-
 }
 
 

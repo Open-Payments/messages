@@ -67,7 +67,6 @@ pub enum BalanceTransferWindow1Code {
 	CodeDAYH,
 	#[serde(rename = "EARL")]
 	CodeEARL,
-
 }
 
 
@@ -161,7 +160,6 @@ pub enum SwitchStatus1Code {
 	CodeREQU,
 	#[serde(rename = "TMTN")]
 	CodeTMTN,
-
 }
 
 
@@ -173,5 +171,4 @@ pub enum SwitchType1Code {
 	CodeFULL,
 	#[serde(rename = "PART")]
 	CodePART,
-
 }

@@ -251,7 +251,6 @@ pub enum MemberStatus1Code {
 	CodeDLTD,
 	#[serde(rename = "JOIN")]
 	CodeJOIN,
-
 }
 
 
@@ -279,7 +278,6 @@ pub enum QueryType2Code {
 	CodeMODF,
 	#[serde(rename = "DELD")]
 	CodeDELD,
-
 }
 
 

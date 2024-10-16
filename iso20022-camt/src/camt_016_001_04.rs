@@ -131,7 +131,6 @@ pub enum QueryType2Code {
 	CodeMODF,
 	#[serde(rename = "DELD")]
 	CodeDELD,
-
 }
 
 

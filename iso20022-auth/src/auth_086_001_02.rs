@@ -139,7 +139,6 @@ pub enum FundingSourceType1Code {
 	CodeREPO,
 	#[serde(rename = "UBOR")]
 	CodeUBOR,
-
 }
 
 
@@ -243,7 +242,6 @@ pub enum ModificationLevel1Code {
 	CodePSTN,
 	#[serde(rename = "TCTN")]
 	CodeTCTN,
-
 }
 
 
@@ -329,7 +327,6 @@ pub enum ReinvestmentType1Code {
 	CodeREPM,
 	#[serde(rename = "SDPU")]
 	CodeSDPU,
-
 }
 
 
@@ -339,7 +336,6 @@ pub enum ReportPeriodActivity1Code {
 	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
-
 }
 
 
@@ -431,7 +427,6 @@ pub enum TradeRepositoryReportingType1Code {
 	CodeSWOS,
 	#[serde(rename = "TWOS")]
 	CodeTWOS,
-
 }
 
 
@@ -459,7 +454,6 @@ pub enum TransactionOperationType6Code {
 	CodeMARU,
 	#[serde(rename = "EROR")]
 	CodeEROR,
-
 }
 
 

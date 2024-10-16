@@ -63,7 +63,6 @@ pub enum AccountManagementType3Code {
 	CodeGACC,
 	#[serde(rename = "ACST")]
 	CodeACST,
-
 }
 
 
@@ -95,7 +94,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -131,7 +129,6 @@ pub enum GenderCode {
 	CodeMALE,
 	#[serde(rename = "FEMA")]
 	CodeFEMA,
-
 }
 
 
@@ -387,7 +384,6 @@ pub enum PartyIdentificationType7Code {
 	CodeINCL,
 	#[serde(rename = "GIIN")]
 	CodeGIIN,
-
 }
 
 

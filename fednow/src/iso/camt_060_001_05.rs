@@ -102,7 +102,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -278,7 +277,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -442,7 +440,6 @@ pub enum FloorLimitType1Code {
 	CodeDEBT,
 	#[serde(rename = "BOTH")]
 	CodeBOTH,
-
 }
 
 
@@ -662,7 +659,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -814,7 +810,6 @@ pub enum PreferredContactMethod1Code {
 	CodeFAXX,
 	#[serde(rename = "CELL")]
 	CodeCELL,
-
 }
 
 
@@ -848,7 +843,6 @@ pub enum QueryType3Code {
 	CodeCHNG,
 	#[serde(rename = "MODF")]
 	CodeMODF,
-
 }
 
 

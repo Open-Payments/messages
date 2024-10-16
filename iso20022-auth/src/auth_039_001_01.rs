@@ -109,7 +109,6 @@ pub enum NonTradingDayReason1Code {
 	CodeBHOL,
 	#[serde(rename = "WKND")]
 	CodeWKND,
-
 }
 
 
@@ -195,7 +194,6 @@ pub enum TradingVenue2Code {
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
-
 }
 
 

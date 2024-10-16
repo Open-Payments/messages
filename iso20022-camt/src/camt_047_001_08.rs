@@ -87,7 +87,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -621,7 +620,6 @@ pub enum ReservationStatus1Code {
 	CodeREQD,
 	#[serde(rename = "BLKD")]
 	CodeBLKD,
-
 }
 
 

@@ -41,7 +41,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -187,7 +186,6 @@ pub enum LockStatus1Code {
 	CodeLOCK,
 	#[serde(rename = "ULCK")]
 	CodeULCK,
-
 }
 
 
@@ -389,7 +387,6 @@ pub enum RequestType1Code {
 	CodeRT04,
 	#[serde(rename = "RT05")]
 	CodeRT05,
-
 }
 
 
@@ -419,7 +416,6 @@ pub enum RequestType2Code {
 	CodeRT14,
 	#[serde(rename = "RT15")]
 	CodeRT15,
-
 }
 
 
@@ -441,7 +437,6 @@ pub enum ResidenceType1Code {
 	CodeFRGN,
 	#[serde(rename = "MXED")]
 	CodeMXED,
-
 }
 
 

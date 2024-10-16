@@ -99,7 +99,6 @@ pub enum EquityInstrumentReportingClassification1Code {
 	CodeDPRS,
 	#[serde(rename = "CRFT")]
 	CodeCRFT,
-
 }
 
 
@@ -231,7 +230,6 @@ pub enum TradingVenue2Code {
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
-
 }
 
 

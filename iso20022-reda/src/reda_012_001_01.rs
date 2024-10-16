@@ -103,7 +103,6 @@ pub enum AddressType1Code {
 	CodeHOME,
 	#[serde(rename = "BIZZ")]
 	CodeBIZZ,
-
 }
 
 
@@ -123,7 +122,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -165,7 +163,6 @@ pub enum Appearance1Code {
 	CodeTMPG,
 	#[serde(rename = "GLOB")]
 	CodeGLOB,
-
 }
 
 
@@ -187,7 +184,6 @@ pub enum AssignmentMethod1Code {
 	CodeRAND,
 	#[serde(rename = "PROR")]
 	CodePROR,
-
 }
 
 
@@ -247,7 +243,6 @@ pub enum BenchmarkCurveName1Code {
 	CodeEURI,
 	#[serde(rename = "PFAN")]
 	CodePFAN,
-
 }
 
 
@@ -349,7 +344,6 @@ pub enum CalculationType1Code {
 	CodeTRYL,
 	#[serde(rename = "WRST")]
 	CodeWRST,
-
 }
 
 
@@ -371,7 +365,6 @@ pub enum CallType1Code {
 	CodeLOTT,
 	#[serde(rename = "PRTA")]
 	CodePRTA,
-
 }
 
 
@@ -761,7 +754,6 @@ pub enum DistributionPolicy1Code {
 	CodeDIST,
 	#[serde(rename = "ACCU")]
 	CodeACCU,
-
 }
 
 
@@ -909,7 +901,6 @@ pub enum FormOfSecurity1Code {
 	CodeBEAR,
 	#[serde(rename = "REGD")]
 	CodeREGD,
-
 }
 
 
@@ -957,7 +948,6 @@ pub enum Frequency5Code {
 	CodeOVNG,
 	#[serde(rename = "TEND")]
 	CodeTEND,
-
 }
 
 
@@ -1037,7 +1027,6 @@ pub enum GlobalNote1Code {
 	CodeNGNO,
 	#[serde(rename = "CGNO")]
 	CodeCGNO,
-
 }
 
 
@@ -1111,7 +1100,6 @@ pub enum InitialPhysicalForm1Code {
 	CodeGPGP,
 	#[serde(rename = "DERN")]
 	CodeDERN,
-
 }
 
 
@@ -1123,7 +1111,6 @@ pub enum InitialPhysicalForm2Code {
 	CodeGPGP,
 	#[serde(rename = "DERN")]
 	CodeDERN,
-
 }
 
 
@@ -1191,7 +1178,6 @@ pub enum InstrumentSubStructureType1Code {
 	CodeSTUT,
 	#[serde(rename = "WBSE")]
 	CodeWBSE,
-
 }
 
 
@@ -1221,7 +1207,6 @@ pub enum InterestType3Code {
 	CodeINDE,
 	#[serde(rename = "DSCO")]
 	CodeDSCO,
-
 }
 
 
@@ -1235,7 +1220,6 @@ pub enum InvestorRestrictionType1Code {
 	CodeCITI,
 	#[serde(rename = "INDV")]
 	CodeINDV,
-
 }
 
 
@@ -1261,7 +1245,6 @@ pub enum InvestorType1Code {
 	CodeSTAF,
 	#[serde(rename = "PPER")]
 	CodePPER,
-
 }
 
 
@@ -1341,7 +1324,6 @@ pub enum LegalRestrictions1Code {
 	CodeNORE,
 	#[serde(rename = "REST")]
 	CodeREST,
-
 }
 
 
@@ -1359,7 +1341,6 @@ pub enum LegalRestrictions2Code {
 	CodeMARG,
 	#[serde(rename = "PRIV")]
 	CodePRIV,
-
 }
 
 
@@ -1409,7 +1390,6 @@ pub enum MaturityRedemptionType1Code {
 	CodeCALL,
 	#[serde(rename = "PUUT")]
 	CodePUUT,
-
 }
 
 
@@ -1553,7 +1533,6 @@ pub enum Operation1Code {
 	CodeORRR,
 	#[serde(rename = "ANDD")]
 	CodeANDD,
-
 }
 
 
@@ -1571,7 +1550,6 @@ pub enum Operator1Code {
 	CodeGREQ,
 	#[serde(rename = "EQAL")]
 	CodeEQAL,
-
 }
 
 
@@ -1621,7 +1599,6 @@ pub enum OptionParty1Code {
 	CodeSLLR,
 	#[serde(rename = "BYER")]
 	CodeBYER,
-
 }
 
 
@@ -1659,7 +1636,6 @@ pub enum OptionStyle1Code {
 	CodeASIA,
 	#[serde(rename = "CANA")]
 	CodeCANA,
-
 }
 
 
@@ -1671,7 +1647,6 @@ pub enum OptionType1Code {
 	CodeCALL,
 	#[serde(rename = "PUTO")]
 	CodePUTO,
-
 }
 
 
@@ -1847,7 +1822,6 @@ pub enum PreferenceToIncome1Code {
 	CodeORDN,
 	#[serde(rename = "PFRD")]
 	CodePFRD,
-
 }
 
 
@@ -1917,7 +1891,6 @@ pub enum PriceValueType3Code {
 	CodeFICT,
 	#[serde(rename = "VACT")]
 	CodeVACT,
-
 }
 
 
@@ -1931,7 +1904,6 @@ pub enum PutType1Code {
 	CodeOPTI,
 	#[serde(rename = "TWOS")]
 	CodeTWOS,
-
 }
 
 
@@ -1977,7 +1949,6 @@ pub enum RateType12Code {
 	CodeUKWN,
 	#[serde(rename = "NILP")]
 	CodeNILP,
-
 }
 
 
@@ -2005,7 +1976,6 @@ pub enum RestrictionType1Code {
 	CodeHOLR,
 	#[serde(rename = "VOTR")]
 	CodeVOTR,
-
 }
 
 
@@ -2031,7 +2001,6 @@ pub enum SecuritiesPaymentStatus1Code {
 	CodeNILL,
 	#[serde(rename = "PART")]
 	CodePART,
-
 }
 
 
@@ -2053,7 +2022,6 @@ pub enum SecuritiesTransactionType11Code {
 	CodeNSYN,
 	#[serde(rename = "SYND")]
 	CodeSYND,
-
 }
 
 
@@ -2181,7 +2149,6 @@ pub enum SecurityStatus2Code {
 	CodeINAC,
 	#[serde(rename = "SUSP")]
 	CodeSUSP,
-
 }
 
 
@@ -2213,7 +2180,6 @@ pub enum SettleStyle1Code {
 	CodeSETC,
 	#[serde(rename = "SETO")]
 	CodeSETO,
-
 }
 
 
@@ -2251,7 +2217,6 @@ pub enum SettlementType1Code {
 	CodePRIN,
 	#[serde(rename = "NETO")]
 	CodeNETO,
-
 }
 
 
@@ -2273,7 +2238,6 @@ pub enum SettlementUnitType1Code {
 	CodeFAMT,
 	#[serde(rename = "UNIT")]
 	CodeUNIT,
-
 }
 
 
@@ -2297,7 +2261,6 @@ pub enum Standardisation1Code {
 	CodeNSTA,
 	#[serde(rename = "STAN")]
 	CodeSTAN,
-
 }
 
 
@@ -2355,7 +2318,6 @@ pub enum TEFRARules1Code {
 	CodeRULC,
 	#[serde(rename = "RULD")]
 	CodeRULD,
-
 }
 
 
@@ -2397,7 +2359,6 @@ pub enum TimeUnit1Code {
 	CodeWEEK,
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
-
 }
 
 
@@ -2441,7 +2402,6 @@ pub enum TradeTransactionCondition2Code {
 	CodeSPEX,
 	#[serde(rename = "GTDL")]
 	CodeGTDL,
-
 }
 
 
@@ -2507,7 +2467,6 @@ pub enum TypeOfPrice1Code {
 	CodeRDAV,
 	#[serde(rename = "STOP")]
 	CodeSTOP,
-
 }
 
 
@@ -2659,7 +2618,6 @@ pub enum UnitOfMeasure9Code {
 	CodeARES,
 	#[serde(rename = "HECT")]
 	CodeHECT,
-
 }
 
 
@@ -2697,7 +2655,6 @@ pub enum WarrantStyle1Code {
 	CodeEURO,
 	#[serde(rename = "BERM")]
 	CodeBERM,
-
 }
 
 

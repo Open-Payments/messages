@@ -200,7 +200,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -290,7 +289,6 @@ pub enum AttendanceContext1Code {
 	CodeSATT,
 	#[serde(rename = "UATT")]
 	CodeUATT,
-
 }
 
 
@@ -304,7 +302,6 @@ pub enum AuthenticationEntity1Code {
 	CodeAGNT,
 	#[serde(rename = "MERC")]
 	CodeMERC,
-
 }
 
 
@@ -334,7 +331,6 @@ pub enum AuthenticationMethod1Code {
 	CodeSNCT,
 	#[serde(rename = "SCNL")]
 	CodeSCNL,
-
 }
 
 
@@ -478,7 +474,6 @@ pub enum CSCManagement1Code {
 	CodeUNRD,
 	#[serde(rename = "NCSC")]
 	CodeNCSC,
-
 }
 
 
@@ -518,7 +513,6 @@ pub enum CardDataReading1Code {
 	CodeCTLS,
 	#[serde(rename = "ECTL")]
 	CodeECTL,
-
 }
 
 
@@ -592,7 +586,6 @@ pub enum CardPaymentServiceType2Code {
 	CodeUNAF,
 	#[serde(rename = "VCAU")]
 	CodeVCAU,
-
 }
 
 
@@ -678,7 +671,6 @@ pub enum CardholderVerificationCapability1Code {
 	CodeCHDT,
 	#[serde(rename = "SCEC")]
 	CodeSCEC,
-
 }
 
 
@@ -792,7 +784,6 @@ pub enum ChargeBearerType1Code {
 	CodeSHAR,
 	#[serde(rename = "SLEV")]
 	CodeSLEV,
-
 }
 
 
@@ -906,7 +897,6 @@ pub enum CopyDuplicate1Code {
 	CodeCOPY,
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
-
 }
 
 
@@ -936,7 +926,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -1180,7 +1169,6 @@ pub enum DocumentType3Code {
 	CodePUOR,
 	#[serde(rename = "SCOR")]
 	CodeSCOR,
-
 }
 
 
@@ -1220,7 +1208,6 @@ pub enum DocumentType6Code {
 	CodeTSUT,
 	#[serde(rename = "PUOR")]
 	CodePUOR,
-
 }
 
 
@@ -1868,7 +1855,6 @@ pub enum InterestType1Code {
 	CodeINDY,
 	#[serde(rename = "OVRN")]
 	CodeOVRN,
-
 }
 
 
@@ -2076,7 +2062,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -2128,7 +2113,6 @@ pub enum OnLineCapability1Code {
 	CodeONLN,
 	#[serde(rename = "SMON")]
 	CodeSMON,
-
 }
 
 
@@ -2216,7 +2200,6 @@ pub enum POIComponentType1Code {
 	CodeSECM,
 	#[serde(rename = "PEDV")]
 	CodePEDV,
-
 }
 
 
@@ -2284,7 +2267,6 @@ pub enum PartyType3Code {
 	CodeCISS,
 	#[serde(rename = "DLIS")]
 	CodeDLIS,
-
 }
 
 
@@ -2304,7 +2286,6 @@ pub enum PartyType4Code {
 	CodeCISS,
 	#[serde(rename = "TAXH")]
 	CodeTAXH,
-
 }
 
 
@@ -2522,7 +2503,6 @@ pub enum PreferredContactMethod1Code {
 	CodeFAXX,
 	#[serde(rename = "CELL")]
 	CodeCELL,
-
 }
 
 
@@ -2556,7 +2536,6 @@ pub enum PriceValueType1Code {
 	CodePREM,
 	#[serde(rename = "PARV")]
 	CodePARV,
-
 }
 
 
@@ -2818,7 +2797,6 @@ pub enum RemittanceLocationMethod2Code {
 	CodePOST,
 	#[serde(rename = "SMSM")]
 	CodeSMSM,
-
 }
 
 
@@ -3196,7 +3174,6 @@ pub enum TaxRecordPeriod1Code {
 	CodeHLF1,
 	#[serde(rename = "HLF2")]
 	CodeHLF2,
-
 }
 
 
@@ -3300,7 +3277,6 @@ pub enum TransactionChannel1Code {
 	CodeECOM,
 	#[serde(rename = "TVPY")]
 	CodeTVPY,
-
 }
 
 
@@ -3336,7 +3312,6 @@ pub enum TransactionEnvironment1Code {
 	CodePRIV,
 	#[serde(rename = "PUBL")]
 	CodePUBL,
-
 }
 
 
@@ -3532,7 +3507,6 @@ pub enum UnitOfMeasure1Code {
 	CodeSQIN,
 	#[serde(rename = "ACRE")]
 	CodeACRE,
-
 }
 
 
@@ -3544,7 +3518,6 @@ pub enum UserInterface2Code {
 	CodeMDSP,
 	#[serde(rename = "CDSP")]
 	CodeCDSP,
-
 }
 
 

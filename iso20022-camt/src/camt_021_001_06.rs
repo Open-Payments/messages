@@ -203,7 +203,6 @@ pub enum Priority1Code {
 	CodeNORM,
 	#[serde(rename = "LOWW")]
 	CodeLOWW,
-
 }
 
 

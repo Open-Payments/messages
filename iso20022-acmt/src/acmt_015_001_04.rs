@@ -95,7 +95,6 @@ pub enum AccountStatus3Code {
 	CodeDELE,
 	#[serde(rename = "FORM")]
 	CodeFORM,
-
 }
 
 
@@ -151,7 +150,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -289,7 +287,6 @@ pub enum CommunicationMethod2Code {
 	CodeONLI,
 	#[serde(rename = "POST")]
 	CodePOST,
-
 }
 
 
@@ -519,7 +516,6 @@ pub enum Frequency7Code {
 	CodeWEEK,
 	#[serde(rename = "INDA")]
 	CodeINDA,
-
 }
 
 
@@ -771,7 +767,6 @@ pub enum Modification1Code {
 	CodeDELE,
 	#[serde(rename = "ADDD")]
 	CodeADDD,
-
 }
 
 
@@ -799,7 +794,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1027,7 +1021,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 

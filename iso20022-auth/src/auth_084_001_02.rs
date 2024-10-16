@@ -301,7 +301,6 @@ pub enum ReportPeriodActivity1Code {
 	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
-
 }
 
 
@@ -327,7 +326,6 @@ pub enum ReportingMessageStatus1Code {
 	CodeINCF,
 	#[serde(rename = "CRPT")]
 	CodeCRPT,
-
 }
 
 

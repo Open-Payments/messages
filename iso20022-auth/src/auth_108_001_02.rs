@@ -93,7 +93,6 @@ pub enum CollateralisationType3Code {
 	CodePRC2,
 	#[serde(rename = "UNCL")]
 	CodeUNCL,
-
 }
 
 
@@ -237,7 +236,6 @@ pub enum FinancialPartySectorType3Code {
 	CodeASSU,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -453,7 +451,6 @@ pub enum NoReasonCode {
 	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
-
 }
 
 
@@ -477,7 +474,6 @@ pub enum NotApplicable1Code {
 	#[default]
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
-
 }
 
 
@@ -497,7 +493,6 @@ pub enum OptionParty1Code {
 	CodeSLLR,
 	#[serde(rename = "BYER")]
 	CodeBYER,
-
 }
 
 
@@ -509,7 +504,6 @@ pub enum OptionParty3Code {
 	CodeMAKE,
 	#[serde(rename = "TAKE")]
 	CodeTAKE,
-
 }
 
 
@@ -625,7 +619,6 @@ pub enum ReportPeriodActivity1Code {
 	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
-
 }
 
 
@@ -733,7 +726,6 @@ pub enum TradeCounterpartyType1Code {
 	CodeSBMA,
 	#[serde(rename = "ERFR")]
 	CodeERFR,
-
 }
 
 
@@ -787,7 +779,6 @@ pub enum TradingCapacity7Code {
 	CodeAGEN,
 	#[serde(rename = "PRIN")]
 	CodePRIN,
-
 }
 
 

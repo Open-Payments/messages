@@ -49,7 +49,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -429,7 +428,6 @@ pub enum SecurityStatus2Code {
 	CodeINAC,
 	#[serde(rename = "SUSP")]
 	CodeSUSP,
-
 }
 
 

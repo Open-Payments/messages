@@ -163,7 +163,6 @@ pub enum StatisticalReportingStatus1Code {
 	CodeINCF,
 	#[serde(rename = "CRPT")]
 	CodeCRPT,
-
 }
 
 
@@ -177,7 +176,6 @@ pub enum StatisticalReportingStatus2Code {
 	CodeRJCT,
 	#[serde(rename = "WARN")]
 	CodeWARN,
-
 }
 
 

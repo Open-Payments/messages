@@ -453,7 +453,6 @@ pub enum AssetClassDetailedSubProductType10Code {
 	CodeOTHR,
 	#[serde(rename = "LEAD")]
 	CodeLEAD,
-
 }
 
 
@@ -471,7 +470,6 @@ pub enum AssetClassDetailedSubProductType11Code {
 	CodePTNM,
 	#[serde(rename = "SLVR")]
 	CodeSLVR,
-
 }
 
 
@@ -491,7 +489,6 @@ pub enum AssetClassDetailedSubProductType1Code {
 	CodeCORN,
 	#[serde(rename = "RICE")]
 	CodeRICE,
-
 }
 
 
@@ -503,7 +500,6 @@ pub enum AssetClassDetailedSubProductType29Code {
 	CodeLAMP,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -521,7 +517,6 @@ pub enum AssetClassDetailedSubProductType2Code {
 	CodeWHSG,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -533,7 +528,6 @@ pub enum AssetClassDetailedSubProductType30Code {
 	CodeMWHT,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -553,7 +547,6 @@ pub enum AssetClassDetailedSubProductType31Code {
 	CodeNBPG,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -611,7 +604,6 @@ pub enum AssetClassDetailedSubProductType32Code {
 	CodeURAL,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -623,7 +615,6 @@ pub enum AssetClassDetailedSubProductType33Code {
 	CodeDBCR,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -635,7 +626,6 @@ pub enum AssetClassDetailedSubProductType34Code {
 	CodeTNKR,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -653,7 +643,6 @@ pub enum AssetClassDetailedSubProductType5Code {
 	CodeOFFP,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -671,7 +660,6 @@ pub enum AssetClassDetailedSubProductType8Code {
 	CodeEUAA,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -681,7 +669,6 @@ pub enum AssetClassProductType11Code {
 	#[default]
 	#[serde(rename = "OTHC")]
 	CodeOTHC,
-
 }
 
 
@@ -691,7 +678,6 @@ pub enum AssetClassProductType12Code {
 	#[default]
 	#[serde(rename = "INFL")]
 	CodeINFL,
-
 }
 
 
@@ -701,7 +687,6 @@ pub enum AssetClassProductType13Code {
 	#[default]
 	#[serde(rename = "MCEX")]
 	CodeMCEX,
-
 }
 
 
@@ -711,7 +696,6 @@ pub enum AssetClassProductType14Code {
 	#[default]
 	#[serde(rename = "OEST")]
 	CodeOEST,
-
 }
 
 
@@ -721,7 +705,6 @@ pub enum AssetClassProductType15Code {
 	#[default]
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -731,7 +714,6 @@ pub enum AssetClassProductType16Code {
 	#[default]
 	#[serde(rename = "INDX")]
 	CodeINDX,
-
 }
 
 
@@ -741,7 +723,6 @@ pub enum AssetClassProductType1Code {
 	#[default]
 	#[serde(rename = "AGRI")]
 	CodeAGRI,
-
 }
 
 
@@ -751,7 +732,6 @@ pub enum AssetClassProductType2Code {
 	#[default]
 	#[serde(rename = "NRGY")]
 	CodeNRGY,
-
 }
 
 
@@ -761,7 +741,6 @@ pub enum AssetClassProductType3Code {
 	#[default]
 	#[serde(rename = "ENVR")]
 	CodeENVR,
-
 }
 
 
@@ -771,7 +750,6 @@ pub enum AssetClassProductType4Code {
 	#[default]
 	#[serde(rename = "FRGT")]
 	CodeFRGT,
-
 }
 
 
@@ -781,7 +759,6 @@ pub enum AssetClassProductType5Code {
 	#[default]
 	#[serde(rename = "FRTL")]
 	CodeFRTL,
-
 }
 
 
@@ -791,7 +768,6 @@ pub enum AssetClassProductType6Code {
 	#[default]
 	#[serde(rename = "INDP")]
 	CodeINDP,
-
 }
 
 
@@ -801,7 +777,6 @@ pub enum AssetClassProductType7Code {
 	#[default]
 	#[serde(rename = "METL")]
 	CodeMETL,
-
 }
 
 
@@ -811,7 +786,6 @@ pub enum AssetClassProductType8Code {
 	#[default]
 	#[serde(rename = "PAPR")]
 	CodePAPR,
-
 }
 
 
@@ -821,7 +795,6 @@ pub enum AssetClassProductType9Code {
 	#[default]
 	#[serde(rename = "POLY")]
 	CodePOLY,
-
 }
 
 
@@ -831,7 +804,6 @@ pub enum AssetClassSubProductType10Code {
 	#[default]
 	#[serde(rename = "EMIS")]
 	CodeEMIS,
-
 }
 
 
@@ -841,7 +813,6 @@ pub enum AssetClassSubProductType15Code {
 	#[default]
 	#[serde(rename = "NPRM")]
 	CodeNPRM,
-
 }
 
 
@@ -851,7 +822,6 @@ pub enum AssetClassSubProductType16Code {
 	#[default]
 	#[serde(rename = "PRME")]
 	CodePRME,
-
 }
 
 
@@ -861,7 +831,6 @@ pub enum AssetClassSubProductType18Code {
 	#[default]
 	#[serde(rename = "PLST")]
 	CodePLST,
-
 }
 
 
@@ -871,7 +840,6 @@ pub enum AssetClassSubProductType1Code {
 	#[default]
 	#[serde(rename = "GROS")]
 	CodeGROS,
-
 }
 
 
@@ -881,7 +849,6 @@ pub enum AssetClassSubProductType20Code {
 	#[default]
 	#[serde(rename = "DIRY")]
 	CodeDIRY,
-
 }
 
 
@@ -891,7 +858,6 @@ pub enum AssetClassSubProductType21Code {
 	#[default]
 	#[serde(rename = "FRST")]
 	CodeFRST,
-
 }
 
 
@@ -901,7 +867,6 @@ pub enum AssetClassSubProductType22Code {
 	#[default]
 	#[serde(rename = "LSTK")]
 	CodeLSTK,
-
 }
 
 
@@ -911,7 +876,6 @@ pub enum AssetClassSubProductType23Code {
 	#[default]
 	#[serde(rename = "SEAF")]
 	CodeSEAF,
-
 }
 
 
@@ -921,7 +885,6 @@ pub enum AssetClassSubProductType24Code {
 	#[default]
 	#[serde(rename = "COAL")]
 	CodeCOAL,
-
 }
 
 
@@ -931,7 +894,6 @@ pub enum AssetClassSubProductType25Code {
 	#[default]
 	#[serde(rename = "DIST")]
 	CodeDIST,
-
 }
 
 
@@ -941,7 +903,6 @@ pub enum AssetClassSubProductType26Code {
 	#[default]
 	#[serde(rename = "INRG")]
 	CodeINRG,
-
 }
 
 
@@ -951,7 +912,6 @@ pub enum AssetClassSubProductType27Code {
 	#[default]
 	#[serde(rename = "LGHT")]
 	CodeLGHT,
-
 }
 
 
@@ -961,7 +921,6 @@ pub enum AssetClassSubProductType28Code {
 	#[default]
 	#[serde(rename = "RNNG")]
 	CodeRNNG,
-
 }
 
 
@@ -971,7 +930,6 @@ pub enum AssetClassSubProductType29Code {
 	#[default]
 	#[serde(rename = "CRBR")]
 	CodeCRBR,
-
 }
 
 
@@ -981,7 +939,6 @@ pub enum AssetClassSubProductType2Code {
 	#[default]
 	#[serde(rename = "SOFT")]
 	CodeSOFT,
-
 }
 
 
@@ -991,7 +948,6 @@ pub enum AssetClassSubProductType30Code {
 	#[default]
 	#[serde(rename = "WTHR")]
 	CodeWTHR,
-
 }
 
 
@@ -1001,7 +957,6 @@ pub enum AssetClassSubProductType31Code {
 	#[default]
 	#[serde(rename = "DRYF")]
 	CodeDRYF,
-
 }
 
 
@@ -1011,7 +966,6 @@ pub enum AssetClassSubProductType32Code {
 	#[default]
 	#[serde(rename = "WETF")]
 	CodeWETF,
-
 }
 
 
@@ -1021,7 +975,6 @@ pub enum AssetClassSubProductType33Code {
 	#[default]
 	#[serde(rename = "CSTR")]
 	CodeCSTR,
-
 }
 
 
@@ -1031,7 +984,6 @@ pub enum AssetClassSubProductType34Code {
 	#[default]
 	#[serde(rename = "MFTG")]
 	CodeMFTG,
-
 }
 
 
@@ -1041,7 +993,6 @@ pub enum AssetClassSubProductType35Code {
 	#[default]
 	#[serde(rename = "CBRD")]
 	CodeCBRD,
-
 }
 
 
@@ -1051,7 +1002,6 @@ pub enum AssetClassSubProductType36Code {
 	#[default]
 	#[serde(rename = "NSPT")]
 	CodeNSPT,
-
 }
 
 
@@ -1061,7 +1011,6 @@ pub enum AssetClassSubProductType37Code {
 	#[default]
 	#[serde(rename = "PULP")]
 	CodePULP,
-
 }
 
 
@@ -1071,7 +1020,6 @@ pub enum AssetClassSubProductType39Code {
 	#[default]
 	#[serde(rename = "AMMO")]
 	CodeAMMO,
-
 }
 
 
@@ -1081,7 +1029,6 @@ pub enum AssetClassSubProductType3Code {
 	#[default]
 	#[serde(rename = "OOLI")]
 	CodeOOLI,
-
 }
 
 
@@ -1091,7 +1038,6 @@ pub enum AssetClassSubProductType40Code {
 	#[default]
 	#[serde(rename = "DAPH")]
 	CodeDAPH,
-
 }
 
 
@@ -1101,7 +1047,6 @@ pub enum AssetClassSubProductType41Code {
 	#[default]
 	#[serde(rename = "PTSH")]
 	CodePTSH,
-
 }
 
 
@@ -1111,7 +1056,6 @@ pub enum AssetClassSubProductType42Code {
 	#[default]
 	#[serde(rename = "SLPH")]
 	CodeSLPH,
-
 }
 
 
@@ -1121,7 +1065,6 @@ pub enum AssetClassSubProductType43Code {
 	#[default]
 	#[serde(rename = "UREA")]
 	CodeUREA,
-
 }
 
 
@@ -1131,7 +1074,6 @@ pub enum AssetClassSubProductType44Code {
 	#[default]
 	#[serde(rename = "UAAN")]
 	CodeUAAN,
-
 }
 
 
@@ -1141,7 +1083,6 @@ pub enum AssetClassSubProductType45Code {
 	#[default]
 	#[serde(rename = "POTA")]
 	CodePOTA,
-
 }
 
 
@@ -1151,7 +1092,6 @@ pub enum AssetClassSubProductType46Code {
 	#[default]
 	#[serde(rename = "CSHP")]
 	CodeCSHP,
-
 }
 
 
@@ -1161,7 +1101,6 @@ pub enum AssetClassSubProductType49Code {
 	#[default]
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -1171,7 +1110,6 @@ pub enum AssetClassSubProductType5Code {
 	#[default]
 	#[serde(rename = "GRIN")]
 	CodeGRIN,
-
 }
 
 
@@ -1181,7 +1119,6 @@ pub enum AssetClassSubProductType6Code {
 	#[default]
 	#[serde(rename = "ELEC")]
 	CodeELEC,
-
 }
 
 
@@ -1191,7 +1128,6 @@ pub enum AssetClassSubProductType7Code {
 	#[default]
 	#[serde(rename = "NGAS")]
 	CodeNGAS,
-
 }
 
 
@@ -1201,7 +1137,6 @@ pub enum AssetClassSubProductType8Code {
 	#[default]
 	#[serde(rename = "OILP")]
 	CodeOILP,
-
 }
 
 
@@ -1261,7 +1196,6 @@ pub enum ClearingAccountType4Code {
 	CodeCLIE,
 	#[serde(rename = "HOUS")]
 	CodeHOUS,
-
 }
 
 
@@ -1303,7 +1237,6 @@ pub enum ClearingExemptionException1Code {
 	CodeOTHR,
 	#[serde(rename = "SMBK")]
 	CodeSMBK,
-
 }
 
 
@@ -1317,7 +1250,6 @@ pub enum ClearingObligationType1Code {
 	CodeUKWN,
 	#[serde(rename = "TRUE")]
 	CodeTRUE,
-
 }
 
 
@@ -2115,7 +2047,6 @@ pub enum DebtInstrumentSeniorityType2Code {
 	CodeSNDB,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -2173,7 +2104,6 @@ pub enum DerivativeEventType3Code {
 	CodeTRAD,
 	#[serde(rename = "UPDT")]
 	CodeUPDT,
-
 }
 
 
@@ -2241,7 +2171,6 @@ pub enum DurationType1Code {
 	CodeDASD,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -2367,7 +2296,6 @@ pub enum EnergyLoadType1Code {
 	CodePKLD,
 	#[serde(rename = "SHPD")]
 	CodeSHPD,
-
 }
 
 
@@ -2425,7 +2353,6 @@ pub enum EnergyQuantityUnit2Code {
 	CodeMWHH,
 	#[serde(rename = "THMD")]
 	CodeTHMD,
-
 }
 
 
@@ -2617,7 +2544,6 @@ pub enum FinancialInstrumentContractType2Code {
 	CodeSWPT,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -2685,7 +2611,6 @@ pub enum Frequency13Code {
 	CodeMIAN,
 	#[serde(rename = "QURT")]
 	CodeQURT,
-
 }
 
 
@@ -2857,7 +2782,6 @@ pub enum InterestComputationMethod4Code {
 	CodeNARR,
 	#[serde(rename = "A020")]
 	CodeA020,
-
 }
 
 
@@ -3077,7 +3001,6 @@ pub enum ModificationLevel1Code {
 	CodePSTN,
 	#[serde(rename = "TCTN")]
 	CodeTCTN,
-
 }
 
 
@@ -3109,7 +3032,6 @@ pub enum NoReasonCode {
 	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
-
 }
 
 
@@ -3129,7 +3051,6 @@ pub enum NotApplicable1Code {
 	#[default]
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
-
 }
 
 
@@ -3149,7 +3070,6 @@ pub enum OptionParty1Code {
 	CodeSLLR,
 	#[serde(rename = "BYER")]
 	CodeBYER,
-
 }
 
 
@@ -3161,7 +3081,6 @@ pub enum OptionParty3Code {
 	CodeMAKE,
 	#[serde(rename = "TAKE")]
 	CodeTAKE,
-
 }
 
 
@@ -3177,7 +3096,6 @@ pub enum OptionStyle6Code {
 	CodeASIA,
 	#[serde(rename = "AMER")]
 	CodeAMER,
-
 }
 
 
@@ -3191,7 +3109,6 @@ pub enum OptionType2Code {
 	CodePUTO,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -3237,7 +3154,6 @@ pub enum PairingStatus1Code {
 	CodePARD,
 	#[serde(rename = "UNPR")]
 	CodeUNPR,
-
 }
 
 
@@ -3311,7 +3227,6 @@ pub enum PaymentType4Code {
 	CodeUWIN,
 	#[serde(rename = "PEXH")]
 	CodePEXH,
-
 }
 
 
@@ -3343,7 +3258,6 @@ pub enum PhysicalTransferType4Code {
 	CodeOPTL,
 	#[serde(rename = "CASH")]
 	CodeCASH,
-
 }
 
 
@@ -3423,7 +3337,6 @@ pub enum PriceStatus1Code {
 	CodePNDG,
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
-
 }
 
 
@@ -3443,7 +3356,6 @@ pub enum ProductType4Code {
 	CodeCOMM,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -3519,7 +3431,6 @@ pub enum ReconciliationStatus1Code {
 	CodeNREC,
 	#[serde(rename = "RECO")]
 	CodeRECO,
-
 }
 
 
@@ -3533,7 +3444,6 @@ pub enum ReconciliationStatus2Code {
 	CodeRECO,
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
-
 }
 
 
@@ -3543,7 +3453,6 @@ pub enum ReportPeriodActivity1Code {
 	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
-
 }
 
 
@@ -3571,7 +3480,6 @@ pub enum RiskReductionService1Code {
 	CodePRBM,
 	#[serde(rename = "PWAS")]
 	CodePWAS,
-
 }
 
 
@@ -3713,7 +3621,6 @@ pub enum TradeConfirmationType1Code {
 	CodeECNF,
 	#[serde(rename = "YCNF")]
 	CodeYCNF,
-
 }
 
 
@@ -3723,7 +3630,6 @@ pub enum TradeConfirmationType2Code {
 	#[default]
 	#[serde(rename = "NCNF")]
 	CodeNCNF,
-
 }
 
 
@@ -3743,7 +3649,6 @@ pub enum TradeRepositoryReportingType1Code {
 	CodeSWOS,
 	#[serde(rename = "TWOS")]
 	CodeTWOS,
-
 }
 
 
@@ -4019,7 +3924,6 @@ pub enum TransactionOperationType10Code {
 	CodeMARU,
 	#[serde(rename = "PRTO")]
 	CodePRTO,
-
 }
 
 
@@ -4049,7 +3953,6 @@ pub enum UnderlyingIdentification1Code {
 	CodeBSKT,
 	#[serde(rename = "INDX")]
 	CodeINDX,
-
 }
 
 
@@ -4123,7 +4026,6 @@ pub enum ValuationType1Code {
 	CodeMTMA,
 	#[serde(rename = "MTMO")]
 	CodeMTMO,
-
 }
 
 
@@ -4155,7 +4057,6 @@ pub enum WeekDay3Code {
 	CodeWDAY,
 	#[serde(rename = "WEND")]
 	CodeWEND,
-
 }
 
 

@@ -119,7 +119,6 @@ pub enum ModelType1Code {
 	CodeVARI,
 	#[serde(rename = "SAMO")]
 	CodeSAMO,
-
 }
 
 

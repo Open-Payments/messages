@@ -243,7 +243,6 @@ pub enum MarginType2Code {
 	CodeDRAO,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -299,7 +298,6 @@ pub enum SchemeIdentificationType1Code {
 	CodePOSI,
 	#[serde(rename = "CLIM")]
 	CodeCLIM,
-
 }
 
 

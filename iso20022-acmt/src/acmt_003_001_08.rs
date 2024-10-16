@@ -163,7 +163,6 @@ pub enum AccountOwnershipType4Code {
 	CodeRGIC,
 	#[serde(rename = "SIGL")]
 	CodeSIGL,
-
 }
 
 
@@ -265,7 +264,6 @@ pub enum AccountStatusUpdateInstruction1Code {
 	CodeCLOS,
 	#[serde(rename = "REAC")]
 	CodeREAC,
-
 }
 
 
@@ -305,7 +303,6 @@ pub enum AccountStatusUpdateRequestReason1Code {
 	#[default]
 	#[serde(rename = "CLOE")]
 	CodeCLOE,
-
 }
 
 
@@ -341,7 +338,6 @@ pub enum AccountUsageType2Code {
 	CodeSETP,
 	#[serde(rename = "TRDP")]
 	CodeTRDP,
-
 }
 
 
@@ -363,7 +359,6 @@ pub enum AccountingStatus1Code {
 	CodeYDOM,
 	#[serde(rename = "NDOM")]
 	CodeNDOM,
-
 }
 
 
@@ -469,7 +464,6 @@ pub enum AddressType1Code {
 	CodeHOME,
 	#[serde(rename = "BIZZ")]
 	CodeBIZZ,
-
 }
 
 
@@ -499,7 +493,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -589,7 +582,6 @@ pub enum BlockedReason2Code {
 	CodeSANC,
 	#[serde(rename = "TRAN")]
 	CodeTRAN,
-
 }
 
 
@@ -683,7 +675,6 @@ pub enum CRSFormType1Code {
 	CodeCER2,
 	#[serde(rename = "CER7")]
 	CodeCER7,
-
 }
 
 
@@ -705,7 +696,6 @@ pub enum CRSSourceStatus1Code {
 	CodeCALC,
 	#[serde(rename = "DECL")]
 	CodeDECL,
-
 }
 
 
@@ -741,7 +731,6 @@ pub enum CRSStatus1Code {
 	CodeC113,
 	#[serde(rename = "C114")]
 	CodeC114,
-
 }
 
 
@@ -791,7 +780,6 @@ pub enum CardType1Code {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -849,7 +837,6 @@ pub enum CashAccountType5Code {
 	CodeMARR,
 	#[serde(rename = "SEGT")]
 	CodeSEGT,
-
 }
 
 
@@ -889,7 +876,6 @@ pub enum CertificateType2Code {
 	CodePRAD,
 	#[serde(rename = "PKIC")]
 	CodePKIC,
-
 }
 
 
@@ -949,7 +935,6 @@ pub enum CivilStatus1Code {
 	CodeUNIO,
 	#[serde(rename = "WIDO")]
 	CodeWIDO,
-
 }
 
 
@@ -1005,7 +990,6 @@ pub enum Collateral1Code {
 	CodeCOLL,
 	#[serde(rename = "NCOL")]
 	CodeNCOL,
-
 }
 
 
@@ -1043,7 +1027,6 @@ pub enum CommunicationMethod1Code {
 	CodeEMAL,
 	#[serde(rename = "PROP")]
 	CodePROP,
-
 }
 
 
@@ -1083,7 +1066,6 @@ pub enum CompanyLink1Code {
 	CodePCOM,
 	#[serde(rename = "RELA")]
 	CodeRELA,
-
 }
 
 
@@ -1097,7 +1079,6 @@ pub enum ConductClassification1Code {
 	CodeRCLT,
 	#[serde(rename = "STAN")]
 	CodeSTAN,
-
 }
 
 
@@ -1127,7 +1108,6 @@ pub enum ConsolidationType1Code {
 	CodeGENL,
 	#[serde(rename = "PART")]
 	CodePART,
-
 }
 
 
@@ -1157,7 +1137,6 @@ pub enum CreditDebit3Code {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -1191,7 +1170,6 @@ pub enum DataModification1Code {
 	CodeUPDT,
 	#[serde(rename = "DELT")]
 	CodeDELT,
-
 }
 
 
@@ -1203,7 +1181,6 @@ pub enum DataModification2Code {
 	CodeINSE,
 	#[serde(rename = "DELT")]
 	CodeDELT,
-
 }
 
 
@@ -1309,7 +1286,6 @@ pub enum DistributionPolicy1Code {
 	CodeDIST,
 	#[serde(rename = "ACCU")]
 	CodeACCU,
-
 }
 
 
@@ -1341,7 +1317,6 @@ pub enum Eligible1Code {
 	CodeELIG,
 	#[serde(rename = "NELI")]
 	CodeNELI,
-
 }
 
 
@@ -1361,7 +1336,6 @@ pub enum EventFrequency10Code {
 	CodeDAIL,
 	#[serde(rename = "ADHO")]
 	CodeADHO,
-
 }
 
 
@@ -1395,7 +1369,6 @@ pub enum EventFrequency1Code {
 	CodeOVNG,
 	#[serde(rename = "ONDE")]
 	CodeONDE,
-
 }
 
 
@@ -1433,7 +1406,6 @@ pub enum EventFrequency8Code {
 	CodeTWMN,
 	#[serde(rename = "WEEK")]
 	CodeWEEK,
-
 }
 
 
@@ -1469,7 +1441,6 @@ pub enum EventFrequency9Code {
 	CodeONDE,
 	#[serde(rename = "NONE")]
 	CodeNONE,
-
 }
 
 
@@ -1553,7 +1524,6 @@ pub enum FATCAFormType1Code {
 	CodeCER4,
 	#[serde(rename = "CER6")]
 	CodeCER6,
-
 }
 
 
@@ -1575,7 +1545,6 @@ pub enum FATCASourceStatus1Code {
 	CodeCALC,
 	#[serde(rename = "DECL")]
 	CodeDECL,
-
 }
 
 
@@ -1605,7 +1574,6 @@ pub enum FATCAStatus1Code {
 	CodeF205,
 	#[serde(rename = "F206")]
 	CodeF206,
-
 }
 
 
@@ -1727,7 +1695,6 @@ pub enum FormOfSecurity1Code {
 	CodeBEAR,
 	#[serde(rename = "REGD")]
 	CodeREGD,
-
 }
 
 
@@ -1767,7 +1734,6 @@ pub enum FundCashAccount4Code {
 	CodePPEN,
 	#[serde(rename = "CPEN")]
 	CodeCPEN,
-
 }
 
 
@@ -1779,7 +1745,6 @@ pub enum FundIntention1Code {
 	CodeYQUA,
 	#[serde(rename = "NQUA")]
 	CodeNQUA,
-
 }
 
 
@@ -1791,7 +1756,6 @@ pub enum FundOwnership1Code {
 	CodeYALL,
 	#[serde(rename = "NALL")]
 	CodeNALL,
-
 }
 
 
@@ -1829,7 +1793,6 @@ pub enum GDPRDataConsent1Code {
 	CodeDP01,
 	#[serde(rename = "DP02")]
 	CodeDP02,
-
 }
 
 
@@ -1841,7 +1804,6 @@ pub enum Gender1Code {
 	CodeFEMA,
 	#[serde(rename = "MALE")]
 	CodeMALE,
-
 }
 
 
@@ -1953,7 +1915,6 @@ pub enum Holding1Code {
 	CodeNPRH,
 	#[serde(rename = "PRTH")]
 	CodePRTH,
-
 }
 
 
@@ -2023,7 +1984,6 @@ pub enum IncomePreference2Code {
 	CodeCASH,
 	#[serde(rename = "SECU")]
 	CodeSECU,
-
 }
 
 
@@ -2137,7 +2097,6 @@ pub enum InformationDistribution2Code {
 	CodeNONE,
 	#[serde(rename = "PAPR")]
 	CodePAPR,
-
 }
 
 
@@ -2159,7 +2118,6 @@ pub enum Insurance1Code {
 	CodeLIFE,
 	#[serde(rename = "PDIS")]
 	CodePDIS,
-
 }
 
 
@@ -2329,7 +2287,6 @@ pub enum InvestmentAccountCategory1Code {
 	CodeMAND,
 	#[serde(rename = "RETA")]
 	CodeRETA,
-
 }
 
 
@@ -2459,7 +2416,6 @@ pub enum InvestmentFundRole6Code {
 	CodeTRAG,
 	#[serde(rename = "TRAN")]
 	CodeTRAN,
-
 }
 
 
@@ -2489,7 +2445,6 @@ pub enum InvestmentFundRole7Code {
 	CodeINVE,
 	#[serde(rename = "INVS")]
 	CodeINVS,
-
 }
 
 
@@ -2541,7 +2496,6 @@ pub enum InvestmentFundTransactionType1Code {
 	CodeSSPL,
 	#[serde(rename = "SUAA")]
 	CodeSUAA,
-
 }
 
 
@@ -2637,7 +2591,6 @@ pub enum InvestorProfileStatus1Code {
 	CodePEND,
 	#[serde(rename = "SUPS")]
 	CodeSUPS,
-
 }
 
 
@@ -2677,7 +2630,6 @@ pub enum KnowYourCustomerCheckType1Code {
 	CodeORDN,
 	#[serde(rename = "SIMP")]
 	CodeSIMP,
-
 }
 
 
@@ -2729,7 +2681,6 @@ pub enum LevelOfControl1Code {
 	CodeTRAN,
 	#[serde(rename = "VIEW")]
 	CodeVIEW,
-
 }
 
 
@@ -2751,7 +2702,6 @@ pub enum Liability1Code {
 	CodeINVE,
 	#[serde(rename = "BROK")]
 	CodeBROK,
-
 }
 
 
@@ -2783,7 +2733,6 @@ pub enum MailType1Code {
 	CodeORDM,
 	#[serde(rename = "REGM")]
 	CodeREGM,
-
 }
 
 
@@ -3049,7 +2998,6 @@ pub enum MoneyLaunderingCheck1Code {
 	CodeAUTH,
 	#[serde(rename = "POEP")]
 	CodePOEP,
-
 }
 
 
@@ -3105,7 +3053,6 @@ pub enum NamePrefix1Code {
 	CodeMISS,
 	#[serde(rename = "MADM")]
 	CodeMADM,
-
 }
 
 
@@ -3143,7 +3090,6 @@ pub enum NoReasonCode {
 	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
-
 }
 
 
@@ -3175,7 +3121,6 @@ pub enum OperationalStatus1Code {
 	CodeENAB,
 	#[serde(rename = "SPEC")]
 	CodeSPEC,
-
 }
 
 
@@ -3189,7 +3134,6 @@ pub enum OrderOriginatorEligibility1Code {
 	CodeRETL,
 	#[serde(rename = "PROF")]
 	CodePROF,
-
 }
 
 
@@ -3253,7 +3197,6 @@ pub enum OrganisationType1Code {
 	CodePUBL,
 	#[serde(rename = "PFUN")]
 	CodePFUN,
-
 }
 
 
@@ -3385,7 +3328,6 @@ pub enum PartyIdentificationType7Code {
 	CodeINCL,
 	#[serde(rename = "GIIN")]
 	CodeGIIN,
-
 }
 
 
@@ -3431,7 +3373,6 @@ pub enum PartyRole1Code {
 	CodeCUST,
 	#[serde(rename = "INVS")]
 	CodeINVS,
-
 }
 
 
@@ -3579,7 +3520,6 @@ pub enum PlanStatus1Code {
 	CodeCLOS,
 	#[serde(rename = "SUSP")]
 	CodeSUSP,
-
 }
 
 
@@ -3615,7 +3555,6 @@ pub enum PoliticalExposureType2Code {
 	CodePEXD,
 	#[serde(rename = "PEXF")]
 	CodePEXF,
-
 }
 
 
@@ -3649,7 +3588,6 @@ pub enum PoliticallyExposedPersonStatus1Code {
 	CodePE01,
 	#[serde(rename = "PE02")]
 	CodePE02,
-
 }
 
 
@@ -3669,7 +3607,6 @@ pub enum PositionEffect3Code {
 	CodeFIFO,
 	#[serde(rename = "LIFO")]
 	CodeLIFO,
-
 }
 
 
@@ -3759,7 +3696,6 @@ pub enum ProfileType1Code {
 	CodeMAKE,
 	#[serde(rename = "TREA")]
 	CodeTREA,
-
 }
 
 
@@ -3771,7 +3707,6 @@ pub enum Provided1Code {
 	CodeNPRO,
 	#[serde(rename = "PROV")]
 	CodePROV,
-
 }
 
 
@@ -3799,7 +3734,6 @@ pub enum Rank1Code {
 	CodePRIM,
 	#[serde(rename = "SECO")]
 	CodeSECO,
-
 }
 
 
@@ -3813,7 +3747,6 @@ pub enum Referred1Code {
 	CodeNRFR,
 	#[serde(rename = "UKNW")]
 	CodeUKNW,
-
 }
 
 
@@ -3885,7 +3818,6 @@ pub enum ResidentialStatus1Code {
 	CodePRES,
 	#[serde(rename = "NRES")]
 	CodeNRES,
-
 }
 
 
@@ -3907,7 +3839,6 @@ pub enum RestrictionStatus1Code {
 	CodeACTV,
 	#[serde(rename = "INAC")]
 	CodeINAC,
-
 }
 
 
@@ -3921,7 +3852,6 @@ pub enum RiskLevel1Code {
 	CodeLOWW,
 	#[serde(rename = "MEDM")]
 	CodeMEDM,
-
 }
 
 
@@ -3947,7 +3877,6 @@ pub enum RoundingDirection1Code {
 	CodeSTAN,
 	#[serde(rename = "DIST")]
 	CodeDIST,
-
 }
 
 
@@ -4065,7 +3994,6 @@ pub enum SettlementInstructionReason1Code {
 	CodeWTHP,
 	#[serde(rename = "CORP")]
 	CodeCORP,
-
 }
 
 
@@ -4225,7 +4153,6 @@ pub enum TaxExemptReason3Code {
 	CodeTANR,
 	#[serde(rename = "OANR")]
 	CodeOANR,
-
 }
 
 
@@ -4279,7 +4206,6 @@ pub enum TaxWithholdingMethod3Code {
 	CodeWTHD,
 	#[serde(rename = "WTRE")]
 	CodeWTRE,
-
 }
 
 
@@ -4319,7 +4245,6 @@ pub enum TransactionChannel2Code {
 	CodeHOBA,
 	#[serde(rename = "BRAN")]
 	CodeBRAN,
-
 }
 
 

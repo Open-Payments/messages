@@ -41,7 +41,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -59,7 +58,6 @@ pub enum AnyMIC1Code {
 	#[default]
 	#[serde(rename = "ANYM")]
 	CodeANYM,
-
 }
 
 
@@ -87,7 +85,6 @@ pub enum CollateralType6Code {
 	CodeSECU,
 	#[serde(rename = "STCF")]
 	CodeSTCF,
-
 }
 
 
@@ -161,7 +158,6 @@ pub enum ExposureType10Code {
 	CodeSLEB,
 	#[serde(rename = "REPO")]
 	CodeREPO,
-
 }
 
 
@@ -187,7 +183,6 @@ pub enum FinancialPartySectorType2Code {
 	CodeREIN,
 	#[serde(rename = "UCIT")]
 	CodeUCIT,
-
 }
 
 
@@ -203,7 +198,6 @@ pub enum Frequency14Code {
 	CodeMNTH,
 	#[serde(rename = "ADHO")]
 	CodeADHO,
-
 }
 
 
@@ -323,7 +317,6 @@ pub enum NotReported1Code {
 	#[default]
 	#[serde(rename = "NORP")]
 	CodeNORP,
-
 }
 
 
@@ -335,7 +328,6 @@ pub enum Operation3Code {
 	CodeANDD,
 	#[serde(rename = "ORRR")]
 	CodeORRR,
-
 }
 
 
@@ -365,7 +357,6 @@ pub enum PartyNatureType1Code {
 	CodeFIIN,
 	#[serde(rename = "CCPS")]
 	CodeCCPS,
-
 }
 
 
@@ -603,7 +594,6 @@ pub enum TransactionOperationType6Code {
 	CodeMARU,
 	#[serde(rename = "EROR")]
 	CodeEROR,
-
 }
 
 
@@ -643,5 +633,4 @@ pub enum WeekDay3Code {
 	CodeWDAY,
 	#[serde(rename = "WEND")]
 	CodeWEND,
-
 }

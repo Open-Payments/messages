@@ -163,7 +163,6 @@ pub enum ScenarioType1Code {
 	CodeHIST,
 	#[serde(rename = "HYPT")]
 	CodeHYPT,
-
 }
 
 
@@ -179,7 +178,6 @@ pub enum SchemeIdentificationType1Code {
 	CodePOSI,
 	#[serde(rename = "CLIM")]
 	CodeCLIM,
-
 }
 
 
@@ -203,7 +201,6 @@ pub enum StrategyStressType1Code {
 	CodePRLL,
 	#[serde(rename = "SPRD")]
 	CodeSPRD,
-
 }
 
 

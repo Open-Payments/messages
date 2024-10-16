@@ -229,7 +229,6 @@ pub enum ReportPeriodActivity1Code {
 	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
-
 }
 
 
@@ -621,5 +620,4 @@ pub enum TransactionOperationType4Code {
 	CodeAMND,
 	#[serde(rename = "CANC")]
 	CodeCANC,
-
 }

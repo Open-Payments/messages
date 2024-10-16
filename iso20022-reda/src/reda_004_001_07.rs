@@ -137,7 +137,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -149,7 +148,6 @@ pub enum AnnualChargePaymentType1Code {
 	CodeCAPL,
 	#[serde(rename = "INCO")]
 	CodeINCO,
-
 }
 
 
@@ -169,7 +167,6 @@ pub enum AssessmentOfValueRequiredUnderCOLLUKType1Code {
 	CodeYSCO,
 	#[serde(rename = "NSCO")]
 	CodeNSCO,
-
 }
 
 
@@ -181,7 +178,6 @@ pub enum BusinessDayConvention1Code {
 	CodeFWNG,
 	#[serde(rename = "PREC")]
 	CodePREC,
-
 }
 
 
@@ -317,7 +313,6 @@ pub enum DistributionPolicy1Code {
 	CodeDIST,
 	#[serde(rename = "ACCU")]
 	CodeACCU,
-
 }
 
 
@@ -357,7 +352,6 @@ pub enum DividendPolicy1Code {
 	CodeUNIT,
 	#[serde(rename = "BOTH")]
 	CodeBOTH,
-
 }
 
 
@@ -367,7 +361,6 @@ pub enum EMTDataReportingVFMUKType1Code {
 	#[default]
 	#[serde(rename = "YSCO")]
 	CodeYSCO,
-
 }
 
 
@@ -381,7 +374,6 @@ pub enum EUSavingsDirective1Code {
 	CodeEUSO,
 	#[serde(rename = "VARI")]
 	CodeVARI,
-
 }
 
 
@@ -409,7 +401,6 @@ pub enum EventFrequency5Code {
 	CodeTOWK,
 	#[serde(rename = "TWMN")]
 	CodeTWMN,
-
 }
 
 
@@ -447,7 +438,6 @@ pub enum EventFrequency8Code {
 	CodeTWMN,
 	#[serde(rename = "WEEK")]
 	CodeWEEK,
-
 }
 
 
@@ -469,7 +459,6 @@ pub enum ExPostCostCalculationBasis1Code {
 	CodeFIXB,
 	#[serde(rename = "ROLL")]
 	CodeROLL,
-
 }
 
 
@@ -613,7 +602,6 @@ pub enum FundOrderType10Code {
 	CodeRGSV,
 	#[serde(rename = "WIDP")]
 	CodeWIDP,
-
 }
 
 
@@ -667,7 +655,6 @@ pub enum FundPaymentType1Code {
 	CodeDDEB,
 	#[serde(rename = "CARD")]
 	CodeCARD,
-
 }
 
 
@@ -827,7 +814,6 @@ pub enum GovernanceProcessType1Code {
 	CodeCMIF,
 	#[serde(rename = "AMIF")]
 	CodeAMIF,
-
 }
 
 
@@ -841,7 +827,6 @@ pub enum HoldingTransferable1Code {
 	CodeTRNA,
 	#[serde(rename = "RFOD")]
 	CodeRFOD,
-
 }
 
 
@@ -931,7 +916,6 @@ pub enum IntendedOrActual2Code {
 	CodeANTE,
 	#[serde(rename = "POST")]
 	CodePOST,
-
 }
 
 
@@ -997,7 +981,6 @@ pub enum InvestmentFundMiFIDFee2Code {
 	CodeRPSS,
 	#[serde(rename = "TRS1")]
 	CodeTRS1,
-
 }
 
 
@@ -1021,7 +1004,6 @@ pub enum InvestmentFundPlanType1Code {
 	CodeSWIP,
 	#[serde(rename = "WTHP")]
 	CodeWTHP,
-
 }
 
 
@@ -1045,7 +1027,6 @@ pub enum InvestmentNeed2Code {
 	CodeOTHR,
 	#[serde(rename = "ISLB")]
 	CodeISLB,
-
 }
 
 
@@ -1179,7 +1160,6 @@ pub enum InvestorType2Code {
 	CodeEPRO,
 	#[serde(rename = "PRF2")]
 	CodePRF2,
-
 }
 
 
@@ -1195,7 +1175,6 @@ pub enum InvestorType3Code {
 	CodeNEI1,
 	#[serde(rename = "BOT2")]
 	CodeBOT2,
-
 }
 
 
@@ -1211,7 +1190,6 @@ pub enum InvestorType4Code {
 	CodePRF3,
 	#[serde(rename = "PRF4")]
 	CodePRF4,
-
 }
 
 
@@ -1401,7 +1379,6 @@ pub enum NotionalOrUnitBased1Code {
 	CodeUNIT,
 	#[serde(rename = "NOTI")]
 	CodeNOTI,
-
 }
 
 
@@ -1469,7 +1446,6 @@ pub enum OtherReviewRelatedToValueAndOrChargesUKType1Code {
 	CodeREVA,
 	#[serde(rename = "REVO")]
 	CodeREVO,
-
 }
 
 
@@ -1539,7 +1515,6 @@ pub enum OutcomeOfCOLLAssessmentOfValueUKType1Code {
 	CodeCOL1,
 	#[serde(rename = "COL2")]
 	CodeCOL2,
-
 }
 
 
@@ -1551,7 +1526,6 @@ pub enum OutcomeOfPRINValueAssessmentOrReviewUKType1Code {
 	CodePRI2,
 	#[serde(rename = "PRI1")]
 	CodePRI1,
-
 }
 
 
@@ -1653,7 +1627,6 @@ pub enum PriceMethod1Code {
 	CodeFORW,
 	#[serde(rename = "HIST")]
 	CodeHIST,
-
 }
 
 
@@ -1837,7 +1810,6 @@ pub enum ProductStructure1Code {
 	CodeSFUN,
 	#[serde(rename = "NUCI")]
 	CodeNUCI,
-
 }
 
 
@@ -1859,7 +1831,6 @@ pub enum QuotationType1Code {
 	CodeACTU,
 	#[serde(rename = "PRCT")]
 	CodePRCT,
-
 }
 
 
@@ -1869,7 +1840,6 @@ pub enum ReferToFundOrderDesk1Code {
 	#[default]
 	#[serde(rename = "RFOD")]
 	CodeRFOD,
-
 }
 
 
@@ -1883,7 +1853,6 @@ pub enum RiskLevel1Code {
 	CodeLOWW,
 	#[serde(rename = "MEDM")]
 	CodeMEDM,
-
 }
 
 
@@ -1913,7 +1882,6 @@ pub enum RoundingDirection2Code {
 	CodeRDUP,
 	#[serde(rename = "RDWN")]
 	CodeRDWN,
-
 }
 
 
@@ -1999,7 +1967,6 @@ pub enum SignatureType1Code {
 	CodeELEC,
 	#[serde(rename = "NONE")]
 	CodeNONE,
-
 }
 
 
@@ -2011,7 +1978,6 @@ pub enum SustainabilityPreferences2Code {
 	CodeNEUT,
 	#[serde(rename = "YSCO")]
 	CodeYSCO,
-
 }
 
 
@@ -2035,7 +2001,6 @@ pub enum TargetMarket1Code {
 	CodeNEUT,
 	#[serde(rename = "NSCO")]
 	CodeNSCO,
-
 }
 
 
@@ -2047,7 +2012,6 @@ pub enum TargetMarket2Code {
 	CodeNEUT,
 	#[serde(rename = "YSCO")]
 	CodeYSCO,
-
 }
 
 
@@ -2071,7 +2035,6 @@ pub enum TargetMarket3Code {
 	CodeYSCO,
 	#[serde(rename = "NSCO")]
 	CodeNSCO,
-
 }
 
 
@@ -2147,7 +2110,6 @@ pub enum TimeFrame2Code {
 	CodeSHOR,
 	#[serde(rename = "VSHT")]
 	CodeVSHT,
-
 }
 
 

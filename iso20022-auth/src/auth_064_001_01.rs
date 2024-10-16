@@ -101,7 +101,6 @@ pub enum ProductType6Code {
 	CodeOTHR,
 	#[serde(rename = "EQUI")]
 	CodeEQUI,
-
 }
 
 

@@ -113,7 +113,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -197,7 +196,6 @@ pub enum CancelledStatusReason1Code {
 	CodeCANS,
 	#[serde(rename = "CSUB")]
 	CodeCSUB,
-
 }
 
 
@@ -329,7 +327,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -397,7 +394,6 @@ pub enum EntryStatus1Code {
 	CodePDNG,
 	#[serde(rename = "FUTR")]
 	CodeFUTR,
-
 }
 
 
@@ -537,7 +533,6 @@ pub enum FinalStatus1Code {
 	CodeCAND,
 	#[serde(rename = "FNLD")]
 	CodeFNLD,
-
 }
 
 
@@ -875,7 +870,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1091,7 +1085,6 @@ pub enum PaymentInstrument1Code {
 	CodeRTI,
 	#[serde(rename = "CAN")]
 	CodeCAN,
-
 }
 
 
@@ -1241,7 +1234,6 @@ pub enum PaymentType3Code {
 	CodeOND,
 	#[serde(rename = "MGL")]
 	CodeMGL,
-
 }
 
 
@@ -1349,7 +1341,6 @@ pub enum PendingFailingSettlement1Code {
 	CodeCPEC,
 	#[serde(rename = "MUNO")]
 	CodeMUNO,
-
 }
 
 
@@ -1435,7 +1426,6 @@ pub enum PendingSettlement2Code {
 	CodeMINO,
 	#[serde(rename = "PCAP")]
 	CodePCAP,
-
 }
 
 
@@ -1477,7 +1467,6 @@ pub enum PendingStatus4Code {
 	CodeAVLB,
 	#[serde(rename = "SRML")]
 	CodeSRML,
-
 }
 
 
@@ -1567,7 +1556,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 
@@ -1593,7 +1581,6 @@ pub enum Priority5Code {
 	CodeNORM,
 	#[serde(rename = "URGT")]
 	CodeURGT,
-
 }
 
 
@@ -1713,7 +1700,6 @@ pub enum SuspendedStatusReason1Code {
 	CodeSUBY,
 	#[serde(rename = "SUBS")]
 	CodeSUBS,
-
 }
 
 
@@ -1885,7 +1871,6 @@ pub enum UnmatchedStatusReason1Code {
 	CodeTERM,
 	#[serde(rename = "ICUS")]
 	CodeICUS,
-
 }
 
 

@@ -261,7 +261,6 @@ pub enum NovationStatus1Code {
 	CodeNONO,
 	#[serde(rename = "NOVA")]
 	CodeNOVA,
-
 }
 
 
@@ -273,7 +272,6 @@ pub enum ReportPeriodActivity3Code {
 	CodeNOTX,
 	#[serde(rename = "NORA")]
 	CodeNORA,
-
 }
 
 
@@ -303,7 +301,6 @@ pub enum SecuritiesTransactionType15Code {
 	CodeBUYI,
 	#[serde(rename = "SELL")]
 	CodeSELL,
-
 }
 
 
@@ -335,5 +332,4 @@ pub enum TransactionOperationType1Code {
 	CodeCORR,
 	#[serde(rename = "NEWT")]
 	CodeNEWT,
-
 }

@@ -85,7 +85,6 @@ pub enum AcknowledgementReason3Code {
 	CodeSMPG,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -139,7 +138,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -265,7 +263,6 @@ pub enum CancelledStatusReason5Code {
 	CodeCANI,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
 }
 
 
@@ -345,7 +342,6 @@ pub enum CopyDuplicate1Code {
 	CodeCOPY,
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
-
 }
 
 
@@ -365,7 +361,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -441,7 +436,6 @@ pub enum DeniedReason4Code {
 	CodeCDCY,
 	#[serde(rename = "CDRE")]
 	CodeCDRE,
-
 }
 
 
@@ -521,7 +515,6 @@ pub enum EventFrequency7Code {
 	CodeOVNG,
 	#[serde(rename = "ONDE")]
 	CodeONDE,
-
 }
 
 
@@ -949,7 +942,6 @@ pub enum MovementResponseType1Code {
 	CodeFULL,
 	#[serde(rename = "STTS")]
 	CodeSTTS,
-
 }
 
 
@@ -969,7 +961,6 @@ pub enum NoReasonCode {
 	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
-
 }
 
 
@@ -1055,7 +1046,6 @@ pub enum PendingReason9Code {
 	CodeCDAC,
 	#[serde(rename = "INBC")]
 	CodeINBC,
-
 }
 
 
@@ -1287,7 +1277,6 @@ pub enum RejectionReason34Code {
 	CodeOTHR,
 	#[serde(rename = "REFE")]
 	CodeREFE,
-
 }
 
 
@@ -1299,7 +1288,6 @@ pub enum StatementUpdateType1Code {
 	CodeCOMP,
 	#[serde(rename = "DELT")]
 	CodeDELT,
-
 }
 
 

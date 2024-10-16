@@ -95,7 +95,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -241,7 +240,6 @@ pub enum ClearingChannel2Code {
 	CodeMPNS,
 	#[serde(rename = "BOOK")]
 	CodeBOOK,
-
 }
 
 
@@ -275,7 +273,6 @@ pub enum CopyDuplicate1Code {
 	CodeCOPY,
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
-
 }
 
 
@@ -295,7 +292,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -613,7 +609,6 @@ pub enum LinkageType1Code {
 	CodeUNLK,
 	#[serde(rename = "SOFT")]
 	CodeSOFT,
-
 }
 
 
@@ -825,7 +820,6 @@ pub enum ProcessingPosition3Code {
 	CodeBEFO,
 	#[serde(rename = "INFO")]
 	CodeINFO,
-
 }
 
 

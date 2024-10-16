@@ -361,7 +361,6 @@ pub enum SystemClosureReason1Code {
 	CodeRCVR,
 	#[serde(rename = "ADTW")]
 	CodeADTW,
-
 }
 
 
@@ -423,7 +422,6 @@ pub enum SystemStatus2Code {
 	CodeCLSD,
 	#[serde(rename = "CLSG")]
 	CodeCLSG,
-
 }
 
 

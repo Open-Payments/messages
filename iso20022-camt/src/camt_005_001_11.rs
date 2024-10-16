@@ -155,7 +155,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -249,7 +248,6 @@ pub enum CashPaymentStatus2Code {
 	CodePDNG,
 	#[serde(rename = "FINL")]
 	CodeFINL,
-
 }
 
 
@@ -331,7 +329,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -417,7 +414,6 @@ pub enum EntryStatus1Code {
 	CodePDNG,
 	#[serde(rename = "FUTR")]
 	CodeFUTR,
-
 }
 
 
@@ -513,7 +509,6 @@ pub enum FinalStatusCode {
 	CodeCAND,
 	#[serde(rename = "FNLD")]
 	CodeFNLD,
-
 }
 
 
@@ -707,7 +702,6 @@ pub enum Instruction1Code {
 	CodeTTIL,
 	#[serde(rename = "TFRO")]
 	CodeTFRO,
-
 }
 
 
@@ -889,7 +883,6 @@ pub enum NamePrefix2Code {
 	CodeMIST,
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
-
 }
 
 
@@ -1003,7 +996,6 @@ pub enum PaymentInstrument1Code {
 	CodeRTI,
 	#[serde(rename = "CAN")]
 	CodeCAN,
-
 }
 
 
@@ -1215,7 +1207,6 @@ pub enum PaymentType3Code {
 	CodeOND,
 	#[serde(rename = "MGL")]
 	CodeMGL,
-
 }
 
 
@@ -1267,7 +1258,6 @@ pub enum PendingStatus4Code {
 	CodeAVLB,
 	#[serde(rename = "SRML")]
 	CodeSRML,
-
 }
 
 
@@ -1357,7 +1347,6 @@ pub enum PreferredContactMethod2Code {
 	CodeONLI,
 	#[serde(rename = "PHON")]
 	CodePHON,
-
 }
 
 
@@ -1383,7 +1372,6 @@ pub enum Priority5Code {
 	CodeNORM,
 	#[serde(rename = "URGT")]
 	CodeURGT,
-
 }
 
 
@@ -1399,7 +1387,6 @@ pub enum QueryType2Code {
 	CodeMODF,
 	#[serde(rename = "DELD")]
 	CodeDELD,
-
 }
 
 
@@ -1421,7 +1408,6 @@ pub enum ReportIndicator1Code {
 	CodeSTND,
 	#[serde(rename = "PRPR")]
 	CodePRPR,
-
 }
 
 

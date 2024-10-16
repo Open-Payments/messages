@@ -129,7 +129,6 @@ pub enum FundingSourceType1Code {
 	CodeREPO,
 	#[serde(rename = "UBOR")]
 	CodeUBOR,
-
 }
 
 
@@ -289,7 +288,6 @@ pub enum ReinvestmentType1Code {
 	CodeREPM,
 	#[serde(rename = "SDPU")]
 	CodeSDPU,
-
 }
 
 
@@ -299,7 +297,6 @@ pub enum ReportPeriodActivity1Code {
 	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
-
 }
 
 

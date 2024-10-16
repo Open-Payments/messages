@@ -59,7 +59,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -237,7 +236,6 @@ pub enum DocumentType3Code {
 	CodePUOR,
 	#[serde(rename = "SCOR")]
 	CodeSCOR,
-
 }
 
 
@@ -293,7 +291,6 @@ pub enum ExchangeRateType1Code {
 	CodeSALE,
 	#[serde(rename = "AGRD")]
 	CodeAGRD,
-
 }
 
 
@@ -401,7 +398,6 @@ pub enum InformationType1Code {
 	CodeINST,
 	#[serde(rename = "RELY")]
 	CodeRELY,
-
 }
 
 
@@ -537,7 +533,6 @@ pub enum NamePrefix1Code {
 	CodeMISS,
 	#[serde(rename = "MADM")]
 	CodeMADM,
-
 }
 
 

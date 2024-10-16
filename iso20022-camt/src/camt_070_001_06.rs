@@ -95,7 +95,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
 }
 
 
@@ -213,7 +212,6 @@ pub enum CreditDebitCode {
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
-
 }
 
 
@@ -381,7 +379,6 @@ pub enum Frequency2Code {
 	CodeINDA,
 	#[serde(rename = "OVNG")]
 	CodeOVNG,
-
 }
 
 
@@ -749,7 +746,6 @@ pub enum StandingOrderQueryType1Code {
 	CodeSLSL,
 	#[serde(rename = "SWLS")]
 	CodeSWLS,
-
 }
 
 
@@ -795,7 +791,6 @@ pub enum StandingOrderType1Code {
 	CodeUSTO,
 	#[serde(rename = "PSTO")]
 	CodePSTO,
-
 }
 
 
