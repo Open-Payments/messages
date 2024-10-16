@@ -1,6 +1,6 @@
 [package]
 name = "open-payments-iso20022-acmt"
-version = "0.2.8"
+version = "0.2.9"
 edition = "2021"
 exclude = ["/xsd", "/xml", ".DS_Store", "/target", ".vscode", "generate.sh"]
 authors = ["Harishankar Narayanan <nharishankar@gmail.com>"]
