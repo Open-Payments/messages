@@ -41,6 +41,7 @@ pub struct BackTestingMethodology1 {
 
 // BaseOneRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct BaseOneRate {
 	#[serde(rename = "$value")]
 	pub base_one_rate: f64,
@@ -71,6 +72,7 @@ pub struct GenericIdentification36 {
 
 // Max2000Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max2000Text {
 	#[serde(rename = "$value")]
 	pub max2000_text: String,
@@ -79,6 +81,7 @@ pub struct Max2000Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -87,6 +90,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -140,6 +144,7 @@ pub struct SupplementaryDataEnvelope1 {
 
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,

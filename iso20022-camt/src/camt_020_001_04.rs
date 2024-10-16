@@ -109,6 +109,7 @@ pub struct GetGeneralBusinessInformationV04 {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -127,6 +128,7 @@ pub struct InformationQualifierType1 {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -135,6 +137,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -181,6 +184,7 @@ pub enum QueryType2Code {
 
 // RequestedIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct RequestedIndicator {
 	#[serde(rename = "$value")]
 	pub requested_indicator: bool,
@@ -205,6 +209,7 @@ pub struct SupplementaryDataEnvelope1 {
 
 // YesNoIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct YesNoIndicator {
 	#[serde(rename = "$value")]
 	pub yes_no_indicator: bool,

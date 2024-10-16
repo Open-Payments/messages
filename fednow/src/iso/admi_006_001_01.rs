@@ -49,6 +49,7 @@ pub enum AddressType2Code {
 
 // AnyBICDec2014Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct AnyBICDec2014Identifier {
 	#[serde(rename = "$value")]
 	pub any_bic_dec2014_identifier: String,
@@ -57,6 +58,7 @@ pub struct AnyBICDec2014Identifier {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -65,6 +67,7 @@ pub struct CountryCode {
 
 // ExternalEnquiryRequestType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalEnquiryRequestType1Code {
 	#[serde(rename = "$value")]
 	pub external_enquiry_request_type1_code: String,
@@ -73,6 +76,7 @@ pub struct ExternalEnquiryRequestType1Code {
 
 // ExternalPaymentControlRequestType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalPaymentControlRequestType1Code {
 	#[serde(rename = "$value")]
 	pub external_payment_control_request_type1_code: String,
@@ -105,6 +109,7 @@ pub struct GenericIdentification36 {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -113,6 +118,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -121,6 +127,7 @@ pub struct ISODateTime {
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct LEIIdentifier {
 	#[serde(rename = "$value")]
 	pub lei_identifier: String,
@@ -129,6 +136,7 @@ pub struct LEIIdentifier {
 
 // Max16Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max16Text {
 	#[serde(rename = "$value")]
 	pub max16_text: String,
@@ -137,6 +145,7 @@ pub struct Max16Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -145,6 +154,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -153,6 +163,7 @@ pub struct Max35Text {
 
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max70Text {
 	#[serde(rename = "$value")]
 	pub max70_text: String,

@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // ActiveOrHistoricCurrencyAnd20DecimalAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveOrHistoricCurrencyAnd20DecimalAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_and20_decimal_amount_simple_type: f64,
@@ -45,6 +46,7 @@ pub struct ActiveOrHistoricCurrencyAnd20DecimalAmount {
 
 // ActiveOrHistoricCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveOrHistoricCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_and_amount_simple_type: f64,
@@ -63,6 +65,7 @@ pub struct ActiveOrHistoricCurrencyAndAmount {
 
 // ActiveOrHistoricCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveOrHistoricCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
@@ -219,6 +222,7 @@ pub struct AmountAndDirection53 {
 
 // AnyBICDec2014Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct AnyBICDec2014Identifier {
 	#[serde(rename = "$value")]
 	pub any_bic_dec2014_identifier: String,
@@ -1182,6 +1186,7 @@ pub enum AssetClassSubProductType8Code {
 
 // BaseOneRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct BaseOneRate {
 	#[serde(rename = "$value")]
 	pub base_one_rate: f64,
@@ -1265,6 +1270,7 @@ pub enum BenchmarkCurveName3Code {
 
 // CFIOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CFIOct2015Identifier {
 	#[serde(rename = "$value")]
 	pub cfi_oct2015_identifier: String,
@@ -1744,6 +1750,7 @@ pub struct CounterpartyMatchingCriteria4 {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -1752,6 +1759,7 @@ pub struct CountryCode {
 
 // DecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct DecimalNumber {
 	#[serde(rename = "$value")]
 	pub decimal_number: f64,
@@ -1913,6 +1921,7 @@ pub enum ExposureType10Code {
 
 // ExternalAgreementType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalAgreementType1Code {
 	#[serde(rename = "$value")]
 	pub external_agreement_type1_code: String,
@@ -1921,6 +1930,7 @@ pub struct ExternalAgreementType1Code {
 
 // ExternalSecuritiesLendingType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalSecuritiesLendingType1Code {
 	#[serde(rename = "$value")]
 	pub external_securities_lending_type1_code: String,
@@ -2055,6 +2065,7 @@ pub struct GenericIdentification175 {
 
 // ISINOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISINOct2015Identifier {
 	#[serde(rename = "$value")]
 	pub isin_oct2015_identifier: String,
@@ -2063,6 +2074,7 @@ pub struct ISINOct2015Identifier {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -2071,6 +2083,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -2144,6 +2157,7 @@ pub struct InterestComputationMethodFormat6Choice {
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct LEIIdentifier {
 	#[serde(rename = "$value")]
 	pub lei_identifier: String,
@@ -2256,6 +2270,7 @@ pub struct LoanMatchingCriteria9 {
 
 // LongFraction19DecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct LongFraction19DecimalNumber {
 	#[serde(rename = "$value")]
 	pub long_fraction19_decimal_number: f64,
@@ -2264,6 +2279,7 @@ pub struct LongFraction19DecimalNumber {
 
 // MICIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct MICIdentifier {
 	#[serde(rename = "$value")]
 	pub mic_identifier: String,
@@ -2296,6 +2312,7 @@ pub struct MatchingCriteria10 {
 
 // Max105Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max105Text {
 	#[serde(rename = "$value")]
 	pub max105_text: String,
@@ -2304,6 +2321,7 @@ pub struct Max105Text {
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
@@ -2312,6 +2330,7 @@ pub struct Max140Text {
 
 // Max15NumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max15NumericText {
 	#[serde(rename = "$value")]
 	pub max15_numeric_text: String,
@@ -2320,6 +2339,7 @@ pub struct Max15NumericText {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -2328,6 +2348,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -2336,6 +2357,7 @@ pub struct Max35Text {
 
 // Max3Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max3Number {
 	#[serde(rename = "$value")]
 	pub max3_number: f64,
@@ -2344,6 +2366,7 @@ pub struct Max3Number {
 
 // Max500Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max500Text {
 	#[serde(rename = "$value")]
 	pub max500_text: String,
@@ -2352,6 +2375,7 @@ pub struct Max500Text {
 
 // Max50Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max50Text {
 	#[serde(rename = "$value")]
 	pub max50_text: String,
@@ -2360,6 +2384,7 @@ pub struct Max50Text {
 
 // Max52Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max52Text {
 	#[serde(rename = "$value")]
 	pub max52_text: String,
@@ -2368,6 +2393,7 @@ pub struct Max52Text {
 
 // Max5Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max5Number {
 	#[serde(rename = "$value")]
 	pub max5_number: f64,
@@ -2376,6 +2402,7 @@ pub struct Max5Number {
 
 // Max72Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max72Text {
 	#[serde(rename = "$value")]
 	pub max72_text: String,
@@ -2580,6 +2607,7 @@ pub struct PartyIdentification236Choice {
 
 // PercentageRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct PercentageRate {
 	#[serde(rename = "$value")]
 	pub percentage_rate: f64,
@@ -2588,6 +2616,7 @@ pub struct PercentageRate {
 
 // PlusOrMinusIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct PlusOrMinusIndicator {
 	#[serde(rename = "$value")]
 	pub plus_or_minus_indicator: bool,
@@ -2897,6 +2926,7 @@ pub struct TradeTransactionIdentification19 {
 
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,

@@ -46,6 +46,7 @@ pub enum AddressType2Code {
 
 // AnyBICDec2014Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct AnyBICDec2014Identifier {
 	#[serde(rename = "$value")]
 	pub any_bic_dec2014_identifier: String,
@@ -54,6 +55,7 @@ pub struct AnyBICDec2014Identifier {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -82,6 +84,7 @@ pub struct ErrorHandling5 {
 
 // Exact4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Exact4AlphaNumericText {
 	#[serde(rename = "$value")]
 	pub exact4_alpha_numeric_text: String,
@@ -90,6 +93,7 @@ pub struct Exact4AlphaNumericText {
 
 // ExternalSystemErrorHandling1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalSystemErrorHandling1Code {
 	#[serde(rename = "$value")]
 	pub external_system_error_handling1_code: String,
@@ -98,6 +102,7 @@ pub struct ExternalSystemErrorHandling1Code {
 
 // ExternalSystemPartyType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalSystemPartyType1Code {
 	#[serde(rename = "$value")]
 	pub external_system_party_type1_code: String,
@@ -142,6 +147,7 @@ pub struct GenericIdentification36 {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -150,6 +156,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -158,6 +165,7 @@ pub struct ISODateTime {
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct LEIIdentifier {
 	#[serde(rename = "$value")]
 	pub lei_identifier: String,
@@ -176,6 +184,7 @@ pub struct MarketSpecificAttribute1 {
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
@@ -184,6 +193,7 @@ pub struct Max140Text {
 
 // Max16Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max16Text {
 	#[serde(rename = "$value")]
 	pub max16_text: String,
@@ -192,6 +202,7 @@ pub struct Max16Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -200,6 +211,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -208,6 +220,7 @@ pub struct Max35Text {
 
 // Max5NumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max5NumericText {
 	#[serde(rename = "$value")]
 	pub max5_numeric_text: String,
@@ -216,6 +229,7 @@ pub struct Max5NumericText {
 
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max70Text {
 	#[serde(rename = "$value")]
 	pub max70_text: String,
@@ -523,6 +537,7 @@ pub enum SystemSecuritiesAccountType1Code {
 
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
@@ -531,6 +546,7 @@ pub struct TrueFalseIndicator {
 
 // YesNoIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct YesNoIndicator {
 	#[serde(rename = "$value")]
 	pub yes_no_indicator: bool,

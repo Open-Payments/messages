@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_currency_code: String,
@@ -103,6 +104,7 @@ pub struct BusinessDaySearchCriteria2 {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -133,6 +135,7 @@ pub struct DateTimePeriod1Choice {
 
 // ExternalEnquiryRequestType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalEnquiryRequestType1Code {
 	#[serde(rename = "$value")]
 	pub external_enquiry_request_type1_code: String,
@@ -141,6 +144,7 @@ pub struct ExternalEnquiryRequestType1Code {
 
 // ExternalMarketInfrastructure1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalMarketInfrastructure1Code {
 	#[serde(rename = "$value")]
 	pub external_market_infrastructure1_code: String,
@@ -149,6 +153,7 @@ pub struct ExternalMarketInfrastructure1Code {
 
 // ExternalPaymentControlRequestType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalPaymentControlRequestType1Code {
 	#[serde(rename = "$value")]
 	pub external_payment_control_request_type1_code: String,
@@ -181,6 +186,7 @@ pub struct GetBusinessDayInformationV05 {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -189,6 +195,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -207,6 +214,7 @@ pub struct MarketInfrastructureIdentification1Choice {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -215,6 +223,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -262,6 +271,7 @@ pub struct RequestType4Choice {
 
 // RequestedIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct RequestedIndicator {
 	#[serde(rename = "$value")]
 	pub requested_indicator: bool,

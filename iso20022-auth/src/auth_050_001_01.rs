@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // CFIOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CFIOct2015Identifier {
 	#[serde(rename = "$value")]
 	pub cfi_oct2015_identifier: String,
@@ -45,6 +46,7 @@ pub struct FinancialInstrumentReportingInstrumentClassificationReportV01 {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -53,6 +55,7 @@ pub struct ISODate {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,

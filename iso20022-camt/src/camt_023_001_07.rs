@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // ActiveCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and_amount_simple_type: f64,
@@ -45,6 +46,7 @@ pub struct ActiveCurrencyAndAmount {
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_currency_code: String,
@@ -63,6 +65,7 @@ pub struct Amount2Choice {
 
 // BICFIDec2014Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct BICFIDec2014Identifier {
 	#[serde(rename = "$value")]
 	pub bicfi_dec2014_identifier: String,
@@ -113,6 +116,7 @@ pub struct ClearingSystemMemberIdentification2 {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -121,6 +125,7 @@ pub struct CountryCode {
 
 // ExternalClearingSystemIdentification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalClearingSystemIdentification1Code {
 	#[serde(rename = "$value")]
 	pub external_clearing_system_identification1_code: String,
@@ -129,6 +134,7 @@ pub struct ExternalClearingSystemIdentification1Code {
 
 // ExternalFinancialInstitutionIdentification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalFinancialInstitutionIdentification1Code {
 	#[serde(rename = "$value")]
 	pub external_financial_institution_identification1_code: String,
@@ -137,6 +143,7 @@ pub struct ExternalFinancialInstitutionIdentification1Code {
 
 // ExternalMarketInfrastructure1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalMarketInfrastructure1Code {
 	#[serde(rename = "$value")]
 	pub external_market_infrastructure1_code: String,
@@ -167,6 +174,7 @@ pub struct GenericFinancialIdentification1 {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -175,6 +183,7 @@ pub struct ISODateTime {
 
 // ImpliedCurrencyAndAmount ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ImpliedCurrencyAndAmount {
 	#[serde(rename = "$value")]
 	pub implied_currency_and_amount: f64,
@@ -193,6 +202,7 @@ pub struct MarketInfrastructureIdentification1Choice {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -201,6 +211,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
