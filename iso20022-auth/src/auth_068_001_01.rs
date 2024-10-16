@@ -206,6 +206,7 @@ pub struct PositionAccount2 {
 // SchemeIdentificationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SchemeIdentificationType1Code {
+	#[default]
 	#[serde(rename = "MARG")]
 	CodeMARG,
 	#[serde(rename = "COLL")]
@@ -215,8 +216,6 @@ pub enum SchemeIdentificationType1Code {
 	#[serde(rename = "CLIM")]
 	CodeCLIM,
 
-	#[default]
-	UNKOWN
 }
 
 

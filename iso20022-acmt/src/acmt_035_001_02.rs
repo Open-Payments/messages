@@ -62,13 +62,12 @@ pub struct AccountSwitchPaymentResponseV02 {
 // BalanceTransferWindow1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BalanceTransferWindow1Code {
+	#[default]
 	#[serde(rename = "DAYH")]
 	CodeDAYH,
 	#[serde(rename = "EARL")]
 	CodeEARL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -143,6 +142,7 @@ pub struct SupplementaryDataEnvelope1 {
 // SwitchStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SwitchStatus1Code {
+	#[default]
 	#[serde(rename = "ACPT")]
 	CodeACPT,
 	#[serde(rename = "BTRQ")]
@@ -162,19 +162,16 @@ pub enum SwitchStatus1Code {
 	#[serde(rename = "TMTN")]
 	CodeTMTN,
 
-	#[default]
-	UNKOWN
 }
 
 
 // SwitchType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SwitchType1Code {
+	#[default]
 	#[serde(rename = "FULL")]
 	CodeFULL,
 	#[serde(rename = "PART")]
 	CodePART,
 
-	#[default]
-	UNKOWN
 }

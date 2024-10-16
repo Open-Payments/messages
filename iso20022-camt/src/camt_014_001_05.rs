@@ -154,6 +154,7 @@ pub struct ErrorHandling1Choice {
 // ErrorHandling1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ErrorHandling1Code {
+	#[default]
 	#[serde(rename = "X020")]
 	CodeX020,
 	#[serde(rename = "X030")]
@@ -161,8 +162,6 @@ pub enum ErrorHandling1Code {
 	#[serde(rename = "X050")]
 	CodeX050,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -449,6 +448,7 @@ pub struct MemberReportOrError8Choice {
 // MemberStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MemberStatus1Code {
+	#[default]
 	#[serde(rename = "ENBL")]
 	CodeENBL,
 	#[serde(rename = "DSBL")]
@@ -458,8 +458,6 @@ pub enum MemberStatus1Code {
 	#[serde(rename = "JOIN")]
 	CodeJOIN,
 
-	#[default]
-	UNKOWN
 }
 
 

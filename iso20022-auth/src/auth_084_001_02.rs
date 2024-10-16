@@ -298,17 +298,17 @@ pub struct RejectionReason53 {
 // ReportPeriodActivity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportPeriodActivity1Code {
+	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
 
-	#[default]
-	UNKOWN
 }
 
 
 // ReportingMessageStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportingMessageStatus1Code {
+	#[default]
 	#[serde(rename = "ACPT")]
 	CodeACPT,
 	#[serde(rename = "ACTC")]
@@ -328,8 +328,6 @@ pub enum ReportingMessageStatus1Code {
 	#[serde(rename = "CRPT")]
 	CodeCRPT,
 
-	#[default]
-	UNKOWN
 }
 
 

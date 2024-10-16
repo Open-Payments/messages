@@ -92,6 +92,7 @@ pub struct Max350Text {
 // ProductType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ProductType6Code {
+	#[default]
 	#[serde(rename = "BOND")]
 	CodeBOND,
 	#[serde(rename = "CASH")]
@@ -101,8 +102,6 @@ pub enum ProductType6Code {
 	#[serde(rename = "EQUI")]
 	CodeEQUI,
 
-	#[default]
-	UNKOWN
 }
 
 

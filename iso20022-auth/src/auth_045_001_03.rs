@@ -180,6 +180,7 @@ pub struct Max50Text {
 // NonEquityAssetClass1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NonEquityAssetClass1Code {
+	#[default]
 	#[serde(rename = "SDRV")]
 	CodeSDRV,
 	#[serde(rename = "IRDV")]
@@ -209,14 +210,13 @@ pub enum NonEquityAssetClass1Code {
 	#[serde(rename = "SFPS")]
 	CodeSFPS,
 
-	#[default]
-	UNKOWN
 }
 
 
 // NonEquityInstrumentReportingClassification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NonEquityInstrumentReportingClassification1Code {
+	#[default]
 	#[serde(rename = "SFPS")]
 	CodeSFPS,
 	#[serde(rename = "SDRV")]
@@ -232,8 +232,6 @@ pub enum NonEquityInstrumentReportingClassification1Code {
 	#[serde(rename = "ETNS")]
 	CodeETNS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -250,6 +248,7 @@ pub struct NonEquitySubClass1 {
 // NonEquitySubClassSegmentationCriteria1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NonEquitySubClassSegmentationCriteria1Code {
+	#[default]
 	#[serde(rename = "ASCL")]
 	CodeASCL,
 	#[serde(rename = "BSPD")]
@@ -323,8 +322,6 @@ pub enum NonEquitySubClassSegmentationCriteria1Code {
 	#[serde(rename = "UTYP")]
 	CodeUTYP,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -421,13 +418,12 @@ pub struct TonsOrCurrency2Choice {
 // TradingVenue2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradingVenue2Code {
+	#[default]
 	#[serde(rename = "APPA")]
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
 
-	#[default]
-	UNKOWN
 }
 
 

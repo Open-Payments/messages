@@ -60,6 +60,7 @@ pub struct AccountSchemeName1Choice {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -73,8 +74,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -151,6 +150,7 @@ pub struct ClearingSystemMemberIdentification2 {
 // CopyDuplicate1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CopyDuplicate1Code {
+	#[default]
 	#[serde(rename = "CODU")]
 	CodeCODU,
 	#[serde(rename = "COPY")]
@@ -158,8 +158,6 @@ pub enum CopyDuplicate1Code {
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -492,6 +490,7 @@ pub struct Max70Text {
 // ModificationProcessingStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ModificationProcessingStatus1Code {
+	#[default]
 	#[serde(rename = "PACK")]
 	CodePACK,
 	#[serde(rename = "REJT")]
@@ -505,8 +504,6 @@ pub enum ModificationProcessingStatus1Code {
 	#[serde(rename = "REPR")]
 	CodeREPR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -523,13 +520,12 @@ pub struct ModificationProcessingStatus9Choice {
 // MovementResponseType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MovementResponseType1Code {
+	#[default]
 	#[serde(rename = "FULL")]
 	CodeFULL,
 	#[serde(rename = "STTS")]
 	CodeSTTS,
 
-	#[default]
-	UNKOWN
 }
 
 

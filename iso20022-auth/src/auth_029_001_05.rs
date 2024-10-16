@@ -28,6 +28,7 @@ use serde::{Deserialize, Serialize};
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -41,8 +42,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -57,11 +56,10 @@ pub struct AnyBICDec2014Identifier {
 // AnyMIC1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AnyMIC1Code {
+	#[default]
 	#[serde(rename = "ANYM")]
 	CodeANYM,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -156,6 +154,7 @@ pub struct DayOfMonthNumber {
 // DerivativeEventType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DerivativeEventType3Code {
+	#[default]
 	#[serde(rename = "ALOC")]
 	CodeALOC,
 	#[serde(rename = "CLRG")]
@@ -183,8 +182,6 @@ pub enum DerivativeEventType3Code {
 	#[serde(rename = "UPDT")]
 	CodeUPDT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -203,6 +200,7 @@ pub struct DerivativesTradeReportQueryV05 {
 // FinancialInstrumentContractType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FinancialInstrumentContractType2Code {
+	#[default]
 	#[serde(rename = "CFDS")]
 	CodeCFDS,
 	#[serde(rename = "FRAS")]
@@ -222,14 +220,13 @@ pub enum FinancialInstrumentContractType2Code {
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
 
-	#[default]
-	UNKOWN
 }
 
 
 // FinancialPartySectorType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FinancialPartySectorType2Code {
+	#[default]
 	#[serde(rename = "AIFD")]
 	CodeAIFD,
 	#[serde(rename = "CSDS")]
@@ -249,14 +246,13 @@ pub enum FinancialPartySectorType2Code {
 	#[serde(rename = "UCIT")]
 	CodeUCIT,
 
-	#[default]
-	UNKOWN
 }
 
 
 // Frequency14Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Frequency14Code {
+	#[default]
 	#[serde(rename = "DAIL")]
 	CodeDAIL,
 	#[serde(rename = "WEEK")]
@@ -266,8 +262,6 @@ pub enum Frequency14Code {
 	#[serde(rename = "ADHO")]
 	CodeADHO,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -438,13 +432,12 @@ pub struct Max72Text {
 // ModificationLevel1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ModificationLevel1Code {
+	#[default]
 	#[serde(rename = "PSTN")]
 	CodePSTN,
 	#[serde(rename = "TCTN")]
 	CodeTCTN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -483,6 +476,7 @@ pub struct NaturalPersonIdentification3 {
 // NonFinancialPartySector1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NonFinancialPartySector1Code {
+	#[default]
 	#[serde(rename = "WTER")]
 	CodeWTER,
 	#[serde(rename = "MING")]
@@ -526,43 +520,38 @@ pub enum NonFinancialPartySector1Code {
 	#[serde(rename = "AEOB")]
 	CodeAEOB,
 
-	#[default]
-	UNKOWN
 }
 
 
 // NotAvailable1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NotAvailable1Code {
+	#[default]
 	#[serde(rename = "NTAV")]
 	CodeNTAV,
 
-	#[default]
-	UNKOWN
 }
 
 
 // NotReported1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NotReported1Code {
+	#[default]
 	#[serde(rename = "NORP")]
 	CodeNORP,
 
-	#[default]
-	UNKOWN
 }
 
 
 // Operation3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Operation3Code {
+	#[default]
 	#[serde(rename = "ANDD")]
 	CodeANDD,
 	#[serde(rename = "ORRR")]
 	CodeORRR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -617,6 +606,7 @@ pub struct PartyIdentification248Choice {
 // PartyNatureType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PartyNatureType1Code {
+	#[default]
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
 	#[serde(rename = "NFIN")]
@@ -626,8 +616,6 @@ pub enum PartyNatureType1Code {
 	#[serde(rename = "CCPS")]
 	CodeCCPS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -666,6 +654,7 @@ pub struct ProductClassificationCriteria1 {
 // ProductType4Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ProductType4Code {
+	#[default]
 	#[serde(rename = "CRDT")]
 	CodeCRDT,
 	#[serde(rename = "CURR")]
@@ -679,8 +668,6 @@ pub enum ProductType4Code {
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -915,6 +902,7 @@ pub struct TradeSecurityIdentificationQueryCriteria3 {
 // TransactionOperationType8Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TransactionOperationType8Code {
+	#[default]
 	#[serde(rename = "COMP")]
 	CodeCOMP,
 	#[serde(rename = "CORR")]
@@ -938,8 +926,6 @@ pub enum TransactionOperationType8Code {
 	#[serde(rename = "MARU")]
 	CodeMARU,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -964,6 +950,7 @@ pub struct UPIQueryCriteria1 {
 // WeekDay3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum WeekDay3Code {
+	#[default]
 	#[serde(rename = "ALLD")]
 	CodeALLD,
 	#[serde(rename = "XBHL")]
@@ -989,6 +976,4 @@ pub enum WeekDay3Code {
 	#[serde(rename = "WEND")]
 	CodeWEND,
 
-	#[default]
-	UNKOWN
 }

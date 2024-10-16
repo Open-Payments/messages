@@ -28,6 +28,7 @@ use serde::{Deserialize, Serialize};
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -41,8 +42,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -249,6 +248,7 @@ pub struct ImpliedCurrencyAndAmount {
 // Instruction1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Instruction1Code {
+	#[default]
 	#[serde(rename = "PBEN")]
 	CodePBEN,
 	#[serde(rename = "TTIL")]
@@ -256,8 +256,6 @@ pub enum Instruction1Code {
 	#[serde(rename = "TFRO")]
 	CodeTFRO,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -398,6 +396,7 @@ pub struct PaymentInstruction33 {
 // PaymentInstrument1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PaymentInstrument1Code {
+	#[default]
 	#[serde(rename = "BDT")]
 	CodeBDT,
 	#[serde(rename = "BCT")]
@@ -419,8 +418,6 @@ pub enum PaymentInstrument1Code {
 	#[serde(rename = "CAN")]
 	CodeCAN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -441,6 +438,7 @@ pub struct PaymentOrigin1Choice {
 // PaymentType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PaymentType3Code {
+	#[default]
 	#[serde(rename = "CBS")]
 	CodeCBS,
 	#[serde(rename = "BCK")]
@@ -490,8 +488,6 @@ pub enum PaymentType3Code {
 	#[serde(rename = "MGL")]
 	CodeMGL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -560,6 +556,7 @@ pub struct Priority1Choice {
 // Priority5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Priority5Code {
+	#[default]
 	#[serde(rename = "HIGH")]
 	CodeHIGH,
 	#[serde(rename = "LOWW")]
@@ -569,8 +566,6 @@ pub enum Priority5Code {
 	#[serde(rename = "URGT")]
 	CodeURGT,
 
-	#[default]
-	UNKOWN
 }
 
 

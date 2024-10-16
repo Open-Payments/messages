@@ -328,11 +328,10 @@ pub struct NewOrderReport2 {
 // NoReasonCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NoReasonCode {
+	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -421,6 +420,7 @@ pub struct OrderEventType1Choice {
 // OrderEventType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OrderEventType1Code {
+	#[default]
 	#[serde(rename = "CAME")]
 	CodeCAME,
 	#[serde(rename = "CAMO")]
@@ -452,8 +452,6 @@ pub enum OrderEventType1Code {
 	#[serde(rename = "RFQR")]
 	CodeRFQR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -564,6 +562,7 @@ pub struct OrderRestriction1Choice {
 // OrderRestrictionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OrderRestrictionType1Code {
+	#[default]
 	#[serde(rename = "SESR")]
 	CodeSESR,
 	#[serde(rename = "VFAR")]
@@ -571,14 +570,13 @@ pub enum OrderRestrictionType1Code {
 	#[serde(rename = "VFCR")]
 	CodeVFCR,
 
-	#[default]
-	UNKOWN
 }
 
 
 // OrderStatus10Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OrderStatus10Code {
+	#[default]
 	#[serde(rename = "ACTI")]
 	CodeACTI,
 	#[serde(rename = "INAC")]
@@ -586,14 +584,13 @@ pub enum OrderStatus10Code {
 	#[serde(rename = "SUSP")]
 	CodeSUSP,
 
-	#[default]
-	UNKOWN
 }
 
 
 // OrderStatus11Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OrderStatus11Code {
+	#[default]
 	#[serde(rename = "FIRM")]
 	CodeFIRM,
 	#[serde(rename = "IMPL")]
@@ -603,21 +600,18 @@ pub enum OrderStatus11Code {
 	#[serde(rename = "ROUT")]
 	CodeROUT,
 
-	#[default]
-	UNKOWN
 }
 
 
 // OrderType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OrderType3Code {
+	#[default]
 	#[serde(rename = "LMTO")]
 	CodeLMTO,
 	#[serde(rename = "STOP")]
 	CodeSTOP,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -634,26 +628,24 @@ pub struct Pagination1 {
 // PartyExceptionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PartyExceptionType1Code {
+	#[default]
 	#[serde(rename = "AGGR")]
 	CodeAGGR,
 	#[serde(rename = "PNAL")]
 	CodePNAL,
 
-	#[default]
-	UNKOWN
 }
 
 
 // PassiveOrAgressiveType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PassiveOrAgressiveType1Code {
+	#[default]
 	#[serde(rename = "AGRE")]
 	CodeAGRE,
 	#[serde(rename = "PASV")]
 	CodePASV,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -732,19 +724,19 @@ pub struct PositiveNumber {
 // PriceStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PriceStatus1Code {
+	#[default]
 	#[serde(rename = "PNDG")]
 	CodePNDG,
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
 
-	#[default]
-	UNKOWN
 }
 
 
 // RegulatoryTradingCapacity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum RegulatoryTradingCapacity1Code {
+	#[default]
 	#[serde(rename = "MTCH")]
 	CodeMTCH,
 	#[serde(rename = "DEAL")]
@@ -752,8 +744,6 @@ pub enum RegulatoryTradingCapacity1Code {
 	#[serde(rename = "AOTC")]
 	CodeAOTC,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -828,13 +818,12 @@ pub struct SecuritiesTransactionPrice4Choice {
 // Side6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Side6Code {
+	#[default]
 	#[serde(rename = "BUYI")]
 	CodeBUYI,
 	#[serde(rename = "SELL")]
 	CodeSELL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -857,13 +846,12 @@ pub struct SupplementaryDataEnvelope1 {
 // TradingVenue2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradingVenue2Code {
+	#[default]
 	#[serde(rename = "APPA")]
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -926,6 +914,7 @@ pub struct ValidityPeriod1Choice {
 // ValidityPeriodType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ValidityPeriodType1Code {
+	#[default]
 	#[serde(rename = "FOKV")]
 	CodeFOKV,
 	#[serde(rename = "GADV")]
@@ -947,8 +936,6 @@ pub enum ValidityPeriodType1Code {
 	#[serde(rename = "IOCV")]
 	CodeIOCV,
 
-	#[default]
-	UNKOWN
 }
 
 

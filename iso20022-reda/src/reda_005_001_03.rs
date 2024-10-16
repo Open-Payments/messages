@@ -40,6 +40,7 @@ pub struct AdditionalReference10 {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -53,8 +54,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -77,13 +76,12 @@ pub struct CountryCode {
 // DistributionPolicy1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DistributionPolicy1Code {
+	#[default]
 	#[serde(rename = "DIST")]
 	CodeDIST,
 	#[serde(rename = "ACCU")]
 	CodeACCU,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -120,13 +118,12 @@ pub struct FinancialInstrument71 {
 // FormOfSecurity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FormOfSecurity1Code {
+	#[default]
 	#[serde(rename = "BEAR")]
 	CodeBEAR,
 	#[serde(rename = "REGD")]
 	CodeREGD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -287,11 +284,10 @@ pub struct NameAndAddress5 {
 // NoCriteria1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NoCriteria1Code {
+	#[default]
 	#[serde(rename = "NOCR")]
 	CodeNOCR,
 
-	#[default]
-	UNKOWN
 }
 
 

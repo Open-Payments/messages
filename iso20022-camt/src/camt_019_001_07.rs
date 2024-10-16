@@ -350,6 +350,7 @@ pub struct SystemClosure2 {
 // SystemClosureReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SystemClosureReason1Code {
+	#[default]
 	#[serde(rename = "BHOL")]
 	CodeBHOL,
 	#[serde(rename = "SMTN")]
@@ -361,8 +362,6 @@ pub enum SystemClosureReason1Code {
 	#[serde(rename = "ADTW")]
 	CodeADTW,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -415,6 +414,7 @@ pub struct SystemStatus2Choice {
 // SystemStatus2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SystemStatus2Code {
+	#[default]
 	#[serde(rename = "SUSP")]
 	CodeSUSP,
 	#[serde(rename = "ACTV")]
@@ -424,8 +424,6 @@ pub enum SystemStatus2Code {
 	#[serde(rename = "CLSG")]
 	CodeCLSG,
 
-	#[default]
-	UNKOWN
 }
 
 

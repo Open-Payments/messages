@@ -54,13 +54,12 @@ pub struct ActiveCurrencyCode {
 // BrokeredDeal1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BrokeredDeal1Code {
+	#[default]
 	#[serde(rename = "BILA")]
 	CodeBILA,
 	#[serde(rename = "BROK")]
 	CodeBROK,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -87,13 +86,12 @@ pub struct Collateral18 {
 // CollateralPool1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CollateralPool1Code {
+	#[default]
 	#[serde(rename = "NOPL")]
 	CodeNOPL,
 	#[serde(rename = "POOL")]
 	CodePOOL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -198,13 +196,12 @@ pub struct ISODateTime {
 // InterestRateType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InterestRateType1Code {
+	#[default]
 	#[serde(rename = "FIXE")]
 	CodeFIXE,
 	#[serde(rename = "VARI")]
 	CodeVARI,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -265,13 +262,12 @@ pub struct MoneyMarketSecuredMarketStatisticalReportV02 {
 // MoneyMarketTransactionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MoneyMarketTransactionType1Code {
+	#[default]
 	#[serde(rename = "BORR")]
 	CodeBORR,
 	#[serde(rename = "LEND")]
 	CodeLEND,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -288,13 +284,12 @@ pub struct NameAndLocation1 {
 // NovationStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NovationStatus1Code {
+	#[default]
 	#[serde(rename = "NONO")]
 	CodeNONO,
 	#[serde(rename = "NOVA")]
 	CodeNOVA,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -317,13 +312,12 @@ pub struct PercentageRate {
 // ReportPeriodActivity3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportPeriodActivity3Code {
+	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
 	#[serde(rename = "NORA")]
 	CodeNORA,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -418,6 +412,7 @@ pub struct SecuredMarketTransaction4 {
 // SpecialCollateral2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SpecialCollateral2Code {
+	#[default]
 	#[serde(rename = "GENE")]
 	CodeGENE,
 	#[serde(rename = "SPEC")]
@@ -425,8 +420,6 @@ pub enum SpecialCollateral2Code {
 	#[serde(rename = "MRRP")]
 	CodeMRRP,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -449,6 +442,7 @@ pub struct SupplementaryDataEnvelope1 {
 // TransactionOperationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TransactionOperationType1Code {
+	#[default]
 	#[serde(rename = "AMND")]
 	CodeAMND,
 	#[serde(rename = "CANC")]
@@ -458,6 +452,4 @@ pub enum TransactionOperationType1Code {
 	#[serde(rename = "NEWT")]
 	CodeNEWT,
 
-	#[default]
-	UNKOWN
 }

@@ -114,6 +114,7 @@ pub struct FundingSource3 {
 // FundingSourceType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FundingSourceType1Code {
+	#[default]
 	#[serde(rename = "SECL")]
 	CodeSECL,
 	#[serde(rename = "FREE")]
@@ -129,8 +130,6 @@ pub enum FundingSourceType1Code {
 	#[serde(rename = "UBOR")]
 	CodeUBOR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -279,6 +278,7 @@ pub struct ReinvestedCashTypeAndAmount1 {
 // ReinvestmentType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReinvestmentType1Code {
+	#[default]
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
 	#[serde(rename = "OCMP")]
@@ -290,19 +290,16 @@ pub enum ReinvestmentType1Code {
 	#[serde(rename = "SDPU")]
 	CodeSDPU,
 
-	#[default]
-	UNKOWN
 }
 
 
 // ReportPeriodActivity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportPeriodActivity1Code {
+	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
 
-	#[default]
-	UNKOWN
 }
 
 

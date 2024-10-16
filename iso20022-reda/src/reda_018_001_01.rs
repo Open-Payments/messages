@@ -28,6 +28,7 @@ use serde::{Deserialize, Serialize};
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -41,8 +42,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -315,6 +314,7 @@ pub struct SystemSecuritiesAccountType1Choice {
 // SystemSecuritiesAccountType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SystemSecuritiesAccountType1Code {
+	#[default]
 	#[serde(rename = "CSDP")]
 	CodeCSDP,
 	#[serde(rename = "CSDM")]
@@ -328,8 +328,6 @@ pub enum SystemSecuritiesAccountType1Code {
 	#[serde(rename = "ISSA")]
 	CodeISSA,
 
-	#[default]
-	UNKOWN
 }
 
 

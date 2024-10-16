@@ -70,6 +70,7 @@ pub struct DecimalNumber {
 // EquityInstrumentReportingClassification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum EquityInstrumentReportingClassification1Code {
+	#[default]
 	#[serde(rename = "SHRS")]
 	CodeSHRS,
 	#[serde(rename = "OTHR")]
@@ -81,8 +82,6 @@ pub enum EquityInstrumentReportingClassification1Code {
 	#[serde(rename = "CRFT")]
 	CodeCRFT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -249,13 +248,12 @@ pub struct SupplementaryDataEnvelope1 {
 // TradingVenue2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradingVenue2Code {
+	#[default]
 	#[serde(rename = "APPA")]
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -310,6 +308,7 @@ pub struct TransparencyDataReport17 {
 // TransparencyMethodology2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TransparencyMethodology2Code {
+	#[default]
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
 	#[serde(rename = "SINT")]
@@ -319,8 +318,6 @@ pub enum TransparencyMethodology2Code {
 	#[serde(rename = "ESTM")]
 	CodeESTM,
 
-	#[default]
-	UNKOWN
 }
 
 

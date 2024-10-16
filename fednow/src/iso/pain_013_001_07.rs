@@ -103,6 +103,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -116,8 +117,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -230,6 +229,7 @@ pub struct CategoryPurpose1Choice {
 // ChargeBearerType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ChargeBearerType1Code {
+	#[default]
 	#[serde(rename = "DEBT")]
 	CodeDEBT,
 	#[serde(rename = "CRED")]
@@ -239,8 +239,6 @@ pub enum ChargeBearerType1Code {
 	#[serde(rename = "SLEV")]
 	CodeSLEV,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -277,6 +275,7 @@ pub struct Cheque11 {
 // ChequeDelivery1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ChequeDelivery1Code {
+	#[default]
 	#[serde(rename = "MLDB")]
 	CodeMLDB,
 	#[serde(rename = "MLCD")]
@@ -302,8 +301,6 @@ pub enum ChequeDelivery1Code {
 	#[serde(rename = "RGFA")]
 	CodeRGFA,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -320,6 +317,7 @@ pub struct ChequeDeliveryMethod1Choice {
 // ChequeType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ChequeType2Code {
+	#[default]
 	#[serde(rename = "CCHQ")]
 	CodeCCHQ,
 	#[serde(rename = "CCCH")]
@@ -331,8 +329,6 @@ pub enum ChequeType2Code {
 	#[serde(rename = "ELDR")]
 	CodeELDR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -397,13 +393,12 @@ pub struct CountryCode {
 // CreditDebitCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CreditDebitCode {
+	#[default]
 	#[serde(rename = "CRDT")]
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -666,6 +661,7 @@ pub struct DocumentType1Choice {
 // DocumentType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DocumentType3Code {
+	#[default]
 	#[serde(rename = "RADM")]
 	CodeRADM,
 	#[serde(rename = "RPIN")]
@@ -679,14 +675,13 @@ pub enum DocumentType3Code {
 	#[serde(rename = "SCOR")]
 	CodeSCOR,
 
-	#[default]
-	UNKOWN
 }
 
 
 // DocumentType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DocumentType6Code {
+	#[default]
 	#[serde(rename = "MSIN")]
 	CodeMSIN,
 	#[serde(rename = "CNFA")]
@@ -720,8 +715,6 @@ pub enum DocumentType6Code {
 	#[serde(rename = "PUOR")]
 	CodePUOR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1064,6 +1057,7 @@ pub struct ISODateTime {
 // Instruction3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Instruction3Code {
+	#[default]
 	#[serde(rename = "CHQB")]
 	CodeCHQB,
 	#[serde(rename = "HOLD")]
@@ -1073,8 +1067,6 @@ pub enum Instruction3Code {
 	#[serde(rename = "TELB")]
 	CodeTELB,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1223,6 +1215,7 @@ pub struct NameAndAddress16 {
 // NamePrefix2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NamePrefix2Code {
+	#[default]
 	#[serde(rename = "DOCT")]
 	CodeDOCT,
 	#[serde(rename = "MADM")]
@@ -1234,8 +1227,6 @@ pub enum NamePrefix2Code {
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1376,13 +1367,12 @@ pub struct PaymentInstruction31 {
 // PaymentMethod7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PaymentMethod7Code {
+	#[default]
 	#[serde(rename = "CHK")]
 	CodeCHK,
 	#[serde(rename = "TRF")]
 	CodeTRF,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1477,6 +1467,7 @@ pub struct PostalAddress24 {
 // PreferredContactMethod1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PreferredContactMethod1Code {
+	#[default]
 	#[serde(rename = "LETT")]
 	CodeLETT,
 	#[serde(rename = "MAIL")]
@@ -1488,21 +1479,18 @@ pub enum PreferredContactMethod1Code {
 	#[serde(rename = "CELL")]
 	CodeCELL,
 
-	#[default]
-	UNKOWN
 }
 
 
 // Priority2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Priority2Code {
+	#[default]
 	#[serde(rename = "HIGH")]
 	CodeHIGH,
 	#[serde(rename = "NORM")]
 	CodeNORM,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1595,6 +1583,7 @@ pub struct RegulatoryReporting3 {
 // RegulatoryReportingType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum RegulatoryReportingType1Code {
+	#[default]
 	#[serde(rename = "CRED")]
 	CodeCRED,
 	#[serde(rename = "DEBT")]
@@ -1602,8 +1591,6 @@ pub enum RegulatoryReportingType1Code {
 	#[serde(rename = "BOTH")]
 	CodeBOTH,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1678,6 +1665,7 @@ pub struct RemittanceLocationData1 {
 // RemittanceLocationMethod2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum RemittanceLocationMethod2Code {
+	#[default]
 	#[serde(rename = "FAXI")]
 	CodeFAXI,
 	#[serde(rename = "EDIC")]
@@ -1691,8 +1679,6 @@ pub enum RemittanceLocationMethod2Code {
 	#[serde(rename = "SMSM")]
 	CodeSMSM,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1941,6 +1927,7 @@ pub struct TaxRecordDetails2 {
 // TaxRecordPeriod1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TaxRecordPeriod1Code {
+	#[default]
 	#[serde(rename = "MM01")]
 	CodeMM01,
 	#[serde(rename = "MM02")]
@@ -1978,8 +1965,6 @@ pub enum TaxRecordPeriod1Code {
 	#[serde(rename = "HLF2")]
 	CodeHLF2,
 
-	#[default]
-	UNKOWN
 }
 
 

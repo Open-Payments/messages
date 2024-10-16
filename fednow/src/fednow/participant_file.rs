@@ -78,6 +78,7 @@ pub struct RoutingNumberFRS1 {
 // Services_FedNow_1 is This indicates a FedNow participant is enabled to receive request for payment messages.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ServicesFedNow1 {
+	#[default]
 	#[serde(rename = "CTSR")]
 	CodeCTSR,
 	#[serde(rename = "CTRO")]
@@ -85,8 +86,6 @@ pub enum ServicesFedNow1 {
 	#[serde(rename = "RFPR")]
 	CodeRFPR,
 
-	#[default]
-	UNKOWN
 }
 
 

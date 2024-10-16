@@ -124,6 +124,7 @@ pub struct FundingSource3 {
 // FundingSourceType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FundingSourceType1Code {
+	#[default]
 	#[serde(rename = "SECL")]
 	CodeSECL,
 	#[serde(rename = "FREE")]
@@ -139,8 +140,6 @@ pub enum FundingSourceType1Code {
 	#[serde(rename = "UBOR")]
 	CodeUBOR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -239,13 +238,12 @@ pub struct Max72Text {
 // ModificationLevel1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ModificationLevel1Code {
+	#[default]
 	#[serde(rename = "PSTN")]
 	CodePSTN,
 	#[serde(rename = "TCTN")]
 	CodeTCTN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -320,6 +318,7 @@ pub struct ReinvestedCashTypeAndAmount1 {
 // ReinvestmentType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReinvestmentType1Code {
+	#[default]
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
 	#[serde(rename = "OCMP")]
@@ -331,19 +330,16 @@ pub enum ReinvestmentType1Code {
 	#[serde(rename = "SDPU")]
 	CodeSDPU,
 
-	#[default]
-	UNKOWN
 }
 
 
 // ReportPeriodActivity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportPeriodActivity1Code {
+	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -430,19 +426,19 @@ pub struct TradeData37Choice {
 // TradeRepositoryReportingType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradeRepositoryReportingType1Code {
+	#[default]
 	#[serde(rename = "SWOS")]
 	CodeSWOS,
 	#[serde(rename = "TWOS")]
 	CodeTWOS,
 
-	#[default]
-	UNKOWN
 }
 
 
 // TransactionOperationType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TransactionOperationType6Code {
+	#[default]
 	#[serde(rename = "REUU")]
 	CodeREUU,
 	#[serde(rename = "COLU")]
@@ -464,8 +460,6 @@ pub enum TransactionOperationType6Code {
 	#[serde(rename = "EROR")]
 	CodeEROR,
 
-	#[default]
-	UNKOWN
 }
 
 

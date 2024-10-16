@@ -72,6 +72,7 @@ pub struct CollateralPortfolioCode6Choice {
 // CollateralisationType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CollateralisationType3Code {
+	#[default]
 	#[serde(rename = "FLCL")]
 	CodeFLCL,
 	#[serde(rename = "OWCL")]
@@ -93,8 +94,6 @@ pub enum CollateralisationType3Code {
 	#[serde(rename = "UNCL")]
 	CodeUNCL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -215,6 +214,7 @@ pub struct FinancialPartyClassification2Choice {
 // FinancialPartySectorType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FinancialPartySectorType3Code {
+	#[default]
 	#[serde(rename = "AIFD")]
 	CodeAIFD,
 	#[serde(rename = "CSDS")]
@@ -238,8 +238,6 @@ pub enum FinancialPartySectorType3Code {
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -452,11 +450,10 @@ pub struct NaturalPersonIdentification3 {
 // NoReasonCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NoReasonCode {
+	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -477,11 +474,10 @@ pub struct NonFinancialInstitutionSector10 {
 // NotApplicable1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NotApplicable1Code {
+	#[default]
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -496,26 +492,24 @@ pub struct Number {
 // OptionParty1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OptionParty1Code {
+	#[default]
 	#[serde(rename = "SLLR")]
 	CodeSLLR,
 	#[serde(rename = "BYER")]
 	CodeBYER,
 
-	#[default]
-	UNKOWN
 }
 
 
 // OptionParty3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OptionParty3Code {
+	#[default]
 	#[serde(rename = "MAKE")]
 	CodeMAKE,
 	#[serde(rename = "TAKE")]
 	CodeTAKE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -628,11 +622,10 @@ pub struct ReceivedMarginOrCollateral6 {
 // ReportPeriodActivity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportPeriodActivity1Code {
+	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -723,6 +716,7 @@ pub struct TradeCounterpartyReport20 {
 // TradeCounterpartyType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradeCounterpartyType1Code {
+	#[default]
 	#[serde(rename = "BENE")]
 	CodeBENE,
 	#[serde(rename = "BROK")]
@@ -740,8 +734,6 @@ pub enum TradeCounterpartyType1Code {
 	#[serde(rename = "ERFR")]
 	CodeERFR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -790,13 +782,12 @@ pub struct TradeReportHeader4 {
 // TradingCapacity7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradingCapacity7Code {
+	#[default]
 	#[serde(rename = "AGEN")]
 	CodeAGEN,
 	#[serde(rename = "PRIN")]
 	CodePRIN,
 
-	#[default]
-	UNKOWN
 }
 
 

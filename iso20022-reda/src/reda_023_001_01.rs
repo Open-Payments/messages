@@ -28,6 +28,7 @@ use serde::{Deserialize, Serialize};
 // DataModification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DataModification1Code {
+	#[default]
 	#[serde(rename = "INSE")]
 	CodeINSE,
 	#[serde(rename = "UPDT")]
@@ -35,8 +36,6 @@ pub enum DataModification1Code {
 	#[serde(rename = "DELT")]
 	CodeDELT,
 
-	#[default]
-	UNKOWN
 }
 
 

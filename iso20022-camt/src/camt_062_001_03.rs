@@ -54,6 +54,7 @@ pub struct ActiveCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -67,8 +68,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -153,6 +152,7 @@ pub struct CurrencyFactors1 {
 // Entry2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Entry2Code {
+	#[default]
 	#[serde(rename = "TRIA")]
 	CodeTRIA,
 	#[serde(rename = "OFFI")]
@@ -160,8 +160,6 @@ pub enum Entry2Code {
 	#[serde(rename = "REQU")]
 	CodeREQU,
 
-	#[default]
-	UNKOWN
 }
 
 

@@ -204,13 +204,12 @@ pub struct Max72Text {
 // ModificationLevel1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ModificationLevel1Code {
+	#[default]
 	#[serde(rename = "PSTN")]
 	CodePSTN,
 	#[serde(rename = "TCTN")]
 	CodeTCTN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -305,11 +304,10 @@ pub struct ReconciliationFlag2 {
 // ReportPeriodActivity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportPeriodActivity1Code {
+	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -352,19 +350,19 @@ pub struct TradeData38Choice {
 // TradeRepositoryReportingType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradeRepositoryReportingType1Code {
+	#[default]
 	#[serde(rename = "SWOS")]
 	CodeSWOS,
 	#[serde(rename = "TWOS")]
 	CodeTWOS,
 
-	#[default]
-	UNKOWN
 }
 
 
 // TransactionOperationType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TransactionOperationType6Code {
+	#[default]
 	#[serde(rename = "REUU")]
 	CodeREUU,
 	#[serde(rename = "COLU")]
@@ -386,8 +384,6 @@ pub enum TransactionOperationType6Code {
 	#[serde(rename = "EROR")]
 	CodeEROR,
 
-	#[default]
-	UNKOWN
 }
 
 

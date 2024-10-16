@@ -110,6 +110,7 @@ pub struct AdditionalReference3 {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -123,8 +124,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -175,6 +174,7 @@ pub struct CUSIPIdentifier {
 // CalculationBasis2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CalculationBasis2Code {
+	#[default]
 	#[serde(rename = "AVER")]
 	CodeAVER,
 	#[serde(rename = "DAIL")]
@@ -184,8 +184,6 @@ pub enum CalculationBasis2Code {
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -210,6 +208,7 @@ pub struct Charge15 {
 // ChargeType9Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ChargeType9Code {
+	#[default]
 	#[serde(rename = "MANF")]
 	CodeMANF,
 	#[serde(rename = "BEND")]
@@ -229,8 +228,6 @@ pub enum ChargeType9Code {
 	#[serde(rename = "PENA")]
 	CodePENA,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -301,13 +298,12 @@ pub struct DecimalNumber {
 // DistributionPolicy1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DistributionPolicy1Code {
+	#[default]
 	#[serde(rename = "DIST")]
 	CodeDIST,
 	#[serde(rename = "ACCU")]
 	CodeACCU,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -322,6 +318,7 @@ pub struct DutchIdentifier {
 // EUCapitalGain2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum EUCapitalGain2Code {
+	#[default]
 	#[serde(rename = "EUSI")]
 	CodeEUSI,
 	#[serde(rename = "EUSO")]
@@ -329,14 +326,13 @@ pub enum EUCapitalGain2Code {
 	#[serde(rename = "UKWN")]
 	CodeUKWN,
 
-	#[default]
-	UNKOWN
 }
 
 
 // EUDividendStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum EUDividendStatus1Code {
+	#[default]
 	#[serde(rename = "DIVI")]
 	CodeDIVI,
 	#[serde(rename = "DIVO")]
@@ -344,8 +340,6 @@ pub enum EUDividendStatus1Code {
 	#[serde(rename = "UKWN")]
 	CodeUKWN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -360,6 +354,7 @@ pub struct EuroclearClearstreamIdentifier {
 // EventFrequency1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum EventFrequency1Code {
+	#[default]
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
 	#[serde(rename = "SEMI")]
@@ -387,8 +382,6 @@ pub enum EventFrequency1Code {
 	#[serde(rename = "ONDE")]
 	CodeONDE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -443,13 +436,12 @@ pub struct FinancialInstrumentQuantity1 {
 // FormOfSecurity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FormOfSecurity1Code {
+	#[default]
 	#[serde(rename = "BEAR")]
 	CodeBEAR,
 	#[serde(rename = "REGD")]
 	CodeREGD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -634,19 +626,19 @@ pub struct PostalAddress1 {
 // PriceMethod1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PriceMethod1Code {
+	#[default]
 	#[serde(rename = "FORW")]
 	CodeFORW,
 	#[serde(rename = "HIST")]
 	CodeHIST,
 
-	#[default]
-	UNKOWN
 }
 
 
 // PriceReportFunction1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PriceReportFunction1Code {
+	#[default]
 	#[serde(rename = "REPL")]
 	CodeREPL,
 	#[serde(rename = "NEWP")]
@@ -654,8 +646,6 @@ pub enum PriceReportFunction1Code {
 	#[serde(rename = "PART")]
 	CodePART,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -902,6 +892,7 @@ pub struct TaxCalculationInformation4 {
 // TaxType12Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TaxType12Code {
+	#[default]
 	#[serde(rename = "INPO")]
 	CodeINPO,
 	#[serde(rename = "EUTR")]
@@ -915,14 +906,13 @@ pub enum TaxType12Code {
 	#[serde(rename = "MIET")]
 	CodeMIET,
 
-	#[default]
-	UNKOWN
 }
 
 
 // TaxableIncomePerShareCalculated2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TaxableIncomePerShareCalculated2Code {
+	#[default]
 	#[serde(rename = "TSIY")]
 	CodeTSIY,
 	#[serde(rename = "TSIN")]
@@ -930,8 +920,6 @@ pub enum TaxableIncomePerShareCalculated2Code {
 	#[serde(rename = "UKWN")]
 	CodeUKWN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -946,6 +934,7 @@ pub struct TickerIdentifier {
 // TypeOfPrice6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TypeOfPrice6Code {
+	#[default]
 	#[serde(rename = "BIDE")]
 	CodeBIDE,
 	#[serde(rename = "OFFR")]
@@ -975,14 +964,13 @@ pub enum TypeOfPrice6Code {
 	#[serde(rename = "NAUP")]
 	CodeNAUP,
 
-	#[default]
-	UNKOWN
 }
 
 
 // TypeOfPrice9Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TypeOfPrice9Code {
+	#[default]
 	#[serde(rename = "BIDE")]
 	CodeBIDE,
 	#[serde(rename = "OFFR")]
@@ -1014,8 +1002,6 @@ pub enum TypeOfPrice9Code {
 	#[serde(rename = "ENAV")]
 	CodeENAV,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1092,6 +1078,7 @@ pub struct ValuationStatistics3 {
 // ValuationTiming1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ValuationTiming1Code {
+	#[default]
 	#[serde(rename = "EXCP")]
 	CodeEXCP,
 	#[serde(rename = "USUA")]
@@ -1099,8 +1086,6 @@ pub enum ValuationTiming1Code {
 	#[serde(rename = "PATC")]
 	CodePATC,
 
-	#[default]
-	UNKOWN
 }
 
 

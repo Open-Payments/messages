@@ -194,13 +194,12 @@ pub struct TradingUnderWaiversPercentage1 {
 // TradingVenue2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradingVenue2Code {
+	#[default]
 	#[serde(rename = "APPA")]
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
 
-	#[default]
-	UNKOWN
 }
 
 

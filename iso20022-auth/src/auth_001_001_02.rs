@@ -68,6 +68,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -81,8 +82,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -523,13 +522,12 @@ pub struct InvestigatedParties1Choice {
 // InvestigatedParties1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InvestigatedParties1Code {
+	#[default]
 	#[serde(rename = "ALLP")]
 	CodeALLP,
 	#[serde(rename = "OWNE")]
 	CodeOWNE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -650,6 +648,7 @@ pub struct Min8Max28NumericText {
 // NamePrefix2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NamePrefix2Code {
+	#[default]
 	#[serde(rename = "DOCT")]
 	CodeDOCT,
 	#[serde(rename = "MADM")]
@@ -661,8 +660,6 @@ pub enum NamePrefix2Code {
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -809,6 +806,7 @@ pub struct PostalAddress27 {
 // PreferredContactMethod2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PreferredContactMethod2Code {
+	#[default]
 	#[serde(rename = "MAIL")]
 	CodeMAIL,
 	#[serde(rename = "FAXX")]
@@ -822,8 +820,6 @@ pub enum PreferredContactMethod2Code {
 	#[serde(rename = "PHON")]
 	CodePHON,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -892,13 +888,12 @@ pub struct SupplementaryDataEnvelope1 {
 // TransactionRequestType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TransactionRequestType1Code {
+	#[default]
 	#[serde(rename = "DTTX")]
 	CodeDTTX,
 	#[serde(rename = "OREC")]
 	CodeOREC,
 
-	#[default]
-	UNKOWN
 }
 
 

@@ -86,6 +86,7 @@ pub struct AccountSchemeName1Choice {
 // AccountStatus3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AccountStatus3Code {
+	#[default]
 	#[serde(rename = "ENAB")]
 	CodeENAB,
 	#[serde(rename = "DISA")]
@@ -95,8 +96,6 @@ pub enum AccountStatus3Code {
 	#[serde(rename = "FORM")]
 	CodeFORM,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -139,6 +138,7 @@ pub struct AddressModification3 {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -152,8 +152,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -280,6 +278,7 @@ pub struct CommunicationMethod2Choice {
 // CommunicationMethod2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CommunicationMethod2Code {
+	#[default]
 	#[serde(rename = "EMAL")]
 	CodeEMAL,
 	#[serde(rename = "FAXI")]
@@ -291,8 +290,6 @@ pub enum CommunicationMethod2Code {
 	#[serde(rename = "POST")]
 	CodePOST,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -503,6 +500,7 @@ pub struct FinancialInstitutionIdentification23 {
 // Frequency7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Frequency7Code {
+	#[default]
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
 	#[serde(rename = "DAIL")]
@@ -522,8 +520,6 @@ pub enum Frequency7Code {
 	#[serde(rename = "INDA")]
 	CodeINDA,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -766,6 +762,7 @@ pub struct MessageIdentification1 {
 // Modification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Modification1Code {
+	#[default]
 	#[serde(rename = "NOCH")]
 	CodeNOCH,
 	#[serde(rename = "MODI")]
@@ -775,8 +772,6 @@ pub enum Modification1Code {
 	#[serde(rename = "ADDD")]
 	CodeADDD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -793,6 +788,7 @@ pub struct NameModification1 {
 // NamePrefix2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NamePrefix2Code {
+	#[default]
 	#[serde(rename = "DOCT")]
 	CodeDOCT,
 	#[serde(rename = "MADM")]
@@ -804,8 +800,6 @@ pub enum NamePrefix2Code {
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1020,6 +1014,7 @@ pub struct PostalAddress27 {
 // PreferredContactMethod2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PreferredContactMethod2Code {
+	#[default]
 	#[serde(rename = "MAIL")]
 	CodeMAIL,
 	#[serde(rename = "FAXX")]
@@ -1033,8 +1028,6 @@ pub enum PreferredContactMethod2Code {
 	#[serde(rename = "PHON")]
 	CodePHON,
 
-	#[default]
-	UNKOWN
 }
 
 

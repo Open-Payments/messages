@@ -38,19 +38,19 @@ pub struct AccountIdentification4Choice {
 // AccountLevel1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AccountLevel1Code {
+	#[default]
 	#[serde(rename = "INTM")]
 	CodeINTM,
 	#[serde(rename = "SMRY")]
 	CodeSMRY,
 
-	#[default]
-	UNKOWN
 }
 
 
 // AccountLevel2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AccountLevel2Code {
+	#[default]
 	#[serde(rename = "INTM")]
 	CodeINTM,
 	#[serde(rename = "SMRY")]
@@ -58,8 +58,6 @@ pub enum AccountLevel2Code {
 	#[serde(rename = "DETL")]
 	CodeDETL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -114,6 +112,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -127,8 +126,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -193,6 +190,7 @@ pub struct BalanceAdjustment1 {
 // BalanceAdjustmentType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BalanceAdjustmentType1Code {
+	#[default]
 	#[serde(rename = "LDGR")]
 	CodeLDGR,
 	#[serde(rename = "FLOT")]
@@ -200,8 +198,6 @@ pub enum BalanceAdjustmentType1Code {
 	#[serde(rename = "CLLD")]
 	CodeCLLD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -278,6 +274,7 @@ pub struct BillingBalanceType1Choice {
 // BillingChargeMethod1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BillingChargeMethod1Code {
+	#[default]
 	#[serde(rename = "UPRC")]
 	CodeUPRC,
 	#[serde(rename = "STAM")]
@@ -319,8 +316,6 @@ pub enum BillingChargeMethod1Code {
 	#[serde(rename = "BBSE")]
 	CodeBBSE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -349,6 +344,7 @@ pub struct BillingCompensationType1Choice {
 // BillingCurrencyType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BillingCurrencyType1Code {
+	#[default]
 	#[serde(rename = "ACCT")]
 	CodeACCT,
 	#[serde(rename = "STLM")]
@@ -356,14 +352,13 @@ pub enum BillingCurrencyType1Code {
 	#[serde(rename = "PRCG")]
 	CodePRCG,
 
-	#[default]
-	UNKOWN
 }
 
 
 // BillingCurrencyType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BillingCurrencyType2Code {
+	#[default]
 	#[serde(rename = "ACCT")]
 	CodeACCT,
 	#[serde(rename = "STLM")]
@@ -373,8 +368,6 @@ pub enum BillingCurrencyType2Code {
 	#[serde(rename = "HOST")]
 	CodeHOST,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -707,6 +700,7 @@ pub struct BillingStatement5 {
 // BillingStatementStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BillingStatementStatus1Code {
+	#[default]
 	#[serde(rename = "ORGN")]
 	CodeORGN,
 	#[serde(rename = "RPLC")]
@@ -714,8 +708,6 @@ pub enum BillingStatementStatus1Code {
 	#[serde(rename = "TEST")]
 	CodeTEST,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -742,6 +734,7 @@ pub struct BillingSubServiceQualifier1Choice {
 // BillingSubServiceQualifier1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BillingSubServiceQualifier1Code {
+	#[default]
 	#[serde(rename = "LBOX")]
 	CodeLBOX,
 	#[serde(rename = "STOR")]
@@ -753,14 +746,13 @@ pub enum BillingSubServiceQualifier1Code {
 	#[serde(rename = "MACT")]
 	CodeMACT,
 
-	#[default]
-	UNKOWN
 }
 
 
 // BillingTaxCalculationMethod1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BillingTaxCalculationMethod1Code {
+	#[default]
 	#[serde(rename = "NTAX")]
 	CodeNTAX,
 	#[serde(rename = "MTDA")]
@@ -774,8 +766,6 @@ pub enum BillingTaxCalculationMethod1Code {
 	#[serde(rename = "UDFD")]
 	CodeUDFD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -920,6 +910,7 @@ pub struct ClearingSystemMemberIdentification2 {
 // CompensationMethod1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CompensationMethod1Code {
+	#[default]
 	#[serde(rename = "NOCP")]
 	CodeNOCP,
 	#[serde(rename = "DBTD")]
@@ -929,8 +920,6 @@ pub enum CompensationMethod1Code {
 	#[serde(rename = "DDBT")]
 	CodeDDBT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1377,6 +1366,7 @@ pub struct Max8Text {
 // NamePrefix2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NamePrefix2Code {
+	#[default]
 	#[serde(rename = "DOCT")]
 	CodeDOCT,
 	#[serde(rename = "MADM")]
@@ -1388,8 +1378,6 @@ pub enum NamePrefix2Code {
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1552,6 +1540,7 @@ pub struct PostalAddress27 {
 // PreferredContactMethod2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PreferredContactMethod2Code {
+	#[default]
 	#[serde(rename = "MAIL")]
 	CodeMAIL,
 	#[serde(rename = "FAXX")]
@@ -1565,8 +1554,6 @@ pub enum PreferredContactMethod2Code {
 	#[serde(rename = "PHON")]
 	CodePHON,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1623,19 +1610,19 @@ pub struct ResidenceLocation1Choice {
 // ServiceAdjustmentType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ServiceAdjustmentType1Code {
+	#[default]
 	#[serde(rename = "COMP")]
 	CodeCOMP,
 	#[serde(rename = "NCMP")]
 	CodeNCMP,
 
-	#[default]
-	UNKOWN
 }
 
 
 // ServicePaymentMethod1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ServicePaymentMethod1Code {
+	#[default]
 	#[serde(rename = "BCMP")]
 	CodeBCMP,
 	#[serde(rename = "FLAT")]
@@ -1649,8 +1636,6 @@ pub enum ServicePaymentMethod1Code {
 	#[serde(rename = "FREE")]
 	CodeFREE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1669,6 +1654,7 @@ pub struct ServiceTaxDesignation1 {
 // ServiceTaxDesignation1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ServiceTaxDesignation1Code {
+	#[default]
 	#[serde(rename = "XMPT")]
 	CodeXMPT,
 	#[serde(rename = "ZERO")]
@@ -1676,8 +1662,6 @@ pub enum ServiceTaxDesignation1Code {
 	#[serde(rename = "TAXE")]
 	CodeTAXE,
 
-	#[default]
-	UNKOWN
 }
 
 

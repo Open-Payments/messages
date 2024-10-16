@@ -86,6 +86,7 @@ pub struct DateAndDateTime2Choice {
 // DerivativeEventType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DerivativeEventType3Code {
+	#[default]
 	#[serde(rename = "ALOC")]
 	CodeALOC,
 	#[serde(rename = "CLRG")]
@@ -113,8 +114,6 @@ pub enum DerivativeEventType3Code {
 	#[serde(rename = "UPDT")]
 	CodeUPDT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -395,11 +394,10 @@ pub struct NaturalPersonIdentification3 {
 // NotApplicable1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NotApplicable1Code {
+	#[default]
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -516,17 +514,17 @@ pub struct RejectionStatistics9 {
 // ReportPeriodActivity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportPeriodActivity1Code {
+	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
 
-	#[default]
-	UNKOWN
 }
 
 
 // ReportingMessageStatus2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportingMessageStatus2Code {
+	#[default]
 	#[serde(rename = "ACPT")]
 	CodeACPT,
 	#[serde(rename = "RJCT")]
@@ -538,8 +536,6 @@ pub enum ReportingMessageStatus2Code {
 	#[serde(rename = "NAUT")]
 	CodeNAUT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -596,6 +592,7 @@ pub struct TradeTransactionIdentification24 {
 // TransactionOperationType10Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TransactionOperationType10Code {
+	#[default]
 	#[serde(rename = "COMP")]
 	CodeCOMP,
 	#[serde(rename = "CORR")]
@@ -621,8 +618,6 @@ pub enum TransactionOperationType10Code {
 	#[serde(rename = "PRTO")]
 	CodePRTO,
 
-	#[default]
-	UNKOWN
 }
 
 

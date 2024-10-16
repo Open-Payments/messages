@@ -60,6 +60,7 @@ pub struct AccountSchemeName1Choice {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -73,8 +74,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -107,13 +106,12 @@ pub struct BICFIDec2014Identifier {
 // BalanceCounterparty1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BalanceCounterparty1Code {
+	#[default]
 	#[serde(rename = "BILA")]
 	CodeBILA,
 	#[serde(rename = "MULT")]
 	CodeMULT,
 
-	#[default]
-	UNKOWN
 }
 
 

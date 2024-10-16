@@ -38,13 +38,12 @@ pub struct AcceptedStatusReason1Choice {
 // AcceptedStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AcceptedStatusReason1Code {
+	#[default]
 	#[serde(rename = "PLAC")]
 	CodePLAC,
 	#[serde(rename = "SECT")]
 	CodeSECT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -61,6 +60,7 @@ pub struct Account23 {
 // AccountManagementStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AccountManagementStatus1Code {
+	#[default]
 	#[serde(rename = "RECE")]
 	CodeRECE,
 	#[serde(rename = "ACCP")]
@@ -70,8 +70,6 @@ pub enum AccountManagementStatus1Code {
 	#[serde(rename = "STNP")]
 	CodeSTNP,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -152,6 +150,7 @@ pub struct AdditionalReference13 {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -165,8 +164,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -191,6 +188,7 @@ pub struct BlockedReason2Choice {
 // BlockedReason2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BlockedReason2Code {
+	#[default]
 	#[serde(rename = "BKRP")]
 	CodeBKRP,
 	#[serde(rename = "CMMT")]
@@ -210,8 +208,6 @@ pub enum BlockedReason2Code {
 	#[serde(rename = "TRAN")]
 	CodeTRAN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -262,13 +258,12 @@ pub struct ClosedStatusReason1Choice {
 // ClosedStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ClosedStatusReason1Code {
+	#[default]
 	#[serde(rename = "ASIN")]
 	CodeASIN,
 	#[serde(rename = "CLIN")]
 	CodeCLIN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -305,13 +300,12 @@ pub struct ClosurePendingStatusReason1Choice {
 // ClosurePendingStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ClosurePendingStatusReason1Code {
+	#[default]
 	#[serde(rename = "CLOS")]
 	CodeCLOS,
 	#[serde(rename = "PEND")]
 	CodePEND,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -336,6 +330,7 @@ pub struct CountryCode {
 // DisabledReason2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DisabledReason2Code {
+	#[default]
 	#[serde(rename = "CLOS")]
 	CodeCLOS,
 	#[serde(rename = "BKRP")]
@@ -359,8 +354,6 @@ pub enum DisabledReason2Code {
 	#[serde(rename = "REJT")]
 	CodeREJT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -417,11 +410,10 @@ pub struct EnabledStatusReason1Choice {
 // EnabledStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum EnabledStatusReason1Code {
+	#[default]
 	#[serde(rename = "MODI")]
 	CodeMODI,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -516,6 +508,7 @@ pub struct ISOYearMonth {
 // InvestmentFundTransactionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InvestmentFundTransactionType1Code {
+	#[default]
 	#[serde(rename = "ALLL")]
 	CodeALLL,
 	#[serde(rename = "SELL")]
@@ -561,8 +554,6 @@ pub enum InvestmentFundTransactionType1Code {
 	#[serde(rename = "SUAA")]
 	CodeSUAA,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -641,11 +632,10 @@ pub struct NameAndAddress5 {
 // NoReasonCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NoReasonCode {
+	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -694,6 +684,7 @@ pub struct PendingOpeningStatusReason1Choice {
 // PendingOpeningStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PendingOpeningStatusReason1Code {
+	#[default]
 	#[serde(rename = "ATHR")]
 	CodeATHR,
 	#[serde(rename = "ATHP")]
@@ -709,8 +700,6 @@ pub enum PendingOpeningStatusReason1Code {
 	#[serde(rename = "RIGH")]
 	CodeRIGH,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -747,6 +736,7 @@ pub struct PendingStatusReason1Choice {
 // PendingStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PendingStatusReason1Code {
+	#[default]
 	#[serde(rename = "KYCM")]
 	CodeKYCM,
 	#[serde(rename = "FRDM")]
@@ -760,8 +750,6 @@ pub enum PendingStatusReason1Code {
 	#[serde(rename = "MODI")]
 	CodeMODI,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -820,13 +808,12 @@ pub struct ProformaStatusReason1Choice {
 // ProformaStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ProformaStatusReason1Code {
+	#[default]
 	#[serde(rename = "MODI")]
 	CodeMODI,
 	#[serde(rename = "RIGH")]
 	CodeRIGH,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -853,13 +840,12 @@ pub struct RejectedReason16Choice {
 // RejectedStatusReason6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum RejectedStatusReason6Code {
+	#[default]
 	#[serde(rename = "SAFE")]
 	CodeSAFE,
 	#[serde(rename = "NSLA")]
 	CodeNSLA,
 
-	#[default]
-	UNKOWN
 }
 
 

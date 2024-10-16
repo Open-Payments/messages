@@ -64,6 +64,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -77,8 +78,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -509,6 +508,7 @@ pub struct ProxyAccountType1Choice {
 // QueryType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum QueryType2Code {
+	#[default]
 	#[serde(rename = "ALLL")]
 	CodeALLL,
 	#[serde(rename = "CHNG")]
@@ -518,8 +518,6 @@ pub enum QueryType2Code {
 	#[serde(rename = "DELD")]
 	CodeDELD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -576,6 +574,7 @@ pub struct StandingOrderQuery5 {
 // StandingOrderQueryType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum StandingOrderQueryType1Code {
+	#[default]
 	#[serde(rename = "SLST")]
 	CodeSLST,
 	#[serde(rename = "SDTL")]
@@ -587,8 +586,6 @@ pub enum StandingOrderQueryType1Code {
 	#[serde(rename = "SWLS")]
 	CodeSWLS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -677,13 +674,12 @@ pub struct StandingOrderType1Choice {
 // StandingOrderType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum StandingOrderType1Code {
+	#[default]
 	#[serde(rename = "USTO")]
 	CodeUSTO,
 	#[serde(rename = "PSTO")]
 	CodePSTO,
 
-	#[default]
-	UNKOWN
 }
 
 

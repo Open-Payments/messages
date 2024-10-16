@@ -82,6 +82,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -95,8 +96,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -189,6 +188,7 @@ pub struct CategoryPurpose1Choice {
 // ClearingChannel2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ClearingChannel2Code {
+	#[default]
 	#[serde(rename = "RTGS")]
 	CodeRTGS,
 	#[serde(rename = "RTNS")]
@@ -198,8 +198,6 @@ pub enum ClearingChannel2Code {
 	#[serde(rename = "BOOK")]
 	CodeBOOK,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -716,19 +714,19 @@ pub struct PostalAddress27 {
 // Priority2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Priority2Code {
+	#[default]
 	#[serde(rename = "HIGH")]
 	CodeHIGH,
 	#[serde(rename = "NORM")]
 	CodeNORM,
 
-	#[default]
-	UNKOWN
 }
 
 
 // Priority3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Priority3Code {
+	#[default]
 	#[serde(rename = "URGT")]
 	CodeURGT,
 	#[serde(rename = "HIGH")]
@@ -736,8 +734,6 @@ pub enum Priority3Code {
 	#[serde(rename = "NORM")]
 	CodeNORM,
 
-	#[default]
-	UNKOWN
 }
 
 

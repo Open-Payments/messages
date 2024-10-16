@@ -234,6 +234,7 @@ pub struct MessageHeader1 {
 // PaymentRole1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PaymentRole1Code {
+	#[default]
 	#[serde(rename = "LQMG")]
 	CodeLQMG,
 	#[serde(rename = "LMMG")]
@@ -247,8 +248,6 @@ pub enum PaymentRole1Code {
 	#[serde(rename = "STMG")]
 	CodeSTMG,
 
-	#[default]
-	UNKOWN
 }
 
 

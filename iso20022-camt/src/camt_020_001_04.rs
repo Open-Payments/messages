@@ -154,6 +154,7 @@ pub struct MessageHeader1 {
 // Priority1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Priority1Code {
+	#[default]
 	#[serde(rename = "HIGH")]
 	CodeHIGH,
 	#[serde(rename = "NORM")]
@@ -161,14 +162,13 @@ pub enum Priority1Code {
 	#[serde(rename = "LOWW")]
 	CodeLOWW,
 
-	#[default]
-	UNKOWN
 }
 
 
 // QueryType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum QueryType2Code {
+	#[default]
 	#[serde(rename = "ALLL")]
 	CodeALLL,
 	#[serde(rename = "CHNG")]
@@ -178,8 +178,6 @@ pub enum QueryType2Code {
 	#[serde(rename = "DELD")]
 	CodeDELD,
 
-	#[default]
-	UNKOWN
 }
 
 

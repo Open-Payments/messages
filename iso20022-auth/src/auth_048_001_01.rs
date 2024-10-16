@@ -106,6 +106,7 @@ pub struct Max70Text {
 // Modification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Modification1Code {
+	#[default]
 	#[serde(rename = "NOCH")]
 	CodeNOCH,
 	#[serde(rename = "MODI")]
@@ -115,8 +116,6 @@ pub enum Modification1Code {
 	#[serde(rename = "ADDD")]
 	CodeADDD,
 
-	#[default]
-	UNKOWN
 }
 
 

@@ -134,6 +134,7 @@ pub struct OriginalReportStatistics3 {
 // ReportingMessageStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportingMessageStatus1Code {
+	#[default]
 	#[serde(rename = "ACPT")]
 	CodeACPT,
 	#[serde(rename = "ACTC")]
@@ -153,14 +154,13 @@ pub enum ReportingMessageStatus1Code {
 	#[serde(rename = "CRPT")]
 	CodeCRPT,
 
-	#[default]
-	UNKOWN
 }
 
 
 // ReportingRecordStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportingRecordStatus1Code {
+	#[default]
 	#[serde(rename = "ACPT")]
 	CodeACPT,
 	#[serde(rename = "ACPD")]
@@ -176,8 +176,6 @@ pub enum ReportingRecordStatus1Code {
 	#[serde(rename = "WARN")]
 	CodeWARN,
 
-	#[default]
-	UNKOWN
 }
 
 

@@ -182,6 +182,7 @@ pub struct OtherInvestment1 {
 // ProductType7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ProductType7Code {
+	#[default]
 	#[serde(rename = "SVGN")]
 	CodeSVGN,
 	#[serde(rename = "EQUI")]
@@ -189,8 +190,6 @@ pub enum ProductType7Code {
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
 
-	#[default]
-	UNKOWN
 }
 
 

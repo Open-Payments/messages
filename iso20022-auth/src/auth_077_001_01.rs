@@ -28,6 +28,7 @@ use serde::{Deserialize, Serialize};
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -41,8 +42,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -91,6 +90,7 @@ pub struct BenchmarkCreate1 {
 // BenchmarkCurveName2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BenchmarkCurveName2Code {
+	#[default]
 	#[serde(rename = "WIBO")]
 	CodeWIBO,
 	#[serde(rename = "TREA")]
@@ -144,8 +144,6 @@ pub enum BenchmarkCurveName2Code {
 	#[serde(rename = "BBSW")]
 	CodeBBSW,
 
-	#[default]
-	UNKOWN
 }
 
 

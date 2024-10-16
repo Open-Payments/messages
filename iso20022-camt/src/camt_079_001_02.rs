@@ -68,6 +68,7 @@ pub struct AcknowledgementReason12Choice {
 // AcknowledgementReason5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AcknowledgementReason5Code {
+	#[default]
 	#[serde(rename = "ADEA")]
 	CodeADEA,
 	#[serde(rename = "SMPG")]
@@ -87,8 +88,6 @@ pub enum AcknowledgementReason5Code {
 	#[serde(rename = "LATE")]
 	CodeLATE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -139,6 +138,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -152,8 +152,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -274,6 +272,7 @@ pub struct CancellationStatus14Choice {
 // CancelledStatusReason13Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CancelledStatusReason13Code {
+	#[default]
 	#[serde(rename = "CANI")]
 	CodeCANI,
 	#[serde(rename = "CANS")]
@@ -295,8 +294,6 @@ pub enum CancelledStatusReason13Code {
 	#[serde(rename = "CTHP")]
 	CodeCTHP,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -369,6 +366,7 @@ pub struct ClearingSystemMemberIdentification2 {
 // CopyDuplicate1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CopyDuplicate1Code {
+	#[default]
 	#[serde(rename = "CODU")]
 	CodeCODU,
 	#[serde(rename = "COPY")]
@@ -376,8 +374,6 @@ pub enum CopyDuplicate1Code {
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -392,13 +388,12 @@ pub struct CountryCode {
 // CreditDebitCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CreditDebitCode {
+	#[default]
 	#[serde(rename = "CRDT")]
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -551,6 +546,7 @@ pub struct ExternalSystemErrorHandling1Code {
 // FailingReason3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FailingReason3Code {
+	#[default]
 	#[serde(rename = "AWMO")]
 	CodeAWMO,
 	#[serde(rename = "BYIY")]
@@ -670,8 +666,6 @@ pub enum FailingReason3Code {
 	#[serde(rename = "INBC")]
 	CodeINBC,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1072,13 +1066,12 @@ pub struct MovementReport1 {
 // MovementResponseType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MovementResponseType1Code {
+	#[default]
 	#[serde(rename = "FULL")]
 	CodeFULL,
 	#[serde(rename = "STTS")]
 	CodeSTTS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1095,11 +1088,10 @@ pub struct NameAndAddress5 {
 // NoReasonCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NoReasonCode {
+	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1148,6 +1140,7 @@ pub struct PartyIdentification136 {
 // PendingReason10Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PendingReason10Code {
+	#[default]
 	#[serde(rename = "AWMO")]
 	CodeAWMO,
 	#[serde(rename = "ADEA")]
@@ -1263,8 +1256,6 @@ pub enum PendingReason10Code {
 	#[serde(rename = "INBC")]
 	CodeINBC,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1375,6 +1366,7 @@ pub struct PriorityNumeric4Choice {
 // ProcessingPosition3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ProcessingPosition3Code {
+	#[default]
 	#[serde(rename = "AFTE")]
 	CodeAFTE,
 	#[serde(rename = "WITH")]
@@ -1384,8 +1376,6 @@ pub enum ProcessingPosition3Code {
 	#[serde(rename = "INFO")]
 	CodeINFO,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1508,6 +1498,7 @@ pub struct RejectionOrRepairStatus38Choice {
 // RejectionReason33Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum RejectionReason33Code {
+	#[default]
 	#[serde(rename = "CASH")]
 	CodeCASH,
 	#[serde(rename = "ADEA")]
@@ -1545,8 +1536,6 @@ pub enum RejectionReason33Code {
 	#[serde(rename = "MUNO")]
 	CodeMUNO,
 
-	#[default]
-	UNKOWN
 }
 
 

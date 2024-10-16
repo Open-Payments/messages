@@ -194,6 +194,7 @@ pub struct PlusOrMinusIndicator {
 // SettlementDate6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SettlementDate6Code {
+	#[default]
 	#[serde(rename = "TFIV")]
 	CodeTFIV,
 	#[serde(rename = "TFOR")]
@@ -207,8 +208,6 @@ pub enum SettlementDate6Code {
 	#[serde(rename = "SAMD")]
 	CodeSAMD,
 
-	#[default]
-	UNKOWN
 }
 
 

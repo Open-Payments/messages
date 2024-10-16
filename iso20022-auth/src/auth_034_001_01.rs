@@ -46,6 +46,7 @@ pub struct AdditionalInformation1 {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -59,8 +60,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -225,6 +224,7 @@ pub struct DocumentGeneralInformation2 {
 // DocumentType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DocumentType3Code {
+	#[default]
 	#[serde(rename = "RADM")]
 	CodeRADM,
 	#[serde(rename = "RPIN")]
@@ -238,8 +238,6 @@ pub enum DocumentType3Code {
 	#[serde(rename = "SCOR")]
 	CodeSCOR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -288,6 +286,7 @@ pub struct ExchangeRateInformation1 {
 // ExchangeRateType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ExchangeRateType1Code {
+	#[default]
 	#[serde(rename = "SPOT")]
 	CodeSPOT,
 	#[serde(rename = "SALE")]
@@ -295,8 +294,6 @@ pub enum ExchangeRateType1Code {
 	#[serde(rename = "AGRD")]
 	CodeAGRD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -399,13 +396,12 @@ pub struct InformationType1Choice {
 // InformationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InformationType1Code {
+	#[default]
 	#[serde(rename = "INST")]
 	CodeINST,
 	#[serde(rename = "RELY")]
 	CodeRELY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -532,6 +528,7 @@ pub struct MessageIdentification1 {
 // NamePrefix1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NamePrefix1Code {
+	#[default]
 	#[serde(rename = "DOCT")]
 	CodeDOCT,
 	#[serde(rename = "MIST")]
@@ -541,8 +538,6 @@ pub enum NamePrefix1Code {
 	#[serde(rename = "MADM")]
 	CodeMADM,
 
-	#[default]
-	UNKOWN
 }
 
 

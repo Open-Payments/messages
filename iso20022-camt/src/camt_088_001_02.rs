@@ -54,6 +54,7 @@ pub struct ActiveCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -67,8 +68,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -339,6 +338,7 @@ pub struct PartyIdentification266 {
 // PaymentReceipt1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PaymentReceipt1Code {
+	#[default]
 	#[serde(rename = "PAYM")]
 	CodePAYM,
 	#[serde(rename = "RECE")]
@@ -346,8 +346,6 @@ pub enum PaymentReceipt1Code {
 	#[serde(rename = "NONE")]
 	CodeNONE,
 
-	#[default]
-	UNKOWN
 }
 
 

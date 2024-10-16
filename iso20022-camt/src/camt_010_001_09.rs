@@ -74,6 +74,7 @@ pub struct ActiveCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -87,8 +88,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -175,13 +174,12 @@ pub struct CountryCode {
 // CreditDebitCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CreditDebitCode {
+	#[default]
 	#[serde(rename = "CRDT")]
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -466,6 +464,7 @@ pub struct LimitReportOrError5Choice {
 // LimitStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum LimitStatus1Code {
+	#[default]
 	#[serde(rename = "ENAB")]
 	CodeENAB,
 	#[serde(rename = "DISA")]
@@ -475,8 +474,6 @@ pub enum LimitStatus1Code {
 	#[serde(rename = "REQD")]
 	CodeREQD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -493,6 +490,7 @@ pub struct LimitType1Choice {
 // LimitType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum LimitType3Code {
+	#[default]
 	#[serde(rename = "MULT")]
 	CodeMULT,
 	#[serde(rename = "BILI")]
@@ -524,8 +522,6 @@ pub enum LimitType3Code {
 	#[serde(rename = "EXGT")]
 	CodeEXGT,
 
-	#[default]
-	UNKOWN
 }
 
 

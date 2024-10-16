@@ -48,6 +48,7 @@ pub struct ClearingAccount1 {
 // ClearingAccountType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ClearingAccountType3Code {
+	#[default]
 	#[serde(rename = "NOSA")]
 	CodeNOSA,
 	#[serde(rename = "ISEG")]
@@ -57,8 +58,6 @@ pub enum ClearingAccountType3Code {
 	#[serde(rename = "GOSA")]
 	CodeGOSA,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -101,6 +100,7 @@ pub struct CollateralAccount5 {
 // CreditQuality1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CreditQuality1Code {
+	#[default]
 	#[serde(rename = "DFIM")]
 	CodeDFIM,
 	#[serde(rename = "EXSP")]
@@ -122,8 +122,6 @@ pub enum CreditQuality1Code {
 	#[serde(rename = "UMGR")]
 	CodeUMGR,
 
-	#[default]
-	UNKOWN
 }
 
 

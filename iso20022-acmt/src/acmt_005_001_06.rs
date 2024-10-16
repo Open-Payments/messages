@@ -54,6 +54,7 @@ pub struct AccountManagementMessageReference5 {
 // AccountManagementType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AccountManagementType3Code {
+	#[default]
 	#[serde(rename = "ACCM")]
 	CodeACCM,
 	#[serde(rename = "ACCO")]
@@ -63,8 +64,6 @@ pub enum AccountManagementType3Code {
 	#[serde(rename = "ACST")]
 	CodeACST,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -83,6 +82,7 @@ pub struct AdditionalReference13 {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -96,8 +96,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -128,13 +126,12 @@ pub struct Exact4AlphaNumericText {
 // GenderCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum GenderCode {
+	#[default]
 	#[serde(rename = "MALE")]
 	CodeMALE,
 	#[serde(rename = "FEMA")]
 	CodeFEMA,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -353,6 +350,7 @@ pub struct PartyIdentification139 {
 // PartyIdentificationType7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PartyIdentificationType7Code {
+	#[default]
 	#[serde(rename = "ATIN")]
 	CodeATIN,
 	#[serde(rename = "IDCD")]
@@ -390,8 +388,6 @@ pub enum PartyIdentificationType7Code {
 	#[serde(rename = "GIIN")]
 	CodeGIIN,
 
-	#[default]
-	UNKOWN
 }
 
 

@@ -28,6 +28,7 @@ use serde::{Deserialize, Serialize};
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -41,8 +42,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -207,6 +206,7 @@ pub struct MessageIdentification1 {
 // NamePrefix1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NamePrefix1Code {
+	#[default]
 	#[serde(rename = "DOCT")]
 	CodeDOCT,
 	#[serde(rename = "MIST")]
@@ -216,8 +216,6 @@ pub enum NamePrefix1Code {
 	#[serde(rename = "MADM")]
 	CodeMADM,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -286,6 +284,7 @@ pub struct TaxOrganisationIdentification1 {
 // TaxReportingStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TaxReportingStatus1Code {
+	#[default]
 	#[serde(rename = "ACPT")]
 	CodeACPT,
 	#[serde(rename = "RCVD")]
@@ -303,14 +302,13 @@ pub enum TaxReportingStatus1Code {
 	#[serde(rename = "PART")]
 	CodePART,
 
-	#[default]
-	UNKOWN
 }
 
 
 // TaxReportingStatus2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TaxReportingStatus2Code {
+	#[default]
 	#[serde(rename = "ACPT")]
 	CodeACPT,
 	#[serde(rename = "RJCT")]
@@ -318,8 +316,6 @@ pub enum TaxReportingStatus2Code {
 	#[serde(rename = "WARN")]
 	CodeWARN,
 
-	#[default]
-	UNKOWN
 }
 
 

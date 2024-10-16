@@ -174,13 +174,12 @@ pub struct NameAndLocation1 {
 // NovationStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NovationStatus1Code {
+	#[default]
 	#[serde(rename = "NONO")]
 	CodeNONO,
 	#[serde(rename = "NOVA")]
 	CodeNOVA,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -233,13 +232,12 @@ pub struct OvernightIndexSwapTransaction4 {
 // OvernightIndexSwapType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OvernightIndexSwapType1Code {
+	#[default]
 	#[serde(rename = "PAID")]
 	CodePAID,
 	#[serde(rename = "RECE")]
 	CodeRECE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -254,13 +252,12 @@ pub struct PercentageRate {
 // ReportPeriodActivity3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportPeriodActivity3Code {
+	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
 	#[serde(rename = "NORA")]
 	CodeNORA,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -301,6 +298,7 @@ pub struct SupplementaryDataEnvelope1 {
 // TransactionOperationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TransactionOperationType1Code {
+	#[default]
 	#[serde(rename = "AMND")]
 	CodeAMND,
 	#[serde(rename = "CANC")]
@@ -310,6 +308,4 @@ pub enum TransactionOperationType1Code {
 	#[serde(rename = "NEWT")]
 	CodeNEWT,
 
-	#[default]
-	UNKOWN
 }

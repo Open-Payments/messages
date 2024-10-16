@@ -236,6 +236,7 @@ pub struct MessageHeader9 {
 // QueryType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum QueryType2Code {
+	#[default]
 	#[serde(rename = "ALLL")]
 	CodeALLL,
 	#[serde(rename = "CHNG")]
@@ -245,8 +246,6 @@ pub enum QueryType2Code {
 	#[serde(rename = "DELD")]
 	CodeDELD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -299,6 +298,7 @@ pub struct SystemEventType2Choice {
 // SystemEventType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SystemEventType2Code {
+	#[default]
 	#[serde(rename = "LVCO")]
 	CodeLVCO,
 	#[serde(rename = "LVCC")]
@@ -344,8 +344,6 @@ pub enum SystemEventType2Code {
 	#[serde(rename = "ESTF")]
 	CodeESTF,
 
-	#[default]
-	UNKOWN
 }
 
 

@@ -72,6 +72,7 @@ pub struct ISODateTime {
 // MICEntityType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MICEntityType1Code {
+	#[default]
 	#[serde(rename = "APPA")]
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
@@ -85,8 +86,6 @@ pub enum MICEntityType1Code {
 	#[serde(rename = "SINT")]
 	CodeSINT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -101,13 +100,12 @@ pub struct MICIdentifier {
 // MarketIdentification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MarketIdentification1Code {
+	#[default]
 	#[serde(rename = "SGMT")]
 	CodeSGMT,
 	#[serde(rename = "OPRT")]
 	CodeOPRT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -192,6 +190,7 @@ pub struct Max70Text {
 // Modification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Modification1Code {
+	#[default]
 	#[serde(rename = "NOCH")]
 	CodeNOCH,
 	#[serde(rename = "MODI")]
@@ -201,8 +200,6 @@ pub enum Modification1Code {
 	#[serde(rename = "ADDD")]
 	CodeADDD,
 
-	#[default]
-	UNKOWN
 }
 
 

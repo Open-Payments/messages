@@ -106,6 +106,7 @@ pub struct ModelType1Choice {
 // ModelType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ModelType1Code {
+	#[default]
 	#[serde(rename = "EXPS")]
 	CodeEXPS,
 	#[serde(rename = "OTHR")]
@@ -119,8 +120,6 @@ pub enum ModelType1Code {
 	#[serde(rename = "SAMO")]
 	CodeSAMO,
 
-	#[default]
-	UNKOWN
 }
 
 

@@ -54,6 +54,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -67,8 +68,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -83,6 +82,7 @@ pub struct AnyBICIdentifier {
 // CallIn1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CallIn1Code {
+	#[default]
 	#[serde(rename = "CFAV")]
 	CodeCFAV,
 	#[serde(rename = "CFST")]
@@ -90,8 +90,6 @@ pub enum CallIn1Code {
 	#[serde(rename = "CFCC")]
 	CodeCFCC,
 
-	#[default]
-	UNKOWN
 }
 
 

@@ -158,19 +158,19 @@ pub struct ScenarioDefinition2 {
 // ScenarioType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ScenarioType1Code {
+	#[default]
 	#[serde(rename = "HIST")]
 	CodeHIST,
 	#[serde(rename = "HYPT")]
 	CodeHYPT,
 
-	#[default]
-	UNKOWN
 }
 
 
 // SchemeIdentificationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SchemeIdentificationType1Code {
+	#[default]
 	#[serde(rename = "MARG")]
 	CodeMARG,
 	#[serde(rename = "COLL")]
@@ -180,8 +180,6 @@ pub enum SchemeIdentificationType1Code {
 	#[serde(rename = "CLIM")]
 	CodeCLIM,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -198,6 +196,7 @@ pub struct Strategy1 {
 // StrategyStressType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum StrategyStressType1Code {
+	#[default]
 	#[serde(rename = "FLEX")]
 	CodeFLEX,
 	#[serde(rename = "PRLL")]
@@ -205,8 +204,6 @@ pub enum StrategyStressType1Code {
 	#[serde(rename = "SPRD")]
 	CodeSPRD,
 
-	#[default]
-	UNKOWN
 }
 
 

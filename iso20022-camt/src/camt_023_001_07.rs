@@ -242,6 +242,7 @@ pub struct PaymentInstruction13 {
 // PaymentType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PaymentType3Code {
+	#[default]
 	#[serde(rename = "CBS")]
 	CodeCBS,
 	#[serde(rename = "BCK")]
@@ -291,8 +292,6 @@ pub enum PaymentType3Code {
 	#[serde(rename = "MGL")]
 	CodeMGL,
 
-	#[default]
-	UNKOWN
 }
 
 

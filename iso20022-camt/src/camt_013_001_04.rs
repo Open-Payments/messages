@@ -242,6 +242,7 @@ pub struct MemberSearchCriteria4 {
 // MemberStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MemberStatus1Code {
+	#[default]
 	#[serde(rename = "ENBL")]
 	CodeENBL,
 	#[serde(rename = "DSBL")]
@@ -251,8 +252,6 @@ pub enum MemberStatus1Code {
 	#[serde(rename = "JOIN")]
 	CodeJOIN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -271,6 +270,7 @@ pub struct MessageHeader9 {
 // QueryType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum QueryType2Code {
+	#[default]
 	#[serde(rename = "ALLL")]
 	CodeALLL,
 	#[serde(rename = "CHNG")]
@@ -280,8 +280,6 @@ pub enum QueryType2Code {
 	#[serde(rename = "DELD")]
 	CodeDELD,
 
-	#[default]
-	UNKOWN
 }
 
 

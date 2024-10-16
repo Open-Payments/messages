@@ -144,6 +144,7 @@ pub struct CollateralData33 {
 // CollateralQualityType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CollateralQualityType1Code {
+	#[default]
 	#[serde(rename = "INVG")]
 	CodeINVG,
 	#[serde(rename = "NIVG")]
@@ -153,27 +154,25 @@ pub enum CollateralQualityType1Code {
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
 
-	#[default]
-	UNKOWN
 }
 
 
 // CollateralRole1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CollateralRole1Code {
+	#[default]
 	#[serde(rename = "GIVE")]
 	CodeGIVE,
 	#[serde(rename = "TAKE")]
 	CodeTAKE,
 
-	#[default]
-	UNKOWN
 }
 
 
 // CollateralType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CollateralType6Code {
+	#[default]
 	#[serde(rename = "GBBK")]
 	CodeGBBK,
 	#[serde(rename = "BOND")]
@@ -195,8 +194,6 @@ pub enum CollateralType6Code {
 	#[serde(rename = "STCF")]
 	CodeSTCF,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -293,6 +290,7 @@ pub struct ExposureMetrics6 {
 // ExposureType10Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ExposureType10Code {
+	#[default]
 	#[serde(rename = "SBSC")]
 	CodeSBSC,
 	#[serde(rename = "MGLD")]
@@ -302,8 +300,6 @@ pub enum ExposureType10Code {
 	#[serde(rename = "REPO")]
 	CodeREPO,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -512,11 +508,10 @@ pub struct NamedPosition3 {
 // NoReasonCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NoReasonCode {
+	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -733,13 +728,12 @@ pub struct PriceMetrics3 {
 // PriceStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PriceStatus1Code {
+	#[default]
 	#[serde(rename = "PNDG")]
 	CodePNDG,
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -766,6 +760,7 @@ pub struct QuantityNominalValue2Choice {
 // RateBasis1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum RateBasis1Code {
+	#[default]
 	#[serde(rename = "DAYS")]
 	CodeDAYS,
 	#[serde(rename = "MNTH")]
@@ -775,8 +770,6 @@ pub enum RateBasis1Code {
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -833,6 +826,7 @@ pub struct ReinvestedCashTypeAndAmount2 {
 // ReinvestmentType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReinvestmentType1Code {
+	#[default]
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
 	#[serde(rename = "OCMP")]
@@ -844,19 +838,16 @@ pub enum ReinvestmentType1Code {
 	#[serde(rename = "SDPU")]
 	CodeSDPU,
 
-	#[default]
-	UNKOWN
 }
 
 
 // ReportPeriodActivity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportPeriodActivity1Code {
+	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -973,26 +964,24 @@ pub struct SecurityIssuer4 {
 // SpecialCollateral1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SpecialCollateral1Code {
+	#[default]
 	#[serde(rename = "GENE")]
 	CodeGENE,
 	#[serde(rename = "SPEC")]
 	CodeSPEC,
 
-	#[default]
-	UNKOWN
 }
 
 
 // SpecialPurpose2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SpecialPurpose2Code {
+	#[default]
 	#[serde(rename = "BLNK")]
 	CodeBLNK,
 	#[serde(rename = "NTAV")]
 	CodeNTAV,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1035,26 +1024,24 @@ pub struct TimeToMaturityPeriod2 {
 // TradeMarket2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradeMarket2Code {
+	#[default]
 	#[serde(rename = "DMST")]
 	CodeDMST,
 	#[serde(rename = "FRGN")]
 	CodeFRGN,
 
-	#[default]
-	UNKOWN
 }
 
 
 // TradeRepositoryReportingType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradeRepositoryReportingType1Code {
+	#[default]
 	#[serde(rename = "SWOS")]
 	CodeSWOS,
 	#[serde(rename = "TWOS")]
 	CodeTWOS,
 
-	#[default]
-	UNKOWN
 }
 
 

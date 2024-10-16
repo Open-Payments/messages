@@ -96,6 +96,7 @@ pub struct Max50Text {
 // NonTradingDayReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NonTradingDayReason1Code {
+	#[default]
 	#[serde(rename = "THOL")]
 	CodeTHOL,
 	#[serde(rename = "OTHR")]
@@ -109,8 +110,6 @@ pub enum NonTradingDayReason1Code {
 	#[serde(rename = "WKND")]
 	CodeWKND,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -191,13 +190,12 @@ pub struct SupplementaryDataEnvelope1 {
 // TradingVenue2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradingVenue2Code {
+	#[default]
 	#[serde(rename = "APPA")]
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
 
-	#[default]
-	UNKOWN
 }
 
 

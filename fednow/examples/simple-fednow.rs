@@ -6,6 +6,7 @@ use open_payments_fednow::iso::pacs_008_001_08::FIToFICustomerCreditTransferV08;
 
 fn main() {
     let doc = Document::FIToFICustomerCreditTransferV08(Box::new(FIToFICustomerCreditTransferV08::default()));
+    let json_data = serde_json::to_string_pretty(&doc).unwrap();
 
-    println!("{:?}", doc)
+    println!("{:?}", json_data)
 }

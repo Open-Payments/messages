@@ -82,6 +82,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -95,8 +96,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -233,6 +232,7 @@ pub struct CashSubBalanceTypeAndQuantityBreakdown3 {
 // ClearingChannel2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ClearingChannel2Code {
+	#[default]
 	#[serde(rename = "RTGS")]
 	CodeRTGS,
 	#[serde(rename = "RTNS")]
@@ -242,8 +242,6 @@ pub enum ClearingChannel2Code {
 	#[serde(rename = "BOOK")]
 	CodeBOOK,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -270,6 +268,7 @@ pub struct ClearingSystemMemberIdentification2 {
 // CopyDuplicate1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CopyDuplicate1Code {
+	#[default]
 	#[serde(rename = "CODU")]
 	CodeCODU,
 	#[serde(rename = "COPY")]
@@ -277,8 +276,6 @@ pub enum CopyDuplicate1Code {
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -293,13 +290,12 @@ pub struct CountryCode {
 // CreditDebitCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CreditDebitCode {
+	#[default]
 	#[serde(rename = "CRDT")]
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -610,6 +606,7 @@ pub struct LEIIdentifier {
 // LinkageType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum LinkageType1Code {
+	#[default]
 	#[serde(rename = "LINK")]
 	CodeLINK,
 	#[serde(rename = "UNLK")]
@@ -617,8 +614,6 @@ pub enum LinkageType1Code {
 	#[serde(rename = "SOFT")]
 	CodeSOFT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -821,6 +816,7 @@ pub struct PriorityNumeric4Choice {
 // ProcessingPosition3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ProcessingPosition3Code {
+	#[default]
 	#[serde(rename = "AFTE")]
 	CodeAFTE,
 	#[serde(rename = "WITH")]
@@ -830,8 +826,6 @@ pub enum ProcessingPosition3Code {
 	#[serde(rename = "INFO")]
 	CodeINFO,
 
-	#[default]
-	UNKOWN
 }
 
 

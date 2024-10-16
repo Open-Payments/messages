@@ -28,6 +28,7 @@ use serde::{Deserialize, Serialize};
 // BenchmarkCurveName2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BenchmarkCurveName2Code {
+	#[default]
 	#[serde(rename = "WIBO")]
 	CodeWIBO,
 	#[serde(rename = "TREA")]
@@ -81,8 +82,6 @@ pub enum BenchmarkCurveName2Code {
 	#[serde(rename = "BBSW")]
 	CodeBBSW,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -241,13 +240,12 @@ pub struct SupplementaryDataEnvelope1 {
 // TradingVenue2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradingVenue2Code {
+	#[default]
 	#[serde(rename = "APPA")]
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
 
-	#[default]
-	UNKOWN
 }
 
 

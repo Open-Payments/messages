@@ -94,6 +94,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -107,8 +108,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -239,6 +238,7 @@ pub struct ClearingSystemMemberIdentification2 {
 // CopyDuplicate1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CopyDuplicate1Code {
+	#[default]
 	#[serde(rename = "CODU")]
 	CodeCODU,
 	#[serde(rename = "COPY")]
@@ -246,8 +246,6 @@ pub enum CopyDuplicate1Code {
 	#[serde(rename = "DUPL")]
 	CodeDUPL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -262,13 +260,12 @@ pub struct CountryCode {
 // CreditDebitCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CreditDebitCode {
+	#[default]
 	#[serde(rename = "CRDT")]
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -729,13 +726,12 @@ pub struct Max70Text {
 // MovementResponseType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MovementResponseType1Code {
+	#[default]
 	#[serde(rename = "FULL")]
 	CodeFULL,
 	#[serde(rename = "STTS")]
 	CodeSTTS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -886,13 +882,12 @@ pub struct References36Choice {
 // SecuritiesSettlementStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SecuritiesSettlementStatus1Code {
+	#[default]
 	#[serde(rename = "PEND")]
 	CodePEND,
 	#[serde(rename = "PENF")]
 	CodePENF,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -935,6 +930,7 @@ pub struct SystemPartyIdentification8 {
 // TransactionProcessingStatus3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TransactionProcessingStatus3Code {
+	#[default]
 	#[serde(rename = "CAND")]
 	CodeCAND,
 	#[serde(rename = "PACK")]
@@ -944,8 +940,6 @@ pub enum TransactionProcessingStatus3Code {
 	#[serde(rename = "REPR")]
 	CodeREPR,
 
-	#[default]
-	UNKOWN
 }
 
 

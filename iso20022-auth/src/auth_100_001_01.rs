@@ -226,11 +226,10 @@ pub struct PhoneNumber {
 // ReportPeriodActivity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ReportPeriodActivity1Code {
+	#[default]
 	#[serde(rename = "NOTX")]
 	CodeNOTX,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -615,6 +614,7 @@ pub struct SupplementaryDataEnvelope1 {
 // TransactionOperationType4Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TransactionOperationType4Code {
+	#[default]
 	#[serde(rename = "NEWT")]
 	CodeNEWT,
 	#[serde(rename = "AMND")]
@@ -622,6 +622,4 @@ pub enum TransactionOperationType4Code {
 	#[serde(rename = "CANC")]
 	CodeCANC,
 
-	#[default]
-	UNKOWN
 }

@@ -100,6 +100,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -113,8 +114,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -191,6 +190,7 @@ pub struct BranchData5 {
 // CancelledStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CancelledStatusReason1Code {
+	#[default]
 	#[serde(rename = "CANI")]
 	CodeCANI,
 	#[serde(rename = "CANS")]
@@ -198,8 +198,6 @@ pub enum CancelledStatusReason1Code {
 	#[serde(rename = "CSUB")]
 	CodeCSUB,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -326,13 +324,12 @@ pub struct CountryCode {
 // CreditDebitCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CreditDebitCode {
+	#[default]
 	#[serde(rename = "CRDT")]
 	CodeCRDT,
 	#[serde(rename = "DBIT")]
 	CodeDBIT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -393,6 +390,7 @@ pub struct DecimalNumber {
 // EntryStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum EntryStatus1Code {
+	#[default]
 	#[serde(rename = "BOOK")]
 	CodeBOOK,
 	#[serde(rename = "PDNG")]
@@ -400,8 +398,6 @@ pub enum EntryStatus1Code {
 	#[serde(rename = "FUTR")]
 	CodeFUTR,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -532,6 +528,7 @@ pub struct ExternalSystemErrorHandling1Code {
 // FinalStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FinalStatus1Code {
+	#[default]
 	#[serde(rename = "STLD")]
 	CodeSTLD,
 	#[serde(rename = "RJTD")]
@@ -541,8 +538,6 @@ pub enum FinalStatus1Code {
 	#[serde(rename = "FNLD")]
 	CodeFNLD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -869,6 +864,7 @@ pub struct MessageHeader8 {
 // NamePrefix2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NamePrefix2Code {
+	#[default]
 	#[serde(rename = "DOCT")]
 	CodeDOCT,
 	#[serde(rename = "MADM")]
@@ -880,8 +876,6 @@ pub enum NamePrefix2Code {
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1076,6 +1070,7 @@ pub struct PaymentInstruction47 {
 // PaymentInstrument1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PaymentInstrument1Code {
+	#[default]
 	#[serde(rename = "BDT")]
 	CodeBDT,
 	#[serde(rename = "BCT")]
@@ -1097,8 +1092,6 @@ pub enum PaymentInstrument1Code {
 	#[serde(rename = "CAN")]
 	CodeCAN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1199,6 +1192,7 @@ pub struct PaymentTransactionParty4 {
 // PaymentType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PaymentType3Code {
+	#[default]
 	#[serde(rename = "CBS")]
 	CodeCBS,
 	#[serde(rename = "BCK")]
@@ -1248,8 +1242,6 @@ pub enum PaymentType3Code {
 	#[serde(rename = "MGL")]
 	CodeMGL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1266,6 +1258,7 @@ pub struct PaymentType4Choice {
 // PendingFailingSettlement1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PendingFailingSettlement1Code {
+	#[default]
 	#[serde(rename = "AWMO")]
 	CodeAWMO,
 	#[serde(rename = "AWSH")]
@@ -1357,14 +1350,13 @@ pub enum PendingFailingSettlement1Code {
 	#[serde(rename = "MUNO")]
 	CodeMUNO,
 
-	#[default]
-	UNKOWN
 }
 
 
 // PendingSettlement2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PendingSettlement2Code {
+	#[default]
 	#[serde(rename = "AWMO")]
 	CodeAWMO,
 	#[serde(rename = "CAIS")]
@@ -1444,14 +1436,13 @@ pub enum PendingSettlement2Code {
 	#[serde(rename = "PCAP")]
 	CodePCAP,
 
-	#[default]
-	UNKOWN
 }
 
 
 // PendingStatus4Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PendingStatus4Code {
+	#[default]
 	#[serde(rename = "ACPD")]
 	CodeACPD,
 	#[serde(rename = "VALD")]
@@ -1487,8 +1478,6 @@ pub enum PendingStatus4Code {
 	#[serde(rename = "SRML")]
 	CodeSRML,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1565,6 +1554,7 @@ pub struct PostalAddress27 {
 // PreferredContactMethod2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PreferredContactMethod2Code {
+	#[default]
 	#[serde(rename = "MAIL")]
 	CodeMAIL,
 	#[serde(rename = "FAXX")]
@@ -1578,8 +1568,6 @@ pub enum PreferredContactMethod2Code {
 	#[serde(rename = "PHON")]
 	CodePHON,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1596,6 +1584,7 @@ pub struct Priority1Choice {
 // Priority5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Priority5Code {
+	#[default]
 	#[serde(rename = "HIGH")]
 	CodeHIGH,
 	#[serde(rename = "LOWW")]
@@ -1605,8 +1594,6 @@ pub enum Priority5Code {
 	#[serde(rename = "URGT")]
 	CodeURGT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1721,13 +1708,12 @@ pub struct SupplementaryDataEnvelope1 {
 // SuspendedStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SuspendedStatusReason1Code {
+	#[default]
 	#[serde(rename = "SUBY")]
 	CodeSUBY,
 	#[serde(rename = "SUBS")]
 	CodeSUBS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1824,6 +1810,7 @@ pub struct UUIDv4Identifier {
 // UnmatchedStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum UnmatchedStatusReason1Code {
+	#[default]
 	#[serde(rename = "CMIS")]
 	CodeCMIS,
 	#[serde(rename = "DDAT")]
@@ -1899,8 +1886,6 @@ pub enum UnmatchedStatusReason1Code {
 	#[serde(rename = "ICUS")]
 	CodeICUS,
 
-	#[default]
-	UNKOWN
 }
 
 

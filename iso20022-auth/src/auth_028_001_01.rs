@@ -144,6 +144,7 @@ pub struct MoneyMarketTransactionStatus2 {
 // StatisticalReportingStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum StatisticalReportingStatus1Code {
+	#[default]
 	#[serde(rename = "ACPT")]
 	CodeACPT,
 	#[serde(rename = "ACTC")]
@@ -163,14 +164,13 @@ pub enum StatisticalReportingStatus1Code {
 	#[serde(rename = "CRPT")]
 	CodeCRPT,
 
-	#[default]
-	UNKOWN
 }
 
 
 // StatisticalReportingStatus2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum StatisticalReportingStatus2Code {
+	#[default]
 	#[serde(rename = "ACPT")]
 	CodeACPT,
 	#[serde(rename = "RJCT")]
@@ -178,8 +178,6 @@ pub enum StatisticalReportingStatus2Code {
 	#[serde(rename = "WARN")]
 	CodeWARN,
 
-	#[default]
-	UNKOWN
 }
 
 

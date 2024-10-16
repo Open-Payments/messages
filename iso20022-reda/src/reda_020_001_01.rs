@@ -156,6 +156,7 @@ pub struct SecuritiesAccountStatusAdviceV01 {
 // Status6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Status6Code {
+	#[default]
 	#[serde(rename = "REJT")]
 	CodeREJT,
 	#[serde(rename = "COMP")]
@@ -163,8 +164,6 @@ pub enum Status6Code {
 	#[serde(rename = "QUED")]
 	CodeQUED,
 
-	#[default]
-	UNKOWN
 }
 
 

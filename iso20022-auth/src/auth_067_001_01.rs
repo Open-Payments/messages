@@ -72,6 +72,7 @@ pub struct ActiveCurrencyCode {
 // AssetClassDetailedSubProductType16Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType16Code {
+	#[default]
 	#[serde(rename = "FXCR")]
 	CodeFXCR,
 	#[serde(rename = "FXEM")]
@@ -215,8 +216,6 @@ pub enum AssetClassDetailedSubProductType16Code {
 	#[serde(rename = "ZINC")]
 	CodeZINC,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -283,13 +282,12 @@ pub struct CollateralAccount4 {
 // CollateralAccountType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CollateralAccountType3Code {
+	#[default]
 	#[serde(rename = "MGIN")]
 	CodeMGIN,
 	#[serde(rename = "DFLT")]
 	CodeDFLT,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -414,6 +412,7 @@ pub struct PartyIdentification118Choice {
 // ProductType7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ProductType7Code {
+	#[default]
 	#[serde(rename = "SVGN")]
 	CodeSVGN,
 	#[serde(rename = "EQUI")]
@@ -421,14 +420,13 @@ pub enum ProductType7Code {
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
 
-	#[default]
-	UNKOWN
 }
 
 
 // SchemeIdentificationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SchemeIdentificationType1Code {
+	#[default]
 	#[serde(rename = "MARG")]
 	CodeMARG,
 	#[serde(rename = "COLL")]
@@ -438,8 +436,6 @@ pub enum SchemeIdentificationType1Code {
 	#[serde(rename = "CLIM")]
 	CodeCLIM,
 
-	#[default]
-	UNKOWN
 }
 
 

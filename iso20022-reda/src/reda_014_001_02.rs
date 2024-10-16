@@ -28,6 +28,7 @@ use serde::{Deserialize, Serialize};
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -41,8 +42,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -183,13 +182,12 @@ pub struct LEIIdentifier {
 // LockStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum LockStatus1Code {
+	#[default]
 	#[serde(rename = "LOCK")]
 	CodeLOCK,
 	#[serde(rename = "ULCK")]
 	CodeULCK,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -298,6 +296,7 @@ pub struct NameAndAddress5 {
 // NamePrefix2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NamePrefix2Code {
+	#[default]
 	#[serde(rename = "DOCT")]
 	CodeDOCT,
 	#[serde(rename = "MADM")]
@@ -309,8 +308,6 @@ pub enum NamePrefix2Code {
 	#[serde(rename = "MIKS")]
 	CodeMIKS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -459,6 +456,7 @@ pub struct PostalAddress28 {
 // PreferredContactMethod2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PreferredContactMethod2Code {
+	#[default]
 	#[serde(rename = "MAIL")]
 	CodeMAIL,
 	#[serde(rename = "FAXX")]
@@ -472,14 +470,13 @@ pub enum PreferredContactMethod2Code {
 	#[serde(rename = "PHON")]
 	CodePHON,
 
-	#[default]
-	UNKOWN
 }
 
 
 // ResidenceType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ResidenceType1Code {
+	#[default]
 	#[serde(rename = "DMST")]
 	CodeDMST,
 	#[serde(rename = "FRGN")]
@@ -487,8 +484,6 @@ pub enum ResidenceType1Code {
 	#[serde(rename = "MXED")]
 	CodeMXED,
 
-	#[default]
-	UNKOWN
 }
 
 

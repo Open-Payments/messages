@@ -112,6 +112,7 @@ pub struct AdditionalReference3 {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -125,8 +126,6 @@ pub enum AddressType2Code {
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -305,6 +304,7 @@ pub struct Charge26 {
 // ChargeType12Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ChargeType12Code {
+	#[default]
 	#[serde(rename = "BEND")]
 	CodeBEND,
 	#[serde(rename = "DISC")]
@@ -322,8 +322,6 @@ pub enum ChargeType12Code {
 	#[serde(rename = "TRAN")]
 	CodeTRAN,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -360,6 +358,7 @@ pub struct CommissionType5Choice {
 // CommissionType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CommissionType6Code {
+	#[default]
 	#[serde(rename = "FEND")]
 	CodeFEND,
 	#[serde(rename = "BEND")]
@@ -367,8 +366,6 @@ pub enum CommissionType6Code {
 	#[serde(rename = "CDPL")]
 	CodeCDPL,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -403,13 +400,12 @@ pub struct CurrencyDesignation1 {
 // CurrencyDesignation1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CurrencyDesignation1Code {
+	#[default]
 	#[serde(rename = "ONSH")]
 	CodeONSH,
 	#[serde(rename = "OFFS")]
 	CodeOFFS,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -444,13 +440,12 @@ pub struct DecimalNumber {
 // DistributionPolicy1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DistributionPolicy1Code {
+	#[default]
 	#[serde(rename = "DIST")]
 	CodeDIST,
 	#[serde(rename = "ACCU")]
 	CodeACCU,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -567,13 +562,12 @@ pub struct FinancialInstrumentQuantity1 {
 // FlowDirectionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FlowDirectionType1Code {
+	#[default]
 	#[serde(rename = "INCG")]
 	CodeINCG,
 	#[serde(rename = "OUTG")]
 	CodeOUTG,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -592,13 +586,12 @@ pub struct ForeignExchangeTerms19 {
 // FormOfSecurity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FormOfSecurity1Code {
+	#[default]
 	#[serde(rename = "BEAR")]
 	CodeBEAR,
 	#[serde(rename = "REGD")]
 	CodeREGD,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -791,6 +784,7 @@ pub struct InvestmentFundTransactionInType1Choice {
 // InvestmentFundTransactionInType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InvestmentFundTransactionInType1Code {
+	#[default]
 	#[serde(rename = "SUBS")]
 	CodeSUBS,
 	#[serde(rename = "SWII")]
@@ -802,8 +796,6 @@ pub enum InvestmentFundTransactionInType1Code {
 	#[serde(rename = "RDIV")]
 	CodeRDIV,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -820,6 +812,7 @@ pub struct InvestmentFundTransactionOutType1Choice {
 // InvestmentFundTransactionOutType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InvestmentFundTransactionOutType1Code {
+	#[default]
 	#[serde(rename = "REDM")]
 	CodeREDM,
 	#[serde(rename = "SWIO")]
@@ -829,8 +822,6 @@ pub enum InvestmentFundTransactionOutType1Code {
 	#[serde(rename = "CROO")]
 	CodeCROO,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -949,13 +940,12 @@ pub struct NetCashForecast4 {
 // OrderQuantityType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OrderQuantityType2Code {
+	#[default]
 	#[serde(rename = "UNIT")]
 	CodeUNIT,
 	#[serde(rename = "CASH")]
 	CodeCASH,
 
-	#[default]
-	UNKOWN
 }
 
 
@@ -1126,6 +1116,7 @@ pub struct TickerIdentifier {
 // TypeOfPrice10Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TypeOfPrice10Code {
+	#[default]
 	#[serde(rename = "BIDE")]
 	CodeBIDE,
 	#[serde(rename = "OFFR")]
@@ -1151,8 +1142,6 @@ pub enum TypeOfPrice10Code {
 	#[serde(rename = "ACTU")]
 	CodeACTU,
 
-	#[default]
-	UNKOWN
 }
 
 
