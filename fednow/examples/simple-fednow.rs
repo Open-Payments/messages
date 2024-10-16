@@ -3,9 +3,18 @@
 
 use open_payments_fednow::document::Document;
 use open_payments_fednow::iso::pacs_008_001_08::FIToFICustomerCreditTransferV08;
+use serde_xml_rs;
 
 fn main() {
-    let doc = Document::FIToFICustomerCreditTransferV08(Box::new(FIToFICustomerCreditTransferV08::default()));
+    // Create the document object with the FedNow message
+    let mut doc = Document::FIToFICustomerCreditTransferV08(Box::new(FIToFICustomerCreditTransferV08::default()));
 
-    println!("{:?}", doc)
+    // Match the Document enum and modify the field
+    if let Document::FIToFICustomerCreditTransferV08(ref mut message) = doc {
+        message.grp_hdr.msg_id.max35_text = "Hello".to_string();
+    }
+  
+    let reserialized_item = serde_xml_rs::to_string(&doc).unwrap();
+
+    println!("{:?}", reserialized_item)
 }

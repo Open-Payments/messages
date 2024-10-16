@@ -48,6 +48,7 @@ pub struct ClearingAccount1 {
 // ClearingAccountType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ClearingAccountType3Code {
+	#[default]
 	#[serde(rename = "NOSA")]
 	CodeNOSA,
 	#[serde(rename = "ISEG")]
@@ -56,9 +57,6 @@ pub enum ClearingAccountType3Code {
 	CodeHOUS,
 	#[serde(rename = "GOSA")]
 	CodeGOSA,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -101,6 +99,7 @@ pub struct CollateralAccount5 {
 // CreditQuality1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CreditQuality1Code {
+	#[default]
 	#[serde(rename = "DFIM")]
 	CodeDFIM,
 	#[serde(rename = "EXSP")]
@@ -121,9 +120,6 @@ pub enum CreditQuality1Code {
 	CodeSURI,
 	#[serde(rename = "UMGR")]
 	CodeUMGR,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -143,6 +139,7 @@ pub struct GenericIdentification168 {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -151,6 +148,7 @@ pub struct ISODate {
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct LEIIdentifier {
 	#[serde(rename = "$value")]
 	pub lei_identifier: String,
@@ -169,6 +167,7 @@ pub struct MarginAccount1 {
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
@@ -177,6 +176,7 @@ pub struct Max140Text {
 
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max256Text {
 	#[serde(rename = "$value")]
 	pub max256_text: String,
@@ -185,6 +185,7 @@ pub struct Max256Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -193,6 +194,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -235,6 +237,7 @@ pub struct SupplementaryDataEnvelope1 {
 
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,

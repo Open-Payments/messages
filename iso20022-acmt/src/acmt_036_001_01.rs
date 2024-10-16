@@ -62,18 +62,17 @@ pub struct AccountSwitchTerminationSwitchV01 {
 // BalanceTransferWindow1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BalanceTransferWindow1Code {
+	#[default]
 	#[serde(rename = "DAYH")]
 	CodeDAYH,
 	#[serde(rename = "EARL")]
 	CodeEARL,
-
-	#[default]
-	UNKOWN
 }
 
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -82,6 +81,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -90,6 +90,7 @@ pub struct ISODateTime {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -98,6 +99,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -143,6 +145,7 @@ pub struct SupplementaryDataEnvelope1 {
 // SwitchStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SwitchStatus1Code {
+	#[default]
 	#[serde(rename = "ACPT")]
 	CodeACPT,
 	#[serde(rename = "BTRQ")]
@@ -161,20 +164,15 @@ pub enum SwitchStatus1Code {
 	CodeREQU,
 	#[serde(rename = "TMTN")]
 	CodeTMTN,
-
-	#[default]
-	UNKOWN
 }
 
 
 // SwitchType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SwitchType1Code {
+	#[default]
 	#[serde(rename = "FULL")]
 	CodeFULL,
 	#[serde(rename = "PART")]
 	CodePART,
-
-	#[default]
-	UNKOWN
 }

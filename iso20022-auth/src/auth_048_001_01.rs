@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // ActiveOrHistoricCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveOrHistoricCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
@@ -35,6 +36,7 @@ pub struct ActiveOrHistoricCurrencyCode {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -73,6 +75,7 @@ pub struct FinancialInstrumentReportingCurrencyCodeReportV01 {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -81,6 +84,7 @@ pub struct ISODate {
 
 // Max1Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max1Number {
 	#[serde(rename = "$value")]
 	pub max1_number: f64,
@@ -89,6 +93,7 @@ pub struct Max1Number {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -97,6 +102,7 @@ pub struct Max350Text {
 
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max70Text {
 	#[serde(rename = "$value")]
 	pub max70_text: String,
@@ -106,6 +112,7 @@ pub struct Max70Text {
 // Modification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Modification1Code {
+	#[default]
 	#[serde(rename = "NOCH")]
 	CodeNOCH,
 	#[serde(rename = "MODI")]
@@ -114,9 +121,6 @@ pub enum Modification1Code {
 	CodeDELE,
 	#[serde(rename = "ADDD")]
 	CodeADDD,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -182,6 +186,7 @@ pub struct SupplementaryDataEnvelope1 {
 
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,

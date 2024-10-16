@@ -37,6 +37,7 @@ pub struct Absolute1 {
 
 // BaseOneRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct BaseOneRate {
 	#[serde(rename = "$value")]
 	pub base_one_rate: f64,
@@ -83,6 +84,7 @@ pub struct GenericIdentification168 {
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
@@ -91,6 +93,7 @@ pub struct Max140Text {
 
 // Max2000Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max2000Text {
 	#[serde(rename = "$value")]
 	pub max2000_text: String,
@@ -99,6 +102,7 @@ pub struct Max2000Text {
 
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max256Text {
 	#[serde(rename = "$value")]
 	pub max256_text: String,
@@ -107,6 +111,7 @@ pub struct Max256Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -115,6 +120,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -123,6 +129,7 @@ pub struct Max35Text {
 
 // Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Number {
 	#[serde(rename = "$value")]
 	pub number: f64,
@@ -158,19 +165,18 @@ pub struct ScenarioDefinition2 {
 // ScenarioType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ScenarioType1Code {
+	#[default]
 	#[serde(rename = "HIST")]
 	CodeHIST,
 	#[serde(rename = "HYPT")]
 	CodeHYPT,
-
-	#[default]
-	UNKOWN
 }
 
 
 // SchemeIdentificationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SchemeIdentificationType1Code {
+	#[default]
 	#[serde(rename = "MARG")]
 	CodeMARG,
 	#[serde(rename = "COLL")]
@@ -179,9 +185,6 @@ pub enum SchemeIdentificationType1Code {
 	CodePOSI,
 	#[serde(rename = "CLIM")]
 	CodeCLIM,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -198,15 +201,13 @@ pub struct Strategy1 {
 // StrategyStressType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum StrategyStressType1Code {
+	#[default]
 	#[serde(rename = "FLEX")]
 	CodeFLEX,
 	#[serde(rename = "PRLL")]
 	CodePRLL,
 	#[serde(rename = "SPRD")]
 	CodeSPRD,
-
-	#[default]
-	UNKOWN
 }
 
 

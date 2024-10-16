@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_currency_code: String,
@@ -87,6 +88,7 @@ pub struct ClosureReason2Choice {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -147,6 +149,7 @@ pub struct ErrorHandling5 {
 
 // ExternalEnquiryRequestType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalEnquiryRequestType1Code {
 	#[serde(rename = "$value")]
 	pub external_enquiry_request_type1_code: String,
@@ -155,6 +158,7 @@ pub struct ExternalEnquiryRequestType1Code {
 
 // ExternalMarketInfrastructure1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalMarketInfrastructure1Code {
 	#[serde(rename = "$value")]
 	pub external_market_infrastructure1_code: String,
@@ -163,6 +167,7 @@ pub struct ExternalMarketInfrastructure1Code {
 
 // ExternalPaymentControlRequestType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalPaymentControlRequestType1Code {
 	#[serde(rename = "$value")]
 	pub external_payment_control_request_type1_code: String,
@@ -171,6 +176,7 @@ pub struct ExternalPaymentControlRequestType1Code {
 
 // ExternalSystemErrorHandling1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalSystemErrorHandling1Code {
 	#[serde(rename = "$value")]
 	pub external_system_error_handling1_code: String,
@@ -179,6 +185,7 @@ pub struct ExternalSystemErrorHandling1Code {
 
 // ExternalSystemEventType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalSystemEventType1Code {
 	#[serde(rename = "$value")]
 	pub external_system_event_type1_code: String,
@@ -199,6 +206,7 @@ pub struct GenericIdentification1 {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -207,6 +215,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -215,6 +224,7 @@ pub struct ISODateTime {
 
 // ISOTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISOTime {
 	#[serde(rename = "$value")]
 	pub iso_time: String,
@@ -233,6 +243,7 @@ pub struct MarketInfrastructureIdentification1Choice {
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
@@ -241,6 +252,7 @@ pub struct Max140Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -249,6 +261,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -350,6 +363,7 @@ pub struct SystemClosure2 {
 // SystemClosureReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SystemClosureReason1Code {
+	#[default]
 	#[serde(rename = "BHOL")]
 	CodeBHOL,
 	#[serde(rename = "SMTN")]
@@ -360,9 +374,6 @@ pub enum SystemClosureReason1Code {
 	CodeRCVR,
 	#[serde(rename = "ADTW")]
 	CodeADTW,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -415,6 +426,7 @@ pub struct SystemStatus2Choice {
 // SystemStatus2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SystemStatus2Code {
+	#[default]
 	#[serde(rename = "SUSP")]
 	CodeSUSP,
 	#[serde(rename = "ACTV")]
@@ -423,9 +435,6 @@ pub enum SystemStatus2Code {
 	CodeCLSD,
 	#[serde(rename = "CLSG")]
 	CodeCLSG,
-
-	#[default]
-	UNKOWN
 }
 
 

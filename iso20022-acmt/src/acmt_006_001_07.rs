@@ -38,13 +38,11 @@ pub struct AcceptedStatusReason1Choice {
 // AcceptedStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AcceptedStatusReason1Code {
+	#[default]
 	#[serde(rename = "PLAC")]
 	CodePLAC,
 	#[serde(rename = "SECT")]
 	CodeSECT,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -61,6 +59,7 @@ pub struct Account23 {
 // AccountManagementStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AccountManagementStatus1Code {
+	#[default]
 	#[serde(rename = "RECE")]
 	CodeRECE,
 	#[serde(rename = "ACCP")]
@@ -69,9 +68,6 @@ pub enum AccountManagementStatus1Code {
 	CodeEXEC,
 	#[serde(rename = "STNP")]
 	CodeSTNP,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -152,6 +148,7 @@ pub struct AdditionalReference13 {
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -164,14 +161,12 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AnyBICDec2014Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct AnyBICDec2014Identifier {
 	#[serde(rename = "$value")]
 	pub any_bic_dec2014_identifier: String,
@@ -191,6 +186,7 @@ pub struct BlockedReason2Choice {
 // BlockedReason2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BlockedReason2Code {
+	#[default]
 	#[serde(rename = "BKRP")]
 	CodeBKRP,
 	#[serde(rename = "CMMT")]
@@ -209,9 +205,6 @@ pub enum BlockedReason2Code {
 	CodeSANC,
 	#[serde(rename = "TRAN")]
 	CodeTRAN,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -262,13 +255,11 @@ pub struct ClosedStatusReason1Choice {
 // ClosedStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ClosedStatusReason1Code {
+	#[default]
 	#[serde(rename = "ASIN")]
 	CodeASIN,
 	#[serde(rename = "CLIN")]
 	CodeCLIN,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -305,13 +296,11 @@ pub struct ClosurePendingStatusReason1Choice {
 // ClosurePendingStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ClosurePendingStatusReason1Code {
+	#[default]
 	#[serde(rename = "CLOS")]
 	CodeCLOS,
 	#[serde(rename = "PEND")]
 	CodePEND,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -327,6 +316,7 @@ pub struct ClosurePendingStatusReason2Choice {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -336,6 +326,7 @@ pub struct CountryCode {
 // DisabledReason2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DisabledReason2Code {
+	#[default]
 	#[serde(rename = "CLOS")]
 	CodeCLOS,
 	#[serde(rename = "BKRP")]
@@ -358,9 +349,6 @@ pub enum DisabledReason2Code {
 	CodeTRAN,
 	#[serde(rename = "REJT")]
 	CodeREJT,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -417,11 +405,9 @@ pub struct EnabledStatusReason1Choice {
 // EnabledStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum EnabledStatusReason1Code {
+	#[default]
 	#[serde(rename = "MODI")]
 	CodeMODI,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -437,6 +423,7 @@ pub struct EnabledStatusReason2Choice {
 
 // Exact4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Exact4AlphaNumericText {
 	#[serde(rename = "$value")]
 	pub exact4_alpha_numeric_text: String,
@@ -491,6 +478,7 @@ pub struct GenericIdentification47 {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -499,6 +487,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -507,6 +496,7 @@ pub struct ISODateTime {
 
 // ISOYearMonth ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISOYearMonth {
 	#[serde(rename = "$value")]
 	pub iso_year_month: String,
@@ -516,6 +506,7 @@ pub struct ISOYearMonth {
 // InvestmentFundTransactionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InvestmentFundTransactionType1Code {
+	#[default]
 	#[serde(rename = "ALLL")]
 	CodeALLL,
 	#[serde(rename = "SELL")]
@@ -560,9 +551,6 @@ pub enum InvestmentFundTransactionType1Code {
 	CodeSSPL,
 	#[serde(rename = "SUAA")]
 	CodeSUAA,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -580,6 +568,7 @@ pub struct MarketPracticeVersion1 {
 
 // Max16Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max16Text {
 	#[serde(rename = "$value")]
 	pub max16_text: String,
@@ -588,6 +577,7 @@ pub struct Max16Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -596,6 +586,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -604,6 +595,7 @@ pub struct Max35Text {
 
 // Max4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max4AlphaNumericText {
 	#[serde(rename = "$value")]
 	pub max4_alpha_numeric_text: String,
@@ -612,6 +604,7 @@ pub struct Max4AlphaNumericText {
 
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max70Text {
 	#[serde(rename = "$value")]
 	pub max70_text: String,
@@ -641,11 +634,9 @@ pub struct NameAndAddress5 {
 // NoReasonCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NoReasonCode {
+	#[default]
 	#[serde(rename = "NORE")]
 	CodeNORE,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -694,6 +685,7 @@ pub struct PendingOpeningStatusReason1Choice {
 // PendingOpeningStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PendingOpeningStatusReason1Code {
+	#[default]
 	#[serde(rename = "ATHR")]
 	CodeATHR,
 	#[serde(rename = "ATHP")]
@@ -708,9 +700,6 @@ pub enum PendingOpeningStatusReason1Code {
 	CodeREST,
 	#[serde(rename = "RIGH")]
 	CodeRIGH,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -747,6 +736,7 @@ pub struct PendingStatusReason1Choice {
 // PendingStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PendingStatusReason1Code {
+	#[default]
 	#[serde(rename = "KYCM")]
 	CodeKYCM,
 	#[serde(rename = "FRDM")]
@@ -759,9 +749,6 @@ pub enum PendingStatusReason1Code {
 	CodeATHP,
 	#[serde(rename = "MODI")]
 	CodeMODI,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -820,13 +807,11 @@ pub struct ProformaStatusReason1Choice {
 // ProformaStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ProformaStatusReason1Code {
+	#[default]
 	#[serde(rename = "MODI")]
 	CodeMODI,
 	#[serde(rename = "RIGH")]
 	CodeRIGH,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -853,13 +838,11 @@ pub struct RejectedReason16Choice {
 // RejectedStatusReason6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum RejectedStatusReason6Code {
+	#[default]
 	#[serde(rename = "SAFE")]
 	CodeSAFE,
 	#[serde(rename = "NSLA")]
 	CodeNSLA,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -895,6 +878,7 @@ pub struct TransactionType5Choice {
 
 // YesNoIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct YesNoIndicator {
 	#[serde(rename = "$value")]
 	pub yes_no_indicator: bool,

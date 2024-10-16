@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -55,6 +56,7 @@ pub struct FinancialInstrumentReportingMarketIdentificationCodeReportV02 {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -63,6 +65,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -72,6 +75,7 @@ pub struct ISODateTime {
 // MICEntityType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MICEntityType1Code {
+	#[default]
 	#[serde(rename = "APPA")]
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
@@ -84,14 +88,12 @@ pub enum MICEntityType1Code {
 	CodeRMKT,
 	#[serde(rename = "SINT")]
 	CodeSINT,
-
-	#[default]
-	UNKOWN
 }
 
 
 // MICIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct MICIdentifier {
 	#[serde(rename = "$value")]
 	pub mic_identifier: String,
@@ -101,13 +103,11 @@ pub struct MICIdentifier {
 // MarketIdentification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MarketIdentification1Code {
+	#[default]
 	#[serde(rename = "SGMT")]
 	CodeSGMT,
 	#[serde(rename = "OPRT")]
 	CodeOPRT,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -151,6 +151,7 @@ pub struct MarketIdentification95 {
 
 // Max210Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max210Text {
 	#[serde(rename = "$value")]
 	pub max210_text: String,
@@ -159,6 +160,7 @@ pub struct Max210Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -167,6 +169,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -175,6 +178,7 @@ pub struct Max35Text {
 
 // Max450Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max450Text {
 	#[serde(rename = "$value")]
 	pub max450_text: String,
@@ -183,6 +187,7 @@ pub struct Max450Text {
 
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max70Text {
 	#[serde(rename = "$value")]
 	pub max70_text: String,
@@ -192,6 +197,7 @@ pub struct Max70Text {
 // Modification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Modification1Code {
+	#[default]
 	#[serde(rename = "NOCH")]
 	CodeNOCH,
 	#[serde(rename = "MODI")]
@@ -200,9 +206,6 @@ pub enum Modification1Code {
 	CodeDELE,
 	#[serde(rename = "ADDD")]
 	CodeADDD,
-
-	#[default]
-	UNKOWN
 }
 
 

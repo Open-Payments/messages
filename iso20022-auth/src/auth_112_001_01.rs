@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // ActiveCurrencyAnd24AmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyAnd24AmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and24_amount_simple_type: f64,
@@ -45,6 +46,7 @@ pub struct ActiveCurrencyAnd24Amount {
 
 // ActiveCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and_amount_simple_type: f64,
@@ -63,6 +65,7 @@ pub struct ActiveCurrencyAndAmount {
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_currency_code: String,
@@ -72,6 +75,7 @@ pub struct ActiveCurrencyCode {
 // AssetClassDetailedSubProductType16Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType16Code {
+	#[default]
 	#[serde(rename = "FXCR")]
 	CodeFXCR,
 	#[serde(rename = "FXEM")]
@@ -214,9 +218,6 @@ pub enum AssetClassDetailedSubProductType16Code {
 	CodeWTIO,
 	#[serde(rename = "ZINC")]
 	CodeZINC,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -273,13 +274,11 @@ pub struct CCPInteroperabilityReportV01 {
 // CollateralAccountType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CollateralAccountType3Code {
+	#[default]
 	#[serde(rename = "MGIN")]
 	CodeMGIN,
 	#[serde(rename = "DFLT")]
 	CodeDFLT,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -361,6 +360,7 @@ pub struct Guarantee1 {
 
 // ISINOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISINOct2015Identifier {
 	#[serde(rename = "$value")]
 	pub isin_oct2015_identifier: String,
@@ -385,6 +385,7 @@ pub struct InteroperabilityCCP1 {
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct LEIIdentifier {
 	#[serde(rename = "$value")]
 	pub lei_identifier: String,
@@ -393,6 +394,7 @@ pub struct LEIIdentifier {
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
@@ -401,6 +403,7 @@ pub struct Max140Text {
 
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max256Text {
 	#[serde(rename = "$value")]
 	pub max256_text: String,
@@ -409,6 +412,7 @@ pub struct Max256Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -417,6 +421,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -425,6 +430,7 @@ pub struct Max35Text {
 
 // NonNegativeNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct NonNegativeNumber {
 	#[serde(rename = "$value")]
 	pub non_negative_number: f64,
@@ -444,15 +450,13 @@ pub struct PartyIdentification118Choice {
 // ProductType7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ProductType7Code {
+	#[default]
 	#[serde(rename = "SVGN")]
 	CodeSVGN,
 	#[serde(rename = "EQUI")]
 	CodeEQUI,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
-	#[default]
-	UNKOWN
 }
 
 

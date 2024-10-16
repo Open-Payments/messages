@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // ActiveCurrencyAnd13DecimalAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyAnd13DecimalAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and13_decimal_amount_simple_type: f64,
@@ -45,6 +46,7 @@ pub struct ActiveCurrencyAnd13DecimalAmount {
 
 // ActiveCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and_amount_simple_type: f64,
@@ -63,6 +65,7 @@ pub struct ActiveCurrencyAndAmount {
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_currency_code: String,
@@ -71,6 +74,7 @@ pub struct ActiveCurrencyCode {
 
 // ActiveOrHistoricCurrencyAnd13DecimalAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveOrHistoricCurrencyAnd13DecimalAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_and13_decimal_amount_simple_type: f64,
@@ -89,6 +93,7 @@ pub struct ActiveOrHistoricCurrencyAnd13DecimalAmount {
 
 // ActiveOrHistoricCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveOrHistoricCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
@@ -98,19 +103,18 @@ pub struct ActiveOrHistoricCurrencyCode {
 // AddressType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType1Code {
+	#[default]
 	#[serde(rename = "HOME")]
 	CodeHOME,
 	#[serde(rename = "BIZZ")]
 	CodeBIZZ,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AddressType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AddressType2Code {
+	#[default]
 	#[serde(rename = "ADDR")]
 	CodeADDR,
 	#[serde(rename = "PBOX")]
@@ -123,9 +127,6 @@ pub enum AddressType2Code {
 	CodeMLTO,
 	#[serde(rename = "DLVY")]
 	CodeDLVY,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -141,6 +142,7 @@ pub struct AmountOrPercentageRange1 {
 
 // AnyBICDec2014Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct AnyBICDec2014Identifier {
 	#[serde(rename = "$value")]
 	pub any_bic_dec2014_identifier: String,
@@ -150,6 +152,7 @@ pub struct AnyBICDec2014Identifier {
 // Appearance1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Appearance1Code {
+	#[default]
 	#[serde(rename = "DELI")]
 	CodeDELI,
 	#[serde(rename = "NDEL")]
@@ -166,9 +169,6 @@ pub enum Appearance1Code {
 	CodeTMPG,
 	#[serde(rename = "GLOB")]
 	CodeGLOB,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -185,13 +185,11 @@ pub struct Appearance3Choice {
 // AssignmentMethod1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssignmentMethod1Code {
+	#[default]
 	#[serde(rename = "RAND")]
 	CodeRAND,
 	#[serde(rename = "PROR")]
 	CodePROR,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -207,6 +205,7 @@ pub struct AssignmentMethod2Choice {
 
 // BaseOneRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct BaseOneRate {
 	#[serde(rename = "$value")]
 	pub base_one_rate: f64,
@@ -234,6 +233,7 @@ pub struct BenchmarkCurve6 {
 // BenchmarkCurveName1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BenchmarkCurveName1Code {
+	#[default]
 	#[serde(rename = "MAAA")]
 	CodeMAAA,
 	#[serde(rename = "FUSW")]
@@ -250,9 +250,6 @@ pub enum BenchmarkCurveName1Code {
 	CodeEURI,
 	#[serde(rename = "PFAN")]
 	CodePFAN,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -268,6 +265,7 @@ pub struct BenchmarkCurveName7Choice {
 
 // CFIOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CFIOct2015Identifier {
 	#[serde(rename = "$value")]
 	pub cfi_oct2015_identifier: String,
@@ -277,6 +275,7 @@ pub struct CFIOct2015Identifier {
 // CalculationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CalculationType1Code {
+	#[default]
 	#[serde(rename = "AFTX")]
 	CodeAFTX,
 	#[serde(rename = "ANNU")]
@@ -343,9 +342,6 @@ pub enum CalculationType1Code {
 	CodeTRYL,
 	#[serde(rename = "WRST")]
 	CodeWRST,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -362,13 +358,11 @@ pub struct CalculationType3Choice {
 // CallType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum CallType1Code {
+	#[default]
 	#[serde(rename = "LOTT")]
 	CodeLOTT,
 	#[serde(rename = "PRTA")]
 	CodePRTA,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -526,6 +520,7 @@ pub struct CommunicationAddress3 {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -736,6 +731,7 @@ pub struct Debt5 {
 
 // DecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct DecimalNumber {
 	#[serde(rename = "$value")]
 	pub decimal_number: f64,
@@ -755,13 +751,11 @@ pub struct Derivative4 {
 // DistributionPolicy1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DistributionPolicy1Code {
+	#[default]
 	#[serde(rename = "DIST")]
 	CodeDIST,
 	#[serde(rename = "ACCU")]
 	CodeACCU,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -793,6 +787,7 @@ pub struct Equity3 {
 
 // Exact4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Exact4AlphaNumericText {
 	#[serde(rename = "$value")]
 	pub exact4_alpha_numeric_text: String,
@@ -801,6 +796,7 @@ pub struct Exact4AlphaNumericText {
 
 // ExternalFinancialInstrumentIdentificationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalFinancialInstrumentIdentificationType1Code {
 	#[serde(rename = "$value")]
 	pub external_financial_instrument_identification_type1_code: String,
@@ -809,6 +805,7 @@ pub struct ExternalFinancialInstrumentIdentificationType1Code {
 
 // ExternalFinancialInstrumentProductType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalFinancialInstrumentProductType1Code {
 	#[serde(rename = "$value")]
 	pub external_financial_instrument_product_type1_code: String,
@@ -817,6 +814,7 @@ pub struct ExternalFinancialInstrumentProductType1Code {
 
 // ExternalSecuritiesUpdateReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalSecuritiesUpdateReason1Code {
 	#[serde(rename = "$value")]
 	pub external_securities_update_reason1_code: String,
@@ -862,13 +860,11 @@ pub struct FinancialInstrumentQuantity1Choice {
 // FormOfSecurity1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum FormOfSecurity1Code {
+	#[default]
 	#[serde(rename = "BEAR")]
 	CodeBEAR,
 	#[serde(rename = "REGD")]
 	CodeREGD,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -895,6 +891,7 @@ pub struct Frequency35Choice {
 // Frequency5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Frequency5Code {
+	#[default]
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
 	#[serde(rename = "MNTH")]
@@ -915,9 +912,6 @@ pub enum Frequency5Code {
 	CodeOVNG,
 	#[serde(rename = "TEND")]
 	CodeTEND,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -992,13 +986,11 @@ pub struct GenericIdentification36 {
 // GlobalNote1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum GlobalNote1Code {
+	#[default]
 	#[serde(rename = "NGNO")]
 	CodeNGNO,
 	#[serde(rename = "CGNO")]
 	CodeCGNO,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1014,6 +1006,7 @@ pub struct GlobalNote2Choice {
 
 // ISIN2021Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISIN2021Identifier {
 	#[serde(rename = "$value")]
 	pub isin2021_identifier: String,
@@ -1022,6 +1015,7 @@ pub struct ISIN2021Identifier {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -1030,6 +1024,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -1038,6 +1033,7 @@ pub struct ISODateTime {
 
 // ISOYearMonth ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISOYearMonth {
 	#[serde(rename = "$value")]
 	pub iso_year_month: String,
@@ -1056,6 +1052,7 @@ pub struct IdentificationSource3Choice {
 
 // ImpliedCurrencyAndAmount ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ImpliedCurrencyAndAmount {
 	#[serde(rename = "$value")]
 	pub implied_currency_and_amount: f64,
@@ -1065,28 +1062,24 @@ pub struct ImpliedCurrencyAndAmount {
 // InitialPhysicalForm1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InitialPhysicalForm1Code {
+	#[default]
 	#[serde(rename = "GTGT")]
 	CodeGTGT,
 	#[serde(rename = "GPGP")]
 	CodeGPGP,
 	#[serde(rename = "DERN")]
 	CodeDERN,
-
-	#[default]
-	UNKOWN
 }
 
 
 // InitialPhysicalForm2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InitialPhysicalForm2Code {
+	#[default]
 	#[serde(rename = "GPGP")]
 	CodeGPGP,
 	#[serde(rename = "DERN")]
 	CodeDERN,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1113,6 +1106,7 @@ pub struct InitialPhysicalForm4Choice {
 // InstrumentSubStructureType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InstrumentSubStructureType1Code {
+	#[default]
 	#[serde(rename = "ABSE")]
 	CodeABSE,
 	#[serde(rename = "AIRT")]
@@ -1153,9 +1147,6 @@ pub enum InstrumentSubStructureType1Code {
 	CodeSTUT,
 	#[serde(rename = "WBSE")]
 	CodeWBSE,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1172,6 +1163,7 @@ pub struct InstrumentSubStructureType2Choice {
 // InterestType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InterestType3Code {
+	#[default]
 	#[serde(rename = "ZCPN")]
 	CodeZCPN,
 	#[serde(rename = "FIXD")]
@@ -1184,24 +1176,19 @@ pub enum InterestType3Code {
 	CodeINDE,
 	#[serde(rename = "DSCO")]
 	CodeDSCO,
-
-	#[default]
-	UNKOWN
 }
 
 
 // InvestorRestrictionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InvestorRestrictionType1Code {
+	#[default]
 	#[serde(rename = "LERE")]
 	CodeLERE,
 	#[serde(rename = "CITI")]
 	CodeCITI,
 	#[serde(rename = "INDV")]
 	CodeINDV,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1218,6 +1205,7 @@ pub struct InvestorRestrictionType3Choice {
 // InvestorType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum InvestorType1Code {
+	#[default]
 	#[serde(rename = "RETL")]
 	CodeRETL,
 	#[serde(rename = "PROF")]
@@ -1226,9 +1214,6 @@ pub enum InvestorType1Code {
 	CodeSTAF,
 	#[serde(rename = "PPER")]
 	CodePPER,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1284,6 +1269,7 @@ pub struct Jurisdiction1 {
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct LEIIdentifier {
 	#[serde(rename = "$value")]
 	pub lei_identifier: String,
@@ -1293,21 +1279,20 @@ pub struct LEIIdentifier {
 // LegalRestrictions1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum LegalRestrictions1Code {
+	#[default]
 	#[serde(rename = "USLE")]
 	CodeUSLE,
 	#[serde(rename = "NORE")]
 	CodeNORE,
 	#[serde(rename = "REST")]
 	CodeREST,
-
-	#[default]
-	UNKOWN
 }
 
 
 // LegalRestrictions2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum LegalRestrictions2Code {
+	#[default]
 	#[serde(rename = "JURO")]
 	CodeJURO,
 	#[serde(rename = "PPLA")]
@@ -1318,9 +1303,6 @@ pub enum LegalRestrictions2Code {
 	CodeMARG,
 	#[serde(rename = "PRIV")]
 	CodePRIV,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1346,6 +1328,7 @@ pub struct LegalRestrictions5Choice {
 
 // MICIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct MICIdentifier {
 	#[serde(rename = "$value")]
 	pub mic_identifier: String,
@@ -1355,6 +1338,7 @@ pub struct MICIdentifier {
 // MaturityRedemptionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum MaturityRedemptionType1Code {
+	#[default]
 	#[serde(rename = "FRED")]
 	CodeFRED,
 	#[serde(rename = "PRNR")]
@@ -1369,9 +1353,6 @@ pub enum MaturityRedemptionType1Code {
 	CodeCALL,
 	#[serde(rename = "PUUT")]
 	CodePUUT,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1387,6 +1368,7 @@ pub struct MaturityRedemptionType3Choice {
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
@@ -1395,6 +1377,7 @@ pub struct Max140Text {
 
 // Max15NumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max15NumericText {
 	#[serde(rename = "$value")]
 	pub max15_numeric_text: String,
@@ -1403,6 +1386,7 @@ pub struct Max15NumericText {
 
 // Max16Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max16Text {
 	#[serde(rename = "$value")]
 	pub max16_text: String,
@@ -1411,6 +1395,7 @@ pub struct Max16Text {
 
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max256Text {
 	#[serde(rename = "$value")]
 	pub max256_text: String,
@@ -1419,6 +1404,7 @@ pub struct Max256Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -1427,6 +1413,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -1435,6 +1422,7 @@ pub struct Max35Text {
 
 // Max3NumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max3NumericText {
 	#[serde(rename = "$value")]
 	pub max3_numeric_text: String,
@@ -1443,6 +1431,7 @@ pub struct Max3NumericText {
 
 // Max4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max4AlphaNumericText {
 	#[serde(rename = "$value")]
 	pub max4_alpha_numeric_text: String,
@@ -1451,6 +1440,7 @@ pub struct Max4AlphaNumericText {
 
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max70Text {
 	#[serde(rename = "$value")]
 	pub max70_text: String,
@@ -1489,6 +1479,7 @@ pub struct NameAndAddress5 {
 
 // Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Number {
 	#[serde(rename = "$value")]
 	pub number: f64,
@@ -1498,21 +1489,20 @@ pub struct Number {
 // Operation1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Operation1Code {
+	#[default]
 	#[serde(rename = "TILL")]
 	CodeTILL,
 	#[serde(rename = "ORRR")]
 	CodeORRR,
 	#[serde(rename = "ANDD")]
 	CodeANDD,
-
-	#[default]
-	UNKOWN
 }
 
 
 // Operator1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Operator1Code {
+	#[default]
 	#[serde(rename = "SMAL")]
 	CodeSMAL,
 	#[serde(rename = "SMEQ")]
@@ -1523,9 +1513,6 @@ pub enum Operator1Code {
 	CodeGREQ,
 	#[serde(rename = "EQAL")]
 	CodeEQAL,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1570,13 +1557,11 @@ pub struct Option15 {
 // OptionParty1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OptionParty1Code {
+	#[default]
 	#[serde(rename = "SLLR")]
 	CodeSLLR,
 	#[serde(rename = "BYER")]
 	CodeBYER,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1603,6 +1588,7 @@ pub struct OptionStyle1Choice {
 // OptionStyle1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OptionStyle1Code {
+	#[default]
 	#[serde(rename = "AMER")]
 	CodeAMER,
 	#[serde(rename = "EURO")]
@@ -1613,22 +1599,17 @@ pub enum OptionStyle1Code {
 	CodeASIA,
 	#[serde(rename = "CANA")]
 	CodeCANA,
-
-	#[default]
-	UNKOWN
 }
 
 
 // OptionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OptionType1Code {
+	#[default]
 	#[serde(rename = "CALL")]
 	CodeCALL,
 	#[serde(rename = "PUTO")]
 	CodePUTO,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1716,6 +1697,7 @@ pub struct PartyIdentification177Choice {
 
 // PaymentDirectionIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct PaymentDirectionIndicator {
 	#[serde(rename = "$value")]
 	pub payment_direction_indicator: bool,
@@ -1724,6 +1706,7 @@ pub struct PaymentDirectionIndicator {
 
 // PercentageRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct PercentageRate {
 	#[serde(rename = "$value")]
 	pub percentage_rate: f64,
@@ -1732,6 +1715,7 @@ pub struct PercentageRate {
 
 // PhoneNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct PhoneNumber {
 	#[serde(rename = "$value")]
 	pub phone_number: String,
@@ -1777,13 +1761,11 @@ pub struct PostalAddress3 {
 // PreferenceToIncome1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PreferenceToIncome1Code {
+	#[default]
 	#[serde(rename = "ORDN")]
 	CodeORDN,
 	#[serde(rename = "PFRD")]
 	CodePFRD,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1830,6 +1812,7 @@ pub struct PriceValue1 {
 // PriceValueType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PriceValueType3Code {
+	#[default]
 	#[serde(rename = "DISC")]
 	CodeDISC,
 	#[serde(rename = "PREM")]
@@ -1852,24 +1835,19 @@ pub enum PriceValueType3Code {
 	CodeFICT,
 	#[serde(rename = "VACT")]
 	CodeVACT,
-
-	#[default]
-	UNKOWN
 }
 
 
 // PutType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PutType1Code {
+	#[default]
 	#[serde(rename = "MAND")]
 	CodeMAND,
 	#[serde(rename = "OPTI")]
 	CodeOPTI,
 	#[serde(rename = "TWOS")]
 	CodeTWOS,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1908,15 +1886,13 @@ pub struct RateOrAbsoluteValue1Choice {
 // RateType12Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum RateType12Code {
+	#[default]
 	#[serde(rename = "OPEN")]
 	CodeOPEN,
 	#[serde(rename = "UKWN")]
 	CodeUKWN,
 	#[serde(rename = "NILP")]
 	CodeNILP,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1933,6 +1909,7 @@ pub struct RateType12FormatChoice {
 // RestrictionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum RestrictionType1Code {
+	#[default]
 	#[serde(rename = "SELR")]
 	CodeSELR,
 	#[serde(rename = "BUYR")]
@@ -1943,24 +1920,19 @@ pub enum RestrictionType1Code {
 	CodeHOLR,
 	#[serde(rename = "VOTR")]
 	CodeVOTR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // SecuritiesPaymentStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SecuritiesPaymentStatus1Code {
+	#[default]
 	#[serde(rename = "FULL")]
 	CodeFULL,
 	#[serde(rename = "NILL")]
 	CodeNILL,
 	#[serde(rename = "PART")]
 	CodePART,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1977,13 +1949,11 @@ pub struct SecuritiesPaymentStatus5Choice {
 // SecuritiesTransactionType11Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SecuritiesTransactionType11Code {
+	#[default]
 	#[serde(rename = "NSYN")]
 	CodeNSYN,
 	#[serde(rename = "SYND")]
 	CodeSYND,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2076,15 +2046,13 @@ pub struct SecurityRestrictionType2Choice {
 // SecurityStatus2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SecurityStatus2Code {
+	#[default]
 	#[serde(rename = "ACTV")]
 	CodeACTV,
 	#[serde(rename = "INAC")]
 	CodeINAC,
 	#[serde(rename = "SUSP")]
 	CodeSUSP,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2111,13 +2079,11 @@ pub struct SecurityWithHoldingTax1 {
 // SettleStyle1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SettleStyle1Code {
+	#[default]
 	#[serde(rename = "SETC")]
 	CodeSETC,
 	#[serde(rename = "SETO")]
 	CodeSETO,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2150,13 +2116,11 @@ pub struct SettlementInformation17 {
 // SettlementType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SettlementType1Code {
+	#[default]
 	#[serde(rename = "PRIN")]
 	CodePRIN,
 	#[serde(rename = "NETO")]
 	CodeNETO,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2173,13 +2137,11 @@ pub struct SettlementType3Choice {
 // SettlementUnitType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum SettlementUnitType1Code {
+	#[default]
 	#[serde(rename = "FAMT")]
 	CodeFAMT,
 	#[serde(rename = "UNIT")]
 	CodeUNIT,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2196,15 +2158,13 @@ pub struct SettlementUnitType3Choice {
 // Standardisation1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Standardisation1Code {
+	#[default]
 	#[serde(rename = "FLEX")]
 	CodeFLEX,
 	#[serde(rename = "NSTA")]
 	CodeNSTA,
 	#[serde(rename = "STAN")]
 	CodeSTAN,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2237,13 +2197,11 @@ pub struct SupplementaryDataEnvelope1 {
 // TEFRARules1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TEFRARules1Code {
+	#[default]
 	#[serde(rename = "RULC")]
 	CodeRULC,
 	#[serde(rename = "RULD")]
 	CodeRULD,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2270,6 +2228,7 @@ pub struct Term1 {
 // TimeUnit1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TimeUnit1Code {
+	#[default]
 	#[serde(rename = "DAYC")]
 	CodeDAYC,
 	#[serde(rename = "HOUR")]
@@ -2284,9 +2243,6 @@ pub enum TimeUnit1Code {
 	CodeWEEK,
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2303,6 +2259,7 @@ pub struct TimeUnit3Choice {
 // TradeTransactionCondition2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradeTransactionCondition2Code {
+	#[default]
 	#[serde(rename = "SPCC")]
 	CodeSPCC,
 	#[serde(rename = "SECN")]
@@ -2329,9 +2286,6 @@ pub enum TradeTransactionCondition2Code {
 	CodeSPEX,
 	#[serde(rename = "GTDL")]
 	CodeGTDL,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2370,6 +2324,7 @@ pub struct TradingParameters2 {
 // TypeOfPrice1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TypeOfPrice1Code {
+	#[default]
 	#[serde(rename = "AVER")]
 	CodeAVER,
 	#[serde(rename = "AVOV")]
@@ -2396,9 +2351,6 @@ pub enum TypeOfPrice1Code {
 	CodeRDAV,
 	#[serde(rename = "STOP")]
 	CodeSTOP,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2449,6 +2401,7 @@ pub struct UnitOfMeasure7Choice {
 // UnitOfMeasure9Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum UnitOfMeasure9Code {
+	#[default]
 	#[serde(rename = "BAGG")]
 	CodeBAGG,
 	#[serde(rename = "BALE")]
@@ -2549,9 +2502,6 @@ pub enum UnitOfMeasure9Code {
 	CodeARES,
 	#[serde(rename = "HECT")]
 	CodeHECT,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2604,15 +2554,13 @@ pub struct Warrant4 {
 // WarrantStyle1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum WarrantStyle1Code {
+	#[default]
 	#[serde(rename = "AMER")]
 	CodeAMER,
 	#[serde(rename = "EURO")]
 	CodeEURO,
 	#[serde(rename = "BERM")]
 	CodeBERM,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2628,6 +2576,7 @@ pub struct WarrantStyle3Choice {
 
 // YesNoIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct YesNoIndicator {
 	#[serde(rename = "$value")]
 	pub yes_no_indicator: bool,

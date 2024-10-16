@@ -49,6 +49,7 @@ pub struct FedNowParticipantProfile1 {
 
 // ISODate is A particular point in the progression of time in a calendar year expressed in the YYYY-MM-DD format. This representation is defined in "XML Schema Part 2: Datatypes Second Edition - W3C Recommendation 28 October 2004" which is aligned with ISO 8601.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -57,6 +58,7 @@ pub struct ISODate {
 
 // Max140Text is Specifies a character string with a maximum length of 140 characters.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
@@ -69,6 +71,7 @@ pub struct Max140Text {
 
 //                 Note: This may be a master account routing number or a subaccount routing number.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct RoutingNumberFRS1 {
 	#[serde(rename = "$value")]
 	pub routing_number_frs_1: String,
@@ -78,15 +81,13 @@ pub struct RoutingNumberFRS1 {
 // Services_FedNow_1 is This indicates a FedNow participant is enabled to receive request for payment messages.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum ServicesFedNow1 {
+	#[default]
 	#[serde(rename = "CTSR")]
 	CodeCTSR,
 	#[serde(rename = "CTRO")]
 	CodeCTRO,
 	#[serde(rename = "RFPR")]
 	CodeRFPR,
-
-	#[default]
-	UNKOWN
 }
 
 

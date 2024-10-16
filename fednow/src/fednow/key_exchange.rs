@@ -28,6 +28,7 @@ use serde::{Deserialize, Serialize};
 
 // Max300AlphaNumericString ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max300AlphaNumericString {
 	#[serde(rename = "$value")]
 	pub max300_alpha_numeric_string: String,
@@ -36,6 +37,7 @@ pub struct Max300AlphaNumericString {
 
 // Max50AlphaNumericString ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max50AlphaNumericString {
 	#[serde(rename = "$value")]
 	pub max50_alpha_numeric_string: String,
@@ -44,6 +46,7 @@ pub struct Max50AlphaNumericString {
 
 // Max300Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max300Text {
 	#[serde(rename = "$value")]
 	pub max300_text: String,
@@ -56,6 +59,7 @@ pub struct Max300Text {
 
 //                 Note: This may be a master account routing number or a subaccount routing number.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct RoutingNumberFRS1 {
 	#[serde(rename = "$value")]
 	pub routing_number_frs_1: String,

@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // Exact4AlphaNumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Exact4AlphaNumericText {
 	#[serde(rename = "$value")]
 	pub exact4_alpha_numeric_text: String,
@@ -35,6 +36,7 @@ pub struct Exact4AlphaNumericText {
 
 // ExternalStatusReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ExternalStatusReason1Code {
 	#[serde(rename = "$value")]
 	pub external_status_reason1_code: String,
@@ -55,6 +57,7 @@ pub struct GenericIdentification30 {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -63,6 +66,7 @@ pub struct ISODateTime {
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
@@ -71,6 +75,7 @@ pub struct Max140Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -79,6 +84,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -87,6 +93,7 @@ pub struct Max35Text {
 
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max70Text {
 	#[serde(rename = "$value")]
 	pub max70_text: String,
@@ -156,15 +163,13 @@ pub struct SecuritiesAccountStatusAdviceV01 {
 // Status6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum Status6Code {
+	#[default]
 	#[serde(rename = "REJT")]
 	CodeREJT,
 	#[serde(rename = "COMP")]
 	CodeCOMP,
 	#[serde(rename = "QUED")]
 	CodeQUED,
-
-	#[default]
-	UNKOWN
 }
 
 

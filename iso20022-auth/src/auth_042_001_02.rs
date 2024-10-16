@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // ActiveCurrencyAnd13DecimalAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyAnd13DecimalAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and13_decimal_amount_simple_type: f64,
@@ -45,6 +46,7 @@ pub struct ActiveCurrencyAnd13DecimalAmount {
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_currency_code: String,
@@ -53,6 +55,7 @@ pub struct ActiveCurrencyCode {
 
 // ActiveOrHistoricCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveOrHistoricCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_and_amount_simple_type: f64,
@@ -71,6 +74,7 @@ pub struct ActiveOrHistoricCurrencyAndAmount {
 
 // ActiveOrHistoricCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveOrHistoricCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
@@ -406,6 +410,7 @@ pub struct AssetClassCommodityPolypropylene1Choice {
 // AssetClassDetailedSubProductType10Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType10Code {
+	#[default]
 	#[serde(rename = "ALUM")]
 	CodeALUM,
 	#[serde(rename = "ALUA")]
@@ -432,15 +437,13 @@ pub enum AssetClassDetailedSubProductType10Code {
 	CodeOTHR,
 	#[serde(rename = "LEAD")]
 	CodeLEAD,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType11Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType11Code {
+	#[default]
 	#[serde(rename = "GOLD")]
 	CodeGOLD,
 	#[serde(rename = "OTHR")]
@@ -451,48 +454,40 @@ pub enum AssetClassDetailedSubProductType11Code {
 	CodePTNM,
 	#[serde(rename = "SLVR")]
 	CodeSLVR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType12Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType12Code {
+	#[default]
 	#[serde(rename = "TNKR")]
 	CodeTNKR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType14Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType14Code {
+	#[default]
 	#[serde(rename = "DBCR")]
 	CodeDBCR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType15Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType15Code {
+	#[default]
 	#[serde(rename = "MWHT")]
 	CodeMWHT,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType1Code {
+	#[default]
 	#[serde(rename = "FWHT")]
 	CodeFWHT,
 	#[serde(rename = "SOYB")]
@@ -505,15 +500,13 @@ pub enum AssetClassDetailedSubProductType1Code {
 	CodeCORN,
 	#[serde(rename = "RICE")]
 	CodeRICE,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType2Code {
+	#[default]
 	#[serde(rename = "ROBU")]
 	CodeROBU,
 	#[serde(rename = "CCOA")]
@@ -524,26 +517,22 @@ pub enum AssetClassDetailedSubProductType2Code {
 	CodeWHSG,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType4Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType4Code {
+	#[default]
 	#[serde(rename = "LAMP")]
 	CodeLAMP,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType5Code {
+	#[default]
 	#[serde(rename = "BSLD")]
 	CodeBSLD,
 	#[serde(rename = "FITR")]
@@ -554,15 +543,13 @@ pub enum AssetClassDetailedSubProductType5Code {
 	CodeOFFP,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType6Code {
+	#[default]
 	#[serde(rename = "GASP")]
 	CodeGASP,
 	#[serde(rename = "LNGG")]
@@ -573,15 +560,13 @@ pub enum AssetClassDetailedSubProductType6Code {
 	CodeTTFG,
 	#[serde(rename = "NBPG")]
 	CodeNBPG,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType7Code {
+	#[default]
 	#[serde(rename = "BAKK")]
 	CodeBAKK,
 	#[serde(rename = "BDSL")]
@@ -630,15 +615,13 @@ pub enum AssetClassDetailedSubProductType7Code {
 	CodeWTIO,
 	#[serde(rename = "URAL")]
 	CodeURAL,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassDetailedSubProductType8Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassDetailedSubProductType8Code {
+	#[default]
 	#[serde(rename = "CERE")]
 	CodeCERE,
 	#[serde(rename = "ERUE")]
@@ -649,609 +632,499 @@ pub enum AssetClassDetailedSubProductType8Code {
 	CodeEUAA,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType11Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType11Code {
+	#[default]
 	#[serde(rename = "OTHC")]
 	CodeOTHC,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType12Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType12Code {
+	#[default]
 	#[serde(rename = "INFL")]
 	CodeINFL,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType13Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType13Code {
+	#[default]
 	#[serde(rename = "MCEX")]
 	CodeMCEX,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType14Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType14Code {
+	#[default]
 	#[serde(rename = "OEST")]
 	CodeOEST,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType15Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType15Code {
+	#[default]
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType1Code {
+	#[default]
 	#[serde(rename = "AGRI")]
 	CodeAGRI,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType2Code {
+	#[default]
 	#[serde(rename = "NRGY")]
 	CodeNRGY,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType3Code {
+	#[default]
 	#[serde(rename = "ENVR")]
 	CodeENVR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType4Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType4Code {
+	#[default]
 	#[serde(rename = "FRGT")]
 	CodeFRGT,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType5Code {
+	#[default]
 	#[serde(rename = "FRTL")]
 	CodeFRTL,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType6Code {
+	#[default]
 	#[serde(rename = "INDP")]
 	CodeINDP,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType7Code {
+	#[default]
 	#[serde(rename = "METL")]
 	CodeMETL,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType8Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType8Code {
+	#[default]
 	#[serde(rename = "PAPR")]
 	CodePAPR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassProductType9Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassProductType9Code {
+	#[default]
 	#[serde(rename = "POLY")]
 	CodePOLY,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType10Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType10Code {
+	#[default]
 	#[serde(rename = "EMIS")]
 	CodeEMIS,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType15Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType15Code {
+	#[default]
 	#[serde(rename = "NPRM")]
 	CodeNPRM,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType16Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType16Code {
+	#[default]
 	#[serde(rename = "PRME")]
 	CodePRME,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType18Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType18Code {
+	#[default]
 	#[serde(rename = "PLST")]
 	CodePLST,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType1Code {
+	#[default]
 	#[serde(rename = "GROS")]
 	CodeGROS,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType20Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType20Code {
+	#[default]
 	#[serde(rename = "DIRY")]
 	CodeDIRY,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType21Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType21Code {
+	#[default]
 	#[serde(rename = "FRST")]
 	CodeFRST,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType22Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType22Code {
+	#[default]
 	#[serde(rename = "LSTK")]
 	CodeLSTK,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType23Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType23Code {
+	#[default]
 	#[serde(rename = "SEAF")]
 	CodeSEAF,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType24Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType24Code {
+	#[default]
 	#[serde(rename = "COAL")]
 	CodeCOAL,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType25Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType25Code {
+	#[default]
 	#[serde(rename = "DIST")]
 	CodeDIST,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType26Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType26Code {
+	#[default]
 	#[serde(rename = "INRG")]
 	CodeINRG,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType27Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType27Code {
+	#[default]
 	#[serde(rename = "LGHT")]
 	CodeLGHT,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType28Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType28Code {
+	#[default]
 	#[serde(rename = "RNNG")]
 	CodeRNNG,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType29Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType29Code {
+	#[default]
 	#[serde(rename = "CRBR")]
 	CodeCRBR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType2Code {
+	#[default]
 	#[serde(rename = "SOFT")]
 	CodeSOFT,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType30Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType30Code {
+	#[default]
 	#[serde(rename = "WTHR")]
 	CodeWTHR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType31Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType31Code {
+	#[default]
 	#[serde(rename = "DRYF")]
 	CodeDRYF,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType32Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType32Code {
+	#[default]
 	#[serde(rename = "WETF")]
 	CodeWETF,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType33Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType33Code {
+	#[default]
 	#[serde(rename = "CSTR")]
 	CodeCSTR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType34Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType34Code {
+	#[default]
 	#[serde(rename = "MFTG")]
 	CodeMFTG,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType35Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType35Code {
+	#[default]
 	#[serde(rename = "CBRD")]
 	CodeCBRD,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType36Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType36Code {
+	#[default]
 	#[serde(rename = "NSPT")]
 	CodeNSPT,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType37Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType37Code {
+	#[default]
 	#[serde(rename = "PULP")]
 	CodePULP,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType38Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType38Code {
+	#[default]
 	#[serde(rename = "RCVP")]
 	CodeRCVP,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType39Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType39Code {
+	#[default]
 	#[serde(rename = "AMMO")]
 	CodeAMMO,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType3Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType3Code {
+	#[default]
 	#[serde(rename = "OOLI")]
 	CodeOOLI,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType40Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType40Code {
+	#[default]
 	#[serde(rename = "DAPH")]
 	CodeDAPH,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType41Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType41Code {
+	#[default]
 	#[serde(rename = "PTSH")]
 	CodePTSH,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType42Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType42Code {
+	#[default]
 	#[serde(rename = "SLPH")]
 	CodeSLPH,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType43Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType43Code {
+	#[default]
 	#[serde(rename = "UREA")]
 	CodeUREA,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType44Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType44Code {
+	#[default]
 	#[serde(rename = "UAAN")]
 	CodeUAAN,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType45Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType45Code {
+	#[default]
 	#[serde(rename = "POTA")]
 	CodePOTA,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType46Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType46Code {
+	#[default]
 	#[serde(rename = "CSHP")]
 	CodeCSHP,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType47Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType47Code {
+	#[default]
 	#[serde(rename = "DLVR")]
 	CodeDLVR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType48Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType48Code {
+	#[default]
 	#[serde(rename = "NDLV")]
 	CodeNDLV,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType5Code {
+	#[default]
 	#[serde(rename = "GRIN")]
 	CodeGRIN,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType6Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType6Code {
+	#[default]
 	#[serde(rename = "ELEC")]
 	CodeELEC,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType7Code {
+	#[default]
 	#[serde(rename = "NGAS")]
 	CodeNGAS,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassSubProductType8Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassSubProductType8Code {
+	#[default]
 	#[serde(rename = "OILP")]
 	CodeOILP,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetClassTransactionType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetClassTransactionType1Code {
+	#[default]
 	#[serde(rename = "CRCK")]
 	CodeCRCK,
 	#[serde(rename = "DIFF")]
@@ -1272,30 +1145,26 @@ pub enum AssetClassTransactionType1Code {
 	CodeTAPO,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetFXSubProductType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetFXSubProductType1Code {
+	#[default]
 	#[serde(rename = "FXCR")]
 	CodeFXCR,
 	#[serde(rename = "FXEM")]
 	CodeFXEM,
 	#[serde(rename = "FXMJ")]
 	CodeFXMJ,
-
-	#[default]
-	UNKOWN
 }
 
 
 // AssetPriceType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum AssetPriceType1Code {
+	#[default]
 	#[serde(rename = "ARGM")]
 	CodeARGM,
 	#[serde(rename = "BLTC")]
@@ -1310,15 +1179,13 @@ pub enum AssetPriceType1Code {
 	CodeOTHR,
 	#[serde(rename = "PLAT")]
 	CodePLAT,
-
-	#[default]
-	UNKOWN
 }
 
 
 // BenchmarkCurveName2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum BenchmarkCurveName2Code {
+	#[default]
 	#[serde(rename = "WIBO")]
 	CodeWIBO,
 	#[serde(rename = "TREA")]
@@ -1371,9 +1238,6 @@ pub enum BenchmarkCurveName2Code {
 	CodeBUBO,
 	#[serde(rename = "BBSW")]
 	CodeBBSW,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -1401,6 +1265,7 @@ pub struct BenchmarkCurveName6Choice {
 
 // CFIOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CFIOct2015Identifier {
 	#[serde(rename = "$value")]
 	pub cfi_oct2015_identifier: String,
@@ -1409,6 +1274,7 @@ pub struct CFIOct2015Identifier {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -1434,6 +1300,7 @@ pub struct DebtInstrument2 {
 // DebtInstrumentSeniorityType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum DebtInstrumentSeniorityType1Code {
+	#[default]
 	#[serde(rename = "SBOD")]
 	CodeSBOD,
 	#[serde(rename = "SNDB")]
@@ -1442,14 +1309,12 @@ pub enum DebtInstrumentSeniorityType1Code {
 	CodeMZZD,
 	#[serde(rename = "JUND")]
 	CodeJUND,
-
-	#[default]
-	UNKOWN
 }
 
 
 // DecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct DecimalNumber {
 	#[serde(rename = "$value")]
 	pub decimal_number: f64,
@@ -1806,6 +1671,7 @@ pub struct FreightCommodityWet1 {
 
 // ISINOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISINOct2015Identifier {
 	#[serde(rename = "$value")]
 	pub isin_oct2015_identifier: String,
@@ -1814,6 +1680,7 @@ pub struct ISINOct2015Identifier {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -1822,6 +1689,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -1880,6 +1748,7 @@ pub struct InterestRateContractTerm2 {
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct LEIIdentifier {
 	#[serde(rename = "$value")]
 	pub lei_identifier: String,
@@ -1888,6 +1757,7 @@ pub struct LEIIdentifier {
 
 // MICIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct MICIdentifier {
 	#[serde(rename = "$value")]
 	pub mic_identifier: String,
@@ -1896,6 +1766,7 @@ pub struct MICIdentifier {
 
 // Max25Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max25Text {
 	#[serde(rename = "$value")]
 	pub max25_text: String,
@@ -1904,6 +1775,7 @@ pub struct Max25Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -1912,6 +1784,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -1920,6 +1793,7 @@ pub struct Max35Text {
 
 // Max3Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max3Number {
 	#[serde(rename = "$value")]
 	pub max3_number: f64,
@@ -1928,6 +1802,7 @@ pub struct Max3Number {
 
 // Max5Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max5Number {
 	#[serde(rename = "$value")]
 	pub max5_number: f64,
@@ -1960,6 +1835,7 @@ pub struct MetalCommodityPrecious1 {
 
 // NonNegativeDecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct NonNegativeDecimalNumber {
 	#[serde(rename = "$value")]
 	pub non_negative_decimal_number: f64,
@@ -1968,6 +1844,7 @@ pub struct NonNegativeDecimalNumber {
 
 // Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Number {
 	#[serde(rename = "$value")]
 	pub number: f64,
@@ -1977,6 +1854,7 @@ pub struct Number {
 // OptionStyle7Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OptionStyle7Code {
+	#[default]
 	#[serde(rename = "AMER")]
 	CodeAMER,
 	#[serde(rename = "ASIA")]
@@ -1987,24 +1865,19 @@ pub enum OptionStyle7Code {
 	CodeEURO,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
-	#[default]
-	UNKOWN
 }
 
 
 // OptionType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum OptionType2Code {
+	#[default]
 	#[serde(rename = "CALL")]
 	CodeCALL,
 	#[serde(rename = "PUTO")]
 	CodePUTO,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2070,6 +1943,7 @@ pub struct PaperCommodityRecoveredPaper1 {
 
 // PercentageRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct PercentageRate {
 	#[serde(rename = "$value")]
 	pub percentage_rate: f64,
@@ -2103,20 +1977,19 @@ pub struct Period4Choice {
 // PhysicalTransferType4Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PhysicalTransferType4Code {
+	#[default]
 	#[serde(rename = "PHYS")]
 	CodePHYS,
 	#[serde(rename = "OPTL")]
 	CodeOPTL,
 	#[serde(rename = "CASH")]
 	CodeCASH,
-
-	#[default]
-	UNKOWN
 }
 
 
 // PlusOrMinusIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct PlusOrMinusIndicator {
 	#[serde(rename = "$value")]
 	pub plus_or_minus_indicator: bool,
@@ -2136,19 +2009,18 @@ pub struct PolypropyleneCommodityPlastic1 {
 // PriceStatus1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum PriceStatus1Code {
+	#[default]
 	#[serde(rename = "PNDG")]
 	CodePNDG,
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
-
-	#[default]
-	UNKOWN
 }
 
 
 // RateBasis1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum RateBasis1Code {
+	#[default]
 	#[serde(rename = "DAYS")]
 	CodeDAYS,
 	#[serde(rename = "MNTH")]
@@ -2157,9 +2029,6 @@ pub enum RateBasis1Code {
 	CodeWEEK,
 	#[serde(rename = "YEAR")]
 	CodeYEAR,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -2301,6 +2170,7 @@ pub struct TradingVenueAttributes1 {
 
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,

@@ -27,6 +27,7 @@ use serde::{Deserialize, Serialize};
 
 // ActiveOrHistoricCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveOrHistoricCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_and_amount_simple_type: f64,
@@ -45,6 +46,7 @@ pub struct ActiveOrHistoricCurrencyAndAmount {
 
 // ActiveOrHistoricCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ActiveOrHistoricCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
@@ -65,6 +67,7 @@ pub struct AssetClassAndSubClassIdentification2 {
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
@@ -73,6 +76,7 @@ pub struct CountryCode {
 
 // DecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct DecimalNumber {
 	#[serde(rename = "$value")]
 	pub decimal_number: f64,
@@ -93,6 +97,7 @@ pub struct FinancialInstrumentReportingNonEquityTradingActivityResultV03 {
 
 // ISINOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISINOct2015Identifier {
 	#[serde(rename = "$value")]
 	pub isin_oct2015_identifier: String,
@@ -101,6 +106,7 @@ pub struct ISINOct2015Identifier {
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
@@ -109,6 +115,7 @@ pub struct ISODate {
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
@@ -139,6 +146,7 @@ pub struct InstrumentOrSubClassIdentification2Choice {
 
 // MICIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct MICIdentifier {
 	#[serde(rename = "$value")]
 	pub mic_identifier: String,
@@ -147,6 +155,7 @@ pub struct MICIdentifier {
 
 // Max1000Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max1000Text {
 	#[serde(rename = "$value")]
 	pub max1000_text: String,
@@ -155,6 +164,7 @@ pub struct Max1000Text {
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
@@ -163,6 +173,7 @@ pub struct Max350Text {
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
@@ -171,6 +182,7 @@ pub struct Max35Text {
 
 // Max50Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Max50Text {
 	#[serde(rename = "$value")]
 	pub max50_text: String,
@@ -180,6 +192,7 @@ pub struct Max50Text {
 // NonEquityAssetClass1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NonEquityAssetClass1Code {
+	#[default]
 	#[serde(rename = "SDRV")]
 	CodeSDRV,
 	#[serde(rename = "IRDV")]
@@ -208,15 +221,13 @@ pub enum NonEquityAssetClass1Code {
 	CodeETNS,
 	#[serde(rename = "SFPS")]
 	CodeSFPS,
-
-	#[default]
-	UNKOWN
 }
 
 
 // NonEquityInstrumentReportingClassification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NonEquityInstrumentReportingClassification1Code {
+	#[default]
 	#[serde(rename = "SFPS")]
 	CodeSFPS,
 	#[serde(rename = "SDRV")]
@@ -231,9 +242,6 @@ pub enum NonEquityInstrumentReportingClassification1Code {
 	CodeETCS,
 	#[serde(rename = "ETNS")]
 	CodeETNS,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -250,6 +258,7 @@ pub struct NonEquitySubClass1 {
 // NonEquitySubClassSegmentationCriteria1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum NonEquitySubClassSegmentationCriteria1Code {
+	#[default]
 	#[serde(rename = "ASCL")]
 	CodeASCL,
 	#[serde(rename = "BSPD")]
@@ -322,9 +331,6 @@ pub enum NonEquitySubClassSegmentationCriteria1Code {
 	CodeREOU,
 	#[serde(rename = "UTYP")]
 	CodeUTYP,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -340,6 +346,7 @@ pub struct NonEquitySubClassSegmentationCriterion1 {
 
 // Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct Number {
 	#[serde(rename = "$value")]
 	pub number: f64,
@@ -421,13 +428,11 @@ pub struct TonsOrCurrency2Choice {
 // TradingVenue2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub enum TradingVenue2Code {
+	#[default]
 	#[serde(rename = "APPA")]
 	CodeAPPA,
 	#[serde(rename = "CTPS")]
 	CodeCTPS,
-
-	#[default]
-	UNKOWN
 }
 
 
@@ -483,6 +488,7 @@ pub struct TransparencyDataReport20 {
 
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
+#[serde(transparent)]
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
