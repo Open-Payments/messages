@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 // ActiveCurrencyAndAmountSimpleType ...
@@ -31,6 +32,15 @@ use serde::{Deserialize, Serialize};
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and_amount_simple_type: f64,
+}
+
+impl ActiveCurrencyAndAmountSimpleType {
+	pub fn validate(&self) -> bool {
+		if self.active_currency_and_amount_simple_type < 0.000000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -43,6 +53,12 @@ pub struct ActiveCurrencyAndAmount {
 	pub value: f64,
 }
 
+impl ActiveCurrencyAndAmount {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -50,6 +66,16 @@ pub struct ActiveCurrencyAndAmount {
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_currency_code: String,
+}
+
+impl ActiveCurrencyCode {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
+		if !pattern.is_match(&self.active_currency_code) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -61,6 +87,12 @@ pub struct BaseOneRate {
 	pub base_one_rate: f64,
 }
 
+impl BaseOneRate {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // CCPBackTestingResultReportV01 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -69,6 +101,14 @@ pub struct CCPBackTestingResultReportV01 {
 	pub mnthly_rslt: Vec<MonthlyResult1>,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
+}
+
+impl CCPBackTestingResultReportV01 {
+	pub fn validate(&self) -> bool {
+		for item in &self.mnthly_rslt { if !item.validate() { return false; } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
 }
 
 
@@ -85,6 +125,16 @@ pub struct GenericIdentification165 {
 	pub schme_nm: Option<SchemeIdentificationType1Code>,
 }
 
+impl GenericIdentification165 {
+	pub fn validate(&self) -> bool {
+		if !self.id.validate() { return false }
+		if let Some(ref desc_value) = self.desc { if !desc_value.validate() { return false; } }
+		if let Some(ref issr_value) = self.issr { if !issr_value.validate() { return false; } }
+		if let Some(ref schme_nm_value) = self.schme_nm { if !schme_nm_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -92,6 +142,18 @@ pub struct GenericIdentification165 {
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
+}
+
+impl Max140Text {
+	pub fn validate(&self) -> bool {
+		if self.max140_text.chars().count() < 1 {
+			return false
+		}
+		if self.max140_text.chars().count() > 140 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -103,6 +165,18 @@ pub struct Max256Text {
 	pub max256_text: String,
 }
 
+impl Max256Text {
+	pub fn validate(&self) -> bool {
+		if self.max256_text.chars().count() < 1 {
+			return false
+		}
+		if self.max256_text.chars().count() > 256 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -110,6 +184,18 @@ pub struct Max256Text {
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
+}
+
+impl Max350Text {
+	pub fn validate(&self) -> bool {
+		if self.max350_text.chars().count() < 1 {
+			return false
+		}
+		if self.max350_text.chars().count() > 350 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -121,12 +207,24 @@ pub struct Max35Text {
 	pub max35_text: String,
 }
 
+impl Max35Text {
+	pub fn validate(&self) -> bool {
+		if self.max35_text.chars().count() < 1 {
+			return false
+		}
+		if self.max35_text.chars().count() > 35 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // MonthlyResult1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MonthlyResult1 {
 	#[serde(rename = "NbOfObsrvtns")]
-	pub nb_of_obsrvtns: PositiveNumber,
+	pub nb_of_obsrvtns: f64,
 	#[serde(rename = "NbOfXcptns")]
 	pub nb_of_xcptns: f64,
 	#[serde(rename = "Cvrg")]
@@ -139,6 +237,15 @@ pub struct MonthlyResult1 {
 	pub lrgst_xcptn_id: Option<GenericIdentification165>,
 }
 
+impl MonthlyResult1 {
+	pub fn validate(&self) -> bool {
+		if !self.lrgst_xcptn.validate() { return false }
+		if !self.avrg_xcptn.validate() { return false }
+		if let Some(ref lrgst_xcptn_id_value) = self.lrgst_xcptn_id { if !lrgst_xcptn_id_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // NonNegativeNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -148,6 +255,15 @@ pub struct NonNegativeNumber {
 	pub non_negative_number: f64,
 }
 
+impl NonNegativeNumber {
+	pub fn validate(&self) -> bool {
+		if self.non_negative_number < 0.000000 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // PositiveNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -155,6 +271,15 @@ pub struct NonNegativeNumber {
 pub struct PositiveNumber {
 	#[serde(rename = "$value")]
 	pub positive_number: f64,
+}
+
+impl PositiveNumber {
+	pub fn validate(&self) -> bool {
+		if self.positive_number < 1.000000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -172,6 +297,12 @@ pub enum SchemeIdentificationType1Code {
 	CodeCLIM,
 }
 
+impl SchemeIdentificationType1Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -182,8 +313,22 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if !plc_and_nm_value.validate() { return false; } }
+		if !self.envlp.validate() { return false }
+		return true
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }

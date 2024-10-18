@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 // Event2 ...
@@ -38,6 +39,15 @@ pub struct Event2 {
 	pub evt_tm: Option<String>,
 }
 
+impl Event2 {
+	pub fn validate(&self) -> bool {
+		if !self.evt_cd.validate() { return false }
+		if let Some(ref evt_param_vec) = self.evt_param { for item in evt_param_vec { if !item.validate() { return false; } } }
+		if let Some(ref evt_desc_value) = self.evt_desc { if !evt_desc_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -45,6 +55,12 @@ pub struct Event2 {
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
+}
+
+impl ISODateTime {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -56,6 +72,18 @@ pub struct Max1000Text {
 	pub max1000_text: String,
 }
 
+impl Max1000Text {
+	pub fn validate(&self) -> bool {
+		if self.max1000_text.chars().count() < 1 {
+			return false
+		}
+		if self.max1000_text.chars().count() > 1000 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -63,6 +91,18 @@ pub struct Max1000Text {
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
+}
+
+impl Max35Text {
+	pub fn validate(&self) -> bool {
+		if self.max35_text.chars().count() < 1 {
+			return false
+		}
+		if self.max35_text.chars().count() > 35 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -74,10 +114,33 @@ pub struct Max4AlphaNumericText {
 	pub max4_alpha_numeric_text: String,
 }
 
+impl Max4AlphaNumericText {
+	pub fn validate(&self) -> bool {
+		if self.max4_alpha_numeric_text.chars().count() < 1 {
+			return false
+		}
+		if self.max4_alpha_numeric_text.chars().count() > 4 {
+			return false
+		}
+		let pattern = Regex::new("[a-zA-Z0-9]{1,4}").unwrap();
+		if !pattern.is_match(&self.max4_alpha_numeric_text) {
+			return false
+		}
+		return true
+	}
+}
+
 
 // SystemEventNotificationV02 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SystemEventNotificationV02 {
 	#[serde(rename = "EvtInf")]
 	pub evt_inf: Event2,
+}
+
+impl SystemEventNotificationV02 {
+	pub fn validate(&self) -> bool {
+		if !self.evt_inf.validate() { return false }
+		return true
+	}
 }

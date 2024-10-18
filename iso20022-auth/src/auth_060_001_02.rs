@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 // ActiveCurrencyAndAmountSimpleType ...
@@ -31,6 +32,15 @@ use serde::{Deserialize, Serialize};
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and_amount_simple_type: f64,
+}
+
+impl ActiveCurrencyAndAmountSimpleType {
+	pub fn validate(&self) -> bool {
+		if self.active_currency_and_amount_simple_type < 0.000000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -43,6 +53,12 @@ pub struct ActiveCurrencyAndAmount {
 	pub value: f64,
 }
 
+impl ActiveCurrencyAndAmount {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -50,6 +66,16 @@ pub struct ActiveCurrencyAndAmount {
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_currency_code: String,
+}
+
+impl ActiveCurrencyCode {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
+		if !pattern.is_match(&self.active_currency_code) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -62,6 +88,13 @@ pub struct AmountAndDirection102 {
 	pub sgn: bool,
 }
 
+impl AmountAndDirection102 {
+	pub fn validate(&self) -> bool {
+		if !self.amt.validate() { return false }
+		return true
+	}
+}
+
 
 // AmountAndDirection86 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -70,6 +103,12 @@ pub struct AmountAndDirection86 {
 	pub amt: f64,
 	#[serde(rename = "Sgn")]
 	pub sgn: bool,
+}
+
+impl AmountAndDirection86 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -82,6 +121,15 @@ pub struct CCPDailyCashFlowsReportV02 {
 	pub sttlm_agt: Vec<SettlementAgent2>,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
+}
+
+impl CCPDailyCashFlowsReportV02 {
+	pub fn validate(&self) -> bool {
+		for item in &self.cncntrtn_agt { if !item.validate() { return false; } }
+		for item in &self.sttlm_agt { if !item.validate() { return false; } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
 }
 
 
@@ -102,6 +150,18 @@ pub struct ConcentrationAccount1 {
 	pub late_pmt_conf: Max10NumericText,
 }
 
+impl ConcentrationAccount1 {
+	pub fn validate(&self) -> bool {
+		if !self.in_flow.validate() { return false }
+		if !self.out_flow.validate() { return false }
+		if !self.end_of_day.validate() { return false }
+		if !self.peak_cdt.validate() { return false }
+		if !self.peak_dbt.validate() { return false }
+		if !self.late_pmt_conf.validate() { return false }
+		return true
+	}
+}
+
 
 // ConcentrationAgent1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -110,6 +170,14 @@ pub struct ConcentrationAgent1 {
 	pub id: LEIIdentifier,
 	#[serde(rename = "Acct")]
 	pub acct: Vec<ConcentrationAccount1>,
+}
+
+impl ConcentrationAgent1 {
+	pub fn validate(&self) -> bool {
+		if !self.id.validate() { return false }
+		for item in &self.acct { if !item.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -122,6 +190,14 @@ pub struct Flows1 {
 	pub invstmt_flows: AmountAndDirection102,
 }
 
+impl Flows1 {
+	pub fn validate(&self) -> bool {
+		if !self.pmt_bk_flows.validate() { return false }
+		if !self.invstmt_flows.validate() { return false }
+		return true
+	}
+}
+
 
 // ImpliedCurrencyAndAmount ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -129,6 +205,15 @@ pub struct Flows1 {
 pub struct ImpliedCurrencyAndAmount {
 	#[serde(rename = "$value")]
 	pub implied_currency_and_amount: f64,
+}
+
+impl ImpliedCurrencyAndAmount {
+	pub fn validate(&self) -> bool {
+		if self.implied_currency_and_amount < 0.000000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -140,6 +225,16 @@ pub struct LEIIdentifier {
 	pub lei_identifier: String,
 }
 
+impl LEIIdentifier {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
+		if !pattern.is_match(&self.lei_identifier) {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max10NumericText ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -149,6 +244,16 @@ pub struct Max10NumericText {
 	pub max10_numeric_text: String,
 }
 
+impl Max10NumericText {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[0-9]{1,10}").unwrap();
+		if !pattern.is_match(&self.max10_numeric_text) {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -156,6 +261,18 @@ pub struct Max10NumericText {
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
+}
+
+impl Max350Text {
+	pub fn validate(&self) -> bool {
+		if self.max350_text.chars().count() < 1 {
+			return false
+		}
+		if self.max350_text.chars().count() > 350 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -174,6 +291,15 @@ pub struct PaymentAccount4 {
 	pub late_pmt_conf: Max10NumericText,
 }
 
+impl PaymentAccount4 {
+	pub fn validate(&self) -> bool {
+		if !self.ccy.validate() { return false }
+		if !self.net_pmt.validate() { return false }
+		if !self.late_pmt_conf.validate() { return false }
+		return true
+	}
+}
+
 
 // PlusOrMinusIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -181,6 +307,12 @@ pub struct PaymentAccount4 {
 pub struct PlusOrMinusIndicator {
 	#[serde(rename = "$value")]
 	pub plus_or_minus_indicator: bool,
+}
+
+impl PlusOrMinusIndicator {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -193,6 +325,14 @@ pub struct SettlementAgent2 {
 	pub acct: Vec<PaymentAccount4>,
 }
 
+impl SettlementAgent2 {
+	pub fn validate(&self) -> bool {
+		if !self.id.validate() { return false }
+		for item in &self.acct { if !item.validate() { return false; } }
+		return true
+	}
+}
+
 
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -203,8 +343,22 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if !plc_and_nm_value.validate() { return false; } }
+		if !self.envlp.validate() { return false }
+		return true
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }

@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 // FedNowParticipantFile1 is This is the participant profile of the FedNow participant and contains the participant's identification, name and the FedNow services the participant has enrolled for.
@@ -32,6 +33,13 @@ pub struct FedNowParticipantFile1 {
 	pub biz_day: String,
 	#[serde(rename = "PtcptPrfl")]
 	pub ptcpt_prfl: Vec<FedNowParticipantProfile1>,
+}
+
+impl FedNowParticipantFile1 {
+	pub fn validate(&self) -> bool {
+		for item in &self.ptcpt_prfl { if !item.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -46,6 +54,15 @@ pub struct FedNowParticipantProfile1 {
 	pub svcs: Vec<ServicesFedNow1>,
 }
 
+impl FedNowParticipantProfile1 {
+	pub fn validate(&self) -> bool {
+		if !self.id.validate() { return false }
+		if !self.nm.validate() { return false }
+		for item in &self.svcs { if !item.validate() { return false; } }
+		return true
+	}
+}
+
 
 // ISODate is A particular point in the progression of time in a calendar year expressed in the YYYY-MM-DD format. This representation is defined in "XML Schema Part 2: Datatypes Second Edition - W3C Recommendation 28 October 2004" which is aligned with ISO 8601.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -55,6 +72,12 @@ pub struct ISODate {
 	pub iso_date: String,
 }
 
+impl ISODate {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // Max140Text is Specifies a character string with a maximum length of 140 characters.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -62,6 +85,18 @@ pub struct ISODate {
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
+}
+
+impl Max140Text {
+	pub fn validate(&self) -> bool {
+		if self.max140_text.chars().count() < 1 {
+			return false
+		}
+		if self.max140_text.chars().count() > 140 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -77,6 +112,16 @@ pub struct RoutingNumberFRS1 {
 	pub routing_number_frs_1: String,
 }
 
+impl RoutingNumberFRS1 {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[0-9]{9,9}").unwrap();
+		if !pattern.is_match(&self.routing_number_frs_1) {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Services_FedNow_1 is This indicates a FedNow participant is enabled to receive request for payment messages.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -90,10 +135,23 @@ pub enum ServicesFedNow1 {
 	CodeRFPR,
 }
 
+impl ServicesFedNow1 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // Admi998SuplDataV01 is This is the FedNow participant file and contains the FedNow Service funds-transfer business day and the FedNow participants with their FedNow Service profile.
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Admi998SuplDataV01 {
 	#[serde(rename = "PtcptFile")]
 	pub ptcpt_file: FedNowParticipantFile1,
+}
+
+impl Admi998SuplDataV01 {
+	pub fn validate(&self) -> bool {
+		if !self.ptcpt_file.validate() { return false }
+		return true
+	}
 }

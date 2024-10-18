@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 // ActiveCurrencyAndAmountSimpleType ...
@@ -31,6 +32,15 @@ use serde::{Deserialize, Serialize};
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and_amount_simple_type: f64,
+}
+
+impl ActiveCurrencyAndAmountSimpleType {
+	pub fn validate(&self) -> bool {
+		if self.active_currency_and_amount_simple_type < 0.000000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -43,6 +53,12 @@ pub struct ActiveCurrencyAndAmount {
 	pub value: f64,
 }
 
+impl ActiveCurrencyAndAmount {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -50,6 +66,16 @@ pub struct ActiveCurrencyAndAmount {
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_currency_code: String,
+}
+
+impl ActiveCurrencyCode {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
+		if !pattern.is_match(&self.active_currency_code) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -62,6 +88,13 @@ pub struct AmountAndDirection102 {
 	pub sgn: bool,
 }
 
+impl AmountAndDirection102 {
+	pub fn validate(&self) -> bool {
+		if !self.amt.validate() { return false }
+		return true
+	}
+}
+
 
 // CCPLiquidityStressTestingResultReportV01 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -70,6 +103,14 @@ pub struct CCPLiquidityStressTestingResultReportV01 {
 	pub lqdty_strss_tst_rslt: Vec<LiquidityStressTestResult1>,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
+}
+
+impl CCPLiquidityStressTestingResultReportV01 {
+	pub fn validate(&self) -> bool {
+		for item in &self.lqdty_strss_tst_rslt { if !item.validate() { return false; } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
 }
 
 
@@ -82,6 +123,14 @@ pub struct CoverTwoDefaulters1 {
 	pub cover2_id: LEIIdentifier,
 }
 
+impl CoverTwoDefaulters1 {
+	pub fn validate(&self) -> bool {
+		if !self.cover1_id.validate() { return false }
+		if !self.cover2_id.validate() { return false }
+		return true
+	}
+}
+
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -89,6 +138,16 @@ pub struct CoverTwoDefaulters1 {
 pub struct LEIIdentifier {
 	#[serde(rename = "$value")]
 	pub lei_identifier: String,
+}
+
+impl LEIIdentifier {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
+		if !pattern.is_match(&self.lei_identifier) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -109,6 +168,15 @@ pub struct LiquidResourceInformation1 {
 	pub qlfyg_rsrc: bool,
 	#[serde(rename = "AgcyArrgmnts")]
 	pub agcy_arrgmnts: bool,
+}
+
+impl LiquidResourceInformation1 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref cntr_pty_id_value) = self.cntr_pty_id { if !cntr_pty_id_value.validate() { return false; } }
+		if !self.lqd_rsrc_val.validate() { return false }
+		if let Some(ref mkt_val_value) = self.mkt_val { if !mkt_val_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -137,6 +205,22 @@ pub struct LiquidResources1 {
 	pub fin_instrms_dfltrs_non_csh_coll: Option<Vec<LiquidResourceInformation1>>,
 }
 
+impl LiquidResources1 {
+	pub fn validate(&self) -> bool {
+		for item in &self.csh_due { if !item.validate() { return false; } }
+		if let Some(ref fclties_cmmtd_lines_of_cdt_vec) = self.fclties_cmmtd_lines_of_cdt { for item in fclties_cmmtd_lines_of_cdt_vec { if !item.validate() { return false; } } }
+		if let Some(ref fclties_cmmtd_rp_agrmts_vec) = self.fclties_cmmtd_rp_agrmts { for item in fclties_cmmtd_rp_agrmts_vec { if !item.validate() { return false; } } }
+		if let Some(ref fclties_cmmtd_fx_swps_vec) = self.fclties_cmmtd_fx_swps { for item in fclties_cmmtd_fx_swps_vec { if !item.validate() { return false; } } }
+		if let Some(ref fclties_othr_cmmtd_vec) = self.fclties_othr_cmmtd { for item in fclties_othr_cmmtd_vec { if !item.validate() { return false; } } }
+		if let Some(ref fclties_ucmmtd_vec) = self.fclties_ucmmtd { for item in fclties_ucmmtd_vec { if !item.validate() { return false; } } }
+		if let Some(ref fin_instrms_ccp_vec) = self.fin_instrms_ccp { for item in fin_instrms_ccp_vec { if !item.validate() { return false; } } }
+		if let Some(ref fin_instrms_trsr_invstmts_vec) = self.fin_instrms_trsr_invstmts { for item in fin_instrms_trsr_invstmts_vec { if !item.validate() { return false; } } }
+		if let Some(ref fin_instrms_dfltrs_sttlm_coll_vec) = self.fin_instrms_dfltrs_sttlm_coll { for item in fin_instrms_dfltrs_sttlm_coll_vec { if !item.validate() { return false; } } }
+		if let Some(ref fin_instrms_dfltrs_non_csh_coll_vec) = self.fin_instrms_dfltrs_non_csh_coll { for item in fin_instrms_dfltrs_non_csh_coll_vec { if !item.validate() { return false; } } }
+		return true
+	}
+}
+
 
 // LiquidityRequiredAndAvailable1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -147,6 +231,15 @@ pub struct LiquidityRequiredAndAvailable1 {
 	pub lqdty_hrzn: SettlementDate6Code,
 	#[serde(rename = "StrssLqdRsrcRqrmnt")]
 	pub strss_lqd_rsrc_rqrmnt: StressLiquidResourceRequirement1,
+}
+
+impl LiquidityRequiredAndAvailable1 {
+	pub fn validate(&self) -> bool {
+		if !self.lqd_rsrcs.validate() { return false }
+		if !self.lqdty_hrzn.validate() { return false }
+		if !self.strss_lqd_rsrc_rqrmnt.validate() { return false }
+		return true
+	}
 }
 
 
@@ -161,6 +254,15 @@ pub struct LiquidityStressTestResult1 {
 	pub lqdty_reqrd_and_avlbl: Vec<LiquidityRequiredAndAvailable1>,
 }
 
+impl LiquidityStressTestResult1 {
+	pub fn validate(&self) -> bool {
+		if !self.id.validate() { return false }
+		if !self.scnro_dfltrs.validate() { return false }
+		for item in &self.lqdty_reqrd_and_avlbl { if !item.validate() { return false; } }
+		return true
+	}
+}
+
 
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -168,6 +270,18 @@ pub struct LiquidityStressTestResult1 {
 pub struct Max256Text {
 	#[serde(rename = "$value")]
 	pub max256_text: String,
+}
+
+impl Max256Text {
+	pub fn validate(&self) -> bool {
+		if self.max256_text.chars().count() < 1 {
+			return false
+		}
+		if self.max256_text.chars().count() > 256 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -179,6 +293,18 @@ pub struct Max350Text {
 	pub max350_text: String,
 }
 
+impl Max350Text {
+	pub fn validate(&self) -> bool {
+		if self.max350_text.chars().count() < 1 {
+			return false
+		}
+		if self.max350_text.chars().count() > 350 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -188,6 +314,18 @@ pub struct Max35Text {
 	pub max35_text: String,
 }
 
+impl Max35Text {
+	pub fn validate(&self) -> bool {
+		if self.max35_text.chars().count() < 1 {
+			return false
+		}
+		if self.max35_text.chars().count() > 35 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // PlusOrMinusIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -195,6 +333,12 @@ pub struct Max35Text {
 pub struct PlusOrMinusIndicator {
 	#[serde(rename = "$value")]
 	pub plus_or_minus_indicator: bool,
+}
+
+impl PlusOrMinusIndicator {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -216,6 +360,12 @@ pub enum SettlementDate6Code {
 	CodeSAMD,
 }
 
+impl SettlementDate6Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // StressLiquidResourceRequirement1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -230,6 +380,16 @@ pub struct StressLiquidResourceRequirement1 {
 	pub othr: AmountAndDirection102,
 }
 
+impl StressLiquidResourceRequirement1 {
+	pub fn validate(&self) -> bool {
+		if !self.oprl_outflw.validate() { return false }
+		if !self.vartn_mrgn_pmt_oblgtn.validate() { return false }
+		if !self.sttlm_or_dlvry.validate() { return false }
+		if !self.othr.validate() { return false }
+		return true
+	}
+}
+
 
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -240,10 +400,24 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if !plc_and_nm_value.validate() { return false; } }
+		if !self.envlp.validate() { return false }
+		return true
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -253,4 +427,10 @@ pub struct SupplementaryDataEnvelope1 {
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
+}
+
+impl TrueFalseIndicator {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }

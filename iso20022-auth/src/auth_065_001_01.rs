@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 // BackTestingMethodology1 ...
@@ -38,6 +39,14 @@ pub struct BackTestingMethodology1 {
 	pub desc: Option<Max2000Text>,
 }
 
+impl BackTestingMethodology1 {
+	pub fn validate(&self) -> bool {
+		if !self.rsk_mdl_tp.validate() { return false }
+		if let Some(ref desc_value) = self.desc { if !desc_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // BaseOneRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -45,6 +54,12 @@ pub struct BackTestingMethodology1 {
 pub struct BaseOneRate {
 	#[serde(rename = "$value")]
 	pub base_one_rate: f64,
+}
+
+impl BaseOneRate {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -55,6 +70,14 @@ pub struct CCPBackTestingDefinitionReportV01 {
 	pub mthdlgy: Vec<BackTestingMethodology1>,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
+}
+
+impl CCPBackTestingDefinitionReportV01 {
+	pub fn validate(&self) -> bool {
+		for item in &self.mthdlgy { if !item.validate() { return false; } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
 }
 
 
@@ -69,6 +92,15 @@ pub struct GenericIdentification36 {
 	pub schme_nm: Option<Max35Text>,
 }
 
+impl GenericIdentification36 {
+	pub fn validate(&self) -> bool {
+		if !self.id.validate() { return false }
+		if !self.issr.validate() { return false }
+		if let Some(ref schme_nm_value) = self.schme_nm { if !schme_nm_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // Max2000Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -76,6 +108,18 @@ pub struct GenericIdentification36 {
 pub struct Max2000Text {
 	#[serde(rename = "$value")]
 	pub max2000_text: String,
+}
+
+impl Max2000Text {
+	pub fn validate(&self) -> bool {
+		if self.max2000_text.chars().count() < 1 {
+			return false
+		}
+		if self.max2000_text.chars().count() > 2000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -87,6 +131,18 @@ pub struct Max350Text {
 	pub max350_text: String,
 }
 
+impl Max350Text {
+	pub fn validate(&self) -> bool {
+		if self.max350_text.chars().count() < 1 {
+			return false
+		}
+		if self.max350_text.chars().count() > 350 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -94,6 +150,18 @@ pub struct Max350Text {
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
+}
+
+impl Max35Text {
+	pub fn validate(&self) -> bool {
+		if self.max35_text.chars().count() < 1 {
+			return false
+		}
+		if self.max35_text.chars().count() > 35 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -104,6 +172,14 @@ pub struct ModelType1Choice {
 	pub cd: Option<ModelType1Code>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<GenericIdentification36>,
+}
+
+impl ModelType1Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref cd_value) = self.cd { if !cd_value.validate() { return false; } }
+		if let Some(ref prtry_value) = self.prtry { if !prtry_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -125,6 +201,12 @@ pub enum ModelType1Code {
 	CodeSAMO,
 }
 
+impl ModelType1Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -135,10 +217,24 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if !plc_and_nm_value.validate() { return false; } }
+		if !self.envlp.validate() { return false }
+		return true
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -148,4 +244,10 @@ pub struct SupplementaryDataEnvelope1 {
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
+}
+
+impl TrueFalseIndicator {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }

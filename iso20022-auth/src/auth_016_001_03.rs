@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 // ActiveCurrencyAnd13DecimalAmountSimpleType ...
@@ -31,6 +32,15 @@ use serde::{Deserialize, Serialize};
 pub struct ActiveCurrencyAnd13DecimalAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and13_decimal_amount_simple_type: f64,
+}
+
+impl ActiveCurrencyAnd13DecimalAmountSimpleType {
+	pub fn validate(&self) -> bool {
+		if self.active_currency_and13_decimal_amount_simple_type < 0.000000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -43,6 +53,12 @@ pub struct ActiveCurrencyAnd13DecimalAmount {
 	pub value: f64,
 }
 
+impl ActiveCurrencyAnd13DecimalAmount {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -52,6 +68,16 @@ pub struct ActiveCurrencyCode {
 	pub active_currency_code: String,
 }
 
+impl ActiveCurrencyCode {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
+		if !pattern.is_match(&self.active_currency_code) {
+			return false
+		}
+		return true
+	}
+}
+
 
 // ActiveOrHistoricCurrencyAndAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -59,6 +85,15 @@ pub struct ActiveCurrencyCode {
 pub struct ActiveOrHistoricCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_and_amount_simple_type: f64,
+}
+
+impl ActiveOrHistoricCurrencyAndAmountSimpleType {
+	pub fn validate(&self) -> bool {
+		if self.active_or_historic_currency_and_amount_simple_type < 0.000000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -71,6 +106,12 @@ pub struct ActiveOrHistoricCurrencyAndAmount {
 	pub value: f64,
 }
 
+impl ActiveOrHistoricCurrencyAndAmount {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // ActiveOrHistoricCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -78,6 +119,16 @@ pub struct ActiveOrHistoricCurrencyAndAmount {
 pub struct ActiveOrHistoricCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
+}
+
+impl ActiveOrHistoricCurrencyCode {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
+		if !pattern.is_match(&self.active_or_historic_currency_code) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -90,6 +141,13 @@ pub struct AmountAndDirection53 {
 	pub sgn: Option<bool>,
 }
 
+impl AmountAndDirection53 {
+	pub fn validate(&self) -> bool {
+		if !self.amt.validate() { return false }
+		return true
+	}
+}
+
 
 // AmountAndDirection61 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -100,6 +158,13 @@ pub struct AmountAndDirection61 {
 	pub sgn: Option<bool>,
 }
 
+impl AmountAndDirection61 {
+	pub fn validate(&self) -> bool {
+		if !self.amt.validate() { return false }
+		return true
+	}
+}
+
 
 // AssetClassAttributes1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -108,6 +173,14 @@ pub struct AssetClassAttributes1 {
 	pub intrst: DerivativeInterest2,
 	#[serde(rename = "FX")]
 	pub fx: DerivativeForeignExchange2,
+}
+
+impl AssetClassAttributes1 {
+	pub fn validate(&self) -> bool {
+		if !self.intrst.validate() { return false }
+		if !self.fx.validate() { return false }
+		return true
+	}
 }
 
 
@@ -122,6 +195,15 @@ pub struct AssetClassAttributes1Choice {
 	pub both: Option<AssetClassAttributes1>,
 }
 
+impl AssetClassAttributes1Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref intrst_value) = self.intrst { if !intrst_value.validate() { return false; } }
+		if let Some(ref fx_value) = self.fx { if !fx_value.validate() { return false; } }
+		if let Some(ref both_value) = self.both { if !both_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // BasketDescription3 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -130,6 +212,14 @@ pub struct BasketDescription3 {
 	pub isin: Option<Vec<ISINOct2015Identifier>>,
 	#[serde(rename = "Indx", skip_serializing_if = "Option::is_none")]
 	pub indx: Option<Vec<FinancialInstrument58>>,
+}
+
+impl BasketDescription3 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref isin_vec) = self.isin { for item in isin_vec { if !item.validate() { return false; } } }
+		if let Some(ref indx_vec) = self.indx { for item in indx_vec { if !item.validate() { return false; } } }
+		return true
+	}
 }
 
 
@@ -191,6 +281,12 @@ pub enum BenchmarkCurveName2Code {
 	CodeBBSW,
 }
 
+impl BenchmarkCurveName2Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // BenchmarkCurveName5Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -201,6 +297,14 @@ pub struct BenchmarkCurveName5Choice {
 	pub nm: Option<Max25Text>,
 }
 
+impl BenchmarkCurveName5Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref indx_value) = self.indx { if !indx_value.validate() { return false; } }
+		if let Some(ref nm_value) = self.nm { if !nm_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // CFIOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -208,6 +312,16 @@ pub struct BenchmarkCurveName5Choice {
 pub struct CFIOct2015Identifier {
 	#[serde(rename = "$value")]
 	pub cfi_oct2015_identifier: String,
+}
+
+impl CFIOct2015Identifier {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z]{6,6}").unwrap();
+		if !pattern.is_match(&self.cfi_oct2015_identifier) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -221,6 +335,12 @@ pub enum CancelledStatusReason15Code {
 	CodeCSUB,
 }
 
+impl CancelledStatusReason15Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -228,6 +348,16 @@ pub enum CancelledStatusReason15Code {
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
+}
+
+impl CountryCode {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z]{2,2}").unwrap();
+		if !pattern.is_match(&self.country_code) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -239,12 +369,28 @@ pub struct DTI2021Identifier {
 	pub dti2021_identifier: String,
 }
 
+impl DTI2021Identifier {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[1-9B-DF-HJ-NP-XZ][0-9B-DF-HJ-NP-XZ]{8,8}").unwrap();
+		if !pattern.is_match(&self.dti2021_identifier) {
+			return false
+		}
+		return true
+	}
+}
+
 
 // DebtInstrument4 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DebtInstrument4 {
 	#[serde(rename = "MtrtyDt")]
 	pub mtrty_dt: String,
+}
+
+impl DebtInstrument4 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -256,12 +402,25 @@ pub struct DecimalNumber {
 	pub decimal_number: f64,
 }
 
+impl DecimalNumber {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // DerivativeForeignExchange2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DerivativeForeignExchange2 {
 	#[serde(rename = "OthrNtnlCcy")]
 	pub othr_ntnl_ccy: ActiveOrHistoricCurrencyCode,
+}
+
+impl DerivativeForeignExchange2 {
+	pub fn validate(&self) -> bool {
+		if !self.othr_ntnl_ccy.validate() { return false }
+		return true
+	}
 }
 
 
@@ -286,12 +445,31 @@ pub struct DerivativeInstrument6 {
 	pub asst_clss_spcfc_attrbts: Option<AssetClassAttributes1Choice>,
 }
 
+impl DerivativeInstrument6 {
+	pub fn validate(&self) -> bool {
+		if !self.undrlyg_instrm.validate() { return false }
+		if let Some(ref optn_tp_value) = self.optn_tp { if !optn_tp_value.validate() { return false; } }
+		if let Some(ref strk_pric_value) = self.strk_pric { if !strk_pric_value.validate() { return false; } }
+		if let Some(ref optn_exrc_style_value) = self.optn_exrc_style { if !optn_exrc_style_value.validate() { return false; } }
+		if !self.dlvry_tp.validate() { return false }
+		if let Some(ref asst_clss_spcfc_attrbts_value) = self.asst_clss_spcfc_attrbts { if !asst_clss_spcfc_attrbts_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // DerivativeInterest2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct DerivativeInterest2 {
 	#[serde(rename = "OthrNtnlCcy")]
 	pub othr_ntnl_ccy: ActiveOrHistoricCurrencyCode,
+}
+
+impl DerivativeInterest2 {
+	pub fn validate(&self) -> bool {
+		if !self.othr_ntnl_ccy.validate() { return false }
+		return true
+	}
 }
 
 
@@ -306,6 +484,14 @@ pub struct DigitalTokenAmount2 {
 	pub desc: Option<Max30Text>,
 }
 
+impl DigitalTokenAmount2 {
+	pub fn validate(&self) -> bool {
+		if !self.idr.validate() { return false }
+		if let Some(ref desc_value) = self.desc { if !desc_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // ExecutingParty1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -318,6 +504,15 @@ pub struct ExecutingParty1Choice {
 	pub clnt: Option<NoReasonCode>,
 }
 
+impl ExecutingParty1Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref prsn_value) = self.prsn { if !prsn_value.validate() { return false; } }
+		if let Some(ref algo_value) = self.algo { if !algo_value.validate() { return false; } }
+		if let Some(ref clnt_value) = self.clnt { if !clnt_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // ExternalAuthorityExchangeReason1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -325,6 +520,18 @@ pub struct ExecutingParty1Choice {
 pub struct ExternalAuthorityExchangeReason1Code {
 	#[serde(rename = "$value")]
 	pub external_authority_exchange_reason1_code: String,
+}
+
+impl ExternalAuthorityExchangeReason1Code {
+	pub fn validate(&self) -> bool {
+		if self.external_authority_exchange_reason1_code.chars().count() < 1 {
+			return false
+		}
+		if self.external_authority_exchange_reason1_code.chars().count() > 4 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -336,6 +543,18 @@ pub struct ExternalFinancialInstrumentIdentificationType1Code {
 	pub external_financial_instrument_identification_type1_code: String,
 }
 
+impl ExternalFinancialInstrumentIdentificationType1Code {
+	pub fn validate(&self) -> bool {
+		if self.external_financial_instrument_identification_type1_code.chars().count() < 1 {
+			return false
+		}
+		if self.external_financial_instrument_identification_type1_code.chars().count() > 4 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // ExternalPersonIdentification1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -343,6 +562,18 @@ pub struct ExternalFinancialInstrumentIdentificationType1Code {
 pub struct ExternalPersonIdentification1Code {
 	#[serde(rename = "$value")]
 	pub external_person_identification1_code: String,
+}
+
+impl ExternalPersonIdentification1Code {
+	pub fn validate(&self) -> bool {
+		if self.external_person_identification1_code.chars().count() < 1 {
+			return false
+		}
+		if self.external_person_identification1_code.chars().count() > 4 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -353,6 +584,14 @@ pub struct FinancialInstrument58 {
 	pub isin: Option<ISINOct2015Identifier>,
 	#[serde(rename = "Nm")]
 	pub nm: FloatingInterestRate8,
+}
+
+impl FinancialInstrument58 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref isin_value) = self.isin { if !isin_value.validate() { return false; } }
+		if !self.nm.validate() { return false }
+		return true
+	}
 }
 
 
@@ -367,6 +606,15 @@ pub struct FinancialInstrumentAttributes5Choice {
 	pub othr: Option<SecurityInstrumentDescription22>,
 }
 
+impl FinancialInstrumentAttributes5Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref id_value) = self.id { if !id_value.validate() { return false; } }
+		if let Some(ref altrn_id_value) = self.altrn_id { if !altrn_id_value.validate() { return false; } }
+		if let Some(ref othr_value) = self.othr { if !othr_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // FinancialInstrumentIdentification6Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -377,6 +625,14 @@ pub struct FinancialInstrumentIdentification6Choice {
 	pub indx: Option<FinancialInstrument58>,
 }
 
+impl FinancialInstrumentIdentification6Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref isin_value) = self.isin { if !isin_value.validate() { return false; } }
+		if let Some(ref indx_value) = self.indx { if !indx_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // FinancialInstrumentIdentification7Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -385,6 +641,14 @@ pub struct FinancialInstrumentIdentification7Choice {
 	pub sngl: Option<FinancialInstrumentIdentification6Choice>,
 	#[serde(rename = "Bskt", skip_serializing_if = "Option::is_none")]
 	pub bskt: Option<BasketDescription3>,
+}
+
+impl FinancialInstrumentIdentification7Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref sngl_value) = self.sngl { if !sngl_value.validate() { return false; } }
+		if let Some(ref bskt_value) = self.bskt { if !bskt_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -399,6 +663,14 @@ pub struct FinancialInstrumentQuantity25Choice {
 	pub mntry_val: Option<ActiveOrHistoricCurrencyAndAmount>,
 }
 
+impl FinancialInstrumentQuantity25Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref nmnl_val_value) = self.nmnl_val { if !nmnl_val_value.validate() { return false; } }
+		if let Some(ref mntry_val_value) = self.mntry_val { if !mntry_val_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // FinancialInstrumentReportingTransactionReportV03 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -409,6 +681,14 @@ pub struct FinancialInstrumentReportingTransactionReportV03 {
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
+impl FinancialInstrumentReportingTransactionReportV03 {
+	pub fn validate(&self) -> bool {
+		for item in &self.tx { if !item.validate() { return false; } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
+}
+
 
 // FloatingInterestRate8 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -417,6 +697,14 @@ pub struct FloatingInterestRate8 {
 	pub ref_rate: BenchmarkCurveName5Choice,
 	#[serde(rename = "Term", skip_serializing_if = "Option::is_none")]
 	pub term: Option<InterestRateContractTerm2>,
+}
+
+impl FloatingInterestRate8 {
+	pub fn validate(&self) -> bool {
+		if !self.ref_rate.validate() { return false }
+		if let Some(ref term_value) = self.term { if !term_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -431,6 +719,15 @@ pub struct GenericPersonIdentification1 {
 	pub issr: Option<Max35Text>,
 }
 
+impl GenericPersonIdentification1 {
+	pub fn validate(&self) -> bool {
+		if !self.id.validate() { return false }
+		if let Some(ref schme_nm_value) = self.schme_nm { if !schme_nm_value.validate() { return false; } }
+		if let Some(ref issr_value) = self.issr { if !issr_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // ISINOct2015Identifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -438,6 +735,16 @@ pub struct GenericPersonIdentification1 {
 pub struct ISINOct2015Identifier {
 	#[serde(rename = "$value")]
 	pub isin_oct2015_identifier: String,
+}
+
+impl ISINOct2015Identifier {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}").unwrap();
+		if !pattern.is_match(&self.isin_oct2015_identifier) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -449,6 +756,12 @@ pub struct ISODate {
 	pub iso_date: String,
 }
 
+impl ISODate {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -456,6 +769,12 @@ pub struct ISODate {
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
+}
+
+impl ISODateTime {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -468,6 +787,14 @@ pub struct IdentificationSource3Choice {
 	pub prtry: Option<Max35Text>,
 }
 
+impl IdentificationSource3Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref cd_value) = self.cd { if !cd_value.validate() { return false; } }
+		if let Some(ref prtry_value) = self.prtry { if !prtry_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // ImpliedCurrencyAndAmount ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -475,6 +802,15 @@ pub struct IdentificationSource3Choice {
 pub struct ImpliedCurrencyAndAmount {
 	#[serde(rename = "$value")]
 	pub implied_currency_and_amount: f64,
+}
+
+impl ImpliedCurrencyAndAmount {
+	pub fn validate(&self) -> bool {
+		if self.implied_currency_and_amount < 0.000000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -487,6 +823,13 @@ pub struct InterestRateContractTerm2 {
 	pub val: f64,
 }
 
+impl InterestRateContractTerm2 {
+	pub fn validate(&self) -> bool {
+		if !self.unit.validate() { return false }
+		return true
+	}
+}
+
 
 // InternalPartyRole1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -494,6 +837,12 @@ pub enum InternalPartyRole1Code {
 	#[default]
 	#[serde(rename = "INTC")]
 	CodeINTC,
+}
+
+impl InternalPartyRole1Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -506,6 +855,14 @@ pub struct InvestmentParty1Choice {
 	pub algo: Option<Max50Text>,
 }
 
+impl InvestmentParty1Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref prsn_value) = self.prsn { if !prsn_value.validate() { return false; } }
+		if let Some(ref algo_value) = self.algo { if !algo_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // LEIIdentifier ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -513,6 +870,16 @@ pub struct InvestmentParty1Choice {
 pub struct LEIIdentifier {
 	#[serde(rename = "$value")]
 	pub lei_identifier: String,
+}
+
+impl LEIIdentifier {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
+		if !pattern.is_match(&self.lei_identifier) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -524,6 +891,16 @@ pub struct MICIdentifier {
 	pub mic_identifier: String,
 }
 
+impl MICIdentifier {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z0-9]{4,4}").unwrap();
+		if !pattern.is_match(&self.mic_identifier) {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -531,6 +908,18 @@ pub struct MICIdentifier {
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
+}
+
+impl Max140Text {
+	pub fn validate(&self) -> bool {
+		if self.max140_text.chars().count() < 1 {
+			return false
+		}
+		if self.max140_text.chars().count() > 140 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -542,6 +931,18 @@ pub struct Max16Text {
 	pub max16_text: String,
 }
 
+impl Max16Text {
+	pub fn validate(&self) -> bool {
+		if self.max16_text.chars().count() < 1 {
+			return false
+		}
+		if self.max16_text.chars().count() > 16 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max25Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -549,6 +950,18 @@ pub struct Max16Text {
 pub struct Max25Text {
 	#[serde(rename = "$value")]
 	pub max25_text: String,
+}
+
+impl Max25Text {
+	pub fn validate(&self) -> bool {
+		if self.max25_text.chars().count() < 1 {
+			return false
+		}
+		if self.max25_text.chars().count() > 25 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -560,6 +973,12 @@ pub struct Max30DecimalNumber {
 	pub max30_decimal_number: f64,
 }
 
+impl Max30DecimalNumber {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // Max30Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -567,6 +986,15 @@ pub struct Max30DecimalNumber {
 pub struct Max30Text {
 	#[serde(rename = "$value")]
 	pub max30_text: String,
+}
+
+impl Max30Text {
+	pub fn validate(&self) -> bool {
+		if self.max30_text.chars().count() > 30 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -578,6 +1006,18 @@ pub struct Max350Text {
 	pub max350_text: String,
 }
 
+impl Max350Text {
+	pub fn validate(&self) -> bool {
+		if self.max350_text.chars().count() < 1 {
+			return false
+		}
+		if self.max350_text.chars().count() > 350 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -585,6 +1025,18 @@ pub struct Max350Text {
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
+}
+
+impl Max35Text {
+	pub fn validate(&self) -> bool {
+		if self.max35_text.chars().count() < 1 {
+			return false
+		}
+		if self.max35_text.chars().count() > 35 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -596,6 +1048,12 @@ pub struct Max3Number {
 	pub max3_number: f64,
 }
 
+impl Max3Number {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // Max50Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -603,6 +1061,18 @@ pub struct Max3Number {
 pub struct Max50Text {
 	#[serde(rename = "$value")]
 	pub max50_text: String,
+}
+
+impl Max50Text {
+	pub fn validate(&self) -> bool {
+		if self.max50_text.chars().count() < 1 {
+			return false
+		}
+		if self.max50_text.chars().count() > 50 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -614,6 +1084,18 @@ pub struct Max52Text {
 	pub max52_text: String,
 }
 
+impl Max52Text {
+	pub fn validate(&self) -> bool {
+		if self.max52_text.chars().count() < 1 {
+			return false
+		}
+		if self.max52_text.chars().count() > 52 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // NoReasonCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -623,6 +1105,12 @@ pub enum NoReasonCode {
 	CodeNORE,
 }
 
+impl NoReasonCode {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // NonNegativeDecimalNumber ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -630,6 +1118,15 @@ pub enum NoReasonCode {
 pub struct NonNegativeDecimalNumber {
 	#[serde(rename = "$value")]
 	pub non_negative_decimal_number: f64,
+}
+
+impl NonNegativeDecimalNumber {
+	pub fn validate(&self) -> bool {
+		if self.non_negative_decimal_number < 0.000000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -649,6 +1146,12 @@ pub enum OptionStyle7Code {
 	CodeOTHR,
 }
 
+impl OptionStyle7Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // OptionType2Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -660,6 +1163,12 @@ pub enum OptionType2Code {
 	CodePUTO,
 	#[serde(rename = "OTHR")]
 	CodeOTHR,
+}
+
+impl OptionType2Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -674,6 +1183,15 @@ pub struct OtherIdentification1 {
 	pub tp: IdentificationSource3Choice,
 }
 
+impl OtherIdentification1 {
+	pub fn validate(&self) -> bool {
+		if !self.id.validate() { return false }
+		if let Some(ref sfx_value) = self.sfx { if !sfx_value.validate() { return false; } }
+		if !self.tp.validate() { return false }
+		return true
+	}
+}
+
 
 // PartyIdentification76 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -682,6 +1200,14 @@ pub struct PartyIdentification76 {
 	pub id: PersonOrOrganisation1Choice,
 	#[serde(rename = "CtryOfBrnch", skip_serializing_if = "Option::is_none")]
 	pub ctry_of_brnch: Option<CountryCode>,
+}
+
+impl PartyIdentification76 {
+	pub fn validate(&self) -> bool {
+		if !self.id.validate() { return false }
+		if let Some(ref ctry_of_brnch_value) = self.ctry_of_brnch { if !ctry_of_brnch_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -694,6 +1220,14 @@ pub struct PartyIdentification79 {
 	pub dcsn_makr: Option<Vec<PersonOrOrganisation2Choice>>,
 }
 
+impl PartyIdentification79 {
+	pub fn validate(&self) -> bool {
+		for item in &self.acct_ownr { if !item.validate() { return false; } }
+		if let Some(ref dcsn_makr_vec) = self.dcsn_makr { for item in dcsn_makr_vec { if !item.validate() { return false; } } }
+		return true
+	}
+}
+
 
 // PercentageRate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -701,6 +1235,12 @@ pub struct PartyIdentification79 {
 pub struct PercentageRate {
 	#[serde(rename = "$value")]
 	pub percentage_rate: f64,
+}
+
+impl PercentageRate {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -717,6 +1257,15 @@ pub struct PersonIdentification10 {
 	pub othr: GenericPersonIdentification1,
 }
 
+impl PersonIdentification10 {
+	pub fn validate(&self) -> bool {
+		if !self.frst_nm.validate() { return false }
+		if !self.nm.validate() { return false }
+		if !self.othr.validate() { return false }
+		return true
+	}
+}
+
 
 // PersonIdentification12 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -727,6 +1276,14 @@ pub struct PersonIdentification12 {
 	pub othr: GenericPersonIdentification1,
 }
 
+impl PersonIdentification12 {
+	pub fn validate(&self) -> bool {
+		if !self.ctry_of_brnch.validate() { return false }
+		if !self.othr.validate() { return false }
+		return true
+	}
+}
+
 
 // PersonIdentificationSchemeName1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -735,6 +1292,14 @@ pub struct PersonIdentificationSchemeName1Choice {
 	pub cd: Option<ExternalPersonIdentification1Code>,
 	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
 	pub prtry: Option<Max35Text>,
+}
+
+impl PersonIdentificationSchemeName1Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref cd_value) = self.cd { if !cd_value.validate() { return false; } }
+		if let Some(ref prtry_value) = self.prtry { if !prtry_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -751,6 +1316,16 @@ pub struct PersonOrOrganisation1Choice {
 	pub intl: Option<InternalPartyRole1Code>,
 }
 
+impl PersonOrOrganisation1Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref lei_value) = self.lei { if !lei_value.validate() { return false; } }
+		if let Some(ref mic_value) = self.mic { if !mic_value.validate() { return false; } }
+		if let Some(ref prsn_value) = self.prsn { if !prsn_value.validate() { return false; } }
+		if let Some(ref intl_value) = self.intl { if !intl_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // PersonOrOrganisation2Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -759,6 +1334,14 @@ pub struct PersonOrOrganisation2Choice {
 	pub lei: Option<LEIIdentifier>,
 	#[serde(rename = "Prsn", skip_serializing_if = "Option::is_none")]
 	pub prsn: Option<PersonIdentification10>,
+}
+
+impl PersonOrOrganisation2Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref lei_value) = self.lei { if !lei_value.validate() { return false; } }
+		if let Some(ref prsn_value) = self.prsn { if !prsn_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -774,6 +1357,12 @@ pub enum PhysicalTransferType4Code {
 	CodeCASH,
 }
 
+impl PhysicalTransferType4Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // PlusOrMinusIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -781,6 +1370,12 @@ pub enum PhysicalTransferType4Code {
 pub struct PlusOrMinusIndicator {
 	#[serde(rename = "$value")]
 	pub plus_or_minus_indicator: bool,
+}
+
+impl PlusOrMinusIndicator {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -792,6 +1387,12 @@ pub enum PriceStatus1Code {
 	CodePNDG,
 	#[serde(rename = "NOAP")]
 	CodeNOAP,
+}
+
+impl PriceStatus1Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -809,6 +1410,12 @@ pub enum RateBasis1Code {
 	CodeYEAR,
 }
 
+impl RateBasis1Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // RecordTechnicalData2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -819,6 +1426,13 @@ pub struct RecordTechnicalData2 {
 	pub cxl_rsn: CancelledStatusReason15Code,
 }
 
+impl RecordTechnicalData2 {
+	pub fn validate(&self) -> bool {
+		if !self.cxl_rsn.validate() { return false }
+		return true
+	}
+}
+
 
 // RecordTechnicalData5 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -827,6 +1441,13 @@ pub struct RecordTechnicalData5 {
 	pub rct_dt_tm: String,
 	#[serde(rename = "XchgRsn")]
 	pub xchg_rsn: Vec<ExternalAuthorityExchangeReason1Code>,
+}
+
+impl RecordTechnicalData5 {
+	pub fn validate(&self) -> bool {
+		for item in &self.xchg_rsn { if !item.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -842,6 +1463,12 @@ pub enum RegulatoryTradingCapacity1Code {
 	CodeAOTC,
 }
 
+impl RegulatoryTradingCapacity1Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // ReportingTransactionType3Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -852,6 +1479,15 @@ pub struct ReportingTransactionType3Choice {
 	pub cxl: Option<SecuritiesTransactionReport2>,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
+}
+
+impl ReportingTransactionType3Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref new_value) = self.new { if !new_value.validate() { return false; } }
+		if let Some(ref cxl_value) = self.cxl { if !cxl_value.validate() { return false; } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
 }
 
 
@@ -871,6 +1507,12 @@ pub enum ReportingWaiverType1Code {
 	CodeRFPT,
 	#[serde(rename = "SIZE")]
 	CodeSIZE,
+}
+
+impl ReportingWaiverType1Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -906,6 +1548,12 @@ pub enum ReportingWaiverType3Code {
 	CodeXFPH,
 }
 
+impl ReportingWaiverType3Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // SecuritiesTransaction3 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -936,6 +1584,22 @@ pub struct SecuritiesTransaction3 {
 	pub cmplx_trad_cmpnt_id: Option<Max35Text>,
 }
 
+impl SecuritiesTransaction3 {
+	pub fn validate(&self) -> bool {
+		if !self.tradg_cpcty.validate() { return false }
+		if !self.qty.validate() { return false }
+		if let Some(ref dgtl_tkn_qty_vec) = self.dgtl_tkn_qty { for item in dgtl_tkn_qty_vec { if !item.validate() { return false; } } }
+		if let Some(ref deriv_ntnl_chng_value) = self.deriv_ntnl_chng { if !deriv_ntnl_chng_value.validate() { return false; } }
+		if !self.pric.validate() { return false }
+		if !self.trad_vn.validate() { return false }
+		if let Some(ref ctry_of_brnch_value) = self.ctry_of_brnch { if !ctry_of_brnch_value.validate() { return false; } }
+		if let Some(ref up_frnt_pmt_value) = self.up_frnt_pmt { if !up_frnt_pmt_value.validate() { return false; } }
+		if let Some(ref trad_plc_mtchg_id_value) = self.trad_plc_mtchg_id { if !trad_plc_mtchg_id_value.validate() { return false; } }
+		if let Some(ref cmplx_trad_cmpnt_id_value) = self.cmplx_trad_cmpnt_id { if !cmplx_trad_cmpnt_id_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // SecuritiesTransactionIndicator2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -952,6 +1616,15 @@ pub struct SecuritiesTransactionIndicator2 {
 	pub scties_fincg_tx_ind: bool,
 }
 
+impl SecuritiesTransactionIndicator2 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref wvr_ind_vec) = self.wvr_ind { for item in wvr_ind_vec { if !item.validate() { return false; } } }
+		if let Some(ref shrt_sellg_ind_value) = self.shrt_sellg_ind { if !shrt_sellg_ind_value.validate() { return false; } }
+		if let Some(ref otc_pst_trad_ind_vec) = self.otc_pst_trad_ind { for item in otc_pst_trad_ind_vec { if !item.validate() { return false; } } }
+		return true
+	}
+}
+
 
 // SecuritiesTransactionPrice1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -960,6 +1633,14 @@ pub struct SecuritiesTransactionPrice1 {
 	pub pdg: PriceStatus1Code,
 	#[serde(rename = "Ccy", skip_serializing_if = "Option::is_none")]
 	pub ccy: Option<ActiveOrHistoricCurrencyCode>,
+}
+
+impl SecuritiesTransactionPrice1 {
+	pub fn validate(&self) -> bool {
+		if !self.pdg.validate() { return false }
+		if let Some(ref ccy_value) = self.ccy { if !ccy_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -972,6 +1653,15 @@ pub struct SecuritiesTransactionPrice22Choice {
 	pub dgtl_tkn_pric: Option<SecuritiesTransactionPrice7>,
 	#[serde(rename = "NoPric", skip_serializing_if = "Option::is_none")]
 	pub no_pric: Option<SecuritiesTransactionPrice6>,
+}
+
+impl SecuritiesTransactionPrice22Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref pric_value) = self.pric { if !pric_value.validate() { return false; } }
+		if let Some(ref dgtl_tkn_pric_value) = self.dgtl_tkn_pric { if !dgtl_tkn_pric_value.validate() { return false; } }
+		if let Some(ref no_pric_value) = self.no_pric { if !no_pric_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -988,6 +1678,13 @@ pub struct SecuritiesTransactionPrice2Choice {
 	pub bsis_pts: Option<f64>,
 }
 
+impl SecuritiesTransactionPrice2Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref mntry_val_value) = self.mntry_val { if !mntry_val_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // SecuritiesTransactionPrice4Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -996,6 +1693,14 @@ pub struct SecuritiesTransactionPrice4Choice {
 	pub pric: Option<SecuritiesTransactionPrice2Choice>,
 	#[serde(rename = "NoPric", skip_serializing_if = "Option::is_none")]
 	pub no_pric: Option<SecuritiesTransactionPrice1>,
+}
+
+impl SecuritiesTransactionPrice4Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref pric_value) = self.pric { if !pric_value.validate() { return false; } }
+		if let Some(ref no_pric_value) = self.no_pric { if !no_pric_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -1010,6 +1715,15 @@ pub struct SecuritiesTransactionPrice6 {
 	pub dgtl_tkn: Option<Vec<DigitalTokenAmount2>>,
 }
 
+impl SecuritiesTransactionPrice6 {
+	pub fn validate(&self) -> bool {
+		if !self.pdg.validate() { return false }
+		if let Some(ref ccy_value) = self.ccy { if !ccy_value.validate() { return false; } }
+		if let Some(ref dgtl_tkn_vec) = self.dgtl_tkn { for item in dgtl_tkn_vec { if !item.validate() { return false; } } }
+		return true
+	}
+}
+
 
 // SecuritiesTransactionPrice7 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -1018,6 +1732,14 @@ pub struct SecuritiesTransactionPrice7 {
 	pub mntry_val: AmountAndDirection61,
 	#[serde(rename = "DgtlTknQty")]
 	pub dgtl_tkn_qty: DigitalTokenAmount2,
+}
+
+impl SecuritiesTransactionPrice7 {
+	pub fn validate(&self) -> bool {
+		if !self.mntry_val.validate() { return false }
+		if !self.dgtl_tkn_qty.validate() { return false }
+		return true
+	}
 }
 
 
@@ -1034,6 +1756,17 @@ pub struct SecuritiesTransactionReport2 {
 	pub tech_attrbts: Option<RecordTechnicalData2>,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
+}
+
+impl SecuritiesTransactionReport2 {
+	pub fn validate(&self) -> bool {
+		if !self.tx_id.validate() { return false }
+		if !self.exctg_pty.validate() { return false }
+		if !self.submitg_pty.validate() { return false }
+		if let Some(ref tech_attrbts_value) = self.tech_attrbts { if !tech_attrbts_value.validate() { return false; } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
 }
 
 
@@ -1070,6 +1803,25 @@ pub struct SecuritiesTransactionReport7 {
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
+impl SecuritiesTransactionReport7 {
+	pub fn validate(&self) -> bool {
+		if !self.tx_id.validate() { return false }
+		if !self.exctg_pty.validate() { return false }
+		if !self.submitg_pty.validate() { return false }
+		if !self.buyr.validate() { return false }
+		if !self.sellr.validate() { return false }
+		if !self.ordr_trnsmssn.validate() { return false }
+		if !self.tx.validate() { return false }
+		if !self.fin_instrm.validate() { return false }
+		if let Some(ref invstmt_dcsn_prsn_value) = self.invstmt_dcsn_prsn { if !invstmt_dcsn_prsn_value.validate() { return false; } }
+		if !self.exctg_prsn.validate() { return false }
+		if !self.addtl_attrbts.validate() { return false }
+		if let Some(ref tech_attrbts_value) = self.tech_attrbts { if !tech_attrbts_value.validate() { return false; } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
+}
+
 
 // SecuritiesTransactionTransmission2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -1080,6 +1832,14 @@ pub struct SecuritiesTransactionTransmission2 {
 	pub trnsmttg_buyr: Option<LEIIdentifier>,
 	#[serde(rename = "TrnsmttgSellr", skip_serializing_if = "Option::is_none")]
 	pub trnsmttg_sellr: Option<LEIIdentifier>,
+}
+
+impl SecuritiesTransactionTransmission2 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref trnsmttg_buyr_value) = self.trnsmttg_buyr { if !trnsmttg_buyr_value.validate() { return false; } }
+		if let Some(ref trnsmttg_sellr_value) = self.trnsmttg_sellr { if !trnsmttg_sellr_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -1094,6 +1854,15 @@ pub struct SecurityIdentification19 {
 	pub desc: Option<Max140Text>,
 }
 
+impl SecurityIdentification19 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref isin_value) = self.isin { if !isin_value.validate() { return false; } }
+		if let Some(ref othr_id_vec) = self.othr_id { for item in othr_id_vec { if !item.validate() { return false; } } }
+		if let Some(ref desc_value) = self.desc { if !desc_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // SecurityInstrumentDescription22 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -1104,6 +1873,15 @@ pub struct SecurityInstrumentDescription22 {
 	pub debt_instrm_attrbts: Option<DebtInstrument4>,
 	#[serde(rename = "DerivInstrmAttrbts")]
 	pub deriv_instrm_attrbts: DerivativeInstrument6,
+}
+
+impl SecurityInstrumentDescription22 {
+	pub fn validate(&self) -> bool {
+		if !self.fin_instrm_gnl_attrbts.validate() { return false }
+		if let Some(ref debt_instrm_attrbts_value) = self.debt_instrm_attrbts { if !debt_instrm_attrbts_value.validate() { return false; } }
+		if !self.deriv_instrm_attrbts.validate() { return false }
+		return true
+	}
 }
 
 
@@ -1122,6 +1900,17 @@ pub struct SecurityInstrumentDescription23 {
 	pub ntnl_ccy: Option<ActiveOrHistoricCurrencyCode>,
 }
 
+impl SecurityInstrumentDescription23 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref id_value) = self.id { if !id_value.validate() { return false; } }
+		if let Some(ref othr_id_vec) = self.othr_id { for item in othr_id_vec { if !item.validate() { return false; } } }
+		if !self.full_nm.validate() { return false }
+		if !self.clssfctn_tp.validate() { return false }
+		if let Some(ref ntnl_ccy_value) = self.ntnl_ccy { if !ntnl_ccy_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // Side5Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -1137,6 +1926,12 @@ pub enum Side5Code {
 	CodeUNDI,
 }
 
+impl Side5Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -1147,10 +1942,24 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if !plc_and_nm_value.validate() { return false; } }
+		if !self.envlp.validate() { return false }
+		return true
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -1163,6 +1972,14 @@ pub struct SwapLegIdentification2 {
 	pub swp_out: Option<FinancialInstrumentIdentification7Choice>,
 }
 
+impl SwapLegIdentification2 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref swp_in_value) = self.swp_in { if !swp_in_value.validate() { return false; } }
+		if let Some(ref swp_out_value) = self.swp_out { if !swp_out_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // TrueFalseIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -1170,6 +1987,12 @@ pub struct SwapLegIdentification2 {
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
+}
+
+impl TrueFalseIndicator {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -1182,6 +2005,14 @@ pub struct UnderlyingIdentification2Choice {
 	pub othr: Option<FinancialInstrumentIdentification7Choice>,
 }
 
+impl UnderlyingIdentification2Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref swp_value) = self.swp { if !swp_value.validate() { return false; } }
+		if let Some(ref othr_value) = self.othr { if !othr_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // VariationType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -1191,4 +2022,10 @@ pub enum VariationType1Code {
 	CodeDECR,
 	#[serde(rename = "INCR")]
 	CodeINCR,
+}
+
+impl VariationType1Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }

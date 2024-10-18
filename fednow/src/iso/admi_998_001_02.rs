@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 
@@ -43,6 +44,17 @@ pub struct AdministrationProprietaryMessageV02 {
 	pub prtry_data: ProprietaryData5,
 }
 
+impl AdministrationProprietaryMessageV02 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref msg_id_value) = self.msg_id { if !msg_id_value.validate() { return false; } }
+		if let Some(ref rltd_value) = self.rltd { if !rltd_value.validate() { return false; } }
+		if let Some(ref prvs_value) = self.prvs { if !prvs_value.validate() { return false; } }
+		if let Some(ref othr_value) = self.othr { if !othr_value.validate() { return false; } }
+		if !self.prtry_data.validate() { return false }
+		return true
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -52,12 +64,31 @@ pub struct Max35Text {
 	pub max35_text: String,
 }
 
+impl Max35Text {
+	pub fn validate(&self) -> bool {
+		if self.max35_text.chars().count() < 1 {
+			return false
+		}
+		if self.max35_text.chars().count() > 35 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // MessageReference ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
 	pub ref_attr: Max35Text,
+}
+
+impl MessageReference {
+	pub fn validate(&self) -> bool {
+		if !self.ref_attr.validate() { return false }
+		return true
+	}
 }
 
 
@@ -70,8 +101,22 @@ pub struct ProprietaryData5 {
 	pub data: SupplementaryDataEnvelope1,
 }
 
+impl ProprietaryData5 {
+	pub fn validate(&self) -> bool {
+		if !self.tp.validate() { return false }
+		if !self.data.validate() { return false }
+		return true
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }

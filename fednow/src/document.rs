@@ -117,3 +117,35 @@ pub enum Document {
 	#[default]
 	UNKNOWN
 }
+
+impl Document {
+    pub fn validate(&self) -> bool {
+        match self {
+            Document::Admi00200101(ref value) => value.validate(),
+            Document::SystemEventNotificationV02(ref value) => value.validate(),
+            Document::ResendRequestV01(ref value) => value.validate(),
+            Document::ReceiptAcknowledgementV01(ref value) => value.validate(),
+            Document::FIToFIPaymentStatusReportV10(ref value) => value.validate(),
+            Document::PaymentReturnV10(ref value) => value.validate(),
+            Document::FIToFICustomerCreditTransferV08(ref value) => value.validate(),
+            Document::FinancialInstitutionCreditTransferV08(ref value) => value.validate(),
+            Document::FIToFIPaymentStatusRequestV03(ref value) => value.validate(),
+            Document::CreditorPaymentActivationRequestV07(ref value) => value.validate(),
+            Document::CreditorPaymentActivationRequestStatusReportV07(ref value) => value.validate(),
+            Document::UnableToApplyV07(ref value) => value.validate(),
+            Document::AdditionalPaymentInformationV09(ref value) => value.validate(),
+            Document::ResolutionOfInvestigationV09(ref value) => value.validate(),
+            Document::CustomerPaymentCancellationRequestV09(ref value) => value.validate(),
+            Document::FIToFIPaymentCancellationRequestV08(ref value) => value.validate(),
+            Document::AccountReportingRequestV05(ref value) => value.validate(),
+            Document::SystemEventAcknowledgementV01(ref value) => value.validate(),
+            Document::AdministrationProprietaryMessageV02(ref value) => value.validate(),
+            Document::BankToCustomerAccountReportV08(ref value) => value.validate(),
+            Document::BankToCustomerDebitCreditNotificationV08(ref value) => value.validate(),
+            Document::UNKNOWN => {
+                // Return false or true based on how you want to handle the UNKNOWN case
+                false
+            }
+        }
+    }
+}

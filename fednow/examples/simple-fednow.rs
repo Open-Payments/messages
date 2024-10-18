@@ -12,8 +12,9 @@ fn main() {
     // Match the Document enum and modify the field
     if let Document::FIToFICustomerCreditTransferV08(ref mut message) = doc {
         message.grp_hdr.msg_id.max35_text = "Hello".to_string();
+        println!("{:?}", message.validate());
     }
-  
+
     let reserialized_item = serde_xml_rs::to_string(&doc).unwrap();
 
     println!("{:?}", reserialized_item)

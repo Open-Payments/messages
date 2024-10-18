@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 // ActiveCurrencyAndAmountSimpleType ...
@@ -31,6 +32,15 @@ use serde::{Deserialize, Serialize};
 pub struct ActiveCurrencyAndAmountSimpleType {
 	#[serde(rename = "$value")]
 	pub active_currency_and_amount_simple_type: f64,
+}
+
+impl ActiveCurrencyAndAmountSimpleType {
+	pub fn validate(&self) -> bool {
+		if self.active_currency_and_amount_simple_type < 0.000000 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -43,6 +53,12 @@ pub struct ActiveCurrencyAndAmount {
 	pub value: f64,
 }
 
+impl ActiveCurrencyAndAmount {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // ActiveCurrencyCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -50,6 +66,16 @@ pub struct ActiveCurrencyAndAmount {
 pub struct ActiveCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_currency_code: String,
+}
+
+impl ActiveCurrencyCode {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
+		if !pattern.is_match(&self.active_currency_code) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -70,6 +96,18 @@ pub struct AvailableFinancialResourcesAmount1 {
 	pub ufndd_thrd_pty_cmmtmnt: ActiveCurrencyAndAmount,
 }
 
+impl AvailableFinancialResourcesAmount1 {
+	pub fn validate(&self) -> bool {
+		if !self.ttl_initl_mrgn.validate() { return false }
+		if !self.ttl_prfndd_dflt_fnd.validate() { return false }
+		for item in &self.ccp_skin_in_the_game { if !item.validate() { return false; } }
+		if !self.othr_dflt_fnd_cntrbtn.validate() { return false }
+		if !self.ufndd_mmb_cmmtmnt.validate() { return false }
+		if !self.ufndd_thrd_pty_cmmtmnt.validate() { return false }
+		return true
+	}
+}
+
 
 // CCPAvailableFinancialResourcesReportV01 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -82,6 +120,15 @@ pub struct CCPAvailableFinancialResourcesReportV01 {
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
+impl CCPAvailableFinancialResourcesReportV01 {
+	pub fn validate(&self) -> bool {
+		if !self.avlbl_fin_rsrcs_amt.validate() { return false }
+		if let Some(ref othr_prfndd_rsrcs_value) = self.othr_prfndd_rsrcs { if !othr_prfndd_rsrcs_value.validate() { return false; } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
+}
+
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -89,6 +136,18 @@ pub struct CCPAvailableFinancialResourcesReportV01 {
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
+}
+
+impl Max350Text {
+	pub fn validate(&self) -> bool {
+		if self.max350_text.chars().count() < 1 {
+			return false
+		}
+		if self.max350_text.chars().count() > 350 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -106,6 +165,12 @@ pub enum ProductType6Code {
 	CodeEQUI,
 }
 
+impl ProductType6Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // ReportingAssetBreakdown1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -118,6 +183,15 @@ pub struct ReportingAssetBreakdown1 {
 	pub amt: ActiveCurrencyAndAmount,
 }
 
+impl ReportingAssetBreakdown1 {
+	pub fn validate(&self) -> bool {
+		if !self.rptg_asst_tp.validate() { return false }
+		if let Some(ref id_value) = self.id { if !id_value.validate() { return false; } }
+		if !self.amt.validate() { return false }
+		return true
+	}
+}
+
 
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -128,8 +202,22 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if !plc_and_nm_value.validate() { return false; } }
+		if !self.envlp.validate() { return false }
+		return true
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }

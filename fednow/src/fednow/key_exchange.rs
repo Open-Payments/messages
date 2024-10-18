@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 
@@ -34,6 +35,16 @@ pub struct Max300AlphaNumericString {
 	pub max300_alpha_numeric_string: String,
 }
 
+impl Max300AlphaNumericString {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Za-z0-9\\-_]{1,300}").unwrap();
+		if !pattern.is_match(&self.max300_alpha_numeric_string) {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max50AlphaNumericString ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -43,6 +54,16 @@ pub struct Max50AlphaNumericString {
 	pub max50_alpha_numeric_string: String,
 }
 
+impl Max50AlphaNumericString {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Za-z0-9\\-_]{1,50}").unwrap();
+		if !pattern.is_match(&self.max50_alpha_numeric_string) {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max300Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -50,6 +71,18 @@ pub struct Max50AlphaNumericString {
 pub struct Max300Text {
 	#[serde(rename = "$value")]
 	pub max300_text: String,
+}
+
+impl Max300Text {
+	pub fn validate(&self) -> bool {
+		if self.max300_text.chars().count() < 1 {
+			return false
+		}
+		if self.max300_text.chars().count() > 300 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -65,6 +98,16 @@ pub struct RoutingNumberFRS1 {
 	pub routing_number_frs_1: String,
 }
 
+impl RoutingNumberFRS1 {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[0-9]{9,9}").unwrap();
+		if !pattern.is_match(&self.routing_number_frs_1) {
+			return false
+		}
+		return true
+	}
+}
+
 
 
 // FedNowMessageSignatureKeyStatus ...
@@ -74,6 +117,12 @@ pub struct FedNowMessageSignatureKeyStatus {
 	pub key_status: String,
 	#[serde(rename = "StatusDateTime")]
 	pub status_date_time: String,
+}
+
+impl FedNowMessageSignatureKeyStatus {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -95,12 +144,29 @@ pub struct FedNowMessageSignatureKey {
 	pub key_creation_date_time: Option<String>,
 }
 
+impl FedNowMessageSignatureKey {
+	pub fn validate(&self) -> bool {
+		if !self.fed_now_key_id.validate() { return false }
+		if !self.name.validate() { return false }
+		if !self.encoding.validate() { return false }
+		if let Some(ref algorithm_value) = self.algorithm { if !algorithm_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // KeyAddition ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct KeyAddition {
 	#[serde(rename = "Key", skip_serializing_if = "Option::is_none")]
 	pub key: Option<FedNowMessageSignatureKey>,
+}
+
+impl KeyAddition {
+	pub fn validate(&self) -> bool {
+		if let Some(ref key_value) = self.key { if !key_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -115,6 +181,14 @@ pub struct KeyRevocation {
 	pub fed_now_key_id: Option<Max300AlphaNumericString>,
 }
 
+impl KeyRevocation {
+	pub fn validate(&self) -> bool {
+		if let Some(ref fed_now_status_description_value) = self.fed_now_status_description { if !fed_now_status_description_value.validate() { return false; } }
+		if let Some(ref fed_now_key_id_value) = self.fed_now_key_id { if !fed_now_key_id_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // FedNowMessageSignatureKeyExchange ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -123,6 +197,13 @@ pub struct FedNowMessageSignatureKeyExchange {
 	pub key_addition: Option<KeyAddition>,
 	#[serde(rename = "KeyRevocation", skip_serializing_if = "Option::is_none")]
 	pub key_revocation: Option<String>,
+}
+
+impl FedNowMessageSignatureKeyExchange {
+	pub fn validate(&self) -> bool {
+		if let Some(ref key_addition_value) = self.key_addition { if !key_addition_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -137,6 +218,13 @@ pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 	pub error_code: Option<String>,
 }
 
+impl FedNowCustomerMessageSignatureKeyOperationResponse {
+	pub fn validate(&self) -> bool {
+		if !self.fed_now_key_id.validate() { return false }
+		return true
+	}
+}
+
 
 
 // GetAllFedNowActivePublicKeys ...
@@ -144,10 +232,22 @@ pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 pub struct GetAllFedNowActivePublicKeys {
 }
 
+impl GetAllFedNowActivePublicKeys {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // GetAllCustomerPublicKeys ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct GetAllCustomerPublicKeys {
+}
+
+impl GetAllCustomerPublicKeys {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -160,10 +260,25 @@ pub struct FedNowPublicKeyResponse {
 	pub fed_now_message_signature_key: FedNowMessageSignatureKey,
 }
 
+impl FedNowPublicKeyResponse {
+	pub fn validate(&self) -> bool {
+		if !self.fed_now_message_signature_key_status.validate() { return false }
+		if !self.fed_now_message_signature_key.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowPublicKeyResponses ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowPublicKeyResponses {
 	#[serde(rename = "PublicKeys")]
 	pub public_keys: Vec<FedNowPublicKeyResponse>,
+}
+
+impl FedNowPublicKeyResponses {
+	pub fn validate(&self) -> bool {
+		for item in &self.public_keys { if !item.validate() { return false; } }
+		return true
+	}
 }

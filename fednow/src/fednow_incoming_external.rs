@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 use crate::document::*;
 use crate::fednow::key_exchange::*;
 use crate::iso::head_001_001_02::BusinessApplicationHeaderV02;
@@ -37,10 +38,24 @@ pub struct FedNowIncoming {
 	pub fed_now_incoming_message: FedNowIncomingMessage,
 }
 
+impl FedNowIncoming {
+	pub fn validate(&self) -> bool {
+		if let Some(ref fed_now_technical_header_value) = self.fed_now_technical_header { if !fed_now_technical_header_value.validate() { return false; } }
+		if !self.fed_now_incoming_message.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowTechnicalHeader ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct FedNowTechnicalHeader {
+}
+
+impl FedNowTechnicalHeader {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -89,6 +104,32 @@ pub struct FedNowIncomingMessage {
 	pub fed_now_incoming_message_signature_management: Option<FedNowIncomingMessageSignatureManagement>,
 }
 
+impl FedNowIncomingMessage {
+	pub fn validate(&self) -> bool {
+		if let Some(ref fed_now_message_reject_value) = self.fed_now_message_reject { if !fed_now_message_reject_value.validate() { return false; } }
+		if let Some(ref fed_now_participant_broadcast_value) = self.fed_now_participant_broadcast { if !fed_now_participant_broadcast_value.validate() { return false; } }
+		if let Some(ref fed_now_retrieval_request_value) = self.fed_now_retrieval_request { if !fed_now_retrieval_request_value.validate() { return false; } }
+		if let Some(ref fed_now_receipt_acknowledgement_value) = self.fed_now_receipt_acknowledgement { if !fed_now_receipt_acknowledgement_value.validate() { return false; } }
+		if let Some(ref fed_now_payment_status_value) = self.fed_now_payment_status { if !fed_now_payment_status_value.validate() { return false; } }
+		if let Some(ref fed_now_payment_return_value) = self.fed_now_payment_return { if !fed_now_payment_return_value.validate() { return false; } }
+		if let Some(ref fed_now_customer_credit_transfer_value) = self.fed_now_customer_credit_transfer { if !fed_now_customer_credit_transfer_value.validate() { return false; } }
+		if let Some(ref fed_now_institution_credit_transfer_value) = self.fed_now_institution_credit_transfer { if !fed_now_institution_credit_transfer_value.validate() { return false; } }
+		if let Some(ref fed_now_payment_status_request_value) = self.fed_now_payment_status_request { if !fed_now_payment_status_request_value.validate() { return false; } }
+		if let Some(ref fed_now_request_for_payment_value) = self.fed_now_request_for_payment { if !fed_now_request_for_payment_value.validate() { return false; } }
+		if let Some(ref fed_now_request_for_payment_response_value) = self.fed_now_request_for_payment_response { if !fed_now_request_for_payment_response_value.validate() { return false; } }
+		if let Some(ref fed_now_information_request_value) = self.fed_now_information_request { if !fed_now_information_request_value.validate() { return false; } }
+		if let Some(ref fed_now_additional_payment_information_value) = self.fed_now_additional_payment_information { if !fed_now_additional_payment_information_value.validate() { return false; } }
+		if let Some(ref fed_now_information_request_response_value) = self.fed_now_information_request_response { if !fed_now_information_request_response_value.validate() { return false; } }
+		if let Some(ref fed_now_request_for_payment_cancellation_request_response_value) = self.fed_now_request_for_payment_cancellation_request_response { if !fed_now_request_for_payment_cancellation_request_response_value.validate() { return false; } }
+		if let Some(ref fed_now_return_request_response_value) = self.fed_now_return_request_response { if !fed_now_return_request_response_value.validate() { return false; } }
+		if let Some(ref fed_now_request_for_payment_cancellation_request_value) = self.fed_now_request_for_payment_cancellation_request { if !fed_now_request_for_payment_cancellation_request_value.validate() { return false; } }
+		if let Some(ref fed_now_return_request_value) = self.fed_now_return_request { if !fed_now_return_request_value.validate() { return false; } }
+		if let Some(ref fed_now_account_reporting_request_value) = self.fed_now_account_reporting_request { if !fed_now_account_reporting_request_value.validate() { return false; } }
+		if let Some(ref fed_now_incoming_message_signature_management_value) = self.fed_now_incoming_message_signature_management { if !fed_now_incoming_message_signature_management_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // FedNowMessageReject ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -97,6 +138,14 @@ pub struct FedNowMessageReject {
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
 	#[serde(rename = "Document")]
 	pub a2_document: Document,
+}
+
+impl FedNowMessageReject {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.a2_document.validate() { return false }
+		return true
+	}
 }
 
 
@@ -109,6 +158,14 @@ pub struct FedNowParticipantBroadcast {
 	pub a4_document: Document,
 }
 
+impl FedNowParticipantBroadcast {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.a4_document.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowRetrievalRequest ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -117,6 +174,14 @@ pub struct FedNowRetrievalRequest {
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
 	#[serde(rename = "Document")]
 	pub a6_document: Document,
+}
+
+impl FedNowRetrievalRequest {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.a6_document.validate() { return false }
+		return true
+	}
 }
 
 
@@ -129,6 +194,14 @@ pub struct FedNowReceiptAcknowledgement {
 	pub a7_document: Document,
 }
 
+impl FedNowReceiptAcknowledgement {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.a7_document.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowPaymentStatus ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -137,6 +210,14 @@ pub struct FedNowPaymentStatus {
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
 	#[serde(rename = "Document")]
 	pub p2_document: Document,
+}
+
+impl FedNowPaymentStatus {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.p2_document.validate() { return false }
+		return true
+	}
 }
 
 
@@ -149,6 +230,14 @@ pub struct FedNowPaymentReturn {
 	pub p4_document: Document,
 }
 
+impl FedNowPaymentReturn {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.p4_document.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowCustomerCreditTransfer ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -157,6 +246,14 @@ pub struct FedNowCustomerCreditTransfer {
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
 	#[serde(rename = "Document")]
 	pub p8_document: Document,
+}
+
+impl FedNowCustomerCreditTransfer {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.p8_document.validate() { return false }
+		return true
+	}
 }
 
 
@@ -169,6 +266,14 @@ pub struct FedNowInstitutionCreditTransfer {
 	pub p9_document: Document,
 }
 
+impl FedNowInstitutionCreditTransfer {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.p9_document.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowPaymentStatusRequest ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -177,6 +282,14 @@ pub struct FedNowPaymentStatusRequest {
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
 	#[serde(rename = "Document")]
 	pub p28_document: Document,
+}
+
+impl FedNowPaymentStatusRequest {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.p28_document.validate() { return false }
+		return true
+	}
 }
 
 
@@ -189,6 +302,14 @@ pub struct FedNowRequestForPayment {
 	pub pain13_document: Document,
 }
 
+impl FedNowRequestForPayment {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.pain13_document.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowRequestForPaymentResponse ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -197,6 +318,14 @@ pub struct FedNowRequestForPaymentResponse {
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
 	#[serde(rename = "Document")]
 	pub pain14_document: Document,
+}
+
+impl FedNowRequestForPaymentResponse {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.pain14_document.validate() { return false }
+		return true
+	}
 }
 
 
@@ -209,6 +338,14 @@ pub struct FedNowInformationRequest {
 	pub c26_document: Document,
 }
 
+impl FedNowInformationRequest {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.c26_document.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowAdditionalPaymentInformation ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -217,6 +354,14 @@ pub struct FedNowAdditionalPaymentInformation {
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
 	#[serde(rename = "Document")]
 	pub c28_document: Document,
+}
+
+impl FedNowAdditionalPaymentInformation {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.c28_document.validate() { return false }
+		return true
+	}
 }
 
 
@@ -229,6 +374,14 @@ pub struct FedNowInformationRequestResponse {
 	pub c29_document: Document,
 }
 
+impl FedNowInformationRequestResponse {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.c29_document.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowRequestForPaymentCancellationRequestResponse ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -237,6 +390,14 @@ pub struct FedNowRequestForPaymentCancellationRequestResponse {
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
 	#[serde(rename = "Document")]
 	pub c29_document: Document,
+}
+
+impl FedNowRequestForPaymentCancellationRequestResponse {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.c29_document.validate() { return false }
+		return true
+	}
 }
 
 
@@ -249,6 +410,14 @@ pub struct FedNowReturnRequestResponse {
 	pub c29_document: Document,
 }
 
+impl FedNowReturnRequestResponse {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.c29_document.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowRequestForPaymentCancellationRequest ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -257,6 +426,14 @@ pub struct FedNowRequestForPaymentCancellationRequest {
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
 	#[serde(rename = "Document")]
 	pub c55_document: Document,
+}
+
+impl FedNowRequestForPaymentCancellationRequest {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.c55_document.validate() { return false }
+		return true
+	}
 }
 
 
@@ -269,6 +446,14 @@ pub struct FedNowReturnRequest {
 	pub c56_document: Document,
 }
 
+impl FedNowReturnRequest {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.c56_document.validate() { return false }
+		return true
+	}
+}
+
 
 // FedNowAccountReportingRequest ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -277,6 +462,14 @@ pub struct FedNowAccountReportingRequest {
 	pub bah_app_hdr: BusinessApplicationHeaderV02,
 	#[serde(rename = "Document")]
 	pub c60_document: Document,
+}
+
+impl FedNowAccountReportingRequest {
+	pub fn validate(&self) -> bool {
+		if !self.bah_app_hdr.validate() { return false }
+		if !self.c60_document.validate() { return false }
+		return true
+	}
 }
 
 
@@ -291,4 +484,13 @@ pub struct FedNowIncomingMessageSignatureManagement {
 	pub ke_get_all_customer_public_keys: Option<GetAllCustomerPublicKeys>,
 	#[serde(rename = "FedNowMessageSignatureKeyExchange", skip_serializing_if = "Option::is_none")]
 	pub ke_fed_now_message_signature_key_exchange: Option<FedNowMessageSignatureKeyExchange>,
+}
+
+impl FedNowIncomingMessageSignatureManagement {
+	pub fn validate(&self) -> bool {
+		if let Some(ref ke_get_all_fed_now_active_public_keys_value) = self.ke_get_all_fed_now_active_public_keys { if !ke_get_all_fed_now_active_public_keys_value.validate() { return false; } }
+		if let Some(ref ke_get_all_customer_public_keys_value) = self.ke_get_all_customer_public_keys { if !ke_get_all_customer_public_keys_value.validate() { return false; } }
+		if let Some(ref ke_fed_now_message_signature_key_exchange_value) = self.ke_fed_now_message_signature_key_exchange { if !ke_fed_now_message_signature_key_exchange_value.validate() { return false; } }
+		return true
+	}
 }

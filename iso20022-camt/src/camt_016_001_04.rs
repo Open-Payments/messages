@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 // ActiveOrHistoricCurrencyCode ...
@@ -31,6 +32,16 @@ use serde::{Deserialize, Serialize};
 pub struct ActiveOrHistoricCurrencyCode {
 	#[serde(rename = "$value")]
 	pub active_or_historic_currency_code: String,
+}
+
+impl ActiveOrHistoricCurrencyCode {
+	pub fn validate(&self) -> bool {
+		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
+		if !pattern.is_match(&self.active_or_historic_currency_code) {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -43,6 +54,14 @@ pub struct CurrencyCriteriaDefinition1Choice {
 	pub new_crit: Option<CurrencyExchangeCriteria2>,
 }
 
+impl CurrencyCriteriaDefinition1Choice {
+	pub fn validate(&self) -> bool {
+		if let Some(ref qry_nm_value) = self.qry_nm { if !qry_nm_value.validate() { return false; } }
+		if let Some(ref new_crit_value) = self.new_crit { if !new_crit_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // CurrencyExchangeCriteria2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -51,6 +70,14 @@ pub struct CurrencyExchangeCriteria2 {
 	pub new_qry_nm: Option<Max35Text>,
 	#[serde(rename = "SchCrit")]
 	pub sch_crit: Vec<CurrencyExchangeSearchCriteria1>,
+}
+
+impl CurrencyExchangeCriteria2 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref new_qry_nm_value) = self.new_qry_nm { if !new_qry_nm_value.validate() { return false; } }
+		for item in &self.sch_crit { if !item.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -63,6 +90,14 @@ pub struct CurrencyExchangeSearchCriteria1 {
 	pub trgt_ccy: ActiveOrHistoricCurrencyCode,
 }
 
+impl CurrencyExchangeSearchCriteria1 {
+	pub fn validate(&self) -> bool {
+		if !self.src_ccy.validate() { return false }
+		if !self.trgt_ccy.validate() { return false }
+		return true
+	}
+}
+
 
 // CurrencyQueryDefinition3 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -71,6 +106,14 @@ pub struct CurrencyQueryDefinition3 {
 	pub qry_tp: Option<QueryType2Code>,
 	#[serde(rename = "CcyCrit", skip_serializing_if = "Option::is_none")]
 	pub ccy_crit: Option<CurrencyCriteriaDefinition1Choice>,
+}
+
+impl CurrencyQueryDefinition3 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref qry_tp_value) = self.qry_tp { if !qry_tp_value.validate() { return false; } }
+		if let Some(ref ccy_crit_value) = self.ccy_crit { if !ccy_crit_value.validate() { return false; } }
+		return true
+	}
 }
 
 
@@ -85,6 +128,15 @@ pub struct GetCurrencyExchangeRateV04 {
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
+impl GetCurrencyExchangeRateV04 {
+	pub fn validate(&self) -> bool {
+		if !self.msg_hdr.validate() { return false }
+		if let Some(ref ccy_qry_def_value) = self.ccy_qry_def { if !ccy_qry_def_value.validate() { return false; } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
+}
+
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -92,6 +144,12 @@ pub struct GetCurrencyExchangeRateV04 {
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
+}
+
+impl ISODateTime {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -103,6 +161,18 @@ pub struct Max350Text {
 	pub max350_text: String,
 }
 
+impl Max350Text {
+	pub fn validate(&self) -> bool {
+		if self.max350_text.chars().count() < 1 {
+			return false
+		}
+		if self.max350_text.chars().count() > 350 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -110,6 +180,18 @@ pub struct Max350Text {
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
+}
+
+impl Max35Text {
+	pub fn validate(&self) -> bool {
+		if self.max35_text.chars().count() < 1 {
+			return false
+		}
+		if self.max35_text.chars().count() > 35 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -120,6 +202,13 @@ pub struct MessageHeader1 {
 	pub msg_id: Max35Text,
 	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
+}
+
+impl MessageHeader1 {
+	pub fn validate(&self) -> bool {
+		if !self.msg_id.validate() { return false }
+		return true
+	}
 }
 
 
@@ -137,6 +226,12 @@ pub enum QueryType2Code {
 	CodeDELD,
 }
 
+impl QueryType2Code {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -147,8 +242,22 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if !plc_and_nm_value.validate() { return false; } }
+		if !self.envlp.validate() { return false }
+		return true
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }

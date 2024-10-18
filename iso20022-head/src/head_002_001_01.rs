@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use regex::Regex;
 
 
 // ApplicationSpecifics1 ...
@@ -36,6 +37,14 @@ pub struct ApplicationSpecifics1 {
 	pub ttl_nb_of_docs: f64,
 }
 
+impl ApplicationSpecifics1 {
+	pub fn validate(&self) -> bool {
+		if let Some(ref sys_usr_value) = self.sys_usr { if !sys_usr_value.validate() { return false; } }
+		if let Some(ref sgntr_value) = self.sgntr { if !sgntr_value.validate() { return false; } }
+		return true
+	}
+}
+
 
 // BusinessFileHeaderV01 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -44,6 +53,14 @@ pub struct BusinessFileHeaderV01 {
 	pub pyld_desc: PayloadDescription2,
 	#[serde(rename = "Pyld", skip_serializing_if = "Option::is_none")]
 	pub pyld: Option<Vec<LaxPayload>>,
+}
+
+impl BusinessFileHeaderV01 {
+	pub fn validate(&self) -> bool {
+		if !self.pyld_desc.validate() { return false }
+		if let Some(ref pyld_vec) = self.pyld { for item in pyld_vec { if !item.validate() { return false; } } }
+		return true
+	}
 }
 
 
@@ -55,10 +72,22 @@ pub struct ISODateTime {
 	pub iso_date_time: String,
 }
 
+impl ISODateTime {
+	pub fn validate(&self) -> bool {
+		return true
+	}
+}
+
 
 // LaxPayload ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LaxPayload {
+}
+
+impl LaxPayload {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -71,6 +100,13 @@ pub struct ManifestData2 {
 	pub nb_of_docs: f64,
 }
 
+impl ManifestData2 {
+	pub fn validate(&self) -> bool {
+		if !self.doc_tp.validate() { return false }
+		return true
+	}
+}
+
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -78,6 +114,18 @@ pub struct ManifestData2 {
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
+}
+
+impl Max140Text {
+	pub fn validate(&self) -> bool {
+		if self.max140_text.chars().count() < 1 {
+			return false
+		}
+		if self.max140_text.chars().count() > 140 {
+			return false
+		}
+		return true
+	}
 }
 
 
@@ -89,6 +137,18 @@ pub struct Max256Text {
 	pub max256_text: String,
 }
 
+impl Max256Text {
+	pub fn validate(&self) -> bool {
+		if self.max256_text.chars().count() < 1 {
+			return false
+		}
+		if self.max256_text.chars().count() > 256 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -98,6 +158,18 @@ pub struct Max35Text {
 	pub max35_text: String,
 }
 
+impl Max35Text {
+	pub fn validate(&self) -> bool {
+		if self.max35_text.chars().count() < 1 {
+			return false
+		}
+		if self.max35_text.chars().count() > 35 {
+			return false
+		}
+		return true
+	}
+}
+
 
 // Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -105,6 +177,12 @@ pub struct Max35Text {
 pub struct Number {
 	#[serde(rename = "$value")]
 	pub number: f64,
+}
+
+impl Number {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -117,6 +195,13 @@ pub struct PayloadData2 {
 	pub cre_dt_and_tm: String,
 	#[serde(rename = "PssblDplctFlg", skip_serializing_if = "Option::is_none")]
 	pub pssbl_dplct_flg: Option<bool>,
+}
+
+impl PayloadData2 {
+	pub fn validate(&self) -> bool {
+		if !self.pyld_idr.validate() { return false }
+		return true
+	}
 }
 
 
@@ -133,10 +218,26 @@ pub struct PayloadDescription2 {
 	pub mnfst_data: Option<Vec<ManifestData2>>,
 }
 
+impl PayloadDescription2 {
+	pub fn validate(&self) -> bool {
+		if !self.pyld_data.validate() { return false }
+		if let Some(ref appl_spcfcs_value) = self.appl_spcfcs { if !appl_spcfcs_value.validate() { return false; } }
+		if !self.pyld_tp.validate() { return false }
+		if let Some(ref mnfst_data_vec) = self.mnfst_data { for item in mnfst_data_vec { if !item.validate() { return false; } } }
+		return true
+	}
+}
+
 
 // SignatureEnvelope ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SignatureEnvelope {
+}
+
+impl SignatureEnvelope {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
 
 
@@ -146,4 +247,10 @@ pub struct SignatureEnvelope {
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
+}
+
+impl TrueFalseIndicator {
+	pub fn validate(&self) -> bool {
+		return true
+	}
 }
