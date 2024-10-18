@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
+use crate::validationerror::*;
 
 use crate::iso::admi_002_001_01::*;
 use crate::iso::admi_004_001_02::*;
@@ -119,7 +120,7 @@ pub enum Document {
 }
 
 impl Document {
-    pub fn validate(&self) -> bool {
+    pub fn validate(&self) -> Result<(), ValidationError> {
         match self {
             Document::Admi00200101(ref value) => value.validate(),
             Document::SystemEventNotificationV02(ref value) => value.validate(),
@@ -143,8 +144,8 @@ impl Document {
             Document::BankToCustomerAccountReportV08(ref value) => value.validate(),
             Document::BankToCustomerDebitCreditNotificationV08(ref value) => value.validate(),
             Document::UNKNOWN => {
-                // Return false or true based on how you want to handle the UNKNOWN case
-                false
+                // Return an error for the UNKNOWN case
+                Err(ValidationError::new(9999, "Unknown document type".to_string()))
             }
         }
     }

@@ -24,6 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
+use crate::validationerror::*;
 use crate::document::*;
 use crate::fednow::key_exchange::*;
 use crate::iso::head_001_001_02::BusinessApplicationHeaderV02;
@@ -39,10 +40,10 @@ pub struct FedNowOutgoing {
 }
 
 impl FedNowOutgoing {
-	pub fn validate(&self) -> bool {
-		if let Some(ref fed_now_technical_header_value) = self.fed_now_technical_header { if !fed_now_technical_header_value.validate() { return false; } }
-		if !self.fed_now_outgoing_message.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref fed_now_technical_header_value) = self.fed_now_technical_header { if let Err(e) = fed_now_technical_header_value.validate() { return Err(e); } }
+		if let Err(e) = self.fed_now_outgoing_message.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -53,8 +54,8 @@ pub struct FedNowTechnicalHeader {
 }
 
 impl FedNowTechnicalHeader {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -113,32 +114,32 @@ pub struct FedNowOutgoingMessage {
 }
 
 impl FedNowOutgoingMessage {
-	pub fn validate(&self) -> bool {
-		if let Some(ref fed_now_message_reject_value) = self.fed_now_message_reject { if !fed_now_message_reject_value.validate() { return false; } }
-		if let Some(ref fed_now_broadcast_value) = self.fed_now_broadcast { if !fed_now_broadcast_value.validate() { return false; } }
-		if let Some(ref fed_now_receipt_acknowledgement_value) = self.fed_now_receipt_acknowledgement { if !fed_now_receipt_acknowledgement_value.validate() { return false; } }
-		if let Some(ref fed_now_system_response_value) = self.fed_now_system_response { if !fed_now_system_response_value.validate() { return false; } }
-		if let Some(ref fed_now_participant_file_value) = self.fed_now_participant_file { if !fed_now_participant_file_value.validate() { return false; } }
-		if let Some(ref fed_now_payment_status_value) = self.fed_now_payment_status { if !fed_now_payment_status_value.validate() { return false; } }
-		if let Some(ref fed_now_payment_return_value) = self.fed_now_payment_return { if !fed_now_payment_return_value.validate() { return false; } }
-		if let Some(ref fed_now_customer_credit_transfer_value) = self.fed_now_customer_credit_transfer { if !fed_now_customer_credit_transfer_value.validate() { return false; } }
-		if let Some(ref fed_now_institution_credit_transfer_value) = self.fed_now_institution_credit_transfer { if !fed_now_institution_credit_transfer_value.validate() { return false; } }
-		if let Some(ref fed_now_payment_status_request_value) = self.fed_now_payment_status_request { if !fed_now_payment_status_request_value.validate() { return false; } }
-		if let Some(ref fed_now_request_for_payment_value) = self.fed_now_request_for_payment { if !fed_now_request_for_payment_value.validate() { return false; } }
-		if let Some(ref fed_now_request_for_payment_response_value) = self.fed_now_request_for_payment_response { if !fed_now_request_for_payment_response_value.validate() { return false; } }
-		if let Some(ref fed_now_information_request_value) = self.fed_now_information_request { if !fed_now_information_request_value.validate() { return false; } }
-		if let Some(ref fed_now_additional_payment_information_value) = self.fed_now_additional_payment_information { if !fed_now_additional_payment_information_value.validate() { return false; } }
-		if let Some(ref fed_now_return_request_response_value) = self.fed_now_return_request_response { if !fed_now_return_request_response_value.validate() { return false; } }
-		if let Some(ref fed_now_information_request_response_value) = self.fed_now_information_request_response { if !fed_now_information_request_response_value.validate() { return false; } }
-		if let Some(ref fed_now_account_activity_details_report_value) = self.fed_now_account_activity_details_report { if !fed_now_account_activity_details_report_value.validate() { return false; } }
-		if let Some(ref fed_now_account_activity_totals_report_value) = self.fed_now_account_activity_totals_report { if !fed_now_account_activity_totals_report_value.validate() { return false; } }
-		if let Some(ref fed_now_account_balance_report_value) = self.fed_now_account_balance_report { if !fed_now_account_balance_report_value.validate() { return false; } }
-		if let Some(ref account_debit_credit_notification_value) = self.account_debit_credit_notification { if !account_debit_credit_notification_value.validate() { return false; } }
-		if let Some(ref fed_now_request_for_payment_cancellation_request_value) = self.fed_now_request_for_payment_cancellation_request { if !fed_now_request_for_payment_cancellation_request_value.validate() { return false; } }
-		if let Some(ref fed_now_request_for_payment_cancellation_request_response_value) = self.fed_now_request_for_payment_cancellation_request_response { if !fed_now_request_for_payment_cancellation_request_response_value.validate() { return false; } }
-		if let Some(ref fed_now_return_request_value) = self.fed_now_return_request { if !fed_now_return_request_value.validate() { return false; } }
-		if let Some(ref fed_now_outgoing_message_signature_management_value) = self.fed_now_outgoing_message_signature_management { if !fed_now_outgoing_message_signature_management_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref fed_now_message_reject_value) = self.fed_now_message_reject { if let Err(e) = fed_now_message_reject_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_broadcast_value) = self.fed_now_broadcast { if let Err(e) = fed_now_broadcast_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_receipt_acknowledgement_value) = self.fed_now_receipt_acknowledgement { if let Err(e) = fed_now_receipt_acknowledgement_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_system_response_value) = self.fed_now_system_response { if let Err(e) = fed_now_system_response_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_participant_file_value) = self.fed_now_participant_file { if let Err(e) = fed_now_participant_file_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_payment_status_value) = self.fed_now_payment_status { if let Err(e) = fed_now_payment_status_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_payment_return_value) = self.fed_now_payment_return { if let Err(e) = fed_now_payment_return_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_customer_credit_transfer_value) = self.fed_now_customer_credit_transfer { if let Err(e) = fed_now_customer_credit_transfer_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_institution_credit_transfer_value) = self.fed_now_institution_credit_transfer { if let Err(e) = fed_now_institution_credit_transfer_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_payment_status_request_value) = self.fed_now_payment_status_request { if let Err(e) = fed_now_payment_status_request_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_request_for_payment_value) = self.fed_now_request_for_payment { if let Err(e) = fed_now_request_for_payment_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_request_for_payment_response_value) = self.fed_now_request_for_payment_response { if let Err(e) = fed_now_request_for_payment_response_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_information_request_value) = self.fed_now_information_request { if let Err(e) = fed_now_information_request_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_additional_payment_information_value) = self.fed_now_additional_payment_information { if let Err(e) = fed_now_additional_payment_information_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_return_request_response_value) = self.fed_now_return_request_response { if let Err(e) = fed_now_return_request_response_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_information_request_response_value) = self.fed_now_information_request_response { if let Err(e) = fed_now_information_request_response_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_account_activity_details_report_value) = self.fed_now_account_activity_details_report { if let Err(e) = fed_now_account_activity_details_report_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_account_activity_totals_report_value) = self.fed_now_account_activity_totals_report { if let Err(e) = fed_now_account_activity_totals_report_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_account_balance_report_value) = self.fed_now_account_balance_report { if let Err(e) = fed_now_account_balance_report_value.validate() { return Err(e); } }
+		if let Some(ref account_debit_credit_notification_value) = self.account_debit_credit_notification { if let Err(e) = account_debit_credit_notification_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_request_for_payment_cancellation_request_value) = self.fed_now_request_for_payment_cancellation_request { if let Err(e) = fed_now_request_for_payment_cancellation_request_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_request_for_payment_cancellation_request_response_value) = self.fed_now_request_for_payment_cancellation_request_response { if let Err(e) = fed_now_request_for_payment_cancellation_request_response_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_return_request_value) = self.fed_now_return_request { if let Err(e) = fed_now_return_request_value.validate() { return Err(e); } }
+		if let Some(ref fed_now_outgoing_message_signature_management_value) = self.fed_now_outgoing_message_signature_management { if let Err(e) = fed_now_outgoing_message_signature_management_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -153,10 +154,10 @@ pub struct FedNowMessageReject {
 }
 
 impl FedNowMessageReject {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.a2_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.a2_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -171,10 +172,10 @@ pub struct FedNowBroadcast {
 }
 
 impl FedNowBroadcast {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.a4_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.a4_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -189,10 +190,10 @@ pub struct FedNowReceiptAcknowledgement {
 }
 
 impl FedNowReceiptAcknowledgement {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.a7_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.a7_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -207,10 +208,10 @@ pub struct FedNowSystemResponse {
 }
 
 impl FedNowSystemResponse {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.a11_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.a11_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -225,10 +226,10 @@ pub struct FedNowParticipantFile {
 }
 
 impl FedNowParticipantFile {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.a998_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.a998_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -243,10 +244,10 @@ pub struct FedNowPaymentStatus {
 }
 
 impl FedNowPaymentStatus {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.p2_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.p2_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -261,10 +262,10 @@ pub struct FedNowPaymentReturn {
 }
 
 impl FedNowPaymentReturn {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.p4_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.p4_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -279,10 +280,10 @@ pub struct FedNowCustomerCreditTransfer {
 }
 
 impl FedNowCustomerCreditTransfer {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.p8_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.p8_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -297,10 +298,10 @@ pub struct FedNowInstitutionCreditTransfer {
 }
 
 impl FedNowInstitutionCreditTransfer {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.p9_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.p9_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -315,10 +316,10 @@ pub struct FedNowPaymentStatusRequest {
 }
 
 impl FedNowPaymentStatusRequest {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.p28_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.p28_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -333,10 +334,10 @@ pub struct FedNowRequestForPayment {
 }
 
 impl FedNowRequestForPayment {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.pain13_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.pain13_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -351,10 +352,10 @@ pub struct FedNowRequestForPaymentResponse {
 }
 
 impl FedNowRequestForPaymentResponse {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.pain14_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.pain14_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -369,10 +370,10 @@ pub struct FedNowInformationRequest {
 }
 
 impl FedNowInformationRequest {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c26_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c26_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -387,10 +388,10 @@ pub struct FedNowAdditionalPaymentInformation {
 }
 
 impl FedNowAdditionalPaymentInformation {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c28_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c28_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -405,10 +406,10 @@ pub struct FedNowRequestForPaymentCancellationRequestResponse {
 }
 
 impl FedNowRequestForPaymentCancellationRequestResponse {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c29_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c29_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -423,10 +424,10 @@ pub struct FedNowReturnRequestResponse {
 }
 
 impl FedNowReturnRequestResponse {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c29_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c29_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -441,10 +442,10 @@ pub struct FedNowInformationRequestResponse {
 }
 
 impl FedNowInformationRequestResponse {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c29_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c29_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -459,10 +460,10 @@ pub struct FedNowAccountActivityDetailsReport {
 }
 
 impl FedNowAccountActivityDetailsReport {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c52_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c52_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -477,10 +478,10 @@ pub struct FedNowAccountActivityTotalsReport {
 }
 
 impl FedNowAccountActivityTotalsReport {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c52_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c52_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -495,10 +496,10 @@ pub struct FedNowAccountBalanceReport {
 }
 
 impl FedNowAccountBalanceReport {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c52_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c52_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -513,10 +514,10 @@ pub struct AccountDebitCreditNotification {
 }
 
 impl AccountDebitCreditNotification {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c54_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c54_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -531,10 +532,10 @@ pub struct FedNowRequestForPaymentCancellationRequest {
 }
 
 impl FedNowRequestForPaymentCancellationRequest {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c55_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c55_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -549,10 +550,10 @@ pub struct FedNowReturnRequest {
 }
 
 impl FedNowReturnRequest {
-	pub fn validate(&self) -> bool {
-		if !self.bah_app_hdr.validate() { return false }
-		if !self.c56_document.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
+		if let Err(e) = self.c56_document.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -567,9 +568,9 @@ pub struct FedNowOutgoingMessageSignatureManagement {
 }
 
 impl FedNowOutgoingMessageSignatureManagement {
-	pub fn validate(&self) -> bool {
-		if let Some(ref ke_fed_now_public_key_responses_value) = self.ke_fed_now_public_key_responses { if !ke_fed_now_public_key_responses_value.validate() { return false; } }
-		if let Some(ref ke_fed_now_customer_message_signature_key_operation_response_value) = self.ke_fed_now_customer_message_signature_key_operation_response { if !ke_fed_now_customer_message_signature_key_operation_response_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref ke_fed_now_public_key_responses_value) = self.ke_fed_now_public_key_responses { if let Err(e) = ke_fed_now_public_key_responses_value.validate() { return Err(e); } }
+		if let Some(ref ke_fed_now_customer_message_signature_key_operation_response_value) = self.ke_fed_now_customer_message_signature_key_operation_response { if let Err(e) = ke_fed_now_customer_message_signature_key_operation_response_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }

@@ -24,6 +24,10 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
+use crate::validationerror::*;
+
+
+
 
 
 // FedNowParticipantFile1 is This is the participant profile of the FedNow participant and contains the participant's identification, name and the FedNow services the participant has enrolled for.
@@ -36,9 +40,9 @@ pub struct FedNowParticipantFile1 {
 }
 
 impl FedNowParticipantFile1 {
-	pub fn validate(&self) -> bool {
-		for item in &self.ptcpt_prfl { if !item.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		for item in &self.ptcpt_prfl { if let Err(e) = item.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -55,11 +59,11 @@ pub struct FedNowParticipantProfile1 {
 }
 
 impl FedNowParticipantProfile1 {
-	pub fn validate(&self) -> bool {
-		if !self.id.validate() { return false }
-		if !self.nm.validate() { return false }
-		for item in &self.svcs { if !item.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		if let Err(e) = self.nm.validate() { return Err(e); }
+		for item in &self.svcs { if let Err(e) = item.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -73,8 +77,8 @@ pub struct ISODate {
 }
 
 impl ISODate {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -88,14 +92,14 @@ pub struct Max140Text {
 }
 
 impl Max140Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max140_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max140_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max140_text.chars().count() > 140 {
-			return false
+			return Err(ValidationError::new(1002, "max140_text exceeds the maximum length of 140".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -113,12 +117,12 @@ pub struct RoutingNumberFRS1 {
 }
 
 impl RoutingNumberFRS1 {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[0-9]{9,9}").unwrap();
 		if !pattern.is_match(&self.routing_number_frs_1) {
-			return false
+			return Err(ValidationError::new(1005, "routing_number_frs_1 does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -136,8 +140,8 @@ pub enum ServicesFedNow1 {
 }
 
 impl ServicesFedNow1 {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -150,8 +154,8 @@ pub struct Admi998SuplDataV01 {
 }
 
 impl Admi998SuplDataV01 {
-	pub fn validate(&self) -> bool {
-		if !self.ptcpt_file.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.ptcpt_file.validate() { return Err(e); }
+		Ok(())
 	}
 }

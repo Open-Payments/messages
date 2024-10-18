@@ -24,6 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
+use crate::validationerror::*;
 
 
 
@@ -43,11 +44,11 @@ pub struct Event1 {
 }
 
 impl Event1 {
-	pub fn validate(&self) -> bool {
-		if !self.evt_cd.validate() { return false }
-		if let Some(ref evt_param_vec) = self.evt_param { for item in evt_param_vec { if !item.validate() { return false; } } }
-		if let Some(ref evt_desc_value) = self.evt_desc { if !evt_desc_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.evt_cd.validate() { return Err(e); }
+		if let Some(ref evt_param_vec) = self.evt_param { for item in evt_param_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref evt_desc_value) = self.evt_desc { if let Err(e) = evt_desc_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -61,12 +62,12 @@ pub struct Exact4AlphaNumericText {
 }
 
 impl Exact4AlphaNumericText {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[a-zA-Z0-9]{4}").unwrap();
 		if !pattern.is_match(&self.exact4_alpha_numeric_text) {
-			return false
+			return Err(ValidationError::new(1005, "exact4_alpha_numeric_text does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -80,8 +81,8 @@ pub struct ISODateTime {
 }
 
 impl ISODateTime {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -95,14 +96,14 @@ pub struct Max350Text {
 }
 
 impl Max350Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max350_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max350_text.chars().count() > 350 {
-			return false
+			return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -116,14 +117,14 @@ pub struct Max35Text {
 }
 
 impl Max35Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max35_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max35_text.chars().count() > 35 {
-			return false
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -137,18 +138,18 @@ pub struct Max4AlphaNumericText {
 }
 
 impl Max4AlphaNumericText {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max4_alpha_numeric_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max4_alpha_numeric_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max4_alpha_numeric_text.chars().count() > 4 {
-			return false
+			return Err(ValidationError::new(1002, "max4_alpha_numeric_text exceeds the maximum length of 4".to_string()));
 		}
 		let pattern = Regex::new("[a-zA-Z0-9]{1,4}").unwrap();
 		if !pattern.is_match(&self.max4_alpha_numeric_text) {
-			return false
+			return Err(ValidationError::new(1005, "max4_alpha_numeric_text does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -163,10 +164,10 @@ pub struct SupplementaryData1 {
 }
 
 impl SupplementaryData1 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if !plc_and_nm_value.validate() { return false; } }
-		if !self.envlp.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if let Err(e) = plc_and_nm_value.validate() { return Err(e); } }
+		if let Err(e) = self.envlp.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -177,8 +178,8 @@ pub struct SupplementaryDataEnvelope1 {
 }
 
 impl SupplementaryDataEnvelope1 {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -199,12 +200,12 @@ pub struct SystemEventAcknowledgementV01 {
 }
 
 impl SystemEventAcknowledgementV01 {
-	pub fn validate(&self) -> bool {
-		if !self.msg_id.validate() { return false }
-		if let Some(ref orgtr_ref_value) = self.orgtr_ref { if !orgtr_ref_value.validate() { return false; } }
-		if let Some(ref sttlm_ssn_idr_value) = self.sttlm_ssn_idr { if !sttlm_ssn_idr_value.validate() { return false; } }
-		if let Some(ref ack_dtls_value) = self.ack_dtls { if !ack_dtls_value.validate() { return false; } }
-		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.msg_id.validate() { return Err(e); }
+		if let Some(ref orgtr_ref_value) = self.orgtr_ref { if let Err(e) = orgtr_ref_value.validate() { return Err(e); } }
+		if let Some(ref sttlm_ssn_idr_value) = self.sttlm_ssn_idr { if let Err(e) = sttlm_ssn_idr_value.validate() { return Err(e); } }
+		if let Some(ref ack_dtls_value) = self.ack_dtls { if let Err(e) = ack_dtls_value.validate() { return Err(e); } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
 	}
 }

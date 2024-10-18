@@ -24,6 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
+use crate::validationerror::*;
 
 
 // ActiveCurrencyAndAmountSimpleType ...
@@ -35,11 +36,11 @@ pub struct ActiveCurrencyAndAmountSimpleType {
 }
 
 impl ActiveCurrencyAndAmountSimpleType {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.active_currency_and_amount_simple_type < 0.000000 {
-			return false
+			return Err(ValidationError::new(1003, "active_currency_and_amount_simple_type is less than the minimum value of 0.000000".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -54,8 +55,8 @@ pub struct ActiveCurrencyAndAmount {
 }
 
 impl ActiveCurrencyAndAmount {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -69,12 +70,12 @@ pub struct ActiveCurrencyCode {
 }
 
 impl ActiveCurrencyCode {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
 		if !pattern.is_match(&self.active_currency_code) {
-			return false
+			return Err(ValidationError::new(1005, "active_currency_code does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -88,12 +89,12 @@ pub struct ActiveOrHistoricCurrencyCode {
 }
 
 impl ActiveOrHistoricCurrencyCode {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
 		if !pattern.is_match(&self.active_or_historic_currency_code) {
-			return false
+			return Err(ValidationError::new(1005, "active_or_historic_currency_code does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -107,8 +108,8 @@ pub struct BaseOneRate {
 }
 
 impl BaseOneRate {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -125,11 +126,11 @@ pub struct CounterpartyIdentification3Choice {
 }
 
 impl CounterpartyIdentification3Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref lei_value) = self.lei { if !lei_value.validate() { return false; } }
-		if let Some(ref sctr_and_lctn_value) = self.sctr_and_lctn { if !sctr_and_lctn_value.validate() { return false; } }
-		if let Some(ref nm_and_lctn_value) = self.nm_and_lctn { if !nm_and_lctn_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref lei_value) = self.lei { if let Err(e) = lei_value.validate() { return Err(e); } }
+		if let Some(ref sctr_and_lctn_value) = self.sctr_and_lctn { if let Err(e) = sctr_and_lctn_value.validate() { return Err(e); } }
+		if let Some(ref nm_and_lctn_value) = self.nm_and_lctn { if let Err(e) = nm_and_lctn_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -143,12 +144,12 @@ pub struct CountryCode {
 }
 
 impl CountryCode {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z]{2,2}").unwrap();
 		if !pattern.is_match(&self.country_code) {
-			return false
+			return Err(ValidationError::new(1005, "country_code does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -163,8 +164,8 @@ pub struct DateAndDateTimeChoice {
 }
 
 impl DateAndDateTimeChoice {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -179,8 +180,8 @@ pub struct DateTimePeriod1 {
 }
 
 impl DateTimePeriod1 {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -194,8 +195,8 @@ pub struct DecimalNumber {
 }
 
 impl DecimalNumber {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -212,9 +213,9 @@ pub struct ForeignExchange1 {
 }
 
 impl ForeignExchange1 {
-	pub fn validate(&self) -> bool {
-		if !self.frgn_ccy.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.frgn_ccy.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -229,10 +230,10 @@ pub struct ForeignExchangeSwap3Choice {
 }
 
 impl ForeignExchangeSwap3Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref data_set_actn_value) = self.data_set_actn { if !data_set_actn_value.validate() { return false; } }
-		if let Some(ref tx_vec) = self.tx { for item in tx_vec { if !item.validate() { return false; } } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref data_set_actn_value) = self.data_set_actn { if let Err(e) = data_set_actn_value.validate() { return Err(e); } }
+		if let Some(ref tx_vec) = self.tx { for item in tx_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
 	}
 }
 
@@ -273,21 +274,21 @@ pub struct ForeignExchangeSwapTransaction3 {
 }
 
 impl ForeignExchangeSwapTransaction3 {
-	pub fn validate(&self) -> bool {
-		if !self.rptd_tx_sts.validate() { return false }
-		if let Some(ref nvtn_sts_value) = self.nvtn_sts { if !nvtn_sts_value.validate() { return false; } }
-		if let Some(ref brnch_id_value) = self.brnch_id { if !brnch_id_value.validate() { return false; } }
-		if let Some(ref unq_tx_idr_value) = self.unq_tx_idr { if !unq_tx_idr_value.validate() { return false; } }
-		if !self.prtry_tx_id.validate() { return false }
-		if let Some(ref rltd_prtry_tx_id_value) = self.rltd_prtry_tx_id { if !rltd_prtry_tx_id_value.validate() { return false; } }
-		if let Some(ref ctr_pty_prtry_tx_id_value) = self.ctr_pty_prtry_tx_id { if !ctr_pty_prtry_tx_id_value.validate() { return false; } }
-		if !self.ctr_pty_id.validate() { return false }
-		if !self.trad_dt.validate() { return false }
-		if !self.tx_tp.validate() { return false }
-		if !self.tx_nmnl_amt.validate() { return false }
-		if !self.fx.validate() { return false }
-		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.rptd_tx_sts.validate() { return Err(e); }
+		if let Some(ref nvtn_sts_value) = self.nvtn_sts { if let Err(e) = nvtn_sts_value.validate() { return Err(e); } }
+		if let Some(ref brnch_id_value) = self.brnch_id { if let Err(e) = brnch_id_value.validate() { return Err(e); } }
+		if let Some(ref unq_tx_idr_value) = self.unq_tx_idr { if let Err(e) = unq_tx_idr_value.validate() { return Err(e); } }
+		if let Err(e) = self.prtry_tx_id.validate() { return Err(e); }
+		if let Some(ref rltd_prtry_tx_id_value) = self.rltd_prtry_tx_id { if let Err(e) = rltd_prtry_tx_id_value.validate() { return Err(e); } }
+		if let Some(ref ctr_pty_prtry_tx_id_value) = self.ctr_pty_prtry_tx_id { if let Err(e) = ctr_pty_prtry_tx_id_value.validate() { return Err(e); } }
+		if let Err(e) = self.ctr_pty_id.validate() { return Err(e); }
+		if let Err(e) = self.trad_dt.validate() { return Err(e); }
+		if let Err(e) = self.tx_tp.validate() { return Err(e); }
+		if let Err(e) = self.tx_nmnl_amt.validate() { return Err(e); }
+		if let Err(e) = self.fx.validate() { return Err(e); }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
 	}
 }
 
@@ -301,8 +302,8 @@ pub struct ISODate {
 }
 
 impl ISODate {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -316,8 +317,8 @@ pub struct ISODateTime {
 }
 
 impl ISODateTime {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -331,12 +332,12 @@ pub struct LEIIdentifier {
 }
 
 impl LEIIdentifier {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
 		if !pattern.is_match(&self.lei_identifier) {
-			return false
+			return Err(ValidationError::new(1005, "lei_identifier does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -350,14 +351,14 @@ pub struct Max105Text {
 }
 
 impl Max105Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max105_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max105_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max105_text.chars().count() > 105 {
-			return false
+			return Err(ValidationError::new(1002, "max105_text exceeds the maximum length of 105".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -371,14 +372,14 @@ pub struct Max350Text {
 }
 
 impl Max350Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max350_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max350_text.chars().count() > 350 {
-			return false
+			return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -392,14 +393,14 @@ pub struct Max70Text {
 }
 
 impl Max70Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max70_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max70_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max70_text.chars().count() > 70 {
-			return false
+			return Err(ValidationError::new(1002, "max70_text exceeds the maximum length of 70".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -416,11 +417,11 @@ pub struct MoneyMarketForeignExchangeSwapsStatisticalReportV02 {
 }
 
 impl MoneyMarketForeignExchangeSwapsStatisticalReportV02 {
-	pub fn validate(&self) -> bool {
-		if !self.rpt_hdr.validate() { return false }
-		if !self.fx_swps_rpt.validate() { return false }
-		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.rpt_hdr.validate() { return Err(e); }
+		if let Err(e) = self.fx_swps_rpt.validate() { return Err(e); }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
 	}
 }
 
@@ -435,10 +436,10 @@ pub struct MoneyMarketReportHeader1 {
 }
 
 impl MoneyMarketReportHeader1 {
-	pub fn validate(&self) -> bool {
-		if !self.rptg_agt.validate() { return false }
-		if !self.ref_prd.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.rptg_agt.validate() { return Err(e); }
+		if let Err(e) = self.ref_prd.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -453,10 +454,10 @@ pub struct NameAndLocation1 {
 }
 
 impl NameAndLocation1 {
-	pub fn validate(&self) -> bool {
-		if !self.nm.validate() { return false }
-		if !self.lctn.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.nm.validate() { return Err(e); }
+		if let Err(e) = self.lctn.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -472,8 +473,8 @@ pub enum NovationStatus1Code {
 }
 
 impl NovationStatus1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -489,8 +490,8 @@ pub enum ReportPeriodActivity3Code {
 }
 
 impl ReportPeriodActivity3Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -504,8 +505,8 @@ pub struct SNA2008SectorIdentifier {
 }
 
 impl SNA2008SectorIdentifier {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -520,9 +521,9 @@ pub struct SectorAndLocation1 {
 }
 
 impl SectorAndLocation1 {
-	pub fn validate(&self) -> bool {
-		if !self.lctn.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.lctn.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -538,8 +539,8 @@ pub enum SecuritiesTransactionType15Code {
 }
 
 impl SecuritiesTransactionType15Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -554,10 +555,10 @@ pub struct SupplementaryData1 {
 }
 
 impl SupplementaryData1 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if !plc_and_nm_value.validate() { return false; } }
-		if !self.envlp.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if let Err(e) = plc_and_nm_value.validate() { return Err(e); } }
+		if let Err(e) = self.envlp.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -568,8 +569,8 @@ pub struct SupplementaryDataEnvelope1 {
 }
 
 impl SupplementaryDataEnvelope1 {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -589,7 +590,7 @@ pub enum TransactionOperationType1Code {
 }
 
 impl TransactionOperationType1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }

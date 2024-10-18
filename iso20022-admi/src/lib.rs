@@ -33,3 +33,5 @@ pub mod admi_010_001_02;
 pub mod admi_011_001_01;
 pub mod admi_017_001_02;
 pub mod admi_024_001_01;
+
+pub mod validationerror;

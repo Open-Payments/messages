@@ -24,6 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
+use crate::validationerror::*;
 
 
 // ActiveCurrencyAnd13DecimalAmountSimpleType ...
@@ -35,11 +36,11 @@ pub struct ActiveCurrencyAnd13DecimalAmountSimpleType {
 }
 
 impl ActiveCurrencyAnd13DecimalAmountSimpleType {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.active_currency_and13_decimal_amount_simple_type < 0.000000 {
-			return false
+			return Err(ValidationError::new(1003, "active_currency_and13_decimal_amount_simple_type is less than the minimum value of 0.000000".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -54,8 +55,8 @@ pub struct ActiveCurrencyAnd13DecimalAmount {
 }
 
 impl ActiveCurrencyAnd13DecimalAmount {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -69,12 +70,12 @@ pub struct ActiveCurrencyCode {
 }
 
 impl ActiveCurrencyCode {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
 		if !pattern.is_match(&self.active_currency_code) {
-			return false
+			return Err(ValidationError::new(1005, "active_currency_code does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -88,11 +89,11 @@ pub struct ActiveOrHistoricCurrencyAndAmountSimpleType {
 }
 
 impl ActiveOrHistoricCurrencyAndAmountSimpleType {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.active_or_historic_currency_and_amount_simple_type < 0.000000 {
-			return false
+			return Err(ValidationError::new(1003, "active_or_historic_currency_and_amount_simple_type is less than the minimum value of 0.000000".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -107,8 +108,8 @@ pub struct ActiveOrHistoricCurrencyAndAmount {
 }
 
 impl ActiveOrHistoricCurrencyAndAmount {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -122,12 +123,12 @@ pub struct ActiveOrHistoricCurrencyCode {
 }
 
 impl ActiveOrHistoricCurrencyCode {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
 		if !pattern.is_match(&self.active_or_historic_currency_code) {
-			return false
+			return Err(ValidationError::new(1005, "active_or_historic_currency_code does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -142,10 +143,10 @@ pub struct AgriculturalCommodityDairy1 {
 }
 
 impl AgriculturalCommodityDairy1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -160,10 +161,10 @@ pub struct AgriculturalCommodityForestry1 {
 }
 
 impl AgriculturalCommodityForestry1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -180,11 +181,11 @@ pub struct AgriculturalCommodityGrain1 {
 }
 
 impl AgriculturalCommodityGrain1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if !addtl_sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if let Err(e) = addtl_sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -199,10 +200,10 @@ pub struct AgriculturalCommodityLiveStock1 {
 }
 
 impl AgriculturalCommodityLiveStock1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -219,11 +220,11 @@ pub struct AgriculturalCommodityOilSeed1 {
 }
 
 impl AgriculturalCommodityOilSeed1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if !self.addtl_sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Err(e) = self.addtl_sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -240,11 +241,11 @@ pub struct AgriculturalCommodityOliveOil1 {
 }
 
 impl AgriculturalCommodityOliveOil1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if !addtl_sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if let Err(e) = addtl_sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -259,10 +260,10 @@ pub struct AgriculturalCommodityPotato1 {
 }
 
 impl AgriculturalCommodityPotato1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -277,10 +278,10 @@ pub struct AgriculturalCommoditySeafood1 {
 }
 
 impl AgriculturalCommoditySeafood1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -297,11 +298,11 @@ pub struct AgriculturalCommoditySoft1 {
 }
 
 impl AgriculturalCommoditySoft1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if !self.addtl_sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Err(e) = self.addtl_sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -316,9 +317,9 @@ pub struct AmountAndDirection61 {
 }
 
 impl AmountAndDirection61 {
-	pub fn validate(&self) -> bool {
-		if !self.amt.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.amt.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -335,11 +336,11 @@ pub struct AssetClass2 {
 }
 
 impl AssetClass2 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref cmmdty_value) = self.cmmdty { if !cmmdty_value.validate() { return false; } }
-		if let Some(ref intrst_value) = self.intrst { if !intrst_value.validate() { return false; } }
-		if let Some(ref fx_value) = self.fx { if !fx_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref cmmdty_value) = self.cmmdty { if let Err(e) = cmmdty_value.validate() { return Err(e); } }
+		if let Some(ref intrst_value) = self.intrst { if let Err(e) = intrst_value.validate() { return Err(e); } }
+		if let Some(ref fx_value) = self.fx { if let Err(e) = fx_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -378,22 +379,22 @@ pub struct AssetClassCommodity3Choice {
 }
 
 impl AssetClassCommodity3Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref agrcltrl_value) = self.agrcltrl { if !agrcltrl_value.validate() { return false; } }
-		if let Some(ref nrgy_value) = self.nrgy { if !nrgy_value.validate() { return false; } }
-		if let Some(ref envttl_value) = self.envttl { if !envttl_value.validate() { return false; } }
-		if let Some(ref frtlzr_value) = self.frtlzr { if !frtlzr_value.validate() { return false; } }
-		if let Some(ref frght_value) = self.frght { if !frght_value.validate() { return false; } }
-		if let Some(ref indstrl_pdct_value) = self.indstrl_pdct { if !indstrl_pdct_value.validate() { return false; } }
-		if let Some(ref metl_value) = self.metl { if !metl_value.validate() { return false; } }
-		if let Some(ref othr_c10_value) = self.othr_c10 { if !othr_c10_value.validate() { return false; } }
-		if let Some(ref ppr_value) = self.ppr { if !ppr_value.validate() { return false; } }
-		if let Some(ref plprpln_value) = self.plprpln { if !plprpln_value.validate() { return false; } }
-		if let Some(ref infltn_value) = self.infltn { if !infltn_value.validate() { return false; } }
-		if let Some(ref multi_cmmdty_extc_value) = self.multi_cmmdty_extc { if !multi_cmmdty_extc_value.validate() { return false; } }
-		if let Some(ref offcl_ecnmc_sttstcs_value) = self.offcl_ecnmc_sttstcs { if !offcl_ecnmc_sttstcs_value.validate() { return false; } }
-		if let Some(ref othr_value) = self.othr { if !othr_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref agrcltrl_value) = self.agrcltrl { if let Err(e) = agrcltrl_value.validate() { return Err(e); } }
+		if let Some(ref nrgy_value) = self.nrgy { if let Err(e) = nrgy_value.validate() { return Err(e); } }
+		if let Some(ref envttl_value) = self.envttl { if let Err(e) = envttl_value.validate() { return Err(e); } }
+		if let Some(ref frtlzr_value) = self.frtlzr { if let Err(e) = frtlzr_value.validate() { return Err(e); } }
+		if let Some(ref frght_value) = self.frght { if let Err(e) = frght_value.validate() { return Err(e); } }
+		if let Some(ref indstrl_pdct_value) = self.indstrl_pdct { if let Err(e) = indstrl_pdct_value.validate() { return Err(e); } }
+		if let Some(ref metl_value) = self.metl { if let Err(e) = metl_value.validate() { return Err(e); } }
+		if let Some(ref othr_c10_value) = self.othr_c10 { if let Err(e) = othr_c10_value.validate() { return Err(e); } }
+		if let Some(ref ppr_value) = self.ppr { if let Err(e) = ppr_value.validate() { return Err(e); } }
+		if let Some(ref plprpln_value) = self.plprpln { if let Err(e) = plprpln_value.validate() { return Err(e); } }
+		if let Some(ref infltn_value) = self.infltn { if let Err(e) = infltn_value.validate() { return Err(e); } }
+		if let Some(ref multi_cmmdty_extc_value) = self.multi_cmmdty_extc { if let Err(e) = multi_cmmdty_extc_value.validate() { return Err(e); } }
+		if let Some(ref offcl_ecnmc_sttstcs_value) = self.offcl_ecnmc_sttstcs { if let Err(e) = offcl_ecnmc_sttstcs_value.validate() { return Err(e); } }
+		if let Some(ref othr_value) = self.othr { if let Err(e) = othr_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -422,17 +423,17 @@ pub struct AssetClassCommodityAgricultural1Choice {
 }
 
 impl AssetClassCommodityAgricultural1Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref grn_oil_seed_value) = self.grn_oil_seed { if !grn_oil_seed_value.validate() { return false; } }
-		if let Some(ref soft_value) = self.soft { if !soft_value.validate() { return false; } }
-		if let Some(ref ptt_value) = self.ptt { if !ptt_value.validate() { return false; } }
-		if let Some(ref olv_oil_value) = self.olv_oil { if !olv_oil_value.validate() { return false; } }
-		if let Some(ref dairy_value) = self.dairy { if !dairy_value.validate() { return false; } }
-		if let Some(ref frstry_value) = self.frstry { if !frstry_value.validate() { return false; } }
-		if let Some(ref sfd_value) = self.sfd { if !sfd_value.validate() { return false; } }
-		if let Some(ref live_stock_value) = self.live_stock { if !live_stock_value.validate() { return false; } }
-		if let Some(ref grn_value) = self.grn { if !grn_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref grn_oil_seed_value) = self.grn_oil_seed { if let Err(e) = grn_oil_seed_value.validate() { return Err(e); } }
+		if let Some(ref soft_value) = self.soft { if let Err(e) = soft_value.validate() { return Err(e); } }
+		if let Some(ref ptt_value) = self.ptt { if let Err(e) = ptt_value.validate() { return Err(e); } }
+		if let Some(ref olv_oil_value) = self.olv_oil { if let Err(e) = olv_oil_value.validate() { return Err(e); } }
+		if let Some(ref dairy_value) = self.dairy { if let Err(e) = dairy_value.validate() { return Err(e); } }
+		if let Some(ref frstry_value) = self.frstry { if let Err(e) = frstry_value.validate() { return Err(e); } }
+		if let Some(ref sfd_value) = self.sfd { if let Err(e) = sfd_value.validate() { return Err(e); } }
+		if let Some(ref live_stock_value) = self.live_stock { if let Err(e) = live_stock_value.validate() { return Err(e); } }
+		if let Some(ref grn_value) = self.grn { if let Err(e) = grn_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -459,16 +460,16 @@ pub struct AssetClassCommodityEnergy1Choice {
 }
 
 impl AssetClassCommodityEnergy1Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref elctrcty_value) = self.elctrcty { if !elctrcty_value.validate() { return false; } }
-		if let Some(ref ntrl_gas_value) = self.ntrl_gas { if !ntrl_gas_value.validate() { return false; } }
-		if let Some(ref oil_value) = self.oil { if !oil_value.validate() { return false; } }
-		if let Some(ref coal_value) = self.coal { if !coal_value.validate() { return false; } }
-		if let Some(ref intr_nrgy_value) = self.intr_nrgy { if !intr_nrgy_value.validate() { return false; } }
-		if let Some(ref rnwbl_nrgy_value) = self.rnwbl_nrgy { if !rnwbl_nrgy_value.validate() { return false; } }
-		if let Some(ref lght_end_value) = self.lght_end { if !lght_end_value.validate() { return false; } }
-		if let Some(ref dstllts_value) = self.dstllts { if !dstllts_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref elctrcty_value) = self.elctrcty { if let Err(e) = elctrcty_value.validate() { return Err(e); } }
+		if let Some(ref ntrl_gas_value) = self.ntrl_gas { if let Err(e) = ntrl_gas_value.validate() { return Err(e); } }
+		if let Some(ref oil_value) = self.oil { if let Err(e) = oil_value.validate() { return Err(e); } }
+		if let Some(ref coal_value) = self.coal { if let Err(e) = coal_value.validate() { return Err(e); } }
+		if let Some(ref intr_nrgy_value) = self.intr_nrgy { if let Err(e) = intr_nrgy_value.validate() { return Err(e); } }
+		if let Some(ref rnwbl_nrgy_value) = self.rnwbl_nrgy { if let Err(e) = rnwbl_nrgy_value.validate() { return Err(e); } }
+		if let Some(ref lght_end_value) = self.lght_end { if let Err(e) = lght_end_value.validate() { return Err(e); } }
+		if let Some(ref dstllts_value) = self.dstllts { if let Err(e) = dstllts_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -485,11 +486,11 @@ pub struct AssetClassCommodityEnvironmental1Choice {
 }
 
 impl AssetClassCommodityEnvironmental1Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref emssns_value) = self.emssns { if !emssns_value.validate() { return false; } }
-		if let Some(ref wthr_value) = self.wthr { if !wthr_value.validate() { return false; } }
-		if let Some(ref crbn_rltd_value) = self.crbn_rltd { if !crbn_rltd_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref emssns_value) = self.emssns { if let Err(e) = emssns_value.validate() { return Err(e); } }
+		if let Some(ref wthr_value) = self.wthr { if let Err(e) = wthr_value.validate() { return Err(e); } }
+		if let Some(ref crbn_rltd_value) = self.crbn_rltd { if let Err(e) = crbn_rltd_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -512,14 +513,14 @@ pub struct AssetClassCommodityFertilizer1Choice {
 }
 
 impl AssetClassCommodityFertilizer1Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref ammn_value) = self.ammn { if !ammn_value.validate() { return false; } }
-		if let Some(ref dmmnm_phspht_value) = self.dmmnm_phspht { if !dmmnm_phspht_value.validate() { return false; } }
-		if let Some(ref ptsh_value) = self.ptsh { if !ptsh_value.validate() { return false; } }
-		if let Some(ref slphr_value) = self.slphr { if !slphr_value.validate() { return false; } }
-		if let Some(ref urea_value) = self.urea { if !urea_value.validate() { return false; } }
-		if let Some(ref urea_and_ammnm_ntrt_value) = self.urea_and_ammnm_ntrt { if !urea_and_ammnm_ntrt_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref ammn_value) = self.ammn { if let Err(e) = ammn_value.validate() { return Err(e); } }
+		if let Some(ref dmmnm_phspht_value) = self.dmmnm_phspht { if let Err(e) = dmmnm_phspht_value.validate() { return Err(e); } }
+		if let Some(ref ptsh_value) = self.ptsh { if let Err(e) = ptsh_value.validate() { return Err(e); } }
+		if let Some(ref slphr_value) = self.slphr { if let Err(e) = slphr_value.validate() { return Err(e); } }
+		if let Some(ref urea_value) = self.urea { if let Err(e) = urea_value.validate() { return Err(e); } }
+		if let Some(ref urea_and_ammnm_ntrt_value) = self.urea_and_ammnm_ntrt { if let Err(e) = urea_and_ammnm_ntrt_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -536,11 +537,11 @@ pub struct AssetClassCommodityFreight1Choice {
 }
 
 impl AssetClassCommodityFreight1Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref dry_value) = self.dry { if !dry_value.validate() { return false; } }
-		if let Some(ref wet_value) = self.wet { if !wet_value.validate() { return false; } }
-		if let Some(ref cntnr_ship_value) = self.cntnr_ship { if !cntnr_ship_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref dry_value) = self.dry { if let Err(e) = dry_value.validate() { return Err(e); } }
+		if let Some(ref wet_value) = self.wet { if let Err(e) = wet_value.validate() { return Err(e); } }
+		if let Some(ref cntnr_ship_value) = self.cntnr_ship { if let Err(e) = cntnr_ship_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -555,10 +556,10 @@ pub struct AssetClassCommodityIndustrialProduct1Choice {
 }
 
 impl AssetClassCommodityIndustrialProduct1Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref cnstrctn_value) = self.cnstrctn { if !cnstrctn_value.validate() { return false; } }
-		if let Some(ref manfctg_value) = self.manfctg { if !manfctg_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref cnstrctn_value) = self.cnstrctn { if let Err(e) = cnstrctn_value.validate() { return Err(e); } }
+		if let Some(ref manfctg_value) = self.manfctg { if let Err(e) = manfctg_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -571,9 +572,9 @@ pub struct AssetClassCommodityInflation1 {
 }
 
 impl AssetClassCommodityInflation1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -588,10 +589,10 @@ pub struct AssetClassCommodityMetal1Choice {
 }
 
 impl AssetClassCommodityMetal1Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref non_prcs_value) = self.non_prcs { if !non_prcs_value.validate() { return false; } }
-		if let Some(ref prcs_value) = self.prcs { if !prcs_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref non_prcs_value) = self.non_prcs { if let Err(e) = non_prcs_value.validate() { return Err(e); } }
+		if let Some(ref prcs_value) = self.prcs { if let Err(e) = prcs_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -604,9 +605,9 @@ pub struct AssetClassCommodityMultiCommodityExotic1 {
 }
 
 impl AssetClassCommodityMultiCommodityExotic1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -619,9 +620,9 @@ pub struct AssetClassCommodityOfficialEconomicStatistics1 {
 }
 
 impl AssetClassCommodityOfficialEconomicStatistics1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -634,9 +635,9 @@ pub struct AssetClassCommodityOther1 {
 }
 
 impl AssetClassCommodityOther1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -651,10 +652,10 @@ pub struct AssetClassCommodityOtherC102Choice {
 }
 
 impl AssetClassCommodityOtherC102Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref dlvrbl_value) = self.dlvrbl { if !dlvrbl_value.validate() { return false; } }
-		if let Some(ref non_dlvrbl_value) = self.non_dlvrbl { if !non_dlvrbl_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref dlvrbl_value) = self.dlvrbl { if let Err(e) = dlvrbl_value.validate() { return Err(e); } }
+		if let Some(ref non_dlvrbl_value) = self.non_dlvrbl { if let Err(e) = non_dlvrbl_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -673,12 +674,12 @@ pub struct AssetClassCommodityPaper1Choice {
 }
 
 impl AssetClassCommodityPaper1Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref cntnr_brd_value) = self.cntnr_brd { if !cntnr_brd_value.validate() { return false; } }
-		if let Some(ref nwsprnt_value) = self.nwsprnt { if !nwsprnt_value.validate() { return false; } }
-		if let Some(ref pulp_value) = self.pulp { if !pulp_value.validate() { return false; } }
-		if let Some(ref rcvrd_ppr_value) = self.rcvrd_ppr { if !rcvrd_ppr_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref cntnr_brd_value) = self.cntnr_brd { if let Err(e) = cntnr_brd_value.validate() { return Err(e); } }
+		if let Some(ref nwsprnt_value) = self.nwsprnt { if let Err(e) = nwsprnt_value.validate() { return Err(e); } }
+		if let Some(ref pulp_value) = self.pulp { if let Err(e) = pulp_value.validate() { return Err(e); } }
+		if let Some(ref rcvrd_ppr_value) = self.rcvrd_ppr { if let Err(e) = rcvrd_ppr_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -691,9 +692,9 @@ pub struct AssetClassCommodityPolypropylene1Choice {
 }
 
 impl AssetClassCommodityPolypropylene1Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref plstc_value) = self.plstc { if !plstc_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref plstc_value) = self.plstc { if let Err(e) = plstc_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -731,8 +732,8 @@ pub enum AssetClassDetailedSubProductType10Code {
 }
 
 impl AssetClassDetailedSubProductType10Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -754,8 +755,8 @@ pub enum AssetClassDetailedSubProductType11Code {
 }
 
 impl AssetClassDetailedSubProductType11Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -769,8 +770,8 @@ pub enum AssetClassDetailedSubProductType12Code {
 }
 
 impl AssetClassDetailedSubProductType12Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -784,8 +785,8 @@ pub enum AssetClassDetailedSubProductType14Code {
 }
 
 impl AssetClassDetailedSubProductType14Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -799,8 +800,8 @@ pub enum AssetClassDetailedSubProductType15Code {
 }
 
 impl AssetClassDetailedSubProductType15Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -824,8 +825,8 @@ pub enum AssetClassDetailedSubProductType1Code {
 }
 
 impl AssetClassDetailedSubProductType1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -847,8 +848,8 @@ pub enum AssetClassDetailedSubProductType2Code {
 }
 
 impl AssetClassDetailedSubProductType2Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -862,8 +863,8 @@ pub enum AssetClassDetailedSubProductType4Code {
 }
 
 impl AssetClassDetailedSubProductType4Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -885,8 +886,8 @@ pub enum AssetClassDetailedSubProductType5Code {
 }
 
 impl AssetClassDetailedSubProductType5Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -908,8 +909,8 @@ pub enum AssetClassDetailedSubProductType6Code {
 }
 
 impl AssetClassDetailedSubProductType6Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -969,8 +970,8 @@ pub enum AssetClassDetailedSubProductType7Code {
 }
 
 impl AssetClassDetailedSubProductType7Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -992,8 +993,8 @@ pub enum AssetClassDetailedSubProductType8Code {
 }
 
 impl AssetClassDetailedSubProductType8Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1007,8 +1008,8 @@ pub enum AssetClassProductType11Code {
 }
 
 impl AssetClassProductType11Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1022,8 +1023,8 @@ pub enum AssetClassProductType12Code {
 }
 
 impl AssetClassProductType12Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1037,8 +1038,8 @@ pub enum AssetClassProductType13Code {
 }
 
 impl AssetClassProductType13Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1052,8 +1053,8 @@ pub enum AssetClassProductType14Code {
 }
 
 impl AssetClassProductType14Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1067,8 +1068,8 @@ pub enum AssetClassProductType15Code {
 }
 
 impl AssetClassProductType15Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1082,8 +1083,8 @@ pub enum AssetClassProductType1Code {
 }
 
 impl AssetClassProductType1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1097,8 +1098,8 @@ pub enum AssetClassProductType2Code {
 }
 
 impl AssetClassProductType2Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1112,8 +1113,8 @@ pub enum AssetClassProductType3Code {
 }
 
 impl AssetClassProductType3Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1127,8 +1128,8 @@ pub enum AssetClassProductType4Code {
 }
 
 impl AssetClassProductType4Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1142,8 +1143,8 @@ pub enum AssetClassProductType5Code {
 }
 
 impl AssetClassProductType5Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1157,8 +1158,8 @@ pub enum AssetClassProductType6Code {
 }
 
 impl AssetClassProductType6Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1172,8 +1173,8 @@ pub enum AssetClassProductType7Code {
 }
 
 impl AssetClassProductType7Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1187,8 +1188,8 @@ pub enum AssetClassProductType8Code {
 }
 
 impl AssetClassProductType8Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1202,8 +1203,8 @@ pub enum AssetClassProductType9Code {
 }
 
 impl AssetClassProductType9Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1217,8 +1218,8 @@ pub enum AssetClassSubProductType10Code {
 }
 
 impl AssetClassSubProductType10Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1232,8 +1233,8 @@ pub enum AssetClassSubProductType15Code {
 }
 
 impl AssetClassSubProductType15Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1247,8 +1248,8 @@ pub enum AssetClassSubProductType16Code {
 }
 
 impl AssetClassSubProductType16Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1262,8 +1263,8 @@ pub enum AssetClassSubProductType18Code {
 }
 
 impl AssetClassSubProductType18Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1277,8 +1278,8 @@ pub enum AssetClassSubProductType1Code {
 }
 
 impl AssetClassSubProductType1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1292,8 +1293,8 @@ pub enum AssetClassSubProductType20Code {
 }
 
 impl AssetClassSubProductType20Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1307,8 +1308,8 @@ pub enum AssetClassSubProductType21Code {
 }
 
 impl AssetClassSubProductType21Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1322,8 +1323,8 @@ pub enum AssetClassSubProductType22Code {
 }
 
 impl AssetClassSubProductType22Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1337,8 +1338,8 @@ pub enum AssetClassSubProductType23Code {
 }
 
 impl AssetClassSubProductType23Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1352,8 +1353,8 @@ pub enum AssetClassSubProductType24Code {
 }
 
 impl AssetClassSubProductType24Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1367,8 +1368,8 @@ pub enum AssetClassSubProductType25Code {
 }
 
 impl AssetClassSubProductType25Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1382,8 +1383,8 @@ pub enum AssetClassSubProductType26Code {
 }
 
 impl AssetClassSubProductType26Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1397,8 +1398,8 @@ pub enum AssetClassSubProductType27Code {
 }
 
 impl AssetClassSubProductType27Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1412,8 +1413,8 @@ pub enum AssetClassSubProductType28Code {
 }
 
 impl AssetClassSubProductType28Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1427,8 +1428,8 @@ pub enum AssetClassSubProductType29Code {
 }
 
 impl AssetClassSubProductType29Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1442,8 +1443,8 @@ pub enum AssetClassSubProductType2Code {
 }
 
 impl AssetClassSubProductType2Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1457,8 +1458,8 @@ pub enum AssetClassSubProductType30Code {
 }
 
 impl AssetClassSubProductType30Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1472,8 +1473,8 @@ pub enum AssetClassSubProductType31Code {
 }
 
 impl AssetClassSubProductType31Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1487,8 +1488,8 @@ pub enum AssetClassSubProductType32Code {
 }
 
 impl AssetClassSubProductType32Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1502,8 +1503,8 @@ pub enum AssetClassSubProductType33Code {
 }
 
 impl AssetClassSubProductType33Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1517,8 +1518,8 @@ pub enum AssetClassSubProductType34Code {
 }
 
 impl AssetClassSubProductType34Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1532,8 +1533,8 @@ pub enum AssetClassSubProductType35Code {
 }
 
 impl AssetClassSubProductType35Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1547,8 +1548,8 @@ pub enum AssetClassSubProductType36Code {
 }
 
 impl AssetClassSubProductType36Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1562,8 +1563,8 @@ pub enum AssetClassSubProductType37Code {
 }
 
 impl AssetClassSubProductType37Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1577,8 +1578,8 @@ pub enum AssetClassSubProductType38Code {
 }
 
 impl AssetClassSubProductType38Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1592,8 +1593,8 @@ pub enum AssetClassSubProductType39Code {
 }
 
 impl AssetClassSubProductType39Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1607,8 +1608,8 @@ pub enum AssetClassSubProductType3Code {
 }
 
 impl AssetClassSubProductType3Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1622,8 +1623,8 @@ pub enum AssetClassSubProductType40Code {
 }
 
 impl AssetClassSubProductType40Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1637,8 +1638,8 @@ pub enum AssetClassSubProductType41Code {
 }
 
 impl AssetClassSubProductType41Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1652,8 +1653,8 @@ pub enum AssetClassSubProductType42Code {
 }
 
 impl AssetClassSubProductType42Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1667,8 +1668,8 @@ pub enum AssetClassSubProductType43Code {
 }
 
 impl AssetClassSubProductType43Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1682,8 +1683,8 @@ pub enum AssetClassSubProductType44Code {
 }
 
 impl AssetClassSubProductType44Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1697,8 +1698,8 @@ pub enum AssetClassSubProductType45Code {
 }
 
 impl AssetClassSubProductType45Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1712,8 +1713,8 @@ pub enum AssetClassSubProductType46Code {
 }
 
 impl AssetClassSubProductType46Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1727,8 +1728,8 @@ pub enum AssetClassSubProductType47Code {
 }
 
 impl AssetClassSubProductType47Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1742,8 +1743,8 @@ pub enum AssetClassSubProductType48Code {
 }
 
 impl AssetClassSubProductType48Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1757,8 +1758,8 @@ pub enum AssetClassSubProductType5Code {
 }
 
 impl AssetClassSubProductType5Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1772,8 +1773,8 @@ pub enum AssetClassSubProductType6Code {
 }
 
 impl AssetClassSubProductType6Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1787,8 +1788,8 @@ pub enum AssetClassSubProductType7Code {
 }
 
 impl AssetClassSubProductType7Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1802,8 +1803,8 @@ pub enum AssetClassSubProductType8Code {
 }
 
 impl AssetClassSubProductType8Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1835,8 +1836,8 @@ pub enum AssetClassTransactionType1Code {
 }
 
 impl AssetClassTransactionType1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1854,8 +1855,8 @@ pub enum AssetFXSubProductType1Code {
 }
 
 impl AssetFXSubProductType1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1881,8 +1882,8 @@ pub enum AssetPriceType1Code {
 }
 
 impl AssetPriceType1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1946,8 +1947,8 @@ pub enum BenchmarkCurveName2Code {
 }
 
 impl BenchmarkCurveName2Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -1962,10 +1963,10 @@ pub struct BenchmarkCurveName5Choice {
 }
 
 impl BenchmarkCurveName5Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref indx_value) = self.indx { if !indx_value.validate() { return false; } }
-		if let Some(ref nm_value) = self.nm { if !nm_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref indx_value) = self.indx { if let Err(e) = indx_value.validate() { return Err(e); } }
+		if let Some(ref nm_value) = self.nm { if let Err(e) = nm_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -1982,11 +1983,11 @@ pub struct BenchmarkCurveName6Choice {
 }
 
 impl BenchmarkCurveName6Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref isin_value) = self.isin { if !isin_value.validate() { return false; } }
-		if let Some(ref indx_value) = self.indx { if !indx_value.validate() { return false; } }
-		if let Some(ref nm_value) = self.nm { if !nm_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref isin_value) = self.isin { if let Err(e) = isin_value.validate() { return Err(e); } }
+		if let Some(ref indx_value) = self.indx { if let Err(e) = indx_value.validate() { return Err(e); } }
+		if let Some(ref nm_value) = self.nm { if let Err(e) = nm_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2000,12 +2001,12 @@ pub struct CFIOct2015Identifier {
 }
 
 impl CFIOct2015Identifier {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z]{6,6}").unwrap();
 		if !pattern.is_match(&self.cfi_oct2015_identifier) {
-			return false
+			return Err(ValidationError::new(1005, "cfi_oct2015_identifier does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -2019,12 +2020,12 @@ pub struct CountryCode {
 }
 
 impl CountryCode {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z]{2,2}").unwrap();
 		if !pattern.is_match(&self.country_code) {
-			return false
+			return Err(ValidationError::new(1005, "country_code does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -2045,12 +2046,12 @@ pub struct DebtInstrument2 {
 }
 
 impl DebtInstrument2 {
-	pub fn validate(&self) -> bool {
-		if !self.ttl_issd_nmnl_amt.validate() { return false }
-		if !self.nmnl_val_per_unit.validate() { return false }
-		if !self.intrst_rate.validate() { return false }
-		if let Some(ref debt_snrty_value) = self.debt_snrty { if !debt_snrty_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.ttl_issd_nmnl_amt.validate() { return Err(e); }
+		if let Err(e) = self.nmnl_val_per_unit.validate() { return Err(e); }
+		if let Err(e) = self.intrst_rate.validate() { return Err(e); }
+		if let Some(ref debt_snrty_value) = self.debt_snrty { if let Err(e) = debt_snrty_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2070,8 +2071,8 @@ pub enum DebtInstrumentSeniorityType1Code {
 }
 
 impl DebtInstrumentSeniorityType1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -2085,8 +2086,8 @@ pub struct DecimalNumber {
 }
 
 impl DecimalNumber {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -2103,11 +2104,11 @@ pub struct DerivativeCommodity2 {
 }
 
 impl DerivativeCommodity2 {
-	pub fn validate(&self) -> bool {
-		if !self.pdct.validate() { return false }
-		if let Some(ref tx_tp_value) = self.tx_tp { if !tx_tp_value.validate() { return false; } }
-		if let Some(ref fnl_pric_tp_value) = self.fnl_pric_tp { if !fnl_pric_tp_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.pdct.validate() { return Err(e); }
+		if let Some(ref tx_tp_value) = self.tx_tp { if let Err(e) = tx_tp_value.validate() { return Err(e); } }
+		if let Some(ref fnl_pric_tp_value) = self.fnl_pric_tp { if let Err(e) = fnl_pric_tp_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2122,10 +2123,10 @@ pub struct DerivativeForeignExchange3 {
 }
 
 impl DerivativeForeignExchange3 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref fx_tp_value) = self.fx_tp { if !fx_tp_value.validate() { return false; } }
-		if let Some(ref othr_ntnl_ccy_value) = self.othr_ntnl_ccy { if !othr_ntnl_ccy_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref fx_tp_value) = self.fx_tp { if let Err(e) = fx_tp_value.validate() { return Err(e); } }
+		if let Some(ref othr_ntnl_ccy_value) = self.othr_ntnl_ccy { if let Err(e) = othr_ntnl_ccy_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2152,14 +2153,14 @@ pub struct DerivativeInstrument5 {
 }
 
 impl DerivativeInstrument5 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref undrlyg_instrm_value) = self.undrlyg_instrm { if !undrlyg_instrm_value.validate() { return false; } }
-		if let Some(ref optn_tp_value) = self.optn_tp { if !optn_tp_value.validate() { return false; } }
-		if let Some(ref strk_pric_value) = self.strk_pric { if !strk_pric_value.validate() { return false; } }
-		if let Some(ref optn_exrc_style_value) = self.optn_exrc_style { if !optn_exrc_style_value.validate() { return false; } }
-		if let Some(ref dlvry_tp_value) = self.dlvry_tp { if !dlvry_tp_value.validate() { return false; } }
-		if let Some(ref asst_clss_spcfc_attrbts_value) = self.asst_clss_spcfc_attrbts { if !asst_clss_spcfc_attrbts_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref undrlyg_instrm_value) = self.undrlyg_instrm { if let Err(e) = undrlyg_instrm_value.validate() { return Err(e); } }
+		if let Some(ref optn_tp_value) = self.optn_tp { if let Err(e) = optn_tp_value.validate() { return Err(e); } }
+		if let Some(ref strk_pric_value) = self.strk_pric { if let Err(e) = strk_pric_value.validate() { return Err(e); } }
+		if let Some(ref optn_exrc_style_value) = self.optn_exrc_style { if let Err(e) = optn_exrc_style_value.validate() { return Err(e); } }
+		if let Some(ref dlvry_tp_value) = self.dlvry_tp { if let Err(e) = dlvry_tp_value.validate() { return Err(e); } }
+		if let Some(ref asst_clss_spcfc_attrbts_value) = self.asst_clss_spcfc_attrbts { if let Err(e) = asst_clss_spcfc_attrbts_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2178,12 +2179,12 @@ pub struct DerivativeInterest3 {
 }
 
 impl DerivativeInterest3 {
-	pub fn validate(&self) -> bool {
-		if !self.intrst_rate.validate() { return false }
-		if let Some(ref frst_leg_intrst_rate_value) = self.frst_leg_intrst_rate { if !frst_leg_intrst_rate_value.validate() { return false; } }
-		if let Some(ref othr_ntnl_ccy_value) = self.othr_ntnl_ccy { if !othr_ntnl_ccy_value.validate() { return false; } }
-		if let Some(ref othr_leg_intrst_rate_value) = self.othr_leg_intrst_rate { if !othr_leg_intrst_rate_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.intrst_rate.validate() { return Err(e); }
+		if let Some(ref frst_leg_intrst_rate_value) = self.frst_leg_intrst_rate { if let Err(e) = frst_leg_intrst_rate_value.validate() { return Err(e); } }
+		if let Some(ref othr_ntnl_ccy_value) = self.othr_ntnl_ccy { if let Err(e) = othr_ntnl_ccy_value.validate() { return Err(e); } }
+		if let Some(ref othr_leg_intrst_rate_value) = self.othr_leg_intrst_rate { if let Err(e) = othr_leg_intrst_rate_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2198,10 +2199,10 @@ pub struct EnergyCommodityCoal1 {
 }
 
 impl EnergyCommodityCoal1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2216,10 +2217,10 @@ pub struct EnergyCommodityDistillates1 {
 }
 
 impl EnergyCommodityDistillates1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2236,11 +2237,11 @@ pub struct EnergyCommodityElectricity1 {
 }
 
 impl EnergyCommodityElectricity1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if !self.addtl_sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Err(e) = self.addtl_sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2255,10 +2256,10 @@ pub struct EnergyCommodityInterEnergy1 {
 }
 
 impl EnergyCommodityInterEnergy1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2273,10 +2274,10 @@ pub struct EnergyCommodityLightEnd1 {
 }
 
 impl EnergyCommodityLightEnd1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2293,11 +2294,11 @@ pub struct EnergyCommodityNaturalGas1 {
 }
 
 impl EnergyCommodityNaturalGas1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if !addtl_sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if let Err(e) = addtl_sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2314,11 +2315,11 @@ pub struct EnergyCommodityOil1 {
 }
 
 impl EnergyCommodityOil1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if !addtl_sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if let Err(e) = addtl_sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2333,10 +2334,10 @@ pub struct EnergyCommodityRenewableEnergy1 {
 }
 
 impl EnergyCommodityRenewableEnergy1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2351,10 +2352,10 @@ pub struct EnvironmentalCommodityCarbonRelated1 {
 }
 
 impl EnvironmentalCommodityCarbonRelated1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2371,11 +2372,11 @@ pub struct EnvironmentalCommodityEmission1 {
 }
 
 impl EnvironmentalCommodityEmission1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if !addtl_sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if let Err(e) = addtl_sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2390,10 +2391,10 @@ pub struct EnvironmentalCommodityWeather1 {
 }
 
 impl EnvironmentalCommodityWeather1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2408,10 +2409,10 @@ pub struct FertilizerCommodityAmmonia1 {
 }
 
 impl FertilizerCommodityAmmonia1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2426,10 +2427,10 @@ pub struct FertilizerCommodityDiammoniumPhosphate1 {
 }
 
 impl FertilizerCommodityDiammoniumPhosphate1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2444,10 +2445,10 @@ pub struct FertilizerCommodityPotash1 {
 }
 
 impl FertilizerCommodityPotash1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2462,10 +2463,10 @@ pub struct FertilizerCommoditySulphur1 {
 }
 
 impl FertilizerCommoditySulphur1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2480,10 +2481,10 @@ pub struct FertilizerCommodityUrea1 {
 }
 
 impl FertilizerCommodityUrea1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2498,10 +2499,10 @@ pub struct FertilizerCommodityUreaAndAmmoniumNitrate1 {
 }
 
 impl FertilizerCommodityUreaAndAmmoniumNitrate1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2518,11 +2519,11 @@ pub struct FinancialInstrument48Choice {
 }
 
 impl FinancialInstrument48Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref isin_value) = self.isin { if !isin_value.validate() { return false; } }
-		if let Some(ref lei_value) = self.lei { if !lei_value.validate() { return false; } }
-		if let Some(ref indx_value) = self.indx { if !indx_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref isin_value) = self.isin { if let Err(e) = isin_value.validate() { return Err(e); } }
+		if let Some(ref lei_value) = self.lei { if let Err(e) = lei_value.validate() { return Err(e); } }
+		if let Some(ref indx_value) = self.indx { if let Err(e) = indx_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2537,10 +2538,10 @@ pub struct FinancialInstrument53 {
 }
 
 impl FinancialInstrument53 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref isin_vec) = self.isin { for item in isin_vec { if !item.validate() { return false; } } }
-		if let Some(ref lei_vec) = self.lei { for item in lei_vec { if !item.validate() { return false; } } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref isin_vec) = self.isin { for item in isin_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref lei_vec) = self.lei { for item in lei_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
 	}
 }
 
@@ -2555,10 +2556,10 @@ pub struct FinancialInstrument58 {
 }
 
 impl FinancialInstrument58 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref isin_value) = self.isin { if !isin_value.validate() { return false; } }
-		if !self.nm.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref isin_value) = self.isin { if let Err(e) = isin_value.validate() { return Err(e); } }
+		if let Err(e) = self.nm.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2573,10 +2574,10 @@ pub struct FinancialInstrumentIdentification5Choice {
 }
 
 impl FinancialInstrumentIdentification5Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref sngl_value) = self.sngl { if !sngl_value.validate() { return false; } }
-		if let Some(ref bskt_value) = self.bskt { if !bskt_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref sngl_value) = self.sngl { if let Err(e) = sngl_value.validate() { return Err(e); } }
+		if let Some(ref bskt_value) = self.bskt { if let Err(e) = bskt_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2593,11 +2594,11 @@ pub struct FinancialInstrumentReportingCancellationReportV01 {
 }
 
 impl FinancialInstrumentReportingCancellationReportV01 {
-	pub fn validate(&self) -> bool {
-		if !self.rpt_hdr.validate() { return false }
-		for item in &self.cxl_data { if !item.validate() { return false; } }
-		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if !item.validate() { return false; } } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.rpt_hdr.validate() { return Err(e); }
+		for item in &self.cxl_data { if let Err(e) = item.validate() { return Err(e); } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
 	}
 }
 
@@ -2614,10 +2615,10 @@ pub struct FloatingInterestRate6 {
 }
 
 impl FloatingInterestRate6 {
-	pub fn validate(&self) -> bool {
-		if !self.ref_rate.validate() { return false }
-		if !self.term.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.ref_rate.validate() { return Err(e); }
+		if let Err(e) = self.term.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2632,10 +2633,10 @@ pub struct FloatingInterestRate8 {
 }
 
 impl FloatingInterestRate8 {
-	pub fn validate(&self) -> bool {
-		if !self.ref_rate.validate() { return false }
-		if let Some(ref term_value) = self.term { if !term_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.ref_rate.validate() { return Err(e); }
+		if let Some(ref term_value) = self.term { if let Err(e) = term_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2650,10 +2651,10 @@ pub struct FreightCommodityContainerShip1 {
 }
 
 impl FreightCommodityContainerShip1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2670,11 +2671,11 @@ pub struct FreightCommodityDry1 {
 }
 
 impl FreightCommodityDry1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if !addtl_sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if let Err(e) = addtl_sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2691,11 +2692,11 @@ pub struct FreightCommodityWet1 {
 }
 
 impl FreightCommodityWet1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if !addtl_sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Some(ref addtl_sub_pdct_value) = self.addtl_sub_pdct { if let Err(e) = addtl_sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2709,12 +2710,12 @@ pub struct ISINOct2015Identifier {
 }
 
 impl ISINOct2015Identifier {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}").unwrap();
 		if !pattern.is_match(&self.isin_oct2015_identifier) {
-			return false
+			return Err(ValidationError::new(1005, "isin_oct2015_identifier does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -2728,8 +2729,8 @@ pub struct ISODate {
 }
 
 impl ISODate {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -2743,8 +2744,8 @@ pub struct ISODateTime {
 }
 
 impl ISODateTime {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -2759,10 +2760,10 @@ pub struct IndustrialProductCommodityConstruction1 {
 }
 
 impl IndustrialProductCommodityConstruction1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if let Some(ref sub_pdct_value) = self.sub_pdct { if !sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2777,10 +2778,10 @@ pub struct IndustrialProductCommodityManufacturing1 {
 }
 
 impl IndustrialProductCommodityManufacturing1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if let Some(ref sub_pdct_value) = self.sub_pdct { if !sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2795,9 +2796,9 @@ pub struct InterestRate6Choice {
 }
 
 impl InterestRate6Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref fltg_value) = self.fltg { if !fltg_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref fltg_value) = self.fltg { if let Err(e) = fltg_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2812,9 +2813,9 @@ pub struct InterestRate8Choice {
 }
 
 impl InterestRate8Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref fltg_value) = self.fltg { if !fltg_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref fltg_value) = self.fltg { if let Err(e) = fltg_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -2829,9 +2830,9 @@ pub struct InterestRateContractTerm2 {
 }
 
 impl InterestRateContractTerm2 {
-	pub fn validate(&self) -> bool {
-		if !self.unit.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.unit.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -2845,12 +2846,12 @@ pub struct LEIIdentifier {
 }
 
 impl LEIIdentifier {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
 		if !pattern.is_match(&self.lei_identifier) {
-			return false
+			return Err(ValidationError::new(1005, "lei_identifier does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -2864,12 +2865,12 @@ pub struct MICIdentifier {
 }
 
 impl MICIdentifier {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		let pattern = Regex::new("[A-Z0-9]{4,4}").unwrap();
 		if !pattern.is_match(&self.mic_identifier) {
-			return false
+			return Err(ValidationError::new(1005, "mic_identifier does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -2883,14 +2884,14 @@ pub struct Max25Text {
 }
 
 impl Max25Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max25_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max25_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max25_text.chars().count() > 25 {
-			return false
+			return Err(ValidationError::new(1002, "max25_text exceeds the maximum length of 25".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -2904,14 +2905,14 @@ pub struct Max350Text {
 }
 
 impl Max350Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max350_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max350_text.chars().count() > 350 {
-			return false
+			return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -2925,14 +2926,14 @@ pub struct Max35Text {
 }
 
 impl Max35Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max35_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max35_text.chars().count() > 35 {
-			return false
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -2946,8 +2947,8 @@ pub struct Max3Number {
 }
 
 impl Max3Number {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -2961,14 +2962,14 @@ pub struct Max50Text {
 }
 
 impl Max50Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max50_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max50_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max50_text.chars().count() > 50 {
-			return false
+			return Err(ValidationError::new(1002, "max50_text exceeds the maximum length of 50".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -2982,8 +2983,8 @@ pub struct Max5Number {
 }
 
 impl Max5Number {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3000,11 +3001,11 @@ pub struct MetalCommodityNonPrecious1 {
 }
 
 impl MetalCommodityNonPrecious1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if !self.addtl_sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Err(e) = self.addtl_sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -3021,11 +3022,11 @@ pub struct MetalCommodityPrecious1 {
 }
 
 impl MetalCommodityPrecious1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if !self.sub_pdct.validate() { return false }
-		if !self.addtl_sub_pdct.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Err(e) = self.sub_pdct.validate() { return Err(e); }
+		if let Err(e) = self.addtl_sub_pdct.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -3039,11 +3040,11 @@ pub struct NonNegativeDecimalNumber {
 }
 
 impl NonNegativeDecimalNumber {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.non_negative_decimal_number < 0.000000 {
-			return false
+			return Err(ValidationError::new(1003, "non_negative_decimal_number is less than the minimum value of 0.000000".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -3065,8 +3066,8 @@ pub enum OptionStyle7Code {
 }
 
 impl OptionStyle7Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3084,8 +3085,8 @@ pub enum OptionType2Code {
 }
 
 impl OptionType2Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3100,10 +3101,10 @@ pub struct OtherC10CommodityDeliverable2 {
 }
 
 impl OtherC10CommodityDeliverable2 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if let Some(ref sub_pdct_value) = self.sub_pdct { if !sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3118,10 +3119,10 @@ pub struct OtherC10CommodityNonDeliverable2 {
 }
 
 impl OtherC10CommodityNonDeliverable2 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if let Some(ref sub_pdct_value) = self.sub_pdct { if !sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3136,10 +3137,10 @@ pub struct PaperCommodityContainerBoard1 {
 }
 
 impl PaperCommodityContainerBoard1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if let Some(ref sub_pdct_value) = self.sub_pdct { if !sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3154,10 +3155,10 @@ pub struct PaperCommodityNewsprint1 {
 }
 
 impl PaperCommodityNewsprint1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if let Some(ref sub_pdct_value) = self.sub_pdct { if !sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3172,10 +3173,10 @@ pub struct PaperCommodityPulp1 {
 }
 
 impl PaperCommodityPulp1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if let Some(ref sub_pdct_value) = self.sub_pdct { if !sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3190,10 +3191,10 @@ pub struct PaperCommodityRecoveredPaper1 {
 }
 
 impl PaperCommodityRecoveredPaper1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if let Some(ref sub_pdct_value) = self.sub_pdct { if !sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3207,8 +3208,8 @@ pub struct PercentageRate {
 }
 
 impl PercentageRate {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3223,8 +3224,8 @@ pub struct Period2 {
 }
 
 impl Period2 {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3243,9 +3244,9 @@ pub struct Period4Choice {
 }
 
 impl Period4Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref fr_dt_to_dt_value) = self.fr_dt_to_dt { if !fr_dt_to_dt_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref fr_dt_to_dt_value) = self.fr_dt_to_dt { if let Err(e) = fr_dt_to_dt_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3263,8 +3264,8 @@ pub enum PhysicalTransferType4Code {
 }
 
 impl PhysicalTransferType4Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3278,8 +3279,8 @@ pub struct PlusOrMinusIndicator {
 }
 
 impl PlusOrMinusIndicator {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3294,10 +3295,10 @@ pub struct PolypropyleneCommodityPlastic1 {
 }
 
 impl PolypropyleneCommodityPlastic1 {
-	pub fn validate(&self) -> bool {
-		if !self.base_pdct.validate() { return false }
-		if let Some(ref sub_pdct_value) = self.sub_pdct { if !sub_pdct_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.base_pdct.validate() { return Err(e); }
+		if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3313,8 +3314,8 @@ pub enum PriceStatus1Code {
 }
 
 impl PriceStatus1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3334,8 +3335,8 @@ pub enum RateBasis1Code {
 }
 
 impl RateBasis1Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3360,11 +3361,11 @@ pub struct RecordTechnicalData4 {
 }
 
 impl RecordTechnicalData4 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref rlvnt_cmptnt_authrty_value) = self.rlvnt_cmptnt_authrty { if !rlvnt_cmptnt_authrty_value.validate() { return false; } }
-		if let Some(ref pblctn_prd_value) = self.pblctn_prd { if !pblctn_prd_value.validate() { return false; } }
-		if let Some(ref rlvnt_tradg_vn_value) = self.rlvnt_tradg_vn { if !rlvnt_tradg_vn_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref rlvnt_cmptnt_authrty_value) = self.rlvnt_cmptnt_authrty { if let Err(e) = rlvnt_cmptnt_authrty_value.validate() { return Err(e); } }
+		if let Some(ref pblctn_prd_value) = self.pblctn_prd { if let Err(e) = pblctn_prd_value.validate() { return Err(e); } }
+		if let Some(ref rlvnt_tradg_vn_value) = self.rlvnt_tradg_vn { if let Err(e) = rlvnt_tradg_vn_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3381,10 +3382,10 @@ pub struct SecuritiesMarketReportHeader1 {
 }
 
 impl SecuritiesMarketReportHeader1 {
-	pub fn validate(&self) -> bool {
-		if !self.rptg_ntty.validate() { return false }
-		if !self.rptg_prd.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.rptg_ntty.validate() { return Err(e); }
+		if let Err(e) = self.rptg_prd.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -3409,15 +3410,15 @@ pub struct SecuritiesReferenceDataReport7 {
 }
 
 impl SecuritiesReferenceDataReport7 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref tech_rcrd_id_value) = self.tech_rcrd_id { if !tech_rcrd_id_value.validate() { return false; } }
-		if !self.fin_instrm_gnl_attrbts.validate() { return false }
-		if let Some(ref issr_value) = self.issr { if !issr_value.validate() { return false; } }
-		for item in &self.tradg_vn_rltd_attrbts { if !item.validate() { return false; } }
-		if let Some(ref debt_instrm_attrbts_value) = self.debt_instrm_attrbts { if !debt_instrm_attrbts_value.validate() { return false; } }
-		if let Some(ref deriv_instrm_attrbts_value) = self.deriv_instrm_attrbts { if !deriv_instrm_attrbts_value.validate() { return false; } }
-		if let Some(ref tech_attrbts_value) = self.tech_attrbts { if !tech_attrbts_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref tech_rcrd_id_value) = self.tech_rcrd_id { if let Err(e) = tech_rcrd_id_value.validate() { return Err(e); } }
+		if let Err(e) = self.fin_instrm_gnl_attrbts.validate() { return Err(e); }
+		if let Some(ref issr_value) = self.issr { if let Err(e) = issr_value.validate() { return Err(e); } }
+		for item in &self.tradg_vn_rltd_attrbts { if let Err(e) = item.validate() { return Err(e); } }
+		if let Some(ref debt_instrm_attrbts_value) = self.debt_instrm_attrbts { if let Err(e) = debt_instrm_attrbts_value.validate() { return Err(e); } }
+		if let Some(ref deriv_instrm_attrbts_value) = self.deriv_instrm_attrbts { if let Err(e) = deriv_instrm_attrbts_value.validate() { return Err(e); } }
+		if let Some(ref tech_attrbts_value) = self.tech_attrbts { if let Err(e) = tech_attrbts_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3432,10 +3433,10 @@ pub struct SecuritiesTransactionPrice1 {
 }
 
 impl SecuritiesTransactionPrice1 {
-	pub fn validate(&self) -> bool {
-		if !self.pdg.validate() { return false }
-		if let Some(ref ccy_value) = self.ccy { if !ccy_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.pdg.validate() { return Err(e); }
+		if let Some(ref ccy_value) = self.ccy { if let Err(e) = ccy_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3454,9 +3455,9 @@ pub struct SecuritiesTransactionPrice2Choice {
 }
 
 impl SecuritiesTransactionPrice2Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref mntry_val_value) = self.mntry_val { if !mntry_val_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref mntry_val_value) = self.mntry_val { if let Err(e) = mntry_val_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3471,10 +3472,10 @@ pub struct SecuritiesTransactionPrice4Choice {
 }
 
 impl SecuritiesTransactionPrice4Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref pric_value) = self.pric { if !pric_value.validate() { return false; } }
-		if let Some(ref no_pric_value) = self.no_pric { if !no_pric_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref pric_value) = self.pric { if let Err(e) = pric_value.validate() { return Err(e); } }
+		if let Some(ref no_pric_value) = self.no_pric { if let Err(e) = no_pric_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3497,13 +3498,13 @@ pub struct SecurityInstrumentDescription17 {
 }
 
 impl SecurityInstrumentDescription17 {
-	pub fn validate(&self) -> bool {
-		if !self.id.validate() { return false }
-		if let Some(ref full_nm_value) = self.full_nm { if !full_nm_value.validate() { return false; } }
-		if let Some(ref shrt_nm_value) = self.shrt_nm { if !shrt_nm_value.validate() { return false; } }
-		if let Some(ref clssfctn_tp_value) = self.clssfctn_tp { if !clssfctn_tp_value.validate() { return false; } }
-		if let Some(ref ntnl_ccy_value) = self.ntnl_ccy { if !ntnl_ccy_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		if let Some(ref full_nm_value) = self.full_nm { if let Err(e) = full_nm_value.validate() { return Err(e); } }
+		if let Some(ref shrt_nm_value) = self.shrt_nm { if let Err(e) = shrt_nm_value.validate() { return Err(e); } }
+		if let Some(ref clssfctn_tp_value) = self.clssfctn_tp { if let Err(e) = clssfctn_tp_value.validate() { return Err(e); } }
+		if let Some(ref ntnl_ccy_value) = self.ntnl_ccy { if let Err(e) = ntnl_ccy_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3518,10 +3519,10 @@ pub struct SupplementaryData1 {
 }
 
 impl SupplementaryData1 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if !plc_and_nm_value.validate() { return false; } }
-		if !self.envlp.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if let Err(e) = plc_and_nm_value.validate() { return Err(e); } }
+		if let Err(e) = self.envlp.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -3532,8 +3533,8 @@ pub struct SupplementaryDataEnvelope1 {
 }
 
 impl SupplementaryDataEnvelope1 {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3549,8 +3550,8 @@ pub enum TradingVenue2Code {
 }
 
 impl TradingVenue2Code {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -3573,9 +3574,9 @@ pub struct TradingVenueAttributes2 {
 }
 
 impl TradingVenueAttributes2 {
-	pub fn validate(&self) -> bool {
-		if !self.id.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -3592,11 +3593,11 @@ pub struct TradingVenueIdentification1Choice {
 }
 
 impl TradingVenueIdentification1Choice {
-	pub fn validate(&self) -> bool {
-		if let Some(ref mkt_id_cd_value) = self.mkt_id_cd { if !mkt_id_cd_value.validate() { return false; } }
-		if let Some(ref ntl_cmptnt_authrty_value) = self.ntl_cmptnt_authrty { if !ntl_cmptnt_authrty_value.validate() { return false; } }
-		if let Some(ref othr_value) = self.othr { if !othr_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref mkt_id_cd_value) = self.mkt_id_cd { if let Err(e) = mkt_id_cd_value.validate() { return Err(e); } }
+		if let Some(ref ntl_cmptnt_authrty_value) = self.ntl_cmptnt_authrty { if let Err(e) = ntl_cmptnt_authrty_value.validate() { return Err(e); } }
+		if let Some(ref othr_value) = self.othr { if let Err(e) = othr_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -3611,10 +3612,10 @@ pub struct TradingVenueIdentification2 {
 }
 
 impl TradingVenueIdentification2 {
-	pub fn validate(&self) -> bool {
-		if !self.id.validate() { return false }
-		if !self.tp.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		if let Err(e) = self.tp.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -3628,7 +3629,7 @@ pub struct TrueFalseIndicator {
 }
 
 impl TrueFalseIndicator {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }

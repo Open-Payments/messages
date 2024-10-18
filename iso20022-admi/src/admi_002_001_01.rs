@@ -24,6 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
+use crate::validationerror::*;
 
 
 // ISODateTime ...
@@ -35,8 +36,8 @@ pub struct ISODateTime {
 }
 
 impl ISODateTime {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -50,14 +51,14 @@ pub struct Max20000Text {
 }
 
 impl Max20000Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max20000_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max20000_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max20000_text.chars().count() > 20000 {
-			return false
+			return Err(ValidationError::new(1002, "max20000_text exceeds the maximum length of 20000".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -71,14 +72,14 @@ pub struct Max350Text {
 }
 
 impl Max350Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max350_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max350_text.chars().count() > 350 {
-			return false
+			return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -92,14 +93,14 @@ pub struct Max35Text {
 }
 
 impl Max35Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max35_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max35_text.chars().count() > 35 {
-			return false
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -112,9 +113,9 @@ pub struct MessageReference {
 }
 
 impl MessageReference {
-	pub fn validate(&self) -> bool {
-		if !self.ref_attr.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.ref_attr.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -135,12 +136,12 @@ pub struct RejectionReason2 {
 }
 
 impl RejectionReason2 {
-	pub fn validate(&self) -> bool {
-		if !self.rjctg_pty_rsn.validate() { return false }
-		if let Some(ref err_lctn_value) = self.err_lctn { if !err_lctn_value.validate() { return false; } }
-		if let Some(ref rsn_desc_value) = self.rsn_desc { if !rsn_desc_value.validate() { return false; } }
-		if let Some(ref addtl_data_value) = self.addtl_data { if !addtl_data_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.rjctg_pty_rsn.validate() { return Err(e); }
+		if let Some(ref err_lctn_value) = self.err_lctn { if let Err(e) = err_lctn_value.validate() { return Err(e); } }
+		if let Some(ref rsn_desc_value) = self.rsn_desc { if let Err(e) = rsn_desc_value.validate() { return Err(e); } }
+		if let Some(ref addtl_data_value) = self.addtl_data { if let Err(e) = addtl_data_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -155,9 +156,9 @@ pub struct Admi00200101 {
 }
 
 impl Admi00200101 {
-	pub fn validate(&self) -> bool {
-		if !self.rltd_ref.validate() { return false }
-		if !self.rsn.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.rltd_ref.validate() { return Err(e); }
+		if let Err(e) = self.rsn.validate() { return Err(e); }
+		Ok(())
 	}
 }

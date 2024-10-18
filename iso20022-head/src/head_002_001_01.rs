@@ -24,6 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
+use crate::validationerror::*;
 
 
 // ApplicationSpecifics1 ...
@@ -38,10 +39,10 @@ pub struct ApplicationSpecifics1 {
 }
 
 impl ApplicationSpecifics1 {
-	pub fn validate(&self) -> bool {
-		if let Some(ref sys_usr_value) = self.sys_usr { if !sys_usr_value.validate() { return false; } }
-		if let Some(ref sgntr_value) = self.sgntr { if !sgntr_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref sys_usr_value) = self.sys_usr { if let Err(e) = sys_usr_value.validate() { return Err(e); } }
+		if let Some(ref sgntr_value) = self.sgntr { if let Err(e) = sgntr_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -56,10 +57,10 @@ pub struct BusinessFileHeaderV01 {
 }
 
 impl BusinessFileHeaderV01 {
-	pub fn validate(&self) -> bool {
-		if !self.pyld_desc.validate() { return false }
-		if let Some(ref pyld_vec) = self.pyld { for item in pyld_vec { if !item.validate() { return false; } } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.pyld_desc.validate() { return Err(e); }
+		if let Some(ref pyld_vec) = self.pyld { for item in pyld_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
 	}
 }
 
@@ -73,8 +74,8 @@ pub struct ISODateTime {
 }
 
 impl ISODateTime {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -85,8 +86,8 @@ pub struct LaxPayload {
 }
 
 impl LaxPayload {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -101,9 +102,9 @@ pub struct ManifestData2 {
 }
 
 impl ManifestData2 {
-	pub fn validate(&self) -> bool {
-		if !self.doc_tp.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.doc_tp.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -117,14 +118,14 @@ pub struct Max140Text {
 }
 
 impl Max140Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max140_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max140_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max140_text.chars().count() > 140 {
-			return false
+			return Err(ValidationError::new(1002, "max140_text exceeds the maximum length of 140".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -138,14 +139,14 @@ pub struct Max256Text {
 }
 
 impl Max256Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max256_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max256_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max256_text.chars().count() > 256 {
-			return false
+			return Err(ValidationError::new(1002, "max256_text exceeds the maximum length of 256".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -159,14 +160,14 @@ pub struct Max35Text {
 }
 
 impl Max35Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max35_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max35_text.chars().count() > 35 {
-			return false
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -180,8 +181,8 @@ pub struct Number {
 }
 
 impl Number {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -198,9 +199,9 @@ pub struct PayloadData2 {
 }
 
 impl PayloadData2 {
-	pub fn validate(&self) -> bool {
-		if !self.pyld_idr.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.pyld_idr.validate() { return Err(e); }
+		Ok(())
 	}
 }
 
@@ -219,12 +220,12 @@ pub struct PayloadDescription2 {
 }
 
 impl PayloadDescription2 {
-	pub fn validate(&self) -> bool {
-		if !self.pyld_data.validate() { return false }
-		if let Some(ref appl_spcfcs_value) = self.appl_spcfcs { if !appl_spcfcs_value.validate() { return false; } }
-		if !self.pyld_tp.validate() { return false }
-		if let Some(ref mnfst_data_vec) = self.mnfst_data { for item in mnfst_data_vec { if !item.validate() { return false; } } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.pyld_data.validate() { return Err(e); }
+		if let Some(ref appl_spcfcs_value) = self.appl_spcfcs { if let Err(e) = appl_spcfcs_value.validate() { return Err(e); } }
+		if let Err(e) = self.pyld_tp.validate() { return Err(e); }
+		if let Some(ref mnfst_data_vec) = self.mnfst_data { for item in mnfst_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
 	}
 }
 
@@ -235,8 +236,8 @@ pub struct SignatureEnvelope {
 }
 
 impl SignatureEnvelope {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -250,7 +251,7 @@ pub struct TrueFalseIndicator {
 }
 
 impl TrueFalseIndicator {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }

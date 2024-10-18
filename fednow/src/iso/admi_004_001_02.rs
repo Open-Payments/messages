@@ -24,6 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
+use crate::validationerror::*;
 
 
 
@@ -43,11 +44,11 @@ pub struct Event2 {
 }
 
 impl Event2 {
-	pub fn validate(&self) -> bool {
-		if !self.evt_cd.validate() { return false }
-		if let Some(ref evt_param_vec) = self.evt_param { for item in evt_param_vec { if !item.validate() { return false; } } }
-		if let Some(ref evt_desc_value) = self.evt_desc { if !evt_desc_value.validate() { return false; } }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.evt_cd.validate() { return Err(e); }
+		if let Some(ref evt_param_vec) = self.evt_param { for item in evt_param_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref evt_desc_value) = self.evt_desc { if let Err(e) = evt_desc_value.validate() { return Err(e); } }
+		Ok(())
 	}
 }
 
@@ -61,8 +62,8 @@ pub struct ISODateTime {
 }
 
 impl ISODateTime {
-	pub fn validate(&self) -> bool {
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
 }
 
@@ -76,14 +77,14 @@ pub struct Max1000Text {
 }
 
 impl Max1000Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max1000_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max1000_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max1000_text.chars().count() > 1000 {
-			return false
+			return Err(ValidationError::new(1002, "max1000_text exceeds the maximum length of 1000".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -97,14 +98,14 @@ pub struct Max35Text {
 }
 
 impl Max35Text {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max35_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max35_text.chars().count() > 35 {
-			return false
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -118,18 +119,18 @@ pub struct Max4AlphaNumericText {
 }
 
 impl Max4AlphaNumericText {
-	pub fn validate(&self) -> bool {
+	pub fn validate(&self) -> Result<(), ValidationError> {
 		if self.max4_alpha_numeric_text.chars().count() < 1 {
-			return false
+			return Err(ValidationError::new(1001, "max4_alpha_numeric_text is shorter than the minimum length of 1".to_string()));
 		}
 		if self.max4_alpha_numeric_text.chars().count() > 4 {
-			return false
+			return Err(ValidationError::new(1002, "max4_alpha_numeric_text exceeds the maximum length of 4".to_string()));
 		}
 		let pattern = Regex::new("[a-zA-Z0-9]{1,4}").unwrap();
 		if !pattern.is_match(&self.max4_alpha_numeric_text) {
-			return false
+			return Err(ValidationError::new(1005, "max4_alpha_numeric_text does not match the required pattern".to_string()));
 		}
-		return true
+		Ok(())
 	}
 }
 
@@ -142,8 +143,8 @@ pub struct SystemEventNotificationV02 {
 }
 
 impl SystemEventNotificationV02 {
-	pub fn validate(&self) -> bool {
-		if !self.evt_inf.validate() { return false }
-		return true
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.evt_inf.validate() { return Err(e); }
+		Ok(())
 	}
 }
