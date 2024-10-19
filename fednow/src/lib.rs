@@ -22,25 +22,32 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-pub mod fednow;
+pub mod fednow_extra;
 pub mod iso;
 pub mod fednow_incoming_external;
 pub mod fednow_outgoing_external;
 pub mod document;
-pub mod validationerror;
+pub mod common;
 
-use serde::{Deserialize, Serialize};
-use crate::fednow_incoming_external::FedNowIncoming;
-use crate::fednow_outgoing_external::FedNowOutgoing;
+pub mod fednow {
+    use crate::fednow_incoming_external::fednow::*;
+    use crate::fednow_outgoing_external::fednow::*;
+	#[cfg(feature = "derive_serde")]
+	use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum FednowMessage {
-    #[serde(rename = "FedNowIncoming")]
-    FedNowIncoming(Box<FedNowIncoming>),
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+    pub enum FednowMessage {
+        #[cfg_attr( feature = "derive_serde", serde(rename = "FedNowIncoming") )]
+        FedNowIncoming(Box<FedNowIncoming>),
 
-    #[serde(rename = "FedNowOutgoing")]
-    FedNowOutgoing(Box<FedNowOutgoing>),
+        #[cfg_attr( feature = "derive_serde", serde(rename = "FedNowOutgoing") )]
+        FedNowOutgoing(Box<FedNowOutgoing>),
 
-	#[default]
-	UNKNOWN
+        #[cfg_attr(feature = "derive_default", default)]
+        UNKNOWN
+    }
 }

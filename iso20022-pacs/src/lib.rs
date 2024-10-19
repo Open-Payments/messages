@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 
+pub mod common;
 pub mod pacs_002_001_12;
 pub mod pacs_002_001_14;
 pub mod pacs_003_001_11;
@@ -33,4 +34,3 @@ pub mod pacs_009_001_11;
 pub mod pacs_010_001_06;
 pub mod pacs_028_001_06;
 pub mod pacs_029_001_02;
-pub mod validationerror;

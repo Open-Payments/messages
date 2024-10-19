@@ -22,2045 +22,2437 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-use serde::{Deserialize, Serialize};
-use regex::Regex;
-use crate::validationerror::*;
-// AccountIdentification1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AccountIdentification1 {
-	#[serde(rename = "Prtry")]
-	pub prtry: SimpleIdentificationInformation,
-}
+#![allow(unused_imports)]
 
-impl AccountIdentification1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.prtry.validate() { return Err(e); }
-		Ok(())
+pub mod iso20022 {
+	use regex::Regex;
+	use crate::common::*;
+	#[cfg(feature = "derive_serde")]
+	use serde::{Deserialize, Serialize};
+	
+	
+	// AccountIdentification1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct AccountIdentification1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Prtry") )]
+		pub prtry: SimpleIdentificationInformation,
 	}
-}
-
-
-// ActiveCurrencyAnd13DecimalAmountSimpleType ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct ActiveCurrencyAnd13DecimalAmountSimpleType {
-	#[serde(rename = "$value")]
-	pub active_currency_and13_decimal_amount_simple_type: f64,
-}
-
-impl ActiveCurrencyAnd13DecimalAmountSimpleType {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.active_currency_and13_decimal_amount_simple_type < 0.000000 {
-			return Err(ValidationError::new(1003, "active_currency_and13_decimal_amount_simple_type is less than the minimum value of 0.000000".to_string()));
+	
+	impl AccountIdentification1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.prtry.validate() { return Err(e); }
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// ActiveCurrencyAnd13DecimalAmount ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ActiveCurrencyAnd13DecimalAmount {
-	#[serde(rename = "Ccy")]
-	pub ccy: String,
-	#[serde(rename = "$value")]
-	pub value: f64,
-}
-
-impl ActiveCurrencyAnd13DecimalAmount {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// ActiveCurrencyAnd13DecimalAmountSimpleType ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct ActiveCurrencyAnd13DecimalAmountSimpleType {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub active_currency_and13_decimal_amount_simple_type: f64,
 	}
-}
-
-
-// ActiveCurrencyCode ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct ActiveCurrencyCode {
-	#[serde(rename = "$value")]
-	pub active_currency_code: String,
-}
-
-impl ActiveCurrencyCode {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
-		if !pattern.is_match(&self.active_currency_code) {
-			return Err(ValidationError::new(1005, "active_currency_code does not match the required pattern".to_string()));
+	
+	impl ActiveCurrencyAnd13DecimalAmountSimpleType {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.active_currency_and13_decimal_amount_simple_type < 0.000000 {
+				return Err(ValidationError::new(1003, "active_currency_and13_decimal_amount_simple_type is less than the minimum value of 0.000000".to_string()));
+			}
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// ActiveOrHistoricCurrencyAndAmountSimpleType ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct ActiveOrHistoricCurrencyAndAmountSimpleType {
-	#[serde(rename = "$value")]
-	pub active_or_historic_currency_and_amount_simple_type: f64,
-}
-
-impl ActiveOrHistoricCurrencyAndAmountSimpleType {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.active_or_historic_currency_and_amount_simple_type < 0.000000 {
-			return Err(ValidationError::new(1003, "active_or_historic_currency_and_amount_simple_type is less than the minimum value of 0.000000".to_string()));
+	
+	
+	// ActiveCurrencyAnd13DecimalAmount ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct ActiveCurrencyAnd13DecimalAmount {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
+		pub ccy: String,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub value: f64,
+	}
+	
+	impl ActiveCurrencyAnd13DecimalAmount {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// ActiveOrHistoricCurrencyAndAmount ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ActiveOrHistoricCurrencyAndAmount {
-	#[serde(rename = "Ccy")]
-	pub ccy: String,
-	#[serde(rename = "$value")]
-	pub value: f64,
-}
-
-impl ActiveOrHistoricCurrencyAndAmount {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// ActiveCurrencyCode ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct ActiveCurrencyCode {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub active_currency_code: String,
 	}
-}
-
-
-// ActiveOrHistoricCurrencyCode ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct ActiveOrHistoricCurrencyCode {
-	#[serde(rename = "$value")]
-	pub active_or_historic_currency_code: String,
-}
-
-impl ActiveOrHistoricCurrencyCode {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
-		if !pattern.is_match(&self.active_or_historic_currency_code) {
-			return Err(ValidationError::new(1005, "active_or_historic_currency_code does not match the required pattern".to_string()));
+	
+	impl ActiveCurrencyCode {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			let pattern = Regex::new("[A-Z]{3,3}").unwrap();
+			if !pattern.is_match(&self.active_currency_code) {
+				return Err(ValidationError::new(1005, "active_currency_code does not match the required pattern".to_string()));
+			}
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// AdditionalParameters1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AdditionalParameters1 {
-	#[serde(rename = "Ctry", skip_serializing_if = "Option::is_none")]
-	pub ctry: Option<CountryCode>,
-	#[serde(rename = "Ccy", skip_serializing_if = "Option::is_none")]
-	pub ccy: Option<ActiveOrHistoricCurrencyCode>,
-	#[serde(rename = "GeoArea", skip_serializing_if = "Option::is_none")]
-	pub geo_area: Option<Max35Text>,
-}
-
-impl AdditionalParameters1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref ctry_value) = self.ctry { if let Err(e) = ctry_value.validate() { return Err(e); } }
-		if let Some(ref ccy_value) = self.ccy { if let Err(e) = ccy_value.validate() { return Err(e); } }
-		if let Some(ref geo_area_value) = self.geo_area { if let Err(e) = geo_area_value.validate() { return Err(e); } }
-		Ok(())
+	
+	
+	// ActiveOrHistoricCurrencyAndAmountSimpleType ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct ActiveOrHistoricCurrencyAndAmountSimpleType {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub active_or_historic_currency_and_amount_simple_type: f64,
 	}
-}
-
-
-// AdditionalReference3 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AdditionalReference3 {
-	#[serde(rename = "Ref")]
-	pub ref_attr: Max35Text,
-	#[serde(rename = "RefIssr", skip_serializing_if = "Option::is_none")]
-	pub ref_issr: Option<PartyIdentification2Choice>,
-	#[serde(rename = "MsgNm", skip_serializing_if = "Option::is_none")]
-	pub msg_nm: Option<Max35Text>,
-}
-
-impl AdditionalReference3 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.ref_attr.validate() { return Err(e); }
-		if let Some(ref ref_issr_value) = self.ref_issr { if let Err(e) = ref_issr_value.validate() { return Err(e); } }
-		if let Some(ref msg_nm_value) = self.msg_nm { if let Err(e) = msg_nm_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// AddressType2Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum AddressType2Code {
-	#[default]
-	#[serde(rename = "ADDR")]
-	CodeADDR,
-	#[serde(rename = "PBOX")]
-	CodePBOX,
-	#[serde(rename = "HOME")]
-	CodeHOME,
-	#[serde(rename = "BIZZ")]
-	CodeBIZZ,
-	#[serde(rename = "MLTO")]
-	CodeMLTO,
-	#[serde(rename = "DLVY")]
-	CodeDLVY,
-}
-
-impl AddressType2Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// AlternateSecurityIdentification1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AlternateSecurityIdentification1 {
-	#[serde(rename = "Id")]
-	pub id: Max35Text,
-	#[serde(rename = "DmstIdSrc", skip_serializing_if = "Option::is_none")]
-	pub dmst_id_src: Option<CountryCode>,
-	#[serde(rename = "PrtryIdSrc", skip_serializing_if = "Option::is_none")]
-	pub prtry_id_src: Option<Max35Text>,
-}
-
-impl AlternateSecurityIdentification1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Some(ref dmst_id_src_value) = self.dmst_id_src { if let Err(e) = dmst_id_src_value.validate() { return Err(e); } }
-		if let Some(ref prtry_id_src_value) = self.prtry_id_src { if let Err(e) = prtry_id_src_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// AmountOrRate3Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct AmountOrRate3Choice {
-	#[serde(rename = "Amt", skip_serializing_if = "Option::is_none")]
-	pub amt: Option<ActiveCurrencyAnd13DecimalAmount>,
-	#[serde(rename = "Rate", skip_serializing_if = "Option::is_none")]
-	pub rate: Option<f64>,
-}
-
-impl AmountOrRate3Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref amt_value) = self.amt { if let Err(e) = amt_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// AnyBICIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct AnyBICIdentifier {
-	#[serde(rename = "$value")]
-	pub any_bic_identifier: String,
-}
-
-impl AnyBICIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		let pattern = Regex::new("[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}").unwrap();
-		if !pattern.is_match(&self.any_bic_identifier) {
-			return Err(ValidationError::new(1005, "any_bic_identifier does not match the required pattern".to_string()));
+	
+	impl ActiveOrHistoricCurrencyAndAmountSimpleType {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.active_or_historic_currency_and_amount_simple_type < 0.000000 {
+				return Err(ValidationError::new(1003, "active_or_historic_currency_and_amount_simple_type is less than the minimum value of 0.000000".to_string()));
+			}
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// BaseOneRate ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct BaseOneRate {
-	#[serde(rename = "$value")]
-	pub base_one_rate: f64,
-}
-
-impl BaseOneRate {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// ActiveOrHistoricCurrencyAndAmount ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct ActiveOrHistoricCurrencyAndAmount {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
+		pub ccy: String,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub value: f64,
 	}
-}
-
-
-// BelgianIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct BelgianIdentifier {
-	#[serde(rename = "$value")]
-	pub belgian_identifier: String,
-}
-
-impl BelgianIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	impl ActiveOrHistoricCurrencyAndAmount {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
 	}
-}
-
-
-// BloombergIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct BloombergIdentifier {
-	#[serde(rename = "$value")]
-	pub bloomberg_identifier: String,
-}
-
-impl BloombergIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.bloomberg_identifier.chars().count() < 1 {
+	
+	
+	// ActiveOrHistoricCurrencyCode ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct ActiveOrHistoricCurrencyCode {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub active_or_historic_currency_code: String,
+	}
+	
+	impl ActiveOrHistoricCurrencyCode {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			let pattern = Regex::new("[A-Z]{3,3}").unwrap();
+			if !pattern.is_match(&self.active_or_historic_currency_code) {
+				return Err(ValidationError::new(1005, "active_or_historic_currency_code does not match the required pattern".to_string()));
+			}
+			Ok(())
+		}
+	}
+	
+	
+	// AdditionalParameters1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct AdditionalParameters1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ctry", skip_serializing_if = "Option::is_none") )]
+		pub ctry: Option<CountryCode>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy", skip_serializing_if = "Option::is_none") )]
+		pub ccy: Option<ActiveOrHistoricCurrencyCode>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "GeoArea", skip_serializing_if = "Option::is_none") )]
+		pub geo_area: Option<Max35Text>,
+	}
+	
+	impl AdditionalParameters1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref ctry_value) = self.ctry { if let Err(e) = ctry_value.validate() { return Err(e); } }
+			if let Some(ref ccy_value) = self.ccy { if let Err(e) = ccy_value.validate() { return Err(e); } }
+			if let Some(ref geo_area_value) = self.geo_area { if let Err(e) = geo_area_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// AdditionalReference3 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct AdditionalReference3 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ref") )]
+		pub ref_attr: Max35Text,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "RefIssr", skip_serializing_if = "Option::is_none") )]
+		pub ref_issr: Option<PartyIdentification2Choice>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "MsgNm", skip_serializing_if = "Option::is_none") )]
+		pub msg_nm: Option<Max35Text>,
+	}
+	
+	impl AdditionalReference3 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.ref_attr.validate() { return Err(e); }
+			if let Some(ref ref_issr_value) = self.ref_issr { if let Err(e) = ref_issr_value.validate() { return Err(e); } }
+			if let Some(ref msg_nm_value) = self.msg_nm { if let Err(e) = msg_nm_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// AddressType2Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum AddressType2Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ADDR") )]
+		CodeADDR,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PBOX") )]
+		CodePBOX,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "HOME") )]
+		CodeHOME,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BIZZ") )]
+		CodeBIZZ,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "MLTO") )]
+		CodeMLTO,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "DLVY") )]
+		CodeDLVY,
+	}
+	
+	impl AddressType2Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// AlternateSecurityIdentification1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct AlternateSecurityIdentification1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
+		pub id: Max35Text,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "DmstIdSrc", skip_serializing_if = "Option::is_none") )]
+		pub dmst_id_src: Option<CountryCode>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PrtryIdSrc", skip_serializing_if = "Option::is_none") )]
+		pub prtry_id_src: Option<Max35Text>,
+	}
+	
+	impl AlternateSecurityIdentification1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.id.validate() { return Err(e); }
+			if let Some(ref dmst_id_src_value) = self.dmst_id_src { if let Err(e) = dmst_id_src_value.validate() { return Err(e); } }
+			if let Some(ref prtry_id_src_value) = self.prtry_id_src { if let Err(e) = prtry_id_src_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// AmountOrRate3Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct AmountOrRate3Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Amt", skip_serializing_if = "Option::is_none") )]
+		pub amt: Option<ActiveCurrencyAnd13DecimalAmount>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Rate", skip_serializing_if = "Option::is_none") )]
+		pub rate: Option<f64>,
+	}
+	
+	impl AmountOrRate3Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref amt_value) = self.amt { if let Err(e) = amt_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// AnyBICIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct AnyBICIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub any_bic_identifier: String,
+	}
+	
+	impl AnyBICIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			let pattern = Regex::new("[A-Z]{6,6}[A-Z2-9][A-NP-Z0-9]([A-Z0-9]{3,3}){0,1}").unwrap();
+			if !pattern.is_match(&self.any_bic_identifier) {
+				return Err(ValidationError::new(1005, "any_bic_identifier does not match the required pattern".to_string()));
+			}
+			Ok(())
+		}
+	}
+	
+	
+	// BaseOneRate ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct BaseOneRate {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub base_one_rate: f64,
+	}
+	
+	impl BaseOneRate {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// BelgianIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct BelgianIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub belgian_identifier: String,
+	}
+	
+	impl BelgianIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// BloombergIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct BloombergIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub bloomberg_identifier: String,
+	}
+	
+	impl BloombergIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.bloomberg_identifier.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "bloomberg_identifier is shorter than the minimum length of 1".to_string()));
+			}
+			if self.bloomberg_identifier.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "bloomberg_identifier exceeds the maximum length of 35".to_string()));
+			}
+			Ok(())
 		}
-		if self.bloomberg_identifier.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "bloomberg_identifier exceeds the maximum length of 35".to_string()));
+	}
+	
+	
+	// BreakdownByCountry2 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct BreakdownByCountry2 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ctry") )]
+		pub ctry: CountryCode,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshInFcst", skip_serializing_if = "Option::is_none") )]
+		pub csh_in_fcst: Option<Vec<CashInForecast5>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshOutFcst", skip_serializing_if = "Option::is_none") )]
+		pub csh_out_fcst: Option<Vec<CashOutForecast5>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NetCshFcst", skip_serializing_if = "Option::is_none") )]
+		pub net_csh_fcst: Option<Vec<NetCashForecast4>>,
+	}
+	
+	impl BreakdownByCountry2 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.ctry.validate() { return Err(e); }
+			if let Some(ref csh_in_fcst_vec) = self.csh_in_fcst { for item in csh_in_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref csh_out_fcst_vec) = self.csh_out_fcst { for item in csh_out_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref net_csh_fcst_vec) = self.net_csh_fcst { for item in net_csh_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// BreakdownByCountry2 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct BreakdownByCountry2 {
-	#[serde(rename = "Ctry")]
-	pub ctry: CountryCode,
-	#[serde(rename = "CshInFcst", skip_serializing_if = "Option::is_none")]
-	pub csh_in_fcst: Option<Vec<CashInForecast5>>,
-	#[serde(rename = "CshOutFcst", skip_serializing_if = "Option::is_none")]
-	pub csh_out_fcst: Option<Vec<CashOutForecast5>>,
-	#[serde(rename = "NetCshFcst", skip_serializing_if = "Option::is_none")]
-	pub net_csh_fcst: Option<Vec<NetCashForecast4>>,
-}
-
-impl BreakdownByCountry2 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.ctry.validate() { return Err(e); }
-		if let Some(ref csh_in_fcst_vec) = self.csh_in_fcst { for item in csh_in_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref csh_out_fcst_vec) = self.csh_out_fcst { for item in csh_out_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref net_csh_fcst_vec) = self.net_csh_fcst { for item in net_csh_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		Ok(())
+	
+	
+	// BreakdownByCurrency2 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct BreakdownByCurrency2 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
+		pub ccy: ActiveOrHistoricCurrencyCode,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshOutFcst", skip_serializing_if = "Option::is_none") )]
+		pub csh_out_fcst: Option<Vec<CashOutForecast5>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshInFcst", skip_serializing_if = "Option::is_none") )]
+		pub csh_in_fcst: Option<Vec<CashInForecast5>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NetCshFcst", skip_serializing_if = "Option::is_none") )]
+		pub net_csh_fcst: Option<Vec<NetCashForecast4>>,
 	}
-}
-
-
-// BreakdownByCurrency2 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct BreakdownByCurrency2 {
-	#[serde(rename = "Ccy")]
-	pub ccy: ActiveOrHistoricCurrencyCode,
-	#[serde(rename = "CshOutFcst", skip_serializing_if = "Option::is_none")]
-	pub csh_out_fcst: Option<Vec<CashOutForecast5>>,
-	#[serde(rename = "CshInFcst", skip_serializing_if = "Option::is_none")]
-	pub csh_in_fcst: Option<Vec<CashInForecast5>>,
-	#[serde(rename = "NetCshFcst", skip_serializing_if = "Option::is_none")]
-	pub net_csh_fcst: Option<Vec<NetCashForecast4>>,
-}
-
-impl BreakdownByCurrency2 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.ccy.validate() { return Err(e); }
-		if let Some(ref csh_out_fcst_vec) = self.csh_out_fcst { for item in csh_out_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref csh_in_fcst_vec) = self.csh_in_fcst { for item in csh_in_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref net_csh_fcst_vec) = self.net_csh_fcst { for item in net_csh_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		Ok(())
+	
+	impl BreakdownByCurrency2 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.ccy.validate() { return Err(e); }
+			if let Some(ref csh_out_fcst_vec) = self.csh_out_fcst { for item in csh_out_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref csh_in_fcst_vec) = self.csh_in_fcst { for item in csh_in_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref net_csh_fcst_vec) = self.net_csh_fcst { for item in net_csh_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			Ok(())
+		}
 	}
-}
-
-
-// BreakdownByParty3 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct BreakdownByParty3 {
-	#[serde(rename = "Pty")]
-	pub pty: InvestmentAccount42,
-	#[serde(rename = "AddtlParams", skip_serializing_if = "Option::is_none")]
-	pub addtl_params: Option<AdditionalParameters1>,
-	#[serde(rename = "CshInFcst", skip_serializing_if = "Option::is_none")]
-	pub csh_in_fcst: Option<Vec<CashInForecast5>>,
-	#[serde(rename = "CshOutFcst", skip_serializing_if = "Option::is_none")]
-	pub csh_out_fcst: Option<Vec<CashOutForecast5>>,
-	#[serde(rename = "NetCshFcst", skip_serializing_if = "Option::is_none")]
-	pub net_csh_fcst: Option<Vec<NetCashForecast4>>,
-}
-
-impl BreakdownByParty3 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.pty.validate() { return Err(e); }
-		if let Some(ref addtl_params_value) = self.addtl_params { if let Err(e) = addtl_params_value.validate() { return Err(e); } }
-		if let Some(ref csh_in_fcst_vec) = self.csh_in_fcst { for item in csh_in_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref csh_out_fcst_vec) = self.csh_out_fcst { for item in csh_out_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref net_csh_fcst_vec) = self.net_csh_fcst { for item in net_csh_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		Ok(())
+	
+	
+	// BreakdownByParty3 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct BreakdownByParty3 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Pty") )]
+		pub pty: InvestmentAccount42,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "AddtlParams", skip_serializing_if = "Option::is_none") )]
+		pub addtl_params: Option<AdditionalParameters1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshInFcst", skip_serializing_if = "Option::is_none") )]
+		pub csh_in_fcst: Option<Vec<CashInForecast5>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshOutFcst", skip_serializing_if = "Option::is_none") )]
+		pub csh_out_fcst: Option<Vec<CashOutForecast5>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NetCshFcst", skip_serializing_if = "Option::is_none") )]
+		pub net_csh_fcst: Option<Vec<NetCashForecast4>>,
 	}
-}
-
-
-// BreakdownByUserDefinedParameter3 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct BreakdownByUserDefinedParameter3 {
-	#[serde(rename = "Pty", skip_serializing_if = "Option::is_none")]
-	pub pty: Option<InvestmentAccount42>,
-	#[serde(rename = "Ctry", skip_serializing_if = "Option::is_none")]
-	pub ctry: Option<CountryCode>,
-	#[serde(rename = "Ccy", skip_serializing_if = "Option::is_none")]
-	pub ccy: Option<ActiveOrHistoricCurrencyCode>,
-	#[serde(rename = "UsrDfnd", skip_serializing_if = "Option::is_none")]
-	pub usr_dfnd: Option<DataFormat2Choice>,
-	#[serde(rename = "CshInFcst", skip_serializing_if = "Option::is_none")]
-	pub csh_in_fcst: Option<Vec<CashInForecast5>>,
-	#[serde(rename = "CshOutFcst", skip_serializing_if = "Option::is_none")]
-	pub csh_out_fcst: Option<Vec<CashOutForecast5>>,
-	#[serde(rename = "NetCshFcst", skip_serializing_if = "Option::is_none")]
-	pub net_csh_fcst: Option<Vec<NetCashForecast4>>,
-}
-
-impl BreakdownByUserDefinedParameter3 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref pty_value) = self.pty { if let Err(e) = pty_value.validate() { return Err(e); } }
-		if let Some(ref ctry_value) = self.ctry { if let Err(e) = ctry_value.validate() { return Err(e); } }
-		if let Some(ref ccy_value) = self.ccy { if let Err(e) = ccy_value.validate() { return Err(e); } }
-		if let Some(ref usr_dfnd_value) = self.usr_dfnd { if let Err(e) = usr_dfnd_value.validate() { return Err(e); } }
-		if let Some(ref csh_in_fcst_vec) = self.csh_in_fcst { for item in csh_in_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref csh_out_fcst_vec) = self.csh_out_fcst { for item in csh_out_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref net_csh_fcst_vec) = self.net_csh_fcst { for item in net_csh_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		Ok(())
+	
+	impl BreakdownByParty3 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.pty.validate() { return Err(e); }
+			if let Some(ref addtl_params_value) = self.addtl_params { if let Err(e) = addtl_params_value.validate() { return Err(e); } }
+			if let Some(ref csh_in_fcst_vec) = self.csh_in_fcst { for item in csh_in_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref csh_out_fcst_vec) = self.csh_out_fcst { for item in csh_out_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref net_csh_fcst_vec) = self.net_csh_fcst { for item in net_csh_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			Ok(())
+		}
 	}
-}
-
-
-// CUSIPIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct CUSIPIdentifier {
-	#[serde(rename = "$value")]
-	pub cusip_identifier: String,
-}
-
-impl CUSIPIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// BreakdownByUserDefinedParameter3 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct BreakdownByUserDefinedParameter3 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Pty", skip_serializing_if = "Option::is_none") )]
+		pub pty: Option<InvestmentAccount42>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ctry", skip_serializing_if = "Option::is_none") )]
+		pub ctry: Option<CountryCode>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy", skip_serializing_if = "Option::is_none") )]
+		pub ccy: Option<ActiveOrHistoricCurrencyCode>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "UsrDfnd", skip_serializing_if = "Option::is_none") )]
+		pub usr_dfnd: Option<DataFormat2Choice>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshInFcst", skip_serializing_if = "Option::is_none") )]
+		pub csh_in_fcst: Option<Vec<CashInForecast5>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshOutFcst", skip_serializing_if = "Option::is_none") )]
+		pub csh_out_fcst: Option<Vec<CashOutForecast5>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NetCshFcst", skip_serializing_if = "Option::is_none") )]
+		pub net_csh_fcst: Option<Vec<NetCashForecast4>>,
 	}
-}
-
-
-// CashInForecast5 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct CashInForecast5 {
-	#[serde(rename = "CshSttlmDt")]
-	pub csh_sttlm_dt: String,
-	#[serde(rename = "SubTtlAmt", skip_serializing_if = "Option::is_none")]
-	pub sub_ttl_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
-	#[serde(rename = "SubTtlUnitsNb", skip_serializing_if = "Option::is_none")]
-	pub sub_ttl_units_nb: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "XcptnlCshFlowInd", skip_serializing_if = "Option::is_none")]
-	pub xcptnl_csh_flow_ind: Option<bool>,
-	#[serde(rename = "CshInBrkdwnDtls", skip_serializing_if = "Option::is_none")]
-	pub csh_in_brkdwn_dtls: Option<Vec<FundCashInBreakdown3>>,
-	#[serde(rename = "AddtlBal", skip_serializing_if = "Option::is_none")]
-	pub addtl_bal: Option<FundBalance1>,
-}
-
-impl CashInForecast5 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref sub_ttl_amt_value) = self.sub_ttl_amt { if let Err(e) = sub_ttl_amt_value.validate() { return Err(e); } }
-		if let Some(ref sub_ttl_units_nb_value) = self.sub_ttl_units_nb { if let Err(e) = sub_ttl_units_nb_value.validate() { return Err(e); } }
-		if let Some(ref csh_in_brkdwn_dtls_vec) = self.csh_in_brkdwn_dtls { for item in csh_in_brkdwn_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref addtl_bal_value) = self.addtl_bal { if let Err(e) = addtl_bal_value.validate() { return Err(e); } }
-		Ok(())
+	
+	impl BreakdownByUserDefinedParameter3 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref pty_value) = self.pty { if let Err(e) = pty_value.validate() { return Err(e); } }
+			if let Some(ref ctry_value) = self.ctry { if let Err(e) = ctry_value.validate() { return Err(e); } }
+			if let Some(ref ccy_value) = self.ccy { if let Err(e) = ccy_value.validate() { return Err(e); } }
+			if let Some(ref usr_dfnd_value) = self.usr_dfnd { if let Err(e) = usr_dfnd_value.validate() { return Err(e); } }
+			if let Some(ref csh_in_fcst_vec) = self.csh_in_fcst { for item in csh_in_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref csh_out_fcst_vec) = self.csh_out_fcst { for item in csh_out_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref net_csh_fcst_vec) = self.net_csh_fcst { for item in net_csh_fcst_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			Ok(())
+		}
 	}
-}
-
-
-// CashOutForecast5 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct CashOutForecast5 {
-	#[serde(rename = "CshSttlmDt")]
-	pub csh_sttlm_dt: String,
-	#[serde(rename = "SubTtlAmt", skip_serializing_if = "Option::is_none")]
-	pub sub_ttl_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
-	#[serde(rename = "SubTtlUnitsNb", skip_serializing_if = "Option::is_none")]
-	pub sub_ttl_units_nb: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "XcptnlCshFlowInd", skip_serializing_if = "Option::is_none")]
-	pub xcptnl_csh_flow_ind: Option<bool>,
-	#[serde(rename = "CshOutBrkdwnDtls", skip_serializing_if = "Option::is_none")]
-	pub csh_out_brkdwn_dtls: Option<Vec<FundCashOutBreakdown3>>,
-	#[serde(rename = "AddtlBal", skip_serializing_if = "Option::is_none")]
-	pub addtl_bal: Option<FundBalance1>,
-}
-
-impl CashOutForecast5 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref sub_ttl_amt_value) = self.sub_ttl_amt { if let Err(e) = sub_ttl_amt_value.validate() { return Err(e); } }
-		if let Some(ref sub_ttl_units_nb_value) = self.sub_ttl_units_nb { if let Err(e) = sub_ttl_units_nb_value.validate() { return Err(e); } }
-		if let Some(ref csh_out_brkdwn_dtls_vec) = self.csh_out_brkdwn_dtls { for item in csh_out_brkdwn_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref addtl_bal_value) = self.addtl_bal { if let Err(e) = addtl_bal_value.validate() { return Err(e); } }
-		Ok(())
+	
+	
+	// CUSIPIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct CUSIPIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub cusip_identifier: String,
 	}
-}
-
-
-// Charge26 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct Charge26 {
-	#[serde(rename = "Tp")]
-	pub tp: ChargeType4Choice,
-	#[serde(rename = "ChrgApld")]
-	pub chrg_apld: AmountOrRate3Choice,
-}
-
-impl Charge26 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.tp.validate() { return Err(e); }
-		if let Err(e) = self.chrg_apld.validate() { return Err(e); }
-		Ok(())
+	
+	impl CUSIPIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
 	}
-}
-
-
-// ChargeType12Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum ChargeType12Code {
-	#[default]
-	#[serde(rename = "BEND")]
-	CodeBEND,
-	#[serde(rename = "DISC")]
-	CodeDISC,
-	#[serde(rename = "FEND")]
-	CodeFEND,
-	#[serde(rename = "POST")]
-	CodePOST,
-	#[serde(rename = "REGF")]
-	CodeREGF,
-	#[serde(rename = "SHIP")]
-	CodeSHIP,
-	#[serde(rename = "SPCN")]
-	CodeSPCN,
-	#[serde(rename = "TRAN")]
-	CodeTRAN,
-}
-
-impl ChargeType12Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// CashInForecast5 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct CashInForecast5 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshSttlmDt") )]
+		pub csh_sttlm_dt: String,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SubTtlAmt", skip_serializing_if = "Option::is_none") )]
+		pub sub_ttl_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SubTtlUnitsNb", skip_serializing_if = "Option::is_none") )]
+		pub sub_ttl_units_nb: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "XcptnlCshFlowInd", skip_serializing_if = "Option::is_none") )]
+		pub xcptnl_csh_flow_ind: Option<bool>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshInBrkdwnDtls", skip_serializing_if = "Option::is_none") )]
+		pub csh_in_brkdwn_dtls: Option<Vec<FundCashInBreakdown3>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "AddtlBal", skip_serializing_if = "Option::is_none") )]
+		pub addtl_bal: Option<FundBalance1>,
 	}
-}
-
-
-// ChargeType4Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ChargeType4Choice {
-	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<ChargeType12Code>,
-	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<GenericIdentification47>,
-}
-
-impl ChargeType4Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
-		if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
-		Ok(())
+	
+	impl CashInForecast5 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref sub_ttl_amt_value) = self.sub_ttl_amt { if let Err(e) = sub_ttl_amt_value.validate() { return Err(e); } }
+			if let Some(ref sub_ttl_units_nb_value) = self.sub_ttl_units_nb { if let Err(e) = sub_ttl_units_nb_value.validate() { return Err(e); } }
+			if let Some(ref csh_in_brkdwn_dtls_vec) = self.csh_in_brkdwn_dtls { for item in csh_in_brkdwn_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref addtl_bal_value) = self.addtl_bal { if let Err(e) = addtl_bal_value.validate() { return Err(e); } }
+			Ok(())
+		}
 	}
-}
-
-
-// Commission21 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct Commission21 {
-	#[serde(rename = "ComssnTp")]
-	pub comssn_tp: CommissionType5Choice,
-	#[serde(rename = "ComssnApld")]
-	pub comssn_apld: AmountOrRate3Choice,
-}
-
-impl Commission21 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.comssn_tp.validate() { return Err(e); }
-		if let Err(e) = self.comssn_apld.validate() { return Err(e); }
-		Ok(())
+	
+	
+	// CashOutForecast5 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct CashOutForecast5 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshSttlmDt") )]
+		pub csh_sttlm_dt: String,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SubTtlAmt", skip_serializing_if = "Option::is_none") )]
+		pub sub_ttl_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SubTtlUnitsNb", skip_serializing_if = "Option::is_none") )]
+		pub sub_ttl_units_nb: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "XcptnlCshFlowInd", skip_serializing_if = "Option::is_none") )]
+		pub xcptnl_csh_flow_ind: Option<bool>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshOutBrkdwnDtls", skip_serializing_if = "Option::is_none") )]
+		pub csh_out_brkdwn_dtls: Option<Vec<FundCashOutBreakdown3>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "AddtlBal", skip_serializing_if = "Option::is_none") )]
+		pub addtl_bal: Option<FundBalance1>,
 	}
-}
-
-
-// CommissionType5Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct CommissionType5Choice {
-	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<CommissionType6Code>,
-	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<GenericIdentification47>,
-}
-
-impl CommissionType5Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
-		if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
-		Ok(())
+	
+	impl CashOutForecast5 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref sub_ttl_amt_value) = self.sub_ttl_amt { if let Err(e) = sub_ttl_amt_value.validate() { return Err(e); } }
+			if let Some(ref sub_ttl_units_nb_value) = self.sub_ttl_units_nb { if let Err(e) = sub_ttl_units_nb_value.validate() { return Err(e); } }
+			if let Some(ref csh_out_brkdwn_dtls_vec) = self.csh_out_brkdwn_dtls { for item in csh_out_brkdwn_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref addtl_bal_value) = self.addtl_bal { if let Err(e) = addtl_bal_value.validate() { return Err(e); } }
+			Ok(())
+		}
 	}
-}
-
-
-// CommissionType6Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum CommissionType6Code {
-	#[default]
-	#[serde(rename = "FEND")]
-	CodeFEND,
-	#[serde(rename = "BEND")]
-	CodeBEND,
-	#[serde(rename = "CDPL")]
-	CodeCDPL,
-}
-
-impl CommissionType6Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// Charge26 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct Charge26 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
+		pub tp: ChargeType4Choice,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ChrgApld") )]
+		pub chrg_apld: AmountOrRate3Choice,
 	}
-}
-
-
-// ConsolidatedTapeAssociationIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct ConsolidatedTapeAssociationIdentifier {
-	#[serde(rename = "$value")]
-	pub consolidated_tape_association_identifier: String,
-}
-
-impl ConsolidatedTapeAssociationIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.consolidated_tape_association_identifier.chars().count() < 1 {
+	
+	impl Charge26 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.tp.validate() { return Err(e); }
+			if let Err(e) = self.chrg_apld.validate() { return Err(e); }
+			Ok(())
+		}
+	}
+	
+	
+	// ChargeType12Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum ChargeType12Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BEND") )]
+		CodeBEND,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "DISC") )]
+		CodeDISC,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "FEND") )]
+		CodeFEND,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "POST") )]
+		CodePOST,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "REGF") )]
+		CodeREGF,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SHIP") )]
+		CodeSHIP,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SPCN") )]
+		CodeSPCN,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TRAN") )]
+		CodeTRAN,
+	}
+	
+	impl ChargeType12Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// ChargeType4Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct ChargeType4Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
+		pub cd: Option<ChargeType12Code>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Prtry", skip_serializing_if = "Option::is_none") )]
+		pub prtry: Option<GenericIdentification47>,
+	}
+	
+	impl ChargeType4Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
+			if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// Commission21 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct Commission21 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ComssnTp") )]
+		pub comssn_tp: CommissionType5Choice,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ComssnApld") )]
+		pub comssn_apld: AmountOrRate3Choice,
+	}
+	
+	impl Commission21 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.comssn_tp.validate() { return Err(e); }
+			if let Err(e) = self.comssn_apld.validate() { return Err(e); }
+			Ok(())
+		}
+	}
+	
+	
+	// CommissionType5Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct CommissionType5Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
+		pub cd: Option<CommissionType6Code>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Prtry", skip_serializing_if = "Option::is_none") )]
+		pub prtry: Option<GenericIdentification47>,
+	}
+	
+	impl CommissionType5Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
+			if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// CommissionType6Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum CommissionType6Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "FEND") )]
+		CodeFEND,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BEND") )]
+		CodeBEND,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CDPL") )]
+		CodeCDPL,
+	}
+	
+	impl CommissionType6Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// ConsolidatedTapeAssociationIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct ConsolidatedTapeAssociationIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub consolidated_tape_association_identifier: String,
+	}
+	
+	impl ConsolidatedTapeAssociationIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.consolidated_tape_association_identifier.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "consolidated_tape_association_identifier is shorter than the minimum length of 1".to_string()));
+			}
+			if self.consolidated_tape_association_identifier.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "consolidated_tape_association_identifier exceeds the maximum length of 35".to_string()));
+			}
+			Ok(())
 		}
-		if self.consolidated_tape_association_identifier.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "consolidated_tape_association_identifier exceeds the maximum length of 35".to_string()));
+	}
+	
+	
+	// CountryCode ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct CountryCode {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub country_code: String,
+	}
+	
+	impl CountryCode {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			let pattern = Regex::new("[A-Z]{2,2}").unwrap();
+			if !pattern.is_match(&self.country_code) {
+				return Err(ValidationError::new(1005, "country_code does not match the required pattern".to_string()));
+			}
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// CountryCode ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct CountryCode {
-	#[serde(rename = "$value")]
-	pub country_code: String,
-}
-
-impl CountryCode {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		let pattern = Regex::new("[A-Z]{2,2}").unwrap();
-		if !pattern.is_match(&self.country_code) {
-			return Err(ValidationError::new(1005, "country_code does not match the required pattern".to_string()));
+	
+	
+	// CurrencyDesignation1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct CurrencyDesignation1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CcyDsgnt", skip_serializing_if = "Option::is_none") )]
+		pub ccy_dsgnt: Option<CurrencyDesignation1Code>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Lctn", skip_serializing_if = "Option::is_none") )]
+		pub lctn: Option<CountryCode>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "AddtlInf", skip_serializing_if = "Option::is_none") )]
+		pub addtl_inf: Option<Max350Text>,
+	}
+	
+	impl CurrencyDesignation1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref ccy_dsgnt_value) = self.ccy_dsgnt { if let Err(e) = ccy_dsgnt_value.validate() { return Err(e); } }
+			if let Some(ref lctn_value) = self.lctn { if let Err(e) = lctn_value.validate() { return Err(e); } }
+			if let Some(ref addtl_inf_value) = self.addtl_inf { if let Err(e) = addtl_inf_value.validate() { return Err(e); } }
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// CurrencyDesignation1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct CurrencyDesignation1 {
-	#[serde(rename = "CcyDsgnt", skip_serializing_if = "Option::is_none")]
-	pub ccy_dsgnt: Option<CurrencyDesignation1Code>,
-	#[serde(rename = "Lctn", skip_serializing_if = "Option::is_none")]
-	pub lctn: Option<CountryCode>,
-	#[serde(rename = "AddtlInf", skip_serializing_if = "Option::is_none")]
-	pub addtl_inf: Option<Max350Text>,
-}
-
-impl CurrencyDesignation1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref ccy_dsgnt_value) = self.ccy_dsgnt { if let Err(e) = ccy_dsgnt_value.validate() { return Err(e); } }
-		if let Some(ref lctn_value) = self.lctn { if let Err(e) = lctn_value.validate() { return Err(e); } }
-		if let Some(ref addtl_inf_value) = self.addtl_inf { if let Err(e) = addtl_inf_value.validate() { return Err(e); } }
-		Ok(())
+	
+	
+	// CurrencyDesignation1Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum CurrencyDesignation1Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ONSH") )]
+		CodeONSH,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "OFFS") )]
+		CodeOFFS,
 	}
-}
-
-
-// CurrencyDesignation1Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum CurrencyDesignation1Code {
-	#[default]
-	#[serde(rename = "ONSH")]
-	CodeONSH,
-	#[serde(rename = "OFFS")]
-	CodeOFFS,
-}
-
-impl CurrencyDesignation1Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	impl CurrencyDesignation1Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
 	}
-}
-
-
-// DataFormat2Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct DataFormat2Choice {
-	#[serde(rename = "Strd", skip_serializing_if = "Option::is_none")]
-	pub strd: Option<GenericIdentification1>,
-	#[serde(rename = "Ustrd", skip_serializing_if = "Option::is_none")]
-	pub ustrd: Option<Max140Text>,
-}
-
-impl DataFormat2Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref strd_value) = self.strd { if let Err(e) = strd_value.validate() { return Err(e); } }
-		if let Some(ref ustrd_value) = self.ustrd { if let Err(e) = ustrd_value.validate() { return Err(e); } }
-		Ok(())
+	
+	
+	// DataFormat2Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct DataFormat2Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Strd", skip_serializing_if = "Option::is_none") )]
+		pub strd: Option<GenericIdentification1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ustrd", skip_serializing_if = "Option::is_none") )]
+		pub ustrd: Option<Max140Text>,
 	}
-}
-
-
-// DateAndDateTimeChoice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct DateAndDateTimeChoice {
-	#[serde(rename = "Dt", skip_serializing_if = "Option::is_none")]
-	pub dt: Option<String>,
-	#[serde(rename = "DtTm", skip_serializing_if = "Option::is_none")]
-	pub dt_tm: Option<String>,
-}
-
-impl DateAndDateTimeChoice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	impl DataFormat2Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref strd_value) = self.strd { if let Err(e) = strd_value.validate() { return Err(e); } }
+			if let Some(ref ustrd_value) = self.ustrd { if let Err(e) = ustrd_value.validate() { return Err(e); } }
+			Ok(())
+		}
 	}
-}
-
-
-// DecimalNumber ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct DecimalNumber {
-	#[serde(rename = "$value")]
-	pub decimal_number: f64,
-}
-
-impl DecimalNumber {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// DateAndDateTimeChoice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct DateAndDateTimeChoice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Dt", skip_serializing_if = "Option::is_none") )]
+		pub dt: Option<String>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "DtTm", skip_serializing_if = "Option::is_none") )]
+		pub dt_tm: Option<String>,
 	}
-}
-
-
-// DistributionPolicy1Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum DistributionPolicy1Code {
-	#[default]
-	#[serde(rename = "DIST")]
-	CodeDIST,
-	#[serde(rename = "ACCU")]
-	CodeACCU,
-}
-
-impl DistributionPolicy1Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	impl DateAndDateTimeChoice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
 	}
-}
-
-
-// DutchIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct DutchIdentifier {
-	#[serde(rename = "$value")]
-	pub dutch_identifier: String,
-}
-
-impl DutchIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// DecimalNumber ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct DecimalNumber {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub decimal_number: f64,
 	}
-}
-
-
-// EuroclearClearstreamIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct EuroclearClearstreamIdentifier {
-	#[serde(rename = "$value")]
-	pub euroclear_clearstream_identifier: String,
-}
-
-impl EuroclearClearstreamIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.euroclear_clearstream_identifier.chars().count() < 1 {
+	
+	impl DecimalNumber {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// DistributionPolicy1Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum DistributionPolicy1Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "DIST") )]
+		CodeDIST,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ACCU") )]
+		CodeACCU,
+	}
+	
+	impl DistributionPolicy1Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// DutchIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct DutchIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub dutch_identifier: String,
+	}
+	
+	impl DutchIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// EuroclearClearstreamIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct EuroclearClearstreamIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub euroclear_clearstream_identifier: String,
+	}
+	
+	impl EuroclearClearstreamIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.euroclear_clearstream_identifier.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "euroclear_clearstream_identifier is shorter than the minimum length of 1".to_string()));
+			}
+			if self.euroclear_clearstream_identifier.chars().count() > 12 {
+				return Err(ValidationError::new(1002, "euroclear_clearstream_identifier exceeds the maximum length of 12".to_string()));
+			}
+			Ok(())
 		}
-		if self.euroclear_clearstream_identifier.chars().count() > 12 {
-			return Err(ValidationError::new(1002, "euroclear_clearstream_identifier exceeds the maximum length of 12".to_string()));
+	}
+	
+	
+	// Exact4AlphaNumericText ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct Exact4AlphaNumericText {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub exact4_alpha_numeric_text: String,
+	}
+	
+	impl Exact4AlphaNumericText {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			let pattern = Regex::new("[a-zA-Z0-9]{4}").unwrap();
+			if !pattern.is_match(&self.exact4_alpha_numeric_text) {
+				return Err(ValidationError::new(1005, "exact4_alpha_numeric_text does not match the required pattern".to_string()));
+			}
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// Exact4AlphaNumericText ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct Exact4AlphaNumericText {
-	#[serde(rename = "$value")]
-	pub exact4_alpha_numeric_text: String,
-}
-
-impl Exact4AlphaNumericText {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		let pattern = Regex::new("[a-zA-Z0-9]{4}").unwrap();
-		if !pattern.is_match(&self.exact4_alpha_numeric_text) {
-			return Err(ValidationError::new(1005, "exact4_alpha_numeric_text does not match the required pattern".to_string()));
+	
+	
+	// Extension1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct Extension1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm") )]
+		pub plc_and_nm: Max350Text,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Txt") )]
+		pub txt: Max350Text,
+	}
+	
+	impl Extension1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.plc_and_nm.validate() { return Err(e); }
+			if let Err(e) = self.txt.validate() { return Err(e); }
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// Extension1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct Extension1 {
-	#[serde(rename = "PlcAndNm")]
-	pub plc_and_nm: Max350Text,
-	#[serde(rename = "Txt")]
-	pub txt: Max350Text,
-}
-
-impl Extension1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.plc_and_nm.validate() { return Err(e); }
-		if let Err(e) = self.txt.validate() { return Err(e); }
-		Ok(())
+	
+	
+	// FinancialInstrument9 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct FinancialInstrument9 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
+		pub id: SecurityIdentification3Choice,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
+		pub nm: Option<Max350Text>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SplmtryId", skip_serializing_if = "Option::is_none") )]
+		pub splmtry_id: Option<Max35Text>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ReqdNAVCcy", skip_serializing_if = "Option::is_none") )]
+		pub reqd_nav_ccy: Option<ActiveOrHistoricCurrencyCode>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ClssTp", skip_serializing_if = "Option::is_none") )]
+		pub clss_tp: Option<Max35Text>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SctiesForm", skip_serializing_if = "Option::is_none") )]
+		pub scties_form: Option<FormOfSecurity1Code>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "DstrbtnPlcy", skip_serializing_if = "Option::is_none") )]
+		pub dstrbtn_plcy: Option<DistributionPolicy1Code>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "DualFndInd") )]
+		pub dual_fnd_ind: bool,
 	}
-}
-
-
-// FinancialInstrument9 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FinancialInstrument9 {
-	#[serde(rename = "Id")]
-	pub id: SecurityIdentification3Choice,
-	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
-	pub nm: Option<Max350Text>,
-	#[serde(rename = "SplmtryId", skip_serializing_if = "Option::is_none")]
-	pub splmtry_id: Option<Max35Text>,
-	#[serde(rename = "ReqdNAVCcy", skip_serializing_if = "Option::is_none")]
-	pub reqd_nav_ccy: Option<ActiveOrHistoricCurrencyCode>,
-	#[serde(rename = "ClssTp", skip_serializing_if = "Option::is_none")]
-	pub clss_tp: Option<Max35Text>,
-	#[serde(rename = "SctiesForm", skip_serializing_if = "Option::is_none")]
-	pub scties_form: Option<FormOfSecurity1Code>,
-	#[serde(rename = "DstrbtnPlcy", skip_serializing_if = "Option::is_none")]
-	pub dstrbtn_plcy: Option<DistributionPolicy1Code>,
-	#[serde(rename = "DualFndInd")]
-	pub dual_fnd_ind: bool,
-}
-
-impl FinancialInstrument9 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Some(ref nm_value) = self.nm { if let Err(e) = nm_value.validate() { return Err(e); } }
-		if let Some(ref splmtry_id_value) = self.splmtry_id { if let Err(e) = splmtry_id_value.validate() { return Err(e); } }
-		if let Some(ref reqd_nav_ccy_value) = self.reqd_nav_ccy { if let Err(e) = reqd_nav_ccy_value.validate() { return Err(e); } }
-		if let Some(ref clss_tp_value) = self.clss_tp { if let Err(e) = clss_tp_value.validate() { return Err(e); } }
-		if let Some(ref scties_form_value) = self.scties_form { if let Err(e) = scties_form_value.validate() { return Err(e); } }
-		if let Some(ref dstrbtn_plcy_value) = self.dstrbtn_plcy { if let Err(e) = dstrbtn_plcy_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// FinancialInstrumentQuantity1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FinancialInstrumentQuantity1 {
-	#[serde(rename = "Unit")]
-	pub unit: f64,
-}
-
-impl FinancialInstrumentQuantity1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// FlowDirectionType1Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum FlowDirectionType1Code {
-	#[default]
-	#[serde(rename = "INCG")]
-	CodeINCG,
-	#[serde(rename = "OUTG")]
-	CodeOUTG,
-}
-
-impl FlowDirectionType1Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// ForeignExchangeTerms19 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct ForeignExchangeTerms19 {
-	#[serde(rename = "UnitCcy")]
-	pub unit_ccy: ActiveCurrencyCode,
-	#[serde(rename = "QtdCcy")]
-	pub qtd_ccy: ActiveCurrencyCode,
-	#[serde(rename = "XchgRate")]
-	pub xchg_rate: f64,
-}
-
-impl ForeignExchangeTerms19 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.unit_ccy.validate() { return Err(e); }
-		if let Err(e) = self.qtd_ccy.validate() { return Err(e); }
-		Ok(())
-	}
-}
-
-
-// FormOfSecurity1Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum FormOfSecurity1Code {
-	#[default]
-	#[serde(rename = "BEAR")]
-	CodeBEAR,
-	#[serde(rename = "REGD")]
-	CodeREGD,
-}
-
-impl FormOfSecurity1Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// Fund4 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct Fund4 {
-	#[serde(rename = "Nm", skip_serializing_if = "Option::is_none")]
-	pub nm: Option<Max350Text>,
-	#[serde(rename = "LglNttyIdr", skip_serializing_if = "Option::is_none")]
-	pub lgl_ntty_idr: Option<LEIIdentifier>,
-	#[serde(rename = "Id", skip_serializing_if = "Option::is_none")]
-	pub id: Option<OtherIdentification4>,
-	#[serde(rename = "Ccy", skip_serializing_if = "Option::is_none")]
-	pub ccy: Option<ActiveOrHistoricCurrencyCode>,
-	#[serde(rename = "TtlNAV", skip_serializing_if = "Option::is_none")]
-	pub ttl_nav: Option<ActiveOrHistoricCurrencyAndAmount>,
-	#[serde(rename = "PrvsTtlNAV", skip_serializing_if = "Option::is_none")]
-	pub prvs_ttl_nav: Option<ActiveOrHistoricCurrencyAndAmount>,
-	#[serde(rename = "TtlUnitsNb", skip_serializing_if = "Option::is_none")]
-	pub ttl_units_nb: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "PrvsTtlUnitsNb", skip_serializing_if = "Option::is_none")]
-	pub prvs_ttl_units_nb: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "PctgOfFndTtlNAV", skip_serializing_if = "Option::is_none")]
-	pub pctg_of_fnd_ttl_nav: Option<f64>,
-}
-
-impl Fund4 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref nm_value) = self.nm { if let Err(e) = nm_value.validate() { return Err(e); } }
-		if let Some(ref lgl_ntty_idr_value) = self.lgl_ntty_idr { if let Err(e) = lgl_ntty_idr_value.validate() { return Err(e); } }
-		if let Some(ref id_value) = self.id { if let Err(e) = id_value.validate() { return Err(e); } }
-		if let Some(ref ccy_value) = self.ccy { if let Err(e) = ccy_value.validate() { return Err(e); } }
-		if let Some(ref ttl_nav_value) = self.ttl_nav { if let Err(e) = ttl_nav_value.validate() { return Err(e); } }
-		if let Some(ref prvs_ttl_nav_value) = self.prvs_ttl_nav { if let Err(e) = prvs_ttl_nav_value.validate() { return Err(e); } }
-		if let Some(ref ttl_units_nb_value) = self.ttl_units_nb { if let Err(e) = ttl_units_nb_value.validate() { return Err(e); } }
-		if let Some(ref prvs_ttl_units_nb_value) = self.prvs_ttl_units_nb { if let Err(e) = prvs_ttl_units_nb_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// FundBalance1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FundBalance1 {
-	#[serde(rename = "TtlUnitsFrUnitOrdrs", skip_serializing_if = "Option::is_none")]
-	pub ttl_units_fr_unit_ordrs: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "TtlUnitsFrCshOrdrs", skip_serializing_if = "Option::is_none")]
-	pub ttl_units_fr_csh_ordrs: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "TtlCshFrUnitOrdrs", skip_serializing_if = "Option::is_none")]
-	pub ttl_csh_fr_unit_ordrs: Option<ActiveOrHistoricCurrencyAndAmount>,
-	#[serde(rename = "TtlCshFrCshOrdrs", skip_serializing_if = "Option::is_none")]
-	pub ttl_csh_fr_csh_ordrs: Option<ActiveOrHistoricCurrencyAndAmount>,
-}
-
-impl FundBalance1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref ttl_units_fr_unit_ordrs_value) = self.ttl_units_fr_unit_ordrs { if let Err(e) = ttl_units_fr_unit_ordrs_value.validate() { return Err(e); } }
-		if let Some(ref ttl_units_fr_csh_ordrs_value) = self.ttl_units_fr_csh_ordrs { if let Err(e) = ttl_units_fr_csh_ordrs_value.validate() { return Err(e); } }
-		if let Some(ref ttl_csh_fr_unit_ordrs_value) = self.ttl_csh_fr_unit_ordrs { if let Err(e) = ttl_csh_fr_unit_ordrs_value.validate() { return Err(e); } }
-		if let Some(ref ttl_csh_fr_csh_ordrs_value) = self.ttl_csh_fr_csh_ordrs { if let Err(e) = ttl_csh_fr_csh_ordrs_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// FundCashForecast6 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FundCashForecast6 {
-	#[serde(rename = "Id")]
-	pub id: Max35Text,
-	#[serde(rename = "TradDtTm")]
-	pub trad_dt_tm: DateAndDateTimeChoice,
-	#[serde(rename = "PrvsTradDtTm", skip_serializing_if = "Option::is_none")]
-	pub prvs_trad_dt_tm: Option<DateAndDateTimeChoice>,
-	#[serde(rename = "FinInstrmDtls")]
-	pub fin_instrm_dtls: FinancialInstrument9,
-	#[serde(rename = "TtlNAV", skip_serializing_if = "Option::is_none")]
-	pub ttl_nav: Option<Vec<ActiveOrHistoricCurrencyAndAmount>>,
-	#[serde(rename = "PrvsTtlNAV", skip_serializing_if = "Option::is_none")]
-	pub prvs_ttl_nav: Option<Vec<ActiveOrHistoricCurrencyAndAmount>>,
-	#[serde(rename = "TtlUnitsNb", skip_serializing_if = "Option::is_none")]
-	pub ttl_units_nb: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "PrvsTtlUnitsNb", skip_serializing_if = "Option::is_none")]
-	pub prvs_ttl_units_nb: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "TtlNAVChngRate", skip_serializing_if = "Option::is_none")]
-	pub ttl_nav_chng_rate: Option<f64>,
-	#[serde(rename = "InvstmtCcy", skip_serializing_if = "Option::is_none")]
-	pub invstmt_ccy: Option<Vec<ActiveOrHistoricCurrencyCode>>,
-	#[serde(rename = "CcySts", skip_serializing_if = "Option::is_none")]
-	pub ccy_sts: Option<CurrencyDesignation1>,
-	#[serde(rename = "XcptnlNetCshFlowInd")]
-	pub xcptnl_net_csh_flow_ind: bool,
-	#[serde(rename = "Pric", skip_serializing_if = "Option::is_none")]
-	pub pric: Option<UnitPrice19>,
-	#[serde(rename = "FXRate", skip_serializing_if = "Option::is_none")]
-	pub fx_rate: Option<ForeignExchangeTerms19>,
-	#[serde(rename = "PctgOfShrClssTtlNAV", skip_serializing_if = "Option::is_none")]
-	pub pctg_of_shr_clss_ttl_nav: Option<f64>,
-	#[serde(rename = "BrkdwnByPty", skip_serializing_if = "Option::is_none")]
-	pub brkdwn_by_pty: Option<Vec<BreakdownByParty3>>,
-	#[serde(rename = "BrkdwnByCtry", skip_serializing_if = "Option::is_none")]
-	pub brkdwn_by_ctry: Option<Vec<BreakdownByCountry2>>,
-	#[serde(rename = "BrkdwnByCcy", skip_serializing_if = "Option::is_none")]
-	pub brkdwn_by_ccy: Option<Vec<BreakdownByCurrency2>>,
-	#[serde(rename = "BrkdwnByUsrDfndParam", skip_serializing_if = "Option::is_none")]
-	pub brkdwn_by_usr_dfnd_param: Option<Vec<BreakdownByUserDefinedParameter3>>,
-	#[serde(rename = "NetCshFcstDtls", skip_serializing_if = "Option::is_none")]
-	pub net_csh_fcst_dtls: Option<Vec<NetCashForecast4>>,
-}
-
-impl FundCashForecast6 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Err(e) = self.trad_dt_tm.validate() { return Err(e); }
-		if let Some(ref prvs_trad_dt_tm_value) = self.prvs_trad_dt_tm { if let Err(e) = prvs_trad_dt_tm_value.validate() { return Err(e); } }
-		if let Err(e) = self.fin_instrm_dtls.validate() { return Err(e); }
-		if let Some(ref ttl_nav_vec) = self.ttl_nav { for item in ttl_nav_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref prvs_ttl_nav_vec) = self.prvs_ttl_nav { for item in prvs_ttl_nav_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref ttl_units_nb_value) = self.ttl_units_nb { if let Err(e) = ttl_units_nb_value.validate() { return Err(e); } }
-		if let Some(ref prvs_ttl_units_nb_value) = self.prvs_ttl_units_nb { if let Err(e) = prvs_ttl_units_nb_value.validate() { return Err(e); } }
-		if let Some(ref invstmt_ccy_vec) = self.invstmt_ccy { for item in invstmt_ccy_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref ccy_sts_value) = self.ccy_sts { if let Err(e) = ccy_sts_value.validate() { return Err(e); } }
-		if let Some(ref pric_value) = self.pric { if let Err(e) = pric_value.validate() { return Err(e); } }
-		if let Some(ref fx_rate_value) = self.fx_rate { if let Err(e) = fx_rate_value.validate() { return Err(e); } }
-		if let Some(ref brkdwn_by_pty_vec) = self.brkdwn_by_pty { for item in brkdwn_by_pty_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref brkdwn_by_ctry_vec) = self.brkdwn_by_ctry { for item in brkdwn_by_ctry_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref brkdwn_by_ccy_vec) = self.brkdwn_by_ccy { for item in brkdwn_by_ccy_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref brkdwn_by_usr_dfnd_param_vec) = self.brkdwn_by_usr_dfnd_param { for item in brkdwn_by_usr_dfnd_param_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref net_csh_fcst_dtls_vec) = self.net_csh_fcst_dtls { for item in net_csh_fcst_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		Ok(())
-	}
-}
-
-
-// FundCashInBreakdown3 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FundCashInBreakdown3 {
-	#[serde(rename = "Amt", skip_serializing_if = "Option::is_none")]
-	pub amt: Option<ActiveOrHistoricCurrencyAndAmount>,
-	#[serde(rename = "UnitsNb", skip_serializing_if = "Option::is_none")]
-	pub units_nb: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "NewAmtInd", skip_serializing_if = "Option::is_none")]
-	pub new_amt_ind: Option<bool>,
-	#[serde(rename = "InvstmtFndTxInTp")]
-	pub invstmt_fnd_tx_in_tp: InvestmentFundTransactionInType1Choice,
-	#[serde(rename = "OrgnlOrdrQtyTp")]
-	pub orgnl_ordr_qty_tp: QuantityType1Choice,
-	#[serde(rename = "ChrgDtls", skip_serializing_if = "Option::is_none")]
-	pub chrg_dtls: Option<Vec<Charge26>>,
-	#[serde(rename = "ComssnDtls", skip_serializing_if = "Option::is_none")]
-	pub comssn_dtls: Option<Vec<Commission21>>,
-	#[serde(rename = "SttlmCcy", skip_serializing_if = "Option::is_none")]
-	pub sttlm_ccy: Option<ActiveCurrencyCode>,
-}
-
-impl FundCashInBreakdown3 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref amt_value) = self.amt { if let Err(e) = amt_value.validate() { return Err(e); } }
-		if let Some(ref units_nb_value) = self.units_nb { if let Err(e) = units_nb_value.validate() { return Err(e); } }
-		if let Err(e) = self.invstmt_fnd_tx_in_tp.validate() { return Err(e); }
-		if let Err(e) = self.orgnl_ordr_qty_tp.validate() { return Err(e); }
-		if let Some(ref chrg_dtls_vec) = self.chrg_dtls { for item in chrg_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref comssn_dtls_vec) = self.comssn_dtls { for item in comssn_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref sttlm_ccy_value) = self.sttlm_ccy { if let Err(e) = sttlm_ccy_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// FundCashOutBreakdown3 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FundCashOutBreakdown3 {
-	#[serde(rename = "Amt", skip_serializing_if = "Option::is_none")]
-	pub amt: Option<ActiveOrHistoricCurrencyAndAmount>,
-	#[serde(rename = "UnitsNb", skip_serializing_if = "Option::is_none")]
-	pub units_nb: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "NewAmtInd", skip_serializing_if = "Option::is_none")]
-	pub new_amt_ind: Option<bool>,
-	#[serde(rename = "InvstmtFndTxOutTp")]
-	pub invstmt_fnd_tx_out_tp: InvestmentFundTransactionOutType1Choice,
-	#[serde(rename = "OrgnlOrdrQtyTp")]
-	pub orgnl_ordr_qty_tp: QuantityType1Choice,
-	#[serde(rename = "ChrgDtls", skip_serializing_if = "Option::is_none")]
-	pub chrg_dtls: Option<Vec<Charge26>>,
-	#[serde(rename = "ComssnDtls", skip_serializing_if = "Option::is_none")]
-	pub comssn_dtls: Option<Vec<Commission21>>,
-	#[serde(rename = "SttlmCcy", skip_serializing_if = "Option::is_none")]
-	pub sttlm_ccy: Option<ActiveCurrencyCode>,
-}
-
-impl FundCashOutBreakdown3 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref amt_value) = self.amt { if let Err(e) = amt_value.validate() { return Err(e); } }
-		if let Some(ref units_nb_value) = self.units_nb { if let Err(e) = units_nb_value.validate() { return Err(e); } }
-		if let Err(e) = self.invstmt_fnd_tx_out_tp.validate() { return Err(e); }
-		if let Err(e) = self.orgnl_ordr_qty_tp.validate() { return Err(e); }
-		if let Some(ref chrg_dtls_vec) = self.chrg_dtls { for item in chrg_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref comssn_dtls_vec) = self.comssn_dtls { for item in comssn_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref sttlm_ccy_value) = self.sttlm_ccy { if let Err(e) = sttlm_ccy_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// FundDetailedConfirmedCashForecastReportV04 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct FundDetailedConfirmedCashForecastReportV04 {
-	#[serde(rename = "MsgId")]
-	pub msg_id: MessageIdentification1,
-	#[serde(rename = "PoolRef", skip_serializing_if = "Option::is_none")]
-	pub pool_ref: Option<AdditionalReference3>,
-	#[serde(rename = "PrvsRef", skip_serializing_if = "Option::is_none")]
-	pub prvs_ref: Option<Vec<AdditionalReference3>>,
-	#[serde(rename = "RltdRef", skip_serializing_if = "Option::is_none")]
-	pub rltd_ref: Option<Vec<AdditionalReference3>>,
-	#[serde(rename = "MsgPgntn")]
-	pub msg_pgntn: Pagination,
-	#[serde(rename = "FndOrSubFndDtls", skip_serializing_if = "Option::is_none")]
-	pub fnd_or_sub_fnd_dtls: Option<Fund4>,
-	#[serde(rename = "FndCshFcstDtls")]
-	pub fnd_csh_fcst_dtls: Vec<FundCashForecast6>,
-	#[serde(rename = "CnsltdNetCshFcst", skip_serializing_if = "Option::is_none")]
-	pub cnsltd_net_csh_fcst: Option<NetCashForecast3>,
-	#[serde(rename = "Xtnsn", skip_serializing_if = "Option::is_none")]
-	pub xtnsn: Option<Vec<Extension1>>,
-}
-
-impl FundDetailedConfirmedCashForecastReportV04 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.msg_id.validate() { return Err(e); }
-		if let Some(ref pool_ref_value) = self.pool_ref { if let Err(e) = pool_ref_value.validate() { return Err(e); } }
-		if let Some(ref prvs_ref_vec) = self.prvs_ref { for item in prvs_ref_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref rltd_ref_vec) = self.rltd_ref { for item in rltd_ref_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Err(e) = self.msg_pgntn.validate() { return Err(e); }
-		if let Some(ref fnd_or_sub_fnd_dtls_value) = self.fnd_or_sub_fnd_dtls { if let Err(e) = fnd_or_sub_fnd_dtls_value.validate() { return Err(e); } }
-		for item in &self.fnd_csh_fcst_dtls { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref cnsltd_net_csh_fcst_value) = self.cnsltd_net_csh_fcst { if let Err(e) = cnsltd_net_csh_fcst_value.validate() { return Err(e); } }
-		if let Some(ref xtnsn_vec) = self.xtnsn { for item in xtnsn_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		Ok(())
-	}
-}
-
-
-// GenericIdentification1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct GenericIdentification1 {
-	#[serde(rename = "Id")]
-	pub id: Max35Text,
-	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<Max35Text>,
-	#[serde(rename = "Issr", skip_serializing_if = "Option::is_none")]
-	pub issr: Option<Max35Text>,
-}
-
-impl GenericIdentification1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Some(ref schme_nm_value) = self.schme_nm { if let Err(e) = schme_nm_value.validate() { return Err(e); } }
-		if let Some(ref issr_value) = self.issr { if let Err(e) = issr_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// GenericIdentification47 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct GenericIdentification47 {
-	#[serde(rename = "Id")]
-	pub id: Exact4AlphaNumericText,
-	#[serde(rename = "Issr")]
-	pub issr: Max4AlphaNumericText,
-	#[serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none")]
-	pub schme_nm: Option<Max4AlphaNumericText>,
-}
-
-impl GenericIdentification47 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Err(e) = self.issr.validate() { return Err(e); }
-		if let Some(ref schme_nm_value) = self.schme_nm { if let Err(e) = schme_nm_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// ISINIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct ISINIdentifier {
-	#[serde(rename = "$value")]
-	pub isin_identifier: String,
-}
-
-impl ISINIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		let pattern = Regex::new("[A-Z0-9]{12,12}").unwrap();
-		if !pattern.is_match(&self.isin_identifier) {
-			return Err(ValidationError::new(1005, "isin_identifier does not match the required pattern".to_string()));
+	
+	impl FinancialInstrument9 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.id.validate() { return Err(e); }
+			if let Some(ref nm_value) = self.nm { if let Err(e) = nm_value.validate() { return Err(e); } }
+			if let Some(ref splmtry_id_value) = self.splmtry_id { if let Err(e) = splmtry_id_value.validate() { return Err(e); } }
+			if let Some(ref reqd_nav_ccy_value) = self.reqd_nav_ccy { if let Err(e) = reqd_nav_ccy_value.validate() { return Err(e); } }
+			if let Some(ref clss_tp_value) = self.clss_tp { if let Err(e) = clss_tp_value.validate() { return Err(e); } }
+			if let Some(ref scties_form_value) = self.scties_form { if let Err(e) = scties_form_value.validate() { return Err(e); } }
+			if let Some(ref dstrbtn_plcy_value) = self.dstrbtn_plcy { if let Err(e) = dstrbtn_plcy_value.validate() { return Err(e); } }
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// ISODate ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct ISODate {
-	#[serde(rename = "$value")]
-	pub iso_date: String,
-}
-
-impl ISODate {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// FinancialInstrumentQuantity1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct FinancialInstrumentQuantity1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Unit") )]
+		pub unit: f64,
 	}
-}
-
-
-// ISODateTime ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct ISODateTime {
-	#[serde(rename = "$value")]
-	pub iso_date_time: String,
-}
-
-impl ISODateTime {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// IdentificationSource5Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct IdentificationSource5Choice {
-	#[serde(rename = "DmstIdSrc", skip_serializing_if = "Option::is_none")]
-	pub dmst_id_src: Option<CountryCode>,
-	#[serde(rename = "PrtryIdSrc", skip_serializing_if = "Option::is_none")]
-	pub prtry_id_src: Option<Max35Text>,
-}
-
-impl IdentificationSource5Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref dmst_id_src_value) = self.dmst_id_src { if let Err(e) = dmst_id_src_value.validate() { return Err(e); } }
-		if let Some(ref prtry_id_src_value) = self.prtry_id_src { if let Err(e) = prtry_id_src_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// InvestmentAccount42 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct InvestmentAccount42 {
-	#[serde(rename = "AcctId", skip_serializing_if = "Option::is_none")]
-	pub acct_id: Option<AccountIdentification1>,
-	#[serde(rename = "OwnrId", skip_serializing_if = "Option::is_none")]
-	pub ownr_id: Option<PartyIdentification2Choice>,
-	#[serde(rename = "AcctSvcr", skip_serializing_if = "Option::is_none")]
-	pub acct_svcr: Option<PartyIdentification2Choice>,
-}
-
-impl InvestmentAccount42 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref acct_id_value) = self.acct_id { if let Err(e) = acct_id_value.validate() { return Err(e); } }
-		if let Some(ref ownr_id_value) = self.ownr_id { if let Err(e) = ownr_id_value.validate() { return Err(e); } }
-		if let Some(ref acct_svcr_value) = self.acct_svcr { if let Err(e) = acct_svcr_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// InvestmentFundTransactionInType1Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct InvestmentFundTransactionInType1Choice {
-	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<InvestmentFundTransactionInType1Code>,
-	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<GenericIdentification47>,
-}
-
-impl InvestmentFundTransactionInType1Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
-		if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// InvestmentFundTransactionInType1Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum InvestmentFundTransactionInType1Code {
-	#[default]
-	#[serde(rename = "SUBS")]
-	CodeSUBS,
-	#[serde(rename = "SWII")]
-	CodeSWII,
-	#[serde(rename = "INSP")]
-	CodeINSP,
-	#[serde(rename = "CROI")]
-	CodeCROI,
-	#[serde(rename = "RDIV")]
-	CodeRDIV,
-}
-
-impl InvestmentFundTransactionInType1Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// InvestmentFundTransactionOutType1Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct InvestmentFundTransactionOutType1Choice {
-	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<InvestmentFundTransactionOutType1Code>,
-	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<GenericIdentification47>,
-}
-
-impl InvestmentFundTransactionOutType1Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
-		if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
-		Ok(())
-	}
-}
-
-
-// InvestmentFundTransactionOutType1Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum InvestmentFundTransactionOutType1Code {
-	#[default]
-	#[serde(rename = "REDM")]
-	CodeREDM,
-	#[serde(rename = "SWIO")]
-	CodeSWIO,
-	#[serde(rename = "INSP")]
-	CodeINSP,
-	#[serde(rename = "CROO")]
-	CodeCROO,
-}
-
-impl InvestmentFundTransactionOutType1Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// LEIIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct LEIIdentifier {
-	#[serde(rename = "$value")]
-	pub lei_identifier: String,
-}
-
-impl LEIIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-		if !pattern.is_match(&self.lei_identifier) {
-			return Err(ValidationError::new(1005, "lei_identifier does not match the required pattern".to_string()));
+	
+	impl FinancialInstrumentQuantity1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// Max140Text ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct Max140Text {
-	#[serde(rename = "$value")]
-	pub max140_text: String,
-}
-
-impl Max140Text {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.max140_text.chars().count() < 1 {
+	
+	
+	// FlowDirectionType1Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum FlowDirectionType1Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "INCG") )]
+		CodeINCG,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "OUTG") )]
+		CodeOUTG,
+	}
+	
+	impl FlowDirectionType1Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// ForeignExchangeTerms19 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct ForeignExchangeTerms19 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "UnitCcy") )]
+		pub unit_ccy: ActiveCurrencyCode,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "QtdCcy") )]
+		pub qtd_ccy: ActiveCurrencyCode,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "XchgRate") )]
+		pub xchg_rate: f64,
+	}
+	
+	impl ForeignExchangeTerms19 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.unit_ccy.validate() { return Err(e); }
+			if let Err(e) = self.qtd_ccy.validate() { return Err(e); }
+			Ok(())
+		}
+	}
+	
+	
+	// FormOfSecurity1Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum FormOfSecurity1Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BEAR") )]
+		CodeBEAR,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "REGD") )]
+		CodeREGD,
+	}
+	
+	impl FormOfSecurity1Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// Fund4 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct Fund4 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
+		pub nm: Option<Max350Text>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "LglNttyIdr", skip_serializing_if = "Option::is_none") )]
+		pub lgl_ntty_idr: Option<LEIIdentifier>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Id", skip_serializing_if = "Option::is_none") )]
+		pub id: Option<OtherIdentification4>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy", skip_serializing_if = "Option::is_none") )]
+		pub ccy: Option<ActiveOrHistoricCurrencyCode>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TtlNAV", skip_serializing_if = "Option::is_none") )]
+		pub ttl_nav: Option<ActiveOrHistoricCurrencyAndAmount>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PrvsTtlNAV", skip_serializing_if = "Option::is_none") )]
+		pub prvs_ttl_nav: Option<ActiveOrHistoricCurrencyAndAmount>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TtlUnitsNb", skip_serializing_if = "Option::is_none") )]
+		pub ttl_units_nb: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PrvsTtlUnitsNb", skip_serializing_if = "Option::is_none") )]
+		pub prvs_ttl_units_nb: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PctgOfFndTtlNAV", skip_serializing_if = "Option::is_none") )]
+		pub pctg_of_fnd_ttl_nav: Option<f64>,
+	}
+	
+	impl Fund4 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref nm_value) = self.nm { if let Err(e) = nm_value.validate() { return Err(e); } }
+			if let Some(ref lgl_ntty_idr_value) = self.lgl_ntty_idr { if let Err(e) = lgl_ntty_idr_value.validate() { return Err(e); } }
+			if let Some(ref id_value) = self.id { if let Err(e) = id_value.validate() { return Err(e); } }
+			if let Some(ref ccy_value) = self.ccy { if let Err(e) = ccy_value.validate() { return Err(e); } }
+			if let Some(ref ttl_nav_value) = self.ttl_nav { if let Err(e) = ttl_nav_value.validate() { return Err(e); } }
+			if let Some(ref prvs_ttl_nav_value) = self.prvs_ttl_nav { if let Err(e) = prvs_ttl_nav_value.validate() { return Err(e); } }
+			if let Some(ref ttl_units_nb_value) = self.ttl_units_nb { if let Err(e) = ttl_units_nb_value.validate() { return Err(e); } }
+			if let Some(ref prvs_ttl_units_nb_value) = self.prvs_ttl_units_nb { if let Err(e) = prvs_ttl_units_nb_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// FundBalance1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct FundBalance1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TtlUnitsFrUnitOrdrs", skip_serializing_if = "Option::is_none") )]
+		pub ttl_units_fr_unit_ordrs: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TtlUnitsFrCshOrdrs", skip_serializing_if = "Option::is_none") )]
+		pub ttl_units_fr_csh_ordrs: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TtlCshFrUnitOrdrs", skip_serializing_if = "Option::is_none") )]
+		pub ttl_csh_fr_unit_ordrs: Option<ActiveOrHistoricCurrencyAndAmount>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TtlCshFrCshOrdrs", skip_serializing_if = "Option::is_none") )]
+		pub ttl_csh_fr_csh_ordrs: Option<ActiveOrHistoricCurrencyAndAmount>,
+	}
+	
+	impl FundBalance1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref ttl_units_fr_unit_ordrs_value) = self.ttl_units_fr_unit_ordrs { if let Err(e) = ttl_units_fr_unit_ordrs_value.validate() { return Err(e); } }
+			if let Some(ref ttl_units_fr_csh_ordrs_value) = self.ttl_units_fr_csh_ordrs { if let Err(e) = ttl_units_fr_csh_ordrs_value.validate() { return Err(e); } }
+			if let Some(ref ttl_csh_fr_unit_ordrs_value) = self.ttl_csh_fr_unit_ordrs { if let Err(e) = ttl_csh_fr_unit_ordrs_value.validate() { return Err(e); } }
+			if let Some(ref ttl_csh_fr_csh_ordrs_value) = self.ttl_csh_fr_csh_ordrs { if let Err(e) = ttl_csh_fr_csh_ordrs_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// FundCashForecast6 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct FundCashForecast6 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
+		pub id: Max35Text,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TradDtTm") )]
+		pub trad_dt_tm: DateAndDateTimeChoice,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PrvsTradDtTm", skip_serializing_if = "Option::is_none") )]
+		pub prvs_trad_dt_tm: Option<DateAndDateTimeChoice>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "FinInstrmDtls") )]
+		pub fin_instrm_dtls: FinancialInstrument9,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TtlNAV", skip_serializing_if = "Option::is_none") )]
+		pub ttl_nav: Option<Vec<ActiveOrHistoricCurrencyAndAmount>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PrvsTtlNAV", skip_serializing_if = "Option::is_none") )]
+		pub prvs_ttl_nav: Option<Vec<ActiveOrHistoricCurrencyAndAmount>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TtlUnitsNb", skip_serializing_if = "Option::is_none") )]
+		pub ttl_units_nb: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PrvsTtlUnitsNb", skip_serializing_if = "Option::is_none") )]
+		pub prvs_ttl_units_nb: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TtlNAVChngRate", skip_serializing_if = "Option::is_none") )]
+		pub ttl_nav_chng_rate: Option<f64>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "InvstmtCcy", skip_serializing_if = "Option::is_none") )]
+		pub invstmt_ccy: Option<Vec<ActiveOrHistoricCurrencyCode>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CcySts", skip_serializing_if = "Option::is_none") )]
+		pub ccy_sts: Option<CurrencyDesignation1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "XcptnlNetCshFlowInd") )]
+		pub xcptnl_net_csh_flow_ind: bool,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Pric", skip_serializing_if = "Option::is_none") )]
+		pub pric: Option<UnitPrice19>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "FXRate", skip_serializing_if = "Option::is_none") )]
+		pub fx_rate: Option<ForeignExchangeTerms19>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PctgOfShrClssTtlNAV", skip_serializing_if = "Option::is_none") )]
+		pub pctg_of_shr_clss_ttl_nav: Option<f64>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BrkdwnByPty", skip_serializing_if = "Option::is_none") )]
+		pub brkdwn_by_pty: Option<Vec<BreakdownByParty3>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BrkdwnByCtry", skip_serializing_if = "Option::is_none") )]
+		pub brkdwn_by_ctry: Option<Vec<BreakdownByCountry2>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BrkdwnByCcy", skip_serializing_if = "Option::is_none") )]
+		pub brkdwn_by_ccy: Option<Vec<BreakdownByCurrency2>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BrkdwnByUsrDfndParam", skip_serializing_if = "Option::is_none") )]
+		pub brkdwn_by_usr_dfnd_param: Option<Vec<BreakdownByUserDefinedParameter3>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NetCshFcstDtls", skip_serializing_if = "Option::is_none") )]
+		pub net_csh_fcst_dtls: Option<Vec<NetCashForecast4>>,
+	}
+	
+	impl FundCashForecast6 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.id.validate() { return Err(e); }
+			if let Err(e) = self.trad_dt_tm.validate() { return Err(e); }
+			if let Some(ref prvs_trad_dt_tm_value) = self.prvs_trad_dt_tm { if let Err(e) = prvs_trad_dt_tm_value.validate() { return Err(e); } }
+			if let Err(e) = self.fin_instrm_dtls.validate() { return Err(e); }
+			if let Some(ref ttl_nav_vec) = self.ttl_nav { for item in ttl_nav_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref prvs_ttl_nav_vec) = self.prvs_ttl_nav { for item in prvs_ttl_nav_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref ttl_units_nb_value) = self.ttl_units_nb { if let Err(e) = ttl_units_nb_value.validate() { return Err(e); } }
+			if let Some(ref prvs_ttl_units_nb_value) = self.prvs_ttl_units_nb { if let Err(e) = prvs_ttl_units_nb_value.validate() { return Err(e); } }
+			if let Some(ref invstmt_ccy_vec) = self.invstmt_ccy { for item in invstmt_ccy_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref ccy_sts_value) = self.ccy_sts { if let Err(e) = ccy_sts_value.validate() { return Err(e); } }
+			if let Some(ref pric_value) = self.pric { if let Err(e) = pric_value.validate() { return Err(e); } }
+			if let Some(ref fx_rate_value) = self.fx_rate { if let Err(e) = fx_rate_value.validate() { return Err(e); } }
+			if let Some(ref brkdwn_by_pty_vec) = self.brkdwn_by_pty { for item in brkdwn_by_pty_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref brkdwn_by_ctry_vec) = self.brkdwn_by_ctry { for item in brkdwn_by_ctry_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref brkdwn_by_ccy_vec) = self.brkdwn_by_ccy { for item in brkdwn_by_ccy_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref brkdwn_by_usr_dfnd_param_vec) = self.brkdwn_by_usr_dfnd_param { for item in brkdwn_by_usr_dfnd_param_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref net_csh_fcst_dtls_vec) = self.net_csh_fcst_dtls { for item in net_csh_fcst_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			Ok(())
+		}
+	}
+	
+	
+	// FundCashInBreakdown3 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct FundCashInBreakdown3 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Amt", skip_serializing_if = "Option::is_none") )]
+		pub amt: Option<ActiveOrHistoricCurrencyAndAmount>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "UnitsNb", skip_serializing_if = "Option::is_none") )]
+		pub units_nb: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NewAmtInd", skip_serializing_if = "Option::is_none") )]
+		pub new_amt_ind: Option<bool>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "InvstmtFndTxInTp") )]
+		pub invstmt_fnd_tx_in_tp: InvestmentFundTransactionInType1Choice,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlOrdrQtyTp") )]
+		pub orgnl_ordr_qty_tp: QuantityType1Choice,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ChrgDtls", skip_serializing_if = "Option::is_none") )]
+		pub chrg_dtls: Option<Vec<Charge26>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ComssnDtls", skip_serializing_if = "Option::is_none") )]
+		pub comssn_dtls: Option<Vec<Commission21>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SttlmCcy", skip_serializing_if = "Option::is_none") )]
+		pub sttlm_ccy: Option<ActiveCurrencyCode>,
+	}
+	
+	impl FundCashInBreakdown3 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref amt_value) = self.amt { if let Err(e) = amt_value.validate() { return Err(e); } }
+			if let Some(ref units_nb_value) = self.units_nb { if let Err(e) = units_nb_value.validate() { return Err(e); } }
+			if let Err(e) = self.invstmt_fnd_tx_in_tp.validate() { return Err(e); }
+			if let Err(e) = self.orgnl_ordr_qty_tp.validate() { return Err(e); }
+			if let Some(ref chrg_dtls_vec) = self.chrg_dtls { for item in chrg_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref comssn_dtls_vec) = self.comssn_dtls { for item in comssn_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref sttlm_ccy_value) = self.sttlm_ccy { if let Err(e) = sttlm_ccy_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// FundCashOutBreakdown3 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct FundCashOutBreakdown3 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Amt", skip_serializing_if = "Option::is_none") )]
+		pub amt: Option<ActiveOrHistoricCurrencyAndAmount>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "UnitsNb", skip_serializing_if = "Option::is_none") )]
+		pub units_nb: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NewAmtInd", skip_serializing_if = "Option::is_none") )]
+		pub new_amt_ind: Option<bool>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "InvstmtFndTxOutTp") )]
+		pub invstmt_fnd_tx_out_tp: InvestmentFundTransactionOutType1Choice,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlOrdrQtyTp") )]
+		pub orgnl_ordr_qty_tp: QuantityType1Choice,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ChrgDtls", skip_serializing_if = "Option::is_none") )]
+		pub chrg_dtls: Option<Vec<Charge26>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ComssnDtls", skip_serializing_if = "Option::is_none") )]
+		pub comssn_dtls: Option<Vec<Commission21>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SttlmCcy", skip_serializing_if = "Option::is_none") )]
+		pub sttlm_ccy: Option<ActiveCurrencyCode>,
+	}
+	
+	impl FundCashOutBreakdown3 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref amt_value) = self.amt { if let Err(e) = amt_value.validate() { return Err(e); } }
+			if let Some(ref units_nb_value) = self.units_nb { if let Err(e) = units_nb_value.validate() { return Err(e); } }
+			if let Err(e) = self.invstmt_fnd_tx_out_tp.validate() { return Err(e); }
+			if let Err(e) = self.orgnl_ordr_qty_tp.validate() { return Err(e); }
+			if let Some(ref chrg_dtls_vec) = self.chrg_dtls { for item in chrg_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref comssn_dtls_vec) = self.comssn_dtls { for item in comssn_dtls_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref sttlm_ccy_value) = self.sttlm_ccy { if let Err(e) = sttlm_ccy_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// FundDetailedConfirmedCashForecastReportV04 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct FundDetailedConfirmedCashForecastReportV04 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
+		pub msg_id: MessageIdentification1,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PoolRef", skip_serializing_if = "Option::is_none") )]
+		pub pool_ref: Option<AdditionalReference3>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PrvsRef", skip_serializing_if = "Option::is_none") )]
+		pub prvs_ref: Option<Vec<AdditionalReference3>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "RltdRef", skip_serializing_if = "Option::is_none") )]
+		pub rltd_ref: Option<Vec<AdditionalReference3>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "MsgPgntn") )]
+		pub msg_pgntn: Pagination,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "FndOrSubFndDtls", skip_serializing_if = "Option::is_none") )]
+		pub fnd_or_sub_fnd_dtls: Option<Fund4>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "FndCshFcstDtls") )]
+		pub fnd_csh_fcst_dtls: Vec<FundCashForecast6>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CnsltdNetCshFcst", skip_serializing_if = "Option::is_none") )]
+		pub cnsltd_net_csh_fcst: Option<NetCashForecast3>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Xtnsn", skip_serializing_if = "Option::is_none") )]
+		pub xtnsn: Option<Vec<Extension1>>,
+	}
+	
+	impl FundDetailedConfirmedCashForecastReportV04 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.msg_id.validate() { return Err(e); }
+			if let Some(ref pool_ref_value) = self.pool_ref { if let Err(e) = pool_ref_value.validate() { return Err(e); } }
+			if let Some(ref prvs_ref_vec) = self.prvs_ref { for item in prvs_ref_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref rltd_ref_vec) = self.rltd_ref { for item in rltd_ref_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Err(e) = self.msg_pgntn.validate() { return Err(e); }
+			if let Some(ref fnd_or_sub_fnd_dtls_value) = self.fnd_or_sub_fnd_dtls { if let Err(e) = fnd_or_sub_fnd_dtls_value.validate() { return Err(e); } }
+			for item in &self.fnd_csh_fcst_dtls { if let Err(e) = item.validate() { return Err(e); } }
+			if let Some(ref cnsltd_net_csh_fcst_value) = self.cnsltd_net_csh_fcst { if let Err(e) = cnsltd_net_csh_fcst_value.validate() { return Err(e); } }
+			if let Some(ref xtnsn_vec) = self.xtnsn { for item in xtnsn_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			Ok(())
+		}
+	}
+	
+	
+	// GenericIdentification1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct GenericIdentification1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
+		pub id: Max35Text,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none") )]
+		pub schme_nm: Option<Max35Text>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Issr", skip_serializing_if = "Option::is_none") )]
+		pub issr: Option<Max35Text>,
+	}
+	
+	impl GenericIdentification1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.id.validate() { return Err(e); }
+			if let Some(ref schme_nm_value) = self.schme_nm { if let Err(e) = schme_nm_value.validate() { return Err(e); } }
+			if let Some(ref issr_value) = self.issr { if let Err(e) = issr_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// GenericIdentification47 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct GenericIdentification47 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
+		pub id: Exact4AlphaNumericText,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Issr") )]
+		pub issr: Max4AlphaNumericText,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none") )]
+		pub schme_nm: Option<Max4AlphaNumericText>,
+	}
+	
+	impl GenericIdentification47 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.id.validate() { return Err(e); }
+			if let Err(e) = self.issr.validate() { return Err(e); }
+			if let Some(ref schme_nm_value) = self.schme_nm { if let Err(e) = schme_nm_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// ISINIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct ISINIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub isin_identifier: String,
+	}
+	
+	impl ISINIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			let pattern = Regex::new("[A-Z0-9]{12,12}").unwrap();
+			if !pattern.is_match(&self.isin_identifier) {
+				return Err(ValidationError::new(1005, "isin_identifier does not match the required pattern".to_string()));
+			}
+			Ok(())
+		}
+	}
+	
+	
+	// ISODate ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct ISODate {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub iso_date: String,
+	}
+	
+	impl ISODate {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// ISODateTime ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct ISODateTime {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub iso_date_time: String,
+	}
+	
+	impl ISODateTime {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// IdentificationSource5Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct IdentificationSource5Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "DmstIdSrc", skip_serializing_if = "Option::is_none") )]
+		pub dmst_id_src: Option<CountryCode>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PrtryIdSrc", skip_serializing_if = "Option::is_none") )]
+		pub prtry_id_src: Option<Max35Text>,
+	}
+	
+	impl IdentificationSource5Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref dmst_id_src_value) = self.dmst_id_src { if let Err(e) = dmst_id_src_value.validate() { return Err(e); } }
+			if let Some(ref prtry_id_src_value) = self.prtry_id_src { if let Err(e) = prtry_id_src_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// InvestmentAccount42 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct InvestmentAccount42 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "AcctId", skip_serializing_if = "Option::is_none") )]
+		pub acct_id: Option<AccountIdentification1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "OwnrId", skip_serializing_if = "Option::is_none") )]
+		pub ownr_id: Option<PartyIdentification2Choice>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "AcctSvcr", skip_serializing_if = "Option::is_none") )]
+		pub acct_svcr: Option<PartyIdentification2Choice>,
+	}
+	
+	impl InvestmentAccount42 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref acct_id_value) = self.acct_id { if let Err(e) = acct_id_value.validate() { return Err(e); } }
+			if let Some(ref ownr_id_value) = self.ownr_id { if let Err(e) = ownr_id_value.validate() { return Err(e); } }
+			if let Some(ref acct_svcr_value) = self.acct_svcr { if let Err(e) = acct_svcr_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// InvestmentFundTransactionInType1Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct InvestmentFundTransactionInType1Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
+		pub cd: Option<InvestmentFundTransactionInType1Code>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Prtry", skip_serializing_if = "Option::is_none") )]
+		pub prtry: Option<GenericIdentification47>,
+	}
+	
+	impl InvestmentFundTransactionInType1Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
+			if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// InvestmentFundTransactionInType1Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum InvestmentFundTransactionInType1Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SUBS") )]
+		CodeSUBS,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SWII") )]
+		CodeSWII,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "INSP") )]
+		CodeINSP,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CROI") )]
+		CodeCROI,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "RDIV") )]
+		CodeRDIV,
+	}
+	
+	impl InvestmentFundTransactionInType1Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// InvestmentFundTransactionOutType1Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct InvestmentFundTransactionOutType1Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
+		pub cd: Option<InvestmentFundTransactionOutType1Code>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Prtry", skip_serializing_if = "Option::is_none") )]
+		pub prtry: Option<GenericIdentification47>,
+	}
+	
+	impl InvestmentFundTransactionOutType1Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
+			if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// InvestmentFundTransactionOutType1Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum InvestmentFundTransactionOutType1Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "REDM") )]
+		CodeREDM,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SWIO") )]
+		CodeSWIO,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "INSP") )]
+		CodeINSP,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CROO") )]
+		CodeCROO,
+	}
+	
+	impl InvestmentFundTransactionOutType1Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// LEIIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct LEIIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub lei_identifier: String,
+	}
+	
+	impl LEIIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
+			if !pattern.is_match(&self.lei_identifier) {
+				return Err(ValidationError::new(1005, "lei_identifier does not match the required pattern".to_string()));
+			}
+			Ok(())
+		}
+	}
+	
+	
+	// Max140Text ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct Max140Text {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub max140_text: String,
+	}
+	
+	impl Max140Text {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.max140_text.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "max140_text is shorter than the minimum length of 1".to_string()));
+			}
+			if self.max140_text.chars().count() > 140 {
+				return Err(ValidationError::new(1002, "max140_text exceeds the maximum length of 140".to_string()));
+			}
+			Ok(())
 		}
-		if self.max140_text.chars().count() > 140 {
-			return Err(ValidationError::new(1002, "max140_text exceeds the maximum length of 140".to_string()));
-		}
-		Ok(())
 	}
-}
-
-
-// Max16Text ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct Max16Text {
-	#[serde(rename = "$value")]
-	pub max16_text: String,
-}
-
-impl Max16Text {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.max16_text.chars().count() < 1 {
+	
+	
+	// Max16Text ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct Max16Text {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub max16_text: String,
+	}
+	
+	impl Max16Text {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.max16_text.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "max16_text is shorter than the minimum length of 1".to_string()));
+			}
+			if self.max16_text.chars().count() > 16 {
+				return Err(ValidationError::new(1002, "max16_text exceeds the maximum length of 16".to_string()));
+			}
+			Ok(())
 		}
-		if self.max16_text.chars().count() > 16 {
-			return Err(ValidationError::new(1002, "max16_text exceeds the maximum length of 16".to_string()));
-		}
-		Ok(())
 	}
-}
-
-
-// Max350Text ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct Max350Text {
-	#[serde(rename = "$value")]
-	pub max350_text: String,
-}
-
-impl Max350Text {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.max350_text.chars().count() < 1 {
+	
+	
+	// Max350Text ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct Max350Text {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub max350_text: String,
+	}
+	
+	impl Max350Text {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.max350_text.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
+			}
+			if self.max350_text.chars().count() > 350 {
+				return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
+			}
+			Ok(())
 		}
-		if self.max350_text.chars().count() > 350 {
-			return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
-		}
-		Ok(())
 	}
-}
-
-
-// Max35Text ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct Max35Text {
-	#[serde(rename = "$value")]
-	pub max35_text: String,
-}
-
-impl Max35Text {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.max35_text.chars().count() < 1 {
+	
+	
+	// Max35Text ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct Max35Text {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub max35_text: String,
+	}
+	
+	impl Max35Text {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.max35_text.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
+			}
+			if self.max35_text.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
+			}
+			Ok(())
 		}
-		if self.max35_text.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
-		}
-		Ok(())
 	}
-}
-
-
-// Max4AlphaNumericText ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct Max4AlphaNumericText {
-	#[serde(rename = "$value")]
-	pub max4_alpha_numeric_text: String,
-}
-
-impl Max4AlphaNumericText {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.max4_alpha_numeric_text.chars().count() < 1 {
+	
+	
+	// Max4AlphaNumericText ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct Max4AlphaNumericText {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub max4_alpha_numeric_text: String,
+	}
+	
+	impl Max4AlphaNumericText {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.max4_alpha_numeric_text.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "max4_alpha_numeric_text is shorter than the minimum length of 1".to_string()));
+			}
+			if self.max4_alpha_numeric_text.chars().count() > 4 {
+				return Err(ValidationError::new(1002, "max4_alpha_numeric_text exceeds the maximum length of 4".to_string()));
+			}
+			let pattern = Regex::new("[a-zA-Z0-9]{1,4}").unwrap();
+			if !pattern.is_match(&self.max4_alpha_numeric_text) {
+				return Err(ValidationError::new(1005, "max4_alpha_numeric_text does not match the required pattern".to_string()));
+			}
+			Ok(())
 		}
-		if self.max4_alpha_numeric_text.chars().count() > 4 {
-			return Err(ValidationError::new(1002, "max4_alpha_numeric_text exceeds the maximum length of 4".to_string()));
-		}
-		let pattern = Regex::new("[a-zA-Z0-9]{1,4}").unwrap();
-		if !pattern.is_match(&self.max4_alpha_numeric_text) {
-			return Err(ValidationError::new(1005, "max4_alpha_numeric_text does not match the required pattern".to_string()));
-		}
-		Ok(())
 	}
-}
-
-
-// Max5NumericText ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct Max5NumericText {
-	#[serde(rename = "$value")]
-	pub max5_numeric_text: String,
-}
-
-impl Max5NumericText {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		let pattern = Regex::new("[0-9]{1,5}").unwrap();
-		if !pattern.is_match(&self.max5_numeric_text) {
-			return Err(ValidationError::new(1005, "max5_numeric_text does not match the required pattern".to_string()));
-		}
-		Ok(())
+	
+	
+	// Max5NumericText ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct Max5NumericText {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub max5_numeric_text: String,
 	}
-}
-
-
-// Max70Text ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct Max70Text {
-	#[serde(rename = "$value")]
-	pub max70_text: String,
-}
-
-impl Max70Text {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.max70_text.chars().count() < 1 {
+	
+	impl Max5NumericText {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			let pattern = Regex::new("[0-9]{1,5}").unwrap();
+			if !pattern.is_match(&self.max5_numeric_text) {
+				return Err(ValidationError::new(1005, "max5_numeric_text does not match the required pattern".to_string()));
+			}
+			Ok(())
+		}
+	}
+	
+	
+	// Max70Text ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct Max70Text {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub max70_text: String,
+	}
+	
+	impl Max70Text {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.max70_text.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "max70_text is shorter than the minimum length of 1".to_string()));
+			}
+			if self.max70_text.chars().count() > 70 {
+				return Err(ValidationError::new(1002, "max70_text exceeds the maximum length of 70".to_string()));
+			}
+			Ok(())
 		}
-		if self.max70_text.chars().count() > 70 {
-			return Err(ValidationError::new(1002, "max70_text exceeds the maximum length of 70".to_string()));
+	}
+	
+	
+	// MessageIdentification1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct MessageIdentification1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
+		pub id: Max35Text,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CreDtTm") )]
+		pub cre_dt_tm: String,
+	}
+	
+	impl MessageIdentification1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.id.validate() { return Err(e); }
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// MessageIdentification1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct MessageIdentification1 {
-	#[serde(rename = "Id")]
-	pub id: Max35Text,
-	#[serde(rename = "CreDtTm")]
-	pub cre_dt_tm: String,
-}
-
-impl MessageIdentification1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		Ok(())
+	
+	
+	// NameAndAddress5 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct NameAndAddress5 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Nm") )]
+		pub nm: Max350Text,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Adr", skip_serializing_if = "Option::is_none") )]
+		pub adr: Option<PostalAddress1>,
 	}
-}
-
-
-// NameAndAddress5 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct NameAndAddress5 {
-	#[serde(rename = "Nm")]
-	pub nm: Max350Text,
-	#[serde(rename = "Adr", skip_serializing_if = "Option::is_none")]
-	pub adr: Option<PostalAddress1>,
-}
-
-impl NameAndAddress5 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.nm.validate() { return Err(e); }
-		if let Some(ref adr_value) = self.adr { if let Err(e) = adr_value.validate() { return Err(e); } }
-		Ok(())
+	
+	impl NameAndAddress5 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.nm.validate() { return Err(e); }
+			if let Some(ref adr_value) = self.adr { if let Err(e) = adr_value.validate() { return Err(e); } }
+			Ok(())
+		}
 	}
-}
-
-
-// NetCashForecast3 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct NetCashForecast3 {
-	#[serde(rename = "NetAmt", skip_serializing_if = "Option::is_none")]
-	pub net_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
-	#[serde(rename = "NetUnitsNb", skip_serializing_if = "Option::is_none")]
-	pub net_units_nb: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "FlowDrctn")]
-	pub flow_drctn: FlowDirectionType1Code,
-}
-
-impl NetCashForecast3 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref net_amt_value) = self.net_amt { if let Err(e) = net_amt_value.validate() { return Err(e); } }
-		if let Some(ref net_units_nb_value) = self.net_units_nb { if let Err(e) = net_units_nb_value.validate() { return Err(e); } }
-		if let Err(e) = self.flow_drctn.validate() { return Err(e); }
-		Ok(())
+	
+	
+	// NetCashForecast3 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct NetCashForecast3 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NetAmt", skip_serializing_if = "Option::is_none") )]
+		pub net_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NetUnitsNb", skip_serializing_if = "Option::is_none") )]
+		pub net_units_nb: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "FlowDrctn") )]
+		pub flow_drctn: FlowDirectionType1Code,
 	}
-}
-
-
-// NetCashForecast4 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct NetCashForecast4 {
-	#[serde(rename = "CshSttlmDt")]
-	pub csh_sttlm_dt: String,
-	#[serde(rename = "NetAmt", skip_serializing_if = "Option::is_none")]
-	pub net_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
-	#[serde(rename = "NetUnitsNb", skip_serializing_if = "Option::is_none")]
-	pub net_units_nb: Option<FinancialInstrumentQuantity1>,
-	#[serde(rename = "FlowDrctn")]
-	pub flow_drctn: FlowDirectionType1Code,
-	#[serde(rename = "AddtlBal", skip_serializing_if = "Option::is_none")]
-	pub addtl_bal: Option<FundBalance1>,
-}
-
-impl NetCashForecast4 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref net_amt_value) = self.net_amt { if let Err(e) = net_amt_value.validate() { return Err(e); } }
-		if let Some(ref net_units_nb_value) = self.net_units_nb { if let Err(e) = net_units_nb_value.validate() { return Err(e); } }
-		if let Err(e) = self.flow_drctn.validate() { return Err(e); }
-		if let Some(ref addtl_bal_value) = self.addtl_bal { if let Err(e) = addtl_bal_value.validate() { return Err(e); } }
-		Ok(())
+	
+	impl NetCashForecast3 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref net_amt_value) = self.net_amt { if let Err(e) = net_amt_value.validate() { return Err(e); } }
+			if let Some(ref net_units_nb_value) = self.net_units_nb { if let Err(e) = net_units_nb_value.validate() { return Err(e); } }
+			if let Err(e) = self.flow_drctn.validate() { return Err(e); }
+			Ok(())
+		}
 	}
-}
-
-
-// OrderQuantityType2Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum OrderQuantityType2Code {
-	#[default]
-	#[serde(rename = "UNIT")]
-	CodeUNIT,
-	#[serde(rename = "CASH")]
-	CodeCASH,
-}
-
-impl OrderQuantityType2Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// NetCashForecast4 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct NetCashForecast4 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CshSttlmDt") )]
+		pub csh_sttlm_dt: String,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NetAmt", skip_serializing_if = "Option::is_none") )]
+		pub net_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NetUnitsNb", skip_serializing_if = "Option::is_none") )]
+		pub net_units_nb: Option<FinancialInstrumentQuantity1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "FlowDrctn") )]
+		pub flow_drctn: FlowDirectionType1Code,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "AddtlBal", skip_serializing_if = "Option::is_none") )]
+		pub addtl_bal: Option<FundBalance1>,
 	}
-}
-
-
-// OtherIdentification4 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct OtherIdentification4 {
-	#[serde(rename = "Id")]
-	pub id: Max35Text,
-	#[serde(rename = "Tp")]
-	pub tp: IdentificationSource5Choice,
-}
-
-impl OtherIdentification4 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Err(e) = self.tp.validate() { return Err(e); }
-		Ok(())
+	
+	impl NetCashForecast4 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref net_amt_value) = self.net_amt { if let Err(e) = net_amt_value.validate() { return Err(e); } }
+			if let Some(ref net_units_nb_value) = self.net_units_nb { if let Err(e) = net_units_nb_value.validate() { return Err(e); } }
+			if let Err(e) = self.flow_drctn.validate() { return Err(e); }
+			if let Some(ref addtl_bal_value) = self.addtl_bal { if let Err(e) = addtl_bal_value.validate() { return Err(e); } }
+			Ok(())
+		}
 	}
-}
-
-
-// Pagination ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct Pagination {
-	#[serde(rename = "PgNb")]
-	pub pg_nb: Max5NumericText,
-	#[serde(rename = "LastPgInd")]
-	pub last_pg_ind: bool,
-}
-
-impl Pagination {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.pg_nb.validate() { return Err(e); }
-		Ok(())
+	
+	
+	// OrderQuantityType2Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum OrderQuantityType2Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "UNIT") )]
+		CodeUNIT,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CASH") )]
+		CodeCASH,
 	}
-}
-
-
-// PartyIdentification2Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct PartyIdentification2Choice {
-	#[serde(rename = "BICOrBEI", skip_serializing_if = "Option::is_none")]
-	pub bic_or_bei: Option<AnyBICIdentifier>,
-	#[serde(rename = "PrtryId", skip_serializing_if = "Option::is_none")]
-	pub prtry_id: Option<GenericIdentification1>,
-	#[serde(rename = "NmAndAdr", skip_serializing_if = "Option::is_none")]
-	pub nm_and_adr: Option<NameAndAddress5>,
-}
-
-impl PartyIdentification2Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref bic_or_bei_value) = self.bic_or_bei { if let Err(e) = bic_or_bei_value.validate() { return Err(e); } }
-		if let Some(ref prtry_id_value) = self.prtry_id { if let Err(e) = prtry_id_value.validate() { return Err(e); } }
-		if let Some(ref nm_and_adr_value) = self.nm_and_adr { if let Err(e) = nm_and_adr_value.validate() { return Err(e); } }
-		Ok(())
+	
+	impl OrderQuantityType2Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
 	}
-}
-
-
-// PercentageRate ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct PercentageRate {
-	#[serde(rename = "$value")]
-	pub percentage_rate: f64,
-}
-
-impl PercentageRate {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// OtherIdentification4 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct OtherIdentification4 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
+		pub id: Max35Text,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
+		pub tp: IdentificationSource5Choice,
 	}
-}
-
-
-// PostalAddress1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct PostalAddress1 {
-	#[serde(rename = "AdrTp", skip_serializing_if = "Option::is_none")]
-	pub adr_tp: Option<AddressType2Code>,
-	#[serde(rename = "AdrLine", skip_serializing_if = "Option::is_none")]
-	pub adr_line: Option<Vec<Max70Text>>,
-	#[serde(rename = "StrtNm", skip_serializing_if = "Option::is_none")]
-	pub strt_nm: Option<Max70Text>,
-	#[serde(rename = "BldgNb", skip_serializing_if = "Option::is_none")]
-	pub bldg_nb: Option<Max16Text>,
-	#[serde(rename = "PstCd", skip_serializing_if = "Option::is_none")]
-	pub pst_cd: Option<Max16Text>,
-	#[serde(rename = "TwnNm", skip_serializing_if = "Option::is_none")]
-	pub twn_nm: Option<Max35Text>,
-	#[serde(rename = "CtrySubDvsn", skip_serializing_if = "Option::is_none")]
-	pub ctry_sub_dvsn: Option<Max35Text>,
-	#[serde(rename = "Ctry")]
-	pub ctry: CountryCode,
-}
-
-impl PostalAddress1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref adr_tp_value) = self.adr_tp { if let Err(e) = adr_tp_value.validate() { return Err(e); } }
-		if let Some(ref adr_line_vec) = self.adr_line { for item in adr_line_vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref strt_nm_value) = self.strt_nm { if let Err(e) = strt_nm_value.validate() { return Err(e); } }
-		if let Some(ref bldg_nb_value) = self.bldg_nb { if let Err(e) = bldg_nb_value.validate() { return Err(e); } }
-		if let Some(ref pst_cd_value) = self.pst_cd { if let Err(e) = pst_cd_value.validate() { return Err(e); } }
-		if let Some(ref twn_nm_value) = self.twn_nm { if let Err(e) = twn_nm_value.validate() { return Err(e); } }
-		if let Some(ref ctry_sub_dvsn_value) = self.ctry_sub_dvsn { if let Err(e) = ctry_sub_dvsn_value.validate() { return Err(e); } }
-		if let Err(e) = self.ctry.validate() { return Err(e); }
-		Ok(())
+	
+	impl OtherIdentification4 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.id.validate() { return Err(e); }
+			if let Err(e) = self.tp.validate() { return Err(e); }
+			Ok(())
+		}
 	}
-}
-
-
-// PriceValue1 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct PriceValue1 {
-	#[serde(rename = "Amt")]
-	pub amt: ActiveCurrencyAnd13DecimalAmount,
-}
-
-impl PriceValue1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.amt.validate() { return Err(e); }
-		Ok(())
+	
+	
+	// Pagination ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct Pagination {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PgNb") )]
+		pub pg_nb: Max5NumericText,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "LastPgInd") )]
+		pub last_pg_ind: bool,
 	}
-}
-
-
-// QUICKIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct QUICKIdentifier {
-	#[serde(rename = "$value")]
-	pub quick_identifier: String,
-}
-
-impl QUICKIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	impl Pagination {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.pg_nb.validate() { return Err(e); }
+			Ok(())
+		}
 	}
-}
-
-
-// QuantityType1Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct QuantityType1Choice {
-	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<OrderQuantityType2Code>,
-	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<GenericIdentification47>,
-}
-
-impl QuantityType1Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
-		if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
-		Ok(())
+	
+	
+	// PartyIdentification2Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct PartyIdentification2Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BICOrBEI", skip_serializing_if = "Option::is_none") )]
+		pub bic_or_bei: Option<AnyBICIdentifier>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PrtryId", skip_serializing_if = "Option::is_none") )]
+		pub prtry_id: Option<GenericIdentification1>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NmAndAdr", skip_serializing_if = "Option::is_none") )]
+		pub nm_and_adr: Option<NameAndAddress5>,
 	}
-}
-
-
-// RICIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct RICIdentifier {
-	#[serde(rename = "$value")]
-	pub ric_identifier: String,
-}
-
-impl RICIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.ric_identifier.chars().count() < 1 {
+	
+	impl PartyIdentification2Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref bic_or_bei_value) = self.bic_or_bei { if let Err(e) = bic_or_bei_value.validate() { return Err(e); } }
+			if let Some(ref prtry_id_value) = self.prtry_id { if let Err(e) = prtry_id_value.validate() { return Err(e); } }
+			if let Some(ref nm_and_adr_value) = self.nm_and_adr { if let Err(e) = nm_and_adr_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// PercentageRate ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct PercentageRate {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub percentage_rate: f64,
+	}
+	
+	impl PercentageRate {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// PostalAddress1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct PostalAddress1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "AdrTp", skip_serializing_if = "Option::is_none") )]
+		pub adr_tp: Option<AddressType2Code>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "AdrLine", skip_serializing_if = "Option::is_none") )]
+		pub adr_line: Option<Vec<Max70Text>>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "StrtNm", skip_serializing_if = "Option::is_none") )]
+		pub strt_nm: Option<Max70Text>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BldgNb", skip_serializing_if = "Option::is_none") )]
+		pub bldg_nb: Option<Max16Text>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PstCd", skip_serializing_if = "Option::is_none") )]
+		pub pst_cd: Option<Max16Text>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TwnNm", skip_serializing_if = "Option::is_none") )]
+		pub twn_nm: Option<Max35Text>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CtrySubDvsn", skip_serializing_if = "Option::is_none") )]
+		pub ctry_sub_dvsn: Option<Max35Text>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Ctry") )]
+		pub ctry: CountryCode,
+	}
+	
+	impl PostalAddress1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref adr_tp_value) = self.adr_tp { if let Err(e) = adr_tp_value.validate() { return Err(e); } }
+			if let Some(ref adr_line_vec) = self.adr_line { for item in adr_line_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref strt_nm_value) = self.strt_nm { if let Err(e) = strt_nm_value.validate() { return Err(e); } }
+			if let Some(ref bldg_nb_value) = self.bldg_nb { if let Err(e) = bldg_nb_value.validate() { return Err(e); } }
+			if let Some(ref pst_cd_value) = self.pst_cd { if let Err(e) = pst_cd_value.validate() { return Err(e); } }
+			if let Some(ref twn_nm_value) = self.twn_nm { if let Err(e) = twn_nm_value.validate() { return Err(e); } }
+			if let Some(ref ctry_sub_dvsn_value) = self.ctry_sub_dvsn { if let Err(e) = ctry_sub_dvsn_value.validate() { return Err(e); } }
+			if let Err(e) = self.ctry.validate() { return Err(e); }
+			Ok(())
+		}
+	}
+	
+	
+	// PriceValue1 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct PriceValue1 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
+		pub amt: ActiveCurrencyAnd13DecimalAmount,
+	}
+	
+	impl PriceValue1 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.amt.validate() { return Err(e); }
+			Ok(())
+		}
+	}
+	
+	
+	// QUICKIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct QUICKIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub quick_identifier: String,
+	}
+	
+	impl QUICKIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// QuantityType1Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct QuantityType1Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
+		pub cd: Option<OrderQuantityType2Code>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Prtry", skip_serializing_if = "Option::is_none") )]
+		pub prtry: Option<GenericIdentification47>,
+	}
+	
+	impl QuantityType1Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
+			if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
+			Ok(())
+		}
+	}
+	
+	
+	// RICIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct RICIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub ric_identifier: String,
+	}
+	
+	impl RICIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.ric_identifier.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "ric_identifier is shorter than the minimum length of 1".to_string()));
+			}
+			if self.ric_identifier.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "ric_identifier exceeds the maximum length of 35".to_string()));
+			}
+			Ok(())
 		}
-		if self.ric_identifier.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "ric_identifier exceeds the maximum length of 35".to_string()));
+	}
+	
+	
+	// SEDOLIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct SEDOLIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub sedol_identifier: String,
+	}
+	
+	impl SEDOLIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// SEDOLIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct SEDOLIdentifier {
-	#[serde(rename = "$value")]
-	pub sedol_identifier: String,
-}
-
-impl SEDOLIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// SecurityIdentification3Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct SecurityIdentification3Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ISIN", skip_serializing_if = "Option::is_none") )]
+		pub isin: Option<ISINIdentifier>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SEDOL", skip_serializing_if = "Option::is_none") )]
+		pub sedol: Option<String>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CUSIP", skip_serializing_if = "Option::is_none") )]
+		pub cusip: Option<String>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "RIC", skip_serializing_if = "Option::is_none") )]
+		pub ric: Option<RICIdentifier>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "TckrSymb", skip_serializing_if = "Option::is_none") )]
+		pub tckr_symb: Option<TickerIdentifier>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Blmbrg", skip_serializing_if = "Option::is_none") )]
+		pub blmbrg: Option<BloombergIdentifier>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CTA", skip_serializing_if = "Option::is_none") )]
+		pub cta: Option<ConsolidatedTapeAssociationIdentifier>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "QUICK", skip_serializing_if = "Option::is_none") )]
+		pub quick: Option<String>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Wrtppr", skip_serializing_if = "Option::is_none") )]
+		pub wrtppr: Option<String>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Dtch", skip_serializing_if = "Option::is_none") )]
+		pub dtch: Option<String>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Vlrn", skip_serializing_if = "Option::is_none") )]
+		pub vlrn: Option<String>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SCVM", skip_serializing_if = "Option::is_none") )]
+		pub scvm: Option<String>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Belgn", skip_serializing_if = "Option::is_none") )]
+		pub belgn: Option<String>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Cmon", skip_serializing_if = "Option::is_none") )]
+		pub cmon: Option<EuroclearClearstreamIdentifier>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "OthrPrtryId", skip_serializing_if = "Option::is_none") )]
+		pub othr_prtry_id: Option<AlternateSecurityIdentification1>,
 	}
-}
-
-
-// SecurityIdentification3Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct SecurityIdentification3Choice {
-	#[serde(rename = "ISIN", skip_serializing_if = "Option::is_none")]
-	pub isin: Option<ISINIdentifier>,
-	#[serde(rename = "SEDOL", skip_serializing_if = "Option::is_none")]
-	pub sedol: Option<String>,
-	#[serde(rename = "CUSIP", skip_serializing_if = "Option::is_none")]
-	pub cusip: Option<String>,
-	#[serde(rename = "RIC", skip_serializing_if = "Option::is_none")]
-	pub ric: Option<RICIdentifier>,
-	#[serde(rename = "TckrSymb", skip_serializing_if = "Option::is_none")]
-	pub tckr_symb: Option<TickerIdentifier>,
-	#[serde(rename = "Blmbrg", skip_serializing_if = "Option::is_none")]
-	pub blmbrg: Option<BloombergIdentifier>,
-	#[serde(rename = "CTA", skip_serializing_if = "Option::is_none")]
-	pub cta: Option<ConsolidatedTapeAssociationIdentifier>,
-	#[serde(rename = "QUICK", skip_serializing_if = "Option::is_none")]
-	pub quick: Option<String>,
-	#[serde(rename = "Wrtppr", skip_serializing_if = "Option::is_none")]
-	pub wrtppr: Option<String>,
-	#[serde(rename = "Dtch", skip_serializing_if = "Option::is_none")]
-	pub dtch: Option<String>,
-	#[serde(rename = "Vlrn", skip_serializing_if = "Option::is_none")]
-	pub vlrn: Option<String>,
-	#[serde(rename = "SCVM", skip_serializing_if = "Option::is_none")]
-	pub scvm: Option<String>,
-	#[serde(rename = "Belgn", skip_serializing_if = "Option::is_none")]
-	pub belgn: Option<String>,
-	#[serde(rename = "Cmon", skip_serializing_if = "Option::is_none")]
-	pub cmon: Option<EuroclearClearstreamIdentifier>,
-	#[serde(rename = "OthrPrtryId", skip_serializing_if = "Option::is_none")]
-	pub othr_prtry_id: Option<AlternateSecurityIdentification1>,
-}
-
-impl SecurityIdentification3Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref isin_value) = self.isin { if let Err(e) = isin_value.validate() { return Err(e); } }
-		if let Some(ref ric_value) = self.ric { if let Err(e) = ric_value.validate() { return Err(e); } }
-		if let Some(ref tckr_symb_value) = self.tckr_symb { if let Err(e) = tckr_symb_value.validate() { return Err(e); } }
-		if let Some(ref blmbrg_value) = self.blmbrg { if let Err(e) = blmbrg_value.validate() { return Err(e); } }
-		if let Some(ref cta_value) = self.cta { if let Err(e) = cta_value.validate() { return Err(e); } }
-		if let Some(ref cmon_value) = self.cmon { if let Err(e) = cmon_value.validate() { return Err(e); } }
-		if let Some(ref othr_prtry_id_value) = self.othr_prtry_id { if let Err(e) = othr_prtry_id_value.validate() { return Err(e); } }
-		Ok(())
+	
+	impl SecurityIdentification3Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref isin_value) = self.isin { if let Err(e) = isin_value.validate() { return Err(e); } }
+			if let Some(ref ric_value) = self.ric { if let Err(e) = ric_value.validate() { return Err(e); } }
+			if let Some(ref tckr_symb_value) = self.tckr_symb { if let Err(e) = tckr_symb_value.validate() { return Err(e); } }
+			if let Some(ref blmbrg_value) = self.blmbrg { if let Err(e) = blmbrg_value.validate() { return Err(e); } }
+			if let Some(ref cta_value) = self.cta { if let Err(e) = cta_value.validate() { return Err(e); } }
+			if let Some(ref cmon_value) = self.cmon { if let Err(e) = cmon_value.validate() { return Err(e); } }
+			if let Some(ref othr_prtry_id_value) = self.othr_prtry_id { if let Err(e) = othr_prtry_id_value.validate() { return Err(e); } }
+			Ok(())
+		}
 	}
-}
-
-
-// SicovamIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct SicovamIdentifier {
-	#[serde(rename = "$value")]
-	pub sicovam_identifier: String,
-}
-
-impl SicovamIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// SicovamIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct SicovamIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub sicovam_identifier: String,
 	}
-}
-
-
-// SimpleIdentificationInformation ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct SimpleIdentificationInformation {
-	#[serde(rename = "Id")]
-	pub id: Max35Text,
-}
-
-impl SimpleIdentificationInformation {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		Ok(())
+	
+	impl SicovamIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
 	}
-}
-
-
-// TickerIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct TickerIdentifier {
-	#[serde(rename = "$value")]
-	pub ticker_identifier: String,
-}
-
-impl TickerIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.ticker_identifier.chars().count() < 1 {
+	
+	
+	// SimpleIdentificationInformation ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct SimpleIdentificationInformation {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
+		pub id: Max35Text,
+	}
+	
+	impl SimpleIdentificationInformation {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.id.validate() { return Err(e); }
+			Ok(())
+		}
+	}
+	
+	
+	// TickerIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct TickerIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub ticker_identifier: String,
+	}
+	
+	impl TickerIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if self.ticker_identifier.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "ticker_identifier is shorter than the minimum length of 1".to_string()));
+			}
+			if self.ticker_identifier.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "ticker_identifier exceeds the maximum length of 35".to_string()));
+			}
+			Ok(())
 		}
-		if self.ticker_identifier.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "ticker_identifier exceeds the maximum length of 35".to_string()));
+	}
+	
+	
+	// TypeOfPrice10Code ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub enum TypeOfPrice10Code {
+		#[cfg_attr(feature = "derive_default", default)]
+		#[cfg_attr( feature = "derive_serde", serde(rename = "BIDE") )]
+		CodeBIDE,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "OFFR") )]
+		CodeOFFR,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "NAVL") )]
+		CodeNAVL,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CREA") )]
+		CodeCREA,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "CANC") )]
+		CodeCANC,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "INTE") )]
+		CodeINTE,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SWNG") )]
+		CodeSWNG,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "MIDD") )]
+		CodeMIDD,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "RINV") )]
+		CodeRINV,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "SWIC") )]
+		CodeSWIC,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "DDVR") )]
+		CodeDDVR,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "ACTU") )]
+		CodeACTU,
+	}
+	
+	impl TypeOfPrice10Code {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
 		}
-		Ok(())
 	}
-}
-
-
-// TypeOfPrice10Code ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub enum TypeOfPrice10Code {
-	#[default]
-	#[serde(rename = "BIDE")]
-	CodeBIDE,
-	#[serde(rename = "OFFR")]
-	CodeOFFR,
-	#[serde(rename = "NAVL")]
-	CodeNAVL,
-	#[serde(rename = "CREA")]
-	CodeCREA,
-	#[serde(rename = "CANC")]
-	CodeCANC,
-	#[serde(rename = "INTE")]
-	CodeINTE,
-	#[serde(rename = "SWNG")]
-	CodeSWNG,
-	#[serde(rename = "MIDD")]
-	CodeMIDD,
-	#[serde(rename = "RINV")]
-	CodeRINV,
-	#[serde(rename = "SWIC")]
-	CodeSWIC,
-	#[serde(rename = "DDVR")]
-	CodeDDVR,
-	#[serde(rename = "ACTU")]
-	CodeACTU,
-}
-
-impl TypeOfPrice10Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// UnitPrice19 ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct UnitPrice19 {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "PricTp") )]
+		pub pric_tp: UnitPriceType2Choice,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Val") )]
+		pub val: PriceValue1,
 	}
-}
-
-
-// UnitPrice19 ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct UnitPrice19 {
-	#[serde(rename = "PricTp")]
-	pub pric_tp: UnitPriceType2Choice,
-	#[serde(rename = "Val")]
-	pub val: PriceValue1,
-}
-
-impl UnitPrice19 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.pric_tp.validate() { return Err(e); }
-		if let Err(e) = self.val.validate() { return Err(e); }
-		Ok(())
+	
+	impl UnitPrice19 {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Err(e) = self.pric_tp.validate() { return Err(e); }
+			if let Err(e) = self.val.validate() { return Err(e); }
+			Ok(())
+		}
 	}
-}
-
-
-// UnitPriceType2Choice ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-pub struct UnitPriceType2Choice {
-	#[serde(rename = "Cd", skip_serializing_if = "Option::is_none")]
-	pub cd: Option<TypeOfPrice10Code>,
-	#[serde(rename = "Prtry", skip_serializing_if = "Option::is_none")]
-	pub prtry: Option<GenericIdentification47>,
-}
-
-impl UnitPriceType2Choice {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
-		if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
-		Ok(())
+	
+	
+	// UnitPriceType2Choice ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	pub struct UnitPriceType2Choice {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
+		pub cd: Option<TypeOfPrice10Code>,
+		#[cfg_attr( feature = "derive_serde", serde(rename = "Prtry", skip_serializing_if = "Option::is_none") )]
+		pub prtry: Option<GenericIdentification47>,
 	}
-}
-
-
-// ValorenIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct ValorenIdentifier {
-	#[serde(rename = "$value")]
-	pub valoren_identifier: String,
-}
-
-impl ValorenIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	impl UnitPriceType2Choice {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
+			if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
+			Ok(())
+		}
 	}
-}
-
-
-// WertpapierIdentifier ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct WertpapierIdentifier {
-	#[serde(rename = "$value")]
-	pub wertpapier_identifier: String,
-}
-
-impl WertpapierIdentifier {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	
+	// ValorenIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct ValorenIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub valoren_identifier: String,
 	}
-}
-
-
-// YesNoIndicator ...
-#[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
-#[serde(transparent)]
-pub struct YesNoIndicator {
-	#[serde(rename = "$value")]
-	pub yes_no_indicator: bool,
-}
-
-impl YesNoIndicator {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
+	
+	impl ValorenIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
 	}
+	
+	
+	// WertpapierIdentifier ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct WertpapierIdentifier {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub wertpapier_identifier: String,
+	}
+	
+	impl WertpapierIdentifier {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
+	
+	// YesNoIndicator ...
+	#[cfg_attr(feature = "derive_debug", derive(Debug))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+	#[cfg_attr(feature = "derive_default", derive(Default))]
+	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
+	pub struct YesNoIndicator {
+		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
+		pub yes_no_indicator: bool,
+	}
+	
+	impl YesNoIndicator {
+		pub fn validate(&self) -> Result<(), ValidationError> {
+			Ok(())
+		}
+	}
+	
 }

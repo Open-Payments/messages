@@ -23,16 +23,20 @@ open-payments-iso20022-pacs = {path = "../iso20022-pacs", version = "0.2.10", op
 open-payments-iso20022-pain = {path = "../iso20022-pain", version = "0.2.10", optional = true}
 open-payments-iso20022-reda = {path = "../iso20022-reda", version = "0.2.10", optional = true}
 open-payments-iso20022-remt = {path = "../iso20022-remt", version = "0.2.10", optional = true}
-serde = { version = "1.0", features = ["derive"] }
+serde = { version = "1.0", features = ["derive"], optional = true }
 serde-xml-rs = "0.6.0"
 serde_path_to_error = "0.1"
 xml-rs = "0.8"
 serde_json = "1.0"
 regex = "1.11.0"
 
-
 [features]
 default = ["head"]
+derive_serde = ["serde", "open-payments-iso20022-acmt/derive_serde", "open-payments-iso20022-admi/derive_serde", "open-payments-iso20022-auth/derive_serde", "open-payments-iso20022-camt/derive_serde", "open-payments-iso20022-head/derive_serde", "open-payments-iso20022-pacs/derive_serde", "open-payments-iso20022-pain/derive_serde", "open-payments-iso20022-reda/derive_serde", "open-payments-iso20022-remt/derive_serde"]
+derive_debug = ["open-payments-iso20022-acmt/derive_debug", "open-payments-iso20022-admi/derive_debug", "open-payments-iso20022-auth/derive_debug", "open-payments-iso20022-camt/derive_debug", "open-payments-iso20022-head/derive_debug", "open-payments-iso20022-pacs/derive_debug", "open-payments-iso20022-pain/derive_debug", "open-payments-iso20022-reda/derive_debug", "open-payments-iso20022-remt/derive_debug"]
+derive_default = ["open-payments-iso20022-acmt/derive_default", "open-payments-iso20022-admi/derive_default", "open-payments-iso20022-auth/derive_default", "open-payments-iso20022-camt/derive_default", "open-payments-iso20022-head/derive_default", "open-payments-iso20022-pacs/derive_default", "open-payments-iso20022-pain/derive_default", "open-payments-iso20022-reda/derive_default", "open-payments-iso20022-remt/derive_default"]
+derive_partial_eq = ["open-payments-iso20022-acmt/derive_partial_eq", "open-payments-iso20022-admi/derive_partial_eq", "open-payments-iso20022-auth/derive_partial_eq", "open-payments-iso20022-camt/derive_partial_eq", "open-payments-iso20022-head/derive_partial_eq", "open-payments-iso20022-pacs/derive_partial_eq", "open-payments-iso20022-pain/derive_partial_eq", "open-payments-iso20022-reda/derive_partial_eq", "open-payments-iso20022-remt/derive_partial_eq"]
+derive_clone = ["open-payments-iso20022-acmt/derive_clone", "open-payments-iso20022-admi/derive_clone", "open-payments-iso20022-auth/derive_clone", "open-payments-iso20022-camt/derive_clone", "open-payments-iso20022-head/derive_clone", "open-payments-iso20022-pacs/derive_clone", "open-payments-iso20022-pain/derive_clone", "open-payments-iso20022-reda/derive_clone", "open-payments-iso20022-remt/derive_clone"]
 iso20022 = ["payments"]
 payments = ["acmt", "admi", "auth", "camt", "head", "pacs", "pain", "reda", "remt"]
 acmt = ["open-payments-iso20022-acmt"]

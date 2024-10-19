@@ -10,7 +10,7 @@ use std::path::Path;  // Path utility for handling file paths
 use xml::reader::EventReader;  // XML event-based parser
 use serde_json;  // JSON serialization utility
 
-use open_payments_fednow::FednowMessage;  // Import the FednowMessage struct
+use open_payments_fednow::fednow::FednowMessage;  // Import the FednowMessage struct
 
 fn main() {
     // Define the directory containing XML files

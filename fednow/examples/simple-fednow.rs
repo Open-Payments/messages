@@ -1,8 +1,8 @@
 // Main entry point for the FedNow message object application.
 // This application cretes a simple object for FedNow message.
 
-use open_payments_fednow::document::Document;
-use open_payments_fednow::iso::pacs_008_001_08::FIToFICustomerCreditTransferV08;
+use open_payments_fednow::document::*;
+use open_payments_fednow::iso::pacs_008_001_08::fednow::FIToFICustomerCreditTransferV08;
 use serde_xml_rs;
 
 fn main() {

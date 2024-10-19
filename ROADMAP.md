@@ -34,7 +34,7 @@ This document outlines the development roadmap for the Open Payments message par
 ### 6. Add a Sophisticated Error Framework for XML Parsing and Validation
 - **Goal**: Introduce a robust error-handling framework that provides in-depth error information during XML parsing and validation.
 - **Details**: Implement error reporting mechanisms to catch and report specific issues in the XML structure, schema validation errors, or content mismatches.
-- **Status**: ⏳ Planned
+- **Status**: ✅ Completed
 
 ### 7. Add Support for Format Transformation (ISO20022 -> MT103)
 - **Goal**: Enable transformation of one message format to another (e.g., ISO 20022 to MT103) within the library.
