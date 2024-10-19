@@ -127,45 +127,7 @@ pub mod fednow {
 		}
 	}
 	
-	
-	// fed_now_key_id: The key finger print used as the key id.
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	pub struct fed_now_key_id {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowKeyID") )]
-		pub fed_now_key_id: Max300AlphaNumericString,
-	}
-	
-	impl fed_now_key_id {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.fed_now_key_id.validate() { return Err(e); }
-			Ok(())
-		}
-	}
-	
-	
-	// fed_now_status_description: A description for the status update intended for the key owner.
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	pub struct fed_now_status_description {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowStatusDescription") )]
-		pub fed_now_status_description: Max300Text,
-	}
-	
-	impl fed_now_status_description {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.fed_now_status_description.validate() { return Err(e); }
-			Ok(())
-		}
-	}
-	
-	
+
 	// FedNowMessageSignatureKeyStatus ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_clone", derive(Clone))]
@@ -180,42 +142,6 @@ pub mod fednow {
 	}
 	
 	impl FedNowMessageSignatureKeyStatus {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
-	// status_date_time ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	pub struct status_date_time {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "StatusDateTime") )]
-		pub status_date_time: String,
-	}
-	
-	impl status_date_time {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
-	// key_status ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	pub struct key_status {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "KeyStatus") )]
-		pub key_status: String,
-	}
-	
-	impl key_status {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			Ok(())
 		}
@@ -249,97 +175,6 @@ pub mod fednow {
 			if let Err(e) = self.name.validate() { return Err(e); }
 			if let Err(e) = self.encoding.validate() { return Err(e); }
 			if let Some(ref algorithm_value) = self.algorithm { if let Err(e) = algorithm_value.validate() { return Err(e); } }
-			Ok(())
-		}
-	}
-	
-	
-	// key_creation_date_time: The creation datetime for the key. This value is overwritten on submission based on the
-	//                             System timezone for FedNow
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	pub struct key_creation_date_time {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "KeyCreationDateTime", skip_serializing_if = "Option::is_none") )]
-		pub key_creation_date_time: Option<String>,
-	}
-	
-	impl key_creation_date_time {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
-	// xs:string ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	pub enum XsString {
-		#[cfg_attr(feature = "derive_default", default)]
-		#[cfg_attr( feature = "derive_serde", serde(rename = "expired") )]
-		CodeEXPIRED,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "revoked") )]
-		CodeREVOKED,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "compromised") )]
-		CodeCOMPROMISED,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "active") )]
-		CodeACTIVE,
-	}
-	
-	impl XsString {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
-	// key_expiration_date_time: The Expiration datetime. This is the date and time the customer intends for their keys to be
-	//                         automatically expired.
-	//                         This value should be no more than 365 days from the submission time and will be used as a point
-	//                         in time to the nearest system date.
-	//                         If the expiration time is 3:00 AM Wednesday, Coordinated Universal Time (UTC)
-	//                         this translates to 10:00 PM Tuesday, Eastern Time (ET)
-	// 
-	//                         For this time, we will take expire this at midnight on the given date.
-	//                         In the example above, the key will not be valid at 12:01 AM Wednesday, Eastern Time (ET).
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	pub struct key_expiration_date_time {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "KeyExpirationDateTime") )]
-		pub key_expiration_date_time: String,
-	}
-	
-	impl key_expiration_date_time {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
-	// target_rtn: Identifier of the RTN to associate this key
-	//                         with. If providing the ETI, the scope of this key is all RTNs managed by that connection party.
-	//                         If providing a single RTN, FedNow will check and only accept the key for operations against that RTN only
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	pub struct target_rtn {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "TargetRTN", skip_serializing_if = "Option::is_none") )]
-		pub target_rtn: Option<RoutingNumberFRS1>,
-	}
-	
-	impl target_rtn {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref target_rtn_value) = self.target_rtn { if let Err(e) = target_rtn_value.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -427,24 +262,6 @@ pub mod fednow {
 	impl FedNowCustomerMessageSignatureKeyOperationResponse {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			if let Err(e) = self.fed_now_key_id.validate() { return Err(e); }
-			Ok(())
-		}
-	}
-	
-	
-	// error_code ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	pub struct error_code {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "ErrorCode", skip_serializing_if = "Option::is_none") )]
-		pub error_code: Option<String>,
-	}
-	
-	impl error_code {
-		pub fn validate(&self) -> Result<(), ValidationError> {
 			Ok(())
 		}
 	}
