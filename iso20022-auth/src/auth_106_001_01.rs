@@ -24,9 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
-use crate::validationerror::*;
-
-
+use crate::validationerror::*;
 // AbnormalValuesData4 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AbnormalValuesData4 {

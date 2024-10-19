@@ -24,9 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
-use crate::validationerror::*;
-
-
+use crate::validationerror::*;
 // ActiveOrHistoricCurrencyAnd20DecimalAmountSimpleType ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 #[serde(transparent)]

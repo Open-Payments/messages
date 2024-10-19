@@ -24,12 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
-use crate::validationerror::*;
-
-
-
-
-
+use crate::validationerror::*;
 // AdministrationProprietaryMessageV02 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AdministrationProprietaryMessageV02 {

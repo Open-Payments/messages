@@ -26,8 +26,6 @@ use serde::{Deserialize, Serialize};
 use regex::Regex;
 use crate::validationerror::*;
 
-
-
 // Max300AlphaNumericString ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 #[serde(transparent)]

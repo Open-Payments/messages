@@ -24,9 +24,7 @@
 
 use serde::{Deserialize, Serialize};
 use regex::Regex;
-use crate::validationerror::*;
-
-
+use crate::validationerror::*;
 // AccountCashEntryReturnCriteria3 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountCashEntryReturnCriteria3 {
