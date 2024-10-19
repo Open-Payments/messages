@@ -591,22 +591,4 @@ pub mod fednow {
 		}
 	}
 	
-	
-	// sender_id: Identifier of the Connection Party sending this message
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	pub struct sender_id {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "SenderId") )]
-		pub sender_id: String,
-	}
-	
-	impl sender_id {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
 }
