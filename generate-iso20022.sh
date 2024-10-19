@@ -3,14 +3,14 @@
 input_directory=$1
 output_directory=$2
 xgen_path="../xgen/cmd/xgen/xgen"
-cp validationerror.rs $output_directory
+cp common.rs $output_directory
 
 # Replace dashes in the filenames with underscores
 for f in `find $input_directory -iname "*.xsd" -type f -print`; do
     mv "$f" "${f//-/_}"
 done
 
-$xgen_path -i "$input_directory" -o "$output_directory" -l Rust
+$xgen_path -i "$input_directory" -o "$output_directory" -l Rust -p iso20022
 
 # Clean up unwanted files like .DS_Store.rs
 for f in `find "$output_directory" -iname "*DS_Store.rs" -type f -print`; do
@@ -61,15 +61,15 @@ for f in `find $output_directory -iname "*.rs" -type f -print | sort -n`; do
     module_name=$(basename "$f" .rs)
     if [ $module_name != "lib" ]; then
         echo "pub mod $module_name;" >> "$lib_file"
-        sed -i "" -e "/\/\/ document \.\.\./,/^}$/d" "$f"
-        sed -i "" -e "/impl document {/,/^}$/d" "$f"
+        # sed -i "" -e "/\/\/ document \.\.\./,/^}$/d" "$f"
+        # sed -i "" -e "/impl document {/,/^}$/d" "$f"
 
-        sed -i "" -e "/\/\/ app_hdr \.\.\./,/^}$/d" "$f"
-        sed -i "" -e "/impl app_hdr {/,/^}$/d" "$f"
+        # sed -i "" -e "/\/\/ app_hdr \.\.\./,/^}$/d" "$f"
+        # sed -i "" -e "/impl app_hdr {/,/^}$/d" "$f"
 
-        sed -i "" -e "/\/\/ xchg \.\.\./,/^}$/d" "$f"
-        sed -i "" -e "/impl xchg {/,/^}$/d" "$f"
+        # sed -i "" -e "/\/\/ xchg \.\.\./,/^}$/d" "$f"
+        # sed -i "" -e "/impl xchg {/,/^}$/d" "$f"
 
-        perl -0777 -i -pe "s{\n\n\n}{}gs" "$f"
+        # perl -0777 -i -pe "s{\n\n\n}{}gs" "$f"
     fi
 done
