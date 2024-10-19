@@ -23,8 +23,8 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-
-
+use regex::Regex;
+use crate::validationerror::*;
 // Absolute1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Absolute1 {
@@ -32,6 +32,13 @@ pub struct Absolute1 {
 	pub unit: Max35Text,
 	#[serde(rename = "Qty")]
 	pub qty: f64,
+}
+
+impl Absolute1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.unit.validate() { return Err(e); }
+		Ok(())
+	}
 }
 
 
@@ -43,6 +50,12 @@ pub struct BaseOneRate {
 	pub base_one_rate: f64,
 }
 
+impl BaseOneRate {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // CCPPortfolioStressTestingDefinitionReportV02 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -51,6 +64,14 @@ pub struct CCPPortfolioStressTestingDefinitionReportV02 {
 	pub scnro_def: Vec<ScenarioDefinition2>,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
+}
+
+impl CCPPortfolioStressTestingDefinitionReportV02 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		for item in &self.scnro_def { if let Err(e) = item.validate() { return Err(e); } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
+	}
 }
 
 
@@ -67,6 +88,16 @@ pub struct GenericIdentification165 {
 	pub schme_nm: Option<SchemeIdentificationType1Code>,
 }
 
+impl GenericIdentification165 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		if let Some(ref desc_value) = self.desc { if let Err(e) = desc_value.validate() { return Err(e); } }
+		if let Some(ref issr_value) = self.issr { if let Err(e) = issr_value.validate() { return Err(e); } }
+		if let Some(ref schme_nm_value) = self.schme_nm { if let Err(e) = schme_nm_value.validate() { return Err(e); } }
+		Ok(())
+	}
+}
+
 
 // GenericIdentification168 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -81,6 +112,16 @@ pub struct GenericIdentification168 {
 	pub schme_nm: Option<Max35Text>,
 }
 
+impl GenericIdentification168 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		if let Some(ref desc_value) = self.desc { if let Err(e) = desc_value.validate() { return Err(e); } }
+		if let Some(ref issr_value) = self.issr { if let Err(e) = issr_value.validate() { return Err(e); } }
+		if let Some(ref schme_nm_value) = self.schme_nm { if let Err(e) = schme_nm_value.validate() { return Err(e); } }
+		Ok(())
+	}
+}
+
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -88,6 +129,18 @@ pub struct GenericIdentification168 {
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
+}
+
+impl Max140Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max140_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max140_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max140_text.chars().count() > 140 {
+			return Err(ValidationError::new(1002, "max140_text exceeds the maximum length of 140".to_string()));
+		}
+		Ok(())
+	}
 }
 
 
@@ -99,6 +152,18 @@ pub struct Max2000Text {
 	pub max2000_text: String,
 }
 
+impl Max2000Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max2000_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max2000_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max2000_text.chars().count() > 2000 {
+			return Err(ValidationError::new(1002, "max2000_text exceeds the maximum length of 2000".to_string()));
+		}
+		Ok(())
+	}
+}
+
 
 // Max256Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -106,6 +171,18 @@ pub struct Max2000Text {
 pub struct Max256Text {
 	#[serde(rename = "$value")]
 	pub max256_text: String,
+}
+
+impl Max256Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max256_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max256_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max256_text.chars().count() > 256 {
+			return Err(ValidationError::new(1002, "max256_text exceeds the maximum length of 256".to_string()));
+		}
+		Ok(())
+	}
 }
 
 
@@ -117,6 +194,18 @@ pub struct Max350Text {
 	pub max350_text: String,
 }
 
+impl Max350Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max350_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max350_text.chars().count() > 350 {
+			return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
+		}
+		Ok(())
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -124,6 +213,18 @@ pub struct Max350Text {
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
+}
+
+impl Max35Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max35_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max35_text.chars().count() > 35 {
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
+		}
+		Ok(())
+	}
 }
 
 
@@ -135,6 +236,12 @@ pub struct Number {
 	pub number: f64,
 }
 
+impl Number {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // RiskFactor1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -143,6 +250,14 @@ pub struct RiskFactor1 {
 	pub id: Max35Text,
 	#[serde(rename = "StrssSz")]
 	pub strss_sz: StressSize1Choice,
+}
+
+impl RiskFactor1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		if let Err(e) = self.strss_sz.validate() { return Err(e); }
+		Ok(())
+	}
 }
 
 
@@ -161,6 +276,17 @@ pub struct ScenarioDefinition2 {
 	pub desc: Option<Max2000Text>,
 }
 
+impl ScenarioDefinition2 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		if let Err(e) = self.scnro_tp.validate() { return Err(e); }
+		if let Err(e) = self.strtgy_strss_tp.validate() { return Err(e); }
+		for item in &self.strss_itm { if let Err(e) = item.validate() { return Err(e); } }
+		if let Some(ref desc_value) = self.desc { if let Err(e) = desc_value.validate() { return Err(e); } }
+		Ok(())
+	}
+}
+
 
 // ScenarioType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -170,6 +296,12 @@ pub enum ScenarioType1Code {
 	CodeHIST,
 	#[serde(rename = "HYPT")]
 	CodeHYPT,
+}
+
+impl ScenarioType1Code {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -187,6 +319,12 @@ pub enum SchemeIdentificationType1Code {
 	CodeCLIM,
 }
 
+impl SchemeIdentificationType1Code {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // Strategy1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -195,6 +333,14 @@ pub struct Strategy1 {
 	pub id: Max35Text,
 	#[serde(rename = "StrssSz")]
 	pub strss_sz: StressSize1Choice,
+}
+
+impl Strategy1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		if let Err(e) = self.strss_sz.validate() { return Err(e); }
+		Ok(())
+	}
 }
 
 
@@ -210,12 +356,25 @@ pub enum StrategyStressType1Code {
 	CodeSPRD,
 }
 
+impl StrategyStressType1Code {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // StressItem1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct StressItem1 {
 	#[serde(rename = "StrssPdct")]
 	pub strss_pdct: StressItem1Choice,
+}
+
+impl StressItem1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.strss_pdct.validate() { return Err(e); }
+		Ok(())
+	}
 }
 
 
@@ -230,6 +389,15 @@ pub struct StressItem1Choice {
 	pub rsk_fctr: Option<RiskFactor1>,
 }
 
+impl StressItem1Choice {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref pdct_value) = self.pdct { if let Err(e) = pdct_value.validate() { return Err(e); } }
+		if let Some(ref strtgy_value) = self.strtgy { if let Err(e) = strtgy_value.validate() { return Err(e); } }
+		if let Some(ref rsk_fctr_value) = self.rsk_fctr { if let Err(e) = rsk_fctr_value.validate() { return Err(e); } }
+		Ok(())
+	}
+}
+
 
 // StressSize1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -238,6 +406,13 @@ pub struct StressSize1Choice {
 	pub rltv: Option<f64>,
 	#[serde(rename = "Abs", skip_serializing_if = "Option::is_none")]
 	pub abs: Option<Absolute1>,
+}
+
+impl StressSize1Choice {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref abs_value) = self.abs { if let Err(e) = abs_value.validate() { return Err(e); } }
+		Ok(())
+	}
 }
 
 
@@ -252,6 +427,15 @@ pub struct StressedProduct1 {
 	pub min_strss_sz: StressSize1Choice,
 }
 
+impl StressedProduct1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		if let Err(e) = self.max_strss_sz.validate() { return Err(e); }
+		if let Err(e) = self.min_strss_sz.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -262,8 +446,22 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if let Err(e) = plc_and_nm_value.validate() { return Err(e); } }
+		if let Err(e) = self.envlp.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }

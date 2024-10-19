@@ -23,14 +23,24 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-
-
+use regex::Regex;
+use crate::validationerror::*;
 // CountryCode ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 #[serde(transparent)]
 pub struct CountryCode {
 	#[serde(rename = "$value")]
 	pub country_code: String,
+}
+
+impl CountryCode {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		let pattern = Regex::new("[A-Z]{2,2}").unwrap();
+		if !pattern.is_match(&self.country_code) {
+			return Err(ValidationError::new(1005, "country_code does not match the required pattern".to_string()));
+		}
+		Ok(())
+	}
 }
 
 
@@ -43,6 +53,14 @@ pub struct CountryCodeAndName3 {
 	pub nm: Max70Text,
 }
 
+impl CountryCodeAndName3 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.cd.validate() { return Err(e); }
+		if let Err(e) = self.nm.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // FinancialInstrumentReportingCountryCodeReportV01 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -51,6 +69,14 @@ pub struct FinancialInstrumentReportingCountryCodeReportV01 {
 	pub ctry_data: Vec<SecuritiesCountryIdentification2>,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
+}
+
+impl FinancialInstrumentReportingCountryCodeReportV01 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		for item in &self.ctry_data { if let Err(e) = item.validate() { return Err(e); } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
+	}
 }
 
 
@@ -62,6 +88,12 @@ pub struct ISODate {
 	pub iso_date: String,
 }
 
+impl ISODate {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -71,6 +103,18 @@ pub struct Max350Text {
 	pub max350_text: String,
 }
 
+impl Max350Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max350_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max350_text.chars().count() > 350 {
+			return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
+		}
+		Ok(())
+	}
+}
+
 
 // Max70Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -78,6 +122,18 @@ pub struct Max350Text {
 pub struct Max70Text {
 	#[serde(rename = "$value")]
 	pub max70_text: String,
+}
+
+impl Max70Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max70_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max70_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max70_text.chars().count() > 70 {
+			return Err(ValidationError::new(1002, "max70_text exceeds the maximum length of 70".to_string()));
+		}
+		Ok(())
+	}
 }
 
 
@@ -95,6 +151,12 @@ pub enum Modification1Code {
 	CodeADDD,
 }
 
+impl Modification1Code {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // Period2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -103,6 +165,12 @@ pub struct Period2 {
 	pub fr_dt: String,
 	#[serde(rename = "ToDt")]
 	pub to_dt: String,
+}
+
+impl Period2 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -117,6 +185,13 @@ pub struct Period4Choice {
 	pub to_dt: Option<String>,
 	#[serde(rename = "FrDtToDt", skip_serializing_if = "Option::is_none")]
 	pub fr_dt_to_dt: Option<Period2>,
+}
+
+impl Period4Choice {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref fr_dt_to_dt_value) = self.fr_dt_to_dt { if let Err(e) = fr_dt_to_dt_value.validate() { return Err(e); } }
+		Ok(())
+	}
 }
 
 
@@ -135,6 +210,15 @@ pub struct SecuritiesCountryIdentification2 {
 	pub last_updtd: Option<String>,
 }
 
+impl SecuritiesCountryIdentification2 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.ctry.validate() { return Err(e); }
+		if let Some(ref mod_attr_value) = self.mod_attr { if let Err(e) = mod_attr_value.validate() { return Err(e); } }
+		if let Err(e) = self.vldty_prd.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // SupplementaryData1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -145,10 +229,24 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if let Err(e) = plc_and_nm_value.validate() { return Err(e); } }
+		if let Err(e) = self.envlp.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -158,4 +256,10 @@ pub struct SupplementaryDataEnvelope1 {
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
+}
+
+impl TrueFalseIndicator {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }

@@ -23,11 +23,8 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-
-
-
-
-
+use regex::Regex;
+use crate::validationerror::*;
 // AdministrationProprietaryMessageV02 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AdministrationProprietaryMessageV02 {
@@ -43,6 +40,17 @@ pub struct AdministrationProprietaryMessageV02 {
 	pub prtry_data: ProprietaryData5,
 }
 
+impl AdministrationProprietaryMessageV02 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref msg_id_value) = self.msg_id { if let Err(e) = msg_id_value.validate() { return Err(e); } }
+		if let Some(ref rltd_value) = self.rltd { if let Err(e) = rltd_value.validate() { return Err(e); } }
+		if let Some(ref prvs_value) = self.prvs { if let Err(e) = prvs_value.validate() { return Err(e); } }
+		if let Some(ref othr_value) = self.othr { if let Err(e) = othr_value.validate() { return Err(e); } }
+		if let Err(e) = self.prtry_data.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -52,12 +60,31 @@ pub struct Max35Text {
 	pub max35_text: String,
 }
 
+impl Max35Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max35_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max35_text.chars().count() > 35 {
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
+		}
+		Ok(())
+	}
+}
+
 
 // MessageReference ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct MessageReference {
 	#[serde(rename = "Ref")]
 	pub ref_attr: Max35Text,
+}
+
+impl MessageReference {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.ref_attr.validate() { return Err(e); }
+		Ok(())
+	}
 }
 
 
@@ -70,8 +97,22 @@ pub struct ProprietaryData5 {
 	pub data: SupplementaryDataEnvelope1,
 }
 
+impl ProprietaryData5 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.tp.validate() { return Err(e); }
+		if let Err(e) = self.data.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }

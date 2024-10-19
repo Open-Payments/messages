@@ -23,8 +23,8 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-
-
+use regex::Regex;
+use crate::validationerror::*;
 // AccountSwitchDetails1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct AccountSwitchDetails1 {
@@ -46,6 +46,18 @@ pub struct AccountSwitchDetails1 {
 	pub rspn: Option<Vec<ResponseDetails1>>,
 }
 
+impl AccountSwitchDetails1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.unq_ref_nb.validate() { return Err(e); }
+		if let Err(e) = self.rtg_unq_ref_nb.validate() { return Err(e); }
+		if let Err(e) = self.swtch_tp.validate() { return Err(e); }
+		if let Some(ref swtch_sts_value) = self.swtch_sts { if let Err(e) = swtch_sts_value.validate() { return Err(e); } }
+		if let Some(ref bal_trf_wndw_value) = self.bal_trf_wndw { if let Err(e) = bal_trf_wndw_value.validate() { return Err(e); } }
+		if let Some(ref rspn_vec) = self.rspn { for item in rspn_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
+	}
+}
+
 
 // AccountSwitchTechnicalRejectionV02 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -56,6 +68,15 @@ pub struct AccountSwitchTechnicalRejectionV02 {
 	pub acct_swtch_dtls: AccountSwitchDetails1,
 	#[serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none")]
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
+}
+
+impl AccountSwitchTechnicalRejectionV02 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.msg_id.validate() { return Err(e); }
+		if let Err(e) = self.acct_swtch_dtls.validate() { return Err(e); }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
+	}
 }
 
 
@@ -69,6 +90,12 @@ pub enum BalanceTransferWindow1Code {
 	CodeEARL,
 }
 
+impl BalanceTransferWindow1Code {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // ISODate ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -76,6 +103,12 @@ pub enum BalanceTransferWindow1Code {
 pub struct ISODate {
 	#[serde(rename = "$value")]
 	pub iso_date: String,
+}
+
+impl ISODate {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -87,6 +120,12 @@ pub struct ISODateTime {
 	pub iso_date_time: String,
 }
 
+impl ISODateTime {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -96,6 +135,18 @@ pub struct Max350Text {
 	pub max350_text: String,
 }
 
+impl Max350Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max350_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max350_text.chars().count() > 350 {
+			return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
+		}
+		Ok(())
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -103,6 +154,18 @@ pub struct Max350Text {
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
+}
+
+impl Max35Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max35_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max35_text.chars().count() > 35 {
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
+		}
+		Ok(())
+	}
 }
 
 
@@ -115,6 +178,13 @@ pub struct MessageIdentification1 {
 	pub cre_dt_tm: String,
 }
 
+impl MessageIdentification1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.id.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // ResponseDetails1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -123,6 +193,14 @@ pub struct ResponseDetails1 {
 	pub rspn_cd: Max35Text,
 	#[serde(rename = "AddtlDtls", skip_serializing_if = "Option::is_none")]
 	pub addtl_dtls: Option<Max350Text>,
+}
+
+impl ResponseDetails1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.rspn_cd.validate() { return Err(e); }
+		if let Some(ref addtl_dtls_value) = self.addtl_dtls { if let Err(e) = addtl_dtls_value.validate() { return Err(e); } }
+		Ok(())
+	}
 }
 
 
@@ -135,10 +213,24 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if let Err(e) = plc_and_nm_value.validate() { return Err(e); } }
+		if let Err(e) = self.envlp.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -166,6 +258,12 @@ pub enum SwitchStatus1Code {
 	CodeTMTN,
 }
 
+impl SwitchStatus1Code {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // SwitchType1Code ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -175,4 +273,10 @@ pub enum SwitchType1Code {
 	CodeFULL,
 	#[serde(rename = "PART")]
 	CodePART,
+}
+
+impl SwitchType1Code {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }

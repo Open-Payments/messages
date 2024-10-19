@@ -24,3 +24,4 @@
 
 
 pub mod document;
+pub mod validationerror;

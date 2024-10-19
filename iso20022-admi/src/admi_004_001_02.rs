@@ -23,8 +23,8 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-
-
+use regex::Regex;
+use crate::validationerror::*;
 // Event2 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct Event2 {
@@ -38,6 +38,15 @@ pub struct Event2 {
 	pub evt_tm: Option<String>,
 }
 
+impl Event2 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.evt_cd.validate() { return Err(e); }
+		if let Some(ref evt_param_vec) = self.evt_param { for item in evt_param_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref evt_desc_value) = self.evt_desc { if let Err(e) = evt_desc_value.validate() { return Err(e); } }
+		Ok(())
+	}
+}
+
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -45,6 +54,12 @@ pub struct Event2 {
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
+}
+
+impl ISODateTime {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -56,6 +71,18 @@ pub struct Max1000Text {
 	pub max1000_text: String,
 }
 
+impl Max1000Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max1000_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max1000_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max1000_text.chars().count() > 1000 {
+			return Err(ValidationError::new(1002, "max1000_text exceeds the maximum length of 1000".to_string()));
+		}
+		Ok(())
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -63,6 +90,18 @@ pub struct Max1000Text {
 pub struct Max35Text {
 	#[serde(rename = "$value")]
 	pub max35_text: String,
+}
+
+impl Max35Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max35_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max35_text.chars().count() > 35 {
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
+		}
+		Ok(())
+	}
 }
 
 
@@ -74,10 +113,33 @@ pub struct Max4AlphaNumericText {
 	pub max4_alpha_numeric_text: String,
 }
 
+impl Max4AlphaNumericText {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max4_alpha_numeric_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max4_alpha_numeric_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max4_alpha_numeric_text.chars().count() > 4 {
+			return Err(ValidationError::new(1002, "max4_alpha_numeric_text exceeds the maximum length of 4".to_string()));
+		}
+		let pattern = Regex::new("[a-zA-Z0-9]{1,4}").unwrap();
+		if !pattern.is_match(&self.max4_alpha_numeric_text) {
+			return Err(ValidationError::new(1005, "max4_alpha_numeric_text does not match the required pattern".to_string()));
+		}
+		Ok(())
+	}
+}
+
 
 // SystemEventNotificationV02 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SystemEventNotificationV02 {
 	#[serde(rename = "EvtInf")]
 	pub evt_inf: Event2,
+}
+
+impl SystemEventNotificationV02 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.evt_inf.validate() { return Err(e); }
+		Ok(())
+	}
 }

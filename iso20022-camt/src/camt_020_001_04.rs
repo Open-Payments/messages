@@ -23,8 +23,8 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-
-
+use regex::Regex;
+use crate::validationerror::*;
 // BusinessInformationCriteria1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct BusinessInformationCriteria1 {
@@ -36,6 +36,15 @@ pub struct BusinessInformationCriteria1 {
 	pub rtr_crit: Option<GeneralBusinessInformationReturnCriteria1>,
 }
 
+impl BusinessInformationCriteria1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref new_qry_nm_value) = self.new_qry_nm { if let Err(e) = new_qry_nm_value.validate() { return Err(e); } }
+		if let Some(ref sch_crit_vec) = self.sch_crit { for item in sch_crit_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref rtr_crit_value) = self.rtr_crit { if let Err(e) = rtr_crit_value.validate() { return Err(e); } }
+		Ok(())
+	}
+}
+
 
 // BusinessInformationQueryDefinition3 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -44,6 +53,14 @@ pub struct BusinessInformationQueryDefinition3 {
 	pub qry_tp: Option<QueryType2Code>,
 	#[serde(rename = "GnlBizInfCrit", skip_serializing_if = "Option::is_none")]
 	pub gnl_biz_inf_crit: Option<GeneralBusinessInformationCriteriaDefinition1Choice>,
+}
+
+impl BusinessInformationQueryDefinition3 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref qry_tp_value) = self.qry_tp { if let Err(e) = qry_tp_value.validate() { return Err(e); } }
+		if let Some(ref gnl_biz_inf_crit_value) = self.gnl_biz_inf_crit { if let Err(e) = gnl_biz_inf_crit_value.validate() { return Err(e); } }
+		Ok(())
+	}
 }
 
 
@@ -60,6 +77,16 @@ pub struct CharacterSearch1Choice {
 	pub nct: Option<Max35Text>,
 }
 
+impl CharacterSearch1Choice {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref eq_value) = self.eq { if let Err(e) = eq_value.validate() { return Err(e); } }
+		if let Some(ref neq_value) = self.neq { if let Err(e) = neq_value.validate() { return Err(e); } }
+		if let Some(ref ct_value) = self.ct { if let Err(e) = ct_value.validate() { return Err(e); } }
+		if let Some(ref nct_value) = self.nct { if let Err(e) = nct_value.validate() { return Err(e); } }
+		Ok(())
+	}
+}
+
 
 // GeneralBusinessInformationCriteriaDefinition1Choice ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -68,6 +95,14 @@ pub struct GeneralBusinessInformationCriteriaDefinition1Choice {
 	pub qry_nm: Option<Max35Text>,
 	#[serde(rename = "NewCrit", skip_serializing_if = "Option::is_none")]
 	pub new_crit: Option<BusinessInformationCriteria1>,
+}
+
+impl GeneralBusinessInformationCriteriaDefinition1Choice {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref qry_nm_value) = self.qry_nm { if let Err(e) = qry_nm_value.validate() { return Err(e); } }
+		if let Some(ref new_crit_value) = self.new_crit { if let Err(e) = new_crit_value.validate() { return Err(e); } }
+		Ok(())
+	}
 }
 
 
@@ -82,6 +117,12 @@ pub struct GeneralBusinessInformationReturnCriteria1 {
 	pub sbjt_dtls_ind: Option<bool>,
 }
 
+impl GeneralBusinessInformationReturnCriteria1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // GeneralBusinessInformationSearchCriteria1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -92,6 +133,15 @@ pub struct GeneralBusinessInformationSearchCriteria1 {
 	pub sbjt: Option<Vec<CharacterSearch1Choice>>,
 	#[serde(rename = "Qlfr", skip_serializing_if = "Option::is_none")]
 	pub qlfr: Option<Vec<InformationQualifierType1>>,
+}
+
+impl GeneralBusinessInformationSearchCriteria1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref ref_attr_vec) = self.ref_attr { for item in ref_attr_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref sbjt_vec) = self.sbjt { for item in sbjt_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref qlfr_vec) = self.qlfr { for item in qlfr_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
+	}
 }
 
 
@@ -106,6 +156,15 @@ pub struct GetGeneralBusinessInformationV04 {
 	pub splmtry_data: Option<Vec<SupplementaryData1>>,
 }
 
+impl GetGeneralBusinessInformationV04 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.msg_hdr.validate() { return Err(e); }
+		if let Some(ref gnl_biz_inf_qry_def_value) = self.gnl_biz_inf_qry_def { if let Err(e) = gnl_biz_inf_qry_def_value.validate() { return Err(e); } }
+		if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
+	}
+}
+
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -113,6 +172,12 @@ pub struct GetGeneralBusinessInformationV04 {
 pub struct ISODateTime {
 	#[serde(rename = "$value")]
 	pub iso_date_time: String,
+}
+
+impl ISODateTime {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -125,6 +190,13 @@ pub struct InformationQualifierType1 {
 	pub prty: Option<Priority1Code>,
 }
 
+impl InformationQualifierType1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref prty_value) = self.prty { if let Err(e) = prty_value.validate() { return Err(e); } }
+		Ok(())
+	}
+}
+
 
 // Max350Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -132,6 +204,18 @@ pub struct InformationQualifierType1 {
 pub struct Max350Text {
 	#[serde(rename = "$value")]
 	pub max350_text: String,
+}
+
+impl Max350Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max350_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max350_text.chars().count() > 350 {
+			return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
+		}
+		Ok(())
+	}
 }
 
 
@@ -143,6 +227,18 @@ pub struct Max35Text {
 	pub max35_text: String,
 }
 
+impl Max35Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max35_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max35_text.chars().count() > 35 {
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
+		}
+		Ok(())
+	}
+}
+
 
 // MessageHeader1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -151,6 +247,13 @@ pub struct MessageHeader1 {
 	pub msg_id: Max35Text,
 	#[serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none")]
 	pub cre_dt_tm: Option<String>,
+}
+
+impl MessageHeader1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.msg_id.validate() { return Err(e); }
+		Ok(())
+	}
 }
 
 
@@ -164,6 +267,12 @@ pub enum Priority1Code {
 	CodeNORM,
 	#[serde(rename = "LOWW")]
 	CodeLOWW,
+}
+
+impl Priority1Code {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -181,6 +290,12 @@ pub enum QueryType2Code {
 	CodeDELD,
 }
 
+impl QueryType2Code {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // RequestedIndicator ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -188,6 +303,12 @@ pub enum QueryType2Code {
 pub struct RequestedIndicator {
 	#[serde(rename = "$value")]
 	pub requested_indicator: bool,
+}
+
+impl RequestedIndicator {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -200,10 +321,24 @@ pub struct SupplementaryData1 {
 	pub envlp: SupplementaryDataEnvelope1,
 }
 
+impl SupplementaryData1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref plc_and_nm_value) = self.plc_and_nm { if let Err(e) = plc_and_nm_value.validate() { return Err(e); } }
+		if let Err(e) = self.envlp.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // SupplementaryDataEnvelope1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -213,4 +348,10 @@ pub struct SupplementaryDataEnvelope1 {
 pub struct YesNoIndicator {
 	#[serde(rename = "$value")]
 	pub yes_no_indicator: bool,
+}
+
+impl YesNoIndicator {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }

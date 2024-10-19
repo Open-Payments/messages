@@ -23,8 +23,8 @@
 // https://github.com/Open-Payments/messages
 
 use serde::{Deserialize, Serialize};
-
-
+use regex::Regex;
+use crate::validationerror::*;
 // ApplicationSpecifics1 ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct ApplicationSpecifics1 {
@@ -34,6 +34,14 @@ pub struct ApplicationSpecifics1 {
 	pub sgntr: Option<SignatureEnvelope>,
 	#[serde(rename = "TtlNbOfDocs")]
 	pub ttl_nb_of_docs: f64,
+}
+
+impl ApplicationSpecifics1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref sys_usr_value) = self.sys_usr { if let Err(e) = sys_usr_value.validate() { return Err(e); } }
+		if let Some(ref sgntr_value) = self.sgntr { if let Err(e) = sgntr_value.validate() { return Err(e); } }
+		Ok(())
+	}
 }
 
 
@@ -46,6 +54,14 @@ pub struct BusinessFileHeaderV01 {
 	pub pyld: Option<Vec<LaxPayload>>,
 }
 
+impl BusinessFileHeaderV01 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.pyld_desc.validate() { return Err(e); }
+		if let Some(ref pyld_vec) = self.pyld { for item in pyld_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
+	}
+}
+
 
 // ISODateTime ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -55,10 +71,22 @@ pub struct ISODateTime {
 	pub iso_date_time: String,
 }
 
+impl ISODateTime {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
+}
+
 
 // LaxPayload ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct LaxPayload {
+}
+
+impl LaxPayload {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -71,6 +99,13 @@ pub struct ManifestData2 {
 	pub nb_of_docs: f64,
 }
 
+impl ManifestData2 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.doc_tp.validate() { return Err(e); }
+		Ok(())
+	}
+}
+
 
 // Max140Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -78,6 +113,18 @@ pub struct ManifestData2 {
 pub struct Max140Text {
 	#[serde(rename = "$value")]
 	pub max140_text: String,
+}
+
+impl Max140Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max140_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max140_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max140_text.chars().count() > 140 {
+			return Err(ValidationError::new(1002, "max140_text exceeds the maximum length of 140".to_string()));
+		}
+		Ok(())
+	}
 }
 
 
@@ -89,6 +136,18 @@ pub struct Max256Text {
 	pub max256_text: String,
 }
 
+impl Max256Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max256_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max256_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max256_text.chars().count() > 256 {
+			return Err(ValidationError::new(1002, "max256_text exceeds the maximum length of 256".to_string()));
+		}
+		Ok(())
+	}
+}
+
 
 // Max35Text ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -98,6 +157,18 @@ pub struct Max35Text {
 	pub max35_text: String,
 }
 
+impl Max35Text {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.max35_text.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
+		}
+		if self.max35_text.chars().count() > 35 {
+			return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
+		}
+		Ok(())
+	}
+}
+
 
 // Number ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
@@ -105,6 +176,12 @@ pub struct Max35Text {
 pub struct Number {
 	#[serde(rename = "$value")]
 	pub number: f64,
+}
+
+impl Number {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -117,6 +194,13 @@ pub struct PayloadData2 {
 	pub cre_dt_and_tm: String,
 	#[serde(rename = "PssblDplctFlg", skip_serializing_if = "Option::is_none")]
 	pub pssbl_dplct_flg: Option<bool>,
+}
+
+impl PayloadData2 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.pyld_idr.validate() { return Err(e); }
+		Ok(())
+	}
 }
 
 
@@ -133,10 +217,26 @@ pub struct PayloadDescription2 {
 	pub mnfst_data: Option<Vec<ManifestData2>>,
 }
 
+impl PayloadDescription2 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.pyld_data.validate() { return Err(e); }
+		if let Some(ref appl_spcfcs_value) = self.appl_spcfcs { if let Err(e) = appl_spcfcs_value.validate() { return Err(e); } }
+		if let Err(e) = self.pyld_tp.validate() { return Err(e); }
+		if let Some(ref mnfst_data_vec) = self.mnfst_data { for item in mnfst_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
+	}
+}
+
 
 // SignatureEnvelope ...
 #[derive(Debug, Default, PartialEq, Clone, Serialize, Deserialize)]
 pub struct SignatureEnvelope {
+}
+
+impl SignatureEnvelope {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
 
 
@@ -146,4 +246,10 @@ pub struct SignatureEnvelope {
 pub struct TrueFalseIndicator {
 	#[serde(rename = "$value")]
 	pub true_false_indicator: bool,
+}
+
+impl TrueFalseIndicator {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }
