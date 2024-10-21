@@ -22,8 +22,8 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-#![allow(unused_imports)]
-
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 pub mod iso20022 {
 	use regex::Regex;
 	use crate::common::*;
@@ -33,8 +33,6 @@ pub mod iso20022 {
 	
 	// ActiveCurrencyAndAmountSimpleType ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -55,8 +53,6 @@ pub mod iso20022 {
 	
 	// ActiveCurrencyAndAmount ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct ActiveCurrencyAndAmount {
@@ -75,8 +71,6 @@ pub mod iso20022 {
 	
 	// ActiveCurrencyCode ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -98,8 +92,6 @@ pub mod iso20022 {
 	
 	// CountryCode ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -121,8 +113,6 @@ pub mod iso20022 {
 	
 	// DecimalNumber ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -140,8 +130,6 @@ pub mod iso20022 {
 	
 	// EquityInstrumentReportingClassification1Code ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub enum EquityInstrumentReportingClassification1Code {
@@ -167,8 +155,6 @@ pub mod iso20022 {
 	
 	// FinancialInstrumentReportingEquityTradingActivityResultV02 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct FinancialInstrumentReportingEquityTradingActivityResultV02 {
@@ -192,8 +178,6 @@ pub mod iso20022 {
 	
 	// ISINOct2015Identifier ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -215,8 +199,6 @@ pub mod iso20022 {
 	
 	// ISODate ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -234,8 +216,6 @@ pub mod iso20022 {
 	
 	// ISODateTime ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -253,8 +233,6 @@ pub mod iso20022 {
 	
 	// MICIdentifier ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -276,8 +254,6 @@ pub mod iso20022 {
 	
 	// MarketDetail2 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct MarketDetail2 {
@@ -297,8 +273,6 @@ pub mod iso20022 {
 	
 	// Max350Text ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -322,8 +296,6 @@ pub mod iso20022 {
 	
 	// Max35Text ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -347,8 +319,6 @@ pub mod iso20022 {
 	
 	// Max50Text ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -372,8 +342,6 @@ pub mod iso20022 {
 	
 	// Number ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -391,8 +359,6 @@ pub mod iso20022 {
 	
 	// Period2 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct Period2 {
@@ -411,8 +377,6 @@ pub mod iso20022 {
 	
 	// Period4Choice ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct Period4Choice {
@@ -436,8 +400,6 @@ pub mod iso20022 {
 	
 	// SecuritiesMarketReportHeader1 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct SecuritiesMarketReportHeader1 {
@@ -460,8 +422,6 @@ pub mod iso20022 {
 	
 	// StatisticsTransparency3 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct StatisticsTransparency3 {
@@ -494,8 +454,6 @@ pub mod iso20022 {
 	
 	// SupplementaryData1 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct SupplementaryData1 {
@@ -516,8 +474,6 @@ pub mod iso20022 {
 	
 	// SupplementaryDataEnvelope1 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct SupplementaryDataEnvelope1 {
@@ -532,8 +488,6 @@ pub mod iso20022 {
 	
 	// TradingVenue2Code ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub enum TradingVenue2Code {
@@ -553,8 +507,6 @@ pub mod iso20022 {
 	
 	// TradingVenueIdentification1Choice ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct TradingVenueIdentification1Choice {
@@ -578,8 +530,6 @@ pub mod iso20022 {
 	
 	// TradingVenueIdentification2 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct TradingVenueIdentification2 {
@@ -600,8 +550,6 @@ pub mod iso20022 {
 	
 	// TransparencyDataReport17 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct TransparencyDataReport17 {
@@ -645,8 +593,6 @@ pub mod iso20022 {
 	
 	// TransparencyMethodology2Code ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub enum TransparencyMethodology2Code {
@@ -670,8 +616,6 @@ pub mod iso20022 {
 	
 	// TrueFalseIndicator ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]

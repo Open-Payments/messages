@@ -22,8 +22,8 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-#![allow(unused_imports)]
-
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 pub mod fednow {
 	use regex::Regex;
 	use crate::common::*;
@@ -33,8 +33,6 @@ pub mod fednow {
 	
 	// AdministrationProprietaryMessageV02 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct AdministrationProprietaryMessageV02 {
@@ -64,8 +62,6 @@ pub mod fednow {
 	
 	// Max35Text ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -89,8 +85,6 @@ pub mod fednow {
 	
 	// MessageReference ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct MessageReference {
@@ -108,8 +102,6 @@ pub mod fednow {
 	
 	// ProprietaryData5 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct ProprietaryData5 {
@@ -130,8 +122,6 @@ pub mod fednow {
 	
 	// SupplementaryDataEnvelope1 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct SupplementaryDataEnvelope1 {

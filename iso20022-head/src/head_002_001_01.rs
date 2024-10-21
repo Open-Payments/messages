@@ -22,8 +22,8 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-#![allow(unused_imports)]
-
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 pub mod iso20022 {
 	use regex::Regex;
 	use crate::common::*;
@@ -33,8 +33,6 @@ pub mod iso20022 {
 	
 	// ApplicationSpecifics1 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct ApplicationSpecifics1 {
@@ -57,8 +55,6 @@ pub mod iso20022 {
 	
 	// BusinessFileHeaderV01 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct BusinessFileHeaderV01 {
@@ -79,8 +75,6 @@ pub mod iso20022 {
 	
 	// ISODateTime ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -98,8 +92,6 @@ pub mod iso20022 {
 	
 	// LaxPayload ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct LaxPayload {
@@ -114,8 +106,6 @@ pub mod iso20022 {
 	
 	// ManifestData2 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct ManifestData2 {
@@ -135,8 +125,6 @@ pub mod iso20022 {
 	
 	// Max140Text ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -160,8 +148,6 @@ pub mod iso20022 {
 	
 	// Max256Text ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -185,8 +171,6 @@ pub mod iso20022 {
 	
 	// Max35Text ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -210,8 +194,6 @@ pub mod iso20022 {
 	
 	// Number ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
@@ -229,8 +211,6 @@ pub mod iso20022 {
 	
 	// PayloadData2 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct PayloadData2 {
@@ -252,8 +232,6 @@ pub mod iso20022 {
 	
 	// PayloadDescription2 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct PayloadDescription2 {
@@ -280,8 +258,6 @@ pub mod iso20022 {
 	
 	// SignatureEnvelope ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	pub struct SignatureEnvelope {
@@ -296,8 +272,6 @@ pub mod iso20022 {
 	
 	// TrueFalseIndicator ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]

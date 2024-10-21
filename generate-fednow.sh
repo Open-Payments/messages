@@ -20,6 +20,3 @@ for f in $input_directory/*.xsd; do
 
     # perl -0777 -i -pe "s{\n\n\n}{}gs" "$rs_file_name"
 done
-
-
-# \t// document ...\n\tpub struct document {\n\t\t#[cfg_attr( feature = "derive_serde", serde(rename = "Document") )]\n\t\tpub document: Document,\n\t}\n\t\n\timpl document {\t\tpub fn validate(&self) -> Result<(), ValidationError> {\n\t\t\tif let Err(e) = self.document.validate() { return Err(e); }\n\t\t\tOk(())\n\t\t}\n\t}
