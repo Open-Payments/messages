@@ -22,8 +22,6 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 pub mod iso20022 {
 	use regex::Regex;
 	use crate::common::*;
@@ -35,6 +33,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
 	pub struct ActiveOrHistoricCurrencyCode {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
@@ -56,6 +56,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct CurrencyCriteriaDefinition1Choice {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "QryNm", skip_serializing_if = "Option::is_none") )]
 		pub qry_nm: Option<Max35Text>,
@@ -76,6 +78,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct CurrencyExchangeCriteria2 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none") )]
 		pub new_qry_nm: Option<Max35Text>,
@@ -96,6 +100,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct CurrencyExchangeSearchCriteria1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "SrcCcy") )]
 		pub src_ccy: ActiveOrHistoricCurrencyCode,
@@ -116,6 +122,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct CurrencyQueryDefinition3 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp", skip_serializing_if = "Option::is_none") )]
 		pub qry_tp: Option<QueryType2Code>,
@@ -136,6 +144,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct GetCurrencyExchangeRateV04 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "MsgHdr") )]
 		pub msg_hdr: MessageHeader1,
@@ -159,6 +169,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
 	pub struct ISODateTime {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
@@ -176,6 +188,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
 	pub struct Max350Text {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
@@ -199,6 +213,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
 	pub struct Max35Text {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
@@ -222,6 +238,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct MessageHeader1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 		pub msg_id: Max35Text,
@@ -241,6 +259,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub enum QueryType2Code {
 		#[cfg_attr(feature = "derive_default", default)]
 		#[cfg_attr( feature = "derive_serde", serde(rename = "ALLL") )]
@@ -264,6 +284,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct SupplementaryData1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none") )]
 		pub plc_and_nm: Option<Max350Text>,
@@ -284,6 +306,8 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct SupplementaryDataEnvelope1 {
 	}
 	

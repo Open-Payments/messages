@@ -22,8 +22,6 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 pub mod fednow {
 	use regex::Regex;
 	use crate::common::*;
@@ -34,6 +32,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
 	pub struct Max300AlphaNumericString {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
@@ -55,6 +55,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
 	pub struct Max50AlphaNumericString {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
@@ -76,6 +78,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
 	pub struct Max300Text {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
@@ -103,6 +107,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
 	pub struct RoutingNumberFRS1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
@@ -124,6 +130,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowMessageSignatureKeyStatus {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "KeyStatus") )]
 		pub key_status: String,
@@ -142,6 +150,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowMessageSignatureKey {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowKeyID") )]
 		pub fed_now_key_id: Max300AlphaNumericString,
@@ -172,6 +182,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct KeyAddition {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Key", skip_serializing_if = "Option::is_none") )]
 		pub key: Option<FedNowMessageSignatureKey>,
@@ -189,6 +201,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct KeyRevocation {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "KeyRevocation", skip_serializing_if = "Option::is_none") )]
 		pub key_revocation: Option<String>,
@@ -211,6 +225,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowMessageSignatureKeyExchange {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "KeyAddition", skip_serializing_if = "Option::is_none") )]
 		pub key_addition: Option<KeyAddition>,
@@ -230,6 +246,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowKeyID") )]
 		pub fed_now_key_id: Max300AlphaNumericString,
@@ -251,6 +269,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct GetAllFedNowActivePublicKeys {
 	}
 	
@@ -265,6 +285,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct GetAllCustomerPublicKeys {
 	}
 	
@@ -279,6 +301,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowPublicKeyResponse {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowMessageSignatureKeyStatus") )]
 		pub fed_now_message_signature_key_status: FedNowMessageSignatureKeyStatus,
@@ -299,6 +323,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowPublicKeyResponses {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "PublicKeys") )]
 		pub public_keys: Vec<FedNowPublicKeyResponse>,
