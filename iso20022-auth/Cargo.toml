@@ -1,6 +1,6 @@
 [package]
 name = "open-payments-iso20022-auth"
-version = "0.2.13"
+version = "0.2.14"
 edition = "2021"
 exclude = ["/xsd", "/xml", ".DS_Store", "/target", ".vscode", "generate.sh"]
 authors = ["Harishankar Narayanan <nharishankar@gmail.com>"]
