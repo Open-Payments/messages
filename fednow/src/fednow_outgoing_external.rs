@@ -22,8 +22,6 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 pub mod fednow {
 	use regex::Regex;
 	use crate::common::*;
@@ -37,6 +35,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowOutgoing {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowTechnicalHeader", skip_serializing_if = "Option::is_none") )]
 		pub fed_now_technical_header: Option<FedNowTechnicalHeader>,
@@ -57,6 +57,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowTechnicalHeader {
 	}
 	
@@ -71,6 +73,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowOutgoingMessage {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowMessageReject", skip_serializing_if = "Option::is_none") )]
 		pub fed_now_message_reject: Option<FedNowMessageReject>,
@@ -157,6 +161,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowMessageReject {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -177,6 +183,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowBroadcast {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -197,6 +205,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowReceiptAcknowledgement {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -217,6 +227,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowSystemResponse {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -237,6 +249,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowParticipantFile {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -257,6 +271,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowPaymentStatus {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -277,6 +293,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowPaymentReturn {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -297,6 +315,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowCustomerCreditTransfer {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -317,6 +337,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowInstitutionCreditTransfer {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -337,6 +359,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowPaymentStatusRequest {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -357,6 +381,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowRequestForPayment {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -377,6 +403,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowRequestForPaymentResponse {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -397,6 +425,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowInformationRequest {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -417,6 +447,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowAdditionalPaymentInformation {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -437,6 +469,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowRequestForPaymentCancellationRequestResponse {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -457,6 +491,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowReturnRequestResponse {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -477,6 +513,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowInformationRequestResponse {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -497,6 +535,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowAccountActivityDetailsReport {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -517,6 +557,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowAccountActivityTotalsReport {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -537,6 +579,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowAccountBalanceReport {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -557,6 +601,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct AccountDebitCreditNotification {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -577,6 +623,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowRequestForPaymentCancellationRequest {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -597,6 +645,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowReturnRequest {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
 		pub bah_app_hdr: BusinessApplicationHeaderV02,
@@ -617,6 +667,8 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
 	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+	#[cfg_attr(feature = "derive_clone", derive(Clone))]
+	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowOutgoingMessageSignatureManagement {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowPublicKeyResponses", skip_serializing_if = "Option::is_none") )]
 		pub ke_fed_now_public_key_responses: Option<FedNowPublicKeyResponses>,

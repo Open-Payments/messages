@@ -32,6 +32,7 @@ regex = "1.11.0"
 
 [features]
 default = ["head"]
+derive_all = ["derive_serde", "derive_debug", "derive_default", "derive_partial_eq", "derive_clone"]
 derive_serde = ["serde", "open-payments-iso20022-acmt/derive_serde", "open-payments-iso20022-admi/derive_serde", "open-payments-iso20022-auth/derive_serde", "open-payments-iso20022-camt/derive_serde", "open-payments-iso20022-head/derive_serde", "open-payments-iso20022-pacs/derive_serde", "open-payments-iso20022-pain/derive_serde", "open-payments-iso20022-reda/derive_serde", "open-payments-iso20022-remt/derive_serde"]
 derive_debug = ["open-payments-iso20022-acmt/derive_debug", "open-payments-iso20022-admi/derive_debug", "open-payments-iso20022-auth/derive_debug", "open-payments-iso20022-camt/derive_debug", "open-payments-iso20022-head/derive_debug", "open-payments-iso20022-pacs/derive_debug", "open-payments-iso20022-pain/derive_debug", "open-payments-iso20022-reda/derive_debug", "open-payments-iso20022-remt/derive_debug"]
 derive_default = ["open-payments-iso20022-acmt/derive_default", "open-payments-iso20022-admi/derive_default", "open-payments-iso20022-auth/derive_default", "open-payments-iso20022-camt/derive_default", "open-payments-iso20022-head/derive_default", "open-payments-iso20022-pacs/derive_default", "open-payments-iso20022-pain/derive_default", "open-payments-iso20022-reda/derive_default", "open-payments-iso20022-remt/derive_default"]
