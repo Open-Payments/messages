@@ -58,89 +58,26 @@ pub mod fednow {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FedNowParticipantProfile1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
-		pub id: RoutingNumberFRS1,
+		pub id: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Nm") )]
-		pub nm: Max140Text,
+		pub nm: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Svcs") )]
 		pub svcs: Vec<ServicesFedNow1>,
 	}
 	
 	impl FedNowParticipantProfile1 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.id.validate() { return Err(e); }
-			if let Err(e) = self.nm.validate() { return Err(e); }
-			for item in &self.svcs { if let Err(e) = item.validate() { return Err(e); } }
-			Ok(())
-		}
-	}
-	
-	
-	// ISODate: A particular point in the progression of time in a calendar year expressed in the YYYY-MM-DD format. This representation is defined in "XML Schema Part 2: Datatypes Second Edition - W3C Recommendation 28 October 2004" which is aligned with ISO 8601.
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct ISODate {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub iso_date: String,
-	}
-	
-	impl ISODate {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
-	// Max140Text: Specifies a character string with a maximum length of 140 characters.
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max140Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max140_text: String,
-	}
-	
-	impl Max140Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max140_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max140_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max140_text.chars().count() > 140 {
-				return Err(ValidationError::new(1002, "max140_text exceeds the maximum length of 140".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// RoutingNumberFRS1: This is a routing number used by the Service participant in connection with the message.
-
-	//                 
-
-	//                 Note: This may be a master account routing number or a subaccount routing number.
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct RoutingNumberFRS1 {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub routing_number_frs_1: String,
-	}
-	
-	impl RoutingNumberFRS1 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
 			let pattern = Regex::new("[0-9]{9,9}").unwrap();
-			if !pattern.is_match(&self.routing_number_frs_1) {
-				return Err(ValidationError::new(1005, "routing_number_frs_1 does not match the required pattern".to_string()));
+			if !pattern.is_match(&self.id) {
+				return Err(ValidationError::new(1005, "id does not match the required pattern".to_string()));
 			}
+			if self.nm.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "nm is shorter than the minimum length of 1".to_string()));
+			}
+			if self.nm.chars().count() > 140 {
+				return Err(ValidationError::new(1002, "nm exceeds the maximum length of 140".to_string()));
+			}
+			for item in &self.svcs { if let Err(e) = item.validate() { return Err(e); } }
 			Ok(())
 		}
 	}

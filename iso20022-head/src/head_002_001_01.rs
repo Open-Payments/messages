@@ -37,7 +37,7 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct ApplicationSpecifics1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "SysUsr", skip_serializing_if = "Option::is_none") )]
-		pub sys_usr: Option<Max140Text>,
+		pub sys_usr: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Sgntr", skip_serializing_if = "Option::is_none") )]
 		pub sgntr: Option<SignatureEnvelope>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "TtlNbOfDocs") )]
@@ -46,8 +46,15 @@ pub mod iso20022 {
 	
 	impl ApplicationSpecifics1 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref sys_usr_value) = self.sys_usr { if let Err(e) = sys_usr_value.validate() { return Err(e); } }
-			if let Some(ref sgntr_value) = self.sgntr { if let Err(e) = sgntr_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.sys_usr {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "sys_usr is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 140 {
+					return Err(ValidationError::new(1002, "sys_usr exceeds the maximum length of 140".to_string()));
+				}
+			}
+			if let Some(ref val) = self.sgntr { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -69,26 +76,7 @@ pub mod iso20022 {
 	impl BusinessFileHeaderV01 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			if let Err(e) = self.pyld_desc.validate() { return Err(e); }
-			if let Some(ref pyld_vec) = self.pyld { for item in pyld_vec { if let Err(e) = item.validate() { return Err(e); } } }
-			Ok(())
-		}
-	}
-	
-	
-	// ISODateTime ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct ISODateTime {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub iso_date_time: String,
-	}
-	
-	impl ISODateTime {
-		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref vec) = self.pyld { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
 			Ok(())
 		}
 	}
@@ -118,108 +106,19 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct ManifestData2 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "DocTp") )]
-		pub doc_tp: Max35Text,
+		pub doc_tp: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "NbOfDocs") )]
 		pub nb_of_docs: f64,
 	}
 	
 	impl ManifestData2 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.doc_tp.validate() { return Err(e); }
-			Ok(())
-		}
-	}
-	
-	
-	// Max140Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max140Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max140_text: String,
-	}
-	
-	impl Max140Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max140_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max140_text is shorter than the minimum length of 1".to_string()));
+			if self.doc_tp.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "doc_tp is shorter than the minimum length of 1".to_string()));
 			}
-			if self.max140_text.chars().count() > 140 {
-				return Err(ValidationError::new(1002, "max140_text exceeds the maximum length of 140".to_string()));
+			if self.doc_tp.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "doc_tp exceeds the maximum length of 35".to_string()));
 			}
-			Ok(())
-		}
-	}
-	
-	
-	// Max256Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max256Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max256_text: String,
-	}
-	
-	impl Max256Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max256_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max256_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max256_text.chars().count() > 256 {
-				return Err(ValidationError::new(1002, "max256_text exceeds the maximum length of 256".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// Max35Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max35Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max35_text: String,
-	}
-	
-	impl Max35Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max35_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max35_text.chars().count() > 35 {
-				return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// Number ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Number {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub number: f64,
-	}
-	
-	impl Number {
-		pub fn validate(&self) -> Result<(), ValidationError> {
 			Ok(())
 		}
 	}
@@ -233,7 +132,7 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct PayloadData2 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "PyldIdr") )]
-		pub pyld_idr: Max35Text,
+		pub pyld_idr: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "CreDtAndTm") )]
 		pub cre_dt_and_tm: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "PssblDplctFlg", skip_serializing_if = "Option::is_none") )]
@@ -242,7 +141,12 @@ pub mod iso20022 {
 	
 	impl PayloadData2 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.pyld_idr.validate() { return Err(e); }
+			if self.pyld_idr.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "pyld_idr is shorter than the minimum length of 1".to_string()));
+			}
+			if self.pyld_idr.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "pyld_idr exceeds the maximum length of 35".to_string()));
+			}
 			Ok(())
 		}
 	}
@@ -260,7 +164,7 @@ pub mod iso20022 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "ApplSpcfcs", skip_serializing_if = "Option::is_none") )]
 		pub appl_spcfcs: Option<ApplicationSpecifics1>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "PyldTp") )]
-		pub pyld_tp: Max256Text,
+		pub pyld_tp: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "MnfstData", skip_serializing_if = "Option::is_none") )]
 		pub mnfst_data: Option<Vec<ManifestData2>>,
 	}
@@ -268,9 +172,14 @@ pub mod iso20022 {
 	impl PayloadDescription2 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			if let Err(e) = self.pyld_data.validate() { return Err(e); }
-			if let Some(ref appl_spcfcs_value) = self.appl_spcfcs { if let Err(e) = appl_spcfcs_value.validate() { return Err(e); } }
-			if let Err(e) = self.pyld_tp.validate() { return Err(e); }
-			if let Some(ref mnfst_data_vec) = self.mnfst_data { for item in mnfst_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref val) = self.appl_spcfcs { if let Err(e) = val.validate() { return Err(e); } }
+			if self.pyld_tp.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "pyld_tp is shorter than the minimum length of 1".to_string()));
+			}
+			if self.pyld_tp.chars().count() > 256 {
+				return Err(ValidationError::new(1002, "pyld_tp exceeds the maximum length of 256".to_string()));
+			}
+			if let Some(ref vec) = self.mnfst_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
 			Ok(())
 		}
 	}
@@ -286,25 +195,6 @@ pub mod iso20022 {
 	}
 	
 	impl SignatureEnvelope {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
-	// TrueFalseIndicator ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct TrueFalseIndicator {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub true_false_indicator: bool,
-	}
-	
-	impl TrueFalseIndicator {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			Ok(())
 		}

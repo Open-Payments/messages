@@ -45,7 +45,7 @@ pub mod iso20022 {
 	impl CCPClearingMemberReportV01 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			for item in &self.clr_mmb { if let Err(e) = item.validate() { return Err(e); } }
-			if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
 			Ok(())
 		}
 	}
@@ -127,8 +127,8 @@ pub mod iso20022 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			if let Err(e) = self.id.validate() { return Err(e); }
 			if let Err(e) = self.cdt_qlty.validate() { return Err(e); }
-			if let Some(ref ultmt_prnt_id_value) = self.ultmt_prnt_id { if let Err(e) = ultmt_prnt_id_value.validate() { return Err(e); } }
-			if let Some(ref spnsrg_clr_mmb_id_value) = self.spnsrg_clr_mmb_id { if let Err(e) = spnsrg_clr_mmb_id_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.ultmt_prnt_id { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.spnsrg_clr_mmb_id { if let Err(e) = val.validate() { return Err(e); } }
 			for item in &self.clr_acct_ownr { if let Err(e) = item.validate() { return Err(e); } }
 			Ok(())
 		}
@@ -206,62 +206,46 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct GenericIdentification168 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
-		pub id: Max256Text,
+		pub id: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Desc", skip_serializing_if = "Option::is_none") )]
-		pub desc: Option<Max140Text>,
+		pub desc: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Issr", skip_serializing_if = "Option::is_none") )]
-		pub issr: Option<Max35Text>,
+		pub issr: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none") )]
-		pub schme_nm: Option<Max35Text>,
+		pub schme_nm: Option<String>,
 	}
 	
 	impl GenericIdentification168 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.id.validate() { return Err(e); }
-			if let Some(ref desc_value) = self.desc { if let Err(e) = desc_value.validate() { return Err(e); } }
-			if let Some(ref issr_value) = self.issr { if let Err(e) = issr_value.validate() { return Err(e); } }
-			if let Some(ref schme_nm_value) = self.schme_nm { if let Err(e) = schme_nm_value.validate() { return Err(e); } }
-			Ok(())
-		}
-	}
-	
-	
-	// ISODate ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct ISODate {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub iso_date: String,
-	}
-	
-	impl ISODate {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
-	// LEIIdentifier ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct LEIIdentifier {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub lei_identifier: String,
-	}
-	
-	impl LEIIdentifier {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&self.lei_identifier) {
-				return Err(ValidationError::new(1005, "lei_identifier does not match the required pattern".to_string()));
+			if self.id.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "id is shorter than the minimum length of 1".to_string()));
+			}
+			if self.id.chars().count() > 256 {
+				return Err(ValidationError::new(1002, "id exceeds the maximum length of 256".to_string()));
+			}
+			if let Some(ref val) = self.desc {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "desc is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 140 {
+					return Err(ValidationError::new(1002, "desc exceeds the maximum length of 140".to_string()));
+				}
+			}
+			if let Some(ref val) = self.issr {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "issr exceeds the maximum length of 35".to_string()));
+				}
+			}
+			if let Some(ref val) = self.schme_nm {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "schme_nm is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "schme_nm exceeds the maximum length of 35".to_string()));
+				}
 			}
 			Ok(())
 		}
@@ -290,106 +274,6 @@ pub mod iso20022 {
 	}
 	
 	
-	// Max140Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max140Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max140_text: String,
-	}
-	
-	impl Max140Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max140_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max140_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max140_text.chars().count() > 140 {
-				return Err(ValidationError::new(1002, "max140_text exceeds the maximum length of 140".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// Max256Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max256Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max256_text: String,
-	}
-	
-	impl Max256Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max256_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max256_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max256_text.chars().count() > 256 {
-				return Err(ValidationError::new(1002, "max256_text exceeds the maximum length of 256".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// Max350Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max350Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max350_text: String,
-	}
-	
-	impl Max350Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max350_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max350_text.chars().count() > 350 {
-				return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// Max35Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max35Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max35_text: String,
-	}
-	
-	impl Max35Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max35_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max35_text.chars().count() > 35 {
-				return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
 	// PartyIdentification118Choice ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
@@ -398,15 +282,20 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct PartyIdentification118Choice {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "LEI", skip_serializing_if = "Option::is_none") )]
-		pub lei: Option<LEIIdentifier>,
+		pub lei: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Prtry", skip_serializing_if = "Option::is_none") )]
 		pub prtry: Option<GenericIdentification168>,
 	}
 	
 	impl PartyIdentification118Choice {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref lei_value) = self.lei { if let Err(e) = lei_value.validate() { return Err(e); } }
-			if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.lei {
+				let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
+				if !pattern.is_match(&val) {
+					return Err(ValidationError::new(1005, "lei does not match the required pattern".to_string()));
+				}
+			}
+			if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -439,14 +328,21 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct SupplementaryData1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none") )]
-		pub plc_and_nm: Option<Max350Text>,
+		pub plc_and_nm: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Envlp") )]
 		pub envlp: SupplementaryDataEnvelope1,
 	}
 	
 	impl SupplementaryData1 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref plc_and_nm_value) = self.plc_and_nm { if let Err(e) = plc_and_nm_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.plc_and_nm {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "plc_and_nm is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 350 {
+					return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
+				}
+			}
 			if let Err(e) = self.envlp.validate() { return Err(e); }
 			Ok(())
 		}
@@ -463,25 +359,6 @@ pub mod iso20022 {
 	}
 	
 	impl SupplementaryDataEnvelope1 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
-	// TrueFalseIndicator ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct TrueFalseIndicator {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub true_false_indicator: bool,
-	}
-	
-	impl TrueFalseIndicator {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			Ok(())
 		}

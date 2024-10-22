@@ -46,7 +46,7 @@ pub mod fednow {
 	
 	impl FedNowOutgoing {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref fed_now_technical_header_value) = self.fed_now_technical_header { if let Err(e) = fed_now_technical_header_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_technical_header { if let Err(e) = val.validate() { return Err(e); } }
 			if let Err(e) = self.fed_now_outgoing_message.validate() { return Err(e); }
 			Ok(())
 		}
@@ -128,30 +128,30 @@ pub mod fednow {
 	
 	impl FedNowOutgoingMessage {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref fed_now_message_reject_value) = self.fed_now_message_reject { if let Err(e) = fed_now_message_reject_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_broadcast_value) = self.fed_now_broadcast { if let Err(e) = fed_now_broadcast_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_receipt_acknowledgement_value) = self.fed_now_receipt_acknowledgement { if let Err(e) = fed_now_receipt_acknowledgement_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_system_response_value) = self.fed_now_system_response { if let Err(e) = fed_now_system_response_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_participant_file_value) = self.fed_now_participant_file { if let Err(e) = fed_now_participant_file_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_payment_status_value) = self.fed_now_payment_status { if let Err(e) = fed_now_payment_status_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_payment_return_value) = self.fed_now_payment_return { if let Err(e) = fed_now_payment_return_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_customer_credit_transfer_value) = self.fed_now_customer_credit_transfer { if let Err(e) = fed_now_customer_credit_transfer_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_institution_credit_transfer_value) = self.fed_now_institution_credit_transfer { if let Err(e) = fed_now_institution_credit_transfer_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_payment_status_request_value) = self.fed_now_payment_status_request { if let Err(e) = fed_now_payment_status_request_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_request_for_payment_value) = self.fed_now_request_for_payment { if let Err(e) = fed_now_request_for_payment_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_request_for_payment_response_value) = self.fed_now_request_for_payment_response { if let Err(e) = fed_now_request_for_payment_response_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_information_request_value) = self.fed_now_information_request { if let Err(e) = fed_now_information_request_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_additional_payment_information_value) = self.fed_now_additional_payment_information { if let Err(e) = fed_now_additional_payment_information_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_return_request_response_value) = self.fed_now_return_request_response { if let Err(e) = fed_now_return_request_response_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_information_request_response_value) = self.fed_now_information_request_response { if let Err(e) = fed_now_information_request_response_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_account_activity_details_report_value) = self.fed_now_account_activity_details_report { if let Err(e) = fed_now_account_activity_details_report_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_account_activity_totals_report_value) = self.fed_now_account_activity_totals_report { if let Err(e) = fed_now_account_activity_totals_report_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_account_balance_report_value) = self.fed_now_account_balance_report { if let Err(e) = fed_now_account_balance_report_value.validate() { return Err(e); } }
-			if let Some(ref account_debit_credit_notification_value) = self.account_debit_credit_notification { if let Err(e) = account_debit_credit_notification_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_request_for_payment_cancellation_request_value) = self.fed_now_request_for_payment_cancellation_request { if let Err(e) = fed_now_request_for_payment_cancellation_request_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_request_for_payment_cancellation_request_response_value) = self.fed_now_request_for_payment_cancellation_request_response { if let Err(e) = fed_now_request_for_payment_cancellation_request_response_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_return_request_value) = self.fed_now_return_request { if let Err(e) = fed_now_return_request_value.validate() { return Err(e); } }
-			if let Some(ref fed_now_outgoing_message_signature_management_value) = self.fed_now_outgoing_message_signature_management { if let Err(e) = fed_now_outgoing_message_signature_management_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_message_reject { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_broadcast { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_receipt_acknowledgement { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_system_response { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_participant_file { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_payment_status { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_payment_return { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_customer_credit_transfer { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_institution_credit_transfer { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_payment_status_request { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_request_for_payment { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_request_for_payment_response { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_information_request { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_additional_payment_information { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_return_request_response { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_information_request_response { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_account_activity_details_report { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_account_activity_totals_report { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_account_balance_report { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.account_debit_credit_notification { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_request_for_payment_cancellation_request { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_request_for_payment_cancellation_request_response { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_return_request { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.fed_now_outgoing_message_signature_management { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -678,8 +678,8 @@ pub mod fednow {
 	
 	impl FedNowOutgoingMessageSignatureManagement {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref ke_fed_now_public_key_responses_value) = self.ke_fed_now_public_key_responses { if let Err(e) = ke_fed_now_public_key_responses_value.validate() { return Err(e); } }
-			if let Some(ref ke_fed_now_customer_message_signature_key_operation_response_value) = self.ke_fed_now_customer_message_signature_key_operation_response { if let Err(e) = ke_fed_now_customer_message_signature_key_operation_response_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.ke_fed_now_public_key_responses { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.ke_fed_now_customer_message_signature_key_operation_response { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
