@@ -29,28 +29,6 @@ pub mod iso20022 {
 	use serde::{Deserialize, Serialize};
 	
 	
-	// ActiveCurrencyAnd24AmountSimpleType ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct ActiveCurrencyAnd24AmountSimpleType {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub active_currency_and24_amount_simple_type: f64,
-	}
-	
-	impl ActiveCurrencyAnd24AmountSimpleType {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.active_currency_and24_amount_simple_type < 0.000000 {
-				return Err(ValidationError::new(1003, "active_currency_and24_amount_simple_type is less than the minimum value of 0.000000".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
 	// ActiveCurrencyAnd24Amount ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
@@ -66,28 +44,6 @@ pub mod iso20022 {
 	
 	impl ActiveCurrencyAnd24Amount {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
-	// ActiveCurrencyAndAmountSimpleType ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct ActiveCurrencyAndAmountSimpleType {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub active_currency_and_amount_simple_type: f64,
-	}
-	
-	impl ActiveCurrencyAndAmountSimpleType {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.active_currency_and_amount_simple_type < 0.000000 {
-				return Err(ValidationError::new(1003, "active_currency_and_amount_simple_type is less than the minimum value of 0.000000".to_string()));
-			}
 			Ok(())
 		}
 	}
@@ -113,29 +69,6 @@ pub mod iso20022 {
 	}
 	
 	
-	// ActiveCurrencyCode ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct ActiveCurrencyCode {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub active_currency_code: String,
-	}
-	
-	impl ActiveCurrencyCode {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			let pattern = Regex::new("[A-Z]{3,3}").unwrap();
-			if !pattern.is_match(&self.active_currency_code) {
-				return Err(ValidationError::new(1005, "active_currency_code does not match the required pattern".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
 	// CCPClearedProductReportV01 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
@@ -152,7 +85,7 @@ pub mod iso20022 {
 	impl CCPClearedProductReportV01 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			for item in &self.clrd_pdct { if let Err(e) = item.validate() { return Err(e); } }
-			if let Some(ref splmtry_data_vec) = self.splmtry_data { for item in splmtry_data_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
 			Ok(())
 		}
 	}
@@ -166,7 +99,7 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct ClearedProduct1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "TradgVn") )]
-		pub tradg_vn: Vec<MICIdentifier>,
+		pub tradg_vn: Vec<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "CCPPdctId") )]
 		pub ccp_pdct_id: GenericIdentification168,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "UvrslPdctId", skip_serializing_if = "Option::is_none") )]
@@ -181,11 +114,21 @@ pub mod iso20022 {
 	
 	impl ClearedProduct1 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			for item in &self.tradg_vn { if let Err(e) = item.validate() { return Err(e); } }
+			for item in &self.tradg_vn {
+				let pattern = Regex::new("[A-Z0-9]{4,4}").unwrap();
+				if !pattern.is_match(&item) {
+					return Err(ValidationError::new(1005, "tradg_vn does not match the required pattern".to_string()));
+				}
+			}
 			if let Err(e) = self.ccp_pdct_id.validate() { return Err(e); }
-			if let Some(ref uvrsl_pdct_id_value) = self.uvrsl_pdct_id { if let Err(e) = uvrsl_pdct_id_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.uvrsl_pdct_id { if let Err(e) = val.validate() { return Err(e); } }
 			if let Err(e) = self.pdct.validate() { return Err(e); }
 			if let Err(e) = self.opn_intrst.validate() { return Err(e); }
+			if let Some(ref val) = self.trds_clrd {
+				if *val < 0.000000 {
+					return Err(ValidationError::new(1003, "trds_clrd is less than the minimum value of 0.000000".to_string()));
+				}
+			}
 			Ok(())
 		}
 	}
@@ -206,7 +149,10 @@ pub mod iso20022 {
 	
 	impl ContractSize1 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref unit_value) = self.unit { if let Err(e) = unit_value.validate() { return Err(e); } }
+			if self.lot_sz < 1.000000 {
+				return Err(ValidationError::new(1003, "lot_sz is less than the minimum value of 1.000000".to_string()));
+			}
+			if let Some(ref val) = self.unit { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -227,8 +173,8 @@ pub mod iso20022 {
 	
 	impl DefinedAttributes1Choice {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref qty_dfnd_attrbts_value) = self.qty_dfnd_attrbts { if let Err(e) = qty_dfnd_attrbts_value.validate() { return Err(e); } }
-			if let Some(ref val_dfnd_attrbts_value) = self.val_dfnd_attrbts { if let Err(e) = val_dfnd_attrbts_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.qty_dfnd_attrbts { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.val_dfnd_attrbts { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -253,7 +199,7 @@ pub mod iso20022 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			if let Err(e) = self.deriv_clssfctn.validate() { return Err(e); }
 			for item in &self.deriv_undrlyg_leg { if let Err(e) = item.validate() { return Err(e); } }
-			if let Some(ref optn_attrbts_value) = self.optn_attrbts { if let Err(e) = optn_attrbts_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.optn_attrbts { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -267,24 +213,57 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct DerivativeClassification1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AsstClss") )]
-		pub asst_clss: Max35Text,
+		pub asst_clss: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "BasePdct", skip_serializing_if = "Option::is_none") )]
-		pub base_pdct: Option<Max35Text>,
+		pub base_pdct: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "SubPdct", skip_serializing_if = "Option::is_none") )]
-		pub sub_pdct: Option<Max35Text>,
+		pub sub_pdct: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "SubCmmdty", skip_serializing_if = "Option::is_none") )]
-		pub sub_cmmdty: Option<Max35Text>,
+		pub sub_cmmdty: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "TxTp", skip_serializing_if = "Option::is_none") )]
-		pub tx_tp: Option<Max35Text>,
+		pub tx_tp: Option<String>,
 	}
 	
 	impl DerivativeClassification1 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.asst_clss.validate() { return Err(e); }
-			if let Some(ref base_pdct_value) = self.base_pdct { if let Err(e) = base_pdct_value.validate() { return Err(e); } }
-			if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
-			if let Some(ref sub_cmmdty_value) = self.sub_cmmdty { if let Err(e) = sub_cmmdty_value.validate() { return Err(e); } }
-			if let Some(ref tx_tp_value) = self.tx_tp { if let Err(e) = tx_tp_value.validate() { return Err(e); } }
+			if self.asst_clss.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "asst_clss is shorter than the minimum length of 1".to_string()));
+			}
+			if self.asst_clss.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "asst_clss exceeds the maximum length of 35".to_string()));
+			}
+			if let Some(ref val) = self.base_pdct {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "base_pdct is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "base_pdct exceeds the maximum length of 35".to_string()));
+				}
+			}
+			if let Some(ref val) = self.sub_pdct {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "sub_pdct is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "sub_pdct exceeds the maximum length of 35".to_string()));
+				}
+			}
+			if let Some(ref val) = self.sub_cmmdty {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "sub_cmmdty is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "sub_cmmdty exceeds the maximum length of 35".to_string()));
+				}
+			}
+			if let Some(ref val) = self.tx_tp {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "tx_tp is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "tx_tp exceeds the maximum length of 35".to_string()));
+				}
+			}
 			Ok(())
 		}
 	}
@@ -306,7 +285,7 @@ pub mod iso20022 {
 	impl DerivativeUnderlyingLeg1 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			if let Err(e) = self.ctrct_attrbts.validate() { return Err(e); }
-			if let Some(ref dfnd_attrbts_value) = self.dfnd_attrbts { if let Err(e) = dfnd_attrbts_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.dfnd_attrbts { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -345,17 +324,23 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct FinancialInstrument59 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
-		pub id: ISINOct2015Identifier,
+		pub id: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Issr") )]
-		pub issr: LEIIdentifier,
+		pub issr: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Sctr", skip_serializing_if = "Option::is_none") )]
 		pub sctr: Option<String>,
 	}
 	
 	impl FinancialInstrument59 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.id.validate() { return Err(e); }
-			if let Err(e) = self.issr.validate() { return Err(e); }
+			let pattern = Regex::new("[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}").unwrap();
+			if !pattern.is_match(&self.id) {
+				return Err(ValidationError::new(1005, "id does not match the required pattern".to_string()));
+			}
+			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
+			if !pattern.is_match(&self.issr) {
+				return Err(ValidationError::new(1005, "issr does not match the required pattern".to_string()));
+			}
 			Ok(())
 		}
 	}
@@ -378,8 +363,8 @@ pub mod iso20022 {
 	
 	impl FinancialInstrumentAttributes88 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref ctrct_term_value) = self.ctrct_term { if let Err(e) = ctrct_term_value.validate() { return Err(e); } }
-			if let Some(ref stdstn_vec) = self.stdstn { for item in stdstn_vec { if let Err(e) = item.validate() { return Err(e); } } }
+			if let Some(ref val) = self.ctrct_term { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref vec) = self.stdstn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
 			if let Err(e) = self.pmt_frqcy.validate() { return Err(e); }
 			Ok(())
 		}
@@ -400,7 +385,7 @@ pub mod iso20022 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "UndrlygId") )]
 		pub undrlyg_id: GenericIdentification165,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "PricCcy") )]
-		pub pric_ccy: ActiveCurrencyCode,
+		pub pric_ccy: String,
 	}
 	
 	impl FinancialInstrumentAttributes89 {
@@ -408,7 +393,10 @@ pub mod iso20022 {
 			if let Err(e) = self.ctrct_sz.validate() { return Err(e); }
 			if let Err(e) = self.dlvry_tp.validate() { return Err(e); }
 			if let Err(e) = self.undrlyg_id.validate() { return Err(e); }
-			if let Err(e) = self.pric_ccy.validate() { return Err(e); }
+			let pattern = Regex::new("[A-Z]{3,3}").unwrap();
+			if !pattern.is_match(&self.pric_ccy) {
+				return Err(ValidationError::new(1005, "pric_ccy does not match the required pattern".to_string()));
+			}
 			Ok(())
 		}
 	}
@@ -428,18 +416,23 @@ pub mod iso20022 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "IndxId") )]
 		pub indx_id: GenericIdentification168,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "IndxUnit") )]
-		pub indx_unit: Max35Text,
+		pub indx_unit: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "IntrstRateTerms", skip_serializing_if = "Option::is_none") )]
 		pub intrst_rate_terms: Option<InterestComputationMethod2Code>,
 	}
 	
 	impl FinancialInstrumentAttributes90 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref ntnl_value) = self.ntnl { if let Err(e) = ntnl_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.ntnl { if let Err(e) = val.validate() { return Err(e); } }
 			if let Err(e) = self.unit_val.validate() { return Err(e); }
 			if let Err(e) = self.indx_id.validate() { return Err(e); }
-			if let Err(e) = self.indx_unit.validate() { return Err(e); }
-			if let Some(ref intrst_rate_terms_value) = self.intrst_rate_terms { if let Err(e) = intrst_rate_terms_value.validate() { return Err(e); } }
+			if self.indx_unit.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "indx_unit is shorter than the minimum length of 1".to_string()));
+			}
+			if self.indx_unit.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "indx_unit exceeds the maximum length of 35".to_string()));
+			}
+			if let Some(ref val) = self.intrst_rate_terms { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -490,12 +483,19 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct GeneralCollateral2 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "ElgblFinInstrmId") )]
-		pub elgbl_fin_instrm_id: Vec<Max35Text>,
+		pub elgbl_fin_instrm_id: Vec<String>,
 	}
 	
 	impl GeneralCollateral2 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			for item in &self.elgbl_fin_instrm_id { if let Err(e) = item.validate() { return Err(e); } }
+			for item in &self.elgbl_fin_instrm_id {
+				if item.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "elgbl_fin_instrm_id is shorter than the minimum length of 1".to_string()));
+				}
+				if item.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "elgbl_fin_instrm_id exceeds the maximum length of 35".to_string()));
+				}
+			}
 			Ok(())
 		}
 	}
@@ -509,21 +509,40 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct GenericIdentification165 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
-		pub id: Max256Text,
+		pub id: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Desc", skip_serializing_if = "Option::is_none") )]
-		pub desc: Option<Max140Text>,
+		pub desc: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Issr", skip_serializing_if = "Option::is_none") )]
-		pub issr: Option<Max35Text>,
+		pub issr: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none") )]
 		pub schme_nm: Option<SchemeIdentificationType1Code>,
 	}
 	
 	impl GenericIdentification165 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.id.validate() { return Err(e); }
-			if let Some(ref desc_value) = self.desc { if let Err(e) = desc_value.validate() { return Err(e); } }
-			if let Some(ref issr_value) = self.issr { if let Err(e) = issr_value.validate() { return Err(e); } }
-			if let Some(ref schme_nm_value) = self.schme_nm { if let Err(e) = schme_nm_value.validate() { return Err(e); } }
+			if self.id.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "id is shorter than the minimum length of 1".to_string()));
+			}
+			if self.id.chars().count() > 256 {
+				return Err(ValidationError::new(1002, "id exceeds the maximum length of 256".to_string()));
+			}
+			if let Some(ref val) = self.desc {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "desc is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 140 {
+					return Err(ValidationError::new(1002, "desc exceeds the maximum length of 140".to_string()));
+				}
+			}
+			if let Some(ref val) = self.issr {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "issr exceeds the maximum length of 35".to_string()));
+				}
+			}
+			if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -537,21 +556,47 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct GenericIdentification168 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
-		pub id: Max256Text,
+		pub id: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Desc", skip_serializing_if = "Option::is_none") )]
-		pub desc: Option<Max140Text>,
+		pub desc: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Issr", skip_serializing_if = "Option::is_none") )]
-		pub issr: Option<Max35Text>,
+		pub issr: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none") )]
-		pub schme_nm: Option<Max35Text>,
+		pub schme_nm: Option<String>,
 	}
 	
 	impl GenericIdentification168 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.id.validate() { return Err(e); }
-			if let Some(ref desc_value) = self.desc { if let Err(e) = desc_value.validate() { return Err(e); } }
-			if let Some(ref issr_value) = self.issr { if let Err(e) = issr_value.validate() { return Err(e); } }
-			if let Some(ref schme_nm_value) = self.schme_nm { if let Err(e) = schme_nm_value.validate() { return Err(e); } }
+			if self.id.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "id is shorter than the minimum length of 1".to_string()));
+			}
+			if self.id.chars().count() > 256 {
+				return Err(ValidationError::new(1002, "id exceeds the maximum length of 256".to_string()));
+			}
+			if let Some(ref val) = self.desc {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "desc is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 140 {
+					return Err(ValidationError::new(1002, "desc exceeds the maximum length of 140".to_string()));
+				}
+			}
+			if let Some(ref val) = self.issr {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "issr exceeds the maximum length of 35".to_string()));
+				}
+			}
+			if let Some(ref val) = self.schme_nm {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "schme_nm is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "schme_nm exceeds the maximum length of 35".to_string()));
+				}
+			}
 			Ok(())
 		}
 	}
@@ -565,40 +610,34 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct GenericIdentification36 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
-		pub id: Max35Text,
+		pub id: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Issr") )]
-		pub issr: Max35Text,
+		pub issr: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none") )]
-		pub schme_nm: Option<Max35Text>,
+		pub schme_nm: Option<String>,
 	}
 	
 	impl GenericIdentification36 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.id.validate() { return Err(e); }
-			if let Err(e) = self.issr.validate() { return Err(e); }
-			if let Some(ref schme_nm_value) = self.schme_nm { if let Err(e) = schme_nm_value.validate() { return Err(e); } }
-			Ok(())
-		}
-	}
-	
-	
-	// ISINOct2015Identifier ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct ISINOct2015Identifier {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub isin_oct2015_identifier: String,
-	}
-	
-	impl ISINOct2015Identifier {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			let pattern = Regex::new("[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}").unwrap();
-			if !pattern.is_match(&self.isin_oct2015_identifier) {
-				return Err(ValidationError::new(1005, "isin_oct2015_identifier does not match the required pattern".to_string()));
+			if self.id.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "id is shorter than the minimum length of 1".to_string()));
+			}
+			if self.id.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "id exceeds the maximum length of 35".to_string()));
+			}
+			if self.issr.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
+			}
+			if self.issr.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "issr exceeds the maximum length of 35".to_string()));
+			}
+			if let Some(ref val) = self.schme_nm {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "schme_nm is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "schme_nm exceeds the maximum length of 35".to_string()));
+				}
 			}
 			Ok(())
 		}
@@ -673,193 +712,6 @@ pub mod iso20022 {
 	}
 	
 	
-	// LEIIdentifier ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct LEIIdentifier {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub lei_identifier: String,
-	}
-	
-	impl LEIIdentifier {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&self.lei_identifier) {
-				return Err(ValidationError::new(1005, "lei_identifier does not match the required pattern".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// MICIdentifier ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct MICIdentifier {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub mic_identifier: String,
-	}
-	
-	impl MICIdentifier {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			let pattern = Regex::new("[A-Z0-9]{4,4}").unwrap();
-			if !pattern.is_match(&self.mic_identifier) {
-				return Err(ValidationError::new(1005, "mic_identifier does not match the required pattern".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// Max140Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max140Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max140_text: String,
-	}
-	
-	impl Max140Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max140_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max140_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max140_text.chars().count() > 140 {
-				return Err(ValidationError::new(1002, "max140_text exceeds the maximum length of 140".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// Max256Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max256Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max256_text: String,
-	}
-	
-	impl Max256Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max256_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max256_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max256_text.chars().count() > 256 {
-				return Err(ValidationError::new(1002, "max256_text exceeds the maximum length of 256".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// Max350Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max350Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max350_text: String,
-	}
-	
-	impl Max350Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max350_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max350_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max350_text.chars().count() > 350 {
-				return Err(ValidationError::new(1002, "max350_text exceeds the maximum length of 350".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// Max35Text ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Max35Text {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub max35_text: String,
-	}
-	
-	impl Max35Text {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.max35_text.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "max35_text is shorter than the minimum length of 1".to_string()));
-			}
-			if self.max35_text.chars().count() > 35 {
-				return Err(ValidationError::new(1002, "max35_text exceeds the maximum length of 35".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// NonNegativeNumber ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct NonNegativeNumber {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub non_negative_number: f64,
-	}
-	
-	impl NonNegativeNumber {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.non_negative_number < 0.000000 {
-				return Err(ValidationError::new(1003, "non_negative_number is less than the minimum value of 0.000000".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
-	// Number ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct Number {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub number: f64,
-	}
-	
-	impl Number {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
 	// OpenInterest1 ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
@@ -876,6 +728,11 @@ pub mod iso20022 {
 	impl OpenInterest1 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			if let Err(e) = self.grss_ntnl_amt.validate() { return Err(e); }
+			if let Some(ref val) = self.nb_of_lots {
+				if *val < 1.000000 {
+					return Err(ValidationError::new(1003, "nb_of_lots is less than the minimum value of 1.000000".to_string()));
+				}
+			}
 			Ok(())
 		}
 	}
@@ -903,9 +760,9 @@ pub mod iso20022 {
 	impl Option14 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			for item in &self.xprtn_style { if let Err(e) = item.validate() { return Err(e); } }
-			if let Some(ref optn_style_value) = self.optn_style { if let Err(e) = optn_style_value.validate() { return Err(e); } }
-			if let Some(ref optn_tp_value) = self.optn_tp { if let Err(e) = optn_tp_value.validate() { return Err(e); } }
-			if let Some(ref evt_tp_value) = self.evt_tp { if let Err(e) = evt_tp_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.optn_style { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.optn_tp { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.evt_tp { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -921,13 +778,18 @@ pub mod iso20022 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 		pub tp: OptionEventType1Choice,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Desc") )]
-		pub desc: Max35Text,
+		pub desc: String,
 	}
 	
 	impl OptionEvent2 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			if let Err(e) = self.tp.validate() { return Err(e); }
-			if let Err(e) = self.desc.validate() { return Err(e); }
+			if self.desc.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "desc is shorter than the minimum length of 1".to_string()));
+			}
+			if self.desc.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "desc exceeds the maximum length of 35".to_string()));
+			}
 			Ok(())
 		}
 	}
@@ -948,8 +810,8 @@ pub mod iso20022 {
 	
 	impl OptionEventType1Choice {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
-			if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -1053,28 +915,6 @@ pub mod iso20022 {
 	}
 	
 	
-	// PositiveNumber ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct PositiveNumber {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub positive_number: f64,
-	}
-	
-	impl PositiveNumber {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.positive_number < 1.000000 {
-				return Err(ValidationError::new(1003, "positive_number is less than the minimum value of 1.000000".to_string()));
-			}
-			Ok(())
-		}
-	}
-	
-	
 	// Product1Choice ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
@@ -1092,9 +932,9 @@ pub mod iso20022 {
 	
 	impl Product1Choice {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref deriv_value) = self.deriv { if let Err(e) = deriv_value.validate() { return Err(e); } }
-			if let Some(ref scties_fincg_tx_value) = self.scties_fincg_tx { if let Err(e) = scties_fincg_tx_value.validate() { return Err(e); } }
-			if let Some(ref scty_value) = self.scty { if let Err(e) = scty_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.deriv { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.scties_fincg_tx { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.scty { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -1108,24 +948,57 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct ProductClassification1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "AsstClss") )]
-		pub asst_clss: Max35Text,
+		pub asst_clss: String,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "BasePdct", skip_serializing_if = "Option::is_none") )]
-		pub base_pdct: Option<Max35Text>,
+		pub base_pdct: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "SubPdct", skip_serializing_if = "Option::is_none") )]
-		pub sub_pdct: Option<Max35Text>,
+		pub sub_pdct: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "SubCmmdty", skip_serializing_if = "Option::is_none") )]
-		pub sub_cmmdty: Option<Max35Text>,
+		pub sub_cmmdty: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "TxTp", skip_serializing_if = "Option::is_none") )]
-		pub tx_tp: Option<Max35Text>,
+		pub tx_tp: Option<String>,
 	}
 	
 	impl ProductClassification1 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.asst_clss.validate() { return Err(e); }
-			if let Some(ref base_pdct_value) = self.base_pdct { if let Err(e) = base_pdct_value.validate() { return Err(e); } }
-			if let Some(ref sub_pdct_value) = self.sub_pdct { if let Err(e) = sub_pdct_value.validate() { return Err(e); } }
-			if let Some(ref sub_cmmdty_value) = self.sub_cmmdty { if let Err(e) = sub_cmmdty_value.validate() { return Err(e); } }
-			if let Some(ref tx_tp_value) = self.tx_tp { if let Err(e) = tx_tp_value.validate() { return Err(e); } }
+			if self.asst_clss.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "asst_clss is shorter than the minimum length of 1".to_string()));
+			}
+			if self.asst_clss.chars().count() > 35 {
+				return Err(ValidationError::new(1002, "asst_clss exceeds the maximum length of 35".to_string()));
+			}
+			if let Some(ref val) = self.base_pdct {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "base_pdct is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "base_pdct exceeds the maximum length of 35".to_string()));
+				}
+			}
+			if let Some(ref val) = self.sub_pdct {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "sub_pdct is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "sub_pdct exceeds the maximum length of 35".to_string()));
+				}
+			}
+			if let Some(ref val) = self.sub_cmmdty {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "sub_cmmdty is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "sub_cmmdty exceeds the maximum length of 35".to_string()));
+				}
+			}
+			if let Some(ref val) = self.tx_tp {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "tx_tp is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 35 {
+					return Err(ValidationError::new(1002, "tx_tp exceeds the maximum length of 35".to_string()));
+				}
+			}
 			Ok(())
 		}
 	}
@@ -1168,14 +1041,19 @@ pub mod iso20022 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "RpAgrmtTp") )]
 		pub rp_agrmt_tp: RepurchaseAgreementType1Choice,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "TrptyAgt", skip_serializing_if = "Option::is_none") )]
-		pub trpty_agt: Option<LEIIdentifier>,
+		pub trpty_agt: Option<String>,
 	}
 	
 	impl RepurchaseAgreement3 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
 			if let Err(e) = self.pdct_clssfctn.validate() { return Err(e); }
 			if let Err(e) = self.rp_agrmt_tp.validate() { return Err(e); }
-			if let Some(ref trpty_agt_value) = self.trpty_agt { if let Err(e) = trpty_agt_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.trpty_agt {
+				let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
+				if !pattern.is_match(&val) {
+					return Err(ValidationError::new(1005, "trpty_agt does not match the required pattern".to_string()));
+				}
+			}
 			Ok(())
 		}
 	}
@@ -1196,27 +1074,8 @@ pub mod iso20022 {
 	
 	impl RepurchaseAgreementType1Choice {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref spcfc_coll_value) = self.spcfc_coll { if let Err(e) = spcfc_coll_value.validate() { return Err(e); } }
-			if let Some(ref gnl_coll_value) = self.gnl_coll { if let Err(e) = gnl_coll_value.validate() { return Err(e); } }
-			Ok(())
-		}
-	}
-	
-	
-	// SNA2008SectorIdentifier ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct SNA2008SectorIdentifier {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub sna2008_sector_identifier: String,
-	}
-	
-	impl SNA2008SectorIdentifier {
-		pub fn validate(&self) -> Result<(), ValidationError> {
+			if let Some(ref val) = self.spcfc_coll { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.gnl_coll { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
@@ -1297,14 +1156,21 @@ pub mod iso20022 {
 	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 	pub struct SupplementaryData1 {
 		#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none") )]
-		pub plc_and_nm: Option<Max350Text>,
+		pub plc_and_nm: Option<String>,
 		#[cfg_attr( feature = "derive_serde", serde(rename = "Envlp") )]
 		pub envlp: SupplementaryDataEnvelope1,
 	}
 	
 	impl SupplementaryData1 {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref plc_and_nm_value) = self.plc_and_nm { if let Err(e) = plc_and_nm_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.plc_and_nm {
+				if val.chars().count() < 1 {
+					return Err(ValidationError::new(1001, "plc_and_nm is shorter than the minimum length of 1".to_string()));
+				}
+				if val.chars().count() > 350 {
+					return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
+				}
+			}
 			if let Err(e) = self.envlp.validate() { return Err(e); }
 			Ok(())
 		}
@@ -1327,25 +1193,6 @@ pub mod iso20022 {
 	}
 	
 	
-	// TrueFalseIndicator ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr( feature = "derive_serde", serde(transparent) )]
-	pub struct TrueFalseIndicator {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-		pub true_false_indicator: bool,
-	}
-	
-	impl TrueFalseIndicator {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
-	
 	// UnitOfMeasure5Choice ...
 	#[cfg_attr(feature = "derive_debug", derive(Debug))]
 	#[cfg_attr(feature = "derive_default", derive(Default))]
@@ -1361,8 +1208,8 @@ pub mod iso20022 {
 	
 	impl UnitOfMeasure5Choice {
 		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref cd_value) = self.cd { if let Err(e) = cd_value.validate() { return Err(e); } }
-			if let Some(ref prtry_value) = self.prtry { if let Err(e) = prtry_value.validate() { return Err(e); } }
+			if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
+			if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
 			Ok(())
 		}
 	}
