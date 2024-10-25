@@ -39,11 +39,11 @@ Add the following to your `Cargo.toml` to start using the library in your Rust p
 # This dependency includes support for the entire ISO 20022 message formats.
 # The "payments" feature enables various ISO 20022 message categories, such as pacs, pain, camt, etc.
 # If you only need specific message types, you can enable just those features (e.g., "pacs", "pain").
-open-payments-iso20022 = { version = "0.2.1", features = ["payments"] }
+open-payments-iso20022 = { version = "1.0.1", features = ["payments"] }
 
 # This dependency provides support for the FedNow message formats.
 # You get full support for parsing and serializing FedNow messages out of the box.
-open-payments-fednow = "0.2.1"
+open-payments-fednow = "1.0.1"
 ```
 
 ### Features
