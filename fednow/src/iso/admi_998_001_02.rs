@@ -22,108 +22,106 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-pub mod fednow {
-	use regex::Regex;
-	use crate::common::*;
-	#[cfg(feature = "derive_serde")]
-	use serde::{Deserialize, Serialize};
-	
-	
-	// AdministrationProprietaryMessageV02 ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub struct AdministrationProprietaryMessageV02 {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId", skip_serializing_if = "Option::is_none") )]
-		pub msg_id: Option<MessageReference>,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "Rltd", skip_serializing_if = "Option::is_none") )]
-		pub rltd: Option<MessageReference>,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "Prvs", skip_serializing_if = "Option::is_none") )]
-		pub prvs: Option<MessageReference>,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "Othr", skip_serializing_if = "Option::is_none") )]
-		pub othr: Option<MessageReference>,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "PrtryData") )]
-		pub prtry_data: ProprietaryData5,
+
+use regex::Regex;
+use crate::common::*;
+#[cfg(feature = "derive_serde")]
+use serde::{Deserialize, Serialize};
+
+
+// AdministrationProprietaryMessageV02 ...
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub struct AdministrationProprietaryMessageV02 {
+	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId", skip_serializing_if = "Option::is_none") )]
+	pub msg_id: Option<MessageReference>,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "Rltd", skip_serializing_if = "Option::is_none") )]
+	pub rltd: Option<MessageReference>,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "Prvs", skip_serializing_if = "Option::is_none") )]
+	pub prvs: Option<MessageReference>,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "Othr", skip_serializing_if = "Option::is_none") )]
+	pub othr: Option<MessageReference>,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "PrtryData") )]
+	pub prtry_data: ProprietaryData5,
+}
+
+impl AdministrationProprietaryMessageV02 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref val) = self.msg_id { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.rltd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.prvs { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.othr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Err(e) = self.prtry_data.validate() { return Err(e); }
+		Ok(())
 	}
-	
-	impl AdministrationProprietaryMessageV02 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref val) = self.msg_id { if let Err(e) = val.validate() { return Err(e); } }
-			if let Some(ref val) = self.rltd { if let Err(e) = val.validate() { return Err(e); } }
-			if let Some(ref val) = self.prvs { if let Err(e) = val.validate() { return Err(e); } }
-			if let Some(ref val) = self.othr { if let Err(e) = val.validate() { return Err(e); } }
-			if let Err(e) = self.prtry_data.validate() { return Err(e); }
-			Ok(())
+}
+
+
+// MessageReference ...
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub struct MessageReference {
+	#[cfg_attr( feature = "derive_serde", serde(rename = "Ref") )]
+	pub ref_attr: String,
+}
+
+impl MessageReference {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.ref_attr.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "ref_attr is shorter than the minimum length of 1".to_string()));
 		}
-	}
-	
-	
-	// MessageReference ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub struct MessageReference {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "Ref") )]
-		pub ref_attr: String,
-	}
-	
-	impl MessageReference {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.ref_attr.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "ref_attr is shorter than the minimum length of 1".to_string()));
-			}
-			if self.ref_attr.chars().count() > 35 {
-				return Err(ValidationError::new(1002, "ref_attr exceeds the maximum length of 35".to_string()));
-			}
-			Ok(())
+		if self.ref_attr.chars().count() > 35 {
+			return Err(ValidationError::new(1002, "ref_attr exceeds the maximum length of 35".to_string()));
 		}
+		Ok(())
 	}
-	
-	
-	// ProprietaryData5 ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub struct ProprietaryData5 {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
-		pub tp: String,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "Data") )]
-		pub data: SupplementaryDataEnvelope1,
-	}
-	
-	impl ProprietaryData5 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.tp.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "tp is shorter than the minimum length of 1".to_string()));
-			}
-			if self.tp.chars().count() > 35 {
-				return Err(ValidationError::new(1002, "tp exceeds the maximum length of 35".to_string()));
-			}
-			if let Err(e) = self.data.validate() { return Err(e); }
-			Ok(())
+}
+
+
+// ProprietaryData5 ...
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub struct ProprietaryData5 {
+	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
+	pub tp: String,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "Data") )]
+	pub data: SupplementaryDataEnvelope1,
+}
+
+impl ProprietaryData5 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.tp.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "tp is shorter than the minimum length of 1".to_string()));
 		}
-	}
-	
-	
-	// SupplementaryDataEnvelope1 ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub struct SupplementaryDataEnvelope1 {
-	}
-	
-	impl SupplementaryDataEnvelope1 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
+		if self.tp.chars().count() > 35 {
+			return Err(ValidationError::new(1002, "tp exceeds the maximum length of 35".to_string()));
 		}
+		if let Err(e) = self.data.validate() { return Err(e); }
+		Ok(())
 	}
-	
+}
+
+
+// SupplementaryDataEnvelope1 ...
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
+	}
 }

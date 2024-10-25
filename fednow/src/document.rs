@@ -26,29 +26,29 @@
 use serde::{Deserialize, Serialize};
 use crate::common::ValidationError;
 
-use crate::iso::admi_002_001_01::fednow::*;
-use crate::iso::admi_004_001_02::fednow::*;
-use crate::iso::admi_006_001_01::fednow::*;
-use crate::iso::admi_007_001_01::fednow::*;
-use crate::iso::admi_011_001_01::fednow::*;
-use crate::iso::admi_998_001_02::fednow::*;
+use crate::iso::admi_002_001_01::*;
+use crate::iso::admi_004_001_02::*;
+use crate::iso::admi_006_001_01::*;
+use crate::iso::admi_007_001_01::*;
+use crate::iso::admi_011_001_01::*;
+use crate::iso::admi_998_001_02::*;
 
-use crate::iso::camt_026_001_07::fednow::*;
-use crate::iso::camt_028_001_09::fednow::*;
-use crate::iso::camt_029_001_09::fednow::*;
-use crate::iso::camt_052_001_08::fednow::*;
-use crate::iso::camt_054_001_08::fednow::*;
-use crate::iso::camt_055_001_09::fednow::*;
-use crate::iso::camt_056_001_08::fednow::*;
-use crate::iso::camt_060_001_05::fednow::*;
+use crate::iso::camt_026_001_07::*;
+use crate::iso::camt_028_001_09::*;
+use crate::iso::camt_029_001_09::*;
+use crate::iso::camt_052_001_08::*;
+use crate::iso::camt_054_001_08::*;
+use crate::iso::camt_055_001_09::*;
+use crate::iso::camt_056_001_08::*;
+use crate::iso::camt_060_001_05::*;
 
-use crate::iso::pacs_002_001_10::fednow::*;
-use crate::iso::pacs_004_001_10::fednow::*;
-use crate::iso::pacs_008_001_08::fednow::*;
-use crate::iso::pacs_009_001_08::fednow::*;
-use crate::iso::pacs_028_001_03::fednow::*;
-use crate::iso::pain_013_001_07::fednow::*;
-use crate::iso::pain_014_001_07::fednow::*;
+use crate::iso::pacs_002_001_10::*;
+use crate::iso::pacs_004_001_10::*;
+use crate::iso::pacs_008_001_08::*;
+use crate::iso::pacs_009_001_08::*;
+use crate::iso::pacs_028_001_03::*;
+use crate::iso::pain_013_001_07::*;
+use crate::iso::pain_014_001_07::*;
 
 
 #[cfg_attr(feature = "derive_debug", derive(Debug))]

@@ -29,25 +29,23 @@ pub mod fednow_outgoing_external;
 pub mod document;
 pub mod common;
 
-pub mod fednow {
-    use crate::fednow_incoming_external::fednow::*;
-    use crate::fednow_outgoing_external::fednow::*;
-	#[cfg(feature = "derive_serde")]
-	use serde::{Deserialize, Serialize};
+use crate::fednow_incoming_external::*;
+use crate::fednow_outgoing_external::*;
+#[cfg(feature = "derive_serde")]
+use serde::{Deserialize, Serialize};
 
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-    pub enum FednowMessage {
-        #[cfg_attr( feature = "derive_serde", serde(rename = "FedNowIncoming") )]
-        FedNowIncoming(Box<FedNowIncoming>),
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+pub enum FednowMessage {
+    #[cfg_attr( feature = "derive_serde", serde(rename = "FedNowIncoming") )]
+    FedNowIncoming(Box<FedNowIncoming>),
 
-        #[cfg_attr( feature = "derive_serde", serde(rename = "FedNowOutgoing") )]
-        FedNowOutgoing(Box<FedNowOutgoing>),
+    #[cfg_attr( feature = "derive_serde", serde(rename = "FedNowOutgoing") )]
+    FedNowOutgoing(Box<FedNowOutgoing>),
 
-        #[cfg_attr(feature = "derive_default", default)]
-        UNKNOWN
-    }
+    #[cfg_attr(feature = "derive_default", default)]
+    UNKNOWN
 }

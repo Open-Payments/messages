@@ -22,106 +22,104 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-pub mod fednow {
-	use regex::Regex;
-	use crate::common::*;
-	#[cfg(feature = "derive_serde")]
-	use serde::{Deserialize, Serialize};
-	
-	
-	// FedNowParticipantFile1: This is the participant profile of the FedNow participant and contains the participant's identification, name and the FedNow services the participant has enrolled for.
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub struct FedNowParticipantFile1 {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "BizDay") )]
-		pub biz_day: String,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "PtcptPrfl") )]
-		pub ptcpt_prfl: Vec<FedNowParticipantProfile1>,
+
+use regex::Regex;
+use crate::common::*;
+#[cfg(feature = "derive_serde")]
+use serde::{Deserialize, Serialize};
+
+
+// FedNowParticipantFile1: This is the participant profile of the FedNow participant and contains the participant's identification, name and the FedNow services the participant has enrolled for.
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub struct FedNowParticipantFile1 {
+	#[cfg_attr( feature = "derive_serde", serde(rename = "BizDay") )]
+	pub biz_day: String,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "PtcptPrfl") )]
+	pub ptcpt_prfl: Vec<FedNowParticipantProfile1>,
+}
+
+impl FedNowParticipantFile1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		for item in &self.ptcpt_prfl { if let Err(e) = item.validate() { return Err(e); } }
+		Ok(())
 	}
-	
-	impl FedNowParticipantFile1 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			for item in &self.ptcpt_prfl { if let Err(e) = item.validate() { return Err(e); } }
-			Ok(())
+}
+
+
+// FedNowParticipantProfile1: This specifies the FedNow services the FedNow participant has enrolled for.
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub struct FedNowParticipantProfile1 {
+	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
+	pub id: String,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm") )]
+	pub nm: String,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "Svcs") )]
+	pub svcs: Vec<ServicesFedNow1>,
+}
+
+impl FedNowParticipantProfile1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		let pattern = Regex::new("[0-9]{9,9}").unwrap();
+		if !pattern.is_match(&self.id) {
+			return Err(ValidationError::new(1005, "id does not match the required pattern".to_string()));
 		}
-	}
-	
-	
-	// FedNowParticipantProfile1: This specifies the FedNow services the FedNow participant has enrolled for.
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub struct FedNowParticipantProfile1 {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
-		pub id: String,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "Nm") )]
-		pub nm: String,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "Svcs") )]
-		pub svcs: Vec<ServicesFedNow1>,
-	}
-	
-	impl FedNowParticipantProfile1 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			let pattern = Regex::new("[0-9]{9,9}").unwrap();
-			if !pattern.is_match(&self.id) {
-				return Err(ValidationError::new(1005, "id does not match the required pattern".to_string()));
-			}
-			if self.nm.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "nm is shorter than the minimum length of 1".to_string()));
-			}
-			if self.nm.chars().count() > 140 {
-				return Err(ValidationError::new(1002, "nm exceeds the maximum length of 140".to_string()));
-			}
-			for item in &self.svcs { if let Err(e) = item.validate() { return Err(e); } }
-			Ok(())
+		if self.nm.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "nm is shorter than the minimum length of 1".to_string()));
 		}
-	}
-	
-	
-	// Services_FedNow_1: This indicates a FedNow participant is enabled to receive request for payment messages.
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub enum ServicesFedNow1 {
-		#[cfg_attr(feature = "derive_default", default)]
-		#[cfg_attr( feature = "derive_serde", serde(rename = "CTSR") )]
-		CodeCTSR,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "CTRO") )]
-		CodeCTRO,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "RFPR") )]
-		CodeRFPR,
-	}
-	
-	impl ServicesFedNow1 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
+		if self.nm.chars().count() > 140 {
+			return Err(ValidationError::new(1002, "nm exceeds the maximum length of 140".to_string()));
 		}
+		for item in &self.svcs { if let Err(e) = item.validate() { return Err(e); } }
+		Ok(())
 	}
-	
-	
-	// Admi998SuplDataV01: This is the FedNow participant file and contains the FedNow Service funds-transfer business day and the FedNow participants with their FedNow Service profile.
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub struct Admi998SuplDataV01 {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "PtcptFile") )]
-		pub ptcpt_file: FedNowParticipantFile1,
+}
+
+
+// Services_FedNow_1: This indicates a FedNow participant is enabled to receive request for payment messages.
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub enum ServicesFedNow1 {
+	#[cfg_attr(feature = "derive_default", default)]
+	#[cfg_attr( feature = "derive_serde", serde(rename = "CTSR") )]
+	CodeCTSR,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "CTRO") )]
+	CodeCTRO,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "RFPR") )]
+	CodeRFPR,
+}
+
+impl ServicesFedNow1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
-	
-	impl Admi998SuplDataV01 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Err(e) = self.ptcpt_file.validate() { return Err(e); }
-			Ok(())
-		}
+}
+
+
+// Admi998SuplDataV01: This is the FedNow participant file and contains the FedNow Service funds-transfer business day and the FedNow participants with their FedNow Service profile.
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub struct Admi998SuplDataV01 {
+	#[cfg_attr( feature = "derive_serde", serde(rename = "PtcptFile") )]
+	pub ptcpt_file: FedNowParticipantFile1,
+}
+
+impl Admi998SuplDataV01 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Err(e) = self.ptcpt_file.validate() { return Err(e); }
+		Ok(())
 	}
-	
 }

@@ -22,84 +22,82 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-pub mod iso20022 {
-	use regex::Regex;
-	use crate::common::*;
-	#[cfg(feature = "derive_serde")]
-	use serde::{Deserialize, Serialize};
-	
-	
-	// InformationRequestStatusChangeNotificationV01 ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub struct InformationRequestStatusChangeNotificationV01 {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlBizQry") )]
-		pub orgnl_biz_qry: String,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "CnfdtltySts") )]
-		pub cnfdtlty_sts: bool,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none") )]
-		pub splmtry_data: Option<Vec<SupplementaryData1>>,
-	}
-	
-	impl InformationRequestStatusChangeNotificationV01 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if self.orgnl_biz_qry.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "orgnl_biz_qry is shorter than the minimum length of 1".to_string()));
-			}
-			if self.orgnl_biz_qry.chars().count() > 35 {
-				return Err(ValidationError::new(1002, "orgnl_biz_qry exceeds the maximum length of 35".to_string()));
-			}
-			if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-			Ok(())
+
+use regex::Regex;
+use crate::common::*;
+#[cfg(feature = "derive_serde")]
+use serde::{Deserialize, Serialize};
+
+
+// InformationRequestStatusChangeNotificationV01 ...
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub struct InformationRequestStatusChangeNotificationV01 {
+	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlBizQry") )]
+	pub orgnl_biz_qry: String,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "CnfdtltySts") )]
+	pub cnfdtlty_sts: bool,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "SplmtryData", skip_serializing_if = "Option::is_none") )]
+	pub splmtry_data: Option<Vec<SupplementaryData1>>,
+}
+
+impl InformationRequestStatusChangeNotificationV01 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if self.orgnl_biz_qry.chars().count() < 1 {
+			return Err(ValidationError::new(1001, "orgnl_biz_qry is shorter than the minimum length of 1".to_string()));
 		}
+		if self.orgnl_biz_qry.chars().count() > 35 {
+			return Err(ValidationError::new(1002, "orgnl_biz_qry exceeds the maximum length of 35".to_string()));
+		}
+		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		Ok(())
 	}
-	
-	
-	// SupplementaryData1 ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub struct SupplementaryData1 {
-		#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none") )]
-		pub plc_and_nm: Option<String>,
-		#[cfg_attr( feature = "derive_serde", serde(rename = "Envlp") )]
-		pub envlp: SupplementaryDataEnvelope1,
-	}
-	
-	impl SupplementaryData1 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			if let Some(ref val) = self.plc_and_nm {
-				if val.chars().count() < 1 {
-					return Err(ValidationError::new(1001, "plc_and_nm is shorter than the minimum length of 1".to_string()));
-				}
-				if val.chars().count() > 350 {
-					return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
-				}
+}
+
+
+// SupplementaryData1 ...
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub struct SupplementaryData1 {
+	#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none") )]
+	pub plc_and_nm: Option<String>,
+	#[cfg_attr( feature = "derive_serde", serde(rename = "Envlp") )]
+	pub envlp: SupplementaryDataEnvelope1,
+}
+
+impl SupplementaryData1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		if let Some(ref val) = self.plc_and_nm {
+			if val.chars().count() < 1 {
+				return Err(ValidationError::new(1001, "plc_and_nm is shorter than the minimum length of 1".to_string()));
 			}
-			if let Err(e) = self.envlp.validate() { return Err(e); }
-			Ok(())
+			if val.chars().count() > 350 {
+				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
+			}
 		}
+		if let Err(e) = self.envlp.validate() { return Err(e); }
+		Ok(())
 	}
-	
-	
-	// SupplementaryDataEnvelope1 ...
-	#[cfg_attr(feature = "derive_debug", derive(Debug))]
-	#[cfg_attr(feature = "derive_default", derive(Default))]
-	#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-	#[cfg_attr(feature = "derive_clone", derive(Clone))]
-	#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-	pub struct SupplementaryDataEnvelope1 {
+}
+
+
+// SupplementaryDataEnvelope1 ...
+#[cfg_attr(feature = "derive_debug", derive(Debug))]
+#[cfg_attr(feature = "derive_default", derive(Default))]
+#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_clone", derive(Clone))]
+#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+pub struct SupplementaryDataEnvelope1 {
+}
+
+impl SupplementaryDataEnvelope1 {
+	pub fn validate(&self) -> Result<(), ValidationError> {
+		Ok(())
 	}
-	
-	impl SupplementaryDataEnvelope1 {
-		pub fn validate(&self) -> Result<(), ValidationError> {
-			Ok(())
-		}
-	}
-	
 }
