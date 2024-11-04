@@ -54,8 +54,8 @@ impl CurrencyExchange20 {
 		if !pattern.is_match(&self.qtd_ccy) {
 			return Err(ValidationError::new(1005, "qtd_ccy does not match the required pattern".to_string()));
 		}
-		if let Some(ref val) = self.lw_lmt { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.hgh_lmt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.lw_lmt { val.validate()? }
+		if let Some(ref val) = self.hgh_lmt { val.validate()? }
 		Ok(())
 	}
 }
@@ -76,8 +76,8 @@ pub struct CurrencyExchangeReport4 {
 
 impl CurrencyExchangeReport4 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.ccy_ref.validate() { return Err(e); }
-		if let Err(e) = self.ccy_xchg_or_err.validate() { return Err(e); }
+		self.ccy_ref.validate()?;
+		self.ccy_xchg_or_err.validate()?;
 		Ok(())
 	}
 }
@@ -126,7 +126,7 @@ pub struct ErrorHandling1Choice {
 
 impl ErrorHandling1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
 		if let Some(ref val) = self.prtry {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "prtry is shorter than the minimum length of 1".to_string()));
@@ -135,7 +135,7 @@ impl ErrorHandling1Choice {
 				return Err(ValidationError::new(1002, "prtry exceeds the maximum length of 4".to_string()));
 			}
 			let pattern = Regex::new("[a-zA-Z0-9]{1,4}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "prtry does not match the required pattern".to_string()));
 			}
 		}
@@ -182,7 +182,7 @@ pub struct ErrorHandling3 {
 
 impl ErrorHandling3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.err.validate() { return Err(e); }
+		self.err.validate()?;
 		if let Some(ref val) = self.desc {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "desc is shorter than the minimum length of 1".to_string()));
@@ -231,8 +231,8 @@ pub struct ExchangeRateReportOrError3Choice {
 
 impl ExchangeRateReportOrError3Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref vec) = self.ccy_xchg_rpt { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.oprl_err { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.ccy_xchg_rpt { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.oprl_err { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -253,8 +253,8 @@ pub struct ExchangeRateReportOrError4Choice {
 
 impl ExchangeRateReportOrError4Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref vec) = self.biz_err { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.ccy_xchg { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref vec) = self.biz_err { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.ccy_xchg { val.validate()? }
 		Ok(())
 	}
 }
@@ -331,8 +331,8 @@ impl MessageHeader7 {
 		if self.msg_id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "msg_id exceeds the maximum length of 35".to_string()));
 		}
-		if let Some(ref val) = self.req_tp { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.orgnl_biz_qry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.req_tp { val.validate()? }
+		if let Some(ref val) = self.orgnl_biz_qry { val.validate()? }
 		if let Some(ref val) = self.qry_nm {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "qry_nm is shorter than the minimum length of 1".to_string()));
@@ -415,7 +415,7 @@ impl RequestType4Choice {
 				return Err(ValidationError::new(1002, "enqry exceeds the maximum length of 4".to_string()));
 			}
 		}
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -438,9 +438,9 @@ pub struct ReturnCurrencyExchangeRateV05 {
 
 impl ReturnCurrencyExchangeRateV05 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.msg_hdr.validate() { return Err(e); }
-		if let Err(e) = self.rpt_or_err.validate() { return Err(e); }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.msg_hdr.validate()?;
+		self.rpt_or_err.validate()?;
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -469,7 +469,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

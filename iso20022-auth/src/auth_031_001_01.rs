@@ -44,8 +44,8 @@ pub struct FinancialInstrumentReportingStatusAdviceV01 {
 
 impl FinancialInstrumentReportingStatusAdviceV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.sts_advc { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.sts_advc { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -84,7 +84,7 @@ impl GenericValidationRuleIdentification1 {
 				return Err(ValidationError::new(1002, "desc exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		if let Some(ref val) = self.issr {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
@@ -125,9 +125,9 @@ impl MessageReportHeader4 {
 				return Err(ValidationError::new(1002, "msg_rpt_idr exceeds the maximum length of 140".to_string()));
 			}
 		}
-		if let Some(ref val) = self.msg_sts { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rcrd_sts { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.msg_sts { val.validate()? }
+		if let Some(ref vec) = self.rcrd_sts { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -152,7 +152,7 @@ impl NumberOfRecordsPerStatus1 {
 		if !pattern.is_match(&self.dtld_nb_of_rcrds) {
 			return Err(ValidationError::new(1005, "dtld_nb_of_rcrds does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.dtld_sts.validate() { return Err(e); }
+		self.dtld_sts.validate()?;
 		Ok(())
 	}
 }
@@ -177,7 +177,7 @@ impl OriginalReportStatistics3 {
 		if !pattern.is_match(&self.ttl_nb_of_rcrds) {
 			return Err(ValidationError::new(1005, "ttl_nb_of_rcrds does not match the required pattern".to_string()));
 		}
-		for item in &self.nb_of_rcrds_per_sts { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.nb_of_rcrds_per_sts { item.validate()? }
 		Ok(())
 	}
 }
@@ -268,9 +268,9 @@ pub struct StatusAdviceReport3 {
 
 impl StatusAdviceReport3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.sts.validate() { return Err(e); }
-		if let Some(ref vec) = self.vldtn_rule { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.sttstcs { if let Err(e) = val.validate() { return Err(e); } }
+		self.sts.validate()?;
+		if let Some(ref vec) = self.vldtn_rule { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.sttstcs { val.validate()? }
 		Ok(())
 	}
 }
@@ -301,9 +301,9 @@ impl StatusReportRecord3 {
 		if self.orgnl_rcrd_id.chars().count() > 140 {
 			return Err(ValidationError::new(1002, "orgnl_rcrd_id exceeds the maximum length of 140".to_string()));
 		}
-		if let Err(e) = self.sts.validate() { return Err(e); }
-		if let Some(ref vec) = self.vldtn_rule { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.sts.validate()?;
+		if let Some(ref vec) = self.vldtn_rule { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -332,7 +332,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

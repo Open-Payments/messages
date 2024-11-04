@@ -66,7 +66,7 @@ pub struct AccountForAction1 {
 
 impl AccountForAction1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
+		self.id.validate()?;
 		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
 		if !pattern.is_match(&self.ccy) {
 			return Err(ValidationError::new(1005, "ccy does not match the required pattern".to_string()));
@@ -93,11 +93,11 @@ impl AccountIdentification4Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.iban {
 			let pattern = Regex::new("[A-Z]{2,2}[0-9]{2,2}[a-zA-Z0-9]{1,30}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "iban does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.othr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.othr { val.validate()? }
 		Ok(())
 	}
 }
@@ -138,18 +138,18 @@ pub struct AccountMandateMaintenanceRequestV04 {
 
 impl AccountMandateMaintenanceRequestV04 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.refs.validate() { return Err(e); }
-		if let Some(ref val) = self.fr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.ctrct_dts { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.undrlyg_mstr_agrmt { if let Err(e) = val.validate() { return Err(e); } }
-		for item in &self.acct_id { if let Err(e) = item.validate() { return Err(e); } }
-		if let Err(e) = self.acct_svcr_id.validate() { return Err(e); }
-		if let Err(e) = self.org_id.validate() { return Err(e); }
-		for item in &self.mndt { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.grp { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.addtl_msg_inf { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.dgtl_sgntr { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.refs.validate()?;
+		if let Some(ref val) = self.fr { val.validate()? }
+		if let Some(ref val) = self.ctrct_dts { val.validate()? }
+		if let Some(ref val) = self.undrlyg_mstr_agrmt { val.validate()? }
+		for item in &self.acct_id { item.validate()? }
+		self.acct_svcr_id.validate()?;
+		self.org_id.validate()?;
+		for item in &self.mndt { item.validate()? }
+		if let Some(ref vec) = self.grp { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.addtl_msg_inf { val.validate()? }
+		if let Some(ref vec) = self.dgtl_sgntr { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -281,8 +281,8 @@ pub struct AddressType3Choice {
 
 impl AddressType3Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -305,9 +305,9 @@ pub struct Authorisation2 {
 
 impl Authorisation2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.max_amt_by_tx { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.max_amt_by_prd { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.max_amt_by_blk_submissn { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.max_amt_by_tx { val.validate()? }
+		if let Some(ref vec) = self.max_amt_by_prd { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.max_amt_by_blk_submissn { val.validate()? }
 		Ok(())
 	}
 }
@@ -328,8 +328,8 @@ pub struct BankTransactionCodeStructure4 {
 
 impl BankTransactionCodeStructure4 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.domn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.domn { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -356,7 +356,7 @@ impl BankTransactionCodeStructure5 {
 		if self.cd.chars().count() > 4 {
 			return Err(ValidationError::new(1002, "cd exceeds the maximum length of 4".to_string()));
 		}
-		if let Err(e) = self.fmly.validate() { return Err(e); }
+		self.fmly.validate()?;
 		Ok(())
 	}
 }
@@ -409,8 +409,8 @@ pub struct BranchAndFinancialInstitutionIdentification8 {
 
 impl BranchAndFinancialInstitutionIdentification8 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.fin_instn_id.validate() { return Err(e); }
-		if let Some(ref val) = self.brnch_id { if let Err(e) = val.validate() { return Err(e); } }
+		self.fin_instn_id.validate()?;
+		if let Some(ref val) = self.brnch_id { val.validate()? }
 		Ok(())
 	}
 }
@@ -445,7 +445,7 @@ impl BranchData5 {
 		}
 		if let Some(ref val) = self.lei {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "lei does not match the required pattern".to_string()));
 			}
 		}
@@ -457,7 +457,7 @@ impl BranchData5 {
 				return Err(ValidationError::new(1002, "nm exceeds the maximum length of 140".to_string()));
 			}
 		}
-		if let Some(ref val) = self.pstl_adr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.pstl_adr { val.validate()? }
 		Ok(())
 	}
 }
@@ -478,7 +478,7 @@ pub struct Channel2Choice {
 
 impl Channel2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
 		if let Some(ref val) = self.prtry {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "prtry is shorter than the minimum length of 1".to_string()));
@@ -543,7 +543,7 @@ pub struct ClearingSystemMemberIdentification2 {
 
 impl ClearingSystemMemberIdentification2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.clr_sys_id { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.clr_sys_id { val.validate()? }
 		if self.mmb_id.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "mmb_id is shorter than the minimum length of 1".to_string()));
 		}
@@ -621,7 +621,7 @@ pub struct Contact13 {
 
 impl Contact13 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.nm_prfx { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.nm_prfx { val.validate()? }
 		if let Some(ref val) = self.nm {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "nm is shorter than the minimum length of 1".to_string()));
@@ -632,19 +632,19 @@ impl Contact13 {
 		}
 		if let Some(ref val) = self.phne_nb {
 			let pattern = Regex::new("\\+[0-9]{1,3}-[0-9()+\\-]{1,30}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "phne_nb does not match the required pattern".to_string()));
 			}
 		}
 		if let Some(ref val) = self.mob_nb {
 			let pattern = Regex::new("\\+[0-9]{1,3}-[0-9()+\\-]{1,30}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "mob_nb does not match the required pattern".to_string()));
 			}
 		}
 		if let Some(ref val) = self.fax_nb {
 			let pattern = Regex::new("\\+[0-9]{1,3}-[0-9()+\\-]{1,30}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "fax_nb does not match the required pattern".to_string()));
 			}
 		}
@@ -696,8 +696,8 @@ impl Contact13 {
 				return Err(ValidationError::new(1002, "dept exceeds the maximum length of 70".to_string()));
 			}
 		}
-		if let Some(ref vec) = self.othr { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.prefrd_mtd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref vec) = self.othr { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.prefrd_mtd { val.validate()? }
 		Ok(())
 	}
 }
@@ -842,14 +842,14 @@ impl FinancialInstitutionIdentification23 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.bicfi {
 			let pattern = Regex::new("[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "bicfi does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.clr_sys_mmb_id { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.clr_sys_mmb_id { val.validate()? }
 		if let Some(ref val) = self.lei {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "lei does not match the required pattern".to_string()));
 			}
 		}
@@ -861,8 +861,8 @@ impl FinancialInstitutionIdentification23 {
 				return Err(ValidationError::new(1002, "nm exceeds the maximum length of 140".to_string()));
 			}
 		}
-		if let Some(ref val) = self.pstl_adr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.othr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.pstl_adr { val.validate()? }
+		if let Some(ref val) = self.othr { val.validate()? }
 		Ok(())
 	}
 }
@@ -883,7 +883,7 @@ pub struct FixedAmountOrUnlimited1Choice {
 
 impl FixedAmountOrUnlimited1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.amt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.amt { val.validate()? }
 		if let Some(ref val) = self.not_ltd {
 			if val.chars().count() < 9 {
 				return Err(ValidationError::new(1001, "not_ltd is shorter than the minimum length of 9".to_string()));
@@ -892,7 +892,7 @@ impl FixedAmountOrUnlimited1Choice {
 				return Err(ValidationError::new(1002, "not_ltd exceeds the maximum length of 9".to_string()));
 			}
 			let pattern = Regex::new("UNLIMITED").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "not_ltd does not match the required pattern".to_string()));
 			}
 		}
@@ -924,7 +924,7 @@ impl GenericAccountIdentification1 {
 		if self.id.chars().count() > 34 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 34".to_string()));
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		if let Some(ref val) = self.issr {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
@@ -961,7 +961,7 @@ impl GenericFinancialIdentification1 {
 		if self.id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 35".to_string()));
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		if let Some(ref val) = self.issr {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
@@ -1038,7 +1038,7 @@ impl GenericOrganisationIdentification3 {
 		if self.id.chars().count() > 256 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 256".to_string()));
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		if let Some(ref val) = self.issr {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
@@ -1075,7 +1075,7 @@ impl GenericPersonIdentification2 {
 		if self.id.chars().count() > 256 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 256".to_string()));
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		if let Some(ref val) = self.issr {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
@@ -1106,7 +1106,7 @@ pub struct Group5 {
 
 impl Group5 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.mod_cd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.mod_cd { val.validate()? }
 		if self.grp_id.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "grp_id is shorter than the minimum length of 1".to_string()));
 		}
@@ -1117,7 +1117,7 @@ impl Group5 {
 		if !pattern.is_match(&self.grp_id) {
 			return Err(ValidationError::new(1005, "grp_id does not match the required pattern".to_string()));
 		}
-		for item in &self.pty { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.pty { item.validate()? }
 		Ok(())
 	}
 }
@@ -1138,7 +1138,7 @@ pub struct MaximumAmountByPeriod1 {
 
 impl MaximumAmountByPeriod1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.max_amt.validate() { return Err(e); }
+		self.max_amt.validate()?;
 		let pattern = Regex::new("[0-9]{1,3}").unwrap();
 		if !pattern.is_match(&self.nb_of_days) {
 			return Err(ValidationError::new(1005, "nb_of_days does not match the required pattern".to_string()));
@@ -1255,20 +1255,20 @@ pub struct OperationMandate6 {
 
 impl OperationMandate6 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.mod_cd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.mod_cd { val.validate()? }
 		if self.id.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "id is shorter than the minimum length of 1".to_string()));
 		}
 		if self.id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 35".to_string()));
 		}
-		for item in &self.aplbl_chanl { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.aplbl_chanl { item.validate()? }
 		let pattern = Regex::new("[\\+]{0,1}[0-9]{1,15}").unwrap();
 		if !pattern.is_match(&self.reqrd_sgntr_nb) {
 			return Err(ValidationError::new(1005, "reqrd_sgntr_nb does not match the required pattern".to_string()));
 		}
-		if let Some(ref vec) = self.mndt_hldr { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		for item in &self.bk_opr { if let Err(e) = item.validate() { return Err(e); } }
+		if let Some(ref vec) = self.mndt_hldr { for item in vec { item.validate()? } }
+		for item in &self.bk_opr { item.validate()? }
 		Ok(())
 	}
 }
@@ -1297,7 +1297,7 @@ impl Organisation44 {
 				return Err(ValidationError::new(1002, "full_lgl_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.org_id.validate() { return Err(e); }
+		self.org_id.validate()?;
 		Ok(())
 	}
 }
@@ -1322,17 +1322,17 @@ impl OrganisationIdentification39 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.any_bic {
 			let pattern = Regex::new("[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "any_bic does not match the required pattern".to_string()));
 			}
 		}
 		if let Some(ref val) = self.lei {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "lei does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref vec) = self.othr { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.othr { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -1423,8 +1423,8 @@ pub struct Party52Choice {
 
 impl Party52Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.org_id { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prvt_id { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.org_id { val.validate()? }
+		if let Some(ref val) = self.prvt_id { val.validate()? }
 		Ok(())
 	}
 }
@@ -1449,15 +1449,15 @@ pub struct PartyAndAuthorisation6 {
 
 impl PartyAndAuthorisation6 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.mod_cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.pty_or_grp.validate() { return Err(e); }
+		if let Some(ref val) = self.mod_cd { val.validate()? }
+		self.pty_or_grp.validate()?;
 		if let Some(ref val) = self.sgntr_ordr {
 			let pattern = Regex::new("[\\+]{0,1}[0-9]{1,15}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "sgntr_ordr does not match the required pattern".to_string()));
 			}
 		}
-		if let Err(e) = self.authstn.validate() { return Err(e); }
+		self.authstn.validate()?;
 		Ok(())
 	}
 }
@@ -1478,7 +1478,7 @@ pub struct PartyAndCertificate6 {
 
 impl PartyAndCertificate6 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.pty.validate() { return Err(e); }
+		self.pty.validate()?;
 		if let Some(ref val) = self.cert {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "cert is shorter than the minimum length of 1".to_string()));
@@ -1509,8 +1509,8 @@ pub struct PartyAndCertificate7 {
 
 impl PartyAndCertificate7 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.mod_cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.pty.validate() { return Err(e); }
+		if let Some(ref val) = self.mod_cd { val.validate()? }
+		self.pty.validate()?;
 		if let Some(ref val) = self.cert {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "cert is shorter than the minimum length of 1".to_string()));
@@ -1539,8 +1539,8 @@ pub struct PartyAndSignature4 {
 
 impl PartyAndSignature4 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.pty.validate() { return Err(e); }
-		if let Err(e) = self.sgntr.validate() { return Err(e); }
+		self.pty.validate()?;
+		self.sgntr.validate()?;
 		Ok(())
 	}
 }
@@ -1575,15 +1575,15 @@ impl PartyIdentification272 {
 				return Err(ValidationError::new(1002, "nm exceeds the maximum length of 140".to_string()));
 			}
 		}
-		if let Some(ref val) = self.pstl_adr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.id { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.pstl_adr { val.validate()? }
+		if let Some(ref val) = self.id { val.validate()? }
 		if let Some(ref val) = self.ctry_of_res {
 			let pattern = Regex::new("[A-Z]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "ctry_of_res does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.ctct_dtls { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.ctct_dtls { val.validate()? }
 		Ok(())
 	}
 }
@@ -1612,11 +1612,11 @@ impl PartyOrGroup3Choice {
 				return Err(ValidationError::new(1002, "grp_id exceeds the maximum length of 4".to_string()));
 			}
 			let pattern = Regex::new("[a-zA-Z0-9]{1,4}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "grp_id does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.pty { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.pty { val.validate()? }
 		Ok(())
 	}
 }
@@ -1637,8 +1637,8 @@ pub struct PersonIdentification18 {
 
 impl PersonIdentification18 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.dt_and_plc_of_birth { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.othr { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.dt_and_plc_of_birth { val.validate()? }
+		if let Some(ref vec) = self.othr { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -1727,7 +1727,7 @@ pub struct PostalAddress27 {
 
 impl PostalAddress27 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.adr_tp { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.adr_tp { val.validate()? }
 		if let Some(ref val) = self.care_of {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "care_of is shorter than the minimum length of 1".to_string()));
@@ -1850,7 +1850,7 @@ impl PostalAddress27 {
 		}
 		if let Some(ref val) = self.ctry {
 			let pattern = Regex::new("[A-Z]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "ctry does not match the required pattern".to_string()));
 			}
 		}
@@ -1949,8 +1949,8 @@ pub struct References4 {
 
 impl References4 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.msg_id.validate() { return Err(e); }
-		if let Err(e) = self.prc_id.validate() { return Err(e); }
+		self.msg_id.validate()?;
+		self.prc_id.validate()?;
 		if let Some(ref vec) = self.attchd_doc_nm {
 			for item in vec {
 				if item.chars().count() < 1 {
@@ -2005,7 +2005,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

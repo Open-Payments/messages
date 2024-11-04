@@ -64,8 +64,8 @@ pub struct CCPBackTestingResultReportV01 {
 
 impl CCPBackTestingResultReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.mnthly_rslt { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.mnthly_rslt { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -112,7 +112,7 @@ impl GenericIdentification165 {
 				return Err(ValidationError::new(1002, "issr exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		Ok(())
 	}
 }
@@ -147,9 +147,9 @@ impl MonthlyResult1 {
 		if self.nb_of_xcptns < 0.000000 {
 			return Err(ValidationError::new(1003, "nb_of_xcptns is less than the minimum value of 0.000000".to_string()));
 		}
-		if let Err(e) = self.lrgst_xcptn.validate() { return Err(e); }
-		if let Err(e) = self.avrg_xcptn.validate() { return Err(e); }
-		if let Some(ref val) = self.lrgst_xcptn_id { if let Err(e) = val.validate() { return Err(e); } }
+		self.lrgst_xcptn.validate()?;
+		self.avrg_xcptn.validate()?;
+		if let Some(ref val) = self.lrgst_xcptn_id { val.validate()? }
 		Ok(())
 	}
 }
@@ -203,7 +203,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

@@ -68,10 +68,10 @@ impl AccountSwitchDetails1 {
 		if self.rtg_unq_ref_nb.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "rtg_unq_ref_nb exceeds the maximum length of 35".to_string()));
 		}
-		if let Err(e) = self.swtch_tp.validate() { return Err(e); }
-		if let Some(ref val) = self.swtch_sts { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.bal_trf_wndw { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rspn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.swtch_tp.validate()?;
+		if let Some(ref val) = self.swtch_sts { val.validate()? }
+		if let Some(ref val) = self.bal_trf_wndw { val.validate()? }
+		if let Some(ref vec) = self.rspn { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -94,9 +94,9 @@ pub struct AccountSwitchTechnicalRejectionV02 {
 
 impl AccountSwitchTechnicalRejectionV02 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.msg_id.validate() { return Err(e); }
-		if let Err(e) = self.acct_swtch_dtls.validate() { return Err(e); }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.msg_id.validate()?;
+		self.acct_swtch_dtls.validate()?;
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -206,7 +206,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

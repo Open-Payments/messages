@@ -147,8 +147,8 @@ pub struct CutOffData2 {
 
 impl CutOffData2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.ptcpt_id.validate() { return Err(e); }
-		for item in &self.netg_cut_off_dtls { if let Err(e) = item.validate() { return Err(e); } }
+		self.ptcpt_id.validate()?;
+		for item in &self.netg_cut_off_dtls { item.validate()? }
 		Ok(())
 	}
 }
@@ -177,7 +177,7 @@ impl NameAndAddress8 {
 		if self.nm.chars().count() > 350 {
 			return Err(ValidationError::new(1002, "nm exceeds the maximum length of 350".to_string()));
 		}
-		if let Some(ref val) = self.adr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.adr { val.validate()? }
 		if let Some(ref vec) = self.altrntv_idr {
 			for item in vec {
 				if item.chars().count() < 1 {
@@ -208,8 +208,8 @@ pub struct NettingCutOff2 {
 
 impl NettingCutOff2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.netg_id.validate() { return Err(e); }
-		for item in &self.new_cut_off { if let Err(e) = item.validate() { return Err(e); } }
+		self.netg_id.validate()?;
+		for item in &self.new_cut_off { item.validate()? }
 		Ok(())
 	}
 }
@@ -232,9 +232,9 @@ pub struct NettingCutOffReferenceDataReportV02 {
 
 impl NettingCutOffReferenceDataReportV02 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rpt_data.validate() { return Err(e); }
-		for item in &self.ptcpt_netg_cut_off_data { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.rpt_data.validate()?;
+		for item in &self.ptcpt_netg_cut_off_data { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -279,8 +279,8 @@ impl NettingCutOffReportData2 {
 		if self.rpt_tp.chars().count() > 4 {
 			return Err(ValidationError::new(1002, "rpt_tp exceeds the maximum length of 4".to_string()));
 		}
-		if let Some(ref val) = self.net_svc_ptcpt_id { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.rpt_svcr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.net_svc_ptcpt_id { val.validate()? }
+		if let Some(ref val) = self.rpt_svcr { val.validate()? }
 		if let Some(ref val) = self.net_svc_tp {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "net_svc_tp is shorter than the minimum length of 1".to_string()));
@@ -289,7 +289,7 @@ impl NettingCutOffReportData2 {
 				return Err(ValidationError::new(1002, "net_svc_tp exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.msg_pgntn { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.msg_pgntn { val.validate()? }
 		Ok(())
 	}
 }
@@ -310,7 +310,7 @@ pub struct NettingIdentification2Choice {
 
 impl NettingIdentification2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.trad_pty { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.trad_pty { val.validate()? }
 		if let Some(ref val) = self.netg_grp_id {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "netg_grp_id is shorter than the minimum length of 1".to_string()));
@@ -365,9 +365,9 @@ pub struct PartyIdentification242Choice {
 
 impl PartyIdentification242Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.nm_and_adr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.any_bic { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.pty_id { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.nm_and_adr { val.validate()? }
+		if let Some(ref val) = self.any_bic { val.validate()? }
+		if let Some(ref val) = self.pty_id { val.validate()? }
 		Ok(())
 	}
 }
@@ -438,7 +438,7 @@ impl PartyIdentification266 {
 				return Err(ValidationError::new(1002, "pty_nm exceeds the maximum length of 34".to_string()));
 			}
 		}
-		if let Some(ref val) = self.any_bic { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.any_bic { val.validate()? }
 		if let Some(ref val) = self.acct_nb {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "acct_nb is shorter than the minimum length of 1".to_string()));
@@ -455,10 +455,10 @@ impl PartyIdentification266 {
 				return Err(ValidationError::new(1002, "adr exceeds the maximum length of 105".to_string()));
 			}
 		}
-		if let Some(ref val) = self.clr_sys_id { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.clr_sys_id { val.validate()? }
 		if let Some(ref val) = self.lgl_ntty_idr {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "lgl_ntty_idr does not match the required pattern".to_string()));
 			}
 		}
@@ -494,7 +494,7 @@ pub struct PostalAddress1 {
 
 impl PostalAddress1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.adr_tp { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.adr_tp { val.validate()? }
 		if let Some(ref vec) = self.adr_line {
 			for item in vec {
 				if item.chars().count() < 1 {
@@ -577,7 +577,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

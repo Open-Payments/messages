@@ -93,9 +93,9 @@ pub struct FinancialInstrumentReportingEquityTradingActivityResultV02 {
 
 impl FinancialInstrumentReportingEquityTradingActivityResultV02 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rpt_hdr.validate() { return Err(e); }
-		for item in &self.eqty_trnsprncy_data { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.rpt_hdr.validate()?;
+		for item in &self.eqty_trnsprncy_data { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -164,7 +164,7 @@ pub struct Period4Choice {
 
 impl Period4Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.fr_dt_to_dt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.fr_dt_to_dt { val.validate()? }
 		Ok(())
 	}
 }
@@ -187,8 +187,8 @@ pub struct SecuritiesMarketReportHeader1 {
 
 impl SecuritiesMarketReportHeader1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rptg_ntty.validate() { return Err(e); }
-		if let Err(e) = self.rptg_prd.validate() { return Err(e); }
+		self.rptg_ntty.validate()?;
+		self.rptg_prd.validate()?;
 		Ok(())
 	}
 }
@@ -221,8 +221,8 @@ pub struct StatisticsTransparency3 {
 
 impl StatisticsTransparency3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.avrg_daly_trnvr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.avrg_tx_val { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.avrg_daly_trnvr { val.validate()? }
+		if let Some(ref val) = self.avrg_tx_val { val.validate()? }
 		Ok(())
 	}
 }
@@ -251,7 +251,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }
@@ -313,17 +313,17 @@ impl TradingVenueIdentification1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.mkt_id_cd {
 			let pattern = Regex::new("[A-Z0-9]{4,4}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "mkt_id_cd does not match the required pattern".to_string()));
 			}
 		}
 		if let Some(ref val) = self.ntl_cmptnt_authrty {
 			let pattern = Regex::new("[A-Z]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "ntl_cmptnt_authrty does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.othr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.othr { val.validate()? }
 		Ok(())
 	}
 }
@@ -350,7 +350,7 @@ impl TradingVenueIdentification2 {
 		if self.id.chars().count() > 50 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 50".to_string()));
 		}
-		if let Err(e) = self.tp.validate() { return Err(e); }
+		self.tp.validate()?;
 		Ok(())
 	}
 }
@@ -399,7 +399,7 @@ impl TransparencyDataReport17 {
 		if !pattern.is_match(&self.id) {
 			return Err(ValidationError::new(1005, "id does not match the required pattern".to_string()));
 		}
-		if let Some(ref val) = self.fin_instrm_clssfctn { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.fin_instrm_clssfctn { val.validate()? }
 		if let Some(ref val) = self.full_nm {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "full_nm is shorter than the minimum length of 1".to_string()));
@@ -410,14 +410,14 @@ impl TransparencyDataReport17 {
 		}
 		if let Some(ref val) = self.tradg_vn {
 			let pattern = Regex::new("[A-Z0-9]{4,4}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "tradg_vn does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.rptg_prd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.mthdlgy { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.sttstcs { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.rlvnt_mkt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.rptg_prd { val.validate()? }
+		if let Some(ref val) = self.mthdlgy { val.validate()? }
+		if let Some(ref val) = self.sttstcs { val.validate()? }
+		if let Some(ref val) = self.rlvnt_mkt { val.validate()? }
 		Ok(())
 	}
 }

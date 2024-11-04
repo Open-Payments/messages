@@ -70,8 +70,8 @@ pub struct CCPPortfolioStressTestingDefinitionReportV02 {
 
 impl CCPPortfolioStressTestingDefinitionReportV02 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.scnro_def { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.scnro_def { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -118,7 +118,7 @@ impl GenericIdentification165 {
 				return Err(ValidationError::new(1002, "issr exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		Ok(())
 	}
 }
@@ -199,7 +199,7 @@ impl RiskFactor1 {
 		if self.id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 35".to_string()));
 		}
-		if let Err(e) = self.strss_sz.validate() { return Err(e); }
+		self.strss_sz.validate()?;
 		Ok(())
 	}
 }
@@ -226,10 +226,10 @@ pub struct ScenarioDefinition2 {
 
 impl ScenarioDefinition2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Err(e) = self.scnro_tp.validate() { return Err(e); }
-		if let Err(e) = self.strtgy_strss_tp.validate() { return Err(e); }
-		for item in &self.strss_itm { if let Err(e) = item.validate() { return Err(e); } }
+		self.id.validate()?;
+		self.scnro_tp.validate()?;
+		self.strtgy_strss_tp.validate()?;
+		for item in &self.strss_itm { item.validate()? }
 		if let Some(ref val) = self.desc {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "desc is shorter than the minimum length of 1".to_string()));
@@ -310,7 +310,7 @@ impl Strategy1 {
 		if self.id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 35".to_string()));
 		}
-		if let Err(e) = self.strss_sz.validate() { return Err(e); }
+		self.strss_sz.validate()?;
 		Ok(())
 	}
 }
@@ -352,7 +352,7 @@ pub struct StressItem1 {
 
 impl StressItem1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.strss_pdct.validate() { return Err(e); }
+		self.strss_pdct.validate()?;
 		Ok(())
 	}
 }
@@ -375,9 +375,9 @@ pub struct StressItem1Choice {
 
 impl StressItem1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.pdct { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.strtgy { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.rsk_fctr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.pdct { val.validate()? }
+		if let Some(ref val) = self.strtgy { val.validate()? }
+		if let Some(ref val) = self.rsk_fctr { val.validate()? }
 		Ok(())
 	}
 }
@@ -398,7 +398,7 @@ pub struct StressSize1Choice {
 
 impl StressSize1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.abs { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.abs { val.validate()? }
 		Ok(())
 	}
 }
@@ -421,9 +421,9 @@ pub struct StressedProduct1 {
 
 impl StressedProduct1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Err(e) = self.max_strss_sz.validate() { return Err(e); }
-		if let Err(e) = self.min_strss_sz.validate() { return Err(e); }
+		self.id.validate()?;
+		self.max_strss_sz.validate()?;
+		self.min_strss_sz.validate()?;
 		Ok(())
 	}
 }
@@ -452,7 +452,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

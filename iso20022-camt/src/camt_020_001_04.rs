@@ -54,8 +54,8 @@ impl BusinessInformationCriteria1 {
 				return Err(ValidationError::new(1002, "new_qry_nm exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref vec) = self.sch_crit { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.rtr_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref vec) = self.sch_crit { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.rtr_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -76,8 +76,8 @@ pub struct BusinessInformationQueryDefinition3 {
 
 impl BusinessInformationQueryDefinition3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.qry_tp { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.gnl_biz_inf_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.qry_tp { val.validate()? }
+		if let Some(ref val) = self.gnl_biz_inf_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -162,7 +162,7 @@ impl GeneralBusinessInformationCriteriaDefinition1Choice {
 				return Err(ValidationError::new(1002, "qry_nm exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.new_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.new_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -217,8 +217,8 @@ impl GeneralBusinessInformationSearchCriteria1 {
 				}
 			}
 		}
-		if let Some(ref vec) = self.sbjt { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.qlfr { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.sbjt { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.qlfr { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -241,9 +241,9 @@ pub struct GetGeneralBusinessInformationV04 {
 
 impl GetGeneralBusinessInformationV04 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.msg_hdr.validate() { return Err(e); }
-		if let Some(ref val) = self.gnl_biz_inf_qry_def { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.msg_hdr.validate()?;
+		if let Some(ref val) = self.gnl_biz_inf_qry_def { val.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -264,7 +264,7 @@ pub struct InformationQualifierType1 {
 
 impl InformationQualifierType1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.prty { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.prty { val.validate()? }
 		Ok(())
 	}
 }
@@ -367,7 +367,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

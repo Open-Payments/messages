@@ -64,7 +64,7 @@ pub struct AmountAndDirection102 {
 
 impl AmountAndDirection102 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.amt.validate() { return Err(e); }
+		self.amt.validate()?;
 		Ok(())
 	}
 }
@@ -110,9 +110,9 @@ pub struct CCPDailyCashFlowsReportV02 {
 
 impl CCPDailyCashFlowsReportV02 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.cncntrtn_agt { if let Err(e) = item.validate() { return Err(e); } }
-		for item in &self.sttlm_agt { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.cncntrtn_agt { item.validate()? }
+		for item in &self.sttlm_agt { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -141,11 +141,11 @@ pub struct ConcentrationAccount1 {
 
 impl ConcentrationAccount1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.in_flow.validate() { return Err(e); }
-		if let Err(e) = self.out_flow.validate() { return Err(e); }
-		if let Err(e) = self.end_of_day.validate() { return Err(e); }
-		if let Err(e) = self.peak_cdt.validate() { return Err(e); }
-		if let Err(e) = self.peak_dbt.validate() { return Err(e); }
+		self.in_flow.validate()?;
+		self.out_flow.validate()?;
+		self.end_of_day.validate()?;
+		self.peak_cdt.validate()?;
+		self.peak_dbt.validate()?;
 		let pattern = Regex::new("[0-9]{1,10}").unwrap();
 		if !pattern.is_match(&self.late_pmt_conf) {
 			return Err(ValidationError::new(1005, "late_pmt_conf does not match the required pattern".to_string()));
@@ -174,7 +174,7 @@ impl ConcentrationAgent1 {
 		if !pattern.is_match(&self.id) {
 			return Err(ValidationError::new(1005, "id does not match the required pattern".to_string()));
 		}
-		for item in &self.acct { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.acct { item.validate()? }
 		Ok(())
 	}
 }
@@ -195,8 +195,8 @@ pub struct Flows1 {
 
 impl Flows1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.pmt_bk_flows.validate() { return Err(e); }
-		if let Err(e) = self.invstmt_flows.validate() { return Err(e); }
+		self.pmt_bk_flows.validate()?;
+		self.invstmt_flows.validate()?;
 		Ok(())
 	}
 }
@@ -227,7 +227,7 @@ impl PaymentAccount4 {
 		if !pattern.is_match(&self.ccy) {
 			return Err(ValidationError::new(1005, "ccy does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.net_pmt.validate() { return Err(e); }
+		self.net_pmt.validate()?;
 		let pattern = Regex::new("[0-9]{1,10}").unwrap();
 		if !pattern.is_match(&self.late_pmt_conf) {
 			return Err(ValidationError::new(1005, "late_pmt_conf does not match the required pattern".to_string()));
@@ -256,7 +256,7 @@ impl SettlementAgent2 {
 		if !pattern.is_match(&self.id) {
 			return Err(ValidationError::new(1005, "id does not match the required pattern".to_string()));
 		}
-		for item in &self.acct { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.acct { item.validate()? }
 		Ok(())
 	}
 }
@@ -285,7 +285,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

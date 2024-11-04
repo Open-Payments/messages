@@ -83,7 +83,7 @@ pub struct ContactDetails2 {
 
 impl ContactDetails2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.nm_prfx { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.nm_prfx { val.validate()? }
 		if let Some(ref val) = self.nm {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "nm is shorter than the minimum length of 1".to_string()));
@@ -94,19 +94,19 @@ impl ContactDetails2 {
 		}
 		if let Some(ref val) = self.phne_nb {
 			let pattern = Regex::new("\\+[0-9]{1,3}-[0-9()+\\-]{1,30}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "phne_nb does not match the required pattern".to_string()));
 			}
 		}
 		if let Some(ref val) = self.mob_nb {
 			let pattern = Regex::new("\\+[0-9]{1,3}-[0-9()+\\-]{1,30}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "mob_nb does not match the required pattern".to_string()));
 			}
 		}
 		if let Some(ref val) = self.fax_nb {
 			let pattern = Regex::new("\\+[0-9]{1,3}-[0-9()+\\-]{1,30}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "fax_nb does not match the required pattern".to_string()));
 			}
 		}
@@ -164,7 +164,7 @@ impl GenericValidationRuleIdentification1 {
 				return Err(ValidationError::new(1002, "desc exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		if let Some(ref val) = self.issr {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
@@ -195,9 +195,9 @@ pub struct InvoiceTaxReportStatusAdviceV01 {
 
 impl InvoiceTaxReportStatusAdviceV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.sts_rpt_hdr.validate() { return Err(e); }
-		if let Some(ref vec) = self.tx_sts { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.sts_rpt_hdr.validate()?;
+		if let Some(ref vec) = self.tx_sts { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -228,9 +228,9 @@ impl InvoiceTaxReportTransactionStatus1 {
 		if self.tax_rpt_id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "tax_rpt_id exceeds the maximum length of 35".to_string()));
 		}
-		if let Err(e) = self.sts.validate() { return Err(e); }
-		if let Some(ref vec) = self.vldtn_rule { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.sts.validate()?;
+		if let Some(ref vec) = self.vldtn_rule { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -257,11 +257,11 @@ pub struct InvoiceTaxStatusReportHeader1 {
 
 impl InvoiceTaxStatusReportHeader1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.tax_authrty { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.msg_id.validate() { return Err(e); }
-		if let Err(e) = self.orgnl_msg_id.validate() { return Err(e); }
-		if let Err(e) = self.rpt_sts.validate() { return Err(e); }
-		if let Some(ref vec) = self.vldtn_rule { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.tax_authrty { val.validate()? }
+		self.msg_id.validate()?;
+		self.orgnl_msg_id.validate()?;
+		self.rpt_sts.validate()?;
+		if let Some(ref vec) = self.vldtn_rule { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -349,7 +349,7 @@ pub struct PostalAddress6 {
 
 impl PostalAddress6 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.adr_tp { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.adr_tp { val.validate()? }
 		if let Some(ref val) = self.dept {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "dept is shorter than the minimum length of 1".to_string()));
@@ -408,7 +408,7 @@ impl PostalAddress6 {
 		}
 		if let Some(ref val) = self.ctry {
 			let pattern = Regex::new("[A-Z]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "ctry does not match the required pattern".to_string()));
 			}
 		}
@@ -450,7 +450,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }
@@ -495,8 +495,8 @@ impl TaxOrganisationIdentification1 {
 		if self.nm.chars().count() > 140 {
 			return Err(ValidationError::new(1002, "nm exceeds the maximum length of 140".to_string()));
 		}
-		if let Some(ref val) = self.pstl_adr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.ctct_dtls { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.pstl_adr { val.validate()? }
+		if let Some(ref val) = self.ctct_dtls { val.validate()? }
 		Ok(())
 	}
 }

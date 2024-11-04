@@ -54,8 +54,8 @@ impl BusinessDayCriteria2 {
 				return Err(ValidationError::new(1002, "new_qry_nm exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref vec) = self.sch_crit { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.rtr_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref vec) = self.sch_crit { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.rtr_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -84,7 +84,7 @@ impl BusinessDayCriteria3Choice {
 				return Err(ValidationError::new(1002, "qry_nm exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.new_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.new_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -105,8 +105,8 @@ pub struct BusinessDayQuery2 {
 
 impl BusinessDayQuery2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.qry_tp { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.qry_tp { val.validate()? }
+		if let Some(ref val) = self.crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -163,7 +163,7 @@ pub struct BusinessDaySearchCriteria2 {
 
 impl BusinessDaySearchCriteria2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref vec) = self.sys_id { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.sys_id { for item in vec { item.validate()? } }
 		if let Some(ref vec) = self.sys_ccy {
 			for item in vec {
 				let pattern = Regex::new("[A-Z]{3,3}").unwrap();
@@ -172,8 +172,8 @@ impl BusinessDaySearchCriteria2 {
 				}
 			}
 		}
-		if let Some(ref val) = self.evt_tp { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.clsr_prd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.evt_tp { val.validate()? }
+		if let Some(ref val) = self.clsr_prd { val.validate()? }
 		Ok(())
 	}
 }
@@ -216,7 +216,7 @@ pub struct DateTimePeriod1Choice {
 
 impl DateTimePeriod1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.dt_tm_rg { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.dt_tm_rg { val.validate()? }
 		Ok(())
 	}
 }
@@ -283,9 +283,9 @@ pub struct GetBusinessDayInformationV05 {
 
 impl GetBusinessDayInformationV05 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.msg_hdr.validate() { return Err(e); }
-		if let Some(ref val) = self.biz_day_inf_qry_def { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.msg_hdr.validate()?;
+		if let Some(ref val) = self.biz_day_inf_qry_def { val.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -350,7 +350,7 @@ impl MessageHeader9 {
 		if self.msg_id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "msg_id exceeds the maximum length of 35".to_string()));
 		}
-		if let Some(ref val) = self.req_tp { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.req_tp { val.validate()? }
 		Ok(())
 	}
 }
@@ -414,7 +414,7 @@ impl RequestType4Choice {
 				return Err(ValidationError::new(1002, "enqry exceeds the maximum length of 4".to_string()));
 			}
 		}
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -443,7 +443,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }
@@ -480,8 +480,8 @@ pub struct SystemEventType2Choice {
 
 impl SystemEventType2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -563,10 +563,10 @@ pub struct SystemIdentification2Choice {
 
 impl SystemIdentification2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.mkt_infrstrctr_id { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.mkt_infrstrctr_id { val.validate()? }
 		if let Some(ref val) = self.ctry {
 			let pattern = Regex::new("[A-Z]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "ctry does not match the required pattern".to_string()));
 			}
 		}

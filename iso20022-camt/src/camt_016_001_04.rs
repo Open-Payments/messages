@@ -52,7 +52,7 @@ impl CurrencyCriteriaDefinition1Choice {
 				return Err(ValidationError::new(1002, "qry_nm exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.new_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.new_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -81,7 +81,7 @@ impl CurrencyExchangeCriteria2 {
 				return Err(ValidationError::new(1002, "new_qry_nm exceeds the maximum length of 35".to_string()));
 			}
 		}
-		for item in &self.sch_crit { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.sch_crit { item.validate()? }
 		Ok(())
 	}
 }
@@ -130,8 +130,8 @@ pub struct CurrencyQueryDefinition3 {
 
 impl CurrencyQueryDefinition3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.qry_tp { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.ccy_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.qry_tp { val.validate()? }
+		if let Some(ref val) = self.ccy_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -154,9 +154,9 @@ pub struct GetCurrencyExchangeRateV04 {
 
 impl GetCurrencyExchangeRateV04 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.msg_hdr.validate() { return Err(e); }
-		if let Some(ref val) = self.ccy_qry_def { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.msg_hdr.validate()?;
+		if let Some(ref val) = self.ccy_qry_def { val.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -236,7 +236,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

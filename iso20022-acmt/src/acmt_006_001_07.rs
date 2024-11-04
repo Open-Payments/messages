@@ -44,8 +44,8 @@ pub struct AcceptedStatusReason1Choice {
 
 impl AcceptedStatusReason1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -93,7 +93,7 @@ impl Account23 {
 		if self.acct_id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "acct_id exceeds the maximum length of 35".to_string()));
 		}
-		if let Some(ref val) = self.rltd_acct_dtls { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.rltd_acct_dtls { val.validate()? }
 		Ok(())
 	}
 }
@@ -153,8 +153,8 @@ pub struct AccountManagementStatusAndReason5 {
 
 impl AccountManagementStatusAndReason5 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.sts.validate() { return Err(e); }
-		if let Some(ref vec) = self.sts_rsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.sts.validate()?;
+		if let Some(ref vec) = self.sts_rsn { for item in vec { item.validate()? } }
 		if let Some(ref val) = self.acct_appl_id {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "acct_appl_id is shorter than the minimum length of 1".to_string()));
@@ -163,7 +163,7 @@ impl AccountManagementStatusAndReason5 {
 				return Err(ValidationError::new(1002, "acct_appl_id exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref vec) = self.exstg_acct_id { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.exstg_acct_id { for item in vec { item.validate()? } }
 		if let Some(ref val) = self.acct_id {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "acct_id is shorter than the minimum length of 1".to_string()));
@@ -172,8 +172,8 @@ impl AccountManagementStatusAndReason5 {
 				return Err(ValidationError::new(1002, "acct_id exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.acct_sts { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.blckd_sts { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.acct_sts { val.validate()? }
+		if let Some(ref val) = self.blckd_sts { val.validate()? }
 		Ok(())
 	}
 }
@@ -200,11 +200,11 @@ pub struct AccountManagementStatusReportV07 {
 
 impl AccountManagementStatusReportV07 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.msg_id.validate() { return Err(e); }
-		for item in &self.rltd_ref { if let Err(e) = item.validate() { return Err(e); } }
-		if let Err(e) = self.sts_rpt.validate() { return Err(e); }
-		if let Some(ref val) = self.mkt_prctc_vrsn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.xtnsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.msg_id.validate()?;
+		for item in &self.rltd_ref { item.validate()? }
+		self.sts_rpt.validate()?;
+		if let Some(ref val) = self.mkt_prctc_vrsn { val.validate()? }
+		if let Some(ref vec) = self.xtnsn { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -237,14 +237,14 @@ pub struct AccountStatus2 {
 
 impl AccountStatus2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.nbld { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.dsbld { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.pdg { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.pdg_opng { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.profrm { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.clsd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.clsr_pdg { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.othr { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.nbld { val.validate()? }
+		if let Some(ref val) = self.dsbld { val.validate()? }
+		if let Some(ref val) = self.pdg { val.validate()? }
+		if let Some(ref val) = self.pdg_opng { val.validate()? }
+		if let Some(ref val) = self.profrm { val.validate()? }
+		if let Some(ref val) = self.clsd { val.validate()? }
+		if let Some(ref val) = self.clsr_pdg { val.validate()? }
+		if let Some(ref vec) = self.othr { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -273,7 +273,7 @@ impl AdditionalReference13 {
 		if self.ref_attr.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "ref_attr exceeds the maximum length of 35".to_string()));
 		}
-		if let Some(ref val) = self.ref_issr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.ref_issr { val.validate()? }
 		if let Some(ref val) = self.msg_nm {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "msg_nm is shorter than the minimum length of 1".to_string()));
@@ -331,8 +331,8 @@ pub struct BlockedReason2Choice {
 
 impl BlockedReason2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -392,8 +392,8 @@ pub struct BlockedStatusReason2 {
 
 impl BlockedStatusReason2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.tx_tp.validate() { return Err(e); }
-		if let Some(ref vec) = self.rsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.tx_tp.validate()?;
+		if let Some(ref vec) = self.rsn { for item in vec { item.validate()? } }
 		if self.addtl_inf.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "addtl_inf is shorter than the minimum length of 1".to_string()));
 		}
@@ -420,8 +420,8 @@ pub struct BlockedStatusReason2Choice {
 
 impl BlockedStatusReason2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.no_spcfd_rsn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.no_spcfd_rsn { val.validate()? }
+		if let Some(ref vec) = self.rsn { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -442,7 +442,7 @@ pub struct ClosedStatusReason1 {
 
 impl ClosedStatusReason1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.cd.validate() { return Err(e); }
+		self.cd.validate()?;
 		if let Some(ref val) = self.addtl_inf {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "addtl_inf is shorter than the minimum length of 1".to_string()));
@@ -471,8 +471,8 @@ pub struct ClosedStatusReason1Choice {
 
 impl ClosedStatusReason1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.no_spcfd_rsn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.no_spcfd_rsn { val.validate()? }
+		if let Some(ref vec) = self.rsn { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -514,8 +514,8 @@ pub struct ClosedStatusReason2Choice {
 
 impl ClosedStatusReason2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -536,7 +536,7 @@ pub struct ClosurePendingStatusReason1 {
 
 impl ClosurePendingStatusReason1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.cd.validate() { return Err(e); }
+		self.cd.validate()?;
 		if let Some(ref val) = self.addtl_inf {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "addtl_inf is shorter than the minimum length of 1".to_string()));
@@ -565,8 +565,8 @@ pub struct ClosurePendingStatusReason1Choice {
 
 impl ClosurePendingStatusReason1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.no_spcfd_rsn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.no_spcfd_rsn { val.validate()? }
+		if let Some(ref vec) = self.rsn { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -608,8 +608,8 @@ pub struct ClosurePendingStatusReason2Choice {
 
 impl ClosurePendingStatusReason2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -669,7 +669,7 @@ pub struct DisabledStatusReason1 {
 
 impl DisabledStatusReason1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.cd.validate() { return Err(e); }
+		self.cd.validate()?;
 		if let Some(ref val) = self.addtl_inf {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "addtl_inf is shorter than the minimum length of 1".to_string()));
@@ -698,8 +698,8 @@ pub struct DisabledStatusReason1Choice {
 
 impl DisabledStatusReason1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.no_spcfd_rsn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.no_spcfd_rsn { val.validate()? }
+		if let Some(ref vec) = self.rsn { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -720,8 +720,8 @@ pub struct DisabledStatusReason2Choice {
 
 impl DisabledStatusReason2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -742,7 +742,7 @@ pub struct EnabledStatusReason1 {
 
 impl EnabledStatusReason1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.cd.validate() { return Err(e); }
+		self.cd.validate()?;
 		if let Some(ref val) = self.addtl_inf {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "addtl_inf is shorter than the minimum length of 1".to_string()));
@@ -771,8 +771,8 @@ pub struct EnabledStatusReason1Choice {
 
 impl EnabledStatusReason1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.no_spcfd_rsn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.no_spcfd_rsn { val.validate()? }
+		if let Some(ref vec) = self.rsn { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -812,8 +812,8 @@ pub struct EnabledStatusReason2Choice {
 
 impl EnabledStatusReason2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -976,7 +976,7 @@ impl GenericIdentification47 {
 				return Err(ValidationError::new(1002, "schme_nm exceeds the maximum length of 4".to_string()));
 			}
 			let pattern = Regex::new("[a-zA-Z0-9]{1,4}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "schme_nm does not match the required pattern".to_string()));
 			}
 		}
@@ -1129,7 +1129,7 @@ impl NameAndAddress5 {
 		if self.nm.chars().count() > 350 {
 			return Err(ValidationError::new(1002, "nm exceeds the maximum length of 350".to_string()));
 		}
-		if let Some(ref val) = self.adr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.adr { val.validate()? }
 		Ok(())
 	}
 }
@@ -1169,8 +1169,8 @@ pub struct OtherAccountStatus1 {
 
 impl OtherAccountStatus1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.sts.validate() { return Err(e); }
-		if let Some(ref val) = self.rsn { if let Err(e) = val.validate() { return Err(e); } }
+		self.sts.validate()?;
+		if let Some(ref val) = self.rsn { val.validate()? }
 		Ok(())
 	}
 }
@@ -1195,12 +1195,12 @@ impl PartyIdentification125Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.any_bic {
 			let pattern = Regex::new("[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "any_bic does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.prtry_id { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.nm_and_adr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.prtry_id { val.validate()? }
+		if let Some(ref val) = self.nm_and_adr { val.validate()? }
 		Ok(())
 	}
 }
@@ -1221,7 +1221,7 @@ pub struct PendingOpeningStatusReason1 {
 
 impl PendingOpeningStatusReason1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.cd.validate() { return Err(e); }
+		self.cd.validate()?;
 		if let Some(ref val) = self.addtl_inf {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "addtl_inf is shorter than the minimum length of 1".to_string()));
@@ -1250,8 +1250,8 @@ pub struct PendingOpeningStatusReason1Choice {
 
 impl PendingOpeningStatusReason1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.no_spcfd_rsn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.no_spcfd_rsn { val.validate()? }
+		if let Some(ref vec) = self.rsn { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -1303,8 +1303,8 @@ pub struct PendingOpeningStatusReason2Choice {
 
 impl PendingOpeningStatusReason2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -1325,7 +1325,7 @@ pub struct PendingStatusReason14 {
 
 impl PendingStatusReason14 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.cd.validate() { return Err(e); }
+		self.cd.validate()?;
 		if let Some(ref val) = self.addtl_inf {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "addtl_inf is shorter than the minimum length of 1".to_string()));
@@ -1354,8 +1354,8 @@ pub struct PendingStatusReason1Choice {
 
 impl PendingStatusReason1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.no_spcfd_rsn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.no_spcfd_rsn { val.validate()? }
+		if let Some(ref vec) = self.rsn { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -1405,8 +1405,8 @@ pub struct PendingStatusReason2Choice {
 
 impl PendingStatusReason2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -1439,7 +1439,7 @@ pub struct PostalAddress1 {
 
 impl PostalAddress1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.adr_tp { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.adr_tp { val.validate()? }
 		if let Some(ref vec) = self.adr_line {
 			for item in vec {
 				if item.chars().count() < 1 {
@@ -1514,7 +1514,7 @@ pub struct ProformaStatusReason1 {
 
 impl ProformaStatusReason1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.cd.validate() { return Err(e); }
+		self.cd.validate()?;
 		if let Some(ref val) = self.addtl_inf {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "addtl_inf is shorter than the minimum length of 1".to_string()));
@@ -1543,8 +1543,8 @@ pub struct ProformaStatusReason1Choice {
 
 impl ProformaStatusReason1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.no_spcfd_rsn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rsn { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.no_spcfd_rsn { val.validate()? }
+		if let Some(ref vec) = self.rsn { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -1586,8 +1586,8 @@ pub struct ProformaStatusReason2Choice {
 
 impl ProformaStatusReason2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -1608,8 +1608,8 @@ pub struct RejectedReason16Choice {
 
 impl RejectedReason16Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -1651,7 +1651,7 @@ pub struct RejectionReason31 {
 
 impl RejectionReason31 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rsn.validate() { return Err(e); }
+		self.rsn.validate()?;
 		if let Some(ref val) = self.addtl_rsn_inf {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "addtl_rsn_inf is shorter than the minimum length of 1".to_string()));
@@ -1680,8 +1680,8 @@ pub struct Status25Choice {
 
 impl Status25Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.sts { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.rjctd { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.sts { val.validate()? }
+		if let Some(ref vec) = self.rjctd { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -1702,8 +1702,8 @@ pub struct TransactionType5Choice {
 
 impl TransactionType5Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }

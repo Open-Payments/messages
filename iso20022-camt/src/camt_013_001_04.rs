@@ -80,7 +80,7 @@ pub struct ClearingSystemMemberIdentification2 {
 
 impl ClearingSystemMemberIdentification2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.clr_sys_id { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.clr_sys_id { val.validate()? }
 		if self.mmb_id.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "mmb_id is shorter than the minimum length of 1".to_string()));
 		}
@@ -151,7 +151,7 @@ impl GenericFinancialIdentification1 {
 		if self.id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 35".to_string()));
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		if let Some(ref val) = self.issr {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
@@ -226,9 +226,9 @@ pub struct GetMemberV04 {
 
 impl GetMemberV04 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.msg_hdr.validate() { return Err(e); }
-		if let Some(ref val) = self.mmb_qry_def { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.msg_hdr.validate()?;
+		if let Some(ref val) = self.mmb_qry_def { val.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -259,8 +259,8 @@ impl MemberCriteria4 {
 				return Err(ValidationError::new(1002, "new_qry_nm exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref vec) = self.sch_crit { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.rtr_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref vec) = self.sch_crit { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.rtr_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -289,7 +289,7 @@ impl MemberCriteriaDefinition2Choice {
 				return Err(ValidationError::new(1002, "qry_nm exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.new_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.new_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -314,12 +314,12 @@ impl MemberIdentification3Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.bicfi {
 			let pattern = Regex::new("[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "bicfi does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.clr_sys_mmb_id { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.othr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.clr_sys_mmb_id { val.validate()? }
+		if let Some(ref val) = self.othr { val.validate()? }
 		Ok(())
 	}
 }
@@ -340,8 +340,8 @@ pub struct MemberQueryDefinition4 {
 
 impl MemberQueryDefinition4 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.qry_tp { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.mmb_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.qry_tp { val.validate()? }
+		if let Some(ref val) = self.mmb_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -394,9 +394,9 @@ pub struct MemberSearchCriteria4 {
 
 impl MemberSearchCriteria4 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref vec) = self.id { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.tp { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.sts { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.id { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.tp { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.sts { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -450,7 +450,7 @@ impl MessageHeader9 {
 		if self.msg_id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "msg_id exceeds the maximum length of 35".to_string()));
 		}
-		if let Some(ref val) = self.req_tp { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.req_tp { val.validate()? }
 		Ok(())
 	}
 }
@@ -514,7 +514,7 @@ impl RequestType4Choice {
 				return Err(ValidationError::new(1002, "enqry exceeds the maximum length of 4".to_string()));
 			}
 		}
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -543,7 +543,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }
@@ -580,7 +580,7 @@ pub struct SystemMemberStatus1Choice {
 
 impl SystemMemberStatus1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
 		if let Some(ref val) = self.prtry {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "prtry is shorter than the minimum length of 1".to_string()));

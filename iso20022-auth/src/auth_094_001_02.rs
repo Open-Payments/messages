@@ -131,7 +131,7 @@ pub struct CorporateSectorCriteria5 {
 
 impl CorporateSectorCriteria5 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref vec) = self.fi_sctr { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.fi_sctr { for item in vec { item.validate()? } }
 		if let Some(ref vec) = self.nfi_sctr {
 			for item in vec {
 				let pattern = Regex::new("[A-U]{1,1}").unwrap();
@@ -140,7 +140,7 @@ impl CorporateSectorCriteria5 {
 				}
 			}
 		}
-		if let Some(ref val) = self.not_rptd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.not_rptd { val.validate()? }
 		Ok(())
 	}
 }
@@ -161,8 +161,8 @@ pub struct DateOrBlankQuery2Choice {
 
 impl DateOrBlankQuery2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.rg { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.not_rptd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.rg { val.validate()? }
+		if let Some(ref val) = self.not_rptd { val.validate()? }
 		Ok(())
 	}
 }
@@ -358,7 +358,7 @@ impl NameAndAddress5 {
 		if self.nm.chars().count() > 350 {
 			return Err(ValidationError::new(1002, "nm exceeds the maximum length of 350".to_string()));
 		}
-		if let Some(ref val) = self.adr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.adr { val.validate()? }
 		Ok(())
 	}
 }
@@ -425,18 +425,18 @@ impl PartyIdentification121Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.any_bic {
 			let pattern = Regex::new("[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "any_bic does not match the required pattern".to_string()));
 			}
 		}
 		if let Some(ref val) = self.lgl_ntty_idr {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "lgl_ntty_idr does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.nm_and_adr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry_id { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.nm_and_adr { val.validate()? }
+		if let Some(ref val) = self.prtry_id { val.validate()? }
 		Ok(())
 	}
 }
@@ -494,7 +494,7 @@ pub struct PostalAddress1 {
 
 impl PostalAddress1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.adr_tp { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.adr_tp { val.validate()? }
 		if let Some(ref vec) = self.adr_line {
 			for item in vec {
 				if item.chars().count() < 1 {
@@ -571,9 +571,9 @@ pub struct SecuritiesFinancingReportingTransactionQueryV02 {
 
 impl SecuritiesFinancingReportingTransactionQueryV02 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rqstng_authrty.validate() { return Err(e); }
-		if let Err(e) = self.trad_qry_data.validate() { return Err(e); }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.rqstng_authrty.validate()?;
+		self.trad_qry_data.validate()?;
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -602,7 +602,7 @@ impl SecuritiesTradeVenueCriteria1Choice {
 				}
 			}
 		}
-		if let Some(ref val) = self.any_mic { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.any_mic { val.validate()? }
 		Ok(())
 	}
 }
@@ -631,7 +631,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }
@@ -672,10 +672,10 @@ pub struct TradeAdditionalQueryCriteria7 {
 
 impl TradeAdditionalQueryCriteria7 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref vec) = self.actn_tp { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.exctn_vn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.ntr_of_ctr_pty { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.corp_sctr { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.actn_tp { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.exctn_vn { val.validate()? }
+		if let Some(ref vec) = self.ntr_of_ctr_pty { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.corp_sctr { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -700,10 +700,10 @@ pub struct TradeDateTimeQueryCriteria2 {
 
 impl TradeDateTimeQueryCriteria2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.rptg_dt_tm { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.exctn_dt_tm { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.mtrty_dt { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.termntn_dt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.rptg_dt_tm { val.validate()? }
+		if let Some(ref val) = self.exctn_dt_tm { val.validate()? }
+		if let Some(ref val) = self.mtrty_dt { val.validate()? }
+		if let Some(ref val) = self.termntn_dt { val.validate()? }
 		Ok(())
 	}
 }
@@ -754,7 +754,7 @@ impl TradePartyIdentificationQuery8 {
 				}
 			}
 		}
-		if let Some(ref val) = self.not_rptd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.not_rptd { val.validate()? }
 		Ok(())
 	}
 }
@@ -815,7 +815,7 @@ impl TradePartyIdentificationQuery9 {
 				}
 			}
 		}
-		if let Some(ref val) = self.not_rptd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.not_rptd { val.validate()? }
 		Ok(())
 	}
 }
@@ -854,17 +854,17 @@ pub struct TradePartyQueryCriteria5 {
 
 impl TradePartyQueryCriteria5 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.oprtr.validate() { return Err(e); }
-		if let Some(ref val) = self.rptg_ctr_pty { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.rptg_ctr_pty_brnch { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.othr_ctr_pty { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.othr_ctr_pty_brnch { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.bnfcry { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.submitg_agt { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.brkr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.ccp { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.agt_lndr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.trpty_agt { if let Err(e) = val.validate() { return Err(e); } }
+		self.oprtr.validate()?;
+		if let Some(ref val) = self.rptg_ctr_pty { val.validate()? }
+		if let Some(ref val) = self.rptg_ctr_pty_brnch { val.validate()? }
+		if let Some(ref val) = self.othr_ctr_pty { val.validate()? }
+		if let Some(ref val) = self.othr_ctr_pty_brnch { val.validate()? }
+		if let Some(ref val) = self.bnfcry { val.validate()? }
+		if let Some(ref val) = self.submitg_agt { val.validate()? }
+		if let Some(ref val) = self.brkr { val.validate()? }
+		if let Some(ref val) = self.ccp { val.validate()? }
+		if let Some(ref val) = self.agt_lndr { val.validate()? }
+		if let Some(ref val) = self.trpty_agt { val.validate()? }
 		Ok(())
 	}
 }
@@ -893,10 +893,10 @@ pub struct TradeQueryCriteria10 {
 
 impl TradeQueryCriteria10 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.trad_pty_crit { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.trad_tp_crit { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.tm_crit { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.othr_crit { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.trad_pty_crit { val.validate()? }
+		if let Some(ref val) = self.trad_tp_crit { val.validate()? }
+		if let Some(ref val) = self.tm_crit { val.validate()? }
+		if let Some(ref val) = self.othr_crit { val.validate()? }
 		Ok(())
 	}
 }
@@ -919,8 +919,8 @@ pub struct TradeQueryExecutionFrequency3 {
 
 impl TradeQueryExecutionFrequency3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.frqcy_tp.validate() { return Err(e); }
-		if let Some(ref vec) = self.dlvry_day { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.frqcy_tp.validate()?;
+		if let Some(ref vec) = self.dlvry_day { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -949,7 +949,7 @@ impl TradeRecurrentQuery5 {
 		if self.qry_tp.chars().count() > 1000 {
 			return Err(ValidationError::new(1002, "qry_tp exceeds the maximum length of 1000".to_string()));
 		}
-		if let Err(e) = self.frqcy.validate() { return Err(e); }
+		self.frqcy.validate()?;
 		Ok(())
 	}
 }
@@ -970,8 +970,8 @@ pub struct TradeReportQuery13Choice {
 
 impl TradeReportQuery13Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.ad_hoc_qry { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.rcrnt_qry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.ad_hoc_qry { val.validate()? }
+		if let Some(ref val) = self.rcrnt_qry { val.validate()? }
 		Ok(())
 	}
 }
@@ -994,9 +994,9 @@ pub struct TradeTypeQueryCriteria2 {
 
 impl TradeTypeQueryCriteria2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.oprtr.validate() { return Err(e); }
-		if let Some(ref vec) = self.scties_fincg_tx_tp { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.coll_cmpnt_tp { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.oprtr.validate()?;
+		if let Some(ref vec) = self.scties_fincg_tx_tp { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.coll_cmpnt_tp { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
