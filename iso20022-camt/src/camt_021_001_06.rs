@@ -80,7 +80,7 @@ pub struct ErrorHandling5 {
 
 impl ErrorHandling5 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.err.validate() { return Err(e); }
+		self.err.validate()?;
 		if let Some(ref val) = self.desc {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "desc is shorter than the minimum length of 1".to_string()));
@@ -111,7 +111,7 @@ pub struct GeneralBusinessInformation1 {
 
 impl GeneralBusinessInformation1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.qlfr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.qlfr { val.validate()? }
 		if let Some(ref val) = self.sbjt {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "sbjt is shorter than the minimum length of 1".to_string()));
@@ -148,8 +148,8 @@ pub struct GeneralBusinessOrError7Choice {
 
 impl GeneralBusinessOrError7Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref vec) = self.oprl_err { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.biz_rpt { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.oprl_err { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.biz_rpt { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -170,8 +170,8 @@ pub struct GeneralBusinessOrError8Choice {
 
 impl GeneralBusinessOrError8Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref vec) = self.biz_err { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.gnl_biz { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref vec) = self.biz_err { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.gnl_biz { val.validate()? }
 		Ok(())
 	}
 }
@@ -198,7 +198,7 @@ impl GeneralBusinessReport6 {
 		if self.biz_inf_ref.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "biz_inf_ref exceeds the maximum length of 35".to_string()));
 		}
-		if let Err(e) = self.gnl_biz_or_err.validate() { return Err(e); }
+		self.gnl_biz_or_err.validate()?;
 		Ok(())
 	}
 }
@@ -263,7 +263,7 @@ pub struct InformationQualifierType1 {
 
 impl InformationQualifierType1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.prty { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.prty { val.validate()? }
 		Ok(())
 	}
 }
@@ -296,8 +296,8 @@ impl MessageHeader7 {
 		if self.msg_id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "msg_id exceeds the maximum length of 35".to_string()));
 		}
-		if let Some(ref val) = self.req_tp { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.orgnl_biz_qry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.req_tp { val.validate()? }
+		if let Some(ref val) = self.orgnl_biz_qry { val.validate()? }
 		if let Some(ref val) = self.qry_nm {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "qry_nm is shorter than the minimum length of 1".to_string()));
@@ -403,7 +403,7 @@ impl RequestType4Choice {
 				return Err(ValidationError::new(1002, "enqry exceeds the maximum length of 4".to_string()));
 			}
 		}
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -426,9 +426,9 @@ pub struct ReturnGeneralBusinessInformationV06 {
 
 impl ReturnGeneralBusinessInformationV06 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.msg_hdr.validate() { return Err(e); }
-		if let Err(e) = self.rpt_or_err.validate() { return Err(e); }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.msg_hdr.validate()?;
+		self.rpt_or_err.validate()?;
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -457,7 +457,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

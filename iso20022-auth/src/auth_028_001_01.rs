@@ -82,7 +82,7 @@ impl GenericValidationRuleIdentification1 {
 				return Err(ValidationError::new(1002, "desc exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		if let Some(ref val) = self.issr {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
@@ -113,9 +113,9 @@ pub struct MoneyMarketStatisticalReportStatusAdviceV01 {
 
 impl MoneyMarketStatisticalReportStatusAdviceV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.sts_rpt_hdr.validate() { return Err(e); }
-		if let Some(ref vec) = self.tx_sts { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.sts_rpt_hdr.validate()?;
+		if let Some(ref vec) = self.tx_sts { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -144,9 +144,9 @@ impl MoneyMarketStatusReportHeader1 {
 		if !pattern.is_match(&self.rptg_agt) {
 			return Err(ValidationError::new(1005, "rptg_agt does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.rptg_prd.validate() { return Err(e); }
-		if let Err(e) = self.rpt_sts.validate() { return Err(e); }
-		if let Some(ref vec) = self.vldtn_rule { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.rptg_prd.validate()?;
+		self.rpt_sts.validate()?;
+		if let Some(ref vec) = self.vldtn_rule { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -191,13 +191,13 @@ impl MoneyMarketTransactionStatus2 {
 		}
 		if let Some(ref val) = self.brnch_id {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "brnch_id does not match the required pattern".to_string()));
 			}
 		}
-		if let Err(e) = self.sts.validate() { return Err(e); }
-		if let Some(ref vec) = self.vldtn_rule { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.sts.validate()?;
+		if let Some(ref vec) = self.vldtn_rule { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -284,7 +284,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

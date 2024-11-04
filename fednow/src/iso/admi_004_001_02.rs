@@ -94,7 +94,7 @@ pub struct SystemEventNotificationV02 {
 
 impl SystemEventNotificationV02 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.evt_inf.validate() { return Err(e); }
+		self.evt_inf.validate()?;
 		Ok(())
 	}
 }

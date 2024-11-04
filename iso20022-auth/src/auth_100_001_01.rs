@@ -164,7 +164,7 @@ impl OtherIdentification1 {
 				return Err(ValidationError::new(1002, "sfx exceeds the maximum length of 16".to_string()));
 			}
 		}
-		if let Err(e) = self.tp.validate() { return Err(e); }
+		self.tp.validate()?;
 		Ok(())
 	}
 }
@@ -228,7 +228,7 @@ impl SecuritiesSettlementSystemIdentification2 {
 		}
 		if let Some(ref val) = self.ctry_of_jursdctn {
 			let pattern = Regex::new("[A-Z]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "ctry_of_jursdctn does not match the required pattern".to_string()));
 			}
 		}
@@ -242,11 +242,11 @@ impl SecuritiesSettlementSystemIdentification2 {
 		}
 		if let Some(ref val) = self.lei {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "lei does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref vec) = self.rspnsbl_pty { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.rspnsbl_pty { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -271,11 +271,11 @@ impl SecurityIdentification19 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.isin {
 			let pattern = Regex::new("[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "isin does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref vec) = self.othr_id { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.othr_id { for item in vec { item.validate()? } }
 		if let Some(ref val) = self.desc {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "desc is shorter than the minimum length of 1".to_string()));
@@ -304,8 +304,8 @@ pub struct SettlementDailyFailureReason1Choice {
 
 impl SettlementDailyFailureReason1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.data_set_actn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.data { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.data_set_actn { val.validate()? }
+		if let Some(ref val) = self.data { val.validate()? }
 		Ok(())
 	}
 }
@@ -326,8 +326,8 @@ pub struct SettlementDailyFailureReason3 {
 
 impl SettlementDailyFailureReason3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.faild_scties.validate() { return Err(e); }
-		if let Err(e) = self.faild_csh.validate() { return Err(e); }
+		self.faild_scties.validate()?;
+		self.faild_csh.validate()?;
 		Ok(())
 	}
 }
@@ -392,7 +392,7 @@ impl SettlementFailsCurrency2 {
 		if !pattern.is_match(&self.ccy) {
 			return Err(ValidationError::new(1005, "ccy does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.data.validate() { return Err(e); }
+		self.data.validate()?;
 		Ok(())
 	}
 }
@@ -413,8 +413,8 @@ pub struct SettlementFailsDailyCSD1Choice {
 
 impl SettlementFailsDailyCSD1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.data_set_actn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.data { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.data_set_actn { val.validate()? }
+		if let Some(ref val) = self.data { val.validate()? }
 		Ok(())
 	}
 }
@@ -435,8 +435,8 @@ pub struct SettlementFailsDailyCSD3 {
 
 impl SettlementFailsDailyCSD3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.intra_csd.validate() { return Err(e); }
-		if let Err(e) = self.cross_csd.validate() { return Err(e); }
+		self.intra_csd.validate()?;
+		self.cross_csd.validate()?;
 		Ok(())
 	}
 }
@@ -457,7 +457,7 @@ pub struct SettlementFailsDailyData3 {
 
 impl SettlementFailsDailyData3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.daly_rcrd.validate() { return Err(e); }
+		self.daly_rcrd.validate()?;
 		Ok(())
 	}
 }
@@ -478,8 +478,8 @@ pub struct SettlementFailsDailyInstructionType1Choice {
 
 impl SettlementFailsDailyInstructionType1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.data_set_actn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.data { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.data_set_actn { val.validate()? }
+		if let Some(ref val) = self.data { val.validate()? }
 		Ok(())
 	}
 }
@@ -504,10 +504,10 @@ pub struct SettlementFailsDailyInstructionType3 {
 
 impl SettlementFailsDailyInstructionType3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.dlvry_vrss_pmt.validate() { return Err(e); }
-		if let Err(e) = self.dlvry_wth_pmt.validate() { return Err(e); }
-		if let Err(e) = self.pmt_free_of_dlvry.validate() { return Err(e); }
-		if let Err(e) = self.free_of_pmt.validate() { return Err(e); }
+		self.dlvry_vrss_pmt.validate()?;
+		self.dlvry_wth_pmt.validate()?;
+		self.pmt_free_of_dlvry.validate()?;
+		self.free_of_pmt.validate()?;
 		Ok(())
 	}
 }
@@ -542,15 +542,15 @@ pub struct SettlementFailsDailyInstrument3 {
 
 impl SettlementFailsDailyInstrument3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.eqty.validate() { return Err(e); }
-		if let Err(e) = self.svrgn_debt.validate() { return Err(e); }
-		if let Err(e) = self.bd.validate() { return Err(e); }
-		if let Err(e) = self.othr_trfbl_scties.validate() { return Err(e); }
-		if let Err(e) = self.xchg_tradd_fnds.validate() { return Err(e); }
-		if let Err(e) = self.cllctv_invstmt_udrtkgs.validate() { return Err(e); }
-		if let Err(e) = self.mny_mkt_instrm.validate() { return Err(e); }
-		if let Err(e) = self.emssn_allwnc.validate() { return Err(e); }
-		if let Err(e) = self.othr.validate() { return Err(e); }
+		self.eqty.validate()?;
+		self.svrgn_debt.validate()?;
+		self.bd.validate()?;
+		self.othr_trfbl_scties.validate()?;
+		self.xchg_tradd_fnds.validate()?;
+		self.cllctv_invstmt_udrtkgs.validate()?;
+		self.mny_mkt_instrm.validate()?;
+		self.emssn_allwnc.validate()?;
+		self.othr.validate()?;
 		Ok(())
 	}
 }
@@ -571,8 +571,8 @@ pub struct SettlementFailsDailyTransactionType1Choice {
 
 impl SettlementFailsDailyTransactionType1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.data_set_actn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.data { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.data_set_actn { val.validate()? }
+		if let Some(ref val) = self.data { val.validate()? }
 		Ok(())
 	}
 }
@@ -599,11 +599,11 @@ pub struct SettlementFailsDailyTransactionType3 {
 
 impl SettlementFailsDailyTransactionType3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.scties_buy_or_sell.validate() { return Err(e); }
-		if let Err(e) = self.coll_mgmt_opr.validate() { return Err(e); }
-		if let Err(e) = self.scties_lndg_or_brrwg.validate() { return Err(e); }
-		if let Err(e) = self.rp_agrmt.validate() { return Err(e); }
-		if let Err(e) = self.othr.validate() { return Err(e); }
+		self.scties_buy_or_sell.validate()?;
+		self.coll_mgmt_opr.validate()?;
+		self.scties_lndg_or_brrwg.validate()?;
+		self.rp_agrmt.validate()?;
+		self.othr.validate()?;
 		Ok(())
 	}
 }
@@ -636,14 +636,14 @@ pub struct SettlementFailsData3 {
 
 impl SettlementFailsData3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.ttl.validate() { return Err(e); }
-		if let Some(ref val) = self.ptcpt_in_fail { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.fls_per_ccy { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref val) = self.fls_per_fin_instrm_tp { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.scties_in_fail { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fls_per_tx_tp { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.ttl_sttlm_pnlties { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.failr_rsn.validate() { return Err(e); }
+		self.ttl.validate()?;
+		if let Some(ref val) = self.ptcpt_in_fail { val.validate()? }
+		if let Some(ref vec) = self.fls_per_ccy { for item in vec { item.validate()? } }
+		if let Some(ref val) = self.fls_per_fin_instrm_tp { val.validate()? }
+		if let Some(ref val) = self.scties_in_fail { val.validate()? }
+		if let Some(ref val) = self.fls_per_tx_tp { val.validate()? }
+		if let Some(ref val) = self.ttl_sttlm_pnlties { val.validate()? }
+		self.failr_rsn.validate()?;
 		Ok(())
 	}
 }
@@ -678,15 +678,15 @@ pub struct SettlementFailsInstrument2 {
 
 impl SettlementFailsInstrument2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.eqty.validate() { return Err(e); }
-		if let Err(e) = self.svrgn_debt.validate() { return Err(e); }
-		if let Err(e) = self.bd.validate() { return Err(e); }
-		if let Err(e) = self.othr_trfbl_scties.validate() { return Err(e); }
-		if let Err(e) = self.xchg_tradd_fnds.validate() { return Err(e); }
-		if let Err(e) = self.cllctv_invstmt_udrtkgs.validate() { return Err(e); }
-		if let Err(e) = self.mny_mkt_instrm.validate() { return Err(e); }
-		if let Err(e) = self.emssn_allwnc.validate() { return Err(e); }
-		if let Err(e) = self.othr.validate() { return Err(e); }
+		self.eqty.validate()?;
+		self.svrgn_debt.validate()?;
+		self.bd.validate()?;
+		self.othr_trfbl_scties.validate()?;
+		self.xchg_tradd_fnds.validate()?;
+		self.cllctv_invstmt_udrtkgs.validate()?;
+		self.mny_mkt_instrm.validate()?;
+		self.emssn_allwnc.validate()?;
+		self.othr.validate()?;
 		Ok(())
 	}
 }
@@ -711,10 +711,10 @@ pub struct SettlementFailsMonthlyReportV01 {
 
 impl SettlementFailsMonthlyReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rpt_hdr.validate() { return Err(e); }
-		if let Err(e) = self.mnthly_aggt.validate() { return Err(e); }
-		for item in &self.daly_data { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.rpt_hdr.validate()?;
+		self.mnthly_aggt.validate()?;
+		for item in &self.daly_data { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -745,7 +745,7 @@ impl SettlementFailsParticipant1 {
 		if !pattern.is_match(&self.rank) {
 			return Err(ValidationError::new(1005, "rank does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.aggt.validate() { return Err(e); }
+		self.aggt.validate()?;
 		Ok(())
 	}
 }
@@ -766,8 +766,8 @@ pub struct SettlementFailsParticipantRange1 {
 
 impl SettlementFailsParticipantRange1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.hghst_in_vol { if let Err(e) = item.validate() { return Err(e); } }
-		for item in &self.hghst_in_val { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.hghst_in_vol { item.validate()? }
+		for item in &self.hghst_in_val { item.validate()? }
 		Ok(())
 	}
 }
@@ -794,13 +794,13 @@ pub struct SettlementFailsReportHeader2 {
 
 impl SettlementFailsReportHeader2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rptg_prd.validate() { return Err(e); }
+		self.rptg_prd.validate()?;
 		let pattern = Regex::new("[A-Z]{3,3}").unwrap();
 		if !pattern.is_match(&self.ccy) {
 			return Err(ValidationError::new(1005, "ccy does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.rpt_sts.validate() { return Err(e); }
-		if let Err(e) = self.scties_sttlm_sys.validate() { return Err(e); }
+		self.rpt_sts.validate()?;
+		self.scties_sttlm_sys.validate()?;
 		Ok(())
 	}
 }
@@ -821,7 +821,7 @@ pub struct SettlementFailsSecurities1 {
 
 impl SettlementFailsSecurities1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.fin_instrm_id.validate() { return Err(e); }
+		self.fin_instrm_id.validate()?;
 		let pattern = Regex::new("[0-9]{1,2}").unwrap();
 		if !pattern.is_match(&self.rank) {
 			return Err(ValidationError::new(1005, "rank does not match the required pattern".to_string()));
@@ -846,8 +846,8 @@ pub struct SettlementFailsSecuritiesRange1 {
 
 impl SettlementFailsSecuritiesRange1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.hghst_in_vol { if let Err(e) = item.validate() { return Err(e); } }
-		for item in &self.hghst_in_val { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.hghst_in_vol { item.validate()? }
+		for item in &self.hghst_in_val { item.validate()? }
 		Ok(())
 	}
 }
@@ -874,11 +874,11 @@ pub struct SettlementFailsTransactionType2 {
 
 impl SettlementFailsTransactionType2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.scties_buy_or_sell.validate() { return Err(e); }
-		if let Err(e) = self.coll_mgmt_opr.validate() { return Err(e); }
-		if let Err(e) = self.scties_lndg_or_brrwg.validate() { return Err(e); }
-		if let Err(e) = self.rp_agrmt.validate() { return Err(e); }
-		if let Err(e) = self.othr.validate() { return Err(e); }
+		self.scties_buy_or_sell.validate()?;
+		self.coll_mgmt_opr.validate()?;
+		self.scties_lndg_or_brrwg.validate()?;
+		self.rp_agrmt.validate()?;
+		self.othr.validate()?;
 		Ok(())
 	}
 }
@@ -931,7 +931,7 @@ pub struct SettlementFailureReason3 {
 
 impl SettlementFailureReason3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.desc { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.desc { item.validate()? }
 		Ok(())
 	}
 }
@@ -956,10 +956,10 @@ pub struct SettlementTotalData1 {
 
 impl SettlementTotalData1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.sttld.validate() { return Err(e); }
-		if let Err(e) = self.faild.validate() { return Err(e); }
-		if let Err(e) = self.ttl.validate() { return Err(e); }
-		if let Err(e) = self.faild_rate.validate() { return Err(e); }
+		self.sttld.validate()?;
+		self.faild.validate()?;
+		self.ttl.validate()?;
+		self.faild_rate.validate()?;
 		Ok(())
 	}
 }
@@ -980,8 +980,8 @@ pub struct SettlementTotalData1Choice {
 
 impl SettlementTotalData1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.data_set_actn { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.data { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.data_set_actn { val.validate()? }
+		if let Some(ref val) = self.data { val.validate()? }
 		Ok(())
 	}
 }
@@ -1010,7 +1010,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

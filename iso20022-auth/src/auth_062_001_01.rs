@@ -44,8 +44,8 @@ pub struct CCPLiquidityStressTestingDefinitionReportV01 {
 
 impl CCPLiquidityStressTestingDefinitionReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.lqdty_strss_scnro_def { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.lqdty_strss_scnro_def { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -124,7 +124,7 @@ pub struct LiquidityStressScenarioDefinition1 {
 
 impl LiquidityStressScenarioDefinition1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
+		self.id.validate()?;
 		if self.desc.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "desc is shorter than the minimum length of 1".to_string()));
 		}
@@ -171,7 +171,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

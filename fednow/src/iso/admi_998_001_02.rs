@@ -50,11 +50,11 @@ pub struct AdministrationProprietaryMessageV02 {
 
 impl AdministrationProprietaryMessageV02 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.msg_id { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.rltd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prvs { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.othr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.prtry_data.validate() { return Err(e); }
+		if let Some(ref val) = self.msg_id { val.validate()? }
+		if let Some(ref val) = self.rltd { val.validate()? }
+		if let Some(ref val) = self.prvs { val.validate()? }
+		if let Some(ref val) = self.othr { val.validate()? }
+		self.prtry_data.validate()?;
 		Ok(())
 	}
 }
@@ -105,7 +105,7 @@ impl ProprietaryData5 {
 		if self.tp.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "tp exceeds the maximum length of 35".to_string()));
 		}
-		if let Err(e) = self.data.validate() { return Err(e); }
+		self.data.validate()?;
 		Ok(())
 	}
 }

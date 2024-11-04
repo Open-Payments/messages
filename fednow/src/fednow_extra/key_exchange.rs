@@ -86,7 +86,7 @@ impl FedNowMessageSignatureKey {
 		}
 		if let Some(ref val) = self.algorithm {
 			let pattern = Regex::new("[A-Za-z0-9\\-_]{1,50}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "algorithm does not match the required pattern".to_string()));
 			}
 		}
@@ -108,7 +108,7 @@ pub struct KeyAddition {
 
 impl KeyAddition {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.key { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.key { val.validate()? }
 		Ok(())
 	}
 }
@@ -141,7 +141,7 @@ impl KeyRevocation {
 		}
 		if let Some(ref val) = self.fed_now_key_id {
 			let pattern = Regex::new("[A-Za-z0-9\\-_]{1,300}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "fed_now_key_id does not match the required pattern".to_string()));
 			}
 		}
@@ -165,7 +165,7 @@ pub struct FedNowMessageSignatureKeyExchange {
 
 impl FedNowMessageSignatureKeyExchange {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.key_addition { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.key_addition { val.validate()? }
 		Ok(())
 	}
 }
@@ -244,8 +244,8 @@ pub struct FedNowPublicKeyResponse {
 
 impl FedNowPublicKeyResponse {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.fed_now_message_signature_key_status.validate() { return Err(e); }
-		if let Err(e) = self.fed_now_message_signature_key.validate() { return Err(e); }
+		self.fed_now_message_signature_key_status.validate()?;
+		self.fed_now_message_signature_key.validate()?;
 		Ok(())
 	}
 }
@@ -264,7 +264,7 @@ pub struct FedNowPublicKeyResponses {
 
 impl FedNowPublicKeyResponses {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.public_keys { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.public_keys { item.validate()? }
 		Ok(())
 	}
 }

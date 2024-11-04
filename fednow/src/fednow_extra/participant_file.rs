@@ -44,7 +44,7 @@ pub struct FedNowParticipantFile1 {
 
 impl FedNowParticipantFile1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.ptcpt_prfl { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.ptcpt_prfl { item.validate()? }
 		Ok(())
 	}
 }
@@ -77,7 +77,7 @@ impl FedNowParticipantProfile1 {
 		if self.nm.chars().count() > 140 {
 			return Err(ValidationError::new(1002, "nm exceeds the maximum length of 140".to_string()));
 		}
-		for item in &self.svcs { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.svcs { item.validate()? }
 		Ok(())
 	}
 }
@@ -119,7 +119,7 @@ pub struct Admi998SuplDataV01 {
 
 impl Admi998SuplDataV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.ptcpt_file.validate() { return Err(e); }
+		self.ptcpt_file.validate()?;
 		Ok(())
 	}
 }

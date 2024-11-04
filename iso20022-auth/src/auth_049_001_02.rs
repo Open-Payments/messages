@@ -74,8 +74,8 @@ pub struct FinancialInstrumentReportingMarketIdentificationCodeReportV02 {
 
 impl FinancialInstrumentReportingMarketIdentificationCodeReportV02 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.mkt_id { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.mkt_id { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -182,8 +182,8 @@ impl MarketIdentification95 {
 		if !pattern.is_match(&self.sgmt) {
 			return Err(ValidationError::new(1005, "sgmt does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.tp.validate() { return Err(e); }
-		if let Some(ref val) = self.ctgy { if let Err(e) = val.validate() { return Err(e); } }
+		self.tp.validate()?;
+		if let Some(ref val) = self.ctgy { val.validate()? }
 		if self.instn_nm.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "instn_nm is shorter than the minimum length of 1".to_string()));
 		}
@@ -206,7 +206,7 @@ impl MarketIdentification95 {
 				return Err(ValidationError::new(1002, "city exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Err(e) = self.ctry.validate() { return Err(e); }
+		self.ctry.validate()?;
 		if let Some(ref val) = self.authrty_nm {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "authrty_nm is shorter than the minimum length of 1".to_string()));
@@ -231,8 +231,8 @@ impl MarketIdentification95 {
 				return Err(ValidationError::new(1002, "note exceeds the maximum length of 450".to_string()));
 			}
 		}
-		if let Some(ref val) = self.mod_attr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.vldty_prd.validate() { return Err(e); }
+		if let Some(ref val) = self.mod_attr { val.validate()? }
+		self.vldty_prd.validate()?;
 		Ok(())
 	}
 }
@@ -302,7 +302,7 @@ pub struct Period4Choice {
 
 impl Period4Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.fr_dt_to_dt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.fr_dt_to_dt { val.validate()? }
 		Ok(())
 	}
 }
@@ -331,7 +331,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

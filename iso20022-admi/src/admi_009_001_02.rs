@@ -90,12 +90,12 @@ impl StaticDataRequestV02 {
 		}
 		if let Some(ref val) = self.sttlm_ssn_idr {
 			let pattern = Regex::new("[a-zA-Z0-9]{4}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "sttlm_ssn_idr does not match the required pattern".to_string()));
 			}
 		}
-		if let Err(e) = self.data_req_dtls.validate() { return Err(e); }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.data_req_dtls.validate()?;
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -124,7 +124,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

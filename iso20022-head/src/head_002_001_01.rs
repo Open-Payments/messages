@@ -54,7 +54,7 @@ impl ApplicationSpecifics1 {
 				return Err(ValidationError::new(1002, "sys_usr exceeds the maximum length of 140".to_string()));
 			}
 		}
-		if let Some(ref val) = self.sgntr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.sgntr { val.validate()? }
 		Ok(())
 	}
 }
@@ -75,8 +75,8 @@ pub struct BusinessFileHeaderV01 {
 
 impl BusinessFileHeaderV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.pyld_desc.validate() { return Err(e); }
-		if let Some(ref vec) = self.pyld { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.pyld_desc.validate()?;
+		if let Some(ref vec) = self.pyld { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -171,15 +171,15 @@ pub struct PayloadDescription2 {
 
 impl PayloadDescription2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.pyld_data.validate() { return Err(e); }
-		if let Some(ref val) = self.appl_spcfcs { if let Err(e) = val.validate() { return Err(e); } }
+		self.pyld_data.validate()?;
+		if let Some(ref val) = self.appl_spcfcs { val.validate()? }
 		if self.pyld_tp.chars().count() < 1 {
 			return Err(ValidationError::new(1001, "pyld_tp is shorter than the minimum length of 1".to_string()));
 		}
 		if self.pyld_tp.chars().count() > 256 {
 			return Err(ValidationError::new(1002, "pyld_tp exceeds the maximum length of 256".to_string()));
 		}
-		if let Some(ref vec) = self.mnfst_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.mnfst_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }

@@ -243,8 +243,8 @@ pub struct AssetClassDetailedSubProductType1Choice {
 
 impl AssetClassDetailedSubProductType1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -267,9 +267,9 @@ pub struct AssetHolding3 {
 
 impl AssetHolding3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.pst_hrcut_val.validate() { return Err(e); }
-		if let Err(e) = self.asst_tp.validate() { return Err(e); }
-		if let Err(e) = self.coll_rqrmnt.validate() { return Err(e); }
+		self.pst_hrcut_val.validate()?;
+		self.asst_tp.validate()?;
+		self.coll_rqrmnt.validate()?;
 		Ok(())
 	}
 }
@@ -298,12 +298,12 @@ pub struct AssetHolding3Choice {
 
 impl AssetHolding3Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.gold { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.trpty { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.csh { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.scty { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.grnt { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.cmmdty { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.gold { val.validate()? }
+		if let Some(ref val) = self.trpty { val.validate()? }
+		if let Some(ref val) = self.csh { val.validate()? }
+		if let Some(ref val) = self.scty { val.validate()? }
+		if let Some(ref val) = self.grnt { val.validate()? }
+		if let Some(ref val) = self.cmmdty { val.validate()? }
 		Ok(())
 	}
 }
@@ -324,8 +324,8 @@ pub struct CCPInteroperabilityReportV01 {
 
 impl CCPInteroperabilityReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.intrprblty_ccp { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.intrprblty_ccp { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -367,8 +367,8 @@ pub struct CollateralType22Choice {
 
 impl CollateralType22Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.gnl_coll { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.spcfc_coll { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.gnl_coll { val.validate()? }
+		if let Some(ref val) = self.spcfc_coll { val.validate()? }
 		Ok(())
 	}
 }
@@ -389,8 +389,8 @@ pub struct Commodity2 {
 
 impl Commodity2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.mkt_val.validate() { return Err(e); }
-		if let Err(e) = self.cmmdty_tp.validate() { return Err(e); }
+		self.mkt_val.validate()?;
+		self.cmmdty_tp.validate()?;
 		Ok(())
 	}
 }
@@ -439,8 +439,8 @@ pub struct GeneralCollateral4 {
 
 impl GeneralCollateral4 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref vec) = self.fin_instrm_id { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Err(e) = self.mkt_val.validate() { return Err(e); }
+		if let Some(ref vec) = self.fin_instrm_id { for item in vec { item.validate()? } }
+		self.mkt_val.validate()?;
 		Ok(())
 	}
 }
@@ -557,8 +557,8 @@ pub struct Guarantee1 {
 
 impl Guarantee1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.prvdr.validate() { return Err(e); }
-		if let Err(e) = self.amt.validate() { return Err(e); }
+		self.prvdr.validate()?;
+		self.amt.validate()?;
 		Ok(())
 	}
 }
@@ -585,15 +585,15 @@ pub struct InteroperabilityCCP1 {
 
 impl InteroperabilityCCP1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		for item in &self.ttl_initl_mrgn { if let Err(e) = item.validate() { return Err(e); } }
+		self.id.validate()?;
+		for item in &self.ttl_initl_mrgn { item.validate()? }
 		if let Some(ref val) = self.trds_clrd {
 			if *val < 0.000000 {
 				return Err(ValidationError::new(1003, "trds_clrd is less than the minimum value of 0.000000".to_string()));
 			}
 		}
-		for item in &self.grss_ntnl_amt { if let Err(e) = item.validate() { return Err(e); } }
-		for item in &self.asst_hldg { if let Err(e) = item.validate() { return Err(e); } }
+		for item in &self.grss_ntnl_amt { item.validate()? }
+		for item in &self.asst_hldg { item.validate()? }
 		Ok(())
 	}
 }
@@ -616,11 +616,11 @@ impl PartyIdentification118Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.lei {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "lei does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -670,8 +670,8 @@ impl SecurityIdentificationAndAmount1 {
 		if !pattern.is_match(&self.id) {
 			return Err(ValidationError::new(1005, "id does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.mkt_val.validate() { return Err(e); }
-		if let Err(e) = self.fin_instrm_tp.validate() { return Err(e); }
+		self.mkt_val.validate()?;
+		self.fin_instrm_tp.validate()?;
 		Ok(())
 	}
 }
@@ -692,8 +692,8 @@ pub struct SpecificCollateral3 {
 
 impl SpecificCollateral3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.fin_instrm_id.validate() { return Err(e); }
-		if let Err(e) = self.mkt_val.validate() { return Err(e); }
+		self.fin_instrm_id.validate()?;
+		self.mkt_val.validate()?;
 		Ok(())
 	}
 }
@@ -722,7 +722,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }
@@ -759,8 +759,8 @@ pub struct TripartyCollateralAndAmount1 {
 
 impl TripartyCollateralAndAmount1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.trpty.validate() { return Err(e); }
-		if let Err(e) = self.coll_tp.validate() { return Err(e); }
+		self.trpty.validate()?;
+		self.coll_tp.validate()?;
 		Ok(())
 	}
 }

@@ -90,8 +90,8 @@ pub struct InternalisationData1 {
 
 impl InternalisationData1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.aggt.validate() { return Err(e); }
-		if let Err(e) = self.faild_rate.validate() { return Err(e); }
+		self.aggt.validate()?;
+		self.faild_rate.validate()?;
 		Ok(())
 	}
 }
@@ -114,9 +114,9 @@ pub struct InternalisationData2 {
 
 impl InternalisationData2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.sttld.validate() { return Err(e); }
-		if let Err(e) = self.faild.validate() { return Err(e); }
-		if let Err(e) = self.ttl.validate() { return Err(e); }
+		self.sttld.validate()?;
+		self.faild.validate()?;
+		self.ttl.validate()?;
 		Ok(())
 	}
 }
@@ -187,7 +187,7 @@ impl IssuerCSDIdentification1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.lei {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "lei does not match the required pattern".to_string()));
 			}
 		}
@@ -197,7 +197,7 @@ impl IssuerCSDIdentification1 {
 		}
 		if let Some(ref val) = self.ctry {
 			let pattern = Regex::new("[A-Z]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "ctry does not match the required pattern".to_string()));
 			}
 		}
@@ -229,12 +229,12 @@ pub struct IssuerCSDReport1 {
 
 impl IssuerCSDReport1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Err(e) = self.ovrll_ttl.validate() { return Err(e); }
-		if let Err(e) = self.fin_instrm.validate() { return Err(e); }
-		if let Err(e) = self.tx_tp.validate() { return Err(e); }
-		if let Err(e) = self.clnt_tp.validate() { return Err(e); }
-		if let Err(e) = self.ttl_csh_trf.validate() { return Err(e); }
+		self.id.validate()?;
+		self.ovrll_ttl.validate()?;
+		self.fin_instrm.validate()?;
+		self.tx_tp.validate()?;
+		self.clnt_tp.validate()?;
+		self.ttl_csh_trf.validate()?;
 		Ok(())
 	}
 }
@@ -263,12 +263,12 @@ pub struct SettlementInternaliser1 {
 
 impl SettlementInternaliser1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Err(e) = self.ovrll_ttl.validate() { return Err(e); }
-		if let Err(e) = self.fin_instrm.validate() { return Err(e); }
-		if let Err(e) = self.tx_tp.validate() { return Err(e); }
-		if let Err(e) = self.clnt_tp.validate() { return Err(e); }
-		if let Err(e) = self.ttl_csh_trf.validate() { return Err(e); }
+		self.id.validate()?;
+		self.ovrll_ttl.validate()?;
+		self.fin_instrm.validate()?;
+		self.tx_tp.validate()?;
+		self.clnt_tp.validate()?;
+		self.ttl_csh_trf.validate()?;
 		Ok(())
 	}
 }
@@ -289,8 +289,8 @@ pub struct SettlementInternaliserClientType1 {
 
 impl SettlementInternaliserClientType1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.prfssnl.validate() { return Err(e); }
-		if let Err(e) = self.rtl.validate() { return Err(e); }
+		self.prfssnl.validate()?;
+		self.rtl.validate()?;
 		Ok(())
 	}
 }
@@ -325,15 +325,15 @@ pub struct SettlementInternaliserFinancialInstrument1 {
 
 impl SettlementInternaliserFinancialInstrument1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.eqty.validate() { return Err(e); }
-		if let Err(e) = self.svrgn_debt.validate() { return Err(e); }
-		if let Err(e) = self.bd.validate() { return Err(e); }
-		if let Err(e) = self.othr_trfbl_scties.validate() { return Err(e); }
-		if let Err(e) = self.xchg_tradg_fnds.validate() { return Err(e); }
-		if let Err(e) = self.cllctv_invstmt_udrtkgs.validate() { return Err(e); }
-		if let Err(e) = self.mny_mkt_instrm.validate() { return Err(e); }
-		if let Err(e) = self.emssn_allwnc.validate() { return Err(e); }
-		if let Err(e) = self.othr_fin_instrms.validate() { return Err(e); }
+		self.eqty.validate()?;
+		self.svrgn_debt.validate()?;
+		self.bd.validate()?;
+		self.othr_trfbl_scties.validate()?;
+		self.xchg_tradg_fnds.validate()?;
+		self.cllctv_invstmt_udrtkgs.validate()?;
+		self.mny_mkt_instrm.validate()?;
+		self.emssn_allwnc.validate()?;
+		self.othr_fin_instrms.validate()?;
 		Ok(())
 	}
 }
@@ -362,14 +362,14 @@ impl SettlementInternaliserIdentification1 {
 		if !pattern.is_match(&self.lei) {
 			return Err(ValidationError::new(1005, "lei does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.rspnsbl_prsn.validate() { return Err(e); }
+		self.rspnsbl_prsn.validate()?;
 		let pattern = Regex::new("[A-Z]{2,2}").unwrap();
 		if !pattern.is_match(&self.ctry) {
 			return Err(ValidationError::new(1005, "ctry does not match the required pattern".to_string()));
 		}
 		if let Some(ref val) = self.brnch_id {
 			let pattern = Regex::new("[A-Z]{2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "brnch_id does not match the required pattern".to_string()));
 			}
 		}
@@ -401,7 +401,7 @@ impl SettlementInternaliserReportHeader1 {
 		if !pattern.is_match(&self.ccy) {
 			return Err(ValidationError::new(1005, "ccy does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.rpt_sts.validate() { return Err(e); }
+		self.rpt_sts.validate()?;
 		Ok(())
 	}
 }
@@ -426,10 +426,10 @@ pub struct SettlementInternaliserReportV01 {
 
 impl SettlementInternaliserReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rpt_hdr.validate() { return Err(e); }
-		if let Err(e) = self.sttlm_intlr.validate() { return Err(e); }
-		for item in &self.issr_csd { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.rpt_hdr.validate()?;
+		self.sttlm_intlr.validate()?;
+		for item in &self.issr_csd { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -456,11 +456,11 @@ pub struct SettlementInternaliserTransactionType1 {
 
 impl SettlementInternaliserTransactionType1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.scties_buy_or_sell.validate() { return Err(e); }
-		if let Err(e) = self.coll_mgmt_opr.validate() { return Err(e); }
-		if let Err(e) = self.scties_lndg_or_brrwg.validate() { return Err(e); }
-		if let Err(e) = self.rp_agrmt.validate() { return Err(e); }
-		if let Err(e) = self.othr_txs.validate() { return Err(e); }
+		self.scties_buy_or_sell.validate()?;
+		self.coll_mgmt_opr.validate()?;
+		self.scties_lndg_or_brrwg.validate()?;
+		self.rp_agrmt.validate()?;
+		self.othr_txs.validate()?;
 		Ok(())
 	}
 }
@@ -489,7 +489,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

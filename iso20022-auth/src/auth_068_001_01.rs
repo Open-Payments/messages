@@ -84,7 +84,7 @@ pub struct AmountAndDirection102 {
 
 impl AmountAndDirection102 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.amt.validate() { return Err(e); }
+		self.amt.validate()?;
 		Ok(())
 	}
 }
@@ -105,8 +105,8 @@ pub struct CCPAccountPositionReportV01 {
 
 impl CCPAccountPositionReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.prtfl { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.prtfl { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -127,8 +127,8 @@ pub struct EndOfDayRequirement1 {
 
 impl EndOfDayRequirement1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.initl_mrgn_rqrmnt { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.vartn_mrgn_rqrmnt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.initl_mrgn_rqrmnt { val.validate()? }
+		if let Some(ref val) = self.vartn_mrgn_rqrmnt { val.validate()? }
 		Ok(())
 	}
 }
@@ -175,7 +175,7 @@ impl GenericIdentification165 {
 				return Err(ValidationError::new(1002, "issr exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		Ok(())
 	}
 }
@@ -216,12 +216,12 @@ impl Position1 {
 		if self.pdct_id.chars().count() > 256 {
 			return Err(ValidationError::new(1002, "pdct_id exceeds the maximum length of 256".to_string()));
 		}
-		if let Some(ref val) = self.rsk_rqrmnt { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.grss_ntnl.validate() { return Err(e); }
-		if let Err(e) = self.net_ntnl.validate() { return Err(e); }
-		if let Some(ref val) = self.grss_dlta_eqvt_val { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.net_dlta_eqvt_val { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.grss_mkt_val.validate() { return Err(e); }
+		if let Some(ref val) = self.rsk_rqrmnt { val.validate()? }
+		self.grss_ntnl.validate()?;
+		self.net_ntnl.validate()?;
+		if let Some(ref val) = self.grss_dlta_eqvt_val { val.validate()? }
+		if let Some(ref val) = self.net_dlta_eqvt_val { val.validate()? }
+		self.grss_mkt_val.validate()?;
 		Ok(())
 	}
 }
@@ -242,8 +242,8 @@ pub struct PositionAccount2 {
 
 impl PositionAccount2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		for item in &self.pos { if let Err(e) = item.validate() { return Err(e); } }
+		self.id.validate()?;
+		for item in &self.pos { item.validate()? }
 		Ok(())
 	}
 }
@@ -297,7 +297,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

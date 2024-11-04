@@ -124,8 +124,8 @@ pub struct Admi00200101 {
 
 impl Admi00200101 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rltd_ref.validate() { return Err(e); }
-		if let Err(e) = self.rsn.validate() { return Err(e); }
+		self.rltd_ref.validate()?;
+		self.rsn.validate()?;
 		Ok(())
 	}
 }

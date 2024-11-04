@@ -44,8 +44,8 @@ pub struct FinancialInstrumentReportingInstrumentClassificationReportV01 {
 
 impl FinancialInstrumentReportingInstrumentClassificationReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.instrm_clssfctn { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.instrm_clssfctn { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -115,7 +115,7 @@ pub struct Period4Choice {
 
 impl Period4Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.fr_dt_to_dt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.fr_dt_to_dt { val.validate()? }
 		Ok(())
 	}
 }
@@ -144,8 +144,8 @@ impl SecuritiesInstrumentClassification2 {
 		if !pattern.is_match(&self.idr) {
 			return Err(ValidationError::new(1005, "idr does not match the required pattern".to_string()));
 		}
-		if let Some(ref val) = self.mod_attr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.vldty_prd.validate() { return Err(e); }
+		if let Some(ref val) = self.mod_attr { val.validate()? }
+		self.vldty_prd.validate()?;
 		Ok(())
 	}
 }
@@ -174,7 +174,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

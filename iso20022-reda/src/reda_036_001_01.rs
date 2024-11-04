@@ -70,7 +70,7 @@ pub struct DatePeriodSearch1Choice {
 
 impl DatePeriodSearch1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.fr_to_dt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.fr_to_dt { val.validate()? }
 		Ok(())
 	}
 }
@@ -165,7 +165,7 @@ impl SecuritiesAccount19 {
 		if self.id.chars().count() > 35 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 35".to_string()));
 		}
-		if let Some(ref val) = self.tp { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.tp { val.validate()? }
 		if let Some(ref val) = self.nm {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "nm is shorter than the minimum length of 1".to_string()));
@@ -196,9 +196,9 @@ pub struct SecuritiesAccountAuditTrailQueryV01 {
 
 impl SecuritiesAccountAuditTrailQueryV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.msg_hdr { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.sch_crit.validate() { return Err(e); }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref val) = self.msg_hdr { val.validate()? }
+		self.sch_crit.validate()?;
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -219,8 +219,8 @@ pub struct SecuritiesAccountAuditTrailSearchCriteria3 {
 
 impl SecuritiesAccountAuditTrailSearchCriteria3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.scties_acct_id { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.dt_prd { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.scties_acct_id { val.validate()? }
+		if let Some(ref val) = self.dt_prd { val.validate()? }
 		Ok(())
 	}
 }
@@ -249,7 +249,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

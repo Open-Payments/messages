@@ -48,7 +48,7 @@ pub struct BackTestingMethodology1 {
 
 impl BackTestingMethodology1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rsk_mdl_tp.validate() { return Err(e); }
+		self.rsk_mdl_tp.validate()?;
 		if let Some(ref val) = self.desc {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "desc is shorter than the minimum length of 1".to_string()));
@@ -77,8 +77,8 @@ pub struct CCPBackTestingDefinitionReportV01 {
 
 impl CCPBackTestingDefinitionReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.mthdlgy { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.mthdlgy { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -141,8 +141,8 @@ pub struct ModelType1Choice {
 
 impl ModelType1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -200,7 +200,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

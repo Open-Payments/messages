@@ -72,12 +72,12 @@ pub struct AvailableFinancialResourcesAmount1 {
 
 impl AvailableFinancialResourcesAmount1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.ttl_initl_mrgn.validate() { return Err(e); }
-		if let Err(e) = self.ttl_prfndd_dflt_fnd.validate() { return Err(e); }
-		for item in &self.ccp_skin_in_the_game { if let Err(e) = item.validate() { return Err(e); } }
-		if let Err(e) = self.othr_dflt_fnd_cntrbtn.validate() { return Err(e); }
-		if let Err(e) = self.ufndd_mmb_cmmtmnt.validate() { return Err(e); }
-		if let Err(e) = self.ufndd_thrd_pty_cmmtmnt.validate() { return Err(e); }
+		self.ttl_initl_mrgn.validate()?;
+		self.ttl_prfndd_dflt_fnd.validate()?;
+		for item in &self.ccp_skin_in_the_game { item.validate()? }
+		self.othr_dflt_fnd_cntrbtn.validate()?;
+		self.ufndd_mmb_cmmtmnt.validate()?;
+		self.ufndd_thrd_pty_cmmtmnt.validate()?;
 		Ok(())
 	}
 }
@@ -100,9 +100,9 @@ pub struct CCPAvailableFinancialResourcesReportV01 {
 
 impl CCPAvailableFinancialResourcesReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.avlbl_fin_rsrcs_amt.validate() { return Err(e); }
-		if let Some(ref val) = self.othr_prfndd_rsrcs { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		self.avlbl_fin_rsrcs_amt.validate()?;
+		if let Some(ref val) = self.othr_prfndd_rsrcs { val.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -150,7 +150,7 @@ pub struct ReportingAssetBreakdown1 {
 
 impl ReportingAssetBreakdown1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rptg_asst_tp.validate() { return Err(e); }
+		self.rptg_asst_tp.validate()?;
 		if let Some(ref val) = self.id {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "id is shorter than the minimum length of 1".to_string()));
@@ -159,7 +159,7 @@ impl ReportingAssetBreakdown1 {
 				return Err(ValidationError::new(1002, "id exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.amt.validate() { return Err(e); }
+		self.amt.validate()?;
 		Ok(())
 	}
 }
@@ -188,7 +188,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

@@ -46,8 +46,8 @@ pub struct FedNowIncoming {
 
 impl FedNowIncoming {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.fed_now_technical_header { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.fed_now_incoming_message.validate() { return Err(e); }
+		if let Some(ref val) = self.fed_now_technical_header { val.validate()? }
+		self.fed_now_incoming_message.validate()?;
 		Ok(())
 	}
 }
@@ -120,26 +120,26 @@ pub struct FedNowIncomingMessage {
 
 impl FedNowIncomingMessage {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.fed_now_message_reject { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_participant_broadcast { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_retrieval_request { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_receipt_acknowledgement { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_payment_status { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_payment_return { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_customer_credit_transfer { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_institution_credit_transfer { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_payment_status_request { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_request_for_payment { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_request_for_payment_response { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_information_request { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_additional_payment_information { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_information_request_response { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_request_for_payment_cancellation_request_response { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_return_request_response { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_request_for_payment_cancellation_request { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_return_request { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_account_reporting_request { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.fed_now_incoming_message_signature_management { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.fed_now_message_reject { val.validate()? }
+		if let Some(ref val) = self.fed_now_participant_broadcast { val.validate()? }
+		if let Some(ref val) = self.fed_now_retrieval_request { val.validate()? }
+		if let Some(ref val) = self.fed_now_receipt_acknowledgement { val.validate()? }
+		if let Some(ref val) = self.fed_now_payment_status { val.validate()? }
+		if let Some(ref val) = self.fed_now_payment_return { val.validate()? }
+		if let Some(ref val) = self.fed_now_customer_credit_transfer { val.validate()? }
+		if let Some(ref val) = self.fed_now_institution_credit_transfer { val.validate()? }
+		if let Some(ref val) = self.fed_now_payment_status_request { val.validate()? }
+		if let Some(ref val) = self.fed_now_request_for_payment { val.validate()? }
+		if let Some(ref val) = self.fed_now_request_for_payment_response { val.validate()? }
+		if let Some(ref val) = self.fed_now_information_request { val.validate()? }
+		if let Some(ref val) = self.fed_now_additional_payment_information { val.validate()? }
+		if let Some(ref val) = self.fed_now_information_request_response { val.validate()? }
+		if let Some(ref val) = self.fed_now_request_for_payment_cancellation_request_response { val.validate()? }
+		if let Some(ref val) = self.fed_now_return_request_response { val.validate()? }
+		if let Some(ref val) = self.fed_now_request_for_payment_cancellation_request { val.validate()? }
+		if let Some(ref val) = self.fed_now_return_request { val.validate()? }
+		if let Some(ref val) = self.fed_now_account_reporting_request { val.validate()? }
+		if let Some(ref val) = self.fed_now_incoming_message_signature_management { val.validate()? }
 		Ok(())
 	}
 }
@@ -160,8 +160,8 @@ pub struct FedNowMessageReject {
 
 impl FedNowMessageReject {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.a2_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.a2_document.validate()?;
 		Ok(())
 	}
 }
@@ -182,8 +182,8 @@ pub struct FedNowParticipantBroadcast {
 
 impl FedNowParticipantBroadcast {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.a4_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.a4_document.validate()?;
 		Ok(())
 	}
 }
@@ -204,8 +204,8 @@ pub struct FedNowRetrievalRequest {
 
 impl FedNowRetrievalRequest {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.a6_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.a6_document.validate()?;
 		Ok(())
 	}
 }
@@ -226,8 +226,8 @@ pub struct FedNowReceiptAcknowledgement {
 
 impl FedNowReceiptAcknowledgement {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.a7_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.a7_document.validate()?;
 		Ok(())
 	}
 }
@@ -248,8 +248,8 @@ pub struct FedNowPaymentStatus {
 
 impl FedNowPaymentStatus {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.p2_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.p2_document.validate()?;
 		Ok(())
 	}
 }
@@ -270,8 +270,8 @@ pub struct FedNowPaymentReturn {
 
 impl FedNowPaymentReturn {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.p4_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.p4_document.validate()?;
 		Ok(())
 	}
 }
@@ -292,8 +292,8 @@ pub struct FedNowCustomerCreditTransfer {
 
 impl FedNowCustomerCreditTransfer {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.p8_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.p8_document.validate()?;
 		Ok(())
 	}
 }
@@ -314,8 +314,8 @@ pub struct FedNowInstitutionCreditTransfer {
 
 impl FedNowInstitutionCreditTransfer {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.p9_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.p9_document.validate()?;
 		Ok(())
 	}
 }
@@ -336,8 +336,8 @@ pub struct FedNowPaymentStatusRequest {
 
 impl FedNowPaymentStatusRequest {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.p28_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.p28_document.validate()?;
 		Ok(())
 	}
 }
@@ -358,8 +358,8 @@ pub struct FedNowRequestForPayment {
 
 impl FedNowRequestForPayment {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.pain13_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.pain13_document.validate()?;
 		Ok(())
 	}
 }
@@ -380,8 +380,8 @@ pub struct FedNowRequestForPaymentResponse {
 
 impl FedNowRequestForPaymentResponse {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.pain14_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.pain14_document.validate()?;
 		Ok(())
 	}
 }
@@ -402,8 +402,8 @@ pub struct FedNowInformationRequest {
 
 impl FedNowInformationRequest {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.c26_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.c26_document.validate()?;
 		Ok(())
 	}
 }
@@ -424,8 +424,8 @@ pub struct FedNowAdditionalPaymentInformation {
 
 impl FedNowAdditionalPaymentInformation {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.c28_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.c28_document.validate()?;
 		Ok(())
 	}
 }
@@ -446,8 +446,8 @@ pub struct FedNowInformationRequestResponse {
 
 impl FedNowInformationRequestResponse {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.c29_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.c29_document.validate()?;
 		Ok(())
 	}
 }
@@ -468,8 +468,8 @@ pub struct FedNowRequestForPaymentCancellationRequestResponse {
 
 impl FedNowRequestForPaymentCancellationRequestResponse {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.c29_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.c29_document.validate()?;
 		Ok(())
 	}
 }
@@ -490,8 +490,8 @@ pub struct FedNowReturnRequestResponse {
 
 impl FedNowReturnRequestResponse {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.c29_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.c29_document.validate()?;
 		Ok(())
 	}
 }
@@ -512,8 +512,8 @@ pub struct FedNowRequestForPaymentCancellationRequest {
 
 impl FedNowRequestForPaymentCancellationRequest {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.c55_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.c55_document.validate()?;
 		Ok(())
 	}
 }
@@ -534,8 +534,8 @@ pub struct FedNowReturnRequest {
 
 impl FedNowReturnRequest {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.c56_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.c56_document.validate()?;
 		Ok(())
 	}
 }
@@ -556,8 +556,8 @@ pub struct FedNowAccountReportingRequest {
 
 impl FedNowAccountReportingRequest {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.bah_app_hdr.validate() { return Err(e); }
-		if let Err(e) = self.c60_document.validate() { return Err(e); }
+		self.bah_app_hdr.validate()?;
+		self.c60_document.validate()?;
 		Ok(())
 	}
 }
@@ -582,9 +582,9 @@ pub struct FedNowIncomingMessageSignatureManagement {
 
 impl FedNowIncomingMessageSignatureManagement {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.ke_get_all_fed_now_active_public_keys { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.ke_get_all_customer_public_keys { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.ke_fed_now_message_signature_key_exchange { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.ke_get_all_fed_now_active_public_keys { val.validate()? }
+		if let Some(ref val) = self.ke_get_all_customer_public_keys { val.validate()? }
+		if let Some(ref val) = self.ke_fed_now_message_signature_key_exchange { val.validate()? }
 		Ok(())
 	}
 }

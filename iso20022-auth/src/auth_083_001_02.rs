@@ -126,7 +126,7 @@ pub struct MasterAgreement7 {
 
 impl MasterAgreement7 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.tp.validate() { return Err(e); }
+		self.tp.validate()?;
 		if let Some(ref val) = self.vrsn {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "vrsn is shorter than the minimum length of 1".to_string()));
@@ -165,7 +165,7 @@ pub struct NaturalPersonIdentification2 {
 
 impl NaturalPersonIdentification2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
+		self.id.validate()?;
 		if let Some(ref val) = self.nm {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "nm is shorter than the minimum length of 1".to_string()));
@@ -206,14 +206,14 @@ impl OrganisationIdentification15Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.lei {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "lei does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.othr { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.othr { val.validate()? }
 		if let Some(ref val) = self.any_bic {
 			let pattern = Regex::new("[A-Z0-9]{4,4}[A-Z]{2,2}[A-Z0-9]{2,2}([A-Z0-9]{3,3}){0,1}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "any_bic does not match the required pattern".to_string()));
 			}
 		}
@@ -239,7 +239,7 @@ pub struct OrganisationIdentification38 {
 
 impl OrganisationIdentification38 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
+		self.id.validate()?;
 		if let Some(ref val) = self.nm {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "nm is shorter than the minimum length of 1".to_string()));
@@ -276,8 +276,8 @@ pub struct PartyIdentification236Choice {
 
 impl PartyIdentification236Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.lgl { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.ntrl { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.lgl { val.validate()? }
+		if let Some(ref val) = self.ntrl { val.validate()? }
 		Ok(())
 	}
 }
@@ -298,8 +298,8 @@ pub struct SecuritiesFinancingReportingMissingCollateralRequestV02 {
 
 impl SecuritiesFinancingReportingMissingCollateralRequestV02 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.tx_id { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.tx_id { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -328,7 +328,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }
@@ -369,8 +369,8 @@ pub struct TradeTransactionIdentification18 {
 
 impl TradeTransactionIdentification18 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.rptg_ctr_pty.validate() { return Err(e); }
-		if let Err(e) = self.othr_ctr_pty.validate() { return Err(e); }
+		self.rptg_ctr_pty.validate()?;
+		self.othr_ctr_pty.validate()?;
 		if let Some(ref val) = self.unq_trad_idr {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "unq_trad_idr is shorter than the minimum length of 1".to_string()));
@@ -379,7 +379,7 @@ impl TradeTransactionIdentification18 {
 				return Err(ValidationError::new(1002, "unq_trad_idr exceeds the maximum length of 52".to_string()));
 			}
 		}
-		if let Some(ref val) = self.mstr_agrmt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.mstr_agrmt { val.validate()? }
 		Ok(())
 	}
 }

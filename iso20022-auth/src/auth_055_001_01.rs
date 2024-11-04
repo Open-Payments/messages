@@ -64,8 +64,8 @@ pub struct Amount3 {
 
 impl Amount3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.orgnl_amt { if let Err(e) = val.validate() { return Err(e); } }
-		if let Err(e) = self.rptg_amt.validate() { return Err(e); }
+		if let Some(ref val) = self.orgnl_amt { val.validate()? }
+		self.rptg_amt.validate()?;
 		Ok(())
 	}
 }
@@ -86,7 +86,7 @@ pub struct AmountAndDirection102 {
 
 impl AmountAndDirection102 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.amt.validate() { return Err(e); }
+		self.amt.validate()?;
 		Ok(())
 	}
 }
@@ -113,11 +113,11 @@ pub struct CCPMemberRequirementsReportV01 {
 
 impl CCPMemberRequirementsReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.intra_day_rqrmnt_amt { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.intra_day_mrgn_call { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		for item in &self.end_of_day_rqrmnt { if let Err(e) = item.validate() { return Err(e); } }
-		for item in &self.dflt_fnd_rqrmnt { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.intra_day_rqrmnt_amt { item.validate()? }
+		if let Some(ref vec) = self.intra_day_mrgn_call { for item in vec { item.validate()? } }
+		for item in &self.end_of_day_rqrmnt { item.validate()? }
+		for item in &self.dflt_fnd_rqrmnt { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -140,7 +140,7 @@ pub struct DefaultFundRequirement1 {
 
 impl DefaultFundRequirement1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.clr_mmb_id.validate() { return Err(e); }
+		self.clr_mmb_id.validate()?;
 		if let Some(ref val) = self.svc_id {
 			if val.chars().count() < 1 {
 				return Err(ValidationError::new(1001, "svc_id is shorter than the minimum length of 1".to_string()));
@@ -149,7 +149,7 @@ impl DefaultFundRequirement1 {
 				return Err(ValidationError::new(1002, "svc_id exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Err(e) = self.amt.validate() { return Err(e); }
+		self.amt.validate()?;
 		Ok(())
 	}
 }
@@ -172,9 +172,9 @@ pub struct EndOfDayRequirement2 {
 
 impl EndOfDayRequirement2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.initl_mrgn_rqrmnts.validate() { return Err(e); }
-		if let Err(e) = self.vartn_mrgn_rqrmnts.validate() { return Err(e); }
-		if let Err(e) = self.mrgn_acct_id.validate() { return Err(e); }
+		self.initl_mrgn_rqrmnts.validate()?;
+		self.vartn_mrgn_rqrmnts.validate()?;
+		self.mrgn_acct_id.validate()?;
 		Ok(())
 	}
 }
@@ -221,7 +221,7 @@ impl GenericIdentification165 {
 				return Err(ValidationError::new(1002, "issr exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		Ok(())
 	}
 }
@@ -286,8 +286,8 @@ pub struct InitialMarginExposure1 {
 
 impl InitialMarginExposure1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.amt.validate() { return Err(e); }
-		if let Err(e) = self.tp.validate() { return Err(e); }
+		self.amt.validate()?;
+		self.tp.validate()?;
 		Ok(())
 	}
 }
@@ -308,8 +308,8 @@ pub struct InitialMarginRequirement1 {
 
 impl InitialMarginRequirement1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.initl_mrgn_xpsr { if let Err(e) = item.validate() { return Err(e); } }
-		if let Err(e) = self.cdt.validate() { return Err(e); }
+		for item in &self.initl_mrgn_xpsr { item.validate()? }
+		self.cdt.validate()?;
 		Ok(())
 	}
 }
@@ -332,8 +332,8 @@ pub struct IntraDayMarginCall1 {
 
 impl IntraDayMarginCall1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.mrgn_acct_id.validate() { return Err(e); }
-		if let Err(e) = self.intra_day_call.validate() { return Err(e); }
+		self.mrgn_acct_id.validate()?;
+		self.intra_day_call.validate()?;
 		Ok(())
 	}
 }
@@ -360,11 +360,11 @@ pub struct IntraDayRequirement1 {
 
 impl IntraDayRequirement1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.intra_day_mrgn_call.validate() { return Err(e); }
-		if let Err(e) = self.peak_initl_mrgn_lblty.validate() { return Err(e); }
-		if let Err(e) = self.peak_vartn_mrgn_lblty.validate() { return Err(e); }
-		if let Err(e) = self.aggt_peak_lblty.validate() { return Err(e); }
-		if let Err(e) = self.mrgn_acct_id.validate() { return Err(e); }
+		self.intra_day_mrgn_call.validate()?;
+		self.peak_initl_mrgn_lblty.validate()?;
+		self.peak_vartn_mrgn_lblty.validate()?;
+		self.aggt_peak_lblty.validate()?;
+		self.mrgn_acct_id.validate()?;
 		Ok(())
 	}
 }
@@ -385,8 +385,8 @@ pub struct MarginType2Choice {
 
 impl MarginType2Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.cd { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.cd { val.validate()? }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -491,7 +491,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

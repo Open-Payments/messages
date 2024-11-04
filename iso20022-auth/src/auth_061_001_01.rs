@@ -84,8 +84,8 @@ pub struct CCPInvestmentsReportV01 {
 
 impl CCPInvestmentsReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.invstmt { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.invstmt { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -108,7 +108,7 @@ pub struct Deposit1 {
 
 impl Deposit1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.val.validate() { return Err(e); }
+		self.val.validate()?;
 		let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
 		if !pattern.is_match(&self.ctr_pty_id) {
 			return Err(ValidationError::new(1005, "ctr_pty_id does not match the required pattern".to_string()));
@@ -163,7 +163,7 @@ pub struct GeneralCollateral3 {
 
 impl GeneralCollateral3 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref vec) = self.fin_instrm_id { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		if let Some(ref vec) = self.fin_instrm_id { for item in vec { item.validate()? } }
 		if let Some(ref vec) = self.elgbl_fin_instrm_id {
 			for item in vec {
 				let pattern = Regex::new("[A-Z]{2,2}[A-Z0-9]{9,9}[0-9]{1,1}").unwrap();
@@ -198,11 +198,11 @@ pub struct Investment1Choice {
 
 impl Investment1Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.uscrd_csh_dpst { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.cntrl_bk_dpst { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.rp_agrmt { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.othr_invstmts { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.outrght_invstmt { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.uscrd_csh_dpst { val.validate()? }
+		if let Some(ref val) = self.cntrl_bk_dpst { val.validate()? }
+		if let Some(ref val) = self.rp_agrmt { val.validate()? }
+		if let Some(ref val) = self.othr_invstmts { val.validate()? }
+		if let Some(ref val) = self.outrght_invstmt { val.validate()? }
 		Ok(())
 	}
 }
@@ -229,7 +229,7 @@ impl OtherInvestment1 {
 		if self.desc.chars().count() > 140 {
 			return Err(ValidationError::new(1002, "desc exceeds the maximum length of 140".to_string()));
 		}
-		if let Err(e) = self.amt.validate() { return Err(e); }
+		self.amt.validate()?;
 		Ok(())
 	}
 }
@@ -281,16 +281,16 @@ pub struct RepurchaseAgreement2 {
 
 impl RepurchaseAgreement2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.scnd_leg_pric.validate() { return Err(e); }
-		if let Err(e) = self.coll_mkt_val.validate() { return Err(e); }
+		self.scnd_leg_pric.validate()?;
+		self.coll_mkt_val.validate()?;
 		let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
 		if !pattern.is_match(&self.ctr_pty) {
 			return Err(ValidationError::new(1005, "ctr_pty does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.rp_agrmt_tp.validate() { return Err(e); }
+		self.rp_agrmt_tp.validate()?;
 		if let Some(ref val) = self.trpty_agt_id {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "trpty_agt_id does not match the required pattern".to_string()));
 			}
 		}
@@ -314,8 +314,8 @@ pub struct RepurchaseAgreementType3Choice {
 
 impl RepurchaseAgreementType3Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.spcfc_coll { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.gnl_coll { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.spcfc_coll { val.validate()? }
+		if let Some(ref val) = self.gnl_coll { val.validate()? }
 		Ok(())
 	}
 }
@@ -342,8 +342,8 @@ impl SecurityIdentificationAndAmount1 {
 		if !pattern.is_match(&self.id) {
 			return Err(ValidationError::new(1005, "id does not match the required pattern".to_string()));
 		}
-		if let Err(e) = self.mkt_val.validate() { return Err(e); }
-		if let Err(e) = self.fin_instrm_tp.validate() { return Err(e); }
+		self.mkt_val.validate()?;
+		self.fin_instrm_tp.validate()?;
 		Ok(())
 	}
 }
@@ -362,7 +362,7 @@ pub struct SpecificCollateral2 {
 
 impl SpecificCollateral2 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.fin_instrm_id.validate() { return Err(e); }
+		self.fin_instrm_id.validate()?;
 		Ok(())
 	}
 }
@@ -391,7 +391,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

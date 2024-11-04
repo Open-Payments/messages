@@ -64,7 +64,7 @@ pub struct AmountAndDirection102 {
 
 impl AmountAndDirection102 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.amt.validate() { return Err(e); }
+		self.amt.validate()?;
 		Ok(())
 	}
 }
@@ -85,8 +85,8 @@ pub struct CCPLiquidityStressTestingResultReportV01 {
 
 impl CCPLiquidityStressTestingResultReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.lqdty_strss_tst_rslt { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.lqdty_strss_tst_rslt { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -153,8 +153,8 @@ impl LiquidResourceInformation1 {
 				return Err(ValidationError::new(1002, "cntr_pty_id exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Err(e) = self.lqd_rsrc_val.validate() { return Err(e); }
-		if let Some(ref val) = self.mkt_val { if let Err(e) = val.validate() { return Err(e); } }
+		self.lqd_rsrc_val.validate()?;
+		if let Some(ref val) = self.mkt_val { val.validate()? }
 		Ok(())
 	}
 }
@@ -191,16 +191,16 @@ pub struct LiquidResources1 {
 
 impl LiquidResources1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.csh_due { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.fclties_cmmtd_lines_of_cdt { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.fclties_cmmtd_rp_agrmts { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.fclties_cmmtd_fx_swps { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.fclties_othr_cmmtd { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.fclties_ucmmtd { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.fin_instrms_ccp { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.fin_instrms_trsr_invstmts { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.fin_instrms_dfltrs_sttlm_coll { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
-		if let Some(ref vec) = self.fin_instrms_dfltrs_non_csh_coll { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.csh_due { item.validate()? }
+		if let Some(ref vec) = self.fclties_cmmtd_lines_of_cdt { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.fclties_cmmtd_rp_agrmts { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.fclties_cmmtd_fx_swps { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.fclties_othr_cmmtd { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.fclties_ucmmtd { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.fin_instrms_ccp { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.fin_instrms_trsr_invstmts { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.fin_instrms_dfltrs_sttlm_coll { for item in vec { item.validate()? } }
+		if let Some(ref vec) = self.fin_instrms_dfltrs_non_csh_coll { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -223,9 +223,9 @@ pub struct LiquidityRequiredAndAvailable1 {
 
 impl LiquidityRequiredAndAvailable1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.lqd_rsrcs.validate() { return Err(e); }
-		if let Err(e) = self.lqdty_hrzn.validate() { return Err(e); }
-		if let Err(e) = self.strss_lqd_rsrc_rqrmnt.validate() { return Err(e); }
+		self.lqd_rsrcs.validate()?;
+		self.lqdty_hrzn.validate()?;
+		self.strss_lqd_rsrc_rqrmnt.validate()?;
 		Ok(())
 	}
 }
@@ -254,8 +254,8 @@ impl LiquidityStressTestResult1 {
 		if self.id.chars().count() > 256 {
 			return Err(ValidationError::new(1002, "id exceeds the maximum length of 256".to_string()));
 		}
-		if let Err(e) = self.scnro_dfltrs.validate() { return Err(e); }
-		for item in &self.lqdty_reqrd_and_avlbl { if let Err(e) = item.validate() { return Err(e); } }
+		self.scnro_dfltrs.validate()?;
+		for item in &self.lqdty_reqrd_and_avlbl { item.validate()? }
 		Ok(())
 	}
 }
@@ -309,10 +309,10 @@ pub struct StressLiquidResourceRequirement1 {
 
 impl StressLiquidResourceRequirement1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.oprl_outflw.validate() { return Err(e); }
-		if let Err(e) = self.vartn_mrgn_pmt_oblgtn.validate() { return Err(e); }
-		if let Err(e) = self.sttlm_or_dlvry.validate() { return Err(e); }
-		if let Err(e) = self.othr.validate() { return Err(e); }
+		self.oprl_outflw.validate()?;
+		self.vartn_mrgn_pmt_oblgtn.validate()?;
+		self.sttlm_or_dlvry.validate()?;
+		self.othr.validate()?;
 		Ok(())
 	}
 }
@@ -341,7 +341,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

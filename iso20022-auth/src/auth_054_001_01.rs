@@ -44,8 +44,8 @@ pub struct CCPClearingMemberReportV01 {
 
 impl CCPClearingMemberReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.clr_mmb { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.clr_mmb { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -66,8 +66,8 @@ pub struct ClearingAccount1 {
 
 impl ClearingAccount1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.acct_tp.validate() { return Err(e); }
-		for item in &self.coll_acct_ownr { if let Err(e) = item.validate() { return Err(e); } }
+		self.acct_tp.validate()?;
+		for item in &self.coll_acct_ownr { item.validate()? }
 		Ok(())
 	}
 }
@@ -125,11 +125,11 @@ pub struct ClearingMember1 {
 
 impl ClearingMember1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		if let Err(e) = self.cdt_qlty.validate() { return Err(e); }
-		if let Some(ref val) = self.ultmt_prnt_id { if let Err(e) = val.validate() { return Err(e); } }
-		if let Some(ref val) = self.spnsrg_clr_mmb_id { if let Err(e) = val.validate() { return Err(e); } }
-		for item in &self.clr_acct_ownr { if let Err(e) = item.validate() { return Err(e); } }
+		self.id.validate()?;
+		self.cdt_qlty.validate()?;
+		if let Some(ref val) = self.ultmt_prnt_id { val.validate()? }
+		if let Some(ref val) = self.spnsrg_clr_mmb_id { val.validate()? }
+		for item in &self.clr_acct_ownr { item.validate()? }
 		Ok(())
 	}
 }
@@ -154,8 +154,8 @@ pub struct CollateralAccount5 {
 
 impl CollateralAccount5 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		for item in &self.rltd_mrgn_acct { if let Err(e) = item.validate() { return Err(e); } }
+		self.id.validate()?;
+		for item in &self.rltd_mrgn_acct { item.validate()? }
 		Ok(())
 	}
 }
@@ -267,8 +267,8 @@ pub struct MarginAccount1 {
 
 impl MarginAccount1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		for item in &self.pos_acct { if let Err(e) = item.validate() { return Err(e); } }
+		self.id.validate()?;
+		for item in &self.pos_acct { item.validate()? }
 		Ok(())
 	}
 }
@@ -291,11 +291,11 @@ impl PartyIdentification118Choice {
 	pub fn validate(&self) -> Result<(), ValidationError> {
 		if let Some(ref val) = self.lei {
 			let pattern = Regex::new("[A-Z0-9]{18,18}[0-9]{2,2}").unwrap();
-			if !pattern.is_match(&val) {
+			if !pattern.is_match(val) {
 				return Err(ValidationError::new(1005, "lei does not match the required pattern".to_string()));
 			}
 		}
-		if let Some(ref val) = self.prtry { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.prtry { val.validate()? }
 		Ok(())
 	}
 }
@@ -314,7 +314,7 @@ pub struct PositionAccount1 {
 
 impl PositionAccount1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
+		self.id.validate()?;
 		Ok(())
 	}
 }
@@ -343,7 +343,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }

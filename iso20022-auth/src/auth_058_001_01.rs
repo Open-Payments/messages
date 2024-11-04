@@ -64,7 +64,7 @@ pub struct AmountAndDirection102 {
 
 impl AmountAndDirection102 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.amt.validate() { return Err(e); }
+		self.amt.validate()?;
 		Ok(())
 	}
 }
@@ -85,8 +85,8 @@ pub struct CCPPortfolioStressTestingResultReportV01 {
 
 impl CCPPortfolioStressTestingResultReportV01 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		for item in &self.scnro_strss_tst_rslt { if let Err(e) = item.validate() { return Err(e); } }
-		if let Some(ref vec) = self.splmtry_data { for item in vec { if let Err(e) = item.validate() { return Err(e); } } }
+		for item in &self.scnro_strss_tst_rslt { item.validate()? }
+		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
 		Ok(())
 	}
 }
@@ -133,7 +133,7 @@ impl GenericIdentification165 {
 				return Err(ValidationError::new(1002, "issr exceeds the maximum length of 35".to_string()));
 			}
 		}
-		if let Some(ref val) = self.schme_nm { if let Err(e) = val.validate() { return Err(e); } }
+		if let Some(ref val) = self.schme_nm { val.validate()? }
 		Ok(())
 	}
 }
@@ -214,9 +214,9 @@ pub struct PortfolioStressTestResult1 {
 
 impl PortfolioStressTestResult1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.prtfl_id.validate() { return Err(e); }
-		if let Err(e) = self.strss_loss.validate() { return Err(e); }
-		if let Some(ref val) = self.raw_strss_loss { if let Err(e) = val.validate() { return Err(e); } }
+		self.prtfl_id.validate()?;
+		self.strss_loss.validate()?;
+		if let Some(ref val) = self.raw_strss_loss { val.validate()? }
 		Ok(())
 	}
 }
@@ -237,8 +237,8 @@ pub struct ScenarioStressTestResult1 {
 
 impl ScenarioStressTestResult1 {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Err(e) = self.id.validate() { return Err(e); }
-		for item in &self.prtfl_strss_tst_rslt { if let Err(e) = item.validate() { return Err(e); } }
+		self.id.validate()?;
+		for item in &self.prtfl_strss_tst_rslt { item.validate()? }
 		Ok(())
 	}
 }
@@ -292,7 +292,7 @@ impl SupplementaryData1 {
 				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
 			}
 		}
-		if let Err(e) = self.envlp.validate() { return Err(e); }
+		self.envlp.validate()?;
 		Ok(())
 	}
 }
