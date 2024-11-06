@@ -23,114 +23,11 @@
 // https://github.com/Open-Payments/messages
 
 
+#![allow(unused_imports)]
 use regex::Regex;
 use crate::common::*;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
-
-
-// GenericIdentification30 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct GenericIdentification30 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
-	pub id: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Issr") )]
-	pub issr: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "SchmeNm", skip_serializing_if = "Option::is_none") )]
-	pub schme_nm: Option<String>,
-}
-
-impl GenericIdentification30 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		let pattern = Regex::new("[a-zA-Z0-9]{4}").unwrap();
-		if !pattern.is_match(&self.id) {
-			return Err(ValidationError::new(1005, "id does not match the required pattern".to_string()));
-		}
-		if self.issr.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "issr is shorter than the minimum length of 1".to_string()));
-		}
-		if self.issr.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "issr exceeds the maximum length of 35".to_string()));
-		}
-		if let Some(ref val) = self.schme_nm {
-			if val.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "schme_nm is shorter than the minimum length of 1".to_string()));
-			}
-			if val.chars().count() > 35 {
-				return Err(ValidationError::new(1002, "schme_nm exceeds the maximum length of 35".to_string()));
-			}
-		}
-		Ok(())
-	}
-}
-
-
-// MessageHeader1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct MessageHeader1 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
-	pub msg_id: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "CreDtTm", skip_serializing_if = "Option::is_none") )]
-	pub cre_dt_tm: Option<String>,
-}
-
-impl MessageHeader1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.msg_id.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "msg_id is shorter than the minimum length of 1".to_string()));
-		}
-		if self.msg_id.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "msg_id exceeds the maximum length of 35".to_string()));
-		}
-		Ok(())
-	}
-}
-
-
-// SecuritiesAccount19 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct SecuritiesAccount19 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
-	pub id: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
-	pub tp: Option<GenericIdentification30>,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
-	pub nm: Option<String>,
-}
-
-impl SecuritiesAccount19 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.id.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "id is shorter than the minimum length of 1".to_string()));
-		}
-		if self.id.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "id exceeds the maximum length of 35".to_string()));
-		}
-		if let Some(ref val) = self.tp { val.validate()? }
-		if let Some(ref val) = self.nm {
-			if val.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "nm is shorter than the minimum length of 1".to_string()));
-			}
-			if val.chars().count() > 70 {
-				return Err(ValidationError::new(1002, "nm exceeds the maximum length of 70".to_string()));
-			}
-		}
-		Ok(())
-	}
-}
-
 
 // SecuritiesAccountDeletionRequestV01 ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
@@ -152,51 +49,6 @@ impl SecuritiesAccountDeletionRequestV01 {
 		if let Some(ref val) = self.msg_hdr { val.validate()? }
 		self.acct_id.validate()?;
 		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
-		Ok(())
-	}
-}
-
-
-// SupplementaryData1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct SupplementaryData1 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none") )]
-	pub plc_and_nm: Option<String>,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Envlp") )]
-	pub envlp: SupplementaryDataEnvelope1,
-}
-
-impl SupplementaryData1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.plc_and_nm {
-			if val.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "plc_and_nm is shorter than the minimum length of 1".to_string()));
-			}
-			if val.chars().count() > 350 {
-				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
-			}
-		}
-		self.envlp.validate()?;
-		Ok(())
-	}
-}
-
-
-// SupplementaryDataEnvelope1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct SupplementaryDataEnvelope1 {
-}
-
-impl SupplementaryDataEnvelope1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
 		Ok(())
 	}
 }

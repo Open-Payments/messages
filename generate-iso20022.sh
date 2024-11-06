@@ -29,6 +29,8 @@ find "$output_directory" -type f -name "*.rs" | while read -r file; do
     mv "$file" "$dir/$base_name.rs"  # Append the .rs extension correctly
 done
 
+python3 generate-common.py $output_directory
+
 lib_file=$output_directory"/lib.rs"
 
 echo '// Open Payment Message Parsing Library
@@ -61,15 +63,5 @@ for f in `find $output_directory -iname "*.rs" -type f -print | sort -n`; do
     module_name=$(basename "$f" .rs)
     if [ $module_name != "lib" ]; then
         echo "pub mod $module_name;" >> "$lib_file"
-        # sed -i "" -e "/\/\/ document \.\.\./,/^}$/d" "$f"
-        # sed -i "" -e "/impl document {/,/^}$/d" "$f"
-
-        # sed -i "" -e "/\/\/ app_hdr \.\.\./,/^}$/d" "$f"
-        # sed -i "" -e "/impl app_hdr {/,/^}$/d" "$f"
-
-        # sed -i "" -e "/\/\/ xchg \.\.\./,/^}$/d" "$f"
-        # sed -i "" -e "/impl xchg {/,/^}$/d" "$f"
-
-        # perl -0777 -i -pe "s{\n\n\n}{}gs" "$f"
     fi
 done
