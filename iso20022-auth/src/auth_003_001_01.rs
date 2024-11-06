@@ -23,11 +23,11 @@
 // https://github.com/Open-Payments/messages
 
 
+#![allow(unused_imports)]
 use regex::Regex;
 use crate::common::*;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
-
 
 // InformationRequestStatusChangeNotificationV01 ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
@@ -53,51 +53,6 @@ impl InformationRequestStatusChangeNotificationV01 {
 			return Err(ValidationError::new(1002, "orgnl_biz_qry exceeds the maximum length of 35".to_string()));
 		}
 		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
-		Ok(())
-	}
-}
-
-
-// SupplementaryData1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct SupplementaryData1 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none") )]
-	pub plc_and_nm: Option<String>,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Envlp") )]
-	pub envlp: SupplementaryDataEnvelope1,
-}
-
-impl SupplementaryData1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.plc_and_nm {
-			if val.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "plc_and_nm is shorter than the minimum length of 1".to_string()));
-			}
-			if val.chars().count() > 350 {
-				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
-			}
-		}
-		self.envlp.validate()?;
-		Ok(())
-	}
-}
-
-
-// SupplementaryDataEnvelope1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct SupplementaryDataEnvelope1 {
-}
-
-impl SupplementaryDataEnvelope1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
 		Ok(())
 	}
 }

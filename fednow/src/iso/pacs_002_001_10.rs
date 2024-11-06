@@ -23,6 +23,7 @@
 // https://github.com/Open-Payments/messages
 
 
+#![allow(unused_imports)]
 use regex::Regex;
 use crate::common::*;
 #[cfg(feature = "derive_serde")]

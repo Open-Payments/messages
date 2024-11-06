@@ -23,63 +23,11 @@
 // https://github.com/Open-Payments/messages
 
 
+#![allow(unused_imports)]
 use regex::Regex;
 use crate::common::*;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
-
-
-// Event2 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct Event2 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "EvtCd") )]
-	pub evt_cd: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "EvtParam", skip_serializing_if = "Option::is_none") )]
-	pub evt_param: Option<Vec<String>>,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "EvtDesc", skip_serializing_if = "Option::is_none") )]
-	pub evt_desc: Option<String>,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "EvtTm", skip_serializing_if = "Option::is_none") )]
-	pub evt_tm: Option<String>,
-}
-
-impl Event2 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.evt_cd.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "evt_cd is shorter than the minimum length of 1".to_string()));
-		}
-		if self.evt_cd.chars().count() > 4 {
-			return Err(ValidationError::new(1002, "evt_cd exceeds the maximum length of 4".to_string()));
-		}
-		let pattern = Regex::new("[a-zA-Z0-9]{1,4}").unwrap();
-		if !pattern.is_match(&self.evt_cd) {
-			return Err(ValidationError::new(1005, "evt_cd does not match the required pattern".to_string()));
-		}
-		if let Some(ref vec) = self.evt_param {
-			for item in vec {
-				if item.chars().count() < 1 {
-					return Err(ValidationError::new(1001, "evt_param is shorter than the minimum length of 1".to_string()));
-				}
-				if item.chars().count() > 35 {
-					return Err(ValidationError::new(1002, "evt_param exceeds the maximum length of 35".to_string()));
-				}
-			}
-		}
-		if let Some(ref val) = self.evt_desc {
-			if val.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "evt_desc is shorter than the minimum length of 1".to_string()));
-			}
-			if val.chars().count() > 1000 {
-				return Err(ValidationError::new(1002, "evt_desc exceeds the maximum length of 1000".to_string()));
-			}
-		}
-		Ok(())
-	}
-}
-
 
 // SystemEventNotificationV02 ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]

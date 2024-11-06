@@ -23,105 +23,11 @@
 // https://github.com/Open-Payments/messages
 
 
+#![allow(unused_imports)]
 use regex::Regex;
 use crate::common::*;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
-
-
-// ReportParameter1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct ReportParameter1 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm") )]
-	pub nm: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Val") )]
-	pub val: String,
-}
-
-impl ReportParameter1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.nm.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "nm is shorter than the minimum length of 1".to_string()));
-		}
-		if self.nm.chars().count() > 70 {
-			return Err(ValidationError::new(1002, "nm exceeds the maximum length of 70".to_string()));
-		}
-		if self.val.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "val is shorter than the minimum length of 1".to_string()));
-		}
-		if self.val.chars().count() > 350 {
-			return Err(ValidationError::new(1002, "val exceeds the maximum length of 350".to_string()));
-		}
-		Ok(())
-	}
-}
-
-
-// RequestDetails4 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct RequestDetails4 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Key") )]
-	pub key: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "RptData", skip_serializing_if = "Option::is_none") )]
-	pub rpt_data: Option<Vec<ReportParameter1>>,
-}
-
-impl RequestDetails4 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.key.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "key is shorter than the minimum length of 1".to_string()));
-		}
-		if self.key.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "key exceeds the maximum length of 35".to_string()));
-		}
-		if let Some(ref vec) = self.rpt_data { for item in vec { item.validate()? } }
-		Ok(())
-	}
-}
-
-
-// RequestDetails5 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct RequestDetails5 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
-	pub tp: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "ReqRef") )]
-	pub req_ref: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "RptKey") )]
-	pub rpt_key: Vec<RequestDetails4>,
-}
-
-impl RequestDetails5 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.tp.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "tp is shorter than the minimum length of 1".to_string()));
-		}
-		if self.tp.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "tp exceeds the maximum length of 35".to_string()));
-		}
-		if self.req_ref.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "req_ref is shorter than the minimum length of 1".to_string()));
-		}
-		if self.req_ref.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "req_ref exceeds the maximum length of 35".to_string()));
-		}
-		for item in &self.rpt_key { item.validate()? }
-		Ok(())
-	}
-}
-
 
 // StaticDataReportV02 ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
@@ -156,51 +62,6 @@ impl StaticDataReportV02 {
 		}
 		self.rpt_dtls.validate()?;
 		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
-		Ok(())
-	}
-}
-
-
-// SupplementaryData1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct SupplementaryData1 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none") )]
-	pub plc_and_nm: Option<String>,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Envlp") )]
-	pub envlp: SupplementaryDataEnvelope1,
-}
-
-impl SupplementaryData1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.plc_and_nm {
-			if val.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "plc_and_nm is shorter than the minimum length of 1".to_string()));
-			}
-			if val.chars().count() > 350 {
-				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
-			}
-		}
-		self.envlp.validate()?;
-		Ok(())
-	}
-}
-
-
-// SupplementaryDataEnvelope1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct SupplementaryDataEnvelope1 {
-}
-
-impl SupplementaryDataEnvelope1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
 		Ok(())
 	}
 }

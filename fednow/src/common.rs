@@ -1,5 +1,6 @@
 // Suppress warnings about unused imports when features are not enabled
 #![allow(unused_imports)]
+use regex::Regex;
 
 // Conditionally import necessary traits and modules
 #[cfg(feature = "derive_serde")]

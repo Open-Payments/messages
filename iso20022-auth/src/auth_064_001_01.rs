@@ -23,65 +23,11 @@
 // https://github.com/Open-Payments/messages
 
 
+#![allow(unused_imports)]
 use regex::Regex;
 use crate::common::*;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
-
-
-// ActiveCurrencyAndAmount ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct ActiveCurrencyAndAmount {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
-	pub ccy: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
-	pub value: f64,
-}
-
-impl ActiveCurrencyAndAmount {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// AvailableFinancialResourcesAmount1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct AvailableFinancialResourcesAmount1 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "TtlInitlMrgn") )]
-	pub ttl_initl_mrgn: ActiveCurrencyAndAmount,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "TtlPrfnddDfltFnd") )]
-	pub ttl_prfndd_dflt_fnd: ActiveCurrencyAndAmount,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "CCPSkinInTheGame") )]
-	pub ccp_skin_in_the_game: Vec<ReportingAssetBreakdown1>,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "OthrDfltFndCntrbtn") )]
-	pub othr_dflt_fnd_cntrbtn: ActiveCurrencyAndAmount,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "UfnddMmbCmmtmnt") )]
-	pub ufndd_mmb_cmmtmnt: ActiveCurrencyAndAmount,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "UfnddThrdPtyCmmtmnt") )]
-	pub ufndd_thrd_pty_cmmtmnt: ActiveCurrencyAndAmount,
-}
-
-impl AvailableFinancialResourcesAmount1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		self.ttl_initl_mrgn.validate()?;
-		self.ttl_prfndd_dflt_fnd.validate()?;
-		for item in &self.ccp_skin_in_the_game { item.validate()? }
-		self.othr_dflt_fnd_cntrbtn.validate()?;
-		self.ufndd_mmb_cmmtmnt.validate()?;
-		self.ufndd_thrd_pty_cmmtmnt.validate()?;
-		Ok(())
-	}
-}
-
 
 // CCPAvailableFinancialResourcesReportV01 ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
@@ -103,108 +49,6 @@ impl CCPAvailableFinancialResourcesReportV01 {
 		self.avlbl_fin_rsrcs_amt.validate()?;
 		if let Some(ref val) = self.othr_prfndd_rsrcs { val.validate()? }
 		if let Some(ref vec) = self.splmtry_data { for item in vec { item.validate()? } }
-		Ok(())
-	}
-}
-
-
-// ProductType6Code ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub enum ProductType6Code {
-	#[cfg_attr(feature = "derive_default", default)]
-	#[cfg_attr( feature = "derive_serde", serde(rename = "BOND") )]
-	CodeBOND,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "CASH") )]
-	CodeCASH,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "OTHR") )]
-	CodeOTHR,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "EQUI") )]
-	CodeEQUI,
-}
-
-impl ProductType6Code {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// ReportingAssetBreakdown1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct ReportingAssetBreakdown1 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "RptgAsstTp") )]
-	pub rptg_asst_tp: ProductType6Code,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Id", skip_serializing_if = "Option::is_none") )]
-	pub id: Option<String>,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
-	pub amt: ActiveCurrencyAndAmount,
-}
-
-impl ReportingAssetBreakdown1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		self.rptg_asst_tp.validate()?;
-		if let Some(ref val) = self.id {
-			if val.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "id is shorter than the minimum length of 1".to_string()));
-			}
-			if val.chars().count() > 350 {
-				return Err(ValidationError::new(1002, "id exceeds the maximum length of 350".to_string()));
-			}
-		}
-		self.amt.validate()?;
-		Ok(())
-	}
-}
-
-
-// SupplementaryData1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct SupplementaryData1 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none") )]
-	pub plc_and_nm: Option<String>,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Envlp") )]
-	pub envlp: SupplementaryDataEnvelope1,
-}
-
-impl SupplementaryData1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.plc_and_nm {
-			if val.chars().count() < 1 {
-				return Err(ValidationError::new(1001, "plc_and_nm is shorter than the minimum length of 1".to_string()));
-			}
-			if val.chars().count() > 350 {
-				return Err(ValidationError::new(1002, "plc_and_nm exceeds the maximum length of 350".to_string()));
-			}
-		}
-		self.envlp.validate()?;
-		Ok(())
-	}
-}
-
-
-// SupplementaryDataEnvelope1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct SupplementaryDataEnvelope1 {
-}
-
-impl SupplementaryDataEnvelope1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
 		Ok(())
 	}
 }
