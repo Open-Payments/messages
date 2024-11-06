@@ -29,7 +29,6 @@ use crate::common::*;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
 
-
 // AdministrationProprietaryMessageV02 ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
 #[cfg_attr(feature = "derive_default", derive(Default))]
@@ -56,73 +55,6 @@ impl AdministrationProprietaryMessageV02 {
 		if let Some(ref val) = self.prvs { val.validate()? }
 		if let Some(ref val) = self.othr { val.validate()? }
 		self.prtry_data.validate()?;
-		Ok(())
-	}
-}
-
-
-// MessageReference ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct MessageReference {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Ref") )]
-	pub ref_attr: String,
-}
-
-impl MessageReference {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.ref_attr.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "ref_attr is shorter than the minimum length of 1".to_string()));
-		}
-		if self.ref_attr.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "ref_attr exceeds the maximum length of 35".to_string()));
-		}
-		Ok(())
-	}
-}
-
-
-// ProprietaryData5 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct ProprietaryData5 {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
-	pub tp: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Data") )]
-	pub data: SupplementaryDataEnvelope1,
-}
-
-impl ProprietaryData5 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if self.tp.chars().count() < 1 {
-			return Err(ValidationError::new(1001, "tp is shorter than the minimum length of 1".to_string()));
-		}
-		if self.tp.chars().count() > 35 {
-			return Err(ValidationError::new(1002, "tp exceeds the maximum length of 35".to_string()));
-		}
-		self.data.validate()?;
-		Ok(())
-	}
-}
-
-
-// SupplementaryDataEnvelope1 ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct SupplementaryDataEnvelope1 {
-}
-
-impl SupplementaryDataEnvelope1 {
-	pub fn validate(&self) -> Result<(), ValidationError> {
 		Ok(())
 	}
 }
