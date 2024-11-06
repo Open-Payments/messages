@@ -30,91 +30,6 @@ use crate::common::*;
 use serde::{Deserialize, Serialize};
 
 
-// FedNowMessageSignatureKeyStatus ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct FedNowMessageSignatureKeyStatus {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "KeyStatus") )]
-	pub key_status: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "StatusDateTime") )]
-	pub status_date_time: String,
-}
-
-impl FedNowMessageSignatureKeyStatus {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// FedNowMessageSignatureKey ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct FedNowMessageSignatureKey {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowKeyID") )]
-	pub fed_now_key_id: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Name") )]
-	pub name: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "EncodedPublicKey") )]
-	pub encoded_public_key: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Encoding") )]
-	pub encoding: String,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Algorithm", skip_serializing_if = "Option::is_none") )]
-	pub algorithm: Option<String>,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "KeyCreationDateTime", skip_serializing_if = "Option::is_none") )]
-	pub key_creation_date_time: Option<String>,
-}
-
-impl FedNowMessageSignatureKey {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		let pattern = Regex::new("[A-Za-z0-9\\-_]{1,300}").unwrap();
-		if !pattern.is_match(&self.fed_now_key_id) {
-			return Err(ValidationError::new(1005, "fed_now_key_id does not match the required pattern".to_string()));
-		}
-		let pattern = Regex::new("[A-Za-z0-9\\-_]{1,300}").unwrap();
-		if !pattern.is_match(&self.name) {
-			return Err(ValidationError::new(1005, "name does not match the required pattern".to_string()));
-		}
-		let pattern = Regex::new("[A-Za-z0-9\\-_]{1,50}").unwrap();
-		if !pattern.is_match(&self.encoding) {
-			return Err(ValidationError::new(1005, "encoding does not match the required pattern".to_string()));
-		}
-		if let Some(ref val) = self.algorithm {
-			let pattern = Regex::new("[A-Za-z0-9\\-_]{1,50}").unwrap();
-			if !pattern.is_match(val) {
-				return Err(ValidationError::new(1005, "algorithm does not match the required pattern".to_string()));
-			}
-		}
-		Ok(())
-	}
-}
-
-
-// KeyAddition ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct KeyAddition {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Key", skip_serializing_if = "Option::is_none") )]
-	pub key: Option<FedNowMessageSignatureKey>,
-}
-
-impl KeyAddition {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		if let Some(ref val) = self.key { val.validate()? }
-		Ok(())
-	}
-}
-
-
 // KeyRevocation ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
 #[cfg_attr(feature = "derive_default", derive(Default))]
@@ -225,28 +140,6 @@ pub struct GetAllCustomerPublicKeys {
 
 impl GetAllCustomerPublicKeys {
 	pub fn validate(&self) -> Result<(), ValidationError> {
-		Ok(())
-	}
-}
-
-
-// FedNowPublicKeyResponse ...
-#[cfg_attr(feature = "derive_debug", derive(Debug))]
-#[cfg_attr(feature = "derive_default", derive(Default))]
-#[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_clone", derive(Clone))]
-#[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-pub struct FedNowPublicKeyResponse {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowMessageSignatureKeyStatus") )]
-	pub fed_now_message_signature_key_status: FedNowMessageSignatureKeyStatus,
-	#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowMessageSignatureKey") )]
-	pub fed_now_message_signature_key: FedNowMessageSignatureKey,
-}
-
-impl FedNowPublicKeyResponse {
-	pub fn validate(&self) -> Result<(), ValidationError> {
-		self.fed_now_message_signature_key_status.validate()?;
-		self.fed_now_message_signature_key.validate()?;
 		Ok(())
 	}
 }

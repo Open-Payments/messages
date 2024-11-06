@@ -29,7 +29,6 @@ use crate::common::*;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
 
-
 // FedNowParticipantFile1: This is the participant profile of the FedNow participant and contains the participant's identification, name and the FedNow services the participant has enrolled for.
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
 #[cfg_attr(feature = "derive_default", derive(Default))]
