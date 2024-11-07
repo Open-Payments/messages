@@ -5,20 +5,7 @@ use regex::Regex;
 // Conditionally import necessary traits and modules
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
-
-
-#[derive(Debug)]
-pub struct ValidationError {
-    pub code: u32,
-    pub message: String,
-}
-
-impl ValidationError {
-    pub fn new(code: u32, message: String) -> Self {
-        ValidationError { code, message }
-    }
-}
-
+use open_payments_common::ValidationError;
 
 // AcceptanceResult6 ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]

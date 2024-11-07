@@ -2,5 +2,5 @@
 resolver = "2"
 members = [
     "iso20022",
-    "fednow",
+    "fednow", "open-payments-common",
 ]

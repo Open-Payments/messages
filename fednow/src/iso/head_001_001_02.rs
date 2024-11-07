@@ -26,5 +26,6 @@
 #![allow(unused_imports)]
 use regex::Regex;
 use crate::common::*;
+use open_payments_common::ValidationError;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
