@@ -8,20 +8,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::document::Document;
 use crate::fednow_extra::key_exchange::*;
-
-
-#[derive(Debug)]
-pub struct ValidationError {
-    pub code: u32,
-    pub message: String,
-}
-
-impl ValidationError {
-    pub fn new(code: u32, message: String) -> Self {
-        ValidationError { code, message }
-    }
-}
-
+use open_payments_common::ValidationError;
 
 // AccountDebitCreditNotification ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]

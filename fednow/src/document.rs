@@ -24,7 +24,7 @@
 
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
-use crate::common::ValidationError;
+use open_payments_common::ValidationError;
 
 use crate::iso::admi_002_001_01::*;
 use crate::iso::admi_004_001_02::*;
