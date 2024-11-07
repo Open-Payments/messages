@@ -1,6 +1,15 @@
 [package]
 name = "open-payments-common"
-version = "0.1.0"
+version = "1.0.5"
 edition = "2021"
+exclude = ["/xsd", "/xml", ".DS_Store", "/target", ".vscode", "generate.sh"]
+authors = ["Harishankar Narayanan <nharishankar@gmail.com>"]
+license = "Apache-2.0"
+description = "Open Payments - Message Parsing Library - ISO20022"
+readme = "../README.md"
+homepage = "https://github.com/Open-Payments/messages"
+repository = "https://github.com/Open-Payments/messages"
+keywords = ["financial", "payments", "message", "iso20022"]
+categories = ["data-structures", "development-tools", "finance", "parsing", "parser-implementations"]
 
 [dependencies]
