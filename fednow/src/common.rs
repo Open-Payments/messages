@@ -1,14 +1,34 @@
-// Suppress warnings about unused imports when features are not enabled
+// Open Payment Message Parsing Library
+// https://github.com/Open-Payments/messages
+//
+// This library is designed to parse message formats based on the ISO 20022 standards,
+// including but not limited to FedNow messages. It supports various financial message types,
+// such as customer credit transfers, payment status reports, administrative notifications, 
+// and other ISO 20022 messages, using Serde for efficient serialization and deserialization.
+//
+// Copyright (c) 2024 Open Payments by Harishankar Narayanan
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// You may obtain a copy of this library at
+// https://github.com/Open-Payments/messages
+
 #![allow(unused_imports)]
 use regex::Regex;
 
-// Conditionally import necessary traits and modules
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
-
-use crate::document::Document;
-use crate::fednow_extra::key_exchange::*;
 use open_payments_common::ValidationError;
+
 
 // AccountDebitCreditNotification ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
@@ -363,7 +383,7 @@ impl FedNowInstitutionCreditTransfer {
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 pub struct FedNowMessageReject {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AppHdr") )]
-	pub bah_app_hdr: BusinessApplicationHeaderV02,
+	pub bah_app_hdr: AppHdr,
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Document") )]
 	pub a2_document: Document,
 }
@@ -15456,7 +15476,6 @@ impl YieldedOrValueType1Choice {
 }
 
 
-
 // FedNowMessageSignatureKey ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
 #[cfg_attr(feature = "derive_default", derive(Default))]
@@ -15475,7 +15494,7 @@ pub struct FedNowMessageSignatureKey {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Algorithm", skip_serializing_if = "Option::is_none") )]
 	pub algorithm: Option<String>,
 	#[cfg_attr( feature = "derive_serde", serde(rename = "KeyCreationDateTime", skip_serializing_if = "Option::is_none") )]
-	pub key_creation_date_time: Option<String>,
+	pub key_creation_date_time: Option<KeyCreationDateTime>,
 }
 
 impl FedNowMessageSignatureKey {
@@ -15498,6 +15517,7 @@ impl FedNowMessageSignatureKey {
 				return Err(ValidationError::new(1005, "algorithm does not match the required pattern".to_string()));
 			}
 		}
+		if let Some(ref val) = self.key_creation_date_time { val.validate()? }
 		Ok(())
 	}
 }
@@ -15513,11 +15533,12 @@ pub struct FedNowMessageSignatureKeyStatus {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "KeyStatus") )]
 	pub key_status: String,
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StatusDateTime") )]
-	pub status_date_time: String,
+	pub status_date_time: StatusDateTime,
 }
 
 impl FedNowMessageSignatureKeyStatus {
 	pub fn validate(&self) -> Result<(), ValidationError> {
+		self.status_date_time.validate()?;
 		Ok(())
 	}
 }

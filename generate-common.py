@@ -91,12 +91,8 @@ def generate_common_file(duplicate_types: dict, output_file: str):
     
     # Prepare all content before writing to file
     if not existing_content:
-        new_content = [
-            "use serde::{Serialize, Deserialize};",
-            "use crate::validation::ValidationError;\n"
-        ]
-    else:
-        new_content = [existing_content.rstrip('\n')]
+        existing_content = ""
+    new_content = [existing_content.rstrip('\n')]
     
     # Add new types
     for type_name, matches in sorted(duplicate_types.items()):
