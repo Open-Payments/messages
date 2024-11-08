@@ -36,6 +36,7 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FundDetailedEstimatedCashForecastReportV04 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: MessageIdentification1,

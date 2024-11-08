@@ -36,6 +36,7 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CaseStatusReportRequestV05 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ReqHdr") )]
 	pub req_hdr: ReportHeader7,

@@ -16,6 +16,7 @@ categories = ["data-structures", "development-tools", "finance", "parsing", "par
 [dependencies]
 open-payments-common = {path = "../open-payments-common", version = "1.0.6" }
 serde = { version = "1.0", features = ["derive"], optional = true }
+samplify-rs = { version = "0.1.5", optional = true }
 serde-xml-rs = { version = "0.6.0" }
 serde_path_to_error = { version = "0.1" }
 xml-rs = { version = "0.8" }
@@ -30,7 +31,7 @@ derive_debug = []
 derive_default = []
 derive_partial_eq = []
 derive_clone = []
-
+derive_samplify = ["samplify-rs"]
 
 [package.metadata.docs.rs]
 all-features = true

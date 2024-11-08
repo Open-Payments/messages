@@ -36,6 +36,7 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FedNowParticipantFile1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BizDay") )]
 	pub biz_day: String,
@@ -57,6 +58,7 @@ impl FedNowParticipantFile1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FedNowParticipantProfile1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -90,6 +92,7 @@ impl FedNowParticipantProfile1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ServicesFedNow1 {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CTSR") )]
@@ -113,6 +116,7 @@ impl ServicesFedNow1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Admi998SuplDataV01 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PtcptFile") )]
 	pub ptcpt_file: FedNowParticipantFile1,
