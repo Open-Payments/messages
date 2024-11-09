@@ -29,7 +29,7 @@ jobs:
 
       # Run tests with limited parallelism to avoid OOM
       - name: Run tests
-        run: cargo test --workspace --features "admi derive_serde derive_default derive_debug derive_samplify" --jobs 1 -- --test-threads=1
+        run: cargo test --workspace --features "admi pacs derive_serde derive_default derive_debug derive_samplify" --jobs 1 -- --test-threads=1
 
       - name: Release and publish crates
         env:
