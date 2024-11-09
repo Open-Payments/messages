@@ -29,6 +29,9 @@ use regex::Regex;
 use serde::{Deserialize, Serialize};
 use open_payments_common::ValidationError;
 
+#[cfg(feature = "derive_samplify")]
+use samplify_rs::Sampleable;
+
 
 // AddressType2Code ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]

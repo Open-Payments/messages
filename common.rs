@@ -28,3 +28,6 @@ use regex::Regex;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
 use open_payments_common::ValidationError;
+
+#[cfg(feature = "derive_samplify")]
+use samplify_rs::Sampleable;

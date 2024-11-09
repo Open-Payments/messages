@@ -31,6 +31,10 @@ use open_payments_common::ValidationError;
 use crate::document::Document;
 use crate::fednow_extra::key_exchange::*;
 
+#[cfg(feature = "derive_samplify")]
+use samplify_rs::Sampleable;
+
+
 // AccountDebitCreditNotification ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
 #[cfg_attr(feature = "derive_default", derive(Default))]
