@@ -30,6 +30,7 @@ def scan_rust_files(directory: str) -> tuple[defaultdict, dict, list]:
         r'#\[cfg_attr\(feature = "derive_serde", derive\(Serialize, Deserialize\)\)\]\n'
         r'#\[cfg_attr\(feature = "derive_clone", derive\(Clone\)\)\]\n'
         r'#\[cfg_attr\(feature = "derive_partial_eq", derive\(PartialEq\)\)\]\n'
+        r'#\[cfg_attr\(feature = "derive_samplify", derive\(Sampleable\)\)\]\n'
         r'(?:pub struct|pub enum)\s+\w+.*?\t\tOk\(\(\)\)\n\t\}\n\}\n)',
         re.DOTALL
     )
@@ -91,12 +92,8 @@ def generate_common_file(duplicate_types: dict, output_file: str):
     
     # Prepare all content before writing to file
     if not existing_content:
-        new_content = [
-            "use serde::{Serialize, Deserialize};",
-            "use crate::validation::ValidationError;\n"
-        ]
-    else:
-        new_content = [existing_content.rstrip('\n')]
+        existing_content = ""
+    new_content = [existing_content.rstrip('\n')]
     
     # Add new types
     for type_name, matches in sorted(duplicate_types.items()):

@@ -29,6 +29,8 @@ use crate::common::*;
 use open_payments_common::ValidationError;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
+#[cfg(feature = "derive_samplify")]
+use samplify_rs::Sampleable;
 
 // FIToFIPaymentStatusRequestV06 ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
@@ -36,6 +38,7 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FIToFIPaymentStatusRequestV06 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "GrpHdr") )]
 	pub grp_hdr: GroupHeader109,

@@ -29,6 +29,8 @@ use crate::common::*;
 use open_payments_common::ValidationError;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
+#[cfg(feature = "derive_samplify")]
+use samplify_rs::Sampleable;
 
 // FedNowIncoming ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
@@ -36,6 +38,7 @@ use serde::{Deserialize, Serialize};
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
+#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FedNowIncoming {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowTechnicalHeader", skip_serializing_if = "Option::is_none") )]
 	pub fed_now_technical_header: Option<FedNowTechnicalHeader>,

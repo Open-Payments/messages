@@ -50,12 +50,15 @@ use crate::iso::pacs_028_001_03::*;
 use crate::iso::pain_013_001_07::*;
 use crate::iso::pain_014_001_07::*;
 
+#[cfg(feature = "derive_samplify")]
+use samplify_rs::Sampleable;
 
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 #[cfg_attr(feature = "derive_default", derive(Default))]
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
+#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum Document {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "admi.002.001.01"))]
 	Admi00200101(Box<Admi00200101>),

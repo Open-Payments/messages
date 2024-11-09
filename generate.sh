@@ -11,7 +11,12 @@ sh generate-iso20022.sh xsd/iso20022/reda iso20022-reda/src
 sh generate-iso20022.sh xsd/iso20022/remt iso20022-remt/src
 cp common.rs iso20022/src
 
+cp common.rs fednow/src
 sh generate-fednow.sh xsd/fednow fednow/src
 sh generate-fednow.sh xsd/fednow/fednow fednow/src/fednow_extra
 sh generate-fednow.sh xsd/fednow/iso fednow/src/iso
-cp common.rs fednow/src
+
+cat fednow/src/iso/common.rs >> fednow/src/common.rs
+rm fednow/src/iso/common.rs
+cat fednow/src/fednow_extra/common.rs >> fednow/src/common.rs
+rm fednow/src/fednow_extra/common.rs

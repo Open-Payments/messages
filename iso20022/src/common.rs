@@ -22,11 +22,12 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
-// Suppress warnings about unused imports when features are not enabled
 #![allow(unused_imports)]
 use regex::Regex;
 
-// Conditionally import necessary traits and modules
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
 use open_payments_common::ValidationError;
+
+#[cfg(feature = "derive_samplify")]
+use samplify_rs::Sampleable;
