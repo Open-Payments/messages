@@ -1359,7 +1359,7 @@ impl AccountingStatus1Code {
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 pub struct ActiveCurrencyAnd13DecimalAmount {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
+	#[cfg_attr( feature = "derive_serde", serde(rename = "@Ccy") )]
 	pub ccy: String,
 	#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
 	pub value: f64,
@@ -1379,7 +1379,7 @@ impl ActiveCurrencyAnd13DecimalAmount {
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 pub struct ActiveCurrencyAndAmount {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
+	#[cfg_attr( feature = "derive_serde", serde(rename = "@Ccy") )]
 	pub ccy: String,
 	#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
 	pub value: f64,
@@ -1399,7 +1399,7 @@ impl ActiveCurrencyAndAmount {
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 pub struct ActiveOrHistoricCurrencyAndAmount {
-	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
+	#[cfg_attr( feature = "derive_serde", serde(rename = "@Ccy") )]
 	pub ccy: String,
 	#[cfg_attr( feature = "derive_serde", serde(rename = "$value") )]
 	pub value: f64,
