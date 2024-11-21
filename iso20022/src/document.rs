@@ -327,15 +327,11 @@ use open_payments_common::ValidationError;
 #[cfg(feature = "remt")] use open_payments_iso20022_remt::remt_001_001_06::*;
 #[cfg(feature = "remt")] use open_payments_iso20022_remt::remt_002_001_03::*;
 
-#[cfg(feature = "derive_samplify")]
-use samplify_rs::Sampleable;
-
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
 #[cfg_attr(feature = "derive_default", derive(Default))]
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum Document {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "admi.002.001.01"))]
 	#[cfg(feature = "admi")]

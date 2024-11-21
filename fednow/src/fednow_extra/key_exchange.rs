@@ -29,8 +29,6 @@ use crate::common::*;
 use open_payments_common::ValidationError;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
-#[cfg(feature = "derive_samplify")]
-use samplify_rs::Sampleable;
 
 
 // KeyRevocation ...
@@ -39,7 +37,6 @@ use samplify_rs::Sampleable;
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct KeyRevocation {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "KeyRevocation", skip_serializing_if = "Option::is_none") )]
 	pub key_revocation: Option<String>,
@@ -76,7 +73,6 @@ impl KeyRevocation {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FedNowMessageSignatureKeyExchange {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "KeyAddition", skip_serializing_if = "Option::is_none") )]
 	pub key_addition: Option<KeyAddition>,
@@ -98,7 +94,6 @@ impl FedNowMessageSignatureKeyExchange {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FedNowCustomerMessageSignatureKeyOperationResponse {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FedNowKeyID") )]
 	pub fed_now_key_id: String,
@@ -125,7 +120,6 @@ impl FedNowCustomerMessageSignatureKeyOperationResponse {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GetAllFedNowActivePublicKeys {
 }
 
@@ -142,7 +136,6 @@ impl GetAllFedNowActivePublicKeys {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GetAllCustomerPublicKeys {
 }
 
@@ -159,7 +152,6 @@ impl GetAllCustomerPublicKeys {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FedNowPublicKeyResponses {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PublicKeys") )]
 	pub public_keys: Vec<FedNowPublicKeyResponse>,

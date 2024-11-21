@@ -29,8 +29,6 @@ use crate::common::*;
 use open_payments_common::ValidationError;
 #[cfg(feature = "derive_serde")]
 use serde::{Deserialize, Serialize};
-#[cfg(feature = "derive_samplify")]
-use samplify_rs::Sampleable;
 
 // FinancialInstrumentReportingTradingVolumeCapResultReportV01 ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
@@ -38,7 +36,6 @@ use samplify_rs::Sampleable;
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FinancialInstrumentReportingTradingVolumeCapResultReportV01 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RptHdr") )]
 	pub rpt_hdr: SecuritiesMarketReportHeader1,
