@@ -1,6 +1,6 @@
 [package]
 name = "open-payments-iso20022-auth"
-version = "1.0.7"
+version = "1.0.8"
 edition = "2021"
 exclude = ["/xsd", "/xml", ".DS_Store", "/target", ".vscode", "generate.sh"]
 authors = ["Harishankar Narayanan <nharishankar@gmail.com>"]
@@ -14,7 +14,7 @@ categories = ["data-structures", "development-tools", "finance", "parsing", "par
 
 
 [dependencies]
-open-payments-common = {path = "../open-payments-common", version = "1.0.7" }
+open-payments-common = {path = "../open-payments-common", version = "1.0.8" }
 serde = { version = "1.0", features = ["derive"], optional = true }
 regex = "1.11.1"
 rand = "0.8"
