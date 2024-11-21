@@ -30,7 +30,6 @@ def scan_rust_files(directory: str) -> tuple[defaultdict, dict, list]:
         r'#\[cfg_attr\(feature = "derive_serde", derive\(Serialize, Deserialize\)\)\]\n'
         r'#\[cfg_attr\(feature = "derive_clone", derive\(Clone\)\)\]\n'
         r'#\[cfg_attr\(feature = "derive_partial_eq", derive\(PartialEq\)\)\]\n'
-        r'#\[cfg_attr\(feature = "derive_samplify", derive\(Sampleable\)\)\]\n'
         r'(?:pub struct|pub enum)\s+\w+.*?\t\tOk\(\(\)\)\n\t\}\n\}\n)',
         re.DOTALL
     )

@@ -29,9 +29,6 @@ use regex::Regex;
 use serde::{Deserialize, Serialize};
 use open_payments_common::ValidationError;
 
-#[cfg(feature = "derive_samplify")]
-use samplify_rs::Sampleable;
-use std::iter::Map;
 
 // AccountCashEntryReturnCriteria3 ...
 #[cfg_attr(feature = "derive_debug", derive(Debug))]
@@ -39,7 +36,6 @@ use std::iter::Map;
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountCashEntryReturnCriteria3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NtryRefInd", skip_serializing_if = "Option::is_none") )]
 	pub ntry_ref_ind: Option<bool>,
@@ -72,7 +68,6 @@ impl AccountCashEntryReturnCriteria3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountCriteria4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryNm", skip_serializing_if = "Option::is_none") )]
 	pub qry_nm: Option<String>,
@@ -102,7 +97,6 @@ impl AccountCriteria4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountCriteria8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none") )]
 	pub new_qry_nm: Option<String>,
@@ -135,7 +129,6 @@ impl AccountCriteria8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Prtry") )]
 	pub prtry: SimpleIdentificationInformation,
@@ -155,7 +148,6 @@ impl AccountIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountIdentification4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "IBAN", skip_serializing_if = "Option::is_none") )]
 	pub iban: Option<String>,
@@ -183,7 +175,6 @@ impl AccountIdentification4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountIdentificationSearchCriteria2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "EQ", skip_serializing_if = "Option::is_none") )]
 	pub eq: Option<AccountIdentification4Choice>,
@@ -223,7 +214,6 @@ impl AccountIdentificationSearchCriteria2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountInterest4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<InterestType1Choice>,
@@ -262,7 +252,6 @@ impl AccountInterest4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum AccountLevel1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "INTM") )]
@@ -284,7 +273,6 @@ impl AccountLevel1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum AccountLevel2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "INTM") )]
@@ -308,7 +296,6 @@ impl AccountLevel2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountNotification22 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -379,7 +366,6 @@ impl AccountNotification22 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountNotification23 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -433,7 +419,6 @@ impl AccountNotification23 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountOrBusinessError6Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Acct", skip_serializing_if = "Option::is_none") )]
 	pub acct: Option<CashAccountData1>,
@@ -456,7 +441,6 @@ impl AccountOrBusinessError6Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountOrOperationalError6Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctRpt", skip_serializing_if = "Option::is_none") )]
 	pub acct_rpt: Option<Vec<AccountReport35>>,
@@ -479,7 +463,6 @@ impl AccountOrOperationalError6Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountQuery4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp", skip_serializing_if = "Option::is_none") )]
 	pub qry_tp: Option<QueryType2Code>,
@@ -502,7 +485,6 @@ impl AccountQuery4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountReport33 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -576,7 +558,6 @@ impl AccountReport33 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountReport35 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctId") )]
 	pub acct_id: AccountIdentification4Choice,
@@ -599,7 +580,6 @@ impl AccountReport35 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountSchemeName1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -636,7 +616,6 @@ impl AccountSchemeName1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountStatement13 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -710,7 +689,6 @@ impl AccountStatement13 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AccountTax1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ClctnMtd") )]
 	pub clctn_mtd: BillingTaxCalculationMethod1Code,
@@ -743,7 +721,6 @@ impl AccountTax1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AcknowledgedAcceptedStatus21Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -766,7 +743,6 @@ impl AcknowledgedAcceptedStatus21Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AcknowledgedAcceptedStatus24Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -789,7 +765,6 @@ impl AcknowledgedAcceptedStatus24Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AcknowledgementDetails1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PayInSchdlRef", skip_serializing_if = "Option::is_none") )]
 	pub pay_in_schdl_ref: Option<String>,
@@ -826,7 +801,6 @@ impl AcknowledgementDetails1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AcknowledgementReason12 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: AcknowledgementReason15Choice,
@@ -856,7 +830,6 @@ impl AcknowledgementReason12 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AcknowledgementReason12Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<AcknowledgementReason5Code>,
@@ -879,7 +852,6 @@ impl AcknowledgementReason12Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AcknowledgementReason15Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<AcknowledgementReason3Code>,
@@ -902,7 +874,6 @@ impl AcknowledgementReason15Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum AcknowledgementReason3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ADEA") )]
@@ -926,7 +897,6 @@ impl AcknowledgementReason3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum AcknowledgementReason5Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ADEA") )]
@@ -962,7 +932,6 @@ impl AcknowledgementReason5Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AcknowledgementReason9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: AcknowledgementReason12Choice,
@@ -992,7 +961,6 @@ impl AcknowledgementReason9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ActiveAmountRange3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ImpldCcyAndAmtRg", skip_serializing_if = "Option::is_none") )]
 	pub impld_ccy_and_amt_rg: Option<ImpliedCurrencyAndAmountRange1>,
@@ -1015,7 +983,6 @@ impl ActiveAmountRange3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ActiveCurrencyAnd13DecimalAmount {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
 	pub ccy: String,
@@ -1036,7 +1003,6 @@ impl ActiveCurrencyAnd13DecimalAmount {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ActiveCurrencyAndAmount {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
 	pub ccy: String,
@@ -1057,7 +1023,6 @@ impl ActiveCurrencyAndAmount {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ActiveCurrencyAndAmountRange3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ImpliedCurrencyAmountRange1Choice,
@@ -1086,7 +1051,6 @@ impl ActiveCurrencyAndAmountRange3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ActiveOrHistoricAmountRange2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ImpldCcyAndAmtRg", skip_serializing_if = "Option::is_none") )]
 	pub impld_ccy_and_amt_rg: Option<ImpliedCurrencyAndAmountRange1>,
@@ -1109,7 +1073,6 @@ impl ActiveOrHistoricAmountRange2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ActiveOrHistoricCurrencyAnd13DecimalAmount {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
 	pub ccy: String,
@@ -1130,7 +1093,6 @@ impl ActiveOrHistoricCurrencyAnd13DecimalAmount {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ActiveOrHistoricCurrencyAndAmount {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
 	pub ccy: String,
@@ -1151,7 +1113,6 @@ impl ActiveOrHistoricCurrencyAndAmount {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ActiveOrHistoricCurrencyAndAmountRange2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ImpliedCurrencyAmountRange1Choice,
@@ -1180,7 +1141,6 @@ impl ActiveOrHistoricCurrencyAndAmountRange2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AdditionalParameters1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ctry", skip_serializing_if = "Option::is_none") )]
 	pub ctry: Option<String>,
@@ -1223,7 +1183,6 @@ impl AdditionalParameters1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AdditionalParameters16 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PrtlSttlm", skip_serializing_if = "Option::is_none") )]
 	pub prtl_sttlm: Option<PartialSettlement2Code>,
@@ -1313,7 +1272,6 @@ impl AdditionalParameters16 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AdditionalReference3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ref") )]
 	pub ref_attr: String,
@@ -1351,7 +1309,6 @@ impl AdditionalReference3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AdditionalRequestData1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ReqdDbtAuthstn", skip_serializing_if = "Option::is_none") )]
 	pub reqd_dbt_authstn: Option<DebitAuthorisation3>,
@@ -1387,7 +1344,6 @@ impl AdditionalRequestData1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum AddressType2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ADDR") )]
@@ -1417,7 +1373,6 @@ impl AddressType2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AddressType3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<AddressType2Code>,
@@ -1440,7 +1395,6 @@ impl AddressType3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AdjustmentCompensation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InitlAmt", skip_serializing_if = "Option::is_none") )]
 	pub initl_amt: Option<ActiveCurrencyAndAmount>,
@@ -1487,7 +1441,6 @@ impl AdjustmentCompensation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AdjustmentRequest1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Prd", skip_serializing_if = "Option::is_none") )]
 	pub prd: Option<DatePeriod5>,
@@ -1507,7 +1460,6 @@ impl AdjustmentRequest1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AgreedRate2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "XchgRate") )]
 	pub xchg_rate: f64,
@@ -1538,7 +1490,6 @@ impl AgreedRate2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AlternateSecurityIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -1581,7 +1532,6 @@ impl AlternateSecurityIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmendmentInformationDetails14 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlMndtId", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_mndt_id: Option<String>,
@@ -1645,7 +1595,6 @@ impl AmendmentInformationDetails14 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmendmentInformationDetails15 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlMndtId", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_mndt_id: Option<String>,
@@ -1709,7 +1658,6 @@ impl AmendmentInformationDetails15 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Amount2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AmtWthtCcy", skip_serializing_if = "Option::is_none") )]
 	pub amt_wtht_ccy: Option<f64>,
@@ -1736,7 +1684,6 @@ impl Amount2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Amount3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AmtWthCcy", skip_serializing_if = "Option::is_none") )]
 	pub amt_wth_ccy: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -1763,7 +1710,6 @@ impl Amount3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Amount4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "IncrAmt", skip_serializing_if = "Option::is_none") )]
 	pub incr_amt: Option<Amount2Choice>,
@@ -1786,7 +1732,6 @@ impl Amount4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmountAndCurrencyExchange4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstdAmt", skip_serializing_if = "Option::is_none") )]
 	pub instd_amt: Option<AmountAndCurrencyExchangeDetails5>,
@@ -1818,7 +1763,6 @@ impl AmountAndCurrencyExchange4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmountAndCurrencyExchangeDetails5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -1841,7 +1785,6 @@ impl AmountAndCurrencyExchangeDetails5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmountAndCurrencyExchangeDetails6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: String,
@@ -1872,7 +1815,6 @@ impl AmountAndCurrencyExchangeDetails6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmountAndDirection34 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -1894,7 +1836,6 @@ impl AmountAndDirection34 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmountAndDirection35 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: f64,
@@ -1919,7 +1860,6 @@ impl AmountAndDirection35 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmountAndDirection5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveCurrencyAndAmount,
@@ -1942,7 +1882,6 @@ impl AmountAndDirection5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmountAndQuantityBreakdown1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LotNb", skip_serializing_if = "Option::is_none") )]
 	pub lot_nb: Option<GenericIdentification37>,
@@ -1971,7 +1910,6 @@ impl AmountAndQuantityBreakdown1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmountOrRate3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt", skip_serializing_if = "Option::is_none") )]
 	pub amt: Option<ActiveCurrencyAnd13DecimalAmount>,
@@ -1993,7 +1931,6 @@ impl AmountOrRate3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmountRangeBoundary1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BdryAmt") )]
 	pub bdry_amt: f64,
@@ -2017,7 +1954,6 @@ impl AmountRangeBoundary1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct AmountType4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstdAmt", skip_serializing_if = "Option::is_none") )]
 	pub instd_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -2040,7 +1976,6 @@ impl AmountType4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum AttendanceContext1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ATTD") )]
@@ -2064,7 +1999,6 @@ impl AttendanceContext1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum AuthenticationEntity1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ICCD") )]
@@ -2088,7 +2022,6 @@ impl AuthenticationEntity1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum AuthenticationMethod1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "UKNW") )]
@@ -2128,7 +2061,6 @@ impl AuthenticationMethod1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BalanceAdjustment1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: BalanceAdjustmentType1Code,
@@ -2171,7 +2103,6 @@ impl BalanceAdjustment1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum BalanceAdjustmentType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LDGR") )]
@@ -2195,7 +2126,6 @@ impl BalanceAdjustmentType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum BalanceCounterparty1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BILA") )]
@@ -2217,7 +2147,6 @@ impl BalanceCounterparty1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BalanceRestrictionType1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: GenericIdentification1,
@@ -2250,7 +2179,6 @@ impl BalanceRestrictionType1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum BalanceStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PDNG") )]
@@ -2272,7 +2200,6 @@ impl BalanceStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BalanceStatus2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Bal") )]
 	pub bal: ActiveCurrencyAndAmount,
@@ -2292,7 +2219,6 @@ impl BalanceStatus2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BalanceSubType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -2329,7 +2255,6 @@ impl BalanceSubType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BalanceType10Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -2366,7 +2291,6 @@ impl BalanceType10Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BalanceType11Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -2403,7 +2327,6 @@ impl BalanceType11Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BalanceType13 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CdOrPrtry") )]
 	pub cd_or_prtry: BalanceType10Choice,
@@ -2426,7 +2349,6 @@ impl BalanceType13 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BalanceType9Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<SystemBalanceType2Code>,
@@ -2456,7 +2378,6 @@ impl BalanceType9Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BankTransactionCodeStructure4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Domn", skip_serializing_if = "Option::is_none") )]
 	pub domn: Option<BankTransactionCodeStructure5>,
@@ -2479,7 +2400,6 @@ impl BankTransactionCodeStructure4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BankTransactionCodeStructure5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: String,
@@ -2507,7 +2427,6 @@ impl BankTransactionCodeStructure5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BankTransactionCodeStructure6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: String,
@@ -2540,7 +2459,6 @@ impl BankTransactionCodeStructure6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BatchInformation2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId", skip_serializing_if = "Option::is_none") )]
 	pub msg_id: Option<String>,
@@ -2591,7 +2509,6 @@ impl BatchInformation2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BilateralLimit4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CtrPtyId") )]
 	pub ctr_pty_id: BranchAndFinancialInstitutionIdentification8,
@@ -2620,7 +2537,6 @@ impl BilateralLimit4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingBalance1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: BillingBalanceType1Choice,
@@ -2646,7 +2562,6 @@ impl BillingBalance1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingBalanceType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -2683,7 +2598,6 @@ impl BillingBalanceType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum BillingChargeMethod1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "UPRC") )]
@@ -2741,7 +2655,6 @@ impl BillingChargeMethod1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingCompensation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: BillingCompensationType1Choice,
@@ -2767,7 +2680,6 @@ impl BillingCompensation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingCompensationType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -2804,7 +2716,6 @@ impl BillingCompensationType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum BillingCurrencyType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ACCT") )]
@@ -2828,7 +2739,6 @@ impl BillingCurrencyType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum BillingCurrencyType2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ACCT") )]
@@ -2854,7 +2764,6 @@ impl BillingCurrencyType2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingMethod1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SvcChrgHstAmt") )]
 	pub svc_chrg_hst_amt: AmountAndDirection34,
@@ -2883,7 +2792,6 @@ impl BillingMethod1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingMethod1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MtdA", skip_serializing_if = "Option::is_none") )]
 	pub mtd_a: Option<BillingMethod1>,
@@ -2909,7 +2817,6 @@ impl BillingMethod1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingMethod2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SvcChrgHstAmt") )]
 	pub svc_chrg_hst_amt: AmountAndDirection34,
@@ -2935,7 +2842,6 @@ impl BillingMethod2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingMethod3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SvcTaxPricAmt") )]
 	pub svc_tax_pric_amt: AmountAndDirection34,
@@ -2958,7 +2864,6 @@ impl BillingMethod3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingMethod4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SvcDtl") )]
 	pub svc_dtl: Vec<BillingServiceParameters2>,
@@ -2981,7 +2886,6 @@ impl BillingMethod4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingPrice1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy", skip_serializing_if = "Option::is_none") )]
 	pub ccy: Option<String>,
@@ -3022,7 +2926,6 @@ impl BillingPrice1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingRate1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: BillingRateIdentification1Choice,
@@ -3048,7 +2951,6 @@ impl BillingRate1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingRateIdentification1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -3085,7 +2987,6 @@ impl BillingRateIdentification1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingService2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SvcDtl") )]
 	pub svc_dtl: BillingServiceParameters3,
@@ -3126,7 +3027,6 @@ impl BillingService2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServiceAdjustment1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: ServiceAdjustmentType1Code,
@@ -3196,7 +3096,6 @@ impl BillingServiceAdjustment1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServiceCommonIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Issr") )]
 	pub issr: String,
@@ -3229,7 +3128,6 @@ impl BillingServiceCommonIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServiceIdentification2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -3265,7 +3163,6 @@ impl BillingServiceIdentification2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServiceIdentification3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -3317,7 +3214,6 @@ impl BillingServiceIdentification3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServiceParameters2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BkSvc") )]
 	pub bk_svc: BillingServiceIdentification2,
@@ -3345,7 +3241,6 @@ impl BillingServiceParameters2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServiceParameters3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BkSvc") )]
 	pub bk_svc: BillingServiceIdentification3,
@@ -3367,7 +3262,6 @@ impl BillingServiceParameters3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServicesAmount1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "HstAmt") )]
 	pub hst_amt: AmountAndDirection34,
@@ -3390,7 +3284,6 @@ impl BillingServicesAmount1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServicesAmount2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "HstAmt") )]
 	pub hst_amt: AmountAndDirection34,
@@ -3416,7 +3309,6 @@ impl BillingServicesAmount2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServicesAmount3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SrcAmt") )]
 	pub src_amt: AmountAndDirection34,
@@ -3439,7 +3331,6 @@ impl BillingServicesAmount3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServicesTax1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nb") )]
 	pub nb: String,
@@ -3482,7 +3373,6 @@ impl BillingServicesTax1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServicesTax2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nb") )]
 	pub nb: String,
@@ -3522,7 +3412,6 @@ impl BillingServicesTax2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingServicesTax3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nb") )]
 	pub nb: String,
@@ -3562,7 +3451,6 @@ impl BillingServicesTax3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingStatement5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StmtId") )]
 	pub stmt_id: String,
@@ -3622,7 +3510,6 @@ impl BillingStatement5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum BillingStatementStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ORGN") )]
@@ -3646,7 +3533,6 @@ impl BillingStatementStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingSubServiceIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Issr") )]
 	pub issr: BillingSubServiceQualifier1Choice,
@@ -3674,7 +3560,6 @@ impl BillingSubServiceIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingSubServiceQualifier1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<BillingSubServiceQualifier1Code>,
@@ -3704,7 +3589,6 @@ impl BillingSubServiceQualifier1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum BillingSubServiceQualifier1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LBOX") )]
@@ -3732,7 +3616,6 @@ impl BillingSubServiceQualifier1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum BillingTaxCalculationMethod1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NTAX") )]
@@ -3762,7 +3645,6 @@ impl BillingTaxCalculationMethod1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingTaxIdentification3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "VATRegnNb", skip_serializing_if = "Option::is_none") )]
 	pub vat_regn_nb: Option<String>,
@@ -3802,7 +3684,6 @@ impl BillingTaxIdentification3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BillingTaxRegion3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RgnNb") )]
 	pub rgn_nb: String,
@@ -3867,7 +3748,6 @@ impl BillingTaxRegion3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BookingConfirmation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -3917,7 +3797,6 @@ impl BookingConfirmation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BranchAndFinancialInstitutionIdentification6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FinInstnId") )]
 	pub fin_instn_id: FinancialInstitutionIdentification18,
@@ -3940,7 +3819,6 @@ impl BranchAndFinancialInstitutionIdentification6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BranchAndFinancialInstitutionIdentification8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FinInstnId") )]
 	pub fin_instn_id: FinancialInstitutionIdentification23,
@@ -3963,7 +3841,6 @@ impl BranchAndFinancialInstitutionIdentification8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BranchData3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id", skip_serializing_if = "Option::is_none") )]
 	pub id: Option<String>,
@@ -4011,7 +3888,6 @@ impl BranchData3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BranchData5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id", skip_serializing_if = "Option::is_none") )]
 	pub id: Option<String>,
@@ -4059,7 +3935,6 @@ impl BranchData5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BreakdownByCountry2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ctry") )]
 	pub ctry: String,
@@ -4091,7 +3966,6 @@ impl BreakdownByCountry2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BreakdownByCurrency2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
 	pub ccy: String,
@@ -4123,7 +3997,6 @@ impl BreakdownByCurrency2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BreakdownByParty3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Pty") )]
 	pub pty: InvestmentAccount42,
@@ -4155,7 +4028,6 @@ impl BreakdownByParty3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BreakdownByUserDefinedParameter3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Pty", skip_serializing_if = "Option::is_none") )]
 	pub pty: Option<InvestmentAccount42>,
@@ -4203,7 +4075,6 @@ impl BreakdownByUserDefinedParameter3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessDay8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysId") )]
 	pub sys_id: Vec<SystemIdentification2Choice>,
@@ -4226,7 +4097,6 @@ impl BusinessDay8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessDay9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysDt", skip_serializing_if = "Option::is_none") )]
 	pub sys_dt: Option<DateAndDateTime2Choice>,
@@ -4252,7 +4122,6 @@ impl BusinessDay9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessDayCriteria2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none") )]
 	pub new_qry_nm: Option<String>,
@@ -4285,7 +4154,6 @@ impl BusinessDayCriteria2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessDayCriteria3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryNm", skip_serializing_if = "Option::is_none") )]
 	pub qry_nm: Option<String>,
@@ -4315,7 +4183,6 @@ impl BusinessDayCriteria3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessDayQuery2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp", skip_serializing_if = "Option::is_none") )]
 	pub qry_tp: Option<QueryType2Code>,
@@ -4338,7 +4205,6 @@ impl BusinessDayQuery2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessDayReportOrError10Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BizDayInf", skip_serializing_if = "Option::is_none") )]
 	pub biz_day_inf: Option<BusinessDay9>,
@@ -4361,7 +4227,6 @@ impl BusinessDayReportOrError10Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessDayReportOrError9Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BizRpt", skip_serializing_if = "Option::is_none") )]
 	pub biz_rpt: Option<Vec<BusinessDay8>>,
@@ -4384,7 +4249,6 @@ impl BusinessDayReportOrError9Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessDayReturnCriteria2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysDtInd", skip_serializing_if = "Option::is_none") )]
 	pub sys_dt_ind: Option<bool>,
@@ -4415,7 +4279,6 @@ impl BusinessDayReturnCriteria2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessDaySearchCriteria2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysDt", skip_serializing_if = "Option::is_none") )]
 	pub sys_dt: Option<String>,
@@ -4453,7 +4316,6 @@ impl BusinessDaySearchCriteria2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessInformationCriteria1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none") )]
 	pub new_qry_nm: Option<String>,
@@ -4486,7 +4348,6 @@ impl BusinessInformationCriteria1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct BusinessInformationQueryDefinition3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp", skip_serializing_if = "Option::is_none") )]
 	pub qry_tp: Option<QueryType2Code>,
@@ -4509,7 +4370,6 @@ impl BusinessInformationQueryDefinition3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CSCManagement1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PRST") )]
@@ -4535,7 +4395,6 @@ impl CSCManagement1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CallIn1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CFAV") )]
@@ -4559,7 +4418,6 @@ impl CallIn1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CancellationIndividualStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RJCR") )]
@@ -4583,7 +4441,6 @@ impl CancellationIndividualStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CancellationProcessingStatus3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CANP") )]
@@ -4613,7 +4470,6 @@ impl CancellationProcessingStatus3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CancellationProcessingStatus9Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<CancellationProcessingStatus3Code>,
@@ -4636,7 +4492,6 @@ impl CancellationProcessingStatus9Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CancellationReason10 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: CancellationReason21Choice,
@@ -4666,7 +4521,6 @@ impl CancellationReason10 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CancellationReason19Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<CancelledStatusReason13Code>,
@@ -4689,7 +4543,6 @@ impl CancellationReason19Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CancellationReason21Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<CancelledStatusReason5Code>,
@@ -4712,7 +4565,6 @@ impl CancellationReason21Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CancellationReason33Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -4749,7 +4601,6 @@ impl CancellationReason33Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CancellationReason9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: CancellationReason19Choice,
@@ -4779,7 +4630,6 @@ impl CancellationReason9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CancellationStatus14Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -4802,7 +4652,6 @@ impl CancellationStatus14Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CancellationStatus15Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -4825,7 +4674,6 @@ impl CancellationStatus15Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CancellationStatusReason3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -4862,7 +4710,6 @@ impl CancellationStatusReason3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CancellationStatusReason5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Orgtr", skip_serializing_if = "Option::is_none") )]
 	pub orgtr: Option<PartyIdentification272>,
@@ -4897,7 +4744,6 @@ impl CancellationStatusReason5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CancelledStatusReason13Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CANI") )]
@@ -4935,7 +4781,6 @@ impl CancelledStatusReason13Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CancelledStatusReason1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CANI") )]
@@ -4959,7 +4804,6 @@ impl CancelledStatusReason1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CancelledStatusReason5Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CANI") )]
@@ -4981,7 +4825,6 @@ impl CancelledStatusReason5Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CardAggregated2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AddtlSvc", skip_serializing_if = "Option::is_none") )]
 	pub addtl_svc: Option<CardPaymentServiceType2Code>,
@@ -5027,7 +4870,6 @@ impl CardAggregated2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CardDataReading1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TAGC") )]
@@ -5061,7 +4903,6 @@ impl CardDataReading1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CardEntry5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Card", skip_serializing_if = "Option::is_none") )]
 	pub card: Option<PaymentCard4>,
@@ -5090,7 +4931,6 @@ impl CardEntry5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CardIndividualTransaction2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ICCRltdData", skip_serializing_if = "Option::is_none") )]
 	pub icc_rltd_data: Option<String>,
@@ -5191,7 +5031,6 @@ impl CardIndividualTransaction2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CardPaymentServiceType2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AGGR") )]
@@ -5231,7 +5070,6 @@ impl CardPaymentServiceType2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CardSecurityInformation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CSCMgmt") )]
 	pub csc_mgmt: CSCManagement1Code,
@@ -5259,7 +5097,6 @@ impl CardSecurityInformation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CardSequenceNumberRange1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrstTx", skip_serializing_if = "Option::is_none") )]
 	pub frst_tx: Option<String>,
@@ -5296,7 +5133,6 @@ impl CardSequenceNumberRange1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CardTransaction18 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Card", skip_serializing_if = "Option::is_none") )]
 	pub card: Option<PaymentCard4>,
@@ -5325,7 +5161,6 @@ impl CardTransaction18 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CardTransaction3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Aggtd", skip_serializing_if = "Option::is_none") )]
 	pub aggtd: Option<CardAggregated2>,
@@ -5348,7 +5183,6 @@ impl CardTransaction3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CardholderAuthentication2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AuthntcnMtd") )]
 	pub authntcn_mtd: AuthenticationMethod1Code,
@@ -5371,7 +5205,6 @@ impl CardholderAuthentication2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CardholderVerificationCapability1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MNSG") )]
@@ -5413,7 +5246,6 @@ impl CardholderVerificationCapability1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Case6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -5443,7 +5275,6 @@ impl Case6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CaseAssignment6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -5476,7 +5307,6 @@ impl CaseAssignment6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CaseForwardingNotification3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Justfn") )]
 	pub justfn: CaseForwardingNotification3Code,
@@ -5496,7 +5326,6 @@ impl CaseForwardingNotification3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CaseForwardingNotification3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FTHI") )]
@@ -5526,7 +5355,6 @@ impl CaseForwardingNotification3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CaseStatus2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DtTm") )]
 	pub dt_tm: String,
@@ -5558,7 +5386,6 @@ impl CaseStatus2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CaseStatus2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CLSD") )]
@@ -5586,7 +5413,6 @@ impl CaseStatus2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAccount40 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id", skip_serializing_if = "Option::is_none") )]
 	pub id: Option<AccountIdentification4Choice>,
@@ -5630,7 +5456,6 @@ impl CashAccount40 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAccount43 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id", skip_serializing_if = "Option::is_none") )]
 	pub id: Option<AccountIdentification4Choice>,
@@ -5680,7 +5505,6 @@ impl CashAccount43 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAccountAndEntry5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Acct") )]
 	pub acct: CashAccount43,
@@ -5703,7 +5527,6 @@ impl CashAccountAndEntry5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAccountCharacteristics5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctLvl") )]
 	pub acct_lvl: AccountLevel2Code,
@@ -5778,7 +5601,6 @@ impl CashAccountCharacteristics5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAccountData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
 	pub nm: Option<String>,
@@ -5837,7 +5659,6 @@ impl CashAccountData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAccountEntrySearch8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctId", skip_serializing_if = "Option::is_none") )]
 	pub acct_id: Option<Vec<AccountIdentificationSearchCriteria2Choice>>,
@@ -5885,7 +5706,6 @@ impl CashAccountEntrySearch8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAccountReturnCriteria5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NmInd", skip_serializing_if = "Option::is_none") )]
 	pub nm_ind: Option<bool>,
@@ -5924,7 +5744,6 @@ impl CashAccountReturnCriteria5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAccountSearchCriteria8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctId", skip_serializing_if = "Option::is_none") )]
 	pub acct_id: Option<Vec<AccountIdentificationSearchCriteria2Choice>>,
@@ -5966,7 +5785,6 @@ impl CashAccountSearchCriteria8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAccountType2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -6003,7 +5821,6 @@ impl CashAccountType2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAvailability1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Dt") )]
 	pub dt: CashAvailabilityDate1Choice,
@@ -6029,7 +5846,6 @@ impl CashAvailability1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashAvailabilityDate1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NbOfDays", skip_serializing_if = "Option::is_none") )]
 	pub nb_of_days: Option<String>,
@@ -6056,7 +5872,6 @@ impl CashAvailabilityDate1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashBalance11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: f64,
@@ -6092,7 +5907,6 @@ impl CashBalance11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashBalance13 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: f64,
@@ -6134,7 +5948,6 @@ impl CashBalance13 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashBalance14 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<Vec<BalanceType11Choice>>,
@@ -6166,7 +5979,6 @@ impl CashBalance14 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashBalance8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: BalanceType13,
@@ -6201,7 +6013,6 @@ impl CashBalance8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashBalanceReturnCriteria2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TpInd") )]
 	pub tp_ind: bool,
@@ -6228,7 +6039,6 @@ impl CashBalanceReturnCriteria2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashBalanceType3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -6258,7 +6068,6 @@ impl CashBalanceType3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashDeposit1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoteDnmtn") )]
 	pub note_dnmtn: ActiveCurrencyAndAmount,
@@ -6287,7 +6096,6 @@ impl CashDeposit1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashEntry2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt", skip_serializing_if = "Option::is_none") )]
 	pub amt: Option<ActiveCurrencyAndAmount>,
@@ -6347,7 +6155,6 @@ impl CashEntry2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashInForecast5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshSttlmDt") )]
 	pub csh_sttlm_dt: String,
@@ -6380,7 +6187,6 @@ impl CashInForecast5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashInForecast6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshSttlmDt") )]
 	pub csh_sttlm_dt: String,
@@ -6410,7 +6216,6 @@ impl CashInForecast6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashInOutForecast7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshSttlmDt", skip_serializing_if = "Option::is_none") )]
 	pub csh_sttlm_dt: Option<String>,
@@ -6432,7 +6237,6 @@ impl CashInOutForecast7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashOutForecast5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshSttlmDt") )]
 	pub csh_sttlm_dt: String,
@@ -6465,7 +6269,6 @@ impl CashOutForecast5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashOutForecast6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshSttlmDt") )]
 	pub csh_sttlm_dt: String,
@@ -6495,7 +6298,6 @@ impl CashOutForecast6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CashPaymentStatus2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PDNG") )]
@@ -6517,7 +6319,6 @@ impl CashPaymentStatus2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CashSubBalanceTypeAndQuantityBreakdown3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: CashBalanceType3Choice,
@@ -6540,7 +6341,6 @@ impl CashSubBalanceTypeAndQuantityBreakdown3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CategoryPurpose1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -6577,7 +6377,6 @@ impl CategoryPurpose1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CharacterSearch1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "EQ", skip_serializing_if = "Option::is_none") )]
 	pub eq: Option<String>,
@@ -6634,7 +6433,6 @@ impl CharacterSearch1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Charge26 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: ChargeType4Choice,
@@ -6657,7 +6455,6 @@ impl Charge26 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ChargeBearerType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DEBT") )]
@@ -6683,7 +6480,6 @@ impl ChargeBearerType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ChargeType12Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BEND") )]
@@ -6717,7 +6513,6 @@ impl ChargeType12Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargeType3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -6747,7 +6542,6 @@ impl ChargeType3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargeType4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<ChargeType12Code>,
@@ -6770,7 +6564,6 @@ impl ChargeType4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Charges14 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -6799,7 +6592,6 @@ impl Charges14 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Charges15 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TtlChrgsAndTaxAmt", skip_serializing_if = "Option::is_none") )]
 	pub ttl_chrgs_and_tax_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -6822,7 +6614,6 @@ impl Charges15 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Charges3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Sngl", skip_serializing_if = "Option::is_none") )]
 	pub sngl: Option<ChargesRecord9>,
@@ -6848,7 +6639,6 @@ impl Charges3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Charges4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Sngl", skip_serializing_if = "Option::is_none") )]
 	pub sngl: Option<ChargesRecord10>,
@@ -6874,7 +6664,6 @@ impl Charges4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Charges6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TtlChrgsAndTaxAmt", skip_serializing_if = "Option::is_none") )]
 	pub ttl_chrgs_and_tax_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -6897,7 +6686,6 @@ impl Charges6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesBreakdown1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveCurrencyAndAmount,
@@ -6923,7 +6711,6 @@ impl ChargesBreakdown1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesPerTransaction3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ChrgsId", skip_serializing_if = "Option::is_none") )]
 	pub chrgs_id: Option<String>,
@@ -6972,7 +6759,6 @@ impl ChargesPerTransaction3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesPerTransaction4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ChrgsId", skip_serializing_if = "Option::is_none") )]
 	pub chrgs_id: Option<String>,
@@ -7021,7 +6807,6 @@ impl ChargesPerTransaction4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesPerTransactionRecord3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RcrdId", skip_serializing_if = "Option::is_none") )]
 	pub rcrd_id: Option<String>,
@@ -7088,7 +6873,6 @@ impl ChargesPerTransactionRecord3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesPerTransactionRecord4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RcrdId", skip_serializing_if = "Option::is_none") )]
 	pub rcrd_id: Option<String>,
@@ -7155,7 +6939,6 @@ impl ChargesPerTransactionRecord4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesPerType3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ChrgsId", skip_serializing_if = "Option::is_none") )]
 	pub chrgs_id: Option<String>,
@@ -7207,7 +6990,6 @@ impl ChargesPerType3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesPerType4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ChrgsId", skip_serializing_if = "Option::is_none") )]
 	pub chrgs_id: Option<String>,
@@ -7259,7 +7041,6 @@ impl ChargesPerType4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesPerTypeRecord3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RcrdId", skip_serializing_if = "Option::is_none") )]
 	pub rcrd_id: Option<String>,
@@ -7326,7 +7107,6 @@ impl ChargesPerTypeRecord3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesPerTypeRecord4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RcrdId", skip_serializing_if = "Option::is_none") )]
 	pub rcrd_id: Option<String>,
@@ -7393,7 +7173,6 @@ impl ChargesPerTypeRecord4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesRecord10 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ChrgsId", skip_serializing_if = "Option::is_none") )]
 	pub chrgs_id: Option<String>,
@@ -7473,7 +7252,6 @@ impl ChargesRecord10 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesRecord3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -7512,7 +7290,6 @@ impl ChargesRecord3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesRecord8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -7551,7 +7328,6 @@ impl ChargesRecord8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChargesRecord9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ChrgsId", skip_serializing_if = "Option::is_none") )]
 	pub chrgs_id: Option<String>,
@@ -7631,7 +7407,6 @@ impl ChargesRecord9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Cheque17 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstrId", skip_serializing_if = "Option::is_none") )]
 	pub instr_id: Option<String>,
@@ -7697,7 +7472,6 @@ impl Cheque17 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Cheque18 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstrId", skip_serializing_if = "Option::is_none") )]
 	pub instr_id: Option<String>,
@@ -7767,7 +7541,6 @@ impl Cheque18 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Cheque20 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstrId", skip_serializing_if = "Option::is_none") )]
 	pub instr_id: Option<String>,
@@ -7837,7 +7610,6 @@ impl Cheque20 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChequeCancellationReason1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Orgtr", skip_serializing_if = "Option::is_none") )]
 	pub orgtr: Option<ChequePartyRole1Code>,
@@ -7870,7 +7642,6 @@ impl ChequeCancellationReason1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChequeCancellationReason1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -7907,7 +7678,6 @@ impl ChequeCancellationReason1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChequeCancellationStatus1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Orgtr", skip_serializing_if = "Option::is_none") )]
 	pub orgtr: Option<ChequePartyRole1Code>,
@@ -7940,7 +7710,6 @@ impl ChequeCancellationStatus1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ChequeCancellationStatus1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -7977,7 +7746,6 @@ impl ChequeCancellationStatus1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ChequePartyRole1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DWEA") )]
@@ -8003,7 +7771,6 @@ impl ChequePartyRole1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ClaimNonReceipt3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DtPrcd") )]
 	pub dt_prcd: String,
@@ -8025,7 +7792,6 @@ impl ClaimNonReceipt3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ClaimNonReceipt3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Accptd", skip_serializing_if = "Option::is_none") )]
 	pub accptd: Option<ClaimNonReceipt3>,
@@ -8048,7 +7814,6 @@ impl ClaimNonReceipt3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ClaimNonReceiptRejectReason1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -8085,7 +7850,6 @@ impl ClaimNonReceiptRejectReason1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ClearingChannel2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RTGS") )]
@@ -8111,7 +7875,6 @@ impl ClearingChannel2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ClearingSystemIdentification2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -8148,7 +7911,6 @@ impl ClearingSystemIdentification2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ClearingSystemIdentification3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -8185,7 +7947,6 @@ impl ClearingSystemIdentification3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ClearingSystemMemberIdentification2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ClrSysId", skip_serializing_if = "Option::is_none") )]
 	pub clr_sys_id: Option<ClearingSystemIdentification2Choice>,
@@ -8213,7 +7974,6 @@ impl ClearingSystemMemberIdentification2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ClosureReason2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<SystemClosureReason1Code>,
@@ -8243,7 +8003,6 @@ impl ClosureReason2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Commission21 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ComssnTp") )]
 	pub comssn_tp: CommissionType5Choice,
@@ -8266,7 +8025,6 @@ impl Commission21 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CommissionType5Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<CommissionType6Code>,
@@ -8289,7 +8047,6 @@ impl CommissionType5Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CommissionType6Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FEND") )]
@@ -8313,7 +8070,6 @@ impl CommissionType6Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CommunicationAddress10 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PstlAdr") )]
 	pub pstl_adr: LongPostalAddress1Choice,
@@ -8357,7 +8113,6 @@ impl CommunicationAddress10 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CommunicationAddress8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PstlAdr") )]
 	pub pstl_adr: LongPostalAddress1Choice,
@@ -8401,7 +8156,6 @@ impl CommunicationAddress8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Compensation5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveCurrencyAndAmount,
@@ -8436,7 +8190,6 @@ impl Compensation5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CompensationMethod1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NOCP") )]
@@ -8462,7 +8215,6 @@ impl CompensationMethod1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CompensationReason1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -8499,7 +8251,6 @@ impl CompensationReason1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CompensationRequest1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CompstnAcct", skip_serializing_if = "Option::is_none") )]
 	pub compstn_acct: Option<CashAccount40>,
@@ -8541,7 +8292,6 @@ impl CompensationRequest1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CompensationResponse1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Grantd") )]
 	pub grantd: bool,
@@ -8586,7 +8336,6 @@ impl CompensationResponse1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Contact13 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NmPrfx", skip_serializing_if = "Option::is_none") )]
 	pub nm_prfx: Option<NamePrefix2Code>,
@@ -8706,7 +8455,6 @@ impl Contact13 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Contact4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NmPrfx", skip_serializing_if = "Option::is_none") )]
 	pub nm_prfx: Option<NamePrefix2Code>,
@@ -8816,7 +8564,6 @@ impl Contact4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ContactIdentificationAndAddress1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
 	pub nm: Option<String>,
@@ -8849,7 +8596,6 @@ impl ContactIdentificationAndAddress1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ContactIdentificationAndAddress2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
 	pub nm: Option<String>,
@@ -8882,7 +8628,6 @@ impl ContactIdentificationAndAddress2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ControlData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NbOfTxs") )]
 	pub nb_of_txs: String,
@@ -8907,7 +8652,6 @@ impl ControlData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CopyDuplicate1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CODU") )]
@@ -8931,7 +8675,6 @@ impl CopyDuplicate1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CorporateAction9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "EvtTp") )]
 	pub evt_tp: String,
@@ -8964,7 +8707,6 @@ impl CorporateAction9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CorrectiveGroupInformation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -8999,7 +8741,6 @@ impl CorrectiveGroupInformation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CorrectiveInterbankTransaction3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "GrpHdr", skip_serializing_if = "Option::is_none") )]
 	pub grp_hdr: Option<CorrectiveGroupInformation1>,
@@ -9062,7 +8803,6 @@ impl CorrectiveInterbankTransaction3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CorrectivePaymentInitiation5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "GrpHdr", skip_serializing_if = "Option::is_none") )]
 	pub grp_hdr: Option<CorrectiveGroupInformation1>,
@@ -9128,7 +8868,6 @@ impl CorrectivePaymentInitiation5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CorrectiveTransaction5Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Initn", skip_serializing_if = "Option::is_none") )]
 	pub initn: Option<CorrectivePaymentInitiation5>,
@@ -9151,7 +8890,6 @@ impl CorrectiveTransaction5Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CreditDebitCode {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CRDT") )]
@@ -9173,7 +8911,6 @@ impl CreditDebitCode {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CreditLine3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Incl") )]
 	pub incl: bool,
@@ -9201,7 +8938,6 @@ impl CreditLine3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CreditLineType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -9238,7 +8974,6 @@ impl CreditLineType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CreditTransferMandateData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MndtId", skip_serializing_if = "Option::is_none") )]
 	pub mndt_id: Option<String>,
@@ -9292,7 +9027,6 @@ impl CreditTransferMandateData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CreditorReferenceInformation2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<CreditorReferenceType2>,
@@ -9322,7 +9056,6 @@ impl CreditorReferenceInformation2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CreditorReferenceInformation3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<CreditorReferenceType3>,
@@ -9352,7 +9085,6 @@ impl CreditorReferenceInformation3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CreditorReferenceType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<DocumentType3Code>,
@@ -9382,7 +9114,6 @@ impl CreditorReferenceType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CreditorReferenceType2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CdOrPrtry") )]
 	pub cd_or_prtry: CreditorReferenceType1Choice,
@@ -9412,7 +9143,6 @@ impl CreditorReferenceType2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CreditorReferenceType2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -9449,7 +9179,6 @@ impl CreditorReferenceType2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CreditorReferenceType3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CdOrPrtry") )]
 	pub cd_or_prtry: CreditorReferenceType2Choice,
@@ -9479,7 +9208,6 @@ impl CreditorReferenceType3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencyCriteriaDefinition1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryNm", skip_serializing_if = "Option::is_none") )]
 	pub qry_nm: Option<String>,
@@ -9509,7 +9237,6 @@ impl CurrencyCriteriaDefinition1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencyDesignation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CcyDsgnt", skip_serializing_if = "Option::is_none") )]
 	pub ccy_dsgnt: Option<CurrencyDesignation1Code>,
@@ -9547,7 +9274,6 @@ impl CurrencyDesignation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum CurrencyDesignation1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ONSH") )]
@@ -9569,7 +9295,6 @@ impl CurrencyDesignation1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencyExchange20 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "XchgRate") )]
 	pub xchg_rate: f64,
@@ -9602,7 +9327,6 @@ impl CurrencyExchange20 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencyExchange24 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SrcCcy") )]
 	pub src_ccy: String,
@@ -9662,7 +9386,6 @@ impl CurrencyExchange24 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencyExchange6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SrcCcy") )]
 	pub src_ccy: String,
@@ -9723,7 +9446,6 @@ impl CurrencyExchange6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencyExchangeCriteria2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none") )]
 	pub new_qry_nm: Option<String>,
@@ -9753,7 +9475,6 @@ impl CurrencyExchangeCriteria2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencyExchangeReport4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CcyRef") )]
 	pub ccy_ref: CurrencySourceTarget1,
@@ -9776,7 +9497,6 @@ impl CurrencyExchangeReport4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencyExchangeSearchCriteria1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SrcCcy") )]
 	pub src_ccy: String,
@@ -9805,7 +9525,6 @@ impl CurrencyExchangeSearchCriteria1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencyFactors1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ccy") )]
 	pub ccy: String,
@@ -9843,7 +9562,6 @@ impl CurrencyFactors1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencyQueryDefinition3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp", skip_serializing_if = "Option::is_none") )]
 	pub qry_tp: Option<QueryType2Code>,
@@ -9866,7 +9584,6 @@ impl CurrencyQueryDefinition3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrencySourceTarget1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SrcCcy") )]
 	pub src_ccy: String,
@@ -9895,7 +9612,6 @@ impl CurrencySourceTarget1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrentAndDefaultReservation6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CurRsvatn", skip_serializing_if = "Option::is_none") )]
 	pub cur_rsvatn: Option<Vec<ReservationReport8>>,
@@ -9918,7 +9634,6 @@ impl CurrentAndDefaultReservation6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct CurrentOrDefaultReservation4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cur", skip_serializing_if = "Option::is_none") )]
 	pub cur: Option<ReservationIdentification4>,
@@ -9941,7 +9656,6 @@ impl CurrentOrDefaultReservation4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DataFormat2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Strd", skip_serializing_if = "Option::is_none") )]
 	pub strd: Option<GenericIdentification1>,
@@ -9971,7 +9685,6 @@ impl DataFormat2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateAndDateTime2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Dt", skip_serializing_if = "Option::is_none") )]
 	pub dt: Option<String>,
@@ -9992,7 +9705,6 @@ impl DateAndDateTime2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateAndDateTimeChoice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Dt", skip_serializing_if = "Option::is_none") )]
 	pub dt: Option<String>,
@@ -10013,7 +9725,6 @@ impl DateAndDateTimeChoice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateAndDateTimeSearch3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DtTmSch", skip_serializing_if = "Option::is_none") )]
 	pub dt_tm_sch: Option<DateTimePeriod1Choice>,
@@ -10036,7 +9747,6 @@ impl DateAndDateTimeSearch3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateAndDateTimeSearch4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DtTm", skip_serializing_if = "Option::is_none") )]
 	pub dt_tm: Option<DateTimeSearch2Choice>,
@@ -10059,7 +9769,6 @@ impl DateAndDateTimeSearch4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateAndDateTimeSearch5Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Dt", skip_serializing_if = "Option::is_none") )]
 	pub dt: Option<DatePeriodSearch1Choice>,
@@ -10082,7 +9791,6 @@ impl DateAndDateTimeSearch5Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateAndPeriod2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Dt", skip_serializing_if = "Option::is_none") )]
 	pub dt: Option<String>,
@@ -10108,7 +9816,6 @@ impl DateAndPeriod2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateAndPlaceOfBirth1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BirthDt") )]
 	pub birth_dt: String,
@@ -10151,7 +9858,6 @@ impl DateAndPlaceOfBirth1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateAndType1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: DateType2Choice,
@@ -10173,7 +9879,6 @@ impl DateAndType1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateOrDateTimePeriod1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Dt", skip_serializing_if = "Option::is_none") )]
 	pub dt: Option<DatePeriod2>,
@@ -10196,7 +9901,6 @@ impl DateOrDateTimePeriod1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DatePeriod1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrDt", skip_serializing_if = "Option::is_none") )]
 	pub fr_dt: Option<String>,
@@ -10217,7 +9921,6 @@ impl DatePeriod1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DatePeriod2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrDt") )]
 	pub fr_dt: String,
@@ -10238,7 +9941,6 @@ impl DatePeriod2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DatePeriod2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrDt", skip_serializing_if = "Option::is_none") )]
 	pub fr_dt: Option<String>,
@@ -10262,7 +9964,6 @@ impl DatePeriod2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DatePeriod3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrDt") )]
 	pub fr_dt: String,
@@ -10283,7 +9984,6 @@ impl DatePeriod3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DatePeriod5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CurValDt") )]
 	pub cur_val_dt: String,
@@ -10304,7 +10004,6 @@ impl DatePeriod5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DatePeriodSearch1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrDt", skip_serializing_if = "Option::is_none") )]
 	pub fr_dt: Option<String>,
@@ -10332,7 +10031,6 @@ impl DatePeriodSearch1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateTimePeriod1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrDtTm") )]
 	pub fr_dt_tm: String,
@@ -10353,7 +10051,6 @@ impl DateTimePeriod1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateTimePeriod1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrDtTm", skip_serializing_if = "Option::is_none") )]
 	pub fr_dt_tm: Option<String>,
@@ -10377,7 +10074,6 @@ impl DateTimePeriod1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateTimeSearch2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrDtTm", skip_serializing_if = "Option::is_none") )]
 	pub fr_dt_tm: Option<String>,
@@ -10405,7 +10101,6 @@ impl DateTimeSearch2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DateType2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -10442,7 +10137,6 @@ impl DateType2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DebitAuthorisation2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CxlRsn") )]
 	pub cxl_rsn: CancellationReason33Choice,
@@ -10479,7 +10173,6 @@ impl DebitAuthorisation2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DebitAuthorisation3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CxlRsn") )]
 	pub cxl_rsn: CancellationReason33Choice,
@@ -10519,7 +10212,6 @@ impl DebitAuthorisation3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DebitAuthorisationConfirmation2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DbtAuthstn") )]
 	pub dbt_authstn: bool,
@@ -10553,7 +10245,6 @@ impl DebitAuthorisationConfirmation2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DebitAuthorisationConfirmation3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DbtAuthstn") )]
 	pub dbt_authstn: bool,
@@ -10600,7 +10291,6 @@ impl DebitAuthorisationConfirmation3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DeniedReason11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: DeniedReason16Choice,
@@ -10630,7 +10320,6 @@ impl DeniedReason11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DeniedReason16Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<DeniedReason4Code>,
@@ -10653,7 +10342,6 @@ impl DeniedReason16Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum DeniedReason4Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ADEA") )]
@@ -10691,7 +10379,6 @@ impl DeniedReason4Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DeniedStatus16Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -10714,7 +10401,6 @@ impl DeniedStatus16Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DiscountAmountAndType1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<DiscountAmountType1Choice>,
@@ -10737,7 +10423,6 @@ impl DiscountAmountAndType1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DiscountAmountType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -10774,7 +10459,6 @@ impl DiscountAmountType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DisplayCapabilities1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DispTp") )]
 	pub disp_tp: UserInterface2Code,
@@ -10806,7 +10490,6 @@ impl DisplayCapabilities1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum DistributionPolicy1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DIST") )]
@@ -10828,7 +10511,6 @@ impl DistributionPolicy1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Document12 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: DocumentType1Choice,
@@ -10895,7 +10577,6 @@ impl Document12 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentAdjustment1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -10938,7 +10619,6 @@ impl DocumentAdjustment1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentAmount1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: DocumentAmountType1Choice,
@@ -10961,7 +10641,6 @@ impl DocumentAmount1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentAmountType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -10998,7 +10677,6 @@ impl DocumentAmountType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentFormat1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -11028,7 +10706,6 @@ impl DocumentFormat1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentIdentification51 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -11065,7 +10742,6 @@ impl DocumentIdentification51 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentLineIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<DocumentLineType1>,
@@ -11097,7 +10773,6 @@ impl DocumentLineIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentLineInformation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: Vec<DocumentLineIdentification1>,
@@ -11130,7 +10805,6 @@ impl DocumentLineInformation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentLineInformation2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: Vec<DocumentLineIdentification1>,
@@ -11163,7 +10837,6 @@ impl DocumentLineInformation2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentLineType1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CdOrPrtry") )]
 	pub cd_or_prtry: DocumentLineType1Choice,
@@ -11193,7 +10866,6 @@ impl DocumentLineType1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentLineType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -11230,7 +10902,6 @@ impl DocumentLineType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentNumber5Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ShrtNb", skip_serializing_if = "Option::is_none") )]
 	pub shrt_nb: Option<String>,
@@ -11266,7 +10937,6 @@ impl DocumentNumber5Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentType1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CdOrPrtry") )]
 	pub cd_or_prtry: DocumentType2Choice,
@@ -11296,7 +10966,6 @@ impl DocumentType1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -11326,7 +10995,6 @@ impl DocumentType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct DocumentType2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -11363,7 +11031,6 @@ impl DocumentType2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum DocumentType3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RADM") )]
@@ -11393,7 +11060,6 @@ impl DocumentType3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum DocumentType6Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MSIN") )]
@@ -11443,7 +11109,6 @@ impl DocumentType6Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum Entry2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TRIA") )]
@@ -11467,7 +11132,6 @@ impl Entry2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct EntryDetails13 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Btch", skip_serializing_if = "Option::is_none") )]
 	pub btch: Option<BatchInformation2>,
@@ -11490,7 +11154,6 @@ impl EntryDetails13 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct EntryStatus1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -11527,7 +11190,6 @@ impl EntryStatus1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum EntryStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BOOK") )]
@@ -11551,7 +11213,6 @@ impl EntryStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct EntryTransaction14 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Refs", skip_serializing_if = "Option::is_none") )]
 	pub refs: Option<TransactionReferences6>,
@@ -11656,7 +11317,6 @@ impl EntryTransaction14 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct EquivalentAmount2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -11682,7 +11342,6 @@ impl EquivalentAmount2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ErrorHandling1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<ErrorHandling1Code>,
@@ -11716,7 +11375,6 @@ impl ErrorHandling1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ErrorHandling1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "X020") )]
@@ -11740,7 +11398,6 @@ impl ErrorHandling1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ErrorHandling3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Err") )]
 	pub err: ErrorHandling1Choice,
@@ -11770,7 +11427,6 @@ impl ErrorHandling3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ErrorHandling3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -11807,7 +11463,6 @@ impl ErrorHandling3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ErrorHandling5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Err") )]
 	pub err: ErrorHandling3Choice,
@@ -11837,7 +11492,6 @@ impl ErrorHandling5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct EstimatedFundCashForecast5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -11923,7 +11577,6 @@ impl EstimatedFundCashForecast5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct EstimatedFundCashForecast6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -12003,7 +11656,6 @@ impl EstimatedFundCashForecast6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum EventFrequency7Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "YEAR") )]
@@ -12047,7 +11699,6 @@ impl EventFrequency7Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct EventType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -12084,7 +11735,6 @@ impl EventType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ExchangeRateOrPercentage1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Rate", skip_serializing_if = "Option::is_none") )]
 	pub rate: Option<f64>,
@@ -12105,7 +11755,6 @@ impl ExchangeRateOrPercentage1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ExchangeRateReportOrError3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CcyXchgRpt", skip_serializing_if = "Option::is_none") )]
 	pub ccy_xchg_rpt: Option<Vec<CurrencyExchangeReport4>>,
@@ -12128,7 +11777,6 @@ impl ExchangeRateReportOrError3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ExchangeRateReportOrError4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BizErr", skip_serializing_if = "Option::is_none") )]
 	pub biz_err: Option<Vec<ErrorHandling3>>,
@@ -12151,7 +11799,6 @@ impl ExchangeRateReportOrError4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ExecutionType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tm", skip_serializing_if = "Option::is_none") )]
 	pub tm: Option<String>,
@@ -12173,7 +11820,6 @@ impl ExecutionType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Extension1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm") )]
 	pub plc_and_nm: String,
@@ -12206,7 +11852,6 @@ impl Extension1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum FailingReason3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AWMO") )]
@@ -12342,7 +11987,6 @@ impl FailingReason3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FailingReason7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: FailingReason7Choice,
@@ -12372,7 +12016,6 @@ impl FailingReason7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FailingReason7Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<FailingReason3Code>,
@@ -12395,7 +12038,6 @@ impl FailingReason7Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FailingStatus9Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -12418,7 +12060,6 @@ impl FailingStatus9Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FileData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<DocumentType1Choice>,
@@ -12482,7 +12123,6 @@ impl FileData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum FinalStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "STLD") )]
@@ -12508,7 +12148,6 @@ impl FinalStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum FinalStatusCode {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "STLD") )]
@@ -12534,7 +12173,6 @@ impl FinalStatusCode {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FinancialIdentificationSchemeName1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -12571,7 +12209,6 @@ impl FinancialIdentificationSchemeName1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FinancialInstitutionIdentification18 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BICFI", skip_serializing_if = "Option::is_none") )]
 	pub bicfi: Option<String>,
@@ -12623,7 +12260,6 @@ impl FinancialInstitutionIdentification18 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FinancialInstitutionIdentification19 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BICFI", skip_serializing_if = "Option::is_none") )]
 	pub bicfi: Option<String>,
@@ -12662,7 +12298,6 @@ impl FinancialInstitutionIdentification19 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FinancialInstitutionIdentification23 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BICFI", skip_serializing_if = "Option::is_none") )]
 	pub bicfi: Option<String>,
@@ -12714,7 +12349,6 @@ impl FinancialInstitutionIdentification23 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FinancialInstrument9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: SecurityIdentification3Choice,
@@ -12780,7 +12414,6 @@ impl FinancialInstrument9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FinancialInstrumentQuantity1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Unit") )]
 	pub unit: f64,
@@ -12799,7 +12432,6 @@ impl FinancialInstrumentQuantity1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FinancialInstrumentQuantity1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Unit", skip_serializing_if = "Option::is_none") )]
 	pub unit: Option<f64>,
@@ -12832,7 +12464,6 @@ impl FinancialInstrumentQuantity1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum FloorLimitType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CRED") )]
@@ -12856,7 +12487,6 @@ impl FloorLimitType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum FlowDirectionType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "INCG") )]
@@ -12878,7 +12508,6 @@ impl FlowDirectionType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ForeignExchangeTerms19 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "UnitCcy") )]
 	pub unit_ccy: String,
@@ -12909,7 +12538,6 @@ impl ForeignExchangeTerms19 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum FormOfSecurity1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BEAR") )]
@@ -12931,7 +12559,6 @@ impl FormOfSecurity1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Frequency22Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<EventFrequency7Code>,
@@ -12954,7 +12581,6 @@ impl Frequency22Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum Frequency2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "YEAR") )]
@@ -12990,7 +12616,6 @@ impl Frequency2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Frequency36Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<Frequency6Code>,
@@ -13016,7 +12641,6 @@ impl Frequency36Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum Frequency6Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "YEAR") )]
@@ -13052,7 +12676,6 @@ impl Frequency6Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FrequencyAndMoment1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: Frequency6Code,
@@ -13078,7 +12701,6 @@ impl FrequencyAndMoment1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FrequencyPeriod1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: Frequency6Code,
@@ -13100,7 +12722,6 @@ impl FrequencyPeriod1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FromToAmountRange1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrAmt") )]
 	pub fr_amt: AmountRangeBoundary1,
@@ -13123,7 +12744,6 @@ impl FromToAmountRange1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FromToPercentageRange1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Fr") )]
 	pub fr: PercentageRangeBoundary1,
@@ -13146,7 +12766,6 @@ impl FromToPercentageRange1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Fund1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
 	pub nm: Option<String>,
@@ -13221,7 +12840,6 @@ impl Fund1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Fund2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
 	pub nm: Option<String>,
@@ -13296,7 +12914,6 @@ impl Fund2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Fund3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
 	pub nm: Option<String>,
@@ -13356,7 +12973,6 @@ impl Fund3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Fund4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
 	pub nm: Option<String>,
@@ -13416,7 +13032,6 @@ impl Fund4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FundBalance1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TtlUnitsFrUnitOrdrs", skip_serializing_if = "Option::is_none") )]
 	pub ttl_units_fr_unit_ordrs: Option<FinancialInstrumentQuantity1>,
@@ -13445,7 +13060,6 @@ impl FundBalance1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FundCashForecast6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -13531,7 +13145,6 @@ impl FundCashForecast6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FundCashForecast7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -13611,7 +13224,6 @@ impl FundCashForecast7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FundCashInBreakdown3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt", skip_serializing_if = "Option::is_none") )]
 	pub amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -13656,7 +13268,6 @@ impl FundCashInBreakdown3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FundCashOutBreakdown3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt", skip_serializing_if = "Option::is_none") )]
 	pub amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -13701,7 +13312,6 @@ impl FundCashOutBreakdown3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FundConfirmedCashForecastReport3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FndOrSubFndDtls", skip_serializing_if = "Option::is_none") )]
 	pub fnd_or_sub_fnd_dtls: Option<Vec<Fund2>>,
@@ -13730,7 +13340,6 @@ impl FundConfirmedCashForecastReport3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct FundDetailedConfirmedCashForecastReport3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FndOrSubFndDtls", skip_serializing_if = "Option::is_none") )]
 	pub fnd_or_sub_fnd_dtls: Option<Fund4>,
@@ -13759,7 +13368,6 @@ impl FundDetailedConfirmedCashForecastReport3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Garnishment3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: GarnishmentType1,
@@ -13804,7 +13412,6 @@ impl Garnishment3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Garnishment4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: GarnishmentType1,
@@ -13849,7 +13456,6 @@ impl Garnishment4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GarnishmentType1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CdOrPrtry") )]
 	pub cd_or_prtry: GarnishmentType1Choice,
@@ -13879,7 +13485,6 @@ impl GarnishmentType1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GarnishmentType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -13916,7 +13521,6 @@ impl GarnishmentType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GeneralBusinessInformation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Qlfr", skip_serializing_if = "Option::is_none") )]
 	pub qlfr: Option<InformationQualifierType1>,
@@ -13956,7 +13560,6 @@ impl GeneralBusinessInformation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GeneralBusinessInformationCriteriaDefinition1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryNm", skip_serializing_if = "Option::is_none") )]
 	pub qry_nm: Option<String>,
@@ -13986,7 +13589,6 @@ impl GeneralBusinessInformationCriteriaDefinition1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GeneralBusinessInformationReturnCriteria1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QlfrInd", skip_serializing_if = "Option::is_none") )]
 	pub qlfr_ind: Option<bool>,
@@ -14009,7 +13611,6 @@ impl GeneralBusinessInformationReturnCriteria1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GeneralBusinessInformationSearchCriteria1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ref", skip_serializing_if = "Option::is_none") )]
 	pub ref_attr: Option<Vec<String>>,
@@ -14044,7 +13645,6 @@ impl GeneralBusinessInformationSearchCriteria1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GeneralBusinessOrError7Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OprlErr", skip_serializing_if = "Option::is_none") )]
 	pub oprl_err: Option<Vec<ErrorHandling5>>,
@@ -14067,7 +13667,6 @@ impl GeneralBusinessOrError7Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GeneralBusinessOrError8Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BizErr", skip_serializing_if = "Option::is_none") )]
 	pub biz_err: Option<Vec<ErrorHandling5>>,
@@ -14090,7 +13689,6 @@ impl GeneralBusinessOrError8Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GeneralBusinessReport6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BizInfRef") )]
 	pub biz_inf_ref: String,
@@ -14118,7 +13716,6 @@ impl GeneralBusinessReport6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericAccountIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14156,7 +13753,6 @@ impl GenericAccountIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericFinancialIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14194,7 +13790,6 @@ impl GenericFinancialIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14239,7 +13834,6 @@ impl GenericIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericIdentification3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14274,7 +13868,6 @@ impl GenericIdentification3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericIdentification30 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14315,7 +13908,6 @@ impl GenericIdentification30 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericIdentification32 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14356,7 +13948,6 @@ impl GenericIdentification32 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericIdentification36 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14399,7 +13990,6 @@ impl GenericIdentification36 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericIdentification37 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14434,7 +14024,6 @@ impl GenericIdentification37 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericIdentification47 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14483,7 +14072,6 @@ impl GenericIdentification47 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericOrganisationIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14521,7 +14109,6 @@ impl GenericOrganisationIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericOrganisationIdentification3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14559,7 +14146,6 @@ impl GenericOrganisationIdentification3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericPersonIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14597,7 +14183,6 @@ impl GenericPersonIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GenericPersonIdentification2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -14635,7 +14220,6 @@ impl GenericPersonIdentification2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum GroupCancellationStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PACR") )]
@@ -14661,7 +14245,6 @@ impl GroupCancellationStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GroupHeader103 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -14696,7 +14279,6 @@ impl GroupHeader103 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GroupHeader115 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -14735,7 +14317,6 @@ impl GroupHeader115 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GroupHeader116 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -14781,7 +14362,6 @@ impl GroupHeader116 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GroupHeader117 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -14811,7 +14391,6 @@ impl GroupHeader117 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GroupHeader121 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -14841,7 +14420,6 @@ impl GroupHeader121 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct GroupHeader126 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -14880,7 +14458,6 @@ impl GroupHeader126 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IdentificationSource3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -14917,7 +14494,6 @@ impl IdentificationSource3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IdentificationSource5Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DmstIdSrc", skip_serializing_if = "Option::is_none") )]
 	pub dmst_id_src: Option<String>,
@@ -14952,7 +14528,6 @@ impl IdentificationSource5Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ImpliedCurrencyAmountRange1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrAmt", skip_serializing_if = "Option::is_none") )]
 	pub fr_amt: Option<AmountRangeBoundary1>,
@@ -14992,7 +14567,6 @@ impl ImpliedCurrencyAmountRange1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ImpliedCurrencyAndAmountRange1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ImpliedCurrencyAmountRange1Choice,
@@ -15015,7 +14589,6 @@ impl ImpliedCurrencyAndAmountRange1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IncorrectData1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -15052,7 +14625,6 @@ impl IncorrectData1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InformationQualifierType1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "IsFrmtd", skip_serializing_if = "Option::is_none") )]
 	pub is_frmtd: Option<bool>,
@@ -15074,7 +14646,6 @@ impl InformationQualifierType1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum Instruction1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PBEN") )]
@@ -15098,7 +14669,6 @@ impl Instruction1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum Instruction4Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PHOA") )]
@@ -15120,7 +14690,6 @@ impl Instruction4Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InstructionForAssignee1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -15157,7 +14726,6 @@ impl InstructionForAssignee1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InstructionForChequeAgent1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -15194,7 +14762,6 @@ impl InstructionForChequeAgent1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InstructionForCreditorAgent3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -15231,7 +14798,6 @@ impl InstructionForCreditorAgent3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InstructionForInstructedAgent1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -15268,7 +14834,6 @@ impl InstructionForInstructedAgent1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InstructionForNextAgent1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<Instruction4Code>,
@@ -15298,7 +14863,6 @@ impl InstructionForNextAgent1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InstructionStatusReturnCriteria1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtInstrStsInd") )]
 	pub pmt_instr_sts_ind: bool,
@@ -15321,7 +14885,6 @@ impl InstructionStatusReturnCriteria1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InstructionStatusSearch5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtInstrSts", skip_serializing_if = "Option::is_none") )]
 	pub pmt_instr_sts: Option<PaymentStatusCodeSearch2Choice>,
@@ -15358,7 +14921,6 @@ impl InstructionStatusSearch5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InterestRecord2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -15403,7 +14965,6 @@ impl InterestRecord2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InterestType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<InterestType1Code>,
@@ -15433,7 +14994,6 @@ impl InterestType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum InterestType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "INDY") )]
@@ -15455,7 +15015,6 @@ impl InterestType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalance5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SttlmAmt") )]
 	pub sttlm_amt: Amount2Choice,
@@ -15500,7 +15059,6 @@ impl IntraBalance5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalance6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SttldAmt", skip_serializing_if = "Option::is_none") )]
 	pub sttld_amt: Option<Amount2Choice>,
@@ -15548,7 +15106,6 @@ impl IntraBalance6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceCancellation7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshAcct", skip_serializing_if = "Option::is_none") )]
 	pub csh_acct: Option<CashAccount40>,
@@ -15580,7 +15137,6 @@ impl IntraBalanceCancellation7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceCancellation8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshAcct", skip_serializing_if = "Option::is_none") )]
 	pub csh_acct: Option<CashAccount40>,
@@ -15625,7 +15181,6 @@ impl IntraBalanceCancellation8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceModification7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshAcct", skip_serializing_if = "Option::is_none") )]
 	pub csh_acct: Option<CashAccount40>,
@@ -15657,7 +15212,6 @@ impl IntraBalanceModification7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceModification8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshAcct", skip_serializing_if = "Option::is_none") )]
 	pub csh_acct: Option<CashAccount40>,
@@ -15702,7 +15256,6 @@ impl IntraBalanceModification8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceMovement6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BalFr") )]
 	pub bal_fr: CashSubBalanceTypeAndQuantityBreakdown3,
@@ -15772,7 +15325,6 @@ impl IntraBalanceMovement6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceMovement7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshAcct", skip_serializing_if = "Option::is_none") )]
 	pub csh_acct: Option<CashAccount40>,
@@ -15862,7 +15414,6 @@ impl IntraBalanceMovement7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceMovements4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshAcct", skip_serializing_if = "Option::is_none") )]
 	pub csh_acct: Option<CashAccount40>,
@@ -15894,7 +15445,6 @@ impl IntraBalanceMovements4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceOrOperationalError10Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cxls", skip_serializing_if = "Option::is_none") )]
 	pub cxls: Option<Vec<IntraBalanceCancellation7>>,
@@ -15917,7 +15467,6 @@ impl IntraBalanceOrOperationalError10Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceOrOperationalError11Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Mvmnts", skip_serializing_if = "Option::is_none") )]
 	pub mvmnts: Option<Vec<IntraBalanceMovements4>>,
@@ -15940,7 +15489,6 @@ impl IntraBalanceOrOperationalError11Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceOrOperationalError12Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Mods", skip_serializing_if = "Option::is_none") )]
 	pub mods: Option<Vec<IntraBalanceModification7>>,
@@ -15963,7 +15511,6 @@ impl IntraBalanceOrOperationalError12Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalancePending5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StsAndRsn", skip_serializing_if = "Option::is_none") )]
 	pub sts_and_rsn: Option<PendingStatusAndReason2>,
@@ -15986,7 +15533,6 @@ impl IntraBalancePending5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalancePending6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StsAndRsn", skip_serializing_if = "Option::is_none") )]
 	pub sts_and_rsn: Option<PendingStatusAndReason2>,
@@ -16105,7 +15651,6 @@ impl IntraBalancePending6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalancePosting5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BalFr") )]
 	pub bal_fr: CashSubBalanceTypeAndQuantityBreakdown3,
@@ -16128,7 +15673,6 @@ impl IntraBalancePosting5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalancePosting6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctOwnrTxId") )]
 	pub acct_ownr_tx_id: String,
@@ -16247,7 +15791,6 @@ impl IntraBalancePosting6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceQueryCriteria10 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CxlReqId", skip_serializing_if = "Option::is_none") )]
 	pub cxl_req_id: Option<Vec<String>>,
@@ -16294,7 +15837,6 @@ impl IntraBalanceQueryCriteria10 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceQueryCriteria11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Refs", skip_serializing_if = "Option::is_none") )]
 	pub refs: Option<Vec<References36Choice>>,
@@ -16363,7 +15905,6 @@ impl IntraBalanceQueryCriteria11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceQueryCriteria12 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ModReqId", skip_serializing_if = "Option::is_none") )]
 	pub mod_req_id: Option<Vec<String>>,
@@ -16410,7 +15951,6 @@ impl IntraBalanceQueryCriteria12 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceQueryDefinition10 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp") )]
 	pub qry_tp: MovementResponseType1Code,
@@ -16433,7 +15973,6 @@ impl IntraBalanceQueryDefinition10 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceQueryDefinition11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp") )]
 	pub qry_tp: MovementResponseType1Code,
@@ -16456,7 +15995,6 @@ impl IntraBalanceQueryDefinition11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceQueryDefinition12 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp") )]
 	pub qry_tp: MovementResponseType1Code,
@@ -16479,7 +16017,6 @@ impl IntraBalanceQueryDefinition12 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceQueryStatus3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: IntraBalanceStatusType2,
@@ -16502,7 +16039,6 @@ impl IntraBalanceQueryStatus3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceReport5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RptNb", skip_serializing_if = "Option::is_none") )]
 	pub rpt_nb: Option<Number3Choice>,
@@ -16559,7 +16095,6 @@ impl IntraBalanceReport5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceReport6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RptNb", skip_serializing_if = "Option::is_none") )]
 	pub rpt_nb: Option<Number3Choice>,
@@ -16613,7 +16148,6 @@ impl IntraBalanceReport6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceStatusAndReason2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PrcgSts", skip_serializing_if = "Option::is_none") )]
 	pub prcg_sts: Option<Vec<ProcessingStatus67Choice>>,
@@ -16639,7 +16173,6 @@ impl IntraBalanceStatusAndReason2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceStatusType2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PrcgSts", skip_serializing_if = "Option::is_none") )]
 	pub prcg_sts: Option<Vec<ProcessingStatus68Choice>>,
@@ -16665,7 +16198,6 @@ impl IntraBalanceStatusType2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct IntraBalanceType3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BalFr", skip_serializing_if = "Option::is_none") )]
 	pub bal_fr: Option<CashSubBalanceTypeAndQuantityBreakdown3>,
@@ -16688,7 +16220,6 @@ impl IntraBalanceType3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationActionReason1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Orgtr", skip_serializing_if = "Option::is_none") )]
 	pub orgtr: Option<PartyIdentification135>,
@@ -16723,7 +16254,6 @@ impl InvestigationActionReason1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationActionReason1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -16760,7 +16290,6 @@ impl InvestigationActionReason1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationData2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlInvstgtnSeq", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_invstgtn_seq: Option<f64>,
@@ -16800,7 +16329,6 @@ impl InvestigationData2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationDataRecord1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DbtAuthstn", skip_serializing_if = "Option::is_none") )]
 	pub dbt_authstn: Option<DebitAuthorisationConfirmation3>,
@@ -16845,7 +16373,6 @@ impl InvestigationDataRecord1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationLocationData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Mtd") )]
 	pub mtd: InvestigationLocationMethod1Code,
@@ -16878,7 +16405,6 @@ impl InvestigationLocationData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum InvestigationLocationMethod1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "EDIC") )]
@@ -16908,7 +16434,6 @@ impl InvestigationLocationMethod1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationReason1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -16945,7 +16470,6 @@ impl InvestigationReason1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationReason2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Seq", skip_serializing_if = "Option::is_none") )]
 	pub seq: Option<f64>,
@@ -16982,7 +16506,6 @@ impl InvestigationReason2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationReasonSubType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -17019,7 +16542,6 @@ impl InvestigationReasonSubType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum InvestigationRejection1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NFND") )]
@@ -17051,7 +16573,6 @@ impl InvestigationRejection1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationRejectionJustification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RjctnRsn") )]
 	pub rjctn_rsn: InvestigationRejection1Code,
@@ -17071,7 +16592,6 @@ impl InvestigationRejectionJustification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationRequest2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -17154,7 +16674,6 @@ impl InvestigationRequest2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationRequest3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -17237,7 +16756,6 @@ impl InvestigationRequest3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationRequestAction1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Actn") )]
 	pub actn: InvestigationRequestAction1Choice,
@@ -17260,7 +16778,6 @@ impl InvestigationRequestAction1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationRequestAction1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -17297,7 +16814,6 @@ impl InvestigationRequestAction1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationResponse3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -17341,7 +16857,6 @@ impl InvestigationResponse3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationServiceLevel1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -17378,7 +16893,6 @@ impl InvestigationServiceLevel1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationStatus2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Sts") )]
 	pub sts: String,
@@ -17406,7 +16920,6 @@ impl InvestigationStatus2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationStatus6Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Conf", skip_serializing_if = "Option::is_none") )]
 	pub conf: Option<String>,
@@ -17441,7 +16954,6 @@ impl InvestigationStatus6Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationStatusReason1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -17478,7 +16990,6 @@ impl InvestigationStatusReason1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationSubType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -17515,7 +17026,6 @@ impl InvestigationSubType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestigationType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -17552,7 +17062,6 @@ impl InvestigationType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestmentAccount42 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctId", skip_serializing_if = "Option::is_none") )]
 	pub acct_id: Option<AccountIdentification1>,
@@ -17578,7 +17087,6 @@ impl InvestmentAccount42 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestmentFundTransactionInType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<InvestmentFundTransactionInType1Code>,
@@ -17601,7 +17109,6 @@ impl InvestmentFundTransactionInType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum InvestmentFundTransactionInType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SUBS") )]
@@ -17629,7 +17136,6 @@ impl InvestmentFundTransactionInType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct InvestmentFundTransactionOutType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<InvestmentFundTransactionOutType1Code>,
@@ -17652,7 +17158,6 @@ impl InvestmentFundTransactionOutType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum InvestmentFundTransactionOutType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "REDM") )]
@@ -17678,7 +17183,6 @@ impl InvestmentFundTransactionOutType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Limit10 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: Amount2Choice,
@@ -17701,7 +17205,6 @@ impl Limit10 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Limit2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -17724,7 +17227,6 @@ impl Limit2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Limit5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: Amount2Choice,
@@ -17747,7 +17249,6 @@ impl Limit5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Limit7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: Amount2Choice,
@@ -17787,7 +17288,6 @@ impl Limit7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Limit8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StartDtTm", skip_serializing_if = "Option::is_none") )]
 	pub start_dt_tm: Option<DateAndDateTime2Choice>,
@@ -17813,7 +17313,6 @@ impl Limit8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitCriteria7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none") )]
 	pub new_qry_nm: Option<String>,
@@ -17846,7 +17345,6 @@ impl LimitCriteria7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitCriteria7Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryNm", skip_serializing_if = "Option::is_none") )]
 	pub qry_nm: Option<String>,
@@ -17876,7 +17374,6 @@ impl LimitCriteria7Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitIdentification3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cur", skip_serializing_if = "Option::is_none") )]
 	pub cur: Option<LimitIdentification8>,
@@ -17905,7 +17402,6 @@ impl LimitIdentification3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitIdentification8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysId", skip_serializing_if = "Option::is_none") )]
 	pub sys_id: Option<SystemIdentification2Choice>,
@@ -17937,7 +17433,6 @@ impl LimitIdentification8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitIdentification9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysId", skip_serializing_if = "Option::is_none") )]
 	pub sys_id: Option<SystemIdentification2Choice>,
@@ -17966,7 +17461,6 @@ impl LimitIdentification9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitOrError4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Lmt", skip_serializing_if = "Option::is_none") )]
 	pub lmt: Option<Limit7>,
@@ -17989,7 +17483,6 @@ impl LimitOrError4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitQuery5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp", skip_serializing_if = "Option::is_none") )]
 	pub qry_tp: Option<QueryType2Code>,
@@ -18012,7 +17505,6 @@ impl LimitQuery5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitReport8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LmtId") )]
 	pub lmt_id: LimitIdentification8,
@@ -18035,7 +17527,6 @@ impl LimitReport8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitReportOrError5Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BizRpt", skip_serializing_if = "Option::is_none") )]
 	pub biz_rpt: Option<Limits8>,
@@ -18058,7 +17549,6 @@ impl LimitReportOrError5Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitReturnCriteria2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StartDtTmInd", skip_serializing_if = "Option::is_none") )]
 	pub start_dt_tm_ind: Option<bool>,
@@ -18083,7 +17573,6 @@ impl LimitReturnCriteria2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitSearchCriteria7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysId", skip_serializing_if = "Option::is_none") )]
 	pub sys_id: Option<SystemIdentification2Choice>,
@@ -18138,7 +17627,6 @@ impl LimitSearchCriteria7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum LimitStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ENAB") )]
@@ -18164,7 +17652,6 @@ impl LimitStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitStructure3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CurLmtId", skip_serializing_if = "Option::is_none") )]
 	pub cur_lmt_id: Option<LimitIdentification8>,
@@ -18187,7 +17674,6 @@ impl LimitStructure3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitStructure5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LmtId") )]
 	pub lmt_id: LimitIdentification3Choice,
@@ -18216,7 +17702,6 @@ impl LimitStructure5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitStructure6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LmtId") )]
 	pub lmt_id: LimitIdentification8,
@@ -18245,7 +17730,6 @@ impl LimitStructure6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LimitType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<LimitType3Code>,
@@ -18275,7 +17759,6 @@ impl LimitType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum LimitType3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MULT") )]
@@ -18323,7 +17806,6 @@ impl LimitType3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Limits8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CurLmt", skip_serializing_if = "Option::is_none") )]
 	pub cur_lmt: Option<Vec<LimitReport8>>,
@@ -18346,7 +17828,6 @@ impl Limits8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum LinkageType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LINK") )]
@@ -18370,7 +17851,6 @@ impl LinkageType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LinkageType3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<LinkageType1Code>,
@@ -18393,7 +17873,6 @@ impl LinkageType3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Linkages57 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PrcgPos", skip_serializing_if = "Option::is_none") )]
 	pub prcg_pos: Option<ProcessingPosition7Choice>,
@@ -18422,7 +17901,6 @@ impl Linkages57 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LiquidityCreditTransfer4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LqdtyTrfId", skip_serializing_if = "Option::is_none") )]
 	pub lqdty_trf_id: Option<PaymentIdentification8>,
@@ -18459,7 +17937,6 @@ impl LiquidityCreditTransfer4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LiquidityDebitTransfer4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LqdtyTrfId", skip_serializing_if = "Option::is_none") )]
 	pub lqdty_trf_id: Option<PaymentIdentification8>,
@@ -18496,7 +17973,6 @@ impl LiquidityDebitTransfer4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LocalInstrument2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -18533,7 +18009,6 @@ impl LocalInstrument2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LongPaymentIdentification4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TxId", skip_serializing_if = "Option::is_none") )]
 	pub tx_id: Option<String>,
@@ -18599,7 +18074,6 @@ impl LongPaymentIdentification4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct LongPostalAddress1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ustrd", skip_serializing_if = "Option::is_none") )]
 	pub ustrd: Option<String>,
@@ -18629,7 +18103,6 @@ impl LongPostalAddress1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MandateClassification1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<MandateClassification1Code>,
@@ -18659,7 +18132,6 @@ impl MandateClassification1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum MandateClassification1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FIXE") )]
@@ -18683,7 +18155,6 @@ impl MandateClassification1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MandateRelatedData2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DrctDbtMndt", skip_serializing_if = "Option::is_none") )]
 	pub drct_dbt_mndt: Option<MandateRelatedInformation15>,
@@ -18706,7 +18177,6 @@ impl MandateRelatedData2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MandateRelatedData3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DrctDbtMndt", skip_serializing_if = "Option::is_none") )]
 	pub drct_dbt_mndt: Option<MandateRelatedInformation16>,
@@ -18729,7 +18199,6 @@ impl MandateRelatedData3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MandateRelatedInformation15 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MndtId", skip_serializing_if = "Option::is_none") )]
 	pub mndt_id: Option<String>,
@@ -18791,7 +18260,6 @@ impl MandateRelatedInformation15 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MandateRelatedInformation16 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MndtId", skip_serializing_if = "Option::is_none") )]
 	pub mndt_id: Option<String>,
@@ -18853,7 +18321,6 @@ impl MandateRelatedInformation16 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MandateSetupReason1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -18890,7 +18357,6 @@ impl MandateSetupReason1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MandateTypeInformation2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SvcLvl", skip_serializing_if = "Option::is_none") )]
 	pub svc_lvl: Option<ServiceLevel8Choice>,
@@ -18919,7 +18385,6 @@ impl MandateTypeInformation2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MarketInfrastructureIdentification1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -18956,7 +18421,6 @@ impl MarketInfrastructureIdentification1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Member6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MmbRtrAdr", skip_serializing_if = "Option::is_none") )]
 	pub mmb_rtr_adr: Option<Vec<MemberIdentification3Choice>>,
@@ -18982,7 +18446,6 @@ impl Member6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Member7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
 	pub nm: Option<String>,
@@ -19027,7 +18490,6 @@ impl Member7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MemberCriteria4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none") )]
 	pub new_qry_nm: Option<String>,
@@ -19060,7 +18522,6 @@ impl MemberCriteria4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MemberCriteriaDefinition2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryNm", skip_serializing_if = "Option::is_none") )]
 	pub qry_nm: Option<String>,
@@ -19090,7 +18551,6 @@ impl MemberCriteriaDefinition2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MemberIdentification3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BICFI", skip_serializing_if = "Option::is_none") )]
 	pub bicfi: Option<String>,
@@ -19121,7 +18581,6 @@ impl MemberIdentification3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MemberQueryDefinition4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp", skip_serializing_if = "Option::is_none") )]
 	pub qry_tp: Option<QueryType2Code>,
@@ -19144,7 +18603,6 @@ impl MemberQueryDefinition4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MemberReport6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MmbId") )]
 	pub mmb_id: MemberIdentification3Choice,
@@ -19167,7 +18625,6 @@ impl MemberReport6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MemberReportOrError7Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Rpt", skip_serializing_if = "Option::is_none") )]
 	pub rpt: Option<Vec<MemberReport6>>,
@@ -19190,7 +18647,6 @@ impl MemberReportOrError7Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MemberReportOrError8Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Mmb", skip_serializing_if = "Option::is_none") )]
 	pub mmb: Option<Member7>,
@@ -19213,7 +18669,6 @@ impl MemberReportOrError8Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MemberReturnCriteria1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NmInd", skip_serializing_if = "Option::is_none") )]
 	pub nm_ind: Option<bool>,
@@ -19244,7 +18699,6 @@ impl MemberReturnCriteria1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MemberSearchCriteria4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id", skip_serializing_if = "Option::is_none") )]
 	pub id: Option<Vec<MemberIdentification3Choice>>,
@@ -19270,7 +18724,6 @@ impl MemberSearchCriteria4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum MemberStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ENBL") )]
@@ -19296,7 +18749,6 @@ impl MemberStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MessageHeader1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -19323,7 +18775,6 @@ impl MessageHeader1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MessageHeader4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -19353,7 +18804,6 @@ impl MessageHeader4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MessageHeader6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -19396,7 +18846,6 @@ impl MessageHeader6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MessageHeader7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -19439,7 +18888,6 @@ impl MessageHeader7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MessageHeader8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -19485,7 +18933,6 @@ impl MessageHeader8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MessageHeader9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -19515,7 +18962,6 @@ impl MessageHeader9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MessageIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -19542,7 +18988,6 @@ impl MessageIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MessageIdentification2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgNmId", skip_serializing_if = "Option::is_none") )]
 	pub msg_nm_id: Option<String>,
@@ -19579,7 +19024,6 @@ impl MessageIdentification2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MissingCover6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MssngCoverInd") )]
 	pub mssng_cover_ind: bool,
@@ -19601,7 +19045,6 @@ impl MissingCover6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MissingData1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -19638,7 +19081,6 @@ impl MissingData1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MissingOrIncorrectData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AMLReq", skip_serializing_if = "Option::is_none") )]
 	pub aml_req: Option<bool>,
@@ -19663,7 +19105,6 @@ impl MissingOrIncorrectData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ModificationProcessingStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PACK") )]
@@ -19693,7 +19134,6 @@ impl ModificationProcessingStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ModificationProcessingStatus9Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<ModificationProcessingStatus1Code>,
@@ -19716,7 +19156,6 @@ impl ModificationProcessingStatus9Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ModificationStatusReason1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -19753,7 +19192,6 @@ impl ModificationStatusReason1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ModificationStatusReason3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Orgtr", skip_serializing_if = "Option::is_none") )]
 	pub orgtr: Option<PartyIdentification272>,
@@ -19788,7 +19226,6 @@ impl ModificationStatusReason3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct MovementReport1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryRef", skip_serializing_if = "Option::is_none") )]
 	pub qry_ref: Option<String>,
@@ -19830,7 +19267,6 @@ impl MovementReport1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum MovementResponseType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FULL") )]
@@ -19852,7 +19288,6 @@ impl MovementResponseType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NameAndAddress16 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm") )]
 	pub nm: String,
@@ -19880,7 +19315,6 @@ impl NameAndAddress16 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NameAndAddress18 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm") )]
 	pub nm: String,
@@ -19908,7 +19342,6 @@ impl NameAndAddress18 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NameAndAddress5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm") )]
 	pub nm: String,
@@ -19936,7 +19369,6 @@ impl NameAndAddress5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NameAndAddress8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm") )]
 	pub nm: String,
@@ -19976,7 +19408,6 @@ impl NameAndAddress8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum NamePrefix2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DOCT") )]
@@ -20004,7 +19435,6 @@ impl NamePrefix2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NetCashForecast3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NetAmt", skip_serializing_if = "Option::is_none") )]
 	pub net_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -20030,7 +19460,6 @@ impl NetCashForecast3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NetCashForecast4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshSttlmDt") )]
 	pub csh_sttlm_dt: String,
@@ -20061,7 +19490,6 @@ impl NetCashForecast4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NetCashForecast5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CshSttlmDt", skip_serializing_if = "Option::is_none") )]
 	pub csh_sttlm_dt: Option<String>,
@@ -20089,7 +19517,6 @@ impl NetCashForecast5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NetObligation2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OblgtnId") )]
 	pub oblgtn_id: String,
@@ -20140,7 +19567,6 @@ impl NetObligation2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NetReportData2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -20199,7 +19625,6 @@ impl NetReportData2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NettingIdentification2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TradPty", skip_serializing_if = "Option::is_none") )]
 	pub trad_pty: Option<PartyIdentification242Choice>,
@@ -20229,7 +19654,6 @@ impl NettingIdentification2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum NoReasonCode {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NORE") )]
@@ -20249,7 +19673,6 @@ impl NoReasonCode {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NotificationCancellationReason1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -20286,7 +19709,6 @@ impl NotificationCancellationReason1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NotificationCancellationReason2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Orgtr", skip_serializing_if = "Option::is_none") )]
 	pub orgtr: Option<PartyIdentification272>,
@@ -20321,7 +19743,6 @@ impl NotificationCancellationReason2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NotificationItem9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -20402,7 +19823,6 @@ impl NotificationItem9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum NotificationStatus3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RCBD") )]
@@ -20426,7 +19846,6 @@ impl NotificationStatus3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Number3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Shrt", skip_serializing_if = "Option::is_none") )]
 	pub shrt: Option<String>,
@@ -20459,7 +19878,6 @@ impl Number3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NumberAndSumOfTransactions1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NbOfNtries", skip_serializing_if = "Option::is_none") )]
 	pub nb_of_ntries: Option<String>,
@@ -20486,7 +19904,6 @@ impl NumberAndSumOfTransactions1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NumberAndSumOfTransactions2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NbOfNtries", skip_serializing_if = "Option::is_none") )]
 	pub nb_of_ntries: Option<String>,
@@ -20518,7 +19935,6 @@ impl NumberAndSumOfTransactions2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NumberAndSumOfTransactions4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NbOfNtries", skip_serializing_if = "Option::is_none") )]
 	pub nb_of_ntries: Option<String>,
@@ -20548,7 +19964,6 @@ impl NumberAndSumOfTransactions4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NumberCount1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CurInstrNb", skip_serializing_if = "Option::is_none") )]
 	pub cur_instr_nb: Option<String>,
@@ -20576,7 +19991,6 @@ impl NumberCount1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NumberOfCancellationsPerStatus1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DtldNbOfTxs") )]
 	pub dtld_nb_of_txs: String,
@@ -20604,7 +20018,6 @@ impl NumberOfCancellationsPerStatus1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct NumberOfTransactionsPerStatus1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DtldNbOfTxs") )]
 	pub dtld_nb_of_txs: String,
@@ -20632,7 +20045,6 @@ impl NumberOfTransactionsPerStatus1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum OnLineCapability1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OFLN") )]
@@ -20656,7 +20068,6 @@ impl OnLineCapability1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum OrderQuantityType2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "UNIT") )]
@@ -20678,7 +20089,6 @@ impl OrderQuantityType2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OrganisationIdentification29 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AnyBIC", skip_serializing_if = "Option::is_none") )]
 	pub any_bic: Option<String>,
@@ -20714,7 +20124,6 @@ impl OrganisationIdentification29 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OrganisationIdentification39 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AnyBIC", skip_serializing_if = "Option::is_none") )]
 	pub any_bic: Option<String>,
@@ -20750,7 +20159,6 @@ impl OrganisationIdentification39 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OrganisationIdentificationSchemeName1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -20787,7 +20195,6 @@ impl OrganisationIdentificationSchemeName1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalAndCurrentQuantities1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FaceAmt") )]
 	pub face_amt: f64,
@@ -20808,7 +20215,6 @@ impl OriginalAndCurrentQuantities1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalBusinessQuery1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -20845,7 +20251,6 @@ impl OriginalBusinessQuery1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalGroupHeader21 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "GrpCxlId", skip_serializing_if = "Option::is_none") )]
 	pub grp_cxl_id: Option<String>,
@@ -20908,7 +20313,6 @@ impl OriginalGroupHeader21 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalGroupHeader23 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlGrpCxlId", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_grp_cxl_id: Option<String>,
@@ -20975,7 +20379,6 @@ impl OriginalGroupHeader23 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalGroupInformation29 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlMsgId") )]
 	pub orgnl_msg_id: String,
@@ -21010,7 +20413,6 @@ impl OriginalGroupInformation29 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalItem8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlItmId") )]
 	pub orgnl_itm_id: String,
@@ -21061,7 +20463,6 @@ impl OriginalItem8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalItemAndStatus8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlItmId") )]
 	pub orgnl_itm_id: String,
@@ -21125,7 +20526,6 @@ impl OriginalItemAndStatus8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalItemReference7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Acct", skip_serializing_if = "Option::is_none") )]
 	pub acct: Option<CashAccount40>,
@@ -21172,7 +20572,6 @@ impl OriginalItemReference7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalMessageAndIssuer1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -21217,7 +20616,6 @@ impl OriginalMessageAndIssuer1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalNotification15 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlMsgId") )]
 	pub orgnl_msg_id: String,
@@ -21268,7 +20666,6 @@ impl OriginalNotification15 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalNotification16 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlMsgId") )]
 	pub orgnl_msg_id: String,
@@ -21308,7 +20705,6 @@ impl OriginalNotification16 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalNotificationReference13 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Acct", skip_serializing_if = "Option::is_none") )]
 	pub acct: Option<CashAccount40>,
@@ -21354,7 +20750,6 @@ impl OriginalNotificationReference13 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalNotificationReference14 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Acct", skip_serializing_if = "Option::is_none") )]
 	pub acct: Option<CashAccount40>,
@@ -21400,7 +20795,6 @@ impl OriginalNotificationReference14 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalPaymentInstruction48 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlPmtInfCxlId", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_pmt_inf_cxl_id: Option<String>,
@@ -21463,7 +20857,6 @@ impl OriginalPaymentInstruction48 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalPaymentInstruction49 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtCxlId", skip_serializing_if = "Option::is_none") )]
 	pub pmt_cxl_id: Option<String>,
@@ -21522,7 +20915,6 @@ impl OriginalPaymentInstruction49 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalTransactionReference35 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "IntrBkSttlmAmt", skip_serializing_if = "Option::is_none") )]
 	pub intr_bk_sttlm_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -21603,7 +20995,6 @@ impl OriginalTransactionReference35 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OriginalTransactionReference42 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "IntrBkSttlmAmt", skip_serializing_if = "Option::is_none") )]
 	pub intr_bk_sttlm_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -21684,7 +21075,6 @@ impl OriginalTransactionReference42 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OtherContact1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ChanlTp") )]
 	pub chanl_tp: String,
@@ -21719,7 +21109,6 @@ impl OtherContact1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OtherIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -21757,7 +21146,6 @@ impl OtherIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct OtherIdentification4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -21785,7 +21173,6 @@ impl OtherIdentification4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum POIComponentType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SOFT") )]
@@ -21817,7 +21204,6 @@ impl POIComponentType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Pagination {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PgNb") )]
 	pub pg_nb: String,
@@ -21842,7 +21228,6 @@ impl Pagination {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Pagination1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PgNb") )]
 	pub pg_nb: String,
@@ -21867,7 +21252,6 @@ impl Pagination1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ParentCashAccount5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Lvl", skip_serializing_if = "Option::is_none") )]
 	pub lvl: Option<AccountLevel1Code>,
@@ -21893,7 +21277,6 @@ impl ParentCashAccount5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PartialSettlement2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PAIN") )]
@@ -21915,7 +21298,6 @@ impl PartialSettlement2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Party38Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgId", skip_serializing_if = "Option::is_none") )]
 	pub org_id: Option<OrganisationIdentification29>,
@@ -21938,7 +21320,6 @@ impl Party38Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Party40Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Pty", skip_serializing_if = "Option::is_none") )]
 	pub pty: Option<PartyIdentification135>,
@@ -21961,7 +21342,6 @@ impl Party40Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Party50Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Pty", skip_serializing_if = "Option::is_none") )]
 	pub pty: Option<PartyIdentification272>,
@@ -21984,7 +21364,6 @@ impl Party50Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Party52Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgId", skip_serializing_if = "Option::is_none") )]
 	pub org_id: Option<OrganisationIdentification39>,
@@ -22007,7 +21386,6 @@ impl Party52Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Party56Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgId", skip_serializing_if = "Option::is_none") )]
 	pub org_id: Option<OrganisationIdentification39>,
@@ -22030,7 +21408,6 @@ impl Party56Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyAndSignature3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Pty") )]
 	pub pty: PartyIdentification135,
@@ -22053,7 +21430,6 @@ impl PartyAndSignature3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification120Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AnyBIC", skip_serializing_if = "Option::is_none") )]
 	pub any_bic: Option<String>,
@@ -22084,7 +21460,6 @@ impl PartyIdentification120Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification127Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AnyBIC", skip_serializing_if = "Option::is_none") )]
 	pub any_bic: Option<String>,
@@ -22112,7 +21487,6 @@ impl PartyIdentification127Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification135 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
 	pub nm: Option<String>,
@@ -22156,7 +21530,6 @@ impl PartyIdentification135 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification136 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: PartyIdentification120Choice,
@@ -22184,7 +21557,6 @@ impl PartyIdentification136 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification242Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NmAndAdr", skip_serializing_if = "Option::is_none") )]
 	pub nm_and_adr: Option<NameAndAddress8>,
@@ -22210,7 +21582,6 @@ impl PartyIdentification242Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification265 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AnyBIC") )]
 	pub any_bic: String,
@@ -22245,7 +21616,6 @@ impl PartyIdentification265 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification266 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PtyNm", skip_serializing_if = "Option::is_none") )]
 	pub pty_nm: Option<String>,
@@ -22306,7 +21676,6 @@ impl PartyIdentification266 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification272 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm", skip_serializing_if = "Option::is_none") )]
 	pub nm: Option<String>,
@@ -22350,7 +21719,6 @@ impl PartyIdentification272 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification273 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nm") )]
 	pub nm: String,
@@ -22402,7 +21770,6 @@ impl PartyIdentification273 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BICOrBEI", skip_serializing_if = "Option::is_none") )]
 	pub bic_or_bei: Option<String>,
@@ -22433,7 +21800,6 @@ impl PartyIdentification2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification44 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AnyBIC") )]
 	pub any_bic: String,
@@ -22468,7 +21834,6 @@ impl PartyIdentification44 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification59 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PtyNm", skip_serializing_if = "Option::is_none") )]
 	pub pty_nm: Option<String>,
@@ -22529,7 +21894,6 @@ impl PartyIdentification59 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PartyIdentification73Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NmAndAdr", skip_serializing_if = "Option::is_none") )]
 	pub nm_and_adr: Option<NameAndAddress8>,
@@ -22555,7 +21919,6 @@ impl PartyIdentification73Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PartyType3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OPOI") )]
@@ -22587,7 +21950,6 @@ impl PartyType3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PartyType4Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MERC") )]
@@ -22617,7 +21979,6 @@ impl PartyType4Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PayInCallItem {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -22637,7 +21998,6 @@ impl PayInCallItem {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PayInFactors1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AggtShrtPosLmt") )]
 	pub aggt_shrt_pos_lmt: ActiveCurrencyAndAmount,
@@ -22660,7 +22020,6 @@ impl PayInFactors1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PayInScheduleItems1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveCurrencyAndAmount,
@@ -22682,7 +22041,6 @@ impl PayInScheduleItems1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentCancellationReason6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Orgtr", skip_serializing_if = "Option::is_none") )]
 	pub orgtr: Option<PartyIdentification272>,
@@ -22717,7 +22075,6 @@ impl PaymentCancellationReason6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentCard4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PlainCardData", skip_serializing_if = "Option::is_none") )]
 	pub plain_card_data: Option<PlainCardData1>,
@@ -22758,7 +22115,6 @@ impl PaymentCard4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentCommon6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtFr", skip_serializing_if = "Option::is_none") )]
 	pub pmt_fr: Option<System3>,
@@ -22796,7 +22152,6 @@ impl PaymentCommon6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentComplementaryInformation11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstrId", skip_serializing_if = "Option::is_none") )]
 	pub instr_id: Option<String>,
@@ -22956,7 +22311,6 @@ impl PaymentComplementaryInformation11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentContext3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CardPres", skip_serializing_if = "Option::is_none") )]
 	pub card_pres: Option<bool>,
@@ -23006,7 +22360,6 @@ impl PaymentContext3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentIdentification8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstrId", skip_serializing_if = "Option::is_none") )]
 	pub instr_id: Option<String>,
@@ -23059,7 +22412,6 @@ impl PaymentIdentification8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentIdentification8Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TxId", skip_serializing_if = "Option::is_none") )]
 	pub tx_id: Option<String>,
@@ -23113,7 +22465,6 @@ impl PaymentIdentification8Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentInstruction13 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ReqdExctnDtTm", skip_serializing_if = "Option::is_none") )]
 	pub reqd_exctn_dt_tm: Option<String>,
@@ -23135,7 +22486,6 @@ impl PaymentInstruction13 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentInstruction33 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Instr", skip_serializing_if = "Option::is_none") )]
 	pub instr: Option<Instruction1Code>,
@@ -23164,7 +22514,6 @@ impl PaymentInstruction33 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentInstruction47 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId", skip_serializing_if = "Option::is_none") )]
 	pub msg_id: Option<String>,
@@ -23262,7 +22611,6 @@ impl PaymentInstruction47 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PaymentInstrument1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BDT") )]
@@ -23300,7 +22648,6 @@ impl PaymentInstrument1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PaymentMethod4Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CHK") )]
@@ -23326,7 +22673,6 @@ impl PaymentMethod4Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentOrigin1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FINMT", skip_serializing_if = "Option::is_none") )]
 	pub finmt: Option<String>,
@@ -23374,7 +22720,6 @@ impl PaymentOrigin1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PaymentReceipt1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PAYM") )]
@@ -23398,7 +22743,6 @@ impl PaymentReceipt1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentReturnCriteria4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgIdInd", skip_serializing_if = "Option::is_none") )]
 	pub msg_id_ind: Option<bool>,
@@ -23464,7 +22808,6 @@ impl PaymentReturnCriteria4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentReturnReason8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlBkTxCd", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_bk_tx_cd: Option<BankTransactionCodeStructure4>,
@@ -23502,7 +22845,6 @@ impl PaymentReturnReason8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentRole1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -23539,7 +22881,6 @@ impl PaymentRole1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PaymentRole1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LQMG") )]
@@ -23569,7 +22910,6 @@ impl PaymentRole1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentSearch10 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId", skip_serializing_if = "Option::is_none") )]
 	pub msg_id: Option<Vec<String>>,
@@ -23690,7 +23030,6 @@ impl PaymentSearch10 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentStatus6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<PaymentStatusCode6Choice>,
@@ -23716,7 +23055,6 @@ impl PaymentStatus6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentStatusCode6Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Pdg", skip_serializing_if = "Option::is_none") )]
 	pub pdg: Option<PendingStatus4Code>,
@@ -23777,7 +23115,6 @@ impl PaymentStatusCode6Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentStatusCodeSearch2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PdgSts", skip_serializing_if = "Option::is_none") )]
 	pub pdg_sts: Option<PendingStatus4Code>,
@@ -23803,7 +23140,6 @@ impl PaymentStatusCodeSearch2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentStatusReason1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Umtchd", skip_serializing_if = "Option::is_none") )]
 	pub umtchd: Option<UnmatchedStatusReason1Code>,
@@ -23848,7 +23184,6 @@ impl PaymentStatusReason1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentTransaction152 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CxlStsId", skip_serializing_if = "Option::is_none") )]
 	pub cxl_sts_id: Option<String>,
@@ -23952,7 +23287,6 @@ impl PaymentTransaction152 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentTransaction153 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CxlStsId", skip_serializing_if = "Option::is_none") )]
 	pub cxl_sts_id: Option<String>,
@@ -24027,7 +23361,6 @@ impl PaymentTransaction153 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentTransaction154 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CxlId", skip_serializing_if = "Option::is_none") )]
 	pub cxl_id: Option<String>,
@@ -24102,7 +23435,6 @@ impl PaymentTransaction154 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentTransaction155 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CxlId", skip_serializing_if = "Option::is_none") )]
 	pub cxl_id: Option<String>,
@@ -24203,7 +23535,6 @@ impl PaymentTransaction155 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentTransaction157 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ModStsId", skip_serializing_if = "Option::is_none") )]
 	pub mod_sts_id: Option<String>,
@@ -24314,7 +23645,6 @@ impl PaymentTransaction157 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentTransactionParty4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstgAgt", skip_serializing_if = "Option::is_none") )]
 	pub instg_agt: Option<BranchAndFinancialInstitutionIdentification8>,
@@ -24370,7 +23700,6 @@ impl PaymentTransactionParty4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentTransactionStatus1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Sts") )]
 	pub sts: TransactionStatus1Choice,
@@ -24393,7 +23722,6 @@ impl PaymentTransactionStatus1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PaymentType3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CBS") )]
@@ -24459,7 +23787,6 @@ impl PaymentType3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentType4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<PaymentType3Code>,
@@ -24489,7 +23816,6 @@ impl PaymentType4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PaymentTypeInformation27 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstrPrty", skip_serializing_if = "Option::is_none") )]
 	pub instr_prty: Option<Priority2Code>,
@@ -24524,7 +23850,6 @@ impl PaymentTypeInformation27 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PendingFailingSettlement1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AWMO") )]
@@ -24632,7 +23957,6 @@ impl PendingFailingSettlement1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PendingReason10Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AWMO") )]
@@ -24764,7 +24088,6 @@ impl PendingReason10Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PendingReason14 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: PendingReason26Choice,
@@ -24794,7 +24117,6 @@ impl PendingReason14 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PendingReason16 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: PendingReason28Choice,
@@ -24824,7 +24146,6 @@ impl PendingReason16 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PendingReason17 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: PendingReason30Choice,
@@ -24854,7 +24175,6 @@ impl PendingReason17 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PendingReason26Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<PendingReason10Code>,
@@ -24877,7 +24197,6 @@ impl PendingReason26Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PendingReason28Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<PendingReason6Code>,
@@ -24900,7 +24219,6 @@ impl PendingReason28Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PendingReason30Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<PendingReason9Code>,
@@ -24923,7 +24241,6 @@ impl PendingReason30Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PendingReason6Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ADEA") )]
@@ -24953,7 +24270,6 @@ impl PendingReason6Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PendingReason9Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ADEA") )]
@@ -24987,7 +24303,6 @@ impl PendingReason9Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PendingSettlement2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AWMO") )]
@@ -25083,7 +24398,6 @@ impl PendingSettlement2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PendingStatus36Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -25106,7 +24420,6 @@ impl PendingStatus36Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PendingStatus38Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -25129,7 +24442,6 @@ impl PendingStatus38Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PendingStatus39Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -25152,7 +24464,6 @@ impl PendingStatus39Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PendingStatus4Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ACPD") )]
@@ -25204,7 +24515,6 @@ impl PendingStatus4Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PendingStatusAndReason2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PrcgSts", skip_serializing_if = "Option::is_none") )]
 	pub prcg_sts: Option<Vec<ProcessingStatus66Choice>>,
@@ -25227,7 +24537,6 @@ impl PendingStatusAndReason2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PercentageRange1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Fr", skip_serializing_if = "Option::is_none") )]
 	pub fr: Option<PercentageRangeBoundary1>,
@@ -25257,7 +24566,6 @@ impl PercentageRange1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PercentageRangeBoundary1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BdryRate") )]
 	pub bdry_rate: f64,
@@ -25278,7 +24586,6 @@ impl PercentageRangeBoundary1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Period2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrDt") )]
 	pub fr_dt: String,
@@ -25299,7 +24606,6 @@ impl Period2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Period7Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrDtTmToDtTm", skip_serializing_if = "Option::is_none") )]
 	pub fr_dt_tm_to_dt_tm: Option<DateTimePeriod1>,
@@ -25322,7 +24628,6 @@ impl Period7Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PersonIdentification13 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DtAndPlcOfBirth", skip_serializing_if = "Option::is_none") )]
 	pub dt_and_plc_of_birth: Option<DateAndPlaceOfBirth1>,
@@ -25345,7 +24650,6 @@ impl PersonIdentification13 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PersonIdentification18 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DtAndPlcOfBirth", skip_serializing_if = "Option::is_none") )]
 	pub dt_and_plc_of_birth: Option<DateAndPlaceOfBirth1>,
@@ -25368,7 +24672,6 @@ impl PersonIdentification18 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PersonIdentificationSchemeName1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -25405,7 +24708,6 @@ impl PersonIdentificationSchemeName1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PlainCardData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PAN") )]
 	pub pan: String,
@@ -25454,7 +24756,6 @@ impl PlainCardData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PointOfInteraction1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: GenericIdentification32,
@@ -25500,7 +24801,6 @@ impl PointOfInteraction1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PointOfInteractionCapabilities1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CardRdngCpblties", skip_serializing_if = "Option::is_none") )]
 	pub card_rdng_cpblties: Option<Vec<CardDataReading1Code>>,
@@ -25537,7 +24837,6 @@ impl PointOfInteractionCapabilities1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PointOfInteractionComponent1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "POICmpntTp") )]
 	pub poi_cmpnt_tp: POIComponentType1Code,
@@ -25609,7 +24908,6 @@ impl PointOfInteractionComponent1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PostalAddress1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AdrTp", skip_serializing_if = "Option::is_none") )]
 	pub adr_tp: Option<AddressType2Code>,
@@ -25697,7 +24995,6 @@ impl PostalAddress1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PostalAddress24 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AdrTp", skip_serializing_if = "Option::is_none") )]
 	pub adr_tp: Option<AddressType3Choice>,
@@ -25867,7 +25164,6 @@ impl PostalAddress24 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PostalAddress27 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AdrTp", skip_serializing_if = "Option::is_none") )]
 	pub adr_tp: Option<AddressType3Choice>,
@@ -26057,7 +25353,6 @@ impl PostalAddress27 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PreferredContactMethod1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LETT") )]
@@ -26085,7 +25380,6 @@ impl PreferredContactMethod1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PreferredContactMethod2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MAIL") )]
@@ -26115,7 +25409,6 @@ impl PreferredContactMethod2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Price7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: YieldedOrValueType1Choice,
@@ -26138,7 +25431,6 @@ impl Price7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PriceRateOrAmount3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Rate", skip_serializing_if = "Option::is_none") )]
 	pub rate: Option<f64>,
@@ -26160,7 +25452,6 @@ impl PriceRateOrAmount3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PriceValue1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveCurrencyAnd13DecimalAmount,
@@ -26180,7 +25471,6 @@ impl PriceValue1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum PriceValueType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DISC") )]
@@ -26204,7 +25494,6 @@ impl PriceValueType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Priority1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<Priority5Code>,
@@ -26234,7 +25523,6 @@ impl Priority1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum Priority1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "HIGH") )]
@@ -26258,7 +25546,6 @@ impl Priority1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum Priority2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "HIGH") )]
@@ -26280,7 +25567,6 @@ impl Priority2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum Priority5Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "HIGH") )]
@@ -26306,7 +25592,6 @@ impl Priority5Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct PriorityNumeric4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Nmrc", skip_serializing_if = "Option::is_none") )]
 	pub nmrc: Option<String>,
@@ -26334,7 +25619,6 @@ impl PriorityNumeric4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ProcessingPosition3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AFTE") )]
@@ -26360,7 +25644,6 @@ impl ProcessingPosition3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProcessingPosition7Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<ProcessingPosition3Code>,
@@ -26383,7 +25666,6 @@ impl ProcessingPosition7Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProcessingStatus66Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AckdAccptd", skip_serializing_if = "Option::is_none") )]
 	pub ackd_accptd: Option<AcknowledgedAcceptedStatus21Choice>,
@@ -26412,7 +25694,6 @@ impl ProcessingStatus66Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProcessingStatus67Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Rjctd", skip_serializing_if = "Option::is_none") )]
 	pub rjctd: Option<RejectionOrRepairStatus38Choice>,
@@ -26444,7 +25725,6 @@ impl ProcessingStatus67Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProcessingStatus68Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<TransactionProcessingStatus3Code>,
@@ -26467,7 +25747,6 @@ impl ProcessingStatus68Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProcessingStatus69Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PdgCxl", skip_serializing_if = "Option::is_none") )]
 	pub pdg_cxl: Option<PendingStatus39Choice>,
@@ -26505,7 +25784,6 @@ impl ProcessingStatus69Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProcessingStatus71Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AckdAccptd", skip_serializing_if = "Option::is_none") )]
 	pub ackd_accptd: Option<AcknowledgedAcceptedStatus21Choice>,
@@ -26543,7 +25821,6 @@ impl ProcessingStatus71Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProcessingType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<ProcessingType1Code>,
@@ -26573,7 +25850,6 @@ impl ProcessingType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ProcessingType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RJCT") )]
@@ -26609,7 +25885,6 @@ impl ProcessingType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Product2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PdctCd") )]
 	pub pdct_cd: String,
@@ -26663,7 +25938,6 @@ impl Product2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryAgent5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: String,
@@ -26691,7 +25965,6 @@ impl ProprietaryAgent5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryBankTransactionCodeStructure1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: String,
@@ -26726,7 +25999,6 @@ impl ProprietaryBankTransactionCodeStructure1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryData6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Any") )]
 	pub any: SkipPayload,
@@ -26746,7 +26018,6 @@ impl ProprietaryData6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryData7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: String,
@@ -26774,7 +26045,6 @@ impl ProprietaryData7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryDate3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: String,
@@ -26802,7 +26072,6 @@ impl ProprietaryDate3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryParty6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: String,
@@ -26830,7 +26099,6 @@ impl ProprietaryParty6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryPrice2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: String,
@@ -26858,7 +26126,6 @@ impl ProprietaryPrice2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryQuantity1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: String,
@@ -26891,7 +26158,6 @@ impl ProprietaryQuantity1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryReason4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Rsn", skip_serializing_if = "Option::is_none") )]
 	pub rsn: Option<GenericIdentification30>,
@@ -26921,7 +26187,6 @@ impl ProprietaryReason4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryReference1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: String,
@@ -26954,7 +26219,6 @@ impl ProprietaryReference1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryStatusAndReason6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PrtrySts") )]
 	pub prtry_sts: GenericIdentification30,
@@ -26977,7 +26241,6 @@ impl ProprietaryStatusAndReason6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProprietaryStatusJustification2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PrtryStsRsn") )]
 	pub prtry_sts_rsn: String,
@@ -27014,7 +26277,6 @@ impl ProprietaryStatusJustification2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProxyAccountIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<ProxyAccountType1Choice>,
@@ -27042,7 +26304,6 @@ impl ProxyAccountIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ProxyAccountType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -27079,7 +26340,6 @@ impl ProxyAccountType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Purpose2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -27116,7 +26376,6 @@ impl Purpose2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct QuantityType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<OrderQuantityType2Code>,
@@ -27139,7 +26398,6 @@ impl QuantityType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum QueryType2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ALLL") )]
@@ -27165,7 +26423,6 @@ impl QueryType2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum QueryType3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ALLL") )]
@@ -27189,7 +26446,6 @@ impl QueryType3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct QueueTransactionIdentification1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QId") )]
 	pub q_id: String,
@@ -27222,7 +26478,6 @@ impl QueueTransactionIdentification1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Rate4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: RateType4Choice,
@@ -27245,7 +26500,6 @@ impl Rate4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RateType4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Pctg", skip_serializing_if = "Option::is_none") )]
 	pub pctg: Option<f64>,
@@ -27274,7 +26528,6 @@ impl RateType4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Receipt6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlMsgId") )]
 	pub orgnl_msg_id: OriginalMessageAndIssuer1,
@@ -27300,7 +26553,6 @@ impl Receipt6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct References14 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctOwnrTxId", skip_serializing_if = "Option::is_none") )]
 	pub acct_ownr_tx_id: Option<String>,
@@ -27367,7 +26619,6 @@ impl References14 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct References34Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SctiesSttlmTxId", skip_serializing_if = "Option::is_none") )]
 	pub scties_sttlm_tx_id: Option<String>,
@@ -27454,7 +26705,6 @@ impl References34Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct References36Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctOwnrTxId", skip_serializing_if = "Option::is_none") )]
 	pub acct_ownr_tx_id: Option<String>,
@@ -27531,7 +26781,6 @@ impl References36Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct References74Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SctiesSttlmTxId", skip_serializing_if = "Option::is_none") )]
 	pub scties_sttlm_tx_id: Option<String>,
@@ -27648,7 +26897,6 @@ impl References74Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReferredDocumentInformation7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<ReferredDocumentType4>,
@@ -27683,7 +26931,6 @@ impl ReferredDocumentInformation7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReferredDocumentInformation8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<DocumentType1>,
@@ -27719,7 +26966,6 @@ impl ReferredDocumentInformation8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReferredDocumentType3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<DocumentType6Code>,
@@ -27749,7 +26995,6 @@ impl ReferredDocumentType3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReferredDocumentType4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CdOrPrtry") )]
 	pub cd_or_prtry: ReferredDocumentType3Choice,
@@ -27779,7 +27024,6 @@ impl ReferredDocumentType4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RejectionAndRepairReason32Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<RejectionReason33Code>,
@@ -27802,7 +27046,6 @@ impl RejectionAndRepairReason32Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RejectionAndRepairReason33Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<RejectionReason34Code>,
@@ -27825,7 +27068,6 @@ impl RejectionAndRepairReason33Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RejectionAndRepairReason34Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<RejectionReason35Code>,
@@ -27848,7 +27090,6 @@ impl RejectionAndRepairReason34Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RejectionOrRepairReason32 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<Vec<RejectionAndRepairReason32Choice>>,
@@ -27878,7 +27119,6 @@ impl RejectionOrRepairReason32 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RejectionOrRepairReason33 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: RejectionAndRepairReason33Choice,
@@ -27908,7 +27148,6 @@ impl RejectionOrRepairReason33 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RejectionOrRepairReason34 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: RejectionAndRepairReason34Choice,
@@ -27938,7 +27177,6 @@ impl RejectionOrRepairReason34 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RejectionOrRepairStatus38Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -27961,7 +27199,6 @@ impl RejectionOrRepairStatus38Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RejectionOrRepairStatus39Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -27984,7 +27221,6 @@ impl RejectionOrRepairStatus39Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RejectionOrRepairStatus40Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NoSpcfdRsn", skip_serializing_if = "Option::is_none") )]
 	pub no_spcfd_rsn: Option<NoReasonCode>,
@@ -28007,7 +27243,6 @@ impl RejectionOrRepairStatus40Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum RejectionReason33Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CASH") )]
@@ -28061,7 +27296,6 @@ impl RejectionReason33Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum RejectionReason34Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ADEA") )]
@@ -28093,7 +27327,6 @@ impl RejectionReason34Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum RejectionReason35Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CASH") )]
@@ -28129,7 +27362,6 @@ impl RejectionReason35Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RelatedInvestigationData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InvstgtnId", skip_serializing_if = "Option::is_none") )]
 	pub invstgtn_id: Option<String>,
@@ -28159,7 +27391,6 @@ impl RelatedInvestigationData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Remittance1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ustrd", skip_serializing_if = "Option::is_none") )]
 	pub ustrd: Option<Vec<String>>,
@@ -28194,7 +27425,6 @@ impl Remittance1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RemittanceAmount2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DuePyblAmt", skip_serializing_if = "Option::is_none") )]
 	pub due_pybl_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -28229,7 +27459,6 @@ impl RemittanceAmount2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RemittanceAmount3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DuePyblAmt", skip_serializing_if = "Option::is_none") )]
 	pub due_pybl_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -28264,7 +27493,6 @@ impl RemittanceAmount3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RemittanceAmount4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RmtAmtAndTp", skip_serializing_if = "Option::is_none") )]
 	pub rmt_amt_and_tp: Option<Vec<DocumentAmount1>>,
@@ -28287,7 +27515,6 @@ impl RemittanceAmount4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RemittanceInformation21 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ustrd", skip_serializing_if = "Option::is_none") )]
 	pub ustrd: Option<Vec<String>>,
@@ -28319,7 +27546,6 @@ impl RemittanceInformation21 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RemittanceInformation22 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ustrd", skip_serializing_if = "Option::is_none") )]
 	pub ustrd: Option<Vec<String>>,
@@ -28351,7 +27577,6 @@ impl RemittanceInformation22 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RemittanceLocation7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RmtId", skip_serializing_if = "Option::is_none") )]
 	pub rmt_id: Option<String>,
@@ -28381,7 +27606,6 @@ impl RemittanceLocation7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RemittanceLocation8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RmtId", skip_serializing_if = "Option::is_none") )]
 	pub rmt_id: Option<String>,
@@ -28411,7 +27635,6 @@ impl RemittanceLocation8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RemittanceLocationData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Mtd") )]
 	pub mtd: RemittanceLocationMethod2Code,
@@ -28444,7 +27667,6 @@ impl RemittanceLocationData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RemittanceLocationData2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Mtd") )]
 	pub mtd: RemittanceLocationMethod2Code,
@@ -28477,7 +27699,6 @@ impl RemittanceLocationData2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum RemittanceLocationMethod2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FAXI") )]
@@ -28507,7 +27728,6 @@ impl RemittanceLocationMethod2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReportData4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -28553,7 +27773,6 @@ impl ReportData4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReportData5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId") )]
 	pub msg_id: String,
@@ -28599,7 +27818,6 @@ impl ReportData5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReportEntry14 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NtryRef", skip_serializing_if = "Option::is_none") )]
 	pub ntry_ref: Option<String>,
@@ -28692,7 +27910,6 @@ impl ReportEntry14 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReportHeader6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RptId") )]
 	pub rpt_id: String,
@@ -28720,7 +27937,6 @@ impl ReportHeader6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReportHeader7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -28753,7 +27969,6 @@ impl ReportHeader7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ReportIndicator1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "STND") )]
@@ -28775,7 +27990,6 @@ impl ReportIndicator1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReportingPeriod5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrToDt") )]
 	pub fr_to_dt: DatePeriod3,
@@ -28801,7 +28015,6 @@ impl ReportingPeriod5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReportingRequest7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id", skip_serializing_if = "Option::is_none") )]
 	pub id: Option<String>,
@@ -28857,7 +28070,6 @@ impl ReportingRequest7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReportingSource1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -28894,7 +28106,6 @@ impl ReportingSource1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RequestDetails22 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ref") )]
 	pub ref_attr: References14,
@@ -28931,7 +28142,6 @@ impl RequestDetails22 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RequestHandling3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Sts") )]
 	pub sts: RequestStatus1Choice,
@@ -28954,7 +28164,6 @@ impl RequestHandling3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RequestStatus1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -28991,7 +28200,6 @@ impl RequestStatus1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RequestType3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<StandingOrderQueryType1Code>,
@@ -29014,7 +28222,6 @@ impl RequestType3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RequestType4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtCtrl", skip_serializing_if = "Option::is_none") )]
 	pub pmt_ctrl: Option<String>,
@@ -29054,7 +28261,6 @@ impl RequestType4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct RequestedModification11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstrId", skip_serializing_if = "Option::is_none") )]
 	pub instr_id: Option<String>,
@@ -29175,7 +28381,6 @@ impl RequestedModification11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Reservation3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: Amount2Choice,
@@ -29201,7 +28406,6 @@ impl Reservation3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Reservation4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StartDtTm", skip_serializing_if = "Option::is_none") )]
 	pub start_dt_tm: Option<DateAndDateTime2Choice>,
@@ -29224,7 +28428,6 @@ impl Reservation4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationCriteria6Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryNm", skip_serializing_if = "Option::is_none") )]
 	pub qry_nm: Option<String>,
@@ -29254,7 +28457,6 @@ impl ReservationCriteria6Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationCriteria7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none") )]
 	pub new_qry_nm: Option<String>,
@@ -29287,7 +28489,6 @@ impl ReservationCriteria7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationIdentification4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RsvatnId", skip_serializing_if = "Option::is_none") )]
 	pub rsvatn_id: Option<String>,
@@ -29326,7 +28527,6 @@ impl ReservationIdentification4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationOrError11Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BizRpt", skip_serializing_if = "Option::is_none") )]
 	pub biz_rpt: Option<CurrentAndDefaultReservation6>,
@@ -29349,7 +28549,6 @@ impl ReservationOrError11Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationOrError9Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Rsvatn", skip_serializing_if = "Option::is_none") )]
 	pub rsvatn: Option<Reservation3>,
@@ -29372,7 +28571,6 @@ impl ReservationOrError9Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationQuery6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp", skip_serializing_if = "Option::is_none") )]
 	pub qry_tp: Option<QueryType2Code>,
@@ -29395,7 +28593,6 @@ impl ReservationQuery6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationReport8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RsvatnId") )]
 	pub rsvatn_id: ReservationIdentification4,
@@ -29418,7 +28615,6 @@ impl ReservationReport8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationReturnCriteria1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StartDtTmInd", skip_serializing_if = "Option::is_none") )]
 	pub start_dt_tm_ind: Option<bool>,
@@ -29439,7 +28635,6 @@ impl ReservationReturnCriteria1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationSearchCriteria6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DtTm", skip_serializing_if = "Option::is_none") )]
 	pub dt_tm: Option<DateTimeSearch2Choice>,
@@ -29474,7 +28669,6 @@ impl ReservationSearchCriteria6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationStatus1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<ReservationStatus1Code>,
@@ -29504,7 +28698,6 @@ impl ReservationStatus1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ReservationStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ENAB") )]
@@ -29532,7 +28725,6 @@ impl ReservationStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReservationType2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -29569,7 +28761,6 @@ impl ReservationType2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ResidenceLocation1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Ctry", skip_serializing_if = "Option::is_none") )]
 	pub ctry: Option<String>,
@@ -29604,7 +28795,6 @@ impl ResidenceLocation1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ResolutionData5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "EndToEndId", skip_serializing_if = "Option::is_none") )]
 	pub end_to_end_id: Option<String>,
@@ -29663,7 +28853,6 @@ impl ResolutionData5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ReturnReason5Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -29700,7 +28889,6 @@ impl ReturnReason5Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SecuritiesAccount19 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -29738,7 +28926,6 @@ impl SecuritiesAccount19 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum SecuritiesSettlementStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PEND") )]
@@ -29760,7 +28947,6 @@ impl SecuritiesSettlementStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SecuritiesTransactionReferences1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctOwnrTxId", skip_serializing_if = "Option::is_none") )]
 	pub acct_ownr_tx_id: Option<String>,
@@ -29817,7 +29003,6 @@ impl SecuritiesTransactionReferences1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SecurityIdentification19 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ISIN", skip_serializing_if = "Option::is_none") )]
 	pub isin: Option<String>,
@@ -29855,7 +29040,6 @@ impl SecurityIdentification19 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SecurityIdentification3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ISIN", skip_serializing_if = "Option::is_none") )]
 	pub isin: Option<String>,
@@ -29949,7 +29133,6 @@ impl SecurityIdentification3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SequenceRange1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrSeq") )]
 	pub fr_seq: String,
@@ -29982,7 +29165,6 @@ impl SequenceRange1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SequenceRange1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrSeq", skip_serializing_if = "Option::is_none") )]
 	pub fr_seq: Option<String>,
@@ -30046,7 +29228,6 @@ impl SequenceRange1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum SequenceType3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FRST") )]
@@ -30074,7 +29255,6 @@ impl SequenceType3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ServiceAdjustmentType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "COMP") )]
@@ -30096,7 +29276,6 @@ impl ServiceAdjustmentType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ServiceLevel8Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -30133,7 +29312,6 @@ impl ServiceLevel8Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ServicePaymentMethod1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BCMP") )]
@@ -30163,7 +29341,6 @@ impl ServicePaymentMethod1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ServiceTaxDesignation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: ServiceTaxDesignation1Code,
@@ -30196,7 +29373,6 @@ impl ServiceTaxDesignation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum ServiceTaxDesignation1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "XMPT") )]
@@ -30220,7 +29396,6 @@ impl ServiceTaxDesignation1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SettlementDateTimeIndication1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DbtDtTm", skip_serializing_if = "Option::is_none") )]
 	pub dbt_dt_tm: Option<String>,
@@ -30241,7 +29416,6 @@ impl SettlementDateTimeIndication1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SettlementInstruction11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SttlmMtd") )]
 	pub sttlm_mtd: SettlementMethod1Code,
@@ -30285,7 +29459,6 @@ impl SettlementInstruction11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SettlementInstruction15 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SttlmMtd") )]
 	pub sttlm_mtd: SettlementMethod1Code,
@@ -30329,7 +29502,6 @@ impl SettlementInstruction15 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SettlementInstruction16 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstgRmbrsmntAgt", skip_serializing_if = "Option::is_none") )]
 	pub instg_rmbrsmnt_agt: Option<BranchAndFinancialInstitutionIdentification8>,
@@ -30358,7 +29530,6 @@ impl SettlementInstruction16 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum SettlementMethod1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "INDA") )]
@@ -30384,7 +29555,6 @@ impl SettlementMethod1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SettlementParties120 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DlvryAgt", skip_serializing_if = "Option::is_none") )]
 	pub dlvry_agt: Option<PartyIdentification242Choice>,
@@ -30413,7 +29583,6 @@ impl SettlementParties120 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SettlementStatus16Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Pdg", skip_serializing_if = "Option::is_none") )]
 	pub pdg: Option<PendingStatus36Choice>,
@@ -30439,7 +29608,6 @@ impl SettlementStatus16Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SettlementStatus26Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<SecuritiesSettlementStatus1Code>,
@@ -30462,7 +29630,6 @@ impl SettlementStatus26Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct ShortPaymentIdentification4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TxId", skip_serializing_if = "Option::is_none") )]
 	pub tx_id: Option<String>,
@@ -30502,7 +29669,6 @@ impl ShortPaymentIdentification4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SimpleIdentificationInformation {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: String,
@@ -30527,7 +29693,6 @@ impl SimpleIdentificationInformation {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SkipPayload {
 }
 
@@ -30544,7 +29709,6 @@ impl SkipPayload {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrder10 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt", skip_serializing_if = "Option::is_none") )]
 	pub amt: Option<Amount2Choice>,
@@ -30587,7 +29751,6 @@ impl StandingOrder10 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrder11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: Amount2Choice,
@@ -30688,7 +29851,6 @@ impl StandingOrder11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderCriteria5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none") )]
 	pub new_qry_nm: Option<String>,
@@ -30721,7 +29883,6 @@ impl StandingOrderCriteria5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderCriteria5Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryNm", skip_serializing_if = "Option::is_none") )]
 	pub qry_nm: Option<String>,
@@ -30751,7 +29912,6 @@ impl StandingOrderCriteria5Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderIdentification8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id", skip_serializing_if = "Option::is_none") )]
 	pub id: Option<String>,
@@ -30784,7 +29944,6 @@ impl StandingOrderIdentification8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderIdentification9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Acct") )]
 	pub acct: CashAccount40,
@@ -30807,7 +29966,6 @@ impl StandingOrderIdentification9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderOrAll4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StgOrdr", skip_serializing_if = "Option::is_none") )]
 	pub stg_ordr: Option<Vec<StandingOrderIdentification8>>,
@@ -30830,7 +29988,6 @@ impl StandingOrderOrAll4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderOrError10Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StgOrdr", skip_serializing_if = "Option::is_none") )]
 	pub stg_ordr: Option<StandingOrder11>,
@@ -30853,7 +30010,6 @@ impl StandingOrderOrError10Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderOrError9Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Rpt", skip_serializing_if = "Option::is_none") )]
 	pub rpt: Option<Vec<StandingOrderReport3>>,
@@ -30876,7 +30032,6 @@ impl StandingOrderOrError9Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderQuery5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp", skip_serializing_if = "Option::is_none") )]
 	pub qry_tp: Option<QueryType2Code>,
@@ -30899,7 +30054,6 @@ impl StandingOrderQuery5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum StandingOrderQueryType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SLST") )]
@@ -30927,7 +30081,6 @@ impl StandingOrderQueryType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderReport3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StgOrdrId") )]
 	pub stg_ordr_id: StandingOrderIdentification8,
@@ -30950,7 +30103,6 @@ impl StandingOrderReport3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderReturnCriteria1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "StgOrdrIdInd", skip_serializing_if = "Option::is_none") )]
 	pub stg_ordr_id_ind: Option<bool>,
@@ -31001,7 +30153,6 @@ impl StandingOrderReturnCriteria1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderSearchCriteria5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "KeyAttrbtsInd", skip_serializing_if = "Option::is_none") )]
 	pub key_attrbts_ind: Option<bool>,
@@ -31080,7 +30231,6 @@ impl StandingOrderSearchCriteria5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderTotalAmount1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SetPrdfndOrdr") )]
 	pub set_prdfnd_ordr: TotalAmountAndCurrency1,
@@ -31109,7 +30259,6 @@ impl StandingOrderTotalAmount1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StandingOrderType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<StandingOrderType1Code>,
@@ -31132,7 +30281,6 @@ impl StandingOrderType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum StandingOrderType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "USTO") )]
@@ -31154,7 +30302,6 @@ impl StandingOrderType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StatementGroup5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "GrpId") )]
 	pub grp_id: String,
@@ -31194,7 +30341,6 @@ impl StatementGroup5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StatementResolutionEntry5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlGrpInf", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_grp_inf: Option<OriginalGroupInformation29>,
@@ -31251,7 +30397,6 @@ impl StatementResolutionEntry5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum StatementUpdateType1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "COMP") )]
@@ -31273,7 +30418,6 @@ impl StatementUpdateType1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StatusReason6Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -31310,7 +30454,6 @@ impl StatusReason6Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StatusReasonInformation12 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Orgtr", skip_serializing_if = "Option::is_none") )]
 	pub orgtr: Option<PartyIdentification135>,
@@ -31345,7 +30488,6 @@ impl StatusReasonInformation12 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StatusReasonInformation14 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Orgtr", skip_serializing_if = "Option::is_none") )]
 	pub orgtr: Option<PartyIdentification272>,
@@ -31380,7 +30522,6 @@ impl StatusReasonInformation14 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StructuredLongPostalAddress1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BldgNm", skip_serializing_if = "Option::is_none") )]
 	pub bldg_nm: Option<String>,
@@ -31509,7 +30650,6 @@ impl StructuredLongPostalAddress1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StructuredRemittanceInformation16 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RfrdDocInf", skip_serializing_if = "Option::is_none") )]
 	pub rfrd_doc_inf: Option<Vec<ReferredDocumentInformation7>>,
@@ -31559,7 +30699,6 @@ impl StructuredRemittanceInformation16 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StructuredRemittanceInformation17 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RfrdDocInf", skip_serializing_if = "Option::is_none") )]
 	pub rfrd_doc_inf: Option<Vec<ReferredDocumentInformation7>>,
@@ -31609,7 +30748,6 @@ impl StructuredRemittanceInformation17 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct StructuredRemittanceInformation18 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "RfrdDocInf", skip_serializing_if = "Option::is_none") )]
 	pub rfrd_doc_inf: Option<Vec<ReferredDocumentInformation8>>,
@@ -31659,7 +30797,6 @@ impl StructuredRemittanceInformation18 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SupplementaryData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PlcAndNm", skip_serializing_if = "Option::is_none") )]
 	pub plc_and_nm: Option<String>,
@@ -31689,7 +30826,6 @@ impl SupplementaryData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SupplementaryDataEnvelope1 {
 }
 
@@ -31706,7 +30842,6 @@ impl SupplementaryDataEnvelope1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum SuspendedStatusReason1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SUBY") )]
@@ -31728,7 +30863,6 @@ impl SuspendedStatusReason1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct System3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysId", skip_serializing_if = "Option::is_none") )]
 	pub sys_id: Option<MarketInfrastructureIdentification1Choice>,
@@ -31762,7 +30896,6 @@ impl System3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemAvailabilityAndEvents3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysCcy", skip_serializing_if = "Option::is_none") )]
 	pub sys_ccy: Option<String>,
@@ -31796,7 +30929,6 @@ impl SystemAvailabilityAndEvents3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum SystemBalanceType2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OPNG") )]
@@ -31944,7 +31076,6 @@ impl SystemBalanceType2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemClosure2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Prd", skip_serializing_if = "Option::is_none") )]
 	pub prd: Option<DateTimePeriod1Choice>,
@@ -31967,7 +31098,6 @@ impl SystemClosure2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum SystemClosureReason1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BHOL") )]
@@ -31995,7 +31125,6 @@ impl SystemClosureReason1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemEvent3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: SystemEventType4Choice,
@@ -32023,7 +31152,6 @@ impl SystemEvent3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemEventType2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<SystemEventType2Code>,
@@ -32046,7 +31174,6 @@ impl SystemEventType2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum SystemEventType2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "LVCO") )]
@@ -32108,7 +31235,6 @@ impl SystemEventType2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemEventType4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -32138,7 +31264,6 @@ impl SystemEventType4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemIdentification2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MktInfrstrctrId", skip_serializing_if = "Option::is_none") )]
 	pub mkt_infrstrctr_id: Option<MarketInfrastructureIdentification1Choice>,
@@ -32166,7 +31291,6 @@ impl SystemIdentification2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemMember3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysId", skip_serializing_if = "Option::is_none") )]
 	pub sys_id: Option<SystemIdentification2Choice>,
@@ -32189,7 +31313,6 @@ impl SystemMember3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemMemberStatus1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<MemberStatus1Code>,
@@ -32219,7 +31342,6 @@ impl SystemMemberStatus1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemMemberType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -32256,7 +31378,6 @@ impl SystemMemberType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemPartyIdentification8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id") )]
 	pub id: PartyIdentification136,
@@ -32279,7 +31400,6 @@ impl SystemPartyIdentification8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemReturnCriteria2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysIdInd", skip_serializing_if = "Option::is_none") )]
 	pub sys_id_ind: Option<bool>,
@@ -32304,7 +31424,6 @@ impl SystemReturnCriteria2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemSearch5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SysId", skip_serializing_if = "Option::is_none") )]
 	pub sys_id: Option<Vec<ClearingSystemIdentification3Choice>>,
@@ -32338,7 +31457,6 @@ impl SystemSearch5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemStatus2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<SystemStatus2Code>,
@@ -32361,7 +31479,6 @@ impl SystemStatus2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum SystemStatus2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "SUSP") )]
@@ -32387,7 +31504,6 @@ impl SystemStatus2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct SystemStatus3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Sts") )]
 	pub sts: SystemStatus2Choice,
@@ -32410,7 +31526,6 @@ impl SystemStatus3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxAmount2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Rate", skip_serializing_if = "Option::is_none") )]
 	pub rate: Option<f64>,
@@ -32438,7 +31553,6 @@ impl TaxAmount2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxAmount3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Rate", skip_serializing_if = "Option::is_none") )]
 	pub rate: Option<f64>,
@@ -32466,7 +31580,6 @@ impl TaxAmount3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxAmountAndType1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<TaxAmountType1Choice>,
@@ -32489,7 +31602,6 @@ impl TaxAmountAndType1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxAmountType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -32526,7 +31638,6 @@ impl TaxAmountType1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxAuthorisation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Titl", skip_serializing_if = "Option::is_none") )]
 	pub titl: Option<String>,
@@ -32563,7 +31674,6 @@ impl TaxAuthorisation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxCalculation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "HstCcy") )]
 	pub hst_ccy: String,
@@ -32598,7 +31708,6 @@ impl TaxCalculation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxCharges2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Id", skip_serializing_if = "Option::is_none") )]
 	pub id: Option<String>,
@@ -32630,7 +31739,6 @@ impl TaxCharges2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cdtr", skip_serializing_if = "Option::is_none") )]
 	pub cdtr: Option<TaxParty1>,
@@ -32699,7 +31807,6 @@ impl TaxData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxInformation7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cdtr", skip_serializing_if = "Option::is_none") )]
 	pub cdtr: Option<TaxParty1>,
@@ -32768,7 +31875,6 @@ impl TaxInformation7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxParty1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TaxId", skip_serializing_if = "Option::is_none") )]
 	pub tax_id: Option<String>,
@@ -32815,7 +31921,6 @@ impl TaxParty1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxParty2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TaxId", skip_serializing_if = "Option::is_none") )]
 	pub tax_id: Option<String>,
@@ -32865,7 +31970,6 @@ impl TaxParty2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxPeriod2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Yr", skip_serializing_if = "Option::is_none") )]
 	pub yr: Option<String>,
@@ -32890,7 +31994,6 @@ impl TaxPeriod2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxPeriod3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Yr", skip_serializing_if = "Option::is_none") )]
 	pub yr: Option<String>,
@@ -32915,7 +32018,6 @@ impl TaxPeriod3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxReason1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd") )]
 	pub cd: String,
@@ -32948,7 +32050,6 @@ impl TaxReason1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxRecord2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<String>,
@@ -33041,7 +32142,6 @@ impl TaxRecord2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxRecord3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp", skip_serializing_if = "Option::is_none") )]
 	pub tp: Option<String>,
@@ -33134,7 +32234,6 @@ impl TaxRecord3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxRecordDetails2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Prd", skip_serializing_if = "Option::is_none") )]
 	pub prd: Option<TaxPeriod2>,
@@ -33157,7 +32256,6 @@ impl TaxRecordDetails2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TaxRecordDetails3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Prd", skip_serializing_if = "Option::is_none") )]
 	pub prd: Option<TaxPeriod3>,
@@ -33180,7 +32278,6 @@ impl TaxRecordDetails3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum TaxRecordPeriod1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MM01") )]
@@ -33234,7 +32331,6 @@ impl TaxRecordPeriod1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TechnicalInputChannel1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -33271,7 +32367,6 @@ impl TechnicalInputChannel1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TimePeriod1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrTm") )]
 	pub fr_tm: String,
@@ -33292,7 +32387,6 @@ impl TimePeriod1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TimePeriodDetails1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "FrTm") )]
 	pub fr_tm: String,
@@ -33313,7 +32407,6 @@ impl TimePeriodDetails1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TotalAmountAndCurrency1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TtlAmt") )]
 	pub ttl_amt: f64,
@@ -33343,7 +32436,6 @@ impl TotalAmountAndCurrency1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TotalCharges7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NbOfChrgsRcrds") )]
 	pub nb_of_chrgs_rcrds: String,
@@ -33374,7 +32466,6 @@ impl TotalCharges7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TotalCharges8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NbOfChrgsBrkdwnItms") )]
 	pub nb_of_chrgs_brkdwn_itms: String,
@@ -33405,7 +32496,6 @@ impl TotalCharges8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TotalNumber1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CurInstrNb") )]
 	pub cur_instr_nb: String,
@@ -33434,7 +32524,6 @@ impl TotalNumber1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TotalTransactions6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TtlNtries", skip_serializing_if = "Option::is_none") )]
 	pub ttl_ntries: Option<NumberAndSumOfTransactions4>,
@@ -33463,7 +32552,6 @@ impl TotalTransactions6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TotalsPerBankTransactionCode5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NbOfNtries", skip_serializing_if = "Option::is_none") )]
 	pub nb_of_ntries: Option<String>,
@@ -33510,7 +32598,6 @@ impl TotalsPerBankTransactionCode5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TrackData1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TrckNb", skip_serializing_if = "Option::is_none") )]
 	pub trck_nb: Option<String>,
@@ -33543,7 +32630,6 @@ impl TrackData1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Transaction159 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtTo", skip_serializing_if = "Option::is_none") )]
 	pub pmt_to: Option<System3>,
@@ -33578,7 +32664,6 @@ impl Transaction159 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionAgents6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InstgAgt", skip_serializing_if = "Option::is_none") )]
 	pub instg_agt: Option<BranchAndFinancialInstitutionIdentification8>,
@@ -33631,7 +32716,6 @@ impl TransactionAgents6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionAllocation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Amt") )]
 	pub amt: ActiveOrHistoricCurrencyAndAmount,
@@ -33671,7 +32755,6 @@ impl TransactionAllocation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionAmendment1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Pth", skip_serializing_if = "Option::is_none") )]
 	pub pth: Option<String>,
@@ -33701,7 +32784,6 @@ impl TransactionAmendment1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionAmendment1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Agt", skip_serializing_if = "Option::is_none") )]
 	pub agt: Option<BranchAndFinancialInstitutionIdentification6>,
@@ -33773,7 +32855,6 @@ impl TransactionAmendment1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionAndDocumentIdentification6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TxId") )]
 	pub tx_id: String,
@@ -33820,7 +32901,6 @@ impl TransactionAndDocumentIdentification6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum TransactionChannel1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MAIL") )]
@@ -33846,7 +32926,6 @@ impl TransactionChannel1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionCriteria11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "NewQryNm", skip_serializing_if = "Option::is_none") )]
 	pub new_qry_nm: Option<String>,
@@ -33882,7 +32961,6 @@ impl TransactionCriteria11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionCriteria8Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryNm", skip_serializing_if = "Option::is_none") )]
 	pub qry_nm: Option<String>,
@@ -33912,7 +32990,6 @@ impl TransactionCriteria8Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionDates3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AccptncDtTm", skip_serializing_if = "Option::is_none") )]
 	pub accptnc_dt_tm: Option<String>,
@@ -33946,7 +33023,6 @@ impl TransactionDates3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum TransactionEnvironment1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MERC") )]
@@ -33970,7 +33046,6 @@ impl TransactionEnvironment1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionIdentifications24 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AcctOwnrTxId") )]
 	pub acct_ownr_tx_id: String,
@@ -34025,7 +33100,6 @@ impl TransactionIdentifications24 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionIdentifier1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TxDtTm") )]
 	pub tx_dt_tm: String,
@@ -34052,7 +33126,6 @@ impl TransactionIdentifier1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum TransactionIndividualStatus1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "ACTC") )]
@@ -34086,7 +33159,6 @@ impl TransactionIndividualStatus1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionInterest4 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "TtlIntrstAndTaxAmt", skip_serializing_if = "Option::is_none") )]
 	pub ttl_intrst_and_tax_amt: Option<ActiveOrHistoricCurrencyAndAmount>,
@@ -34109,7 +33181,6 @@ impl TransactionInterest4 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionModification7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtId") )]
 	pub pmt_id: PaymentIdentification8Choice,
@@ -34132,7 +33203,6 @@ impl TransactionModification7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionOrError6Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tx", skip_serializing_if = "Option::is_none") )]
 	pub tx: Option<Transaction159>,
@@ -34155,7 +33225,6 @@ impl TransactionOrError6Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionParties12 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "InitgPty", skip_serializing_if = "Option::is_none") )]
 	pub initg_pty: Option<Party50Choice>,
@@ -34199,7 +33268,6 @@ impl TransactionParties12 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionPrice4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "DealPric", skip_serializing_if = "Option::is_none") )]
 	pub deal_pric: Option<Price7>,
@@ -34222,7 +33290,6 @@ impl TransactionPrice4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum TransactionProcessingStatus3Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CAND") )]
@@ -34248,7 +33315,6 @@ impl TransactionProcessingStatus3Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionQuantities3Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Qty", skip_serializing_if = "Option::is_none") )]
 	pub qty: Option<FinancialInstrumentQuantity1Choice>,
@@ -34274,7 +33340,6 @@ impl TransactionQuantities3Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionQuery8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "QryTp", skip_serializing_if = "Option::is_none") )]
 	pub qry_tp: Option<QueryType2Code>,
@@ -34297,7 +33362,6 @@ impl TransactionQuery8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionReferences6 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId", skip_serializing_if = "Option::is_none") )]
 	pub msg_id: Option<String>,
@@ -34455,7 +33519,6 @@ impl TransactionReferences6 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionReferences7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MsgId", skip_serializing_if = "Option::is_none") )]
 	pub msg_id: Option<String>,
@@ -34623,7 +33686,6 @@ impl TransactionReferences7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionReport8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtId") )]
 	pub pmt_id: PaymentIdentification8Choice,
@@ -34646,7 +33708,6 @@ impl TransactionReport8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionReportOrError7Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BizRpt", skip_serializing_if = "Option::is_none") )]
 	pub biz_rpt: Option<Transactions11>,
@@ -34669,7 +33730,6 @@ impl TransactionReportOrError7Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionReturnCriteria5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtToRtrCrit", skip_serializing_if = "Option::is_none") )]
 	pub pmt_to_rtr_crit: Option<SystemReturnCriteria2>,
@@ -34698,7 +33758,6 @@ impl TransactionReturnCriteria5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionSearchCriteria11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtTo", skip_serializing_if = "Option::is_none") )]
 	pub pmt_to: Option<Vec<SystemSearch5>>,
@@ -34727,7 +33786,6 @@ impl TransactionSearchCriteria11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionStatus1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -34764,7 +33822,6 @@ impl TransactionStatus1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct TransactionType2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Sts") )]
 	pub sts: EntryStatus1Choice,
@@ -34790,7 +33847,6 @@ impl TransactionType2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Transactions11 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PmtCmonInf", skip_serializing_if = "Option::is_none") )]
 	pub pmt_cmon_inf: Option<PaymentCommon6>,
@@ -34816,7 +33872,6 @@ impl Transactions11 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum TypeOfPrice10Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BIDE") )]
@@ -34858,7 +33913,6 @@ impl TypeOfPrice10Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnableToApplyIncorrect2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: IncorrectData1Choice,
@@ -34888,7 +33942,6 @@ impl UnableToApplyIncorrect2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnableToApplyJustification4Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "AnyInf", skip_serializing_if = "Option::is_none") )]
 	pub any_inf: Option<bool>,
@@ -34912,7 +33965,6 @@ impl UnableToApplyJustification4Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnableToApplyMissing2 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Tp") )]
 	pub tp: MissingData1Choice,
@@ -34942,7 +33994,6 @@ impl UnableToApplyMissing2 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingData2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Initn", skip_serializing_if = "Option::is_none") )]
 	pub initn: Option<UnderlyingPaymentInstruction8>,
@@ -34974,7 +34025,6 @@ impl UnderlyingData2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingGroupInformation1 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlMsgId") )]
 	pub orgnl_msg_id: String,
@@ -35019,7 +34069,6 @@ impl UnderlyingGroupInformation1 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingInvestigationInstrument1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<String>,
@@ -35056,7 +34105,6 @@ impl UnderlyingInvestigationInstrument1Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingPaymentInstruction8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlGrpInf", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_grp_inf: Option<UnderlyingGroupInformation1>,
@@ -35128,7 +34176,6 @@ impl UnderlyingPaymentInstruction8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingPaymentInstruction9 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlGrpInf", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_grp_inf: Option<UnderlyingGroupInformation1>,
@@ -35200,7 +34247,6 @@ impl UnderlyingPaymentInstruction9 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingPaymentTransaction7 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlGrpInf", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_grp_inf: Option<UnderlyingGroupInformation1>,
@@ -35269,7 +34315,6 @@ impl UnderlyingPaymentTransaction7 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingPaymentTransaction8 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlGrpInf", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_grp_inf: Option<UnderlyingGroupInformation1>,
@@ -35338,7 +34383,6 @@ impl UnderlyingPaymentTransaction8 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingStatementEntry3 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlGrpInf", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_grp_inf: Option<OriginalGroupInformation29>,
@@ -35386,7 +34430,6 @@ impl UnderlyingStatementEntry3 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingStatementEntry5 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlAcct", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_acct: Option<CashAccount40>,
@@ -35443,7 +34486,6 @@ impl UnderlyingStatementEntry5 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingTransaction32 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlGrpInfAndSts", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_grp_inf_and_sts: Option<OriginalGroupHeader23>,
@@ -35469,7 +34511,6 @@ impl UnderlyingTransaction32 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingTransaction33 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlGrpInfAndCxl", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_grp_inf_and_cxl: Option<OriginalGroupHeader21>,
@@ -35492,7 +34533,6 @@ impl UnderlyingTransaction33 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingTransaction34 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "OrgnlGrpInfAndCxl", skip_serializing_if = "Option::is_none") )]
 	pub orgnl_grp_inf_and_cxl: Option<OriginalGroupHeader21>,
@@ -35515,7 +34555,6 @@ impl UnderlyingTransaction34 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnderlyingTransaction8Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Initn", skip_serializing_if = "Option::is_none") )]
 	pub initn: Option<UnderlyingPaymentInstruction9>,
@@ -35541,7 +34580,6 @@ impl UnderlyingTransaction8Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum UnitOfMeasure1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PIEC") )]
@@ -35629,7 +34667,6 @@ impl UnitOfMeasure1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnitPrice19 {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "PricTp") )]
 	pub pric_tp: UnitPriceType2Choice,
@@ -35652,7 +34689,6 @@ impl UnitPrice19 {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UnitPriceType2Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<TypeOfPrice10Code>,
@@ -35675,7 +34711,6 @@ impl UnitPriceType2Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum UnmatchedStatusReason1Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "CMIS") )]
@@ -35767,7 +34802,6 @@ impl UnmatchedStatusReason1Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct UpdateType15Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Cd", skip_serializing_if = "Option::is_none") )]
 	pub cd: Option<StatementUpdateType1Code>,
@@ -35790,7 +34824,6 @@ impl UpdateType15Choice {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub enum UserInterface2Code {
 	#[cfg_attr(feature = "derive_default", default)]
 	#[cfg_attr( feature = "derive_serde", serde(rename = "MDSP") )]
@@ -35812,7 +34845,6 @@ impl UserInterface2Code {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct Value {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "BaseCcyItm") )]
 	pub base_ccy_itm: ActiveOrHistoricCurrencyAndAmount,
@@ -35835,7 +34867,6 @@ impl Value {
 #[cfg_attr(feature = "derive_serde", derive(Serialize, Deserialize))]
 #[cfg_attr(feature = "derive_clone", derive(Clone))]
 #[cfg_attr(feature = "derive_partial_eq", derive(PartialEq))]
-#[cfg_attr(feature = "derive_samplify", derive(Sampleable))]
 pub struct YieldedOrValueType1Choice {
 	#[cfg_attr( feature = "derive_serde", serde(rename = "Yldd", skip_serializing_if = "Option::is_none") )]
 	pub yldd: Option<bool>,
