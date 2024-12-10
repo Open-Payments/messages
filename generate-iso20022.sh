@@ -61,7 +61,7 @@ echo '// Open Payment Message Parsing Library
 
 for f in `find $output_directory -iname "*.rs" -type f -print | sort -n`; do
     module_name=$(basename "$f" .rs)
-    if [ $module_name != "lib" ]; then
+    if [ "$module_name" != "lib" ] && [ "$module_name" != "common" ]; then
         echo "pub mod $module_name;" >> "$lib_file"
     fi
 done

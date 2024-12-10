@@ -36,7 +36,9 @@ def scan_rust_files(directory: str) -> tuple[defaultdict, dict, list]:
     
     # More efficient base pattern for type usage
     base_usage_pattern = r'(?m)^[^/]*?:\s*(?:{}|Option<{}>|Vec<{}>|Option<Vec<{}>>)\s*,'
-    
+    base_usage_pattern = r'(?m)^[^/]*?:\s*([\w\d]+|Option<[\w\d]+>|Vec<[\w\d]+>|Option<Vec<[\w\d]+>>)\s*,'
+    type_usage_patterns = re.compile(base_usage_pattern)
+
     dir_path = Path(directory).resolve()
     rust_files = [f for f in os.listdir(dir_path) if f.endswith('.rs')]
     
@@ -51,15 +53,16 @@ def scan_rust_files(directory: str) -> tuple[defaultdict, dict, list]:
                 # Find all type definitions in this file
                 type_matches = list(type_pattern.finditer(content))
                 
-                # Build a map of type names to their usage patterns
-                type_usage_patterns = {}
-                for match in type_matches:
-                    type_name = match.group(2)
-                    if type_name[0].isupper():
-                        pattern = base_usage_pattern.format(
-                            type_name, type_name, type_name, type_name
-                        )
-                        type_usage_patterns[type_name] = re.compile(pattern)
+                def extract_type(type_str):
+                    base_type = re.search(r'(\w+)(?:>)*,?$', type_str)
+                    return base_type.group(1) if base_type else None
+
+                type_usages = []
+                for match in type_usage_patterns.finditer(content):
+                    type_str = match.group(1)
+                    base_type = extract_type(type_str)
+                    if base_type:
+                        type_usages.append(base_type)
                 
                 # Process each type definition
                 for match in type_matches:
@@ -74,7 +77,7 @@ def scan_rust_files(directory: str) -> tuple[defaultdict, dict, list]:
                     
                     if type_name[0].isupper():
                         # For uppercase types, count usages and add to type_locations
-                        struct_match.usage_count = len(type_usage_patterns[type_name].findall(content))
+                        struct_match.usage_count = type_usages.count(type_name)
                         type_locations[type_name].append(struct_match)
                     else:
                         # For lowercase types, add to lowercase_matches for removal
@@ -99,6 +102,7 @@ def generate_common_file(duplicate_types: dict, output_file: str):
         if type_name not in existing_types:
             new_content.append(matches[0].content.rstrip('\n'))
     
+    new_content.append('\n')
     # Write all content at once
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write('\n'.join(new_content))
@@ -135,7 +139,7 @@ def remove_duplicates(file_contents: dict, duplicate_structs: dict, lowercase_ma
                 with open(dir_path / filename, 'w', encoding='utf-8') as f:
                     f.write(new_content)
 
-def print_summary(type_locations: defaultdict, lowercase_matches: list):
+def print_summary(type_locations: defaultdict, lowercase_matches: list, typecount: int):
     """Print summary of type usage and lowercase types to be removed."""
     # Print lowercase types that will be removed
     if lowercase_matches:
@@ -155,14 +159,14 @@ def print_summary(type_locations: defaultdict, lowercase_matches: list):
     frequent_types = {
         name: matches 
         for name, matches in type_locations.items() 
-        if sum(match.usage_count for match in matches) >= 1
+        if sum(match.usage_count for match in matches) >= typecount
     }
     
     if not frequent_types:
-        print("No uppercase types found with usage count >= 1.")
+        print(f"No uppercase types found with usage count >= {typecount}.")
         return
     
-    print("\nUppercase types with usage count >= 1:")
+    print(f"\nUppercase types with usage count >= {typecount}:")
     print("-" * 40)
     
     # Pre-calculate usage counts
@@ -203,7 +207,12 @@ def main():
                        help='Directory containing .rs files (default: current directory)',
                        default='.',
                        nargs='?')
-    
+
+    parser.add_argument('typecount', 
+                       help='Type count threashold (default: 1)',
+                       default=1,
+                       nargs='?')
+
     args = parser.parse_args()
     
     try:
@@ -211,7 +220,7 @@ def main():
         type_locations, file_contents, lowercase_matches = scan_rust_files(args.directory)
         
         # Print summary and get frequent types
-        frequent_types = print_summary(type_locations, lowercase_matches)
+        frequent_types = print_summary(type_locations, lowercase_matches, int(args.typecount))
         
         if frequent_types or lowercase_matches:
             output_path = Path(args.directory) / 'common.rs'
