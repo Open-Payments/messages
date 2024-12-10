@@ -22,11 +22,11 @@ rand = "0.8"
 [features]
 default = []
 derive_all = ["derive_serde", "derive_debug", "derive_default", "derive_partial_eq", "derive_clone"]
-derive_serde = ["serde"]
-derive_debug = []
-derive_default = []
-derive_partial_eq = []
-derive_clone = []
+derive_serde = ["open-payments-common/derive_serde", "serde"]
+derive_debug = ["open-payments-common/derive_debug"]
+derive_default = ["open-payments-common/derive_default"]
+derive_partial_eq = ["open-payments-common/derive_partial_eq"]
+derive_clone = ["open-payments-common/derive_clone"]
 
 [package.metadata.docs.rs]
 all-features = true

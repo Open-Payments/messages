@@ -23,7 +23,6 @@
 // https://github.com/Open-Payments/messages
 
 
-pub mod common;
 pub mod reda_001_001_04;
 pub mod reda_002_001_04;
 pub mod reda_004_001_07;

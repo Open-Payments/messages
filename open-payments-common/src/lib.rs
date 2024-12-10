@@ -22,6 +22,10 @@
 // You may obtain a copy of this library at
 // https://github.com/Open-Payments/messages
 
+pub mod common;
+
+pub use common::*;
+
 #[derive(Debug)]
 pub struct ValidationError {
     pub code: u32,
